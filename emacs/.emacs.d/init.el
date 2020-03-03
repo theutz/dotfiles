@@ -33,6 +33,10 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-hook 'after-init-hook (lambda () (load custom-file)))
 
+;; Setup backup files
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups"))))
+
 ;; Allow "weird" functions
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-defun 'disabled nil)
