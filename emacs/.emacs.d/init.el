@@ -32,6 +32,11 @@
 ;; Setup custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-hook 'after-init-hook (lambda () (load custom-file)))
+
+;; Allow "weird" functions
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 ;;       _
 ;;  _  _| |_ ___
@@ -136,6 +141,8 @@
 (utz/set-narrow-key "" '(:ignore t :wk "narrow/widen")
   "w" 'widen
   "p" 'narrow-to-page
+  "r" 'narrow-to-region
+  "d" 'narrow-to-defun
   "]" 'utz/forward-narrow-page
   "[" 'utz/backward-narrow-page)
 
@@ -271,8 +278,8 @@
 (use-package hydra
   :defer 2
   :general
-  (utz/set-leader-key "c ." 'utz/hydra-comment/body
-    "n ." 'utz/hydra-narrow/body))
+  (utz/set-leader-key "c ." 'utz/hydra-comment/body)
+  (utz/set-narrow-key "." '(utz/hydra-narrow/body :wk "Transient State")))
 
 (defhydra utz/hydra-comment (:hint nil :exit t)
   "
@@ -298,11 +305,13 @@
   ^------^--------------^-----^----^--------^---------
   _p_ narrow to page    _w_ widen  _]_ next page
   _d_ narrow to defun   ^ ^        _[_ previous page
+  _r_ narrow to region  ^ ^        ^ ^
   ^ ^                   ^ ^        ^ ^
   "
   ("q" nil "cancel")
   ("p" narrow-to-page)
   ("d" narrow-to-defun)
+  ("r" narow-to-region)
   ("w" widen)
   ("]" utz/forward-narrow-page)
   ("[" utz/backward-narrow-page))
