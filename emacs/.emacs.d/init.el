@@ -97,24 +97,47 @@
 ;; Setup constants
 (defvar utz-leader-key "SPC")
 (defvar utz-local-leader-key ",")
-(defvar utz-standard-definer-keymaps '(normal visual))
+(defvar utz-standard-definer-keymaps '(normal insert emacs visual))
 
-;; Setup definers
+;; Setup basic definers
 (general-create-definer utz/set-leader-key
   :prefix utz-leader-key
+  :non-normal-prefix (concat "M-" utz-leader-key)
   :keymaps utz-standard-definer-keymaps)
 
 (general-create-definer utz/set-local-leader-key
   :prefix utz-local-leader-key
+  :non-normal-prefix (concat "M-" utz-local-leader-key)
   :keymaps utz-standard-definer-keymaps)
 
+;; Setup infix definers
+
+(general-create-definer utz/set-files-key
+  :wrapping utz/set-leader-key
+  :infix "f")
+
+(general-create-definer utz/set-files-emacs-key
+  :wrapping utz/set-leader-key
+  :infix "f e")
+
+(general-create-definer utz/set-narrow-key
+  :wrapping utz/set-leader-key
+  :infix "n")
+
 ;; Basic keyboard shortcuts
-(utz/set-leader-key "f e R" 'utz/load-config-file
-  "f e d" 'utz/edit-config-file
-  "n w" 'widen
-  "n p" 'narrow-to-page
-  "n ]" 'utz/forward-narrow-page
-  "n [" 'utz/backward-narrow-page)
+
+(utz/set-files-key "" '(:ignore t :wk "files")
+  "s" 'save-buffer)
+
+(utz/set-files-emacs-key "" '(:ignore t :wk "emacs config")
+  "R" 'utz/load-config-file
+  "d" 'utz/edit-config-file)
+
+(utz/set-narrow-key "" '(:ignore t :wk "narrow/widen")
+  "w" 'widen
+  "p" 'narrow-to-page
+  "]" 'utz/forward-narrow-page
+  "[" 'utz/backward-narrow-page)
 
 ;;          _ _
 ;;  _____ _(_) |
@@ -201,11 +224,11 @@
   :init
   (helm-mode 1)
   :general
-  (general-def "M-x" 'helm-M-x)
+  (general-define-key "M-x" 'helm-M-x)
   (utz/set-leader-key "SPC" 'helm-M-x
     "f f" 'helm-find-files
-    "b b" 'helm-buffers-list
-    "b m" 'helm-bookmarks))
+    "b m" 'helm-bookmarks)
+  (utz/set-leader-key :infix "b" :prefix-name "buffers/bookmarks" "b" 'helm-buffers-list))
 
 
 ;;             _            _
