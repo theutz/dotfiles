@@ -324,7 +324,16 @@
 ;; |  _| ' \/ -_) '  \/ -_|_-<
 ;;  \__|_||_\___|_|_|_\___/__/
 
-(use-package color-theme-sanityinc-tomorrow)
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+	doom-themes-enable-italic t)
+  (load-theme 'doom-one-light t)
+
+  (doom-themes-visual-bell-config)
+  (setq doom-themes-treemacs-theme "doom-colors")
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
 
 ;;  _
 ;; | |_ _ _ ___ ___ _ __  __ _ __ ___
