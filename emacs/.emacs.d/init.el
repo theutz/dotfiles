@@ -72,7 +72,6 @@
   (interactive)
   (find-file utz-config-file))
 
-;;; straight.el
 ;;     _            _      _   _         _
 ;;  __| |_ _ _ __ _(_)__ _| |_| |_   ___| |
 ;; (_-<  _| '_/ _` | / _` | ' \  _|_/ -_) |
@@ -119,36 +118,51 @@
   :non-normal-prefix (concat "M-" utz-local-leader-key)
   :keymaps utz-standard-definer-keymaps)
 
-;; Setup infix definers
+;; Setup "SPC" keys
 
-(general-create-definer utz/set-files-key
+(utz/set-leader-key "u" '(universal-argument :wk "Universal Argument"))
+
+;; Setup "SPC f" keys
+
+(general-create-definer utz/set-leader-f-key
   :wrapping utz/set-leader-key
   :infix "f")
 
-(general-create-definer utz/set-files-emacs-key
+(utz/set-leader-f-key "" '(:ignore t :wk "Files")
+  "s" 'save-buffer)
+
+;; Setup "SPC f e" keys
+
+(general-create-definer utz/set-leader-f-e-key
   :wrapping utz/set-leader-key
   :infix "f e")
 
-(general-create-definer utz/set-narrow-key
-  :wrapping utz/set-leader-key
-  :infix "n")
-
-;; Basic keyboard shortcuts
-
-(utz/set-files-key "" '(:ignore t :wk "files")
-  "s" 'save-buffer)
-
-(utz/set-files-emacs-key "" '(:ignore t :wk "emacs config")
+(utz/set-leader-f-e-key "" '(:ignore t :wk "emacs config")
   "R" 'utz/load-config-file
   "d" 'utz/edit-config-file)
 
-(utz/set-narrow-key "" '(:ignore t :wk "narrow/widen")
-  "w" 'widen
-  "p" 'narrow-to-page
-  "r" 'narrow-to-region
-  "d" 'narrow-to-defun
-  "]" 'utz/forward-narrow-page
-  "[" 'utz/backward-narrow-page)
+;; Setup "SPC n" keys
+
+(general-create-definer utz/set-leader-n-key
+  :wrapping utz/set-leader-key
+  :infix "n")
+
+(utz/set-leader-n-key "" '(:ignore t :wk "Narrow / Widen")
+  "w" '(widen :wk "Widen")
+  "p" '(narrow-to-page :wk "Narrow to Page")
+  "r" '(narrow-to-region :wk "Narrow to Region")
+  "d" '(narrow-to-defun :wk "Narrow to Function Definition")
+  "]" '(utz/forward-narrow-page wk: "Next Page")
+  "[" '(utz/backward-narrow-page wk: "Previous Page"))
+
+;; Setup "SPC q" keys
+
+(general-create-definer utz/set-leader-q-key
+  :wrapping utz/set-leader-key
+  :infix "q")
+
+(utz/set-leader-q-key "" '(:ignore t :wk "Quit/Restart")
+		  "q" '(kill-emacs :wk "Kill Emacs"))
 
 ;;          _ _
 ;;  _____ _(_) |
@@ -235,11 +249,11 @@
   :init
   (helm-mode 1)
   :general
-  (general-define-key "M-x" 'helm-M-x)
-  (utz/set-leader-key "SPC" 'helm-M-x
-    "f f" 'helm-find-files
+  (general-define-key "M-x" '(helm-M-x :wk "M-x"))
+  (utz/set-leader-key "SPC" '(helm-M-x :wk "M-x")
     "b m" 'helm-bookmarks)
-  (utz/set-leader-key :infix "b" :prefix-name "buffers/bookmarks" "b" 'helm-buffers-list))
+  (utz/set-leader-f-key "f" '(helm-find-files :wk "Find Files"))
+  (utz/set-leader-b-key "b" '(helm-buffers-list :wk "List Buffers")))
 
 
 ;;             _            _
@@ -248,7 +262,7 @@
 ;; |_| \___/__/\__\__,_|_|  \__|   \___|_|_|_\__,_\__/__/
 
 (use-package restart-emacs
-  :general (utz/set-leader-key "q r" 'restart-emacs))
+  :general (utz/set-quit-key "r" '(restart-emacs :wk "Restart Emacs")))
 
 
 ;;   __ _         _           _
