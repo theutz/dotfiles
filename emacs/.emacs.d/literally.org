@@ -52,39 +52,49 @@
       (put 'narrow-to-region 'disabled nil)
     #+END_SRC
     
-** Utz
-   #+BEGIN_SRC emacs-lisp
-     (defun utz/narrow-page-forward ()
-       "Widen, forward, then narrow."
-       (interactive)
-       (widen)
-       (forward-page)
-       (narrow-to-page))
+** Custom Functions
 
-     (defun utz/narrow-page-backward ()
-       "Widen, backward, then narrow."
-       (interactive)
-       (widen)
-       (backward-page)
-       (backward-page)
-       (narrow-to-page))
+*** Narrow Page Navigation
+   
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/narrow-page-forward ()
+	"Widen, forward, then narrow."
+	(interactive)
+	(widen)
+	(forward-page)
+	(narrow-to-page))
 
-     (defun utz/load-config-file ()
-       "Load configuration file all over again."
-       (interactive)
-       (org-babel-load-file utz-config-file))
+      (defun utz/narrow-page-backward ()
+	"Widen, backward, then narrow."
+	(interactive)
+	(widen)
+	(backward-page)
+	(backward-page)
+	(narrow-to-page))
+    #+END_SRC
 
-     (defun utz/edit-config-file ()
-       "Edit the configs."
-       (interactive)
-       (find-file utz-config-file))
+*** Load and Edit Config Files
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/load-config-file ()
+	"Load configuration file all over again."
+	(interactive)
+	(org-babel-load-file utz-config-file))
 
-     (defun utz/customize ()
-       "Open the customize in another window."
-       (interactive)
-       (evil-window-vsplit)
-       (customize))
-   #+END_SRC
+      (defun utz/edit-config-file ()
+	"Edit the configs."
+	(interactive)
+	(find-file utz-config-file))
+    #+END_SRC
+
+*** Open Customize
+    #+BEGIN_SRC emacs-lisp
+
+      (defun utz/customize ()
+	"Open the customize in another window."
+	(interactive)
+	(evil-window-vsplit)
+	(customize))
+    #+END_SRC
 
 ** Keybindings
 *** Evil
@@ -114,6 +124,7 @@
     #+END_SRC
 
 **** Evil Magit
+     
      #+BEGIN_SRC emacs-lisp
        (use-package evil-magit
 	 :after evil magit)
@@ -202,14 +213,14 @@
      #+END_SRC
       
 **** Setup "Git" prefix keys
-      
+     
      For when it's time to git it done.
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "g"
 	 "" '(:ignore t :wk "Git")
 	 "s" 'magit-status
-	 "g d" 'magit-dispatch)
+	 "d" 'magit-dispatch)
      #+END_SRC
     
 **** Setup "Files" prefix keys
@@ -219,7 +230,8 @@
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "f"
 	 "" '(:ignore t :wk "Files")
-	 "s" 'save-buffer)
+	 "s" 'save-buffer
+	 "t" 'treemacs-select-window)
 
        (utz/set-leader-key :infix "f e"
 	 "" '(:ignore t :wk "Emacs Config")
@@ -463,14 +475,13 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package treemacs
-       :commands treemacs
-       :general (utz/set-leader-key "f t" 'treemacs-select-window))
+       :commands (treemacs treemacs-select-window))
 
      (use-package treemacs-evil
-       :after treemacs evil)
+       :after (treemacs evil))
 
      (use-package treemacs-magit
-       :after treemacs magit)
+       :after (treemacs magit))
    #+END_SRC
 
 ** Ranger
