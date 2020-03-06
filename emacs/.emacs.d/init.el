@@ -17,12 +17,14 @@
 ;;                                             |___/
 
 ;; Usin' the ol' UTF-8
+
 (setq-default buffer-file-coding-system 'utf-8-unix)
 (set-default-coding-systems 'utf-8-unix)
 (setq locale-coding-system 'utf-8-unix)
 (prefer-coding-system 'utf-8-unix)
 
 ;; Setup the exec path
+
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
@@ -47,14 +49,14 @@
 ;; | || |  _|_ /
 ;;  \_,_|\__/__|
 
-(defun utz/forward-narrow-page ()
+(defun utz/narrow-page-forward ()
   "Widen, forward, then narrow."
   (interactive)
   (widen)
   (forward-page)
   (narrow-to-page))
 
-(defun utz/backward-narrow-page ()
+(defun utz/narrow-page-backward ()
   "Widen, backward, then narrow."
   (interactive)
   (widen)
@@ -152,8 +154,8 @@
   "p" '(narrow-to-page :wk "Narrow to Page")
   "r" '(narrow-to-region :wk "Narrow to Region")
   "d" '(narrow-to-defun :wk "Narrow to Function Definition")
-  "]" '(utz/forward-narrow-page wk: "Next Page")
-  "[" '(utz/backward-narrow-page wk: "Previous Page"))
+  "]" '(utz/narrow-page-forward wk: "Next Page")
+  "[" '(utz/narrow-page-backward wk: "Previous Page"))
 
 ;; Setup "SPC q" keys
 
@@ -331,8 +333,8 @@
   ("d" narrow-to-defun)
   ("r" narow-to-region)
   ("w" widen)
-  ("]" utz/forward-narrow-page)
-  ("[" utz/backward-narrow-page))
+  ("]" utz/narrow-page-forward)
+  ("[" utz/narrow-page-backward))
 
 ;;   __ _      _     _
 ;;  / _(_)__ _| |___| |_
@@ -393,6 +395,7 @@
   :demand t
   :init
   (setq bm-restore-repository-on-load t))
+
 ;; Local Variables:
 ;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
