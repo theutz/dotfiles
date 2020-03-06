@@ -1,0 +1,482 @@
+#+TITLE: My literate emacs config
+
+* Global Functions and Keybindings
+  
+** Basic Settings  
+   
+   Herein lies some basic settings that I use as a foundation for my emacsian bliss.
+
+*** Set text encoding
+    
+    Use UTF-8 everywhere
+    
+    #+BEGIN_SRC emacs-lisp
+      (setq-default buffer-file-coding-system 'utf-8-unix)
+      (set-default-coding-systems 'utf-8-unix)
+      (setq locale-coding-system 'utf-8-unix)
+      (prefer-coding-system 'utf-8-unix)
+    #+END_SRC
+
+*** Set the exec path
+    
+    Make sure that emacs has access to all my homebrewy goodness.
+    
+    #+BEGIN_SRC emacs-lisp
+      (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+      (setq exec-path (append exec-path '("/usr/local/bin")))
+    #+END_SRC
+    
+*** Setup config files
+    
+    Setup some constants for my config file paths.
+    
+    #+BEGIN_SRC emacs-lisp
+      (defconst utz-config-init (expand-file-name "init.el" user-emacs-directory))
+      (defconst utz-config-file (expand-file-name "literally.org" user-emacs-directory))
+      (defconst utz-custom-file custom-file)
+      (defconst utz-themes-directory custom-theme-directory)
+    #+END_SRC
+    
+*** Setup backup files
+    
+    #+BEGIN_SRC emacs-lisp
+      (setq backup-directory-alist
+	    `(("." . ,(concat user-emacs-directory "backups"))))
+    #+END_SRC
+    
+*** Allow "weird" functions
+
+    #+BEGIN_SRC emacs-lisp
+      (put 'narrow-to-page 'disabled nil)
+      (put 'narrow-to-defun 'disabled nil)
+      (put 'narrow-to-region 'disabled nil)
+    #+END_SRC
+    
+** Utz
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/narrow-page-forward ()
+       "Widen, forward, then narrow."
+       (interactive)
+       (widen)
+       (forward-page)
+       (narrow-to-page))
+
+     (defun utz/narrow-page-backward ()
+       "Widen, backward, then narrow."
+       (interactive)
+       (widen)
+       (backward-page)
+       (backward-page)
+       (narrow-to-page))
+
+     (defun utz/load-config-file ()
+       "Load configuration file all over again."
+       (interactive)
+       (org-babel-load-file utz-config-file))
+
+     (defun utz/edit-config-file ()
+       "Edit the configs."
+       (interactive)
+       (find-file utz-config-file))
+
+     (defun utz/customize ()
+       "Open the customize in another window."
+       (interactive)
+       (evil-window-vsplit)
+       (customize))
+   #+END_SRC
+
+** Keybindings
+*** Evil
+    
+    [[https://evil.readthedocs.io/en/latest][Evil]] sets up our vim-like keybindings.
+    
+    #+BEGIN_SRC emacs-lisp
+      (use-package evil
+	:init
+	(setq evil-want-C-u-scroll t
+	      evil-want-C-u-delete t
+	      evil-shift-width 2
+	      evil-indent-convert-tabs nil
+	      evil-echo-state nil
+	      evil-split-window-below t
+	      evil-vsplit-window-right t
+	      evil-normal-state-tag " NORMAL "
+	      evil-visual-state-tag " VISUAL "
+	      evil-insert-state-tag " INSERT "
+	      evil-emacs-state-tag " EMACS "
+	      evil-replace-state-tag " REPLACE "
+	      evil-motion-state-tag " MOTION "
+	      evil-want-keybinding nil)
+	:config
+	(evil-set-initial-state 'Custom-mode 'normal)
+	(evil-mode 1))
+    #+END_SRC
+
+**** Evil Magit
+     #+BEGIN_SRC emacs-lisp
+       (use-package evil-magit
+	 :after evil magit)
+     #+END_SRC
+
+**** Evil Surround
+    
+     #+BEGIN_SRC emacs-lisp
+       (use-package evil-surround
+	 :after evil
+	 :config
+	 (global-evil-surround-mode 1))
+     #+END_SRC
+
+**** Evil Commentary
+    
+     #+BEGIN_SRC emacs-lisp
+       (use-package evil-commentary
+	 :after evil
+	 :config
+	 (evil-commentary-mode))
+     #+END_SRC
+
+**** Evil Collection
+    
+     #+BEGIN_SRC emacs-lisp
+       (use-package evil-collection
+	 :after evil)
+     #+END_SRC
+
+**** Evil Org
+    
+     #+BEGIN_SRC emacs-lisp
+       (use-package evil-org
+	 :after org
+	 :init
+	 (add-hook 'org-mode-hook 'evil-org-mode)
+	 (add-hook 'evil-org-mode-hook
+		   (lambda ()
+		     (evil-org-set-key-theme)))
+	 (require 'evil-org-agenda)
+	 (evil-org-agenda-set-keys))
+     #+END_SRC
+
+*** General.el
+    
+    [[https://github.com/noctuid/general.el][General.el]] is how we setup all our other keybindings.
+     
+    #+BEGIN_SRC emacs-lisp
+      (use-package general
+	:init
+	(setq utz-leader-key "SPC"
+	      utz-localleader-key ","
+	      utz-definer-states '(normal insert emacs visual)))
+    #+END_SRC
+
+*** Hydra
+     
+    #+BEGIN_SRC emacs-lisp
+      (use-package hydra
+	:defer 2)
+    #+END_SRC
+
+*** Setup Keys
+     
+    #+BEGIN_SRC emacs-lisp
+      (general-define-key "s-," 'utz/customize)
+    #+END_SRC
+     
+*** Setup `<leader>` Keys
+    
+    "SPC" is the leader...
+    
+    #+BEGIN_SRC emacs-lisp
+      (general-create-definer utz/set-leader-key
+	:prefix utz-leader-key
+	:non-normal-prefix (concat "M-" utz-leader-key)
+	:keymaps utz-definer-states)
+    #+END_SRC
+
+**** Setup non-prefixed keys
+
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument")
+	 "0" '(ranger :wk "Ranger"))
+     #+END_SRC
+      
+**** Setup "Git" prefix keys
+      
+     For when it's time to git it done.
+
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "g"
+	 "" '(:ignore t :wk "Git")
+	 "s" 'magit-status
+	 "g d" 'magit-dispatch)
+     #+END_SRC
+    
+**** Setup "Files" prefix keys
+     
+     Fer filing stuff away.
+
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "f"
+	 "" '(:ignore t :wk "Files")
+	 "s" 'save-buffer)
+
+       (utz/set-leader-key :infix "f e"
+	 "" '(:ignore t :wk "Emacs Config")
+	 "R" 'utz/load-config-file
+	 "d" 'utz/edit-config-file)
+     #+END_SRC
+      
+**** Setup "Narrow / Widen" prefix keys
+     
+     Narrow, then widen. The circle of lifemacs.
+      
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "n"
+	 "" '(:ignore t :wk "Narrow / Widen")
+	 "." '(utz/hydra-narrow/body :wk "Transient State")
+	 "w" '(widen :wk "Widen")
+	 "p" '(narrow-to-page :wk "Narrow to Page")
+	 "r" '(narrow-to-region :wk "Narrow to Region")
+	 "d" '(narrow-to-defun :wk "Narrow to Function Definition")
+	 "]" '(utz/narrow-page-forward wk: "Next Page")
+	 "[" '(utz/narrow-page-backward wk: "Previous Page"))
+     #+END_SRC
+
+     Here's the hydra for the transient state:
+
+     #+BEGIN_SRC emacs-lisp
+       (defhydra utz/hydra-narrow (:hint nil)
+	 "
+	 ^
+	 ^Narrow^              ^Widen^    ^Navigate^
+	 ^------^--------------^-----^----^--------^---------
+	 _p_ narrow to page    _w_ widen  _]_ next page
+	 _d_ narrow to defun   ^ ^        _[_ previous page
+	 _r_ narrow to region  ^ ^        ^ ^
+	 ^ ^                   ^ ^        ^ ^
+	 "
+	 ("q" nil "cancel")
+	 ("p" narrow-to-page)
+	 ("d" narrow-to-defun)
+	 ("r" narow-to-region)
+	 ("w" widen)
+	 ("]" utz/narrow-page-forward)
+	 ("[" utz/narrow-page-backward))
+     #+END_SRC
+       
+**** Setup "Quit / Restart" prefix keys
+     
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "q"
+	 "" '(:ignore t :wk "Quit / Restart")
+	 "q" '(kill-emacs :wk "Kill Emacs")
+	 "r" 'restart-emacs :wk "Restart Emacs")
+     #+END_SRC
+
+**** Setup "Comments" prefix keys
+      
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "c"
+	 "" '(:ignore t :wk "Comments")
+	 "." '(utz/hydra-comment/body :wk "Transient State"))
+     #+END_SRC
+       
+     And here's the Hydra for the transient state:
+
+     #+BEGIN_SRC emacs-lisp
+       (defhydra utz/hydra-comment (:hint nil :exit t)
+	 "
+	 ^
+	 ^Figlet
+	 ^------^-----------------------
+	 _r_: Figletify Region
+	 _R_: Figletify Region Comment
+	 _i_: Figlet
+	 _I_: Figlet Comment
+	 ^
+	 "
+	 ("i" figlet)
+	 ("I" figlet-comment)
+	 ("r" figlet-figletify-region)
+	 ("R" figlet-figletify-region-comment)
+	 ("q" nil "cancel"))
+     #+END_SRC
+       
+*** Setup "<localleader>" keys
+    
+    #+BEGIN_SRC emacs-lisp
+      (general-create-definer utz/set-localleader-key
+	:prefix utz-localleader-key
+	:non-normal-prefix (concat "M-" utz-localleader-key)
+	:states utz-definer-states)
+    #+END_SRC
+
+**** Org Mode
+     
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-localleader-key :keymaps '(org-mode-map)
+	 "l" '(:ignore t :wk "Links")
+	 "l o" '(org-open-at-point :wk "Open at Point")
+	 "l l" '(org-insert-link :wk "Insert Link"))
+     #+END_SRC
+
+* Themes & Appearance
+  
+** Fix that window chrome madness
+
+   #+BEGIN_SRC emacs-lisp
+     (setq inhibit-startup-screen t
+	   initial-scratch-message nil)
+     (menu-bar-mode -1)
+     (scroll-bar-mode -1)
+     (tool-bar-mode -1)
+
+     (setq custom-safe-themes t) ; So we don't get that annoying warning every time.
+   #+END_SRC
+    
+** Setup the theme
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package doom-themes
+       :config
+       ;; Global settings (defaults)
+       (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	     doom-themes-enable-italic t) ; if nil, italics is universally disabled
+       (load-theme 'doom-palenight t)
+
+       ;; Enable flashing mode-line on errors
+       (doom-themes-visual-bell-config)
+
+       ;; Corrects (and improves) org-mode's native fontification.
+       (doom-themes-org-config))     
+   #+END_SRC
+   
+* Package Config
+  
+** Magit
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package magit
+       :commands (magit-dispatch magit-status))
+   #+END_SRC
+
+** Helpful
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package helpful
+       :general ("C-h f" 'helpful-callable
+		 "C-h v" 'helpful-variable
+		 "C-h k" 'helpful-key
+		 "C-h F" 'helpful-function
+		 "C-h c" 'helpful-command)
+       (utz/set-leader-key "h f" 'helpful-callable
+	 "h v" 'helpful-variable
+	 "h k" 'helpful-key
+	 "h F" 'helpful-function
+	 "h c" 'helpful-command))
+   #+END_SRC
+
+** Which Key
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package which-key
+       :config
+       (which-key-mode)
+       (which-key-setup-side-window-right-bottom))
+   #+END_SRC
+
+** Helm
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package helm
+       :init
+       (helm-mode 1)
+       :general
+       (general-define-key "M-x" '(helm-M-x :wk "M-x"))
+       (utz/set-leader-key "SPC" '(helm-M-x :wk "M-x")
+	 "b m" 'helm-bookmarks)
+       (utz/set-leader-f-key "f" '(helm-find-files :wk "Find Files"))
+       (utz/set-leader-b-key "b" '(helm-buffers-list :wk "List Buffers")))
+   #+END_SRC
+
+** Restart Emacs
+   
+   Let's make this as easy as possible, eh?
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package restart-emacs
+       :commands restart-emacs)
+   #+END_SRC
+
+** Flycheck
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck
+       :config
+       (global-flycheck-mode))
+   #+END_SRC
+
+** Company
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package company
+       :init
+       (add-hook 'after-init-hook 'global-company-mode))
+   #+END_SRC
+
+** Figlet
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package figlet
+       :general (utz/set-leader-key "c f F" 'figlet-comment
+		  "c f f" 'figlet
+		  "c f r" 'figlet-figletify-region
+		  "c f R" 'figlet-figletify-region))
+   #+END_SRC
+
+** Org
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-bullets
+       :after org
+       :custom
+       (org-src-tab-acts-natively t)
+       :init
+       (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+   #+END_SRC
+
+** Treemacs
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package treemacs
+       :commands treemacs
+       :general (utz/set-leader-key "f t" 'treemacs-select-window))
+
+     (use-package treemacs-evil
+       :after treemacs evil)
+
+     (use-package treemacs-magit
+       :after treemacs magit)
+   #+END_SRC
+
+** Ranger
+   
+   Use [[https://github.com/ralesi/ranger.el][Ranger]] as a file manager, like, a lot.
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package ranger
+       :commands ranger)
+   #+END_SRC
+
+** YASnippet
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package yasnippet
+       :custom
+       (yas-snippet-dirs `(,(expand-file-name "snippets/" user-emacs-directory)))
+       (yas-verbosity 2)
+       :config
+       (yas-global-mode 1))
+   #+END_SRC
+
