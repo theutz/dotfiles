@@ -313,6 +313,15 @@
 	("q" nil "cancel"))
     #+END_SRC
        
+*** Setup "Buffers / Bookmarks" prefix keys
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "b"
+	"" '(:ignore t :wk "Buffers / Bookmarks")
+	"b" '(helm-buffers-list :wk "Buffers")
+	"m" '(helm-bookmarks :wk "Bookmarks"))
+    #+END_SRC
+    
 ** Setup `<localleader>` keys
     
    We begin by creating a definer that we can use for all these mode-based keyboard shortcuts.
