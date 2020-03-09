@@ -189,7 +189,8 @@
 ** Setup Keys
      
    #+BEGIN_SRC emacs-lisp
-     (general-define-key "s-," 'utz/customize)
+     (general-define-key "s-," '(utz/customize :wk "Customize")
+			 "M-x" '(helm-M-x :wk "M-x"))
    #+END_SRC
      
 ** Setup `<leader>` Keys
@@ -206,7 +207,8 @@
 *** Setup non-prefixed keys
 
     #+BEGIN_SRC emacs-lisp
-      (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument")
+      (utz/set-leader-key "SPC" '(helm-M-x :wk "M-x")
+	"u" '(universal-argument :wk "Universal Argument")
 	"0" '(ranger :wk "Ranger"))
     #+END_SRC
       
@@ -229,6 +231,7 @@
       (utz/set-leader-key :infix "f"
 	"" '(:ignore t :wk "Files")
 	"s" 'save-buffer
+	"f" 'helm-find-files
 	"t" 'treemacs-select-window)
 
       (utz/set-leader-key :infix "f e"
@@ -444,13 +447,7 @@
     #+BEGIN_SRC emacs-lisp
       (use-package helm
 	:init
-	(helm-mode 1)
-	:general
-	(general-define-key "M-x" '(helm-M-x :wk "M-x"))
-	(utz/set-leader-key "SPC" '(helm-M-x :wk "M-x")
-	  "b m" 'helm-bookmarks)
-	(utz/set-leader-f-key "f" '(helm-find-files :wk "Find Files"))
-	(utz/set-leader-b-key "b" '(helm-buffers-list :wk "List Buffers")))
+	(helm-mode 1))
     #+END_SRC
 
 *** Restart Emacs
