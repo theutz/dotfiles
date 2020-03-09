@@ -4,7 +4,7 @@
    
   Herein lies some basic settings that I use as a foundation for my emacsian bliss.
 
-** Set text encoding
+** Text Encoding
     
    Use UTF-8 everywhere
     
@@ -15,7 +15,7 @@
      (prefer-coding-system 'utf-8-unix)
    #+END_SRC
 
-** Set the exec path
+** Exec Path
     
    Make sure that emacs has access to all my homebrewy goodness.
     
@@ -24,7 +24,7 @@
      (setq exec-path (append exec-path '("/usr/local/bin")))
    #+END_SRC
     
-** Setup config files
+** Config files
     
    Setup some constants for my config file paths.
     
@@ -35,7 +35,7 @@
      (defconst utz-themes-directory custom-theme-directory)
    #+END_SRC
     
-** Setup backup files
+** Backup files
     
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist
@@ -325,6 +325,15 @@
 	"m" '(helm-bookmarks :wk "Bookmarks"))
     #+END_SRC
     
+*** Setup "Toggles" prefix keys
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "t"
+	"" '(:ignore t :wk "Toggles")
+	"f" '(toggle-frame-fullscreen :wk "Full Screen")
+	"m" '(toggle-frame-maximized :wk "Maximized"))
+    #+END_SRC
+    
 ** Setup `<localleader>` keys
     
    We begin by creating a definer that we can use for all these mode-based keyboard shortcuts.
@@ -352,18 +361,30 @@
 * Themes & Appearance
   
 ** Appearance
+
+*** Window Chrome
    
-   Change some of that crazy default window chrome...
+    Change some of that crazy default window chrome...
 
-   #+BEGIN_SRC emacs-lisp
-     (setq inhibit-startup-screen t
-	   initial-scratch-message nil)
-     (menu-bar-mode -1)
-     (scroll-bar-mode -1)
-     (tool-bar-mode -1)
+    #+BEGIN_SRC emacs-lisp
+      (setq inhibit-startup-screen t
+	    initial-scratch-message nil)
+      (menu-bar-mode -1)
+      (scroll-bar-mode -1)
+      (tool-bar-mode -1)
+    #+END_SRC
+    
+*** Safe Themes
 
-     (setq custom-safe-themes t) ; So we don't get that annoying warning every time.
-   #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (setq custom-safe-themes t) ; So we don't get that annoying warning every time.
+    #+END_SRC
+
+*** Full Screen
+    
+    #+BEGIN_SRC emacs-lisp
+      (setq ns-use-native-fullscreen nil)
+    #+END_SRC
     
 *** All The Icons
     
