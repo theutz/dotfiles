@@ -72,6 +72,7 @@
    #+END_SRC
 
 ** Load and Edit Config Files
+   
    #+BEGIN_SRC emacs-lisp
      (defun utz/load-config-file ()
        "Load configuration file all over again."
@@ -85,16 +86,17 @@
    #+END_SRC
 
 ** Open Customize
+   
    #+BEGIN_SRC emacs-lisp
-
      (defun utz/customize ()
        "Open the customize in another window."
        (interactive)
        (evil-window-vsplit)
        (customize))
    #+END_SRC
-
+   
 * Keybindings
+  
 ** Evil
     
    [[https://evil.readthedocs.io/en/latest][Evil]] sets up our vim-like keybindings.
@@ -340,7 +342,6 @@
     
    #+BEGIN_SRC emacs-lisp
      (general-create-definer utz/set-localleader-key
-       :wrapping utz/set-leader-key
        :prefix ","
        :non-normal-prefix "M-,")
    #+END_SRC
@@ -350,7 +351,7 @@
 **** "l" - Links
      
      #+BEGIN_SRC emacs-lisp
-       (utz/set-localleader-key :keymaps '(normal org-mode-map)
+       (utz/set-localleader-key :states '(normal) :keymaps '(org-mode-map)
 	 :infix "l"
 	 "" '(:ignore t :wk "Links")
 	 "o" '(org-open-at-point :wk "Open at Point")
@@ -380,11 +381,6 @@
       (setq custom-safe-themes t) ; So we don't get that annoying warning every time.
     #+END_SRC
 
-*** Full Screen
-    
-    #+BEGIN_SRC emacs-lisp
-      (setq ns-use-native-fullscreen nil)
-    #+END_SRC
     
 *** All The Icons
     

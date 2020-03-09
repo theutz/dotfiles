@@ -97,7 +97,7 @@ brew "wget"
 brew "yarn"
 brew "yq"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus", args: ["with-modern-icon", "with-no-titlebar", "without-spacemacs-icon"]
+brew "d12frosted/emacs-plus/emacs-plus", args: ["with-modern-icon", "without-spacemacs-icon"]
 brew "github/gh/gh"
 brew "jesseduffield/lazydocker/lazydocker"
 brew "rigellute/tap/spotify-tui"
