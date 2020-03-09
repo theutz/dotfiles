@@ -16,6 +16,7 @@ cask "xquartz"
 brew "asciiquarium"
 brew "bat"
 brew "bfg"
+brew "broot"
 brew "python", link: false
 brew "ccat"
 brew "cmake"
@@ -73,6 +74,7 @@ brew "rust"
 brew "shellcheck"
 brew "shpotify"
 brew "speedtest-cli"
+brew "stow"
 brew "surfraw"
 brew "the_silver_searcher"
 brew "tldr"
@@ -95,18 +97,15 @@ brew "wget"
 brew "yarn"
 brew "yq"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus", args: ["without-spacemacs-icon"]
-brew "federico-terzi/espanso/espanso"
+brew "d12frosted/emacs-plus/emacs-plus", args: ["with-modern-icon", "with-no-titlebar", "without-spacemacs-icon"]
 brew "github/gh/gh"
 brew "jesseduffield/lazydocker/lazydocker"
 brew "rigellute/tap/spotify-tui"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
 cask "adobe-creative-cloud"
-cask "alfred"
 cask "appcleaner"
 cask "bartender"
-cask "caprine"
 cask "dash"
 cask "docker"
 cask "dotnet-sdk"
@@ -138,6 +137,7 @@ cask "mongotron"
 cask "monodraw"
 cask "netnewswire"
 cask "nordvpn"
+cask "notion"
 cask "now"
 cask "omnidisksweeper"
 cask "robo-3t"
@@ -150,21 +150,17 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "zoomus"
-mas "Amphetamine", id: 937984704
-mas "Bumpr", id: 1166066070
 mas "Dato", id: 1470584107
-mas "Fantastical", id: 975937182
-mas "Instapaper", id: 1481302432
-mas "iStat Menus", id: 1319778037
+mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Grammarly for Safari", id: 1462114288
+mas "Honey", id: 1472777122
 mas "Keynote", id: 409183694
 mas "Mate Translate", id: 1005088137
 mas "Numbers", id: 409203825
+mas "Octotree Pro", id: 1457450145
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
-mas "Pocket", id: 568494494
 mas "Rosetta Stone", id: 1476088902
-mas "Spark", id: 1176895641
-mas "Todoist", id: 585829637
 mas "Twitter", id: 1482454543
 mas "Vimari", id: 1480933944
 mas "Wallpaper Wizard", id: 1266674560
