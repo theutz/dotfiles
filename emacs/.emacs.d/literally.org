@@ -525,11 +525,12 @@
 
 *** Ranger
    
-    Use [[https://github.com/ralesi/ranger.el][Ranger]] as a file manager, like, a lot.
+    Use [[https://github.com/ralesi/ranger.el][Ranger]] as a file manager, like, a lot. [[file:./straight/repos/ranger.el/README.md][README]]
    
     #+BEGIN_SRC emacs-lisp
       (use-package ranger
-	:commands ranger)
+	:commands ranger
+        :custom (ranger-override-dired-mode t))
     #+END_SRC
 
 *** YASnippet
