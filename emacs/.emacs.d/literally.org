@@ -439,11 +439,19 @@
 
 ** Tools
 
-*** Diminish & Delight
-
+*** Diminish
+    
+    Diminish is neat. [[file:./straight/repos/diminish.el/README.md][README]]
+    
     #+BEGIN_SRC emacs-lisp
       (use-package diminish)
+    #+END_SRC
 
+*** Delight
+    
+  Delight has no README.
+    
+    #+BEGIN_SRC emacs-lisp
       (use-package delight)
     #+END_SRC
 
@@ -471,9 +479,12 @@
     #+END_SRC
 
 *** Which Key
+    
+    We sure do love Which Key. [[file:./straight/repos/emacs-which-key/README.org][README]]
    
     #+BEGIN_SRC emacs-lisp
       (use-package which-key
+	:diminish
 	:config
 	(which-key-mode)
 	(which-key-setup-side-window-right-bottom))
@@ -572,9 +583,12 @@
     #+END_SRC
 
 *** YASnippet
+    
+    [[file:./straight/repos/yasnippet/README.mdown][README]]
    
     #+BEGIN_SRC emacs-lisp
       (use-package yasnippet
+	:diminish
 	:custom
 	(yas-snippet-dirs `(,(expand-file-name "snippets/" user-emacs-directory)))
 	(yas-verbosity 2)
@@ -590,7 +604,8 @@
 
     #+BEGIN_SRC emacs-lisp
       (use-package markdown-mode
-	:mode (("README\\.md\\'" . gfm-mode)
+	:custom ((markdown-open-command "~/bin/mark"))
+	:mode (("README\\.(md|mdown)\\'" . gfm-mode)
 	       ("\\.md\\'" . markdown-mode)
 	       ("\\.markdown\\'" . markdown-mode))
 	:init (setq markdown-command "multimarkdown"))
