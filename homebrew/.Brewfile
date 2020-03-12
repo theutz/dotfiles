@@ -9,6 +9,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "jesseduffield/lazydocker"
+tap "mongodb/brew"
 tap "rigellute/tap"
 tap "universal-ctags/universal-ctags"
 tap "wtfutil/wtfutil"
@@ -59,6 +60,7 @@ brew "lsd"
 brew "make"
 brew "mas"
 brew "mdcat"
+brew "multimarkdown"
 brew "n"
 brew "neovim"
 brew "noti"
@@ -69,6 +71,7 @@ brew "pandoc"
 brew "pkg-config"
 brew "png2ico"
 brew "poppler"
+brew "ranger"
 brew "ripgrep"
 brew "rust"
 brew "shellcheck"
@@ -100,14 +103,16 @@ brew "zsh"
 brew "d12frosted/emacs-plus/emacs-plus", args: ["with-modern-icon", "without-spacemacs-icon"]
 brew "github/gh/gh"
 brew "jesseduffield/lazydocker/lazydocker"
+brew "mongodb/brew/mongodb-community"
 brew "rigellute/tap/spotify-tui"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
+cask "alfred"
 cask "appcleaner"
+cask "caprine"
 cask "dash"
 cask "docker"
 cask "dotnet-sdk"
-cask "dropbox"
 cask "firefox"
 cask "font-3270-nerd-font"
 cask "font-firacode-nerd-font"
@@ -132,6 +137,7 @@ cask "kaleidoscope"
 cask "karabiner-elements"
 cask "keybase"
 cask "kindle"
+cask "miro-formerly-realtimeboard"
 cask "mongotron"
 cask "monodraw"
 cask "netnewswire"
@@ -142,24 +148,28 @@ cask "omnidisksweeper"
 cask "robo-3t"
 cask "sketch"
 cask "slack"
-cask "spectacle"
 cask "spotify"
 cask "the-unarchiver"
 cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "zoomus"
-mas "Dato", id: 1470584107
-mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Airmail", id: 918858936
+mas "Bear", id: 1091189122
 mas "Grammarly for Safari", id: 1462114288
 mas "Honey", id: 1472777122
 mas "Keynote", id: 409183694
+mas "LastPass", id: 926036361
+mas "Magnet", id: 441258766
+mas "Marked", id: 448925439
 mas "Mate Translate", id: 1005088137
 mas "Numbers", id: 409203825
 mas "Octotree Pro", id: 1457450145
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Rosetta Stone", id: 1476088902
+mas "SafariMarkdownLinker", id: 1289119450
+mas "Soulver", id: 413965349
 mas "Twitter", id: 1482454543
 mas "Vimari", id: 1480933944
 mas "Wallpaper Wizard", id: 1266674560
