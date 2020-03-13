@@ -99,10 +99,11 @@
        (interactive)
        (find-file utz-config-file))
 
-     (defun utz/edit-theme-file ()
-       "Edit the theme."
-       (interactive)
-       (custom-theme-visit-theme 'utz))
+     (defun utz/edit-theme-file (x)
+       "Edit my custom theme. `C-u` visits it in customize."
+       (interactive "p")
+       (cond ((eq 4 x) (custom-theme-visit-theme 'utz))
+	     (t (find-file utz-theme-file))))
    #+END_SRC
 
 ** Open Customize
@@ -382,6 +383,7 @@
 	"f" '(helpful-callable :wk "Helpful Callable")
 	"v" '(helpful-variable :wk "Helpful Variable")
 	"k" '(helpful-key :wk "Helpful Key")
+	"=" '(describe-text-properties :wk "Describe Text Properties")
 	"F" '(helpful-function :wk "Helpful Function")
 	"c" '(helpful-command :wk "Helpful Command"))
 
@@ -527,6 +529,12 @@
 	(add-hook 'after-init-hook 'global-company-mode))
     #+END_SRC
 
+*** Rainbow Mode
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package rainbow-mode)
+    #+END_SRC
+    
 *** Figlet
    
     #+BEGIN_SRC emacs-lisp
