@@ -13,7 +13,7 @@
      (set-default-coding-systems 'utf-8-unix)
      (setq locale-coding-system 'utf-8-unix)
      (prefer-coding-system 'utf-8-unix)
-   #+END_SRC
+     #+END_SRC
 
 ** Exec Path
     
@@ -43,6 +43,8 @@
    #+END_SRC
     
 ** Allow "weird" functions
+   
+   Emacs thinks these would confuse people, and thus asks them if they want to use it. We don't like that.
 
    #+BEGIN_SRC emacs-lisp
      (put 'narrow-to-page 'disabled nil)
@@ -50,6 +52,12 @@
      (put 'narrow-to-region 'disabled nil)
    #+END_SRC
     
+** Symlinks
+
+   #+BEGIN_SRC emacs-lisp
+     (setq vc-follow-symlinks t)
+   #+END_SRC
+   
 * Custom Functions
 
 ** Narrow Page Navigation
