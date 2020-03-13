@@ -163,6 +163,7 @@
     
     #+BEGIN_SRC emacs-lisp
       (use-package evil-org
+	:diminish
 	:after org
 	:init
 	(add-hook 'org-mode-hook 'evil-org-mode)
@@ -453,6 +454,15 @@
     
     #+BEGIN_SRC emacs-lisp
       (use-package delight)
+    #+END_SRC
+
+*** Undo Tree
+    
+    Undo Tree has no README.
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package undo-tree
+	:diminish)
     #+END_SRC
 
 *** Magit
