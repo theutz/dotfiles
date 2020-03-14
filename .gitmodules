@@ -10,3 +10,6 @@
 [submodule "emacs/.spacemacs"]
 	path = emacs/.spacemacs
 	url = https://github.com/theutz/spacemacs
+[submodule "emacs/.the-joy-of-emacs"]
+	path = emacs/.the-joy-of-emacs
+	url = https://github.com/theutz/the-joy-of-emacs.git
