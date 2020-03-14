@@ -1,74 +1,45 @@
-#+TITLE: My literate emacs config
+#+TITLE: My Literate Emacs Config
 
-* Basic Settings  
-   
-  Herein lies some basic settings that I use as a foundation for my emacsian bliss.
+* Define My Constants
 
-** Text Encoding
-    
-   Use UTF-8 everywhere
-    
-   #+BEGIN_SRC emacs-lisp
-     (setq-default buffer-file-coding-system 'utf-8-unix)
-     (set-default-coding-systems 'utf-8-unix)
-     (setq locale-coding-system 'utf-8-unix)
-     (prefer-coding-system 'utf-8-unix)
-   #+END_SRC
+  Of course, all of it begins here, in the file that was used to bootstrap this file:
 
-** Exec Path
-    
-   Make sure that emacs has access to all my homebrewy goodness.
-    
-   #+BEGIN_SRC emacs-lisp
-     (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-     (setq exec-path (append exec-path '("/usr/local/bin")))
-   #+END_SRC
-    
-** Config files
-    
-   Setup some constants for my config file paths.
-    
-   #+BEGIN_SRC emacs-lisp
-     (defconst utz-config-init (expand-file-name "init.el" user-emacs-directory))
-     (defconst utz-config-file (expand-file-name "literally.org" user-emacs-directory))
-     (defconst utz-custom-file custom-file)
-     (defconst utz-themes-directory custom-theme-directory)
-     (defconst utz-theme-file (expand-file-name "utz-theme.el" utz-themes-directory))
-   #+END_SRC
-   
-   Load the custom file.
+  #+BEGIN_SRC emacs-lisp
+    (defconst utz-emacs-init-file
+      (expand-file-name "init.el" user-emacs-directory))
+  #+END_SRC
 
-   #+BEGIN_SRC emacs-lisp
-     (load utz-custom-file 'noerror 'nomessage)
-   #+END_SRC
-    
-** Backup files
-    
-   #+BEGIN_SRC emacs-lisp
-     (setq backup-directory-alist
-	   `(("." . ,(concat user-emacs-directory "backups"))))
-   #+END_SRC
-    
-** Allow "weird" functions
-   
-   Emacs thinks these would confuse people, and thus asks them if they want to use it. We don't like that.
+  In the meantime, we'd like an easy way to refer to /this/ actual file.
 
-   #+BEGIN_SRC emacs-lisp
-     (put 'narrow-to-page 'disabled nil)
-     (put 'narrow-to-defun 'disabled nil)
-     (put 'narrow-to-region 'disabled nil)
-   #+END_SRC
-    
-** Symlinks
+  #+BEGIN_SRC emacs-lisp
+    (defconst utz-emacs-config-file
+      (or load-file-name buffer-file-name))
+  #+END_SRC
 
-   #+BEGIN_SRC emacs-lisp
-     (setq vc-follow-symlinks t)
-   #+END_SRC
-   
-* Custom Functions
+  We won't be using the custom file, but we'd like to define it nonentheless. This way,
+  we won't need to worry about any customizations messing up our config.
+
+  #+BEGIN_SRC emacs-lisp
+    (defconst utz-emacs-custom-file
+      (expand-file-name ".custom.el" user-emacs-directory))
+  #+END_SRC
+
+  And we'd like a place to put our theme that we're so diligently building, of course.
+
+  #+BEGIN_SRC emacs-lisp
+    (defconst utz-emacs-theme-directory
+      (expand-file-name "themes" user-emacs-directory))
+  #+END_SRC
+
+  #+BEGIN_SRC emacs-lisp
+    (defconst utz-emacs-theme-file
+      (expand-file-name "utz-theme.el" utz-emacs-theme-directory))
+  #+END_SRC
+
+* Define My Functions
 
 ** Narrow Page Navigation
-   
+
    #+BEGIN_SRC emacs-lisp
      (defun utz/narrow-page-forward ()
        "Widen, forward, then narrow."
@@ -87,7 +58,7 @@
    #+END_SRC
 
 ** Load and Edit Config Files
-   
+
    #+BEGIN_SRC emacs-lisp
      (defun utz/load-config-file ()
        "Load configuration file all over again."
@@ -107,7 +78,7 @@
    #+END_SRC
 
 ** Open Customize
-   
+
    #+BEGIN_SRC emacs-lisp
      (defun utz/customize ()
        "Open the customize in another window."
@@ -115,13 +86,156 @@
        (evil-window-vsplit)
        (customize))
    #+END_SRC
-   
+
+** Color Functions for Theme
+
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/get-color (name)
+       (let ((colors '((fg . "#c9c3de")
+		       (bg . "#130e21")
+		       (0 . "#1e1732")
+		       (1 . "#281f3f")
+		       (2 . "#392e59")
+		       (3 . "#52437d")
+		       (4 . "#705fa2")
+		       (5 . "#9185bb")
+		       (6 . "#b8b0d3")
+		       (7 . "#e3e1ee")
+		       (8 . "#e977ba")
+		       (9 . "#f7aad4")
+		       (10 . "#8e9a3c")
+		       (11 . "#ed8cc4")
+		       (12 . "#68b897")
+		       (13 . "#ae99ee")
+		       (14 . "#67c3d8")
+		       (15 . "#f8a97e"))))
+	 (cdr (assoc name colors))))
+   #+END_SRC
+
+* Configure Emacs
+
+  #+BEGIN_SRC emacs-lisp
+    (setq-default custom-file utz-emacs-custom-file)
+    (setq-default custom-theme-directory utz-emacs-theme-directory)
+  #+END_SRC
+
+* [[https://github.com/noctuid/general.el][General.el]]
+
+  [[./straight/repos/general.el/README.org][README]]
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package general
+      :config
+      (general-create-definer utz/set-help-key
+	:prefix "C-h")
+
+      (general-create-definer utz/set-leader-key
+	:prefix "SPC"
+	:non-normal-prefix "M-SPC"
+	:keymaps '(normal insert emacs visual))
+
+      (general-create-definer utz/set-localleader-key
+	:prefix ","
+	:non-normal-prefix "M-,"))
+  #+END_SRC
+
+* Emacs
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package emacs
+      :hook ((before-save . delete-trailing-whitespace)
+	     (emacs-lisp-mode . enable-paredit-mode))
+      :init
+      (show-paren-mode 1)
+      (set-default-coding-systems 'utf-8-unix)
+      (prefer-coding-system 'utf-8-unix)
+      (menu-bar-mode 0)
+      (scroll-bar-mode 0)
+      (tool-bar-mode 0)
+
+      (setq-default buffer-file-coding-system 'utf-8-unix)
+
+      :custom
+      (buffer-file-coding-system 'utf-8-unix)
+      (locale-coding-system 'utf-8-unix)
+      (inhibit-startup-screen t)
+      (initial-scratch-message nil)
+      (display-line-numbers 'relative)
+
+      :config
+      (load-theme 'utz t)
+
+      :general
+      ("s-," '(utz/customize :wk "Customize"))
+      ("M-x" '(helm-M-x :wk "M-x"))
+      (utz/set-help-key "" '(:ignore t :wk "Help")
+	"f" '(helpful-callable :wk "Helpful Callable")
+	"x" '(helpful-at-point :wk "Helpful At Point")
+	"v" '(helpful-variable :wk "Helpful Variable")
+	"k" '(helpful-key :wk "Helpful Key")
+	"F" '(helpful-function :wk "Helpful Function")
+	"c" '(helpful-command :wk "Helpful Command")))
+(setq display-line-numbers 'visual)
+  #+END_SRC
+
+* Basic Settings
+
+** Exec Path
+
+   Make sure that emacs has access to all my homebrewy goodness.
+
+   #+BEGIN_SRC emacs-lisp
+     (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+     (setq exec-path (append exec-path '("/usr/local/bin")))
+   #+END_SRC
+
+** Config files
+
+   Setup some constants for my config file paths.
+
+   #+BEGIN_SRC emacs-lisp
+     (defconst utz-config-init (expand-file-name "init.el" user-emacs-directory))
+     (defconst utz-config-file (expand-file-name "literally.org" user-emacs-directory))
+     (defconst utz-custom-file custom-file)
+     (defconst utz-themes-directory custom-theme-directory)
+     (defconst utz-theme-file (expand-file-name "utz-theme.el" utz-themes-directory))
+   #+END_SRC
+
+   Load the custom file.
+
+   #+BEGIN_SRC emacs-lisp
+     (load utz-custom-file 'noerror 'nomessage)
+   #+END_SRC
+
+** Backup files
+
+   #+BEGIN_SRC emacs-lisp
+     (setq backup-directory-alist
+	   `(("." . ,(concat user-emacs-directory "backups"))))
+   #+END_SRC
+
+** Allow "weird" functions
+
+   Emacs thinks these would confuse people, and thus asks them if they want to use it. We don't like that.
+
+   #+BEGIN_SRC emacs-lisp
+     (put 'narrow-to-page 'disabled nil)
+     (put 'narrow-to-defun 'disabled nil)
+     (put 'narrow-to-region 'disabled nil)
+   #+END_SRC
+
+** Symlinks
+
+   #+BEGIN_SRC emacs-lisp
+     (setq vc-follow-symlinks t)
+   #+END_SRC
+
 * Keybindings
-  
+
 ** Evil
-    
+
    [[https://evil.readthedocs.io/en/latest][Evil]] sets up our vim-like keybindings.
-    
+
    #+BEGIN_SRC emacs-lisp
      (use-package evil
        :init
@@ -144,18 +258,18 @@
    #+END_SRC
 
 *** Evil Magit
-     
+
     A [[https://github.com/emacs-evil/evil-magit][plugin]] for making [[https://evil.readthedocs.io/en/latest/][Evil]] work with [[https://magit.vc/][Magit]]. Here's the [[file:straight/repos/evil-magit/README.org][README]].
-     
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-magit
 	:after evil magit)
     #+END_SRC
 
 *** Evil Surround
-     
+
     Emultate Tim Pope's VIM Surround plugin. [[./straight/repos/evil-surround/readme.org][README]]
-    
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-surround
 	:after evil
@@ -164,7 +278,7 @@
     #+END_SRC
 
 *** Evil Commentary
-     
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-commentary
 	:after evil
@@ -173,14 +287,14 @@
     #+END_SRC
 
 *** Evil Collection
-    
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-collection
 	:after evil)
     #+END_SRC
 
 *** Evil Org
-    
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-org
 	:diminish
@@ -194,52 +308,16 @@
 	(evil-org-agenda-set-keys))
     #+END_SRC
 
-** General.el
-    
-   [[https://github.com/noctuid/general.el][General.el]] is how we setup all our other keybindings. [[file:straight/repos/general.el/README.org][README]]
-     
-   #+BEGIN_SRC emacs-lisp
-     (use-package general)
-   #+END_SRC
-
 ** Hydra
-     
+
    #+BEGIN_SRC emacs-lisp
      (use-package hydra
        :defer 2)
    #+END_SRC
 
 ** Standard Keys
-     
-   #+BEGIN_SRC emacs-lisp
-     (general-define-key "s-," '(utz/customize :wk "Customize")
-			 "M-x" '(helm-M-x :wk "M-x"))
-   #+END_SRC
 
-*** Setup `C-h` keys
-    
-    #+BEGIN_SRC emacs-lisp
-      (general-create-definer utz/set-help-key
-	:prefix "C-h")
-
-      (utz/set-help-key "" '(:ignore t :wk "Help")
-	"f" '(helpful-callable :wk "Helpful Callable")
-	"v" '(helpful-variable :wk "Helpful Variable")
-	"k" '(helpful-key :wk "Helpful Key")
-	"F" '(helpful-function :wk "Helpful Function")
-	"c" '(helpful-command :wk "Helpful Command"))
-    #+END_SRC
-     
 ** `<leader>` Keys
-    
-   We begin by creating a definer that we can use to set some defaults across our bindings.
-    
-   #+BEGIN_SRC emacs-lisp
-     (general-create-definer utz/set-leader-key
-       :prefix "SPC"
-       :non-normal-prefix "M-SPC"
-       :keymaps '(normal insert emacs visual))
-   #+END_SRC
 
 *** Setup non-prefixed keys
 
@@ -248,9 +326,9 @@
 	"u" '(universal-argument :wk "Universal Argument")
 	"0" '(ranger :wk "Ranger"))
     #+END_SRC
-      
+
 *** Setup "Git" prefix keys
-     
+
     For when it's time to git it done.
 
     #+BEGIN_SRC emacs-lisp
@@ -259,9 +337,9 @@
 	"s" 'magit-status
 	"d" 'magit-dispatch)
     #+END_SRC
-    
+
 *** Setup "Files" prefix keys
-     
+
     Fer filing stuff away.
 
     #+BEGIN_SRC emacs-lisp
@@ -277,11 +355,11 @@
 	"d" 'utz/edit-config-file
 	"t" 'utz/edit-theme-file)
     #+END_SRC
-      
+
 *** Setup "Narrow / Widen" prefix keys
-     
+
     Narrow, then widen. The circle of lifemacs.
-      
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "n"
 	"" '(:ignore t :wk "Narrow / Widen")
@@ -315,9 +393,9 @@
 	("]" utz/narrow-page-forward)
 	("[" utz/narrow-page-backward))
     #+END_SRC
-       
+
 *** Setup "Quit / Restart" prefix keys
-     
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "q"
 	"" '(:ignore t :wk "Quit / Restart")
@@ -326,13 +404,13 @@
     #+END_SRC
 
 *** Setup "Comments" prefix keys
-      
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "c"
 	"" '(:ignore t :wk "Comments")
 	"." '(utz/hydra-comment/body :wk "Transient State"))
     #+END_SRC
-       
+
     And here's the Hydra for the transient state:
 
     #+BEGIN_SRC emacs-lisp
@@ -353,7 +431,7 @@
 	("R" figlet-figletify-region-comment)
 	("q" nil "cancel"))
     #+END_SRC
-       
+
 *** Setup "Buffers / Bookmarks" prefix keys
 
     #+BEGIN_SRC emacs-lisp
@@ -365,7 +443,7 @@
 	"p" '(evil-prev-buffer :wk "Previous Buffer")
 	"n" '(evil-next-buffer :wk "Next Buffer"))
     #+END_SRC
-    
+
 *** Setup "Toggles" prefix keys
 
     #+BEGIN_SRC emacs-lisp
@@ -374,7 +452,7 @@
 	"f" '(toggle-frame-fullscreen :wk "Full Screen")
 	"m" '(toggle-frame-maximized :wk "Maximized"))
     #+END_SRC
-    
+
 *** Setup "Help / Helm" prefix keys
 
     #+BEGIN_SRC emacs-lisp
@@ -391,21 +469,21 @@
 	"" '(:ignore t :wk "Helm")
 	"c" '(helm-colors :wk "Colors"))
     #+END_SRC
-    
+
+*** Setup "Window" prefix keys
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key "w" `(,(general-simulate-key "C-w") :wk "Window"))
+    #+END_SRC
+
 ** `<localleader>` keys
-    
+
    We begin by creating a definer that we can use for all these mode-based keyboard shortcuts.
-    
-   #+BEGIN_SRC emacs-lisp
-     (general-create-definer utz/set-localleader-key
-       :prefix ","
-       :non-normal-prefix "M-,")
-   #+END_SRC
 
 *** Org Mode
 
 **** "l" - Links
-     
+
      #+BEGIN_SRC emacs-lisp
        (utz/set-localleader-key :states '(normal) :keymaps '(org-mode-map)
 	 :infix "l"
@@ -415,63 +493,37 @@
 	 "l" '(org-insert-link :wk "Insert Link"))
      #+END_SRC
 
-* Themes & Appearance
-
-** Window Chrome
-   
-   Change some of that crazy default window chrome...
-
-   #+BEGIN_SRC emacs-lisp
-     (setq inhibit-startup-screen t
-	   initial-scratch-message nil)
-     (menu-bar-mode -1)
-     (scroll-bar-mode -1)
-     (tool-bar-mode -1)
-   #+END_SRC
-    
-** Safe Themes
-
-   #+BEGIN_SRC emacs-lisp
-     (setq custom-safe-themes t) ; So we don't get that annoying warning every time.
-   #+END_SRC
-
-** Load Theme
-
-   #+BEGIN_SRC emacs-lisp
-     (load-theme 'utz t)
-   #+END_SRC
-   
 * Package Config
 
 ** Tools
 
 *** Diminish
-    
+
     Diminish is neat. [[file:./straight/repos/diminish.el/README.md][README]]
-    
+
     #+BEGIN_SRC emacs-lisp
       (use-package diminish)
     #+END_SRC
 
 *** Delight
-    
+
   Delight has no README.
-    
+
     #+BEGIN_SRC emacs-lisp
       (use-package delight)
     #+END_SRC
 
 *** Undo Tree
-    
+
     Undo Tree has no README.
-    
+
     #+BEGIN_SRC emacs-lisp
       (use-package undo-tree
 	:diminish)
     #+END_SRC
 
 *** Magit
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package magit
 	:commands (magit-dispatch magit-status))
@@ -484,9 +536,9 @@
     #+END_SRC
 
 *** Which Key
-    
+
     We sure do love Which Key. [[file:./straight/repos/emacs-which-key/README.org][README]]
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package which-key
 	:diminish
@@ -496,7 +548,7 @@
     #+END_SRC
 
 *** Helm
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package helm
 	:diminish
@@ -505,16 +557,16 @@
     #+END_SRC
 
 *** Restart Emacs
-   
+
     Let's make this as easy as possible, eh?
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package restart-emacs
 	:commands restart-emacs)
     #+END_SRC
 
 *** Flycheck
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package flycheck
 	:config
@@ -522,7 +574,7 @@
     #+END_SRC
 
 *** Company
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package company
 	:init
@@ -534,9 +586,9 @@
     #+BEGIN_SRC emacs-lisp
       (use-package rainbow-mode)
     #+END_SRC
-    
+
 *** Figlet
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package figlet
 	:general (utz/set-leader-key "c f F" 'figlet-comment
@@ -546,14 +598,14 @@
     #+END_SRC
 
 *** Org
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package org
 	:custom ((org-startup-with-inline-images t)))
     #+END_SRC
-   
+
 **** Org Bullets
-   
+
      #+BEGIN_SRC emacs-lisp
        (use-package org-bullets
 	 :after org
@@ -584,9 +636,9 @@
     #+END_SRC
 
 *** Ranger
-   
+
     Use [[https://github.com/ralesi/ranger.el][Ranger]] as a file manager, like, a lot. [[file:./straight/repos/ranger.el/README.md][README]]
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package ranger
 	:commands ranger
@@ -594,9 +646,9 @@
     #+END_SRC
 
 *** YASnippet
-    
+
     [[file:./straight/repos/yasnippet/README.mdown][README]]
-   
+
     #+BEGIN_SRC emacs-lisp
       (use-package yasnippet
 	:diminish
@@ -606,11 +658,11 @@
 	:config
 	(yas-global-mode 1))
     #+END_SRC
-    
+
 ** Languages
 
 *** Markdown
-    
+
     Using [[https://github.com/jrblevin/markdown-mode][markdown-mode]]. [[file:straight/repos/markdown-mode/README.md][README]]
 
     #+BEGIN_SRC emacs-lisp
@@ -621,9 +673,9 @@
 	       ("\\.markdown\\'" . markdown-mode))
 	:init (setq markdown-command "multimarkdown"))
     #+END_SRC
-    
+
 *** TypeScript
-    
+
     Using [[https://github.com/ananthakumaran/tide][Tide]]. [[file:./straight/repos/tide/README.md][README]]
 
     #+BEGIN_SRC emacs-lisp
@@ -634,4 +686,10 @@
 	       (before-save . tide-format-before-save)))
     #+END_SRC
 
-    
+
+*** Emacs Lisp
+
+#+BEGIN_SRC emacs-lisp
+(use-package paredit
+:commands (enable-paredit-mode))
+#+END_SRC
