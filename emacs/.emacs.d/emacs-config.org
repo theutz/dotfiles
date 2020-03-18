@@ -1,3 +1,15 @@
-#+BEGIN_SRC emacs-lisp
-(show-paren-mode 1)
-#+END_SRC
+#+TITLE: Emacs Configuration
+#+AUTHOR: Michael Utz
+#+EMAIL: michael@theutz.com
+#+STARTUP: content
+
+* Utz
+
+  
+** Emacs Directory                                                 :variable:
+   
+   #+BEGIN_SRC emacs-lisp
+     (setq utz-emacs-directory (or utz-emacs-directory
+				   user-emacs-directory))
+   #+END_SRC
+   
