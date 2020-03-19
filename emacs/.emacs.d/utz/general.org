@@ -1,0 +1,31 @@
+#+TITLE: General.el Configuration
+#+AUTHOR: Michael Utz
+#+EMAIL: michael@theutz.com
+#+STARTUP: showall
+
+[[../emacs-config.org][Home]]
+
+* Require
+
+#+BEGIN_SRC emacs-lisp
+  (use-package general
+    :config
+    (general-create-definer utz/set-leader-key
+      :prefix "SPC"
+      :non-normal-prefix "M-SPC"
+      :keymaps '(normal insert emacs visual))
+
+    (general-create-definer utz/set-localleader-key
+      :prefix ","
+      :non-normal-prefix "M-,")
+
+    (general-create-definer utz/set-help-key
+      :prefix "C-h"))
+#+END_SRC
+
+* Keybindings
+
+#+BEGIN_SRC emacs-lisp
+  (utz/set-leader-key "h" `(,(general-simulate-key "C-h") :wk "Help")
+    "w" `(,(general-simulate-key "C-w") :wk "Window"))
+#+END_SRC

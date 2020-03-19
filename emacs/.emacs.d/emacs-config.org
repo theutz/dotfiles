@@ -186,7 +186,6 @@
 		  "k" '(helpful-key :wk "Helpful Key")
 		  "F" '(helpful-function :wk "Helpful Function")
 		  "c" '(helpful-command :wk "Helpful Command")))
-
    #+END_SRC
 
 ** Ranger
@@ -199,3 +198,57 @@
        :custom (ranger-override-dired-mode t))
    #+END_SRC
 
+* Language Tools
+  
+** Org
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package org
+       :custom (org-M-RET-may-split-line nil))
+   #+END_SRC
+
+** Typescript Mode                                                 :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package typescript-mode)
+   #+END_SRC
+  
+** Tide                                                  :package:typescript:
+  
+   #+BEGIN_SRC emacs-lisp
+     (use-package tide
+       :after (typescript-mode company flycheck)
+       :hook ((typescript-mode . tide-setup)
+	      (typescript-mode . tide-hl-identifier-mode)
+	      (before-save . tide-format-before-save)))
+   #+END_SRC
+* Keybindings
+
+** Leader Keys
+
+*** F
+   
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "f"
+	"" '(:ignore :wk "Files"))
+    #+END_SRC
+   
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "f e"
+	"" '(:ignore t :wk "Emacs")
+	"r" '(utz/reload-config :wk "Reload Configuration")
+	"d" '(utz/edit-config-file :wk "Edit Configuration"))
+    #+END_SRC
+
+*** Q
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "q"
+	"" '(:ignore t :wk "Quit / Restart"))
+    #+END_SRC
+
+** Help Keys
+
+  #+BEGIN_SRC emacs-lisp
+    (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties"))
+  #+END_SRC
