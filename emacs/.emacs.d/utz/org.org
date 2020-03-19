@@ -1,0 +1,19 @@
+#+TITLE: Org Configuration
+#+AUTHOR: Michael Utz
+#+EMAIL: michael@theutz.com
+#+STARTUP: showall
+
+* Load & Initialize
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package org
+       :custom (org-M-RET-may-split-line nil))
+   #+END_SRC
+
+* Support Packages
+   
+  #+BEGIN_SRC emacs-lisp
+    (use-package org-bullets
+      :after (org)
+      :hook ((org-mode . (lambda () (org-bullets-mode 1)))))
+  #+END_SRC

@@ -1,0 +1,21 @@
+#+TITLE: Helm Configuration
+#+AUTHOR: Michael Utz
+#+EMAIL: michael@theutz.com
+#+STARTUP: showall
+
+[[../emacs-config.org][Home]]
+
+* Initialize
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package helm
+       :general
+       ("M-x" '(helm-M-x :wk "Helm"))
+
+       (utz/set-leader-key "SPC" '(helm-M-x :wk "Helm")
+	 "f f" '(helm-find-files :wk "Find Files")
+         "b b" '(helm-buffers-list :wk "List Buffers"))
+
+       :config
+       (helm-mode 1))
+   #+END_SRC
