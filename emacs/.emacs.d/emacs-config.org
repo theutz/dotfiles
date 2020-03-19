@@ -90,3 +90,112 @@
      (tool-bar-mode 0)
    #+END_SRC
 
+* Essential Tools
+
+** [[./utz/evil.org][Evil]]                                                             :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (utz/load-utz-file "evil")
+   #+END_SRC
+   
+** [[file:utz/general.org][General]]                                                          :package:
+   
+   #+BEGIN_SRC emacs-lisp
+     (utz/load-utz-file "general")
+   #+END_SRC
+
+** Which Key                                                        :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package which-key
+       :config
+       (which-key-mode)
+       (which-key-setup-side-window-right-bottom))
+   #+END_SRC
+
+** Flycheck                                                         :package:
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck
+       :config
+       (global-flycheck-mode))
+   #+END_SRC
+
+** Company                                                          :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package company
+       :hook ((after-init . global-company-mode)))
+   #+END_SRC
+   
+** Helm                                                             :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package helm
+       :general
+       ("M-x" '(helm-M-x :wk "Helm"))
+       (utz/set-leader-key "SPC" '(helm-M-x :wk "Helm")
+	 "f f" '(helm-find-files :wk "Find Files"))
+
+       :config
+       (helm-mode 1))
+   #+END_SRC
+
+** YASnippet                                                        :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package yasnippet
+       :config
+       (yas-global-mode 1))
+   #+END_SRC
+
+** Magit                                                            :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package magit
+       :general
+       (utz/set-leader-key :infix "g"
+	 "" '(:ignore t :wk "Git")
+	 "s" '(magit-status :wk "Status")))
+   #+END_SRC
+   
+** Restart Emacs                                                    :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package restart-emacs
+       :general
+       (utz/set-leader-key :infix "q"
+	 "r" '(restart-emacs :wk "Restart Emacs")))
+   #+END_SRC
+
+** Paredit                                                          :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package paredit
+       :commands (enable-paredit-mode)
+       :hook ((emacs-lisp-mode . enable-paredit-mode)))
+   #+END_SRC
+   
+** Helpful
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package helpful
+       :general (utz/set-help-key
+		  "f" '(helpful-callable :wk "Helpful Callable")
+		  "v" '(helpful-variable wk: "Helpful Variable")
+		  "k" '(helpful-key :wk "Helpful Key")
+		  "F" '(helpful-function :wk "Helpful Function")
+		  "c" '(helpful-command :wk "Helpful Command")))
+
+   #+END_SRC
+
+** Ranger
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package ranger
+       :general
+       (utz/set-leader-key "0" '(ranger :wk "Ranger"))
+       :commands (ranger)
+       :custom (ranger-override-dired-mode t))
+   #+END_SRC
+
