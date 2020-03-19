@@ -52,3 +52,41 @@
       (org-babel-load-file utz-emacs-config-file))
   #+END_SRC
 
+* Emacs Basics
+
+** Splash Screen
+
+   #+BEGIN_SRC emacs-lisp
+     (setq inhibit-splash-screen t)
+   #+END_SRC
+  
+** Scratch Message
+   
+   #+BEGIN_SRC emacs-lisp
+     (setq initial-scratch-message nil)
+   #+END_SRC
+
+** Paren Mode
+
+   #+BEGIN_SRC emacs-lisp
+     (show-paren-mode 1)
+   #+END_SRC
+
+** Menu Bar Mode
+
+   #+BEGIN_SRC emacs-lisp
+     (menu-bar-mode 0)
+   #+END_SRC
+
+** Scroll Bar Mode
+
+   #+BEGIN_SRC emacs-lisp
+     (scroll-bar-mode 0)
+   #+END_SRC
+
+** Tool Bar Mode
+   
+   #+BEGIN_SRC emacs-lisp
+     (tool-bar-mode 0)
+   #+END_SRC
+
