@@ -13,3 +13,42 @@
 				   user-emacs-directory))
    #+END_SRC
    
+** Root Emacs Config File                                          :variable:
+
+   #+BEGIN_SRC emacs-lisp
+     (setq utz-emacs-config-file
+	   (or utz-emacs-config-file
+	       (expand-file-name "emacs-config.org" utz-emacs-directory)))
+   #+END_SRC
+
+** Init Directory                                                  :variable:
+
+  #+BEGIN_SRC emacs-lisp
+    (setq utz-init-directory (expand-file-name "utz" utz-emacs-directory))
+  #+END_SRC
+
+** Load an Utz File                                                :function:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun utz/load-utz-file (file)
+      (org-babel-load-file
+       (expand-file-name (concat file ".org")
+			 utz-init-directory))) 
+  #+END_SRC
+
+** Edit this Config File                                           :function:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun utz/edit-config-file ()
+      (interactive)
+      (find-file utz-emacs-config-file))
+  #+END_SRC
+  
+** Reload This Config File                                         :function:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun utz/reload-config ()
+      (interactive)
+      (org-babel-load-file utz-emacs-config-file))
+  #+END_SRC
+
