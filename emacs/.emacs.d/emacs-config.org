@@ -180,26 +180,42 @@
      (utz/load-utz-file "helm")
    #+END_SRC
 
+** Spaceline                                                        :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package spaceline
+       :config
+       (require 'spaceline-config)
+       (spaceline-spacemacs-theme)
+       (spaceline-helm-mode)
+       (spaceline-info-mode)
+
+       (setq spaceline-highlight-face-func
+	     'spaceline-highlight-face-evil-state))
+   #+END_SRC
+
 ** Which Key                                                        :package:
 
    [[./straight/repos/emacs-which-key/README.org][View the README]]
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
+       :diminish which-key-mode
        :config
        (which-key-mode)
        (which-key-setup-side-window-bottom))
    #+END_SRC
 
-** ws-butler
+** ws-butler                                                        :package:
 
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
+       :diminish ws-butler-mode
        :hook ((prog-mode . ws-butler-mode)
-              (org-mode . ws-butler-mode)))
+	      (org-mode . ws-butler-mode)))
    #+END_SRC
 
-** nlinum Relative
+** nlinum Relative                                                  :package:
 
    #+BEGIN_SRC emacs-lisp
      (use-package nlinum-relative
@@ -214,14 +230,35 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
+       :diminish flycheck-mode
        :config
        (global-flycheck-mode))
+   #+END_SRC
+
+** Undo Tree                                                        :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package undo-tree
+       :diminish undo-tree-mode)
+   #+END_SRC
+
+** Diminish                                                         :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package diminish)
+   #+END_SRC
+
+** Delight                                                          :package:
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package delight)
    #+END_SRC
 
 ** Company                                                          :package:
 
    #+BEGIN_SRC emacs-lisp
      (use-package company
+       :diminish global-company-mode
        :hook ((after-init . global-company-mode)))
    #+END_SRC
 
@@ -229,6 +266,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
+       :diminish yas-minor-mode
        :config
        (yas-global-mode 1))
    #+END_SRC
@@ -423,3 +461,9 @@
        :disabled t)
    #+END_SRC
 * Faces
+
+  #+BEGIN_SRC emacs-lisp
+    (set-face-attribute 'default nil
+			:family "ProFontIIx Nerd Font Mono"
+			:height 140)
+  #+END_SRC

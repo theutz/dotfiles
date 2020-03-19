@@ -29,6 +29,7 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package evil-commentary
+    :diminish evil-commentary-mode
     :after (evil)
     :config (evil-commentary-mode))
 #+END_SRC
