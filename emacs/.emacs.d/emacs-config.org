@@ -106,7 +106,8 @@
 ** Custom Themes
 
    #+BEGIN_SRC emacs-lisp
-    (setq-default custom-theme-directory utz-custom-theme-directory)
+     (setq custom-safe-themes t)
+     (setq-default custom-theme-directory utz-custom-theme-directory)
    #+END_SRC
 
 ** Exec Path                                                       :variable:
@@ -156,7 +157,10 @@
 
 * Essential Tools
 
-** [[./utz/evil.org][Evil]]                                                             :package:
+** Evil                                                             :package:
+   :PROPERTIES:
+   :CONFIG:   [[utz:evil][Evil]]
+   :END:
 
    #+BEGIN_SRC emacs-lisp
      (utz/load-utz-file "evil")
@@ -200,7 +204,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
-       :diminish which-key-mode
+       :diminish (which-key-mode)
        :config
        (which-key-mode)
        (which-key-setup-side-window-bottom))
@@ -258,7 +262,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package company
-       :diminish global-company-mode
+       :diminish (company-mode global-company-mode)
        :hook ((after-init . global-company-mode)))
    #+END_SRC
 
@@ -338,7 +342,10 @@
 
 * Language Tools
 
-** [[./utz/org.org][Org]]                                                          :package:org:
+** Org Mode                                                     :package:org:
+   :PROPERTIES:
+   :SRC: [[utz:org][Org]]
+   :END:
 
    #+BEGIN_SRC emacs-lisp
      (utz/load-utz-file "org")
@@ -425,6 +432,20 @@
 	"q" '(kill-emacs :wk "Quit"))
     #+END_SRC
 
+*** T - Toggles
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "t"
+	"" '(:ignore t :wk "Toggles"))
+    #+END_SRC
+
+**** T - Theme
+
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "t t"
+	 "" '(:ignore t :wk "Theme"))
+     #+END_SRC
+
 *** U - Universal Argument
 
   #+BEGIN_SRC emacs-lisp
@@ -432,6 +453,15 @@
     (utz/set-leader-key :keymaps '(universal-argument-map)
       "u" 'universal-argument-more)
   #+END_SRC
+
+*** X - Execute / Eval
+
+#+BEGIN_SRC emacs-lisp
+(utz/set-leader-key :infix "x"
+  "" '(:ignore t :wk "Execute / Eval")
+  "e" '(eval-last-sexp :wk "Eval Last S-Exp")
+  "b" '(eval-buffer :wk "Eval Buffer"))
+#+END_SRC
 
 ** Help Keys
 
@@ -448,7 +478,7 @@
        :custom ((doom-themes-enable-bold t)
 		(doom-themes-enable-italic t))
        :config
-       (load-theme 'doom-one t)
+       (load-theme 'doom-vibrant t)
 
        (doom-themes-visual-bell-config)
        (doom-themes-org-config))
@@ -460,10 +490,22 @@
      (use-package night-owl-theme
        :disabled t)
    #+END_SRC
+
 * Faces
+
+** Default
 
   #+BEGIN_SRC emacs-lisp
     (set-face-attribute 'default nil
-			:family "ProFontIIx Nerd Font Mono"
-			:height 140)
+			:family "mononoki Nerd Font"
+			:height 160)
+  #+END_SRC
+
+** Outline
+
+  #+BEGIN_SRC emacs-lisp
+    (set-face-attribute 'outline-1 nil :height 1.8)
+    (set-face-attribute 'outline-2 nil :height 1.6)
+    (set-face-attribute 'outline-3 nil :height 1.4)
+    (set-face-attribute 'outline-4 nil :height 1.2)
   #+END_SRC

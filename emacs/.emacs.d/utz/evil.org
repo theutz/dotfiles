@@ -1,6 +1,9 @@
 #+TITLE: Evil Configuration
+#+AUTHOR: Michael Utz
+#+EMAIL: michael@theutz.com
+#+STARTUP: contents
 
-[[../emacs-config.org][Home]]
+[[utz:][Home]]
 
 #+BEGIN_SRC emacs-lisp
   (use-package evil
@@ -17,7 +20,14 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-  (use-package evil-org)
+    (use-package evil-org
+      :after org
+      :hook ((org-mode . evil-org-mode)
+	     (evil-org-mode . (lambda ()
+				(evil-org-set-key-theme))))
+      :config
+      (require 'evil-org-agenda)
+      (evil-org-agenda-set-keys))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp

@@ -1,19 +1,69 @@
 #+TITLE: Org Configuration
 #+AUTHOR: Michael Utz
 #+EMAIL: michael@theutz.com
-#+STARTUP: showall
+#+STARTUP: content
 
-* Load & Initialize
+[[utz:][Home]]
 
-   #+BEGIN_SRC emacs-lisp
-     (use-package org
-       :custom (org-M-RET-may-split-line nil))
-   #+END_SRC
+* Load
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package org
+      :custom (org-M-RET-may-split-line nil))
+  #+END_SRC
 
 * Support Packages
+
+** Org Bullets
+   :PROPERTIES:
+   :README: [[../straight/repos/org-bullets/README.org]]
+   :END:
    
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-bullets
+       :after (org)
+       :hook ((org-mode . (lambda () (org-bullets-mode 1)))))
+   #+END_SRC
+
+* Custom Functions
+
   #+BEGIN_SRC emacs-lisp
-    (use-package org-bullets
-      :after (org)
-      :hook ((org-mode . (lambda () (org-bullets-mode 1)))))
+    (require 'ol)
+
+    (org-link-set-parameters "utz"
+			     :follow #'utz/follow-utz-link)
+
+    (defun utz/follow-utz-link (file)
+      (find-file-other-window
+       (if (equal file "")
+	   utz-emacs-config-file
+	 (expand-file-name (concat file ".org")
+			   utz-utz-directory))))
+
+    (org-link-set-parameters "straight"
+			     :follow #'utz/follow-straight-link)
+
+    (defun utz/follow-straight-link (file)
+      (find-file-other-window
+       (expand-file-name file
+			 (expand-file-name "repos"
+					   (expand-file-name "straight"
+							     utz-emacs-directory)))))
   #+END_SRC
+
+[[straight:emacs-which-key/README.org]]
+* Keybindings
+
+** Local Leader
+
+*** L - Links
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-localleader-key :states '(normal visual emacs)
+	:keymaps '(org-mode-map)
+	:infix "l"
+	"" '(:ignore t :wk "Links")
+	"i" '(org-insert-link :wk "Insert")
+	"t" '(org-toggle-link-display :wk "Toggle display")
+	"o" '(org-open-at-point :wk "Open at Point"))
+    #+END_SRC
