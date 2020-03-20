@@ -1,4 +1,4 @@
-#+TITLE: Emacs Configuration
++TITLE: Emacs Configuration
 #+AUTHOR: Michael Utz
 #+EMAIL: michael@theutz.com
 #+STARTUP: overview
@@ -28,25 +28,25 @@
    #+END_SRC
 ** Themes
 *** Setup theme modes
-   #+BEGIN_SRC emacs-lisp
-     (setq utz-theme-modes-alist '((dark . doom-vibrant)
+    #+BEGIN_SRC emacs-lisp
+      (setq utz-theme-modes-alist '((dark . doom-vibrant)
 				    (light . doom-one-light))
-	   utz-theme-mode 'dark)
-   #+END_SRC
+	    utz-theme-mode 'dark)
+    #+END_SRC
 *** Theme Mode Selector
-   #+BEGIN_SRC emacs-lisp
-     (defun utz/get-theme-by-mode (mode)
-       (cdr (assoc mode utz-theme-modes-alist)))
-   #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/get-theme-by-mode (mode)
+	(cdr (assoc mode utz-theme-modes-alist)))
+    #+END_SRC
 *** Toggle Command
-   #+BEGIN_SRC emacs-lisp
-     (defun utz/cycle-theme-mode ()
-       (interactive)
-       (let ((theme-mode (if (equal utz-theme-mode 'light) 'dark 'light)))
-	 (setq utz-theme-mode theme-mode)
-	 (load-theme (utz/get-theme-by-mode theme-mode) t))
-         (spaceline-spacemacs-theme))
-   #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/cycle-theme-mode ()
+	(interactive)
+	(let ((theme-mode (if (equal utz-theme-mode 'light) 'dark 'light)))
+	  (setq utz-theme-mode theme-mode)
+	  (load-theme (utz/get-theme-by-mode theme-mode) t))
+	(spaceline-spacemacs-theme))
+    #+END_SRC
 ** Edit this Config File                                           :function:
    #+BEGIN_SRC emacs-lisp
      (defun utz/edit-config-file ()
@@ -160,7 +160,8 @@
     :END:
     #+BEGIN_SRC emacs-lisp
       (use-package evil-org
-	:after org
+	:delight
+	:after (org delight)
 	:hook ((org-mode . evil-org-mode)
 	       (evil-org-mode . (lambda ()
 				  (evil-org-set-key-theme))))
@@ -180,14 +181,14 @@
     #+END_SRC
 *** Evil Commentary
     :PROPERTIES:
-    :README: [[./straight/repos/evil-commentary/README.md]]
+    :README:   [[./straight/repos/evil-commentary/README.md]]
     :END:
     #+BEGIN_SRC emacs-lisp
       (use-package evil-commentary
-	:diminish evil-commentary-mode
-	:after (evil)
+	:delight
+	:after (evil delight)
 	:config (evil-commentary-mode))
-    #+END_SRC
+	#+END_SRC
 *** Evil Surround
     :PROPERTIES:
     :README:   [[./straight/repos/evil-surround/readme.org]]
@@ -199,7 +200,7 @@
     #+END_SRC
 *** Evil Magit
     :PROPERTIES:
-    :README: [[straight:evil-magit/README.org]]
+    :README:   [[straight:evil-magit/README.org]]
     :END:
     #+BEGIN_SRC emacs-lisp
       (use-package evil-magit
@@ -219,7 +220,7 @@
 	  :states '(normal visual insert emacs))
 
 	(general-create-definer utz/set-localleader-key
-          :states '(normal visual emacs)
+	  :states '(normal visual emacs)
 	  :prefix ","
 	  :non-normal-prefix "M-,")
 
@@ -286,19 +287,20 @@
    :README:   [[straight:helm/README.md]]
    :END:
 *** Initialize
-     #+BEGIN_SRC emacs-lisp
-       (use-package helm
-	 :diminish helm-mode
-	 :general
-	 ("M-x" '(helm-M-x :wk "Helm"))
+    #+BEGIN_SRC emacs-lisp
+      (use-package helm
+	:after delight
+	:delight
+	:general
+	("M-x" '(helm-M-x :wk "Helm"))
 
-	 (utz/set-leader-key "SPC" '(helm-M-x :wk "Helm")
-	   "f f" '(helm-find-files :wk "Find Files")
-	   "b b" '(helm-buffers-list :wk "List Buffers"))
+	(utz/set-leader-key "SPC" '(helm-M-x :wk "Helm")
+	  "f f" '(helm-find-files :wk "Find Files")
+	  "b b" '(helm-buffers-list :wk "List Buffers"))
 
-	 :config
-	 (helm-mode 1))
-     #+END_SRC
+	:config
+	(helm-mode 1))
+	#+END_SRC
 *** Supporting Packages
 **** Helm Ag
      #+BEGIN_SRC emacs-lisp
@@ -325,7 +327,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
-       :diminish (which-key-mode)
+       :after delight
+       :delight
        :config
        (which-key-mode)
        (which-key-setup-side-window-bottom))
@@ -333,7 +336,8 @@
 ** WS-Butler                                                        :package:
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
-       :diminish ws-butler-mode
+       :delight
+       :after delight
        :hook ((prog-mode . ws-butler-mode)
 	      (org-mode . ws-butler-mode)))
    #+END_SRC
@@ -349,36 +353,32 @@
 ** Flycheck                                                         :package:
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
-       :diminish flycheck-mode
+       :delight
+       :after delight
        :config
        (global-flycheck-mode))
    #+END_SRC
 ** Undo Tree                                                        :package:
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
-       :diminish undo-tree-mode)
-   #+END_SRC
-** Diminish                                                         :package:
-   #+BEGIN_SRC emacs-lisp
-     (use-package diminish)
-   #+END_SRC
-** Delight                                                          :package:
-   #+BEGIN_SRC emacs-lisp
-     (use-package delight)
+       :after delight
+       :delight)
    #+END_SRC
 ** Company                                                          :package:
    #+BEGIN_SRC emacs-lisp
      (use-package company
-       :diminish (company-mode global-company-mode)
+       :after delight
+       :delight
        :hook ((after-init . global-company-mode)))
    #+END_SRC
 ** YASnippet                                                        :package:
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
-       :diminish yas-minor-mode
+       :after delight
+       :delight yas-minor-mode
        :config
        (yas-global-mode 1))
-   #+END_SRC
+       #+END_SRC
 ** Magit                                                            :package:
    #+BEGIN_SRC emacs-lisp
      (use-package magit
@@ -397,6 +397,8 @@
 ** Paredit                                                          :package:
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
+       :after delight
+       :delight
        :commands (enable-paredit-mode)
        :hook ((emacs-lisp-mode . enable-paredit-mode)))
    #+END_SRC
@@ -433,6 +435,16 @@
        :custom (ranger-override-dired-mode t))
    #+END_SRC
 
+** Diminish                                                         :package:
+   #+BEGIN_SRC emacs-lisp
+     (use-package diminish)
+   #+END_SRC
+** Delight                                                          :package:
+   #+BEGIN_SRC emacs-lisp
+     (use-package delight
+       :config
+       (delight 'eldoc-mode))
+   #+END_SRC
 * Language Tools
 ** Org Mode                                                     :package:org:
    :PROPERTIES:
@@ -440,6 +452,7 @@
    :END:
    #+BEGIN_SRC emacs-lisp
      (use-package org
+       :after (delight)
        :hook ((org-mode . (lambda () (setq line-spacing 0.5))))
        :custom (org-M-RET-may-split-line nil))
    #+END_SRC
