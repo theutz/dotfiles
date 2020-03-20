@@ -2,9 +2,9 @@
 #+AUTHOR: Michael Utz
 #+EMAIL: michael@theutz.com
 #+STARTUP: content
+#+COLUMNS: %CONFIG
 
 * Utz
-
 
 ** Emacs Directory                                                 :variable:
 
@@ -23,9 +23,9 @@
 
 ** Init Directory                                                  :variable:
 
-  #+BEGIN_SRC emacs-lisp
-    (setq utz-utz-directory (expand-file-name "utz" utz-emacs-directory))
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (setq utz-utz-directory (expand-file-name "utz" utz-emacs-directory))
+   #+END_SRC
 
 ** Custom File
 
@@ -39,30 +39,58 @@
      (setq utz-custom-theme-directory (expand-file-name "themes" utz-emacs-directory))
    #+END_SRC
 
+** Themes
+
+*** Setup theme modes
+
+   #+BEGIN_SRC emacs-lisp
+     (setq utz-theme-modes-alist '((dark . doom-vibrant)
+				    (light . doom-one-light))
+	   utz-theme-mode 'dark)
+   #+END_SRC
+
+*** Theme Mode Selector
+
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/get-theme-by-mode (mode)
+       (cdr (assoc mode utz-theme-modes-alist)))
+   #+END_SRC
+
+*** Toggle Command
+
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/cycle-theme-mode ()
+       (interactive)
+       (let ((theme-mode (if (equal utz-theme-mode 'light) 'dark 'light)))
+	 (setq utz-theme-mode theme-mode)
+	 (load-theme (utz/get-theme-by-mode theme-mode) t))
+         (spaceline-spacemacs-theme))
+   #+END_SRC
+
 ** Load an Utz File                                                :function:
 
-  #+BEGIN_SRC emacs-lisp
-    (defun utz/load-utz-file (file)
-      (org-babel-load-file
-       (expand-file-name (concat file ".org")
-			 utz-utz-directory)))
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/load-utz-file (file)
+       (org-babel-load-file
+	(expand-file-name (concat file ".org")
+			  utz-utz-directory)))
+   #+END_SRC
 
 ** Edit this Config File                                           :function:
 
-  #+BEGIN_SRC emacs-lisp
-    (defun utz/edit-config-file ()
-      (interactive)
-      (find-file utz-emacs-config-file))
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/edit-config-file ()
+       (interactive)
+       (find-file utz-emacs-config-file))
+   #+END_SRC
 
 ** Reload This Config File                                         :function:
 
-  #+BEGIN_SRC emacs-lisp
-    (defun utz/reload-config ()
-      (interactive)
-      (org-babel-load-file utz-emacs-config-file))
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/reload-config ()
+       (interactive)
+       (org-babel-load-file utz-emacs-config-file))
+   #+END_SRC
 
 ** Narrow / Widen
 
@@ -100,7 +128,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq-default custom-file utz-custom-file)
-     ;(load utz-custom-file 'noerror 'nomessage)
+     ;;(load utz-custom-file 'noerror 'nomessage)
    #+END_SRC
 
 ** Custom Themes
@@ -166,19 +194,28 @@
      (utz/load-utz-file "evil")
    #+END_SRC
 
-** [[file:utz/general.org][General]]                                                          :package:
+** General                                                      :package:
+   :PROPERTIES:
+   :CONFIG:   [[utz:general][General]]
+   :END:
 
    #+BEGIN_SRC emacs-lisp
      (utz/load-utz-file "general")
    #+END_SRC
 
-** [[./utz/hydra.org][Hydra]]                                                            :package:
+** Hydra                                                        :package:
+   :PROPERTIES:
+   :CONFIG:   [[utz:hydra][Hydra]]
+   :END:
 
    #+BEGIN_SRC emacs-lisp
      (utz/load-utz-file "hydra")
    #+END_SRC
 
-** [[./utz/helm.org][Helm]]                                                             :package:
+** Helm                                                         :package:
+   :PROPERTIES:
+   :CONFIG:   [[utz:helm][Helm]]
+   :END:
 
    #+BEGIN_SRC emacs-lisp
      (utz/load-utz-file "helm")
@@ -188,14 +225,13 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package spaceline
+       :custom ((powerline-default-separator 'wave)
+		(spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
        :config
        (require 'spaceline-config)
        (spaceline-spacemacs-theme)
        (spaceline-helm-mode)
-       (spaceline-info-mode)
-
-       (setq spaceline-highlight-face-func
-	     'spaceline-highlight-face-evil-state))
+       (spaceline-info-mode))
    #+END_SRC
 
 ** Which Key                                                        :package:
@@ -344,7 +380,7 @@
 
 ** Org Mode                                                     :package:org:
    :PROPERTIES:
-   :SRC: [[utz:org][Org]]
+   :CONFIG:   [[utz:org][Org]]
    :END:
 
    #+BEGIN_SRC emacs-lisp
@@ -410,12 +446,12 @@
 
 **** E - Emacs
 
-    #+BEGIN_SRC emacs-lisp
-      (utz/set-leader-key :infix "f e"
-	"" '(:ignore t :wk "Emacs")
-	"r" '(utz/reload-config :wk "Reload Configuration")
-	"d" '(utz/edit-config-file :wk "Edit Configuration"))
-    #+END_SRC
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "f e"
+	 "" '(:ignore t :wk "Emacs")
+	 "r" '(utz/reload-config :wk "Reload Configuration")
+	 "d" '(utz/edit-config-file :wk "Edit Configuration"))
+     #+END_SRC
 
 *** N - Narrow / Widen
 
@@ -443,69 +479,62 @@
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "t t"
-	 "" '(:ignore t :wk "Theme"))
+	 "" '(:ignore t :wk "Theme")
+         "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode"))
      #+END_SRC
 
 *** U - Universal Argument
 
-  #+BEGIN_SRC emacs-lisp
-    (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument"))
-    (utz/set-leader-key :keymaps '(universal-argument-map)
-      "u" 'universal-argument-more)
-  #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument"))
+      (utz/set-leader-key :keymaps '(universal-argument-map)
+	"u" 'universal-argument-more)
+    #+END_SRC
 
 *** X - Execute / Eval
 
-#+BEGIN_SRC emacs-lisp
-(utz/set-leader-key :infix "x"
-  "" '(:ignore t :wk "Execute / Eval")
-  "e" '(eval-last-sexp :wk "Eval Last S-Exp")
-  "b" '(eval-buffer :wk "Eval Buffer"))
-#+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "x"
+	"" '(:ignore t :wk "Execute / Eval")
+	"e" '(eval-last-sexp :wk "Eval Last S-Exp")
+	"b" '(eval-buffer :wk "Eval Buffer"))
+    #+END_SRC
 
 ** Help Keys
 
-  #+BEGIN_SRC emacs-lisp
-    (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties"))
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties"))
+   #+END_SRC
 
 * Themes
 
-** Doom Themes
+** Doom Themes                                                      :package:
 
    #+BEGIN_SRC emacs-lisp
      (use-package doom-themes
        :custom ((doom-themes-enable-bold t)
 		(doom-themes-enable-italic t))
        :config
-       (load-theme 'doom-vibrant t)
-
+       (load-theme (utz/get-theme-by-mode utz-theme-mode) t)
        (doom-themes-visual-bell-config)
        (doom-themes-org-config))
-   #+END_SRC
-
-** Night Owl                                                        :package:
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package night-owl-theme
-       :disabled t)
    #+END_SRC
 
 * Faces
 
 ** Default
 
-  #+BEGIN_SRC emacs-lisp
-    (set-face-attribute 'default nil
-			:family "mononoki Nerd Font"
-			:height 160)
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (set-face-attribute 'default nil
+			 :family "mononoki Nerd Font"
+			 :height 160)
+   #+END_SRC
 
 ** Outline
 
-  #+BEGIN_SRC emacs-lisp
-    (set-face-attribute 'outline-1 nil :height 1.8)
-    (set-face-attribute 'outline-2 nil :height 1.6)
-    (set-face-attribute 'outline-3 nil :height 1.4)
-    (set-face-attribute 'outline-4 nil :height 1.2)
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (set-face-attribute 'outline-1 nil :height 1.8)
+     (set-face-attribute 'outline-2 nil :height 1.6)
+     (set-face-attribute 'outline-3 nil :height 1.4)
+     (set-face-attribute 'outline-4 nil :height 1.2)
+   #+END_SRC
