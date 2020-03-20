@@ -1,7 +1,7 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Michael Utz
 #+EMAIL: michael@theutz.com
-#+STARTUP: content
+#+STARTUP: overview
 #+COLUMNS: %CONFIG
 
 * Utz
@@ -427,7 +427,7 @@
 ** Global Keys
 
    #+BEGIN_SRC emacs-lisp
-   (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
+     (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
    #+END_SRC
 
 ** Leader Keys
@@ -479,14 +479,23 @@
       (utz/set-leader-key :infix "q"
 	"" '(:ignore t :wk "Quit / Restart")
 	"q" '(save-buffers-kill-terminal :wk "Quit")
-        "Q" '(kill-emacs :wk "Quit and Close Server"))
+	"Q" '(kill-emacs :wk "Quit and Close Server"))
+    #+END_SRC
+
+*** S - Search
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "s"
+	"" '(:ignore t :wk "Search"))
     #+END_SRC
 
 *** T - Toggles
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "t"
-	"" '(:ignore t :wk "Toggles"))
+	"" '(:ignore t :wk "Toggles")
+        "f" '(toggle-frame-maximized :wk "Maximized")
+        "F" '(toggle-frame-fullscreen :wk "Fullscreen"))
     #+END_SRC
 
 **** T - Theme
@@ -509,9 +518,11 @@
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "x"
-	"" '(:ignore t :wk "Execute / Eval")
-	"e" '(eval-last-sexp :wk "Eval Last S-Exp")
-	"b" '(eval-buffer :wk "Eval Buffer"))
+	"" '(:ignore t :wk "Eval")
+	"s" '(eval-last-sexp :wk "Last S-Exp")
+	"b" '(eval-buffer :wk "Buffer")
+        "e" '(eval-expression :wk "Expression")
+        "r" '(eval-region :wk "Region"))
     #+END_SRC
 
 ** Help Keys
@@ -536,19 +547,11 @@
 
 * Faces
 
-** Default
-
-   #+BEGIN_SRC emacs-lisp
-     (set-face-attribute 'default nil
-			 :family "mononoki Nerd Font"
-			 :height 160)
-   #+END_SRC
-
-** Outline
-
-   #+BEGIN_SRC emacs-lisp
-     (set-face-attribute 'outline-1 nil :height 1.8)
-     (set-face-attribute 'outline-2 nil :height 1.6)
-     (set-face-attribute 'outline-3 nil :height 1.4)
-     (set-face-attribute 'outline-4 nil :height 1.2)
-   #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+    (custom-set-faces
+     '(default ((t (:family "mononoki Nerd Font" :height 160))))
+     '(outline-1 ((t (:height 1.8))))
+     '(outline-2 ((t (:height 1.6))))
+     '(outline-3 ((t (:height 1.4))))
+     '(outline-4 ((t (:height 1.2)))))
+  #+END_SRC

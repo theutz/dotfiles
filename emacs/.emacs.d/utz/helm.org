@@ -20,3 +20,16 @@
        :config
        (helm-mode 1))
    #+END_SRC
+
+* Supporting Packages
+
+** Helm Ag
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package helm-ag
+       :after (helm)
+       :general
+       (utz/set-leader-key "/" '(helm-ag :wk "Silver Searcher"))
+       (utz/set-leader-key :infix "s"
+	 "s" '(helm-ag :wk "Silver Searcher")))
+   #+END_SRC
