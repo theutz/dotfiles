@@ -132,7 +132,7 @@
 * Essential Tools
 ** Evil                                                             :package:
    :PROPERTIES:
-   :README:   [[./straight/repos/evil/README.md]]
+   :README:   [[straight:evil/README.md]]
    :END:
    #+BEGIN_SRC emacs-lisp
      (use-package evil
@@ -207,7 +207,7 @@
     #+END_SRC
 ** General                                                          :package:
    :PROPERTIES:
-   :CONFIG:   [[utz:general][General]]
+   :README:   [[straight:general.el/README.org]]
    :END:
 *** Load
     #+BEGIN_SRC emacs-lisp
@@ -283,7 +283,7 @@
      #+END_SRC
 ** Helm                                                             :package:
    :PROPERTIES:
-   :CONFIG:   [[utz:helm][Helm]]
+   :README:   [[straight:helm/README.md]]
    :END:
 *** Initialize
      #+BEGIN_SRC emacs-lisp
@@ -436,7 +436,7 @@
 * Language Tools
 ** Org Mode                                                     :package:org:
    :PROPERTIES:
-   :CONFIG:   [[utz:org][Org]]
+   :README:   [[straight:org/README]]
    :END:
    #+BEGIN_SRC emacs-lisp
      (use-package org
