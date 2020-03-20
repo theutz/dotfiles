@@ -147,6 +147,13 @@
      (setq exec-path (append exec-path '("/usr/local/bin")))
    #+END_SRC
 
+** Server
+
+   #+BEGIN_SRC emacs-lisp
+     (server-force-delete)
+     (server-start)
+   #+END_SRC
+
 ** Splash Screen                                                   :variable:
 
    #+BEGIN_SRC emacs-lisp
@@ -417,6 +424,12 @@
 
 * Keybindings
 
+** Global Keys
+
+   #+BEGIN_SRC emacs-lisp
+   (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
+   #+END_SRC
+
 ** Leader Keys
 
 *** B - Buffers
@@ -465,7 +478,8 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "q"
 	"" '(:ignore t :wk "Quit / Restart")
-	"q" '(kill-emacs :wk "Quit"))
+	"q" '(save-buffers-kill-terminal :wk "Quit")
+        "Q" '(kill-emacs :wk "Quit and Close Server"))
     #+END_SRC
 
 *** T - Toggles
