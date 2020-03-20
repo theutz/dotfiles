@@ -57,3 +57,6 @@ utz/*.el
 
 # transient
 transient/
+
+# bookmarks
+bookmarks
