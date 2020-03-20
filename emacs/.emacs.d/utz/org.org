@@ -54,13 +54,42 @@
 [[straight:emacs-which-key/README.org]]
 * Keybindings
 
+  #+BEGIN_SRC emacs-lisp
+    (general-define-key
+     :states '(normal)
+     :keymaps '(org-mode-map)
+     "RET" '(org-open-at-point :wk "Open at Point"))
+  #+END_SRC
+
 ** Local Leader
+
+
+   #+BEGIN_SRC emacs-lisp
+     (general-create-definer utz/set-org-mode-key
+       :wrapping utz/set-localleader-key
+       :keymaps '(org-mode-map))
+   #+END_SRC
+
+*** Non-Prefixed Commands
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-org-mode-key :states '(normal visual emacs)
+	"RET" '(org-open-at-point :wk "Open at Point")
+	"'" '(org-edit-special :wk "Edit Special"))
+    #+END_SRC
+
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'org-src-mode-hook
+		(lambda ()
+		  (utz/set-localleader-key
+		    :keymaps 'local
+		    "'" '(org-edit-src-exit :wk "Exit"))))
+    #+END_SRC
 
 *** L - Links
 
     #+BEGIN_SRC emacs-lisp
-      (utz/set-localleader-key :states '(normal visual emacs)
-	:keymaps '(org-mode-map)
+      (utz/set-org-mode-key :states '(normal visual emacs)
 	:infix "l"
 	"" '(:ignore t :wk "Links")
 	"i" '(org-insert-link :wk "Insert")

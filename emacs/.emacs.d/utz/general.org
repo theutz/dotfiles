@@ -16,6 +16,7 @@
 	:states '(normal visual insert emacs))
 
       (general-create-definer utz/set-localleader-key
+        :states '(normal visual emacs)
 	:prefix ","
 	:non-normal-prefix "M-,")
 
