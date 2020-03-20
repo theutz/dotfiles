@@ -3,42 +3,59 @@
 #+EMAIL: michael@theutz.com
 #+STARTUP: overview
 * Utz
+
 ** Emacs Directory                                                 :variable:
+
    #+BEGIN_SRC emacs-lisp
      (setq utz-emacs-directory (or utz-emacs-directory
 				   user-emacs-directory))
    #+END_SRC
+
 ** Root Emacs Config File                                          :variable:
+
    #+BEGIN_SRC emacs-lisp
      (setq utz-emacs-config-file
 	   (or utz-emacs-config-file
 	       (expand-file-name "emacs-config.org" utz-emacs-directory)))
    #+END_SRC
+
 ** Init Directory                                                  :variable:
+
    #+BEGIN_SRC emacs-lisp
      (setq utz-utz-directory (expand-file-name "utz" utz-emacs-directory))
    #+END_SRC
+
 ** Custom File
+
    #+BEGIN_SRC emacs-lisp
      (setq utz-custom-file (expand-file-name "custom.el" utz-utz-directory))
    #+END_SRC
+
 ** Custom Theme Directory
+
    #+BEGIN_SRC emacs-lisp
      (setq utz-custom-theme-directory (expand-file-name "themes" utz-emacs-directory))
    #+END_SRC
+
 ** Themes
+
 *** Setup theme modes
+
     #+BEGIN_SRC emacs-lisp
       (setq utz-theme-modes-alist '((dark . doom-vibrant)
 				    (light . doom-one-light))
 	    utz-theme-mode 'dark)
     #+END_SRC
+
 *** Theme Mode Selector
+
     #+BEGIN_SRC emacs-lisp
       (defun utz/get-theme-by-mode (mode)
 	(cdr (assoc mode utz-theme-modes-alist)))
     #+END_SRC
+
 *** Toggle Command
+
     #+BEGIN_SRC emacs-lisp
       (defun utz/cycle-theme-mode ()
 	(interactive)
@@ -47,19 +64,25 @@
 	  (load-theme (utz/get-theme-by-mode theme-mode) t))
 	(spaceline-spacemacs-theme))
     #+END_SRC
+
 ** Edit this Config File                                           :function:
+
    #+BEGIN_SRC emacs-lisp
      (defun utz/edit-config-file ()
        (interactive)
        (find-file utz-emacs-config-file))
    #+END_SRC
+
 ** Reload This Config File                                         :function:
+
    #+BEGIN_SRC emacs-lisp
      (defun utz/reload-config ()
        (interactive)
        (org-babel-load-file utz-emacs-config-file))
    #+END_SRC
+
 ** Narrow / Widen
+
    #+BEGIN_SRC emacs-lisp
      (defun utz/narrow-page-forward ()
        "Widen, forward, then narrow."
@@ -76,64 +99,89 @@
        (backward-page)
        (narrow-to-page))
    #+END_SRC
+
 ** Encoding
+
    #+BEGIN_SRC emacs-lisp
      (setq-default buffer-file-coding-system 'utf-8-unix)
      (set-default-coding-systems 'utf-8-unix)
      (setq buffer-file-coding-system 'utf-8-unix
 	   locale-coding-system 'utf-8-unix)
    #+END_SRC
+
 ** Custom File
+
    #+BEGIN_SRC emacs-lisp
      (setq-default custom-file utz-custom-file)
      ;;(load utz-custom-file 'noerror 'nomessage)
    #+END_SRC
+
 ** Custom Themes
+
    #+BEGIN_SRC emacs-lisp
      (setq custom-safe-themes t)
      (setq-default custom-theme-directory utz-custom-theme-directory)
    #+END_SRC
+
 ** Exec Path                                                       :variable:
+
    This makes sure homebrew-ed packages (like =figlet=) are available to Emacs.
 
    #+BEGIN_SRC emacs-lisp
      (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
      (setq exec-path (append exec-path '("/usr/local/bin")))
    #+END_SRC
+
 ** Server
+
    #+BEGIN_SRC emacs-lisp
      (server-force-delete)
      (server-start)
    #+END_SRC
+
 ** Splash Screen                                                   :variable:
+
    #+BEGIN_SRC emacs-lisp
      (setq inhibit-splash-screen t)
    #+END_SRC
+
 ** Scratch Message                                                 :variable:
+
    #+BEGIN_SRC emacs-lisp
      (setq initial-scratch-message nil)
    #+END_SRC
+
 ** Paren Mode                                                    :minor_mode:
+
    #+BEGIN_SRC emacs-lisp
      (show-paren-mode 1)
    #+END_SRC
+
 ** Menu Bar Mode                                                 :minor_mode:
+
    #+BEGIN_SRC emacs-lisp
      (menu-bar-mode 0)
    #+END_SRC
+
 ** Scroll Bar Mode                                               :minor_mode:
+
    #+BEGIN_SRC emacs-lisp
      (scroll-bar-mode 0)
    #+END_SRC
+
 ** Tool Bar Mode                                                 :minor_mode:
+
    #+BEGIN_SRC emacs-lisp
      (tool-bar-mode 0)
    #+END_SRC
+
 * Essential Tools
+
 ** Evil                                                             :package:
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
    :END:
+
    #+BEGIN_SRC emacs-lisp
      (use-package evil
        :init
@@ -154,10 +202,12 @@
        :config
        (evil-mode 1))
    #+END_SRC
+
 *** Evil Org
     :PROPERTIES:
     :README:   [[./straight/repos/evil-org-mode/README.org]]
     :END:
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-org
 	:delight
@@ -169,48 +219,59 @@
 	(require 'evil-org-agenda)
 	(evil-org-agenda-set-keys))
     #+END_SRC
+
 *** Evil Collection
     :PROPERTIES:
     :README:   [[./straight/repos/evil-collection/readme.org]]
     :END:
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-collection
 	:after (evil)
 	:config
 	(evil-collection-init))
     #+END_SRC
+
 *** Evil Commentary
     :PROPERTIES:
     :README:   [[./straight/repos/evil-commentary/README.md]]
     :END:
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-commentary
 	:delight
 	:after (evil delight)
 	:config (evil-commentary-mode))
 	#+END_SRC
+
 *** Evil Surround
     :PROPERTIES:
     :README:   [[./straight/repos/evil-surround/readme.org]]
     :END:
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-surround
 	:after (evil)
 	:config (global-evil-surround-mode 1))
     #+END_SRC
+
 *** Evil Magit
     :PROPERTIES:
     :README:   [[straight:evil-magit/README.org]]
     :END:
+
     #+BEGIN_SRC emacs-lisp
       (use-package evil-magit
 	:after (evil magit))
     #+END_SRC
+
 ** General                                                          :package:
    :PROPERTIES:
    :README:   [[straight:general.el/README.org]]
    :END:
+
 *** Load
+
     #+BEGIN_SRC emacs-lisp
       (use-package general
 	:config
@@ -227,13 +288,18 @@
 	(general-create-definer utz/set-help-key
 	  :prefix "C-h"))
     #+END_SRC
+
 *** Keybindings
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key "h" `(,(general-simulate-key "C-h") :wk "Help")
 	"w" `(,(general-simulate-key "C-w") :wk "Window"))
     #+END_SRC
+
 ** Hydra                                                            :package:
+
 *** Initialization
+
     #+BEGIN_SRC emacs-lisp
       (use-package hydra
 	:general
@@ -241,8 +307,11 @@
 	  "c ." '(utz/hydra-comment/body :wk "Hydra")
 	  "n ." '(utz/hydra-narrow/body :wk "Hydra")))
     #+END_SRC
+
 *** Hydras
+
 **** Comment
+
      #+BEGIN_SRC emacs-lisp
        (with-eval-after-load 'hydra
 	 (defhydra utz/hydra-comment (:hint nil :exit t)
@@ -262,7 +331,9 @@
 	   ("R" figlet-figletify-region-comment)
 	   ("q" nil "cancel")))
      #+END_SRC
+
 **** Narrow
+
      #+BEGIN_SRC emacs-lisp
        (defhydra utz/hydra-narrow (:hint nil)
 	 "
@@ -282,11 +353,14 @@
 	 ("]" utz/narrow-page-forward)
 	 ("[" utz/narrow-page-backward))
      #+END_SRC
+
 ** Helm                                                             :package:
    :PROPERTIES:
    :README:   [[straight:helm/README.md]]
    :END:
+
 *** Initialize
+
     #+BEGIN_SRC emacs-lisp
       (use-package helm
 	:after delight
@@ -301,8 +375,11 @@
 	:config
 	(helm-mode 1))
 	#+END_SRC
+
 *** Supporting Packages
+
 **** Helm Ag
+
      #+BEGIN_SRC emacs-lisp
        (use-package helm-ag
 	 :after (helm)
@@ -311,7 +388,9 @@
 	 (utz/set-leader-key :infix "s"
 	   "s" '(helm-ag :wk "Silver Searcher")))
      #+END_SRC
+
 ** Spaceline                                                        :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package spaceline
        :custom ((powerline-default-separator 'wave)
@@ -322,8 +401,8 @@
        (spaceline-helm-mode)
        (spaceline-info-mode))
    #+END_SRC
+
 ** Which Key                                                        :package:
-   [[./straight/repos/emacs-which-key/README.org][View the README]]
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
@@ -333,7 +412,9 @@
        (which-key-mode)
        (which-key-setup-side-window-bottom))
    #+END_SRC
-** WS-Butler                                                        :package:
+
+** Whitespace Butler                                                :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
        :delight
@@ -341,7 +422,9 @@
        :hook ((prog-mode . ws-butler-mode)
 	      (org-mode . ws-butler-mode)))
    #+END_SRC
+
 ** Nlinum Relative                                                  :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package nlinum-relative
        :hook ((prog-mode . nlinum-mode)
@@ -350,7 +433,9 @@
        :config
        (nlinum-relative-setup-evil))
    #+END_SRC
+
 ** Flycheck                                                         :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
        :delight
@@ -358,20 +443,26 @@
        :config
        (global-flycheck-mode))
    #+END_SRC
+
 ** Undo Tree                                                        :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
        :after delight
        :delight)
    #+END_SRC
+
 ** Company                                                          :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package company
        :after delight
        :delight
        :hook ((after-init . global-company-mode)))
    #+END_SRC
+
 ** YASnippet                                                        :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
        :after delight
@@ -379,7 +470,9 @@
        :config
        (yas-global-mode 1))
        #+END_SRC
+
 ** Magit                                                            :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package magit
        :general
@@ -387,14 +480,18 @@
 	 "" '(:ignore t :wk "Git")
 	 "s" '(magit-status :wk "Status")))
    #+END_SRC
+
 ** Restart Emacs                                                    :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package restart-emacs
        :general
        (utz/set-leader-key :infix "q"
 	 "r" '(restart-emacs :wk "Restart Emacs")))
    #+END_SRC
+
 ** Paredit                                                          :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
        :after delight
@@ -402,7 +499,9 @@
        :commands (enable-paredit-mode)
        :hook ((emacs-lisp-mode . enable-paredit-mode)))
    #+END_SRC
+
 ** Helpful                                                          :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package helpful
        :general
@@ -418,13 +517,15 @@
 	 "F" '(helpful-function :wk "Helpful Function")
 	 "c" '(helpful-command :wk "Helpful Command")))
    #+END_SRC
+
 ** Figlet                                                           :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package figlet
        :defer t)
    #+END_SRC
+
 ** Ranger                                                           :package:
-   [[./straight/repos/ranger.el/README.md][View the README]]
 
    #+BEGIN_SRC emacs-lisp
      (use-package ranger
@@ -436,27 +537,34 @@
    #+END_SRC
 
 ** Diminish                                                         :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package diminish)
    #+END_SRC
+
 ** Delight                                                          :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package delight
        :config
        (delight 'eldoc-mode))
    #+END_SRC
+
 * Language Tools
+
 ** Org Mode                                                     :package:org:
    :PROPERTIES:
    :README:   [[straight:org/README]]
    :END:
+
    #+BEGIN_SRC emacs-lisp
      (use-package org
        :after (delight)
-       :hook ((org-mode . (lambda () (setq line-spacing 0.5))))
        :custom (org-M-RET-may-split-line nil))
    #+END_SRC
+
 *** Custom Functions
+
     #+BEGIN_SRC emacs-lisp
       (require 'ol)
 
@@ -480,36 +588,47 @@
 					     (expand-file-name "straight"
 							       utz-emacs-directory)))))
     #+END_SRC
+
 *** Supporting Packages
+
 **** Org Bullets
      :PROPERTIES:
      :README:   [[straight:org-bullets/README.org]]
      :END:
+
      #+BEGIN_SRC emacs-lisp
        (use-package org-bullets
 	 :after (org)
 	 :hook ((org-mode . (lambda () (org-bullets-mode 1)))))
      #+END_SRC
+
 ** Keybindings
+
    #+BEGIN_SRC emacs-lisp
      (general-define-key
       :states '(normal)
       :keymaps '(org-mode-map)
       "RET" '(org-open-at-point :wk "Open at Point"))
    #+END_SRC
+
 *** Local Leader
+
     #+BEGIN_SRC emacs-lisp
       (general-create-definer utz/set-org-mode-key
 	:wrapping utz/set-localleader-key
 	:keymaps '(org-mode-map))
     #+END_SRC
+
 **** Non-Prefixed Commands
+
      #+BEGIN_SRC emacs-lisp
        (utz/set-org-mode-key :states '(normal visual emacs)
 	 "RET" '(org-open-at-point :wk "Open at Point")
 	 "'" '(org-edit-special :wk "Edit Special"))
      #+END_SRC
+
 ***** Org Source Mode
+
      #+BEGIN_SRC emacs-lisp
        (add-hook 'org-src-mode-hook
 		 (lambda ()
@@ -519,7 +638,9 @@
 		     "k" '(org-edit-src-abort :wk "Abort")
 		     "s" '(org-edit-src-save :wk "Save"))))
      #+END_SRC
+
 **** L - Links
+
      #+BEGIN_SRC emacs-lisp
        (utz/set-org-mode-key :states '(normal visual emacs)
 	 :infix "l"
@@ -528,11 +649,15 @@
 	 "t" '(org-toggle-link-display :wk "Toggle display")
 	 "o" '(org-open-at-point :wk "Open at Point"))
      #+END_SRC
+
 ** Typescript Mode                                       :package:typescript:
+
    #+BEGIN_SRC emacs-lisp
      (use-package typescript-mode)
    #+END_SRC
+
 ** Tide                                                  :package:typescript:
+
    #+BEGIN_SRC emacs-lisp
      (use-package tide
        :after (typescript-mode company flycheck)
@@ -540,7 +665,9 @@
 	      (typescript-mode . tide-hl-identifier-mode)
 	      (before-save . tide-format-before-save)))
    #+END_SRC
+
 ** Markdown                                                :package:markdown:
+
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
        :custom ((markdown-open-command "~/bin/mark"))
@@ -550,13 +677,19 @@
        :init
        (setq markdown-command "multimarkdown"))
    #+END_SRC
+
 * Keybindings
+
 ** Global Keys
+
    #+BEGIN_SRC emacs-lisp
      (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
    #+END_SRC
+
 ** Leader Keys
+
 *** B - Buffers
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "b"
 	"" '(:ignore t :wk "Buffers")
@@ -564,61 +697,81 @@
 	"n" '(next-buffer :wk "Next Buffer")
 	"d" '(evil-delete-buffer :wk "Delete Buffer"))
     #+END_SRC
+
 *** C - Comments
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "c"
 	"" '(:ignore t :wk "Comments"))
     #+END_SRC
+
 *** F - Files
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "f"
 	"" '(:ignore t :wk "Files")
 	"s" '(save-buffer :wk  "Save"))
     #+END_SRC
+
 **** E - Emacs
+
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "f e"
 	 "" '(:ignore t :wk "Emacs")
 	 "r" '(utz/reload-config :wk "Reload Configuration")
 	 "d" '(utz/edit-config-file :wk "Edit Configuration"))
      #+END_SRC
+
 *** N - Narrow / Widen
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "n"
 	"" '(:ignore t :wk "Narrow / Widen"))
     #+END_SRC
+
 *** Q - Quit / Restart
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "q"
 	"" '(:ignore t :wk "Quit / Restart")
 	"q" '(save-buffers-kill-terminal :wk "Quit")
 	"Q" '(kill-emacs :wk "Quit and Close Server"))
     #+END_SRC
+
 *** S - Search
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "s"
 	"" '(:ignore t :wk "Search"))
     #+END_SRC
+
 *** T - Toggles
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "t"
 	"" '(:ignore t :wk "Toggles")
         "f" '(toggle-frame-maximized :wk "Maximized")
         "F" '(toggle-frame-fullscreen :wk "Fullscreen"))
     #+END_SRC
+
 **** T - Theme
+
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "t t"
 	 "" '(:ignore t :wk "Theme")
          "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode"))
      #+END_SRC
+
 *** U - Universal Argument
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument"))
       (utz/set-leader-key :keymaps '(universal-argument-map)
 	"u" 'universal-argument-more)
     #+END_SRC
+
 *** X - Execute / Eval
+
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "x"
 	"" '(:ignore t :wk "Eval")
@@ -627,12 +780,17 @@
         "e" '(eval-expression :wk "Expression")
         "r" '(eval-region :wk "Region"))
     #+END_SRC
+
 ** Help Keys
+
    #+BEGIN_SRC emacs-lisp
      (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties"))
    #+END_SRC
+
 * Themes
+
 ** Doom Themes                                                      :package:
+
    #+BEGIN_SRC emacs-lisp
      (use-package doom-themes
        :custom ((doom-themes-enable-bold t)
@@ -642,7 +800,9 @@
        (doom-themes-visual-bell-config)
        (doom-themes-org-config))
    #+END_SRC
+
 * Faces
+
   #+BEGIN_SRC emacs-lisp
     (custom-set-faces
      '(default ((t (:family "mononoki Nerd Font" :height 160))))
@@ -651,3 +811,5 @@
      '(outline-3 ((t (:height 1.3))))
      '(outline-4 ((t (:height 1.1)))))
   #+END_SRC
+
+El Fin
