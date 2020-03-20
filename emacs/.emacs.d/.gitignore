@@ -52,7 +52,7 @@ flycheck_*.el
 straight/
 
 # tangled emacs config files
-emacs-config.el
+config.el
 utz/*.el
 
 # transient

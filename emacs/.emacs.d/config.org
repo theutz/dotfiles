@@ -113,6 +113,8 @@
 
 ** Exec Path                                                       :variable:
 
+   **
+
    This makes sure homebrew-ed packages (like =figlet=) are available to Emacs.
 
    #+BEGIN_SRC emacs-lisp
@@ -125,6 +127,12 @@
    #+BEGIN_SRC emacs-lisp
      (server-force-delete)
      (server-start)
+   #+END_SRC
+
+** Backup Directory
+
+   #+BEGIN_SRC emacs-lisp
+     (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
    #+END_SRC
 
 ** Splash Screen                                                   :variable:
