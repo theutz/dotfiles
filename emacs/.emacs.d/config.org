@@ -4,37 +4,24 @@
 #+STARTUP: overview
 * Utz
 
-** Emacs Directory                                                 :variable:
+** This Config File                                                :variable:
 
    #+BEGIN_SRC emacs-lisp
-     (setq utz-emacs-directory (or utz-emacs-directory
-				   user-emacs-directory))
-   #+END_SRC
-
-** Root Emacs Config File                                          :variable:
-
-   #+BEGIN_SRC emacs-lisp
-     (setq utz-emacs-config-file
-	   (or utz-emacs-config-file
-	       (expand-file-name "emacs-config.org" utz-emacs-directory)))
-   #+END_SRC
-
-** Init Directory                                                  :variable:
-
-   #+BEGIN_SRC emacs-lisp
-     (setq utz-utz-directory (expand-file-name "utz" utz-emacs-directory))
+     (setq utz-config-file
+	   (or utz-config-file
+	       (expand-file-name "emacs-config.org" user-emacs-directory)))
    #+END_SRC
 
 ** Custom File
 
    #+BEGIN_SRC emacs-lisp
-     (setq utz-custom-file (expand-file-name "custom.el" utz-utz-directory))
+     (setq utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
    #+END_SRC
 
 ** Custom Theme Directory
 
    #+BEGIN_SRC emacs-lisp
-     (setq utz-custom-theme-directory (expand-file-name "themes" utz-emacs-directory))
+     (setq utz-custom-theme-directory (expand-file-name "themes" user-emacs-directory))
    #+END_SRC
 
 ** Themes
@@ -70,7 +57,7 @@
    #+BEGIN_SRC emacs-lisp
      (defun utz/edit-config-file ()
        (interactive)
-       (find-file utz-emacs-config-file))
+       (find-file utz-config-file))
    #+END_SRC
 
 ** Reload This Config File                                         :function:
@@ -78,7 +65,7 @@
    #+BEGIN_SRC emacs-lisp
      (defun utz/reload-config ()
        (interactive)
-       (org-babel-load-file utz-emacs-config-file))
+       (org-babel-load-file utz-config-file))
    #+END_SRC
 
 ** Narrow / Widen
@@ -100,6 +87,7 @@
        (narrow-to-page))
    #+END_SRC
 
+* Emacs Basics
 ** Encoding
 
    #+BEGIN_SRC emacs-lisp
@@ -568,16 +556,6 @@
     #+BEGIN_SRC emacs-lisp
       (require 'ol)
 
-      (org-link-set-parameters "utz"
-			       :follow #'utz/follow-utz-link)
-
-      (defun utz/follow-utz-link (file)
-	(find-file-other-window
-	 (if (equal file "")
-	     utz-emacs-config-file
-	   (expand-file-name (concat file ".org")
-			     utz-utz-directory))))
-
       (org-link-set-parameters "straight"
 			       :follow #'utz/follow-straight-link)
 
@@ -586,7 +564,7 @@
 	 (expand-file-name file
 			   (expand-file-name "repos"
 					     (expand-file-name "straight"
-							       utz-emacs-directory)))))
+							       user-emacs-directory)))))
     #+END_SRC
 
 *** Supporting Packages
