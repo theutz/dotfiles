@@ -26,46 +26,34 @@
       (c15 "#f8a97e"))
   (custom-theme-set-faces
    'utz-dark
-   ;; Standard Faces
-   `(default ((t (:background ,bg
-		  :foreground ,fg))))
-   `(hl-line ((t (:foreground ,c2 :background ,c15))))
-   `(fringe ((t (:background ,c0))))
-   `(vertical-border ((t (:foreground ,c4))))
-   `(region ((t (:foreground ,c7 :background ,c12))))
-
-   ;; Font Lock Faces
+   `(default ((t (:background ,bg :foreground ,fg))))
+   `(font-lock-builtin-face ((t (:foreground ,c11))))
+   `(font-lock-comment-delimiter-face ((t (:foreground ,c3))))
+   `(font-lock-comment-face ((t (:foreground ,c5))))
    `(font-lock-keyword-face ((t (:foreground ,c13))))
    `(font-lock-type-face ((t (:foreground ,c14))))
-   `(font-lock-comment-face ((t (:foreground ,c5))))
-   `(font-lock-comment-delimiter-face ((t (:foreground ,c3))))
-
-   ;; Line Numbers
-   `(line-number ((t (:background ,c0 :foreground ,c3 :height 100))))
-   `(nlinum-relative-current-face ((t (:background ,c15))))
-
-   ;; Org
-   `(org-link ((t (:foreground ,c12))))
-
-   ;; Org Headlines
-   `(outline-1 ((t (:foreground ,c8))))
-   `(outline-2 ((t (:foreground ,c14))))
-   `(outline-3 ((t (:foreground ,c15))))
-   `(outline-4 ((t (:foreground ,c10))))
-
-   ;; Org Drawers
+   `(fringe ((t (:background ,c0))))
+   `(hl-line ((t (:foreground ,c2 :background ,c15))))
+   `(line-number ((t (:background ,c0 :foreground ,c4))))
+   `(line-number-current-line ((t (:background ,c15 :foreground ,bg))))
+   `(mode-line ((t (:background ,c3 :foreground ,c7))))
+   `(org-block ((t (:background ,c0 :foreground ,c7))))
+   `(org-block-begin-line ((t (:foreground ,c5 :background ,c1 :height 0.8))))
+   `(org-block-end-line ((t (:foreground ,c5 :background ,c1 :height 0.8))))
    `(org-drawer ((t (:foreground ,c4))))
+   `(org-link ((t (:foreground ,c12))))
    `(org-special-keyword ((t (:foreground ,c9))))
-
-   ;; Org Blocks
-   `(org-block-begin-line ((t (:foreground ,c5
-					 :background ,c1
-					 :height 0.8))))
-   `(org-block ((t (:background ,c0
-				:foreground ,c7))))
-   `(org-block-end-line ((t (:foreground ,c5
-					:background ,c1
-					:height 0.8))))))
+   `(outline-1 ((t (:foreground ,c14))))
+   `(outline-2 ((t (:foreground ,c13))))
+   `(outline-3 ((t (:foreground ,c8))))
+   `(outline-4 ((t (:foreground ,c12))))
+   `(powerline-active1 ((t (:background ,c14 :foreground ,c2))))
+   `(powerline-active2 ((t (:background ,c1))))
+   `(region ((t (:foreground ,bg :background ,c12))))
+   `(show-paren-match ((t (:foreground ,bg :background ,c11))))
+   `(spaceline-evil-insert ((t (:foreground ,c7 :background ,c10))))
+   `(spaceline-evil-normal ((t (:foreground ,bg :background ,c15))))
+   `(vertical-border ((t (:foreground ,c4))))))
 
 (provide 'utz-dark)
 ;;; utz-dark-theme.el ends here

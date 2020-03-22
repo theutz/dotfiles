@@ -169,9 +169,12 @@
 
 ** Line Numbers
 
-#+BEGIN_SRC emacs-lisp
-  (setq-default display-line-numbers 'visual)
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (setq-default display-line-numbers 'visual
+		   display-line-numbers-current-absolute t
+		   display-line-numbers-width 2
+		   display-line-numbers-widen t)
+   #+END_SRC
 
 * Essential Tools
 
@@ -240,7 +243,7 @@
 	:delight
 	:after (evil delight)
 	:config (evil-commentary-mode))
-	#+END_SRC
+    #+END_SRC
 
 *** Evil Surround
     :PROPERTIES:
@@ -372,7 +375,7 @@
 
 	:config
 	(helm-mode 1))
-	#+END_SRC
+    #+END_SRC
 
 *** Supporting Packages
 
@@ -423,37 +426,37 @@
 
 ** Projectile
 
-#+BEGIN_SRC emacs-lisp
-  (use-package projectile
-    :config
-    (projectile-mode +1))
+   #+BEGIN_SRC emacs-lisp
+     (use-package projectile
+       :config
+       (projectile-mode +1))
 
-  (use-package helm-projectile
-    :general
-    (utz/set-leader-key :infix "p"
-      "p" '(helm-projectile-switch-project :wk "Switch Project"))
-    :after (projectile)
-    :config
-    (helm-projectile-on))
-#+END_SRC
+     (use-package helm-projectile
+       :general
+       (utz/set-leader-key :infix "p"
+	 "p" '(helm-projectile-switch-project :wk "Switch Project"))
+       :after (projectile)
+       :config
+       (helm-projectile-on))
+   #+END_SRC
 
 ** Perspective Mode
 
-#+BEGIN_SRC emacs-lisp
-  (use-package persp-mode
-    :hook ((after-init . (lambda () (persp-mode 1))))
-    :config
-    (setq wg-morph-on-kill nil
-	  persp-autokill-buffer-on-remove 'kill-weak))
+   #+BEGIN_SRC emacs-lisp
+     (use-package persp-mode
+       :hook ((after-init . (lambda () (persp-mode 1))))
+       :config
+       (setq wg-morph-on-kill nil
+	     persp-autokill-buffer-on-remove 'kill-weak))
 
-  (use-package persp-mode-projectile-bridge
-    :hook ((persp-mode-projectile-bridge-mode . (lambda ()
-						    (if persp-mode-projectile-bridge-mode
-							(persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
-						      (persp-mode-projectile-bridge-kill-perspectives))))
-	   (after-init . (lambda ()
-			     (persp-mode-projectile-bridge-mode 1)))))
-#+END_SRC
+     (use-package persp-mode-projectile-bridge
+       :hook ((persp-mode-projectile-bridge-mode . (lambda ()
+						     (if persp-mode-projectile-bridge-mode
+							 (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+						       (persp-mode-projectile-bridge-kill-perspectives))))
+	      (after-init . (lambda ()
+			      (persp-mode-projectile-bridge-mode 1)))))
+   #+END_SRC
 
 ** Flycheck                                                         :package:
 
@@ -474,11 +477,13 @@
    #+END_SRC
 
 ** Rainbow Mode
+   :PROPERTIES:
+   :README:   [[straight:rainbow-mode/rainbow-mode.el]]
+   :END:
 
    #+BEGIN_SRC emacs-lisp
      (use-package rainbow-mode
-       :config
-       (rainbow-mode))
+       :hook ((emacs-lisp-mode org-mode) . rainbow-mode))
    #+END_SRC
 
 ** Company                                                          :package:
@@ -498,7 +503,7 @@
        :delight yas-minor-mode
        :config
        (yas-global-mode 1))
-       #+END_SRC
+   #+END_SRC
 
 ** Magit                                                            :package:
 
@@ -648,15 +653,15 @@
 
 ***** Org Source Mode
 
-     #+BEGIN_SRC emacs-lisp
-       (add-hook 'org-src-mode-hook
-		 (lambda ()
-		   (utz/set-localleader-key
-		     :keymaps 'local
-		     "'" '(org-edit-src-exit :wk "Exit")
-		     "k" '(org-edit-src-abort :wk "Abort")
-		     "s" '(org-edit-src-save :wk "Save"))))
-     #+END_SRC
+      #+BEGIN_SRC emacs-lisp
+	(add-hook 'org-src-mode-hook
+		  (lambda ()
+		    (utz/set-localleader-key
+		      :keymaps 'local
+		      "'" '(org-edit-src-exit :wk "Exit")
+		      "k" '(org-edit-src-abort :wk "Abort")
+		      "s" '(org-edit-src-save :wk "Save"))))
+      #+END_SRC
 
 **** L - Links
 
@@ -776,8 +781,8 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "t"
 	"" '(:ignore t :wk "Toggles")
-        "f" '(toggle-frame-maximized :wk "Maximized")
-        "F" '(toggle-frame-fullscreen :wk "Fullscreen"))
+	"f" '(toggle-frame-maximized :wk "Maximized")
+	"F" '(toggle-frame-fullscreen :wk "Fullscreen"))
     #+END_SRC
 
 **** T - Theme
@@ -785,7 +790,7 @@
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "t t"
 	 "" '(:ignore t :wk "Theme")
-         "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode"))
+	 "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode"))
      #+END_SRC
 
 *** U - Universal Argument
@@ -803,8 +808,8 @@
 	"" '(:ignore t :wk "Eval")
 	"s" '(eval-last-sexp :wk "Last S-Exp")
 	"b" '(eval-buffer :wk "Buffer")
-        "e" '(eval-expression :wk "Expression")
-        "r" '(eval-region :wk "Region"))
+	"e" '(eval-expression :wk "Expression")
+	"r" '(eval-region :wk "Region"))
     #+END_SRC
 
 ** Help Keys
@@ -831,4 +836,4 @@
      '(outline-4 ((t (:height 1.1)))))
   #+END_SRC
 
-El Fin
+  El Fin
