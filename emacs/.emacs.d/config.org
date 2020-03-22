@@ -820,19 +820,6 @@
      (load-theme (utz/get-theme-by-mode utz-theme-mode) t)
    #+END_SRC
 
-** Doom Themes                                                      :package:
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package doom-themes
-       :disabled t
-       :custom ((doom-themes-enable-bold t)
-		(doom-themes-enable-italic t))
-       :config
-       (load-theme (utz/get-theme-by-mode utz-theme-mode) t)
-       (doom-themes-visual-bell-config)
-       (doom-themes-org-config))
-   #+END_SRC
-
 * Faces
 
   #+BEGIN_SRC emacs-lisp
