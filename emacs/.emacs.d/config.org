@@ -18,18 +18,12 @@
      (setq utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
    #+END_SRC
 
-** Custom Theme Directory
-
-   #+BEGIN_SRC emacs-lisp
-     (setq utz-custom-theme-directory (expand-file-name "themes" user-emacs-directory))
-   #+END_SRC
-
 ** Themes
 
 *** Setup theme modes
 
     #+BEGIN_SRC emacs-lisp
-      (setq utz-theme-modes-alist '((dark . doom-vibrant)
+      (setq utz-theme-modes-alist '((dark . utz-dark)
 				    (light . doom-one-light))
 	    utz-theme-mode 'dark)
     #+END_SRC
@@ -46,7 +40,10 @@
     #+BEGIN_SRC emacs-lisp
       (defun utz/cycle-theme-mode ()
 	(interactive)
-	(let ((theme-mode (if (equal utz-theme-mode 'light) 'dark 'light)))
+	(let ((theme-mode (if
+			      (equal utz-theme-mode 'light)
+			      'dark
+			    'light)))
 	  (setq utz-theme-mode theme-mode)
 	  (load-theme (utz/get-theme-by-mode theme-mode) t))
 	(spaceline-spacemacs-theme))
@@ -108,12 +105,11 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq custom-safe-themes t)
-     (setq-default custom-theme-directory utz-custom-theme-directory)
+     (setq-default custom-theme-directory
+		   (expand-file-name "themes" user-emacs-directory))
    #+END_SRC
 
 ** Exec Path                                                       :variable:
-
-   **
 
    This makes sure homebrew-ed packages (like =figlet=) are available to Emacs.
 
@@ -170,6 +166,12 @@
    #+BEGIN_SRC emacs-lisp
      (tool-bar-mode 0)
    #+END_SRC
+
+** Line Numbers
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default display-line-numbers 'visual)
+#+END_SRC
 
 * Essential Tools
 
@@ -419,16 +421,39 @@
 	      (org-mode . ws-butler-mode)))
    #+END_SRC
 
-** Nlinum Relative                                                  :package:
+** Projectile
 
-   #+BEGIN_SRC emacs-lisp
-     (use-package nlinum-relative
-       :hook ((prog-mode . nlinum-mode)
-	      (text-mode . nlinum-mode)
-	      (nlinum-mode . nlinum-relative-on))
-       :config
-       (nlinum-relative-setup-evil))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :config
+    (projectile-mode +1))
+
+  (use-package helm-projectile
+    :general
+    (utz/set-leader-key :infix "p"
+      "p" '(helm-projectile-switch-project :wk "Switch Project"))
+    :after (projectile)
+    :config
+    (helm-projectile-on))
+#+END_SRC
+
+** Perspective Mode
+
+#+BEGIN_SRC emacs-lisp
+  (use-package persp-mode
+    :hook ((after-init . (lambda () (persp-mode 1))))
+    :config
+    (setq wg-morph-on-kill nil
+	  persp-autokill-buffer-on-remove 'kill-weak))
+
+  (use-package persp-mode-projectile-bridge
+    :hook ((persp-mode-projectile-bridge-mode . (lambda ()
+						    (if persp-mode-projectile-bridge-mode
+							(persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+						      (persp-mode-projectile-bridge-kill-perspectives))))
+	   (after-init . (lambda ()
+			     (persp-mode-projectile-bridge-mode 1)))))
+#+END_SRC
 
 ** Flycheck                                                         :package:
 
@@ -446,6 +471,14 @@
      (use-package undo-tree
        :after delight
        :delight)
+   #+END_SRC
+
+** Rainbow Mode
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package rainbow-mode
+       :config
+       (rainbow-mode))
    #+END_SRC
 
 ** Company                                                          :package:
@@ -715,6 +748,13 @@
 	"" '(:ignore t :wk "Narrow / Widen"))
     #+END_SRC
 
+*** P - Project / Perspective
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "p"
+	"" '(:ignore t :wk "Project / Perspective"))
+    #+END_SRC
+
 *** Q - Quit / Restart
 
     #+BEGIN_SRC emacs-lisp
@@ -774,11 +814,17 @@
    #+END_SRC
 
 * Themes
+** Utz Themes
+
+   #+BEGIN_SRC emacs-lisp
+     (load-theme (utz/get-theme-by-mode utz-theme-mode) t)
+   #+END_SRC
 
 ** Doom Themes                                                      :package:
 
    #+BEGIN_SRC emacs-lisp
      (use-package doom-themes
+       :disabled t
        :custom ((doom-themes-enable-bold t)
 		(doom-themes-enable-italic t))
        :config

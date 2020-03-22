@@ -33,6 +33,9 @@ tags.temp
 .\#*  
 .tern-port
 \#*#
+projectile.cache
+projectile-bookmarks.eld
+persp-confs/
 
 # Logs
 *.log.vscode
