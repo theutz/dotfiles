@@ -1,15 +1,3 @@
 [submodule "prezto/.zprezto"]
 	path = prezto/.zprezto
 	url = https://github.com/theutz/prezto
-[submodule "emacs/.chemacs"]
-	path = emacs/.chemacs
-	url = https://github.com/plexus/chemacs.git
-[submodule "emacs/.doom-emacs"]
-	path = emacs/.doom-emacs
-	url = https://github.com/theutz/doom-emacs
-[submodule "emacs/.spacemacs"]
-	path = emacs/.spacemacs
-	url = https://github.com/theutz/spacemacs
-[submodule "emacs/.the-joy-of-emacs"]
-	path = emacs/.the-joy-of-emacs
-	url = https://github.com/theutz/the-joy-of-emacs.git
