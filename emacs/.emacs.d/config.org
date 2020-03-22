@@ -2,6 +2,7 @@
 #+AUTHOR: Michael Utz
 #+EMAIL: michael@theutz.com
 #+STARTUP: overview
+
 * Utz
 
 ** This Config File                                                :variable:
@@ -829,11 +830,7 @@
 
   #+BEGIN_SRC emacs-lisp
     (custom-set-faces
-     '(default ((t (:family "mononoki Nerd Font" :height 160))))
-     '(outline-1 ((t (:height 2.0))))
-     '(outline-2 ((t (:height 1.6))))
-     '(outline-3 ((t (:height 1.3))))
-     '(outline-4 ((t (:height 1.1)))))
+     '(default ((t (:family "Hasklug Nerd Font" :height 140)))))
   #+END_SRC
 
   El Fin
