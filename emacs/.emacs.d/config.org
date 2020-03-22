@@ -391,6 +391,15 @@
 	   "s" '(helm-ag :wk "Silver Searcher")))
      #+END_SRC
 
+**** Helm Descbinds
+
+     #+BEGIN_SRC emacs-lisp
+       (use-package helm-descbinds
+	 :after helm
+	 :config
+	 (helm-descbinds-mode))
+     #+END_SRC
+
 ** Spaceline                                                        :package:
 
    #+BEGIN_SRC emacs-lisp
@@ -816,7 +825,8 @@
 ** Help Keys
 
    #+BEGIN_SRC emacs-lisp
-     (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties"))
+     (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties")
+       "j" '(describe-face :wk "Describe Face"))
    #+END_SRC
 
 * Themes
