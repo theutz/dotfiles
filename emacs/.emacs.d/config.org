@@ -25,7 +25,7 @@
 
     #+BEGIN_SRC emacs-lisp
       (setq utz-theme-modes-alist '((dark . utz-dark)
-				    (light . doom-one-light))
+				    (light . utz-light))
 	    utz-theme-mode 'dark)
     #+END_SRC
 
