@@ -29,7 +29,6 @@
 (use-package org)
 
 ;; Load literate config
-(setq utz-config-file (expand-file-name "config.org" user-emacs-directory))
-(org-babel-load-file utz-config-file)
+(org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
 
 ;;; init.el ends here

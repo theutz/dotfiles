@@ -5,70 +5,45 @@
 
 * Utz
 
-** This Config File                                                :variable:
+** Variables
 
    #+BEGIN_SRC emacs-lisp
-     (setq utz-config-file
-	   (or utz-config-file
-	       (expand-file-name "emacs-config.org" user-emacs-directory)))
+     (setq utz-config-file (let ((file (or load-file-name buffer-file-name)))
+			     (when (stringp file)
+			       (replace-regexp-in-string "\.el$" ".org" file)))
+	   utz-theme-modes-alist '((dark . utz-dark)
+				   (light . utz-light))
+	   utz-theme-mode 'dark)
    #+END_SRC
 
-** Custom File
+** Functions
 
    #+BEGIN_SRC emacs-lisp
-     (setq utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
+     (defun utz/get-theme-by-mode (mode)
+       (cdr (assoc mode utz-theme-modes-alist)))
    #+END_SRC
 
-** Themes
-
-*** Setup theme modes
-
-    #+BEGIN_SRC emacs-lisp
-      (setq utz-theme-modes-alist '((dark . utz-dark)
-				    (light . utz-light))
-	    utz-theme-mode 'dark)
-    #+END_SRC
-
-*** Theme Mode Selector
-
-    #+BEGIN_SRC emacs-lisp
-      (defun utz/get-theme-by-mode (mode)
-	(cdr (assoc mode utz-theme-modes-alist)))
-    #+END_SRC
-
-*** Toggle Command
-
-    #+BEGIN_SRC emacs-lisp
-      (defun utz/cycle-theme-mode ()
-	(interactive)
-	(let ((theme-mode (if
-			      (equal utz-theme-mode 'light)
-			      'dark
-			    'light)))
-	  (setq utz-theme-mode theme-mode)
-	  (load-theme (utz/get-theme-by-mode theme-mode) t))
-	(spaceline-spacemacs-theme))
-    #+END_SRC
-
-** Edit this Config File                                           :function:
+** Commands
 
    #+BEGIN_SRC emacs-lisp
+     (defun utz/cycle-theme-mode ()
+       (interactive)
+       (let ((theme-mode (if
+			     (equal utz-theme-mode 'light)
+			     'dark
+			   'light)))
+	 (setq utz-theme-mode theme-mode)
+	 (load-theme (utz/get-theme-by-mode theme-mode) t))
+       (spaceline-spacemacs-theme))
+
      (defun utz/edit-config-file ()
        (interactive)
        (find-file utz-config-file))
-   #+END_SRC
 
-** Reload This Config File                                         :function:
-
-   #+BEGIN_SRC emacs-lisp
      (defun utz/reload-config ()
        (interactive)
-       (org-babel-load-file utz-config-file))
-   #+END_SRC
+       (load-file (expand-file-name "init.el" user-emacs-directory)))
 
-** Narrow / Widen
-
-   #+BEGIN_SRC emacs-lisp
      (defun utz/narrow-page-forward ()
        "Widen, forward, then narrow."
        (interactive)
@@ -98,8 +73,8 @@
 ** Custom File
 
    #+BEGIN_SRC emacs-lisp
-     (setq-default custom-file utz-custom-file)
-     ;;(load utz-custom-file 'noerror 'nomessage)
+     (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
+     (load custom-file 'noerror 'nomessage)
    #+END_SRC
 
 ** Custom Themes
@@ -578,7 +553,7 @@
 
 ** Ranger                                                           :package:
    :PROPERTIES:
-   :README: [[straight:ranger.el/README.md]]
+   :README:   [[straight:ranger.el/README.md]]
    :END:
 
    #+BEGIN_SRC emacs-lisp
@@ -748,7 +723,7 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "c"
 	"" '(:ignore t :wk "Comments / Colors")
-        "c" '(helm-colors :wk "Helm Colors"))
+	"c" '(helm-colors :wk "Helm Colors"))
     #+END_SRC
 
 *** F - Files
