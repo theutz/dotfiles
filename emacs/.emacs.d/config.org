@@ -61,6 +61,7 @@
    #+END_SRC
 
 * Emacs Basics
+
 ** Encoding
 
    #+BEGIN_SRC emacs-lisp
@@ -85,7 +86,7 @@
 		   (expand-file-name "themes" user-emacs-directory))
    #+END_SRC
 
-** Exec Path                                                       :variable:
+** Exec Path
 
    This makes sure homebrew-ed packages (like =figlet=) are available to Emacs.
 
@@ -101,7 +102,6 @@
      (server-start)
    #+END_SRC
 
-
 ** Visible Bell
 
    #+BEGIN_SRC emacs-lisp
@@ -114,37 +114,37 @@
      (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
    #+END_SRC
 
-** Splash Screen                                                   :variable:
+** Splash Screen
 
    #+BEGIN_SRC emacs-lisp
      (setq inhibit-splash-screen t)
    #+END_SRC
 
-** Scratch Message                                                 :variable:
+** Scratch Message
 
    #+BEGIN_SRC emacs-lisp
      (setq initial-scratch-message nil)
    #+END_SRC
 
-** Paren Mode                                                    :minor_mode:
+** Paren Mode
 
    #+BEGIN_SRC emacs-lisp
      (show-paren-mode 1)
    #+END_SRC
 
-** Menu Bar Mode                                                 :minor_mode:
+** Menu Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (menu-bar-mode 0)
    #+END_SRC
 
-** Scroll Bar Mode                                               :minor_mode:
+** Scroll Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (scroll-bar-mode 0)
    #+END_SRC
 
-** Tool Bar Mode                                                 :minor_mode:
+** Tool Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (tool-bar-mode 0)
@@ -161,7 +161,7 @@
 
 * Essential Tools
 
-** Evil                                                             :package:
+** Evil
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
    :END:
@@ -249,7 +249,7 @@
 	:after (evil magit))
     #+END_SRC
 
-** General                                                          :package:
+** General
    :PROPERTIES:
    :README:   [[straight:general.el/README.org]]
    :END:
@@ -280,7 +280,7 @@
 	"w" `(,(general-simulate-key "C-w") :wk "Window"))
     #+END_SRC
 
-** Hydra                                                            :package:
+** Hydra
 
 *** Initialization
 
@@ -338,7 +338,7 @@
 	 ("[" utz/narrow-page-backward))
      #+END_SRC
 
-** Helm                                                             :package:
+** Helm
    :PROPERTIES:
    :README:   [[straight:helm/README.md]]
    :END:
@@ -382,7 +382,7 @@
 	 (helm-descbinds-mode))
      #+END_SRC
 
-** Spaceline                                                        :package:
+** Spaceline
 
    #+BEGIN_SRC emacs-lisp
      (use-package spaceline
@@ -395,7 +395,7 @@
        (spaceline-info-mode))
    #+END_SRC
 
-** Which Key                                                        :package:
+** Which Key
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
@@ -406,7 +406,7 @@
        (which-key-setup-side-window-bottom))
    #+END_SRC
 
-** Whitespace Butler                                                :package:
+** Whitespace Butler
 
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
@@ -450,7 +450,7 @@
 			      (persp-mode-projectile-bridge-mode 1)))))
    #+END_SRC
 
-** Flycheck                                                         :package:
+** Flycheck
 
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
@@ -460,7 +460,7 @@
        (global-flycheck-mode))
    #+END_SRC
 
-** Undo Tree                                                        :package:
+** Undo Tree
 
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
@@ -478,7 +478,7 @@
        :hook ((emacs-lisp-mode org-mode) . rainbow-mode))
    #+END_SRC
 
-** Company                                                          :package:
+** Company
 
    #+BEGIN_SRC emacs-lisp
      (use-package company
@@ -487,7 +487,7 @@
        :hook ((after-init . global-company-mode)))
    #+END_SRC
 
-** YASnippet                                                        :package:
+** YASnippet
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
@@ -497,7 +497,7 @@
        (yas-global-mode 1))
    #+END_SRC
 
-** Magit                                                            :package:
+** Magit
 
    #+BEGIN_SRC emacs-lisp
      (use-package magit
@@ -507,7 +507,7 @@
 	 "s" '(magit-status :wk "Status")))
    #+END_SRC
 
-** Restart Emacs                                                    :package:
+** Restart Emacs
 
    #+BEGIN_SRC emacs-lisp
      (use-package restart-emacs
@@ -516,7 +516,7 @@
 	 "r" '(restart-emacs :wk "Restart Emacs")))
    #+END_SRC
 
-** Paredit                                                          :package:
+** Paredit
 
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
@@ -526,7 +526,7 @@
        :hook ((emacs-lisp-mode . enable-paredit-mode)))
    #+END_SRC
 
-** Helpful                                                          :package:
+** Helpful
 
    #+BEGIN_SRC emacs-lisp
      (use-package helpful
@@ -544,14 +544,14 @@
 	 "c" '(helpful-command :wk "Helpful Command")))
    #+END_SRC
 
-** Figlet                                                           :package:
+** Figlet
 
    #+BEGIN_SRC emacs-lisp
      (use-package figlet
        :defer t)
    #+END_SRC
 
-** Ranger                                                           :package:
+** Ranger
    :PROPERTIES:
    :README:   [[straight:ranger.el/README.md]]
    :END:
@@ -566,13 +566,13 @@
        :custom (ranger-override-dired-mode t))
    #+END_SRC
 
-** Diminish                                                         :package:
+** Diminish
 
    #+BEGIN_SRC emacs-lisp
      (use-package diminish)
    #+END_SRC
 
-** Delight                                                          :package:
+** Delight
 
    #+BEGIN_SRC emacs-lisp
      (use-package delight
@@ -582,7 +582,7 @@
 
 * Language Tools
 
-** Org Mode                                                     :package:org:
+** Org Mode
    :PROPERTIES:
    :README:   [[straight:org/README]]
    :END:
@@ -670,13 +670,13 @@
 	 "o" '(org-open-at-point :wk "Open at Point"))
      #+END_SRC
 
-** Typescript Mode                                       :package:typescript:
+** Typescript Mode
 
    #+BEGIN_SRC emacs-lisp
      (use-package typescript-mode)
    #+END_SRC
 
-** Tide                                                  :package:typescript:
+** Tide
 
    #+BEGIN_SRC emacs-lisp
      (use-package tide
@@ -686,7 +686,7 @@
 	      (before-save . tide-format-before-save)))
    #+END_SRC
 
-** Markdown                                                :package:markdown:
+** Markdown
 
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
@@ -817,6 +817,7 @@
    #+END_SRC
 
 * Themes
+
 ** Utz Themes
 
    #+BEGIN_SRC emacs-lisp
@@ -829,5 +830,3 @@
     (custom-set-faces
      '(default ((t (:family "Hasklug Nerd Font" :height 140)))))
   #+END_SRC
-
-  El Fin
