@@ -126,6 +126,13 @@
      (server-start)
    #+END_SRC
 
+
+** Visible Bell
+
+   #+BEGIN_SRC emacs-lisp
+     (setq visible-bell t)
+   #+END_SRC
+
 ** Backup Directory
 
    #+BEGIN_SRC emacs-lisp
