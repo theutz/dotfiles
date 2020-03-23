@@ -75,7 +75,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
-     (load custom-file 'noerror 'nomessage)
+     ;;(load custom-file 'noerror 'nomessage)
    #+END_SRC
 
 ** Custom Themes
@@ -558,12 +558,12 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package ranger
-       :custom ((ranger-show-hidden t))
+       :custom ((ranger-show-hidden t)
+		(ranger-override-dired-mode t))
        :general
        (utz/set-leader-key "0" '(ranger :wk "Ranger"))
 
-       :commands (ranger)
-       :custom (ranger-override-dired-mode t))
+       :commands (ranger))
    #+END_SRC
 
 ** Diminish
