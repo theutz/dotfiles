@@ -570,9 +570,13 @@
    #+END_SRC
 
 ** Ranger                                                           :package:
+   :PROPERTIES:
+   :README: [[straight:ranger.el/README.md]]
+   :END:
 
    #+BEGIN_SRC emacs-lisp
      (use-package ranger
+       :custom ((ranger-show-hidden t))
        :general
        (utz/set-leader-key "0" '(ranger :wk "Ranger"))
 
@@ -732,11 +736,12 @@
 	"d" '(evil-delete-buffer :wk "Delete Buffer"))
     #+END_SRC
 
-*** C - Comments
+*** C - Comments / Colors
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "c"
-	"" '(:ignore t :wk "Comments"))
+	"" '(:ignore t :wk "Comments / Colors")
+        "c" '(helm-colors :wk "Helm Colors"))
     #+END_SRC
 
 *** F - Files
