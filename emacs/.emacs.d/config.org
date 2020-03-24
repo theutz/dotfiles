@@ -7,58 +7,103 @@
 
 ** Variables
 
-   #+BEGIN_SRC emacs-lisp
-     (setq utz-config-file (let ((file (or load-file-name buffer-file-name)))
-			     (when (stringp file)
-			       (replace-regexp-in-string "\.el$" ".org" file)))
-	   utz-theme-modes-alist '((dark . utz-dark)
-				   (light . utz-light))
-	   utz-theme-mode 'dark)
-   #+END_SRC
+*** Config File
+
+    #+BEGIN_SRC emacs-lisp
+      (setq utz-config-file (let ((file (or load-file-name buffer-file-name)))
+			      (when (stringp file)
+				(replace-regexp-in-string "\.el$" ".org" file))))
+			       #+END_SRC
+
+*** Theme Modes Alist
+
+    #+BEGIN_SRC emacs-lisp
+      (setq utz-theme-modes-alist '((dark . utz-dark)
+				    (light . utz-light)))
+    #+END_SRC
+
+*** Theme Mode
+
+    #+BEGIN_SRC emacs-lisp
+      (setq utz-theme-mode 'dark)
+    #+END_SRC
 
 ** Functions
 
-   #+BEGIN_SRC emacs-lisp
-     (defun utz/get-theme-by-mode (mode)
-       (cdr (assoc mode utz-theme-modes-alist)))
-   #+END_SRC
+*** Get Theme By Mode
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/get-theme-by-mode (mode)
+	(cdr (assoc mode utz-theme-modes-alist)))
+    #+END_SRC
 
 ** Commands
 
-   #+BEGIN_SRC emacs-lisp
-     (defun utz/cycle-theme-mode ()
-       (interactive)
-       (let ((theme-mode (if
-			     (equal utz-theme-mode 'light)
-			     'dark
-			   'light)))
-	 (setq utz-theme-mode theme-mode)
-	 (load-theme (utz/get-theme-by-mode theme-mode) t))
-       (spaceline-spacemacs-theme))
+*** Cycle Theme Mode
 
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/cycle-theme-mode ()
+	(interactive)
+	(let ((theme-mode (if
+			      (equal utz-theme-mode 'light)
+			      'dark
+			    'light)))
+	  (setq utz-theme-mode theme-mode)
+	  (load-theme (utz/get-theme-by-mode theme-mode) t))
+	(spaceline-spacemacs-theme))
+    #+END_SRC
+
+*** Edit Current Theme
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/edit-current-theme ()
+	(interactive)
+	(find-file-other-window
+	 (expand-file-name
+	  (concat
+	   (symbol-name
+	    (utz/get-theme-by-mode utz-theme-mode)) "-theme.el")
+	  custom-theme-directory)))
+    #+END_SRC
+
+*** Edit Config File
+
+    #+BEGIN_SRC emacs-lisp
      (defun utz/edit-config-file ()
        (interactive)
        (find-file utz-config-file))
+    #+END_SRC
 
+*** Reload Config
+
+   #+BEGIN_SRC emacs-lisp
      (defun utz/reload-config ()
        (interactive)
        (load-file (expand-file-name "init.el" user-emacs-directory)))
+   #+END_SRC
 
+*** Narrow Page Forward
+
+    #+BEGIN_SRC emacs-lisp
      (defun utz/narrow-page-forward ()
        "Widen, forward, then narrow."
        (interactive)
        (widen)
        (forward-page)
        (narrow-to-page))
+    #+END_SRC
 
-     (defun utz/narrow-page-backward ()
-       "Widen, backward, then narrow."
-       (interactive)
-       (widen)
-       (backward-page)
-       (backward-page)
-       (narrow-to-page))
-   #+END_SRC
+*** Narrow Page Backward
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/narrow-page-backward ()
+	"Widen, backward, then narrow."
+	(interactive)
+	(widen)
+	(backward-page)
+	(backward-page)
+	(narrow-to-page))
+    #+END_SRC
 
 * Emacs Basics
 
@@ -742,6 +787,7 @@
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "f e"
 	 "" '(:ignore t :wk "Emacs")
+	 "t" '(utz/edit-current-theme :wk "Edit Current Theme")
 	 "r" '(utz/reload-config :wk "Reload Configuration")
 	 "d" '(utz/edit-config-file :wk "Edit Configuration"))
      #+END_SRC
