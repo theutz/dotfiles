@@ -74,7 +74,7 @@
 ** Custom File
 
    #+BEGIN_SRC emacs-lisp
-     (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
+     (setq-default custom-file (expand-file-name ".custom.el" user-emacs-directory))
      ;;(load custom-file 'noerror 'nomessage)
    #+END_SRC
 
@@ -589,8 +589,11 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package org
+       :custom ((org-M-RET-may-split-line nil))
        :after (delight)
-       :custom (org-M-RET-may-split-line nil))
+       :config
+       (setq org-directory (expand-file-name "~/Dropbox/org")
+	     org-agenda-files `(,org-directory)))
    #+END_SRC
 
 *** Custom Functions
@@ -748,6 +751,14 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "n"
 	"" '(:ignore t :wk "Narrow / Widen"))
+    #+END_SRC
+
+*** O - Org
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "o"
+	"" '(:ignore t :wk "Org")
+        "a" '(org-agenda :wk "Agenda"))
     #+END_SRC
 
 *** P - Project / Perspective

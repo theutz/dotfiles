@@ -53,7 +53,7 @@ straight/
 
 # tangled emacs config files
 /config.el
-utz/*.el
+.custom.el
 
 # transient
 transient/
