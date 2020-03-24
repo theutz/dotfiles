@@ -1,7 +1,7 @@
 +TITLE: Emacs Configuration
 #+AUTHOR: Michael Utz
 #+EMAIL: michael@theutz.com
-#+STARTUP: overview
+#+STARTUP: content
 
 * Utz
 
@@ -205,7 +205,6 @@
    #+END_SRC
 
 * Essential Tools
-
 ** Evil
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
@@ -405,27 +404,25 @@
 	(helm-mode 1))
     #+END_SRC
 
-*** Supporting Packages
+*** Helm Ag
 
-**** Helm Ag
+    #+BEGIN_SRC emacs-lisp
+      (use-package helm-ag
+	:after (helm)
+	:general
+	(utz/set-leader-key "/" '(helm-ag :wk "Silver Searcher"))
+	(utz/set-leader-key :infix "s"
+	  "s" '(helm-ag :wk "Silver Searcher")))
+    #+END_SRC
 
-     #+BEGIN_SRC emacs-lisp
-       (use-package helm-ag
-	 :after (helm)
-	 :general
-	 (utz/set-leader-key "/" '(helm-ag :wk "Silver Searcher"))
-	 (utz/set-leader-key :infix "s"
-	   "s" '(helm-ag :wk "Silver Searcher")))
-     #+END_SRC
+*** Helm Descbinds
 
-**** Helm Descbinds
-
-     #+BEGIN_SRC emacs-lisp
-       (use-package helm-descbinds
-	 :after helm
-	 :config
-	 (helm-descbinds-mode))
-     #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (use-package helm-descbinds
+	:after helm
+	:config
+	(helm-descbinds-mode))
+    #+END_SRC
 
 ** Spaceline
 
@@ -750,9 +747,11 @@
 
 ** Global Keys
 
-   #+BEGIN_SRC emacs-lisp
-     (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
-   #+END_SRC
+*** Super
+
+    #+BEGIN_SRC emacs-lisp
+      (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
+    #+END_SRC
 
 ** Leader Keys
 
