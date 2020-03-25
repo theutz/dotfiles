@@ -5,6 +5,15 @@
 
 * Utz
 
+
+** Requires
+
+*** Common Lisp Library
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'cl-lib)
+    #+END_SRC
+
 ** Variables
 
 *** Config File
@@ -28,6 +37,14 @@
       (setq utz-theme-mode 'dark)
     #+END_SRC
 
+*** Packages Directory
+
+    #+BEGIN_SRC emacs-lisp
+      (setq utz-packages-directory
+	    (expand-file-name "repos/"
+			      (expand-file-name "straight" user-emacs-directory)))
+    #+END_SRC
+
 ** Functions
 
 *** Get Theme By Mode
@@ -38,6 +55,22 @@
     #+END_SRC
 
 ** Commands
+
+*** View Readme
+
+    #+BEGIN_SRC emacs-lisp
+      (cl-defun utz/view-readme (repo-name &key (file-name "README.md") full-path)
+	"View the readme file from the repository downloaded by =straight.el=."
+	(interactive (let* ((repo-name (read-directory-name "Repository Name: " utz-packages-directory))
+			    (full-path (read-file-name "File Name: " repo-name "README.md")))
+		       (list :repo-name repo-name :file-name nil :full-path full-path)))
+	  (find-file-read-only-other-window
+	   (or full-path
+	       (expand-file-name (or file-name
+				     "README.md")
+				 (expand-file-name repo-name
+						   utz-packages-directory)))))
+    #+END_SRC
 
 *** Cycle Theme Mode
 
@@ -205,7 +238,7 @@
 		   display-line-numbers-widen t)
    #+END_SRC
 
-* Essential Tools
+* Global Packages
 ** Evil
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
@@ -524,6 +557,14 @@
 			       (persp-mode-projectile-bridge-mode 1)))))
     #+END_SRC
 
+** Emojify Mode
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package emojify
+       :hook ((after-init . global-emojify-mode)
+	      (after-init . global-emojify-mode-line-mode)))
+   #+END_SRC
+
 ** Flycheck
 
    #+BEGIN_SRC emacs-lisp
@@ -543,12 +584,14 @@
    #+END_SRC
 
 ** Rainbow Mode
-   :PROPERTIES:
-   :README:   [[straight:rainbow-mode/rainbow-mode.el]]
-   :END:
+
+   | Source | GitHub |
+   |--------+--------|
+   | [[straight:rainbow-mode/rainbow-mode.el][View]]   | [[https://github.com/iqbalansari/emacs-emojify][View]]   |
 
    #+BEGIN_SRC emacs-lisp
      (use-package rainbow-mode
+       :delight "🌈"
        :hook ((emacs-lisp-mode org-mode) . rainbow-mode))
    #+END_SRC
 
@@ -654,7 +697,7 @@
        (delight 'eldoc-mode))
    #+END_SRC
 
-* Language Tools
+* Language-Based Packages
 
 ** Org Mode
 
@@ -914,6 +957,17 @@
      (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties")
        "j" '(describe-face :wk "Describe Face"))
    #+END_SRC
+
+*** R - READMEs
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-help-key :infix "R"
+	"" '(:ignore t :wk "READMEs")
+	"u" '((lambda ()
+		(interactive)
+		(utz/view-readme "use-package"))
+	      :wk "Use Package"))
+    #+END_SRC
 
 * Themes
 

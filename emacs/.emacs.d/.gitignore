@@ -60,3 +60,9 @@ transient/
 
 # bookmarks
 bookmarks
+
+# emojis
+/emojis
+
+# recent files
+/recentf
