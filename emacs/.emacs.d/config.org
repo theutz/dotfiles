@@ -49,8 +49,7 @@
 			      'dark
 			    'light)))
 	  (setq utz-theme-mode theme-mode)
-	  (load-theme (utz/get-theme-by-mode theme-mode) t))
-	(spaceline-spacemacs-theme))
+	  (load-theme (utz/get-theme-by-mode theme-mode) t)))
     #+END_SRC
 
 *** Edit Current Theme
@@ -117,6 +116,8 @@
    #+END_SRC
 
 ** Custom File
+
+   We set the custom file so that it's a hidden file, but we don't load it. Because we like to do our customizations manually.
 
    #+BEGIN_SRC emacs-lisp
      (setq-default custom-file (expand-file-name ".custom.el" user-emacs-directory))
@@ -383,26 +384,26 @@
      #+END_SRC
 
 ** Helm
-   :PROPERTIES:
-   :README:   [[straight:helm/README.md]]
-   :END:
 
-*** Initialize
+   | Readme    | Source | GitHub |
+   |-----------+--------+--------|
+   | [[straight:helm/README.md][README.md]] |        |        |
 
-    #+BEGIN_SRC emacs-lisp
-      (use-package helm
-	:after delight
-	:delight
-	:general
-	("M-x" '(helm-M-x :wk "Helm"))
+   #+BEGIN_SRC emacs-lisp
+     (use-package helm
+       :after delight
+       :hook ((after-init . (lambda () (helm-mode 1))))
+       :delight
+       :general
+       ("M-x" '(helm-M-x :wk "Helm"))
 
-	(utz/set-leader-key "SPC" '(helm-M-x :wk "Helm")
-	  "f f" '(helm-find-files :wk "Find Files")
-	  "b b" '(helm-buffers-list :wk "List Buffers"))
+       (utz/set-leader-key "SPC" '(helm-M-x :wk "Helm")
+	 "f f" '(helm-find-files :wk "Find Files")
+	 "b b" '(helm-buffers-list :wk "List Buffers"))
 
-	:config
-	(helm-mode 1))
-    #+END_SRC
+       :config
+       (helm-mode 1))
+   #+END_SRC
 
 *** Helm Ag
 
@@ -428,13 +429,14 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package spaceline
-       :custom ((powerline-default-separator 'wave)
-		(spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
+       :custom
+       (powerline-default-separator 'wave)
+       (spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
        :config
        (require 'spaceline-config)
-       (spaceline-spacemacs-theme)
        (spaceline-helm-mode)
-       (spaceline-info-mode))
+       (spaceline-info-mode)
+       (spaceline-toggle-buffer-size-off))
    #+END_SRC
 
 ** Which Key
@@ -443,6 +445,8 @@
      (use-package which-key
        :after delight
        :delight
+       :custom
+       (which-key-sort-order 'which-key-key-order-alpha)
        :config
        (which-key-mode)
        (which-key-setup-side-window-bottom))
@@ -474,23 +478,51 @@
        (helm-projectile-on))
    #+END_SRC
 
-** Perspective Mode
+** Persp Mode
 
    #+BEGIN_SRC emacs-lisp
      (use-package persp-mode
+       :custom
+       (persp-auto-resume-time 0.5)
+       :general (utz/set-leader-key :infix "P"
+		  "" '(:ignore t :wk "Persp")
+		  "C" '(persp-kill :wk "Kill")
+		  "I" '(persp-import-win-conf :wk "Import Window Config")
+		  "K" '(persp-kill-buffer :wk "Kill Buffer")
+		  "L" '(persp-load-from-file-by-names :wk "Load from File by Names")
+		  "P" '(persp-frame-switch :wk "Frame Switch")
+		  "S" '(persp-window-switch :wk "Window Switch")
+		  "W" '(persp-save-to-file-by-names :wk "Save to File by Names")
+		  "a" '(persp-add-buffer :wk "Add Buffer")
+		  "b" '(persp-switch-to-buffer :wk "Switch to Buffer")
+		  "c" '(persp-copy :wk "Copy")
+		  "i" '(persp-import-buffers :wk "Import Buffers")
+		  "k" '(persp-remove-buffer :wk "Remove Buffer")
+		  "l" '(persp-load-state-from-file :wk "Load State from File")
+		  "n" '(persp-next :wk "Next")
+		  "p" '(persp-prev :wk "Previous")
+		  "r" '(persp-rename :wk "Rename")
+		  "s" '(persp-frame-switch :wk "Frame Switch")
+		  "t" '(persp-temporarily-display-buffer :wk "Temporarily Display Buffer")
+		  "w" '(persp-save-state-to-file :wk "Save State to File")
+		  "z" '(persp-save-and-kill :wk "Save and Kill"))
        :hook ((after-init . (lambda () (persp-mode 1))))
        :config
        (setq wg-morph-on-kill nil
 	     persp-autokill-buffer-on-remove 'kill-weak))
-
-     (use-package persp-mode-projectile-bridge
-       :hook ((persp-mode-projectile-bridge-mode . (lambda ()
-						     (if persp-mode-projectile-bridge-mode
-							 (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
-						       (persp-mode-projectile-bridge-kill-perspectives))))
-	      (after-init . (lambda ()
-			      (persp-mode-projectile-bridge-mode 1)))))
    #+END_SRC
+
+*** Persp Mode Projectile Bridge
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package persp-mode-projectile-bridge
+	:hook ((persp-mode-projectile-bridge-mode . (lambda ()
+						      (if persp-mode-projectile-bridge-mode
+							  (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+							(persp-mode-projectile-bridge-kill-perspectives))))
+	       (after-init . (lambda ()
+			       (persp-mode-projectile-bridge-mode 1)))))
+    #+END_SRC
 
 ** Flycheck
 
@@ -600,11 +632,11 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package ranger
-       :custom ((ranger-show-hidden t)
-		(ranger-override-dired-mode t))
+       :custom
+       (ranger-show-hidden t)
+       (ranger-override-dired-mode t)
        :general
        (utz/set-leader-key "0" '(ranger :wk "Ranger"))
-
        :commands (ranger))
    #+END_SRC
 
@@ -625,17 +657,20 @@
 * Language Tools
 
 ** Org Mode
-   :PROPERTIES:
-   :README:   [[straight:org/README]]
-   :END:
+
+   | README |
+   |--------|
+   | [[straight:org/README][README]] |
 
    #+BEGIN_SRC emacs-lisp
      (use-package org
-       :custom ((org-M-RET-may-split-line nil))
-       :after (delight)
-       :config
-       (setq org-directory (expand-file-name "~/Dropbox/org")
-	     org-agenda-files `(,org-directory)))
+       :custom
+       (org-M-RET-may-split-line nil)
+       (org-directory (expand-file-name "org"
+					(expand-file-name "Dropbox"
+							  (expand-file-name "~"))))
+       (org-agenda-files `(,org-directory))
+       :after (delight))
    #+END_SRC
 
 *** Custom Functions
@@ -735,7 +770,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
-       :custom ((markdown-open-command "~/bin/mark"))
+       :custom
+       (markdown-open-command "~/bin/mark")
        :mode (("README\\.(md|mdown)\\'" . gfm-mode)
 	      ("\\.md\\'" . markdown-mode)
 	      ("\\.markdown\\'" . markdown-mode))
@@ -755,7 +791,7 @@
 
 ** Leader Keys
 
-*** B - Buffers
+*** b - Buffers
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "b"
@@ -765,7 +801,7 @@
 	"d" '(evil-delete-buffer :wk "Delete Buffer"))
     #+END_SRC
 
-*** C - Comments / Colors
+*** c - Comments / Colors
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "c"
@@ -773,7 +809,7 @@
 	"c" '(helm-colors :wk "Helm Colors"))
     #+END_SRC
 
-*** F - Files
+*** f - Files
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "f"
@@ -791,14 +827,14 @@
 	 "d" '(utz/edit-config-file :wk "Edit Configuration"))
      #+END_SRC
 
-*** N - Narrow / Widen
+*** n - Narrow / Widen
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "n"
 	"" '(:ignore t :wk "Narrow / Widen"))
     #+END_SRC
 
-*** O - Org
+*** o - Org
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "o"
@@ -806,14 +842,21 @@
         "a" '(org-agenda :wk "Agenda"))
     #+END_SRC
 
-*** P - Project / Perspective
+*** p - Project
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "p"
-	"" '(:ignore t :wk "Project / Perspective"))
+	"" '(:ignore t :wk "Project"))
     #+END_SRC
 
-*** Q - Quit / Restart
+*** P - Perspecitve
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "P"
+	"" '(:ignore t :wk "Perspective"))
+    #+END_SRC
+
+*** q - Quit / Restart
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "q"
@@ -822,14 +865,14 @@
 	"Q" '(kill-emacs :wk "Quit and Close Server"))
     #+END_SRC
 
-*** S - Search
+*** s - Search
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "s"
 	"" '(:ignore t :wk "Search"))
     #+END_SRC
 
-*** T - Toggles
+*** t - Toggles
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "t"
@@ -846,7 +889,7 @@
 	 "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode"))
      #+END_SRC
 
-*** U - Universal Argument
+*** u - Universal Argument
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument"))
@@ -854,7 +897,7 @@
 	"u" 'universal-argument-more)
     #+END_SRC
 
-*** X - Execute / Eval
+*** x - Execute / Eval
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "x"
