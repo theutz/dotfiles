@@ -34,7 +34,7 @@
 *** Theme Mode
 
     #+BEGIN_SRC emacs-lisp
-      (setq utz-theme-mode 'dark)
+      (setq utz-theme-mode 'light)
     #+END_SRC
 
 *** Packages Directory

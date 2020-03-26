@@ -63,7 +63,7 @@
    `(mode-line ((t (:background ,c5 :foreground ,bg))))
    `(mode-line-highlight ((t (:background ,c15 :foreground ,fg))))
    `(mode-line-inactive ((t (:background ,c7 :foreground ,c5))))
-   `(org-block ((t (:background ,bg))))
+   `(org-block ((t (:background ,bg :foreground ,fg))))
    `(org-block-begin-line ((t (:foreground ,c4 :background ,bg))))
    `(org-block-end-line ((t (:inherit org-block-begin-line))))
    `(org-drawer ((t (:foreground ,c4))))
