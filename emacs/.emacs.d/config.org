@@ -44,6 +44,15 @@
 			      (expand-file-name "straight" user-emacs-directory)))
     #+END_SRC
 
+** Advices
+
+*** Load Theme
+
+   #+BEGIN_SRC emacs-lisp
+     (defadvice load-theme (before theme-dont-propagate activate)
+       (mapcar #'disable-theme custom-enabled-themes))
+   #+END_SRC
+
 ** Functions
 
 *** Get Theme By Mode
@@ -82,6 +91,44 @@
 			    'light)))
 	  (setq utz-theme-mode theme-mode)
 	  (load-theme (utz/get-theme-by-mode theme-mode) t)))
+    #+END_SRC
+
+*** Next Theme
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/next-theme ()
+	(interactive)
+	(let* ((themes (sort (custom-available-themes) 'string<))
+	       (current-index (seq-position themes
+					    (car custom-enabled-themes)))
+	       (next-index (+ current-index 1))
+	       (next-theme (seq-elt themes next-index)))
+	  (load-theme next-theme)
+          (utz/display-current-theme)))
+    #+END_SRC
+
+*** Previous Theme
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/prev-theme ()
+	(interactive)
+	(let* ((themes (sort
+			(custom-available-themes)
+			'string<))
+	       (current-index (seq-position themes
+					    (car custom-enabled-themes)))
+	       (prev-index (- current-index 1))
+	       (prev-theme (seq-elt themes prev-index)))
+	(load-theme prev-theme)
+        (utz/display-current-theme)))
+    #+END_SRC
+
+*** Current Theme
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/display-current-theme ()
+	(interactive)
+	(message (symbol-name (car custom-enabled-themes))))
     #+END_SRC
 
 *** Edit Current Theme
@@ -290,6 +337,24 @@
        (unicode-fonts-setup))
    #+END_SRC
 
+** dash.el
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package dash)
+   #+END_SRC
+
+** s.el
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package s)
+   #+END_SRC
+
+** f.el
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package f)
+   #+END_SRC
+
 ** Evil
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
@@ -422,6 +487,24 @@
     #+END_SRC
 
 *** Hydras
+
+**** Themes
+
+     #+BEGIN_SRC emacs-lisp
+       (with-eval-after-load 'hydra
+	 (defhydra utz/hydra-theme (:hint nil)
+	   "
+	     ^
+	     ^Comment
+	     ^------^-------------------------------------------
+	     _n_: Next Theme^       ^_c_: Display Current Theme
+	     _p_: Previous Theme
+	   "
+	   ("n" utz/next-theme)
+	   ("p" utz/prev-theme)
+	   ("c" utz/display-current-theme)
+	   ("q" nil "cancel")))
+     #+END_SRC
 
 **** Comment
 
@@ -746,7 +829,7 @@
        (org-directory (expand-file-name "org"
 					(expand-file-name "Dropbox"
 							  (expand-file-name "~"))))
-       (org-agenda-files `(,org-directory)))
+       (org-agenda-files (list org-directory utz-config-file)))
    #+END_SRC
 
 *** Custom Functions
@@ -765,18 +848,23 @@
 							       user-emacs-directory)))))
     #+END_SRC
 
-*** Supporting Packages
+*** Org Bullets
+    :PROPERTIES:
+    :README:   [[straight:org-bullets/README.org]]
+    :END:
 
-**** Org Bullets
-     :PROPERTIES:
-     :README:   [[straight:org-bullets/README.org]]
-     :END:
+    #+BEGIN_SRC emacs-lisp
+      (use-package org-bullets
+	:after (org)
+	:hook ((org-mode . (lambda () (org-bullets-mode 1)))))
+    #+END_SRC
 
-     #+BEGIN_SRC emacs-lisp
-       (use-package org-bullets
-	 :after (org)
-	 :hook ((org-mode . (lambda () (org-bullets-mode 1)))))
-     #+END_SRC
+*** Helm Org Rifle
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package helm-org-rifle
+        :after (helm f s dash))
+    #+END_SRC
 
 ** Keybindings
 
@@ -846,6 +934,12 @@
 	      ("\\.markdown\\'" . markdown-mode))
        :init
        (setq markdown-command "multimarkdown"))
+   #+END_SRC
+
+** Gitignore
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package gitignore-mode)
    #+END_SRC
 
 * Keybindings
@@ -950,12 +1044,16 @@
 	"F" '(toggle-frame-fullscreen :wk "Fullscreen"))
     #+END_SRC
 
-**** T - Theme
+**** t - Theme
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "t t"
 	 "" '(:ignore t :wk "Theme")
-	 "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode"))
+         "." '(utz/hydra-theme/body :wk "Transient State")
+	 "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode")
+         "c" '(utz/display-current-theme :wk "Show Current Theme")
+         "n" '(utz/next-theme :wk "Next Theme")
+         "p" '(utz/prev-theme :wk "Previous Theme"))
      #+END_SRC
 
 *** u - Universal Argument
