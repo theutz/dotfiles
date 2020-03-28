@@ -141,10 +141,16 @@
 ** Encoding
 
    #+BEGIN_SRC emacs-lisp
-     (setq-default buffer-file-coding-system 'utf-8-unix)
-     (set-default-coding-systems 'utf-8-unix)
-     (setq buffer-file-coding-system 'utf-8-unix
-	   locale-coding-system 'utf-8-unix)
+     (set-language-environment "UTF-8")
+     (prefer-coding-system 'utf-8)
+     (set-default-coding-systems 'utf-8)
+     (set-terminal-coding-system 'utf-8)
+     (set-keyboard-coding-system 'utf-8)
+     (if (boundp 'buffer-file-coding-system)
+	 (setq-default buffer-file-coding-system 'utf-8)
+       (setq default-buffer-file-coding-system 'utf-8))
+
+     (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
    #+END_SRC
 
 ** Custom File
@@ -243,7 +249,47 @@
      (server-start)
    #+END_SRC
 
+** Emoji Fonts
+
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/setup-emoji-font (frame)
+       (when (eq system-type 'darwin)
+	 (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)))
+
+     (utz/setup-emoji-font nil)
+     (add-hook 'after-make-frame-functions 'utz/setup-emoji-font)
+   #+END_SRC
+
 * Global Packages
+** Diminish
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package diminish
+       :config
+       (diminish 'auto-revert-mode)
+       (diminish 'eldoc-mode))
+   #+END_SRC
+
+** Delight
+
+   | Source Code |
+   |-------------|
+   | [[./straight/repos/delight/delight.el][View]]        |
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package delight)
+   #+END_SRC
+
+** Unicode Fonts
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package unicode-fonts
+       :custom
+       (unicode-fonts-skip-font-groups '(decorative low-quality-glyphs))
+       :config
+       (unicode-fonts-setup))
+   #+END_SRC
+
 ** Evil
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
@@ -277,8 +323,7 @@
 
     #+BEGIN_SRC emacs-lisp
       (use-package evil-org
-	:delight
-	:after (org delight)
+	:diminish
 	:hook ((org-mode . evil-org-mode)
 	       (evil-org-mode . (lambda ()
 				  (evil-org-set-key-theme))))
@@ -295,6 +340,8 @@
     #+BEGIN_SRC emacs-lisp
       (use-package evil-collection
 	:after (evil)
+	:custom
+	(evil-collection-company-use-tng nil)
 	:config
 	(evil-collection-init))
     #+END_SRC
@@ -306,8 +353,7 @@
 
     #+BEGIN_SRC emacs-lisp
       (use-package evil-commentary
-	:delight
-	:after (evil delight)
+	:after (evil)
 	:config (evil-commentary-mode))
     #+END_SRC
 
@@ -429,9 +475,10 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package helm
-       :after delight
        :hook ((after-init . (lambda () (helm-mode 1))))
-       :delight
+       :custom
+       (helm-completion-mode-string " 🚢")
+
        :general
        ("M-x" '(helm-M-x :wk "Helm"))
 
@@ -481,8 +528,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
-       :after delight
-       :delight
        :custom
        (which-key-sort-order 'which-key-key-order-alpha)
        :config
@@ -494,8 +539,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
-       :delight
-       :after delight
        :hook ((prog-mode . ws-butler-mode)
 	      (org-mode . ws-butler-mode)))
    #+END_SRC
@@ -563,20 +606,11 @@
 			       (persp-mode-projectile-bridge-mode 1)))))
     #+END_SRC
 
-** Emojify Mode
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package emojify
-       :hook ((after-init . global-emojify-mode)
-	      (after-init . global-emojify-mode-line-mode)))
-   #+END_SRC
-
 ** Flycheck
 
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
-       :delight
-       :after delight
+       :delight " 🦟"
        :config
        (global-flycheck-mode))
    #+END_SRC
@@ -584,9 +618,7 @@
 ** Undo Tree
 
    #+BEGIN_SRC emacs-lisp
-     (use-package undo-tree
-       :after delight
-       :delight)
+     (use-package undo-tree)
    #+END_SRC
 
 ** Rainbow Mode
@@ -597,7 +629,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package rainbow-mode
-       :delight "🌈"
+       :delight " 🌈"
        :hook ((emacs-lisp-mode org-mode) . rainbow-mode))
    #+END_SRC
 
@@ -605,17 +637,27 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package company
-       :after delight
-       :delight
+       :custom
+       (company-idle-delay 0.1)
+       (company-minimum-prefix-length 2)
+       (company-tooltip-limit 20)
+       :delight " 🏢"
        :hook ((after-init . global-company-mode)))
    #+END_SRC
+
+*** Company Emoji
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package company-emoji
+	:config
+	(add-to-list 'company-backends 'company-emoji))
+    #+END_SRC
 
 ** YASnippet
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
-       :after delight
-       :delight yas-minor-mode
+       :delight (yas-minor-mode " ✂")
        :config
        (yas-global-mode 1))
    #+END_SRC
@@ -643,8 +685,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
-       :after delight
-       :delight
        :commands (enable-paredit-mode)
        :hook ((emacs-lisp-mode . enable-paredit-mode)))
    #+END_SRC
@@ -689,20 +729,6 @@
        :commands (ranger))
    #+END_SRC
 
-** Diminish
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package diminish)
-   #+END_SRC
-
-** Delight
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package delight
-       :config
-       (delight 'eldoc-mode))
-   #+END_SRC
-
 * Language-Based Packages
 
 ** Org Mode
@@ -713,13 +739,14 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package org
+       :delight (org-mode " 🤖" :major)
+
        :custom
        (org-M-RET-may-split-line nil)
        (org-directory (expand-file-name "org"
 					(expand-file-name "Dropbox"
 							  (expand-file-name "~"))))
-       (org-agenda-files `(,org-directory))
-       :after (delight))
+       (org-agenda-files `(,org-directory)))
    #+END_SRC
 
 *** Custom Functions
@@ -752,13 +779,6 @@
      #+END_SRC
 
 ** Keybindings
-
-   #+BEGIN_SRC emacs-lisp
-     (general-define-key
-      :states '(normal)
-      :keymaps '(org-mode-map)
-      "RET" '(org-open-at-point :wk "Open at Point"))
-   #+END_SRC
 
 *** Local Leader
 
@@ -960,7 +980,7 @@
 ** Help Keys
 
    #+BEGIN_SRC emacs-lisp
-     (utz/set-help-key "=" '(describe-text-properties :wk "Describe Text Properties")
+     (utz/set-help-key "=" '(describe-char :wk "Describe Character")
        "j" '(describe-face :wk "Describe Face"))
    #+END_SRC
 
@@ -1002,5 +1022,7 @@
 
   #+BEGIN_SRC emacs-lisp
     (custom-set-faces
-     '(default ((t (:family "Hasklug Nerd Font" :height 140)))))
+     '(default ((t (:family "Roboto Mono" :height 160)))))
   #+END_SRC
+
+El Fin

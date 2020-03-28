@@ -49,14 +49,15 @@ flycheck_*.el
 /network-security.data
 
 # straight
-straight/
+/straight/
 
 # tangled emacs config files
 /config.el
 .custom.el
 
 # transient
-transient/
+/transient/
+/var/
 
 # bookmarks
 bookmarks
