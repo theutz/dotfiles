@@ -238,6 +238,12 @@
 		   display-line-numbers-widen t)
    #+END_SRC
 
+** Server
+
+   #+BEGIN_SRC emacs-lisp
+     (server-start)
+   #+END_SRC
+
 * Global Packages
 ** Evil
    :PROPERTIES:
