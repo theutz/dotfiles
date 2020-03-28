@@ -554,6 +554,7 @@
 
     #+BEGIN_SRC emacs-lisp
       (use-package persp-mode-projectile-bridge
+        :after (persp-mode projectile-mode)
 	:hook ((persp-mode-projectile-bridge-mode . (lambda ()
 						      (if persp-mode-projectile-bridge-mode
 							  (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
