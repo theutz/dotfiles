@@ -26,14 +26,14 @@
 *** Theme Modes Alist
 
     #+BEGIN_SRC emacs-lisp
-      (setq utz-theme-modes-alist '((dark . doom-vibrant)
+      (setq utz-theme-modes-alist '((dark . doom-outrun-electric)
 				    (light . doom-nord-light)))
     #+END_SRC
 
 *** Theme Mode
 
     #+BEGIN_SRC emacs-lisp
-      (setq utz-theme-mode 'light)
+      (setq utz-theme-mode 'dark)
     #+END_SRC
 
 *** Packages Directory
@@ -418,6 +418,7 @@
 
     #+BEGIN_SRC emacs-lisp
       (use-package evil-commentary
+	:diminish
 	:after (evil)
 	:config (evil-commentary-mode))
     #+END_SRC
@@ -611,6 +612,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
+       :diminish
        :custom
        (which-key-sort-order 'which-key-key-order-alpha)
        :config
@@ -622,6 +624,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
+       :diminish
        :hook ((prog-mode . ws-butler-mode)
 	      (org-mode . ws-butler-mode)))
    #+END_SRC
@@ -701,7 +704,8 @@
 ** Undo Tree
 
    #+BEGIN_SRC emacs-lisp
-     (use-package undo-tree)
+     (use-package undo-tree
+       :diminish)
    #+END_SRC
 
 ** Rainbow Mode
