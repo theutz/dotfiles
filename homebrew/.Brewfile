@@ -194,8 +194,10 @@ cask "zoomus"
 mas "Alto's Adventure", id: 1287752517
 mas "Alto's Odyssey", id: 1495097700
 mas "Bumpr", id: 1166066070
+mas "Dato", id: 1470584107
 mas "Dear Reader", id: 1475303629
 mas "Grammarly for Safari", id: 1462114288
+mas "Hexaflip", id: 1472301467
 mas "Honey", id: 1472777122
 mas "Keynote", id: 409183694
 mas "LastPass", id: 926036361
@@ -213,6 +215,7 @@ mas "Rosetta Stone", id: 1476088902
 mas "Sasquatch", id: 1465346522
 mas "Soulver", id: 413965349
 mas "Spark", id: 1176895641
+mas "Spyder", id: 1469382518
 mas "Time Out", id: 402592703
 mas "Twitter", id: 1482454543
 mas "Vimari", id: 1480933944
