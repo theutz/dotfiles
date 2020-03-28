@@ -5,7 +5,6 @@
 
 * Utz
 
-
 ** Requires
 
 *** Common Lisp Library
@@ -27,8 +26,8 @@
 *** Theme Modes Alist
 
     #+BEGIN_SRC emacs-lisp
-      (setq utz-theme-modes-alist '((dark . utz-dark)
-				    (light . utz-light)))
+      (setq utz-theme-modes-alist '((dark . doom-vibrant)
+				    (light . doom-nord-light)))
     #+END_SRC
 
 *** Theme Mode
@@ -976,6 +975,21 @@
     #+END_SRC
 
 * Themes
+
+** Doom Themes
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package doom-themes
+       :custom
+       (doom-themes-enable-bold t)
+       (doom-themes-enable-italic t)
+       (doom-themes-treemacs-theme "doom-colors")
+
+       :config
+       (doom-themes-visual-bell-config)
+       (doom-themes-treemacs-config)
+       (doom-themes-org-config))
+   #+END_SRC
 
 ** Utz Themes
 
