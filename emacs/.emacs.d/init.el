@@ -17,5 +17,6 @@
 					  user-emacs-directory))
 
 (require 'utz-basics)
+(require 'utz-straight)
 
 ;;; init.el ends here.
