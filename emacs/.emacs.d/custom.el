@@ -6,9 +6,15 @@
  '(backup-directory-alist (\` (("." \, (concat utz-start-directory "backups")))))
  '(current-language-environment "UTF-8")
  '(display-line-numbers (quote visual))
- '(display-line-numbers-width 4)
+ '(display-line-numbers-current-absolute t)
+ '(display-line-numbers-widen t)
+ '(display-line-numbers-width 2)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
+ '(menu-bar-mode nil)
+ '(scroll-bar-mode nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
  '(visible-bell t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
