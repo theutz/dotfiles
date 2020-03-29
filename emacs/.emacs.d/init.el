@@ -18,5 +18,6 @@
 
 (require 'utz-basics)
 (require 'utz-straight)
+(require 'utz-evil)
 
 ;;; init.el ends here.
