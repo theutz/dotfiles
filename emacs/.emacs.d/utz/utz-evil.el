@@ -12,6 +12,9 @@
 (with-eval-after-load 'evil
   (evil-mode 1))
 
+(with-eval-after-load 'magit
+  (straight-use-package 'evil-magit)
+  (require 'evil-magit))
 
 (provide 'utz-evil)
 

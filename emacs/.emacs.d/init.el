@@ -19,5 +19,6 @@
 (require 'utz-basics)
 (require 'utz-straight)
 (require 'utz-evil)
+(require 'utz-magit)
 
 ;;; init.el ends here.
