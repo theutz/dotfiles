@@ -13,17 +13,26 @@
 ;; Paths
 (defvar utz-start-directory
   user-emacs-directory
-  "Utz start directory")
+  "Emacs start directory.")
 
 (defvar utz-core-directory
-  (expand-file-name (concat utz-start-directory "core/")))
+  (expand-file-name "core/" utz-start-directory)
+  "Files and functions that form the backbone of the config.")
+
+(defvar utz-config-file
+  (expand-file-name "config.el" utz-start-directory)
+  "Configurable variables used throughout my setup.")
+
+(defvar utz-custom-file
+  (expand-file-name "custom.el" utz-start-directory)
+  "File for customize interface settings.")
 
 ;; Load Paths
 (mapc 'add-to-load-path
-      `(
-	,utz-core-directory
-	,(concat utz-core-directory "libs/")
-	,(concat utz-core-directory "libs/utz-theme/")
+      (list
+	utz-core-directory
+	(concat utz-core-directory "libs/")
+	(concat utz-core-directory "libs/utz-theme/")
 	))
 
 ;; Themes
