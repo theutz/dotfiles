@@ -21,4 +21,4 @@
 
 (provide 'utz-straight)
 
-;;; utz-straight.el ends here.
+;;; utz-straight.el ends here

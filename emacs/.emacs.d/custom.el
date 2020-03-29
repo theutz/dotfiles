@@ -15,6 +15,7 @@
  '(evil-vsplit-window-right t)
  '(evil-want-C-u-scroll t)
  '(evil-want-keybinding nil)
+ '(flycheck-emacs-lisp-load-path (quote inherit))
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(menu-bar-mode nil)

@@ -20,5 +20,6 @@
 (require 'utz-straight)
 (require 'utz-evil)
 (require 'utz-magit)
+(require 'utz-flycheck)
 
-;;; init.el ends here.
+;;; init.el ends here

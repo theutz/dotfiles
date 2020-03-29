@@ -14,4 +14,4 @@
 
 (provide 'utz-basics)
 
-;;; utz-basics.el ends here.
+;;; utz-basics.el ends here

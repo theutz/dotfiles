@@ -6,11 +6,12 @@
 ;;
 ;;; Code:
 
+(require 'utz-straight)
+
 (straight-use-package 'evil)
 (require 'evil)
 
-(with-eval-after-load 'evil
-  (evil-mode 1))
+(evil-mode 1)
 
 (with-eval-after-load 'magit
   (straight-use-package 'evil-magit)
@@ -18,4 +19,4 @@
 
 (provide 'utz-evil)
 
-;;; utz-evil.el ends here.
+;;; utz-evil.el ends here
