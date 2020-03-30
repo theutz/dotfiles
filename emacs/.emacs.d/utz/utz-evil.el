@@ -10,12 +10,18 @@
 
 (straight-use-package 'evil)
 (require 'evil)
-
 (evil-mode 1)
 
-(with-eval-after-load 'magit
-  (straight-use-package 'evil-magit)
-  (require 'evil-magit))
+(with-eval-after-load 'evil
+  (straight-use-package 'evil-collection)
+  (require 'evil-collection)
+
+  (with-eval-after-load 'evil-collection
+    (evil-collection-init))
+
+  (with-eval-after-load 'magit
+    (straight-use-package 'evil-magit)
+    (require 'evil-magit)))
 
 (provide 'utz-evil)
 

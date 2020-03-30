@@ -19,6 +19,11 @@
   "h" `(,(general-simulate-key "C-h") :wk "Help")
   "w" `(,(general-simulate-key "C-w") :wk "Windows"))
 
+(utz/set-leader-key :infix "a"
+  "" '(:ignore t :wk "Appearance")
+  "n" '(utz/next-theme :wk "Next Theme")
+  "p" '(utz/prev-theme :wk "Previous Theme"))
+
 (utz/set-leader-key :infix "b"
   "" '(:ignore t :wk "Buffer")
   "b" '(helm-buffers-list :wk "List Buffers")
@@ -69,6 +74,12 @@
   "k" '(helpful-key :wk "Helpful Key")
   "x" '(helpful-at-point :wk "Helpful at Point")
   "c" '(helpful-command :wk "Helpful Command"))
+
+(utz/set-localleader-key
+  :states '(normal insert visual emacs)
+  :keymaps '(org-mode-map)
+  "s" '(:ignore t :wk "State")
+  "s t" '(org-todo :wk "Cycle State"))
 
 (provide 'utz-keybindings)
 

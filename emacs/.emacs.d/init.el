@@ -18,6 +18,7 @@
 
 ;; Require all the things
 (require 'utz-basics)
+(require 'utz-advice)
 (require 'utz-straight)
 (require 'utz-evil)
 (require 'utz-general)

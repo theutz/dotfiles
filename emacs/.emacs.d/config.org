@@ -3,40 +3,40 @@
 #+EMAIL: michael@theutz.com
 #+STARTUP: content
 
-* Utz
+* TODO Utz
 
-** Requires
+** DONE Requires
 
-*** Common Lisp Library
+*** DONE Common Lisp Library
 
     #+BEGIN_SRC emacs-lisp
       (require 'cl-lib)
     #+END_SRC
 
-** Variables
+** DONE Variables
 
-*** Config File
+*** DONE Config File
 
     #+BEGIN_SRC emacs-lisp
       (setq utz-config-file (let ((file (or load-file-name buffer-file-name)))
 			      (when (stringp file)
 				(replace-regexp-in-string "\.el$" ".org" file))))
-			       #+END_SRC
+    #+END_SRC
 
-*** Theme Modes Alist
+*** DONE Theme Modes Alist
 
     #+BEGIN_SRC emacs-lisp
       (setq utz-theme-modes-alist '((dark . doom-outrun-electric)
 				    (light . doom-nord-light)))
     #+END_SRC
 
-*** Theme Mode
+*** DONE Theme Mode
 
     #+BEGIN_SRC emacs-lisp
       (setq utz-theme-mode 'dark)
     #+END_SRC
 
-*** Packages Directory
+*** DONE Packages Directory
 
     #+BEGIN_SRC emacs-lisp
       (setq utz-packages-directory
@@ -44,27 +44,27 @@
 			      (expand-file-name "straight" user-emacs-directory)))
     #+END_SRC
 
-** Advices
+** DONE Advices
 
-*** Load Theme
+*** DONE Load Theme
 
-   #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
      (defadvice load-theme (before theme-dont-propagate activate)
        (mapcar #'disable-theme custom-enabled-themes))
-   #+END_SRC
+    #+END_SRC
 
-** Functions
+** DONE Functions
 
-*** Get Theme By Mode
+*** DONE Get Theme By Mode
 
     #+BEGIN_SRC emacs-lisp
       (defun utz/get-theme-by-mode (mode)
 	(cdr (assoc mode utz-theme-modes-alist)))
     #+END_SRC
 
-** Commands
+** DONE Commands
 
-*** View Readme
+*** DONE View Readme
 
     #+BEGIN_SRC emacs-lisp
       (cl-defun utz/view-readme (repo-name &key (file-name "README.md") full-path)
@@ -80,7 +80,7 @@
 						   utz-packages-directory)))))
     #+END_SRC
 
-*** Cycle Theme Mode
+*** DONE Cycle Theme Mode
 
     #+BEGIN_SRC emacs-lisp
       (defun utz/cycle-theme-mode ()
@@ -93,7 +93,7 @@
 	  (load-theme (utz/get-theme-by-mode theme-mode) t)))
     #+END_SRC
 
-*** Next Theme
+*** DONE Next Theme
 
     #+BEGIN_SRC emacs-lisp
       (defun utz/next-theme ()
@@ -104,10 +104,10 @@
 	       (next-index (+ current-index 1))
 	       (next-theme (seq-elt themes next-index)))
 	  (load-theme next-theme)
-          (utz/display-current-theme)))
+	  (utz/display-current-theme)))
     #+END_SRC
 
-*** Previous Theme
+*** DONE Previous Theme
 
     #+BEGIN_SRC emacs-lisp
       (defun utz/prev-theme ()
@@ -120,10 +120,10 @@
 	       (prev-index (- current-index 1))
 	       (prev-theme (seq-elt themes prev-index)))
 	(load-theme prev-theme)
-        (utz/display-current-theme)))
+	(utz/display-current-theme)))
     #+END_SRC
 
-*** Current Theme
+*** DONE Current Theme
 
     #+BEGIN_SRC emacs-lisp
       (defun utz/display-current-theme ()
@@ -131,7 +131,7 @@
 	(message (symbol-name (car custom-enabled-themes))))
     #+END_SRC
 
-*** Edit Current Theme
+*** DONE Edit Current Theme
 
     #+BEGIN_SRC emacs-lisp
       (defun utz/edit-current-theme ()
@@ -144,7 +144,7 @@
 	  custom-theme-directory)))
     #+END_SRC
 
-*** Edit Config File
+*** DONE Edit Config File
 
     #+BEGIN_SRC emacs-lisp
      (defun utz/edit-config-file ()
@@ -152,15 +152,15 @@
        (find-file utz-config-file))
     #+END_SRC
 
-*** Reload Config
+*** DONE Reload Config
 
-   #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
      (defun utz/reload-config ()
        (interactive)
        (load-file (expand-file-name "init.el" user-emacs-directory)))
-   #+END_SRC
+    #+END_SRC
 
-*** Narrow Page Forward
+*** DONE Narrow Page Forward
 
     #+BEGIN_SRC emacs-lisp
      (defun utz/narrow-page-forward ()
@@ -171,7 +171,7 @@
        (narrow-to-page))
     #+END_SRC
 
-*** Narrow Page Backward
+*** DONE Narrow Page Backward
 
     #+BEGIN_SRC emacs-lisp
       (defun utz/narrow-page-backward ()
@@ -183,9 +183,9 @@
 	(narrow-to-page))
     #+END_SRC
 
-* Emacs Basics
+* TODO Emacs Basics
 
-** Encoding
+** TODO Encoding
 
    #+BEGIN_SRC emacs-lisp
      (set-language-environment "UTF-8")
@@ -200,7 +200,7 @@
      (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
    #+END_SRC
 
-** Custom File
+** TODO Custom File
 
    We set the custom file so that it's a hidden file, but we don't load it. Because we like to do our customizations manually.
 
@@ -209,7 +209,7 @@
      ;;(load custom-file 'noerror 'nomessage)
    #+END_SRC
 
-** Custom Themes
+** TODO Custom Themes
 
    #+BEGIN_SRC emacs-lisp
      (setq custom-safe-themes t)
@@ -217,7 +217,7 @@
 		   (expand-file-name "themes" user-emacs-directory))
    #+END_SRC
 
-** Exec Path
+** TODO Exec Path
 
    This makes sure homebrew-ed packages (like =figlet=) are available to Emacs.
 
@@ -226,62 +226,62 @@
      (setq exec-path (append exec-path '("/usr/local/bin")))
    #+END_SRC
 
-** Server
+** TODO Server
 
    #+BEGIN_SRC emacs-lisp
      (server-force-delete)
      (server-start)
    #+END_SRC
 
-** Visible Bell
+** TODO Visible Bell
 
    #+BEGIN_SRC emacs-lisp
      (setq visible-bell t)
    #+END_SRC
 
-** Backup Directory
+** TODO Backup Directory
 
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
    #+END_SRC
 
-** Splash Screen
+** TODO Splash Screen
 
    #+BEGIN_SRC emacs-lisp
      (setq inhibit-splash-screen t)
    #+END_SRC
 
-** Scratch Message
+** TODO Scratch Message
 
    #+BEGIN_SRC emacs-lisp
      (setq initial-scratch-message nil)
    #+END_SRC
 
-** Paren Mode
+** TODO Paren Mode
 
    #+BEGIN_SRC emacs-lisp
      (show-paren-mode 1)
    #+END_SRC
 
-** Menu Bar Mode
+** TODO Menu Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (menu-bar-mode 0)
    #+END_SRC
 
-** Scroll Bar Mode
+** TODO Scroll Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (scroll-bar-mode 0)
    #+END_SRC
 
-** Tool Bar Mode
+** TODO Tool Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (tool-bar-mode 0)
    #+END_SRC
 
-** Line Numbers
+** TODO Line Numbers
 
    #+BEGIN_SRC emacs-lisp
      (setq-default display-line-numbers 'visual
@@ -290,13 +290,13 @@
 		   display-line-numbers-widen t)
    #+END_SRC
 
-** Server
+** TODO Server
 
    #+BEGIN_SRC emacs-lisp
      (server-start)
    #+END_SRC
 
-** Emoji Fonts
+** TODO Emoji Fonts
 
    #+BEGIN_SRC emacs-lisp
      (defun utz/setup-emoji-font (frame)
@@ -307,8 +307,8 @@
      (add-hook 'after-make-frame-functions 'utz/setup-emoji-font)
    #+END_SRC
 
-* Global Packages
-** Diminish
+* TODO Global Packages
+** TODO Diminish
 
    #+BEGIN_SRC emacs-lisp
      (use-package diminish
@@ -317,7 +317,7 @@
        (diminish 'eldoc-mode))
    #+END_SRC
 
-** Delight
+** TODO Delight
 
    | Source Code |
    |-------------|
@@ -327,7 +327,7 @@
      (use-package delight)
    #+END_SRC
 
-** Unicode Fonts
+** TODO Unicode Fonts
 
    #+BEGIN_SRC emacs-lisp
      (use-package unicode-fonts
@@ -337,25 +337,25 @@
        (unicode-fonts-setup))
    #+END_SRC
 
-** dash.el
+** TODO dash.el
 
    #+BEGIN_SRC emacs-lisp
      (use-package dash)
    #+END_SRC
 
-** s.el
+** TODO s.el
 
    #+BEGIN_SRC emacs-lisp
      (use-package s)
    #+END_SRC
 
-** f.el
+** TODO f.el
 
    #+BEGIN_SRC emacs-lisp
      (use-package f)
    #+END_SRC
 
-** Evil
+** TODO Evil
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
    :END:
@@ -381,7 +381,7 @@
        (evil-mode 1))
    #+END_SRC
 
-*** Evil Org
+*** TODO Evil Org
     :PROPERTIES:
     :README:   [[./straight/repos/evil-org-mode/README.org]]
     :END:
@@ -397,7 +397,7 @@
 	(evil-org-agenda-set-keys))
     #+END_SRC
 
-*** Evil Collection
+*** TODO Evil Collection
     :PROPERTIES:
     :README:   [[./straight/repos/evil-collection/readme.org]]
     :END:
@@ -411,7 +411,7 @@
 	(evil-collection-init))
     #+END_SRC
 
-*** Evil Commentary
+*** TODO Evil Commentary
     :PROPERTIES:
     :README:   [[./straight/repos/evil-commentary/README.md]]
     :END:
@@ -423,7 +423,7 @@
 	:config (evil-commentary-mode))
     #+END_SRC
 
-*** Evil Surround
+*** TODO Evil Surround
     :PROPERTIES:
     :README:   [[./straight/repos/evil-surround/readme.org]]
     :END:
@@ -434,7 +434,7 @@
 	:config (global-evil-surround-mode 1))
     #+END_SRC
 
-*** Evil Magit
+*** TODO Evil Magit
     :PROPERTIES:
     :README:   [[straight:evil-magit/README.org]]
     :END:
@@ -444,12 +444,12 @@
 	:after (evil magit))
     #+END_SRC
 
-** General
+** TODO General
    :PROPERTIES:
    :README:   [[straight:general.el/README.org]]
    :END:
 
-*** Load
+*** TODO Load
 
     #+BEGIN_SRC emacs-lisp
       (use-package general
@@ -468,16 +468,16 @@
 	  :prefix "C-h"))
     #+END_SRC
 
-*** Keybindings
+*** TODO Keybindings
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key "h" `(,(general-simulate-key "C-h") :wk "Help")
 	"w" `(,(general-simulate-key "C-w") :wk "Window"))
     #+END_SRC
 
-** Hydra
+** TODO Hydra
 
-*** Initialization
+*** TODO Initialization
 
     #+BEGIN_SRC emacs-lisp
       (use-package hydra
@@ -487,9 +487,9 @@
 	  "n ." '(utz/hydra-narrow/body :wk "Hydra")))
     #+END_SRC
 
-*** Hydras
+*** TODO Hydras
 
-**** Themes
+**** TODO Themes
 
      #+BEGIN_SRC emacs-lisp
        (with-eval-after-load 'hydra
@@ -507,7 +507,7 @@
 	   ("q" nil "cancel")))
      #+END_SRC
 
-**** Comment
+**** TODO Comment
 
      #+BEGIN_SRC emacs-lisp
        (with-eval-after-load 'hydra
@@ -529,7 +529,7 @@
 	   ("q" nil "cancel")))
      #+END_SRC
 
-**** Narrow
+**** TODO Narrow
 
      #+BEGIN_SRC emacs-lisp
        (defhydra utz/hydra-narrow (:hint nil)
@@ -551,7 +551,7 @@
 	 ("[" utz/narrow-page-backward))
      #+END_SRC
 
-** Helm
+** TODO Helm
 
    | Readme    | Source | GitHub |
    |-----------+--------+--------|
@@ -574,7 +574,7 @@
        (helm-mode 1))
    #+END_SRC
 
-*** Helm Ag
+*** TODO Helm Ag
 
     #+BEGIN_SRC emacs-lisp
       (use-package helm-ag
@@ -585,7 +585,7 @@
 	  "s" '(helm-ag :wk "Silver Searcher")))
     #+END_SRC
 
-*** Helm Descbinds
+*** TODO Helm Descbinds
 
     #+BEGIN_SRC emacs-lisp
       (use-package helm-descbinds
@@ -594,7 +594,7 @@
 	(helm-descbinds-mode))
     #+END_SRC
 
-** Spaceline
+** TODO Spaceline
 
    #+BEGIN_SRC emacs-lisp
      (use-package spaceline
@@ -608,7 +608,7 @@
        (spaceline-toggle-buffer-size-off))
    #+END_SRC
 
-** Which Key
+** TODO Which Key
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
@@ -620,7 +620,7 @@
        (which-key-setup-side-window-bottom))
    #+END_SRC
 
-** Whitespace Butler
+** TODO Whitespace Butler
 
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
@@ -629,7 +629,7 @@
 	      (org-mode . ws-butler-mode)))
    #+END_SRC
 
-** Projectile
+** TODO Projectile
 
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
@@ -645,7 +645,7 @@
        (helm-projectile-on))
    #+END_SRC
 
-** Persp Mode
+** TODO Persp Mode
 
    #+BEGIN_SRC emacs-lisp
      (use-package persp-mode
@@ -679,11 +679,11 @@
 	     persp-autokill-buffer-on-remove 'kill-weak))
    #+END_SRC
 
-*** Persp Mode Projectile Bridge
+*** TODO Persp Mode Projectile Bridge
 
     #+BEGIN_SRC emacs-lisp
       (use-package persp-mode-projectile-bridge
-        :after (persp-mode projectile-mode)
+	:after (persp-mode projectile-mode)
 	:hook ((persp-mode-projectile-bridge-mode . (lambda ()
 						      (if persp-mode-projectile-bridge-mode
 							  (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
@@ -692,7 +692,7 @@
 			       (persp-mode-projectile-bridge-mode 1)))))
     #+END_SRC
 
-** Flycheck
+** TODO Flycheck
 
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
@@ -701,14 +701,14 @@
        (global-flycheck-mode))
    #+END_SRC
 
-** Undo Tree
+** TODO Undo Tree
 
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
        :diminish)
    #+END_SRC
 
-** Rainbow Mode
+** TODO Rainbow Mode
 
    | Source | GitHub |
    |--------+--------|
@@ -720,7 +720,7 @@
        :hook ((emacs-lisp-mode org-mode) . rainbow-mode))
    #+END_SRC
 
-** Company
+** TODO Company
 
    #+BEGIN_SRC emacs-lisp
      (use-package company
@@ -732,7 +732,7 @@
        :hook ((after-init . global-company-mode)))
    #+END_SRC
 
-*** Company Emoji
+*** TODO Company Emoji
 
     #+BEGIN_SRC emacs-lisp
       (use-package company-emoji
@@ -740,7 +740,7 @@
 	(add-to-list 'company-backends 'company-emoji))
     #+END_SRC
 
-** YASnippet
+** TODO YASnippet
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
@@ -749,7 +749,7 @@
        (yas-global-mode 1))
    #+END_SRC
 
-** Magit
+** TODO Magit
 
    #+BEGIN_SRC emacs-lisp
      (use-package magit
@@ -759,7 +759,7 @@
 	 "s" '(magit-status :wk "Status")))
    #+END_SRC
 
-** Restart Emacs
+** TODO Restart Emacs
 
    #+BEGIN_SRC emacs-lisp
      (use-package restart-emacs
@@ -768,7 +768,7 @@
 	 "r" '(restart-emacs :wk "Restart Emacs")))
    #+END_SRC
 
-** Paredit
+** TODO Paredit
 
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
@@ -776,7 +776,7 @@
        :hook ((emacs-lisp-mode . enable-paredit-mode)))
    #+END_SRC
 
-** Helpful
+** TODO Helpful
 
    #+BEGIN_SRC emacs-lisp
      (use-package helpful
@@ -794,14 +794,14 @@
 	 "c" '(helpful-command :wk "Helpful Command")))
    #+END_SRC
 
-** Figlet
+** TODO Figlet
 
    #+BEGIN_SRC emacs-lisp
      (use-package figlet
        :defer t)
    #+END_SRC
 
-** Ranger
+** TODO Ranger
    :PROPERTIES:
    :README:   [[straight:ranger.el/README.md]]
    :END:
@@ -816,9 +816,9 @@
        :commands (ranger))
    #+END_SRC
 
-* Language-Based Packages
+* TODO Language-Based Packages
 
-** Org Mode
+** TODO Org Mode
 
    | README |
    |--------|
@@ -836,7 +836,7 @@
        (org-agenda-files (list org-directory utz-config-file)))
    #+END_SRC
 
-*** Custom Functions
+*** TODO Custom Functions
 
     #+BEGIN_SRC emacs-lisp
       (require 'ol)
@@ -852,7 +852,7 @@
 							       user-emacs-directory)))))
     #+END_SRC
 
-*** Org Bullets
+*** TODO Org Bullets
     :PROPERTIES:
     :README:   [[straight:org-bullets/README.org]]
     :END:
@@ -863,16 +863,16 @@
 	:hook ((org-mode . (lambda () (org-bullets-mode 1)))))
     #+END_SRC
 
-*** Helm Org Rifle
+*** TODO Helm Org Rifle
 
     #+BEGIN_SRC emacs-lisp
       (use-package helm-org-rifle
-        :after (helm f s dash))
+	:after (helm f s dash))
     #+END_SRC
 
-** Keybindings
+** TODO Keybindings
 
-*** Local Leader
+*** TODO Local Leader
 
     #+BEGIN_SRC emacs-lisp
       (general-create-definer utz/set-org-mode-key
@@ -880,7 +880,7 @@
 	:keymaps '(org-mode-map))
     #+END_SRC
 
-**** Non-Prefixed Commands
+**** TODO Non-Prefixed Commands
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-org-mode-key :states '(normal visual emacs)
@@ -888,7 +888,7 @@
 	 "'" '(org-edit-special :wk "Edit Special"))
      #+END_SRC
 
-***** Org Source Mode
+***** TODO Org Source Mode
 
       #+BEGIN_SRC emacs-lisp
 	(add-hook 'org-src-mode-hook
@@ -900,7 +900,7 @@
 		      "s" '(org-edit-src-save :wk "Save"))))
       #+END_SRC
 
-**** L - Links
+**** TODO L - Links
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-org-mode-key :states '(normal visual emacs)
@@ -911,13 +911,13 @@
 	 "o" '(org-open-at-point :wk "Open at Point"))
      #+END_SRC
 
-** Typescript Mode
+** TODO Typescript Mode
 
    #+BEGIN_SRC emacs-lisp
      (use-package typescript-mode)
    #+END_SRC
 
-** Tide
+** TODO Tide
 
    #+BEGIN_SRC emacs-lisp
      (use-package tide
@@ -927,7 +927,7 @@
 	      (before-save . tide-format-before-save)))
    #+END_SRC
 
-** Markdown
+** TODO Markdown
 
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
@@ -940,25 +940,25 @@
        (setq markdown-command "multimarkdown"))
    #+END_SRC
 
-** Gitignore
+** TODO Gitignore
 
    #+BEGIN_SRC emacs-lisp
      (use-package gitignore-mode)
    #+END_SRC
 
-* Keybindings
+* TODO Keybindings
 
-** Global Keys
+** TODO Global Keys
 
-*** Super
+*** TODO Super
 
     #+BEGIN_SRC emacs-lisp
       (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
     #+END_SRC
 
-** Leader Keys
+** TODO Leader Keys
 
-*** b - Buffers
+*** TODO b - Buffers
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "b"
@@ -968,7 +968,7 @@
 	"d" '(evil-delete-buffer :wk "Delete Buffer"))
     #+END_SRC
 
-*** c - Comments / Colors
+*** TODO c - Comments / Colors
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "c"
@@ -976,7 +976,7 @@
 	"c" '(helm-colors :wk "Helm Colors"))
     #+END_SRC
 
-*** f - Files
+*** TODO f - Files
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "f"
@@ -984,7 +984,7 @@
 	"s" '(save-buffer :wk  "Save"))
     #+END_SRC
 
-**** E - Emacs
+**** TODO E - Emacs
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "f e"
@@ -994,36 +994,36 @@
 	 "d" '(utz/edit-config-file :wk "Edit Configuration"))
      #+END_SRC
 
-*** n - Narrow / Widen
+*** TODO n - Narrow / Widen
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "n"
 	"" '(:ignore t :wk "Narrow / Widen"))
     #+END_SRC
 
-*** o - Org
+*** TODO o - Org
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "o"
 	"" '(:ignore t :wk "Org")
-        "a" '(org-agenda :wk "Agenda"))
+	"a" '(org-agenda :wk "Agenda"))
     #+END_SRC
 
-*** p - Project
+*** TODO p - Project
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "p"
 	"" '(:ignore t :wk "Project"))
     #+END_SRC
 
-*** P - Perspecitve
+*** TODO P - Perspecitve
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "P"
 	"" '(:ignore t :wk "Perspective"))
     #+END_SRC
 
-*** q - Quit / Restart
+*** TODO q - Quit / Restart
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "q"
@@ -1032,14 +1032,14 @@
 	"Q" '(kill-emacs :wk "Quit and Close Server"))
     #+END_SRC
 
-*** s - Search
+*** TODO s - Search
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "s"
 	"" '(:ignore t :wk "Search"))
     #+END_SRC
 
-*** t - Toggles
+*** TODO t - Toggles
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "t"
@@ -1048,19 +1048,19 @@
 	"F" '(toggle-frame-fullscreen :wk "Fullscreen"))
     #+END_SRC
 
-**** t - Theme
+**** TODO t - Theme
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "t t"
 	 "" '(:ignore t :wk "Theme")
-         "." '(utz/hydra-theme/body :wk "Transient State")
+	 "." '(utz/hydra-theme/body :wk "Transient State")
 	 "m" '(utz/cycle-theme-mode :wk "Light / Dark Mode")
-         "c" '(utz/display-current-theme :wk "Show Current Theme")
-         "n" '(utz/next-theme :wk "Next Theme")
-         "p" '(utz/prev-theme :wk "Previous Theme"))
+	 "c" '(utz/display-current-theme :wk "Show Current Theme")
+	 "n" '(utz/next-theme :wk "Next Theme")
+	 "p" '(utz/prev-theme :wk "Previous Theme"))
      #+END_SRC
 
-*** u - Universal Argument
+*** TODO u - Universal Argument
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument"))
@@ -1068,7 +1068,7 @@
 	"u" 'universal-argument-more)
     #+END_SRC
 
-*** x - Execute / Eval
+*** TODO x - Execute / Eval
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "x"
@@ -1079,14 +1079,14 @@
 	"r" '(eval-region :wk "Region"))
     #+END_SRC
 
-** Help Keys
+** TODO Help Keys
 
    #+BEGIN_SRC emacs-lisp
      (utz/set-help-key "=" '(describe-char :wk "Describe Character")
        "j" '(describe-face :wk "Describe Face"))
    #+END_SRC
 
-*** R - READMEs
+*** TODO R - READMEs
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-help-key :infix "R"
@@ -1097,9 +1097,9 @@
 	      :wk "Use Package"))
     #+END_SRC
 
-* Themes
+* TODO Themes
 
-** Doom Themes
+** TODO Doom Themes
 
    #+BEGIN_SRC emacs-lisp
      (use-package doom-themes
@@ -1114,17 +1114,17 @@
        (doom-themes-org-config))
    #+END_SRC
 
-** Utz Themes
+** TODO Utz Themes
 
    #+BEGIN_SRC emacs-lisp
      (load-theme (utz/get-theme-by-mode utz-theme-mode) t)
    #+END_SRC
 
-* Faces
+* TODO Faces
 
   #+BEGIN_SRC emacs-lisp
     (custom-set-faces
      '(default ((t (:family "Roboto Mono" :height 160)))))
   #+END_SRC
 
-El Fin
+  El Fin
