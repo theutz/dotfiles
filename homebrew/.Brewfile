@@ -190,6 +190,7 @@ cask "nordvpn"
 cask "notion"
 cask "now"
 cask "omnidisksweeper"
+cask "rectangle"
 cask "robo-3t"
 cask "sketch"
 cask "slack"
@@ -210,10 +211,10 @@ mas "Hexaflip", id: 1472301467
 mas "Honey", id: 1472777122
 mas "Keynote", id: 409183694
 mas "LastPass", id: 926036361
-mas "Magnet", id: 441258766
 mas "Marked 2", id: 890031187
 mas "Mate Translate", id: 1005088137
 mas "Numbers", id: 409203825
+mas "Octotree Pro", id: 1457450145
 mas "Overland", id: 1467652041
 mas "Pages", id: 409201541
 mas "PhotoScissors", id: 1499327097
