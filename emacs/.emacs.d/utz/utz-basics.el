@@ -8,9 +8,25 @@
 
 (require 'server)
 
+;; Environment Variables
+(setenv "PATH"
+	(concat
+	 (getenv "PATH")
+	 ":/usr/local/bin"))
+
 ;; Setup Server
 (unless (server-running-p)
   (server-start))
+
+;; Setup Utz Customization Grorup
+(defcustom utz-configuration-file
+  (expand-file-name "init.el" user-emacs-directory)
+  "The main init file for configuration."
+  :group 'utz
+  :type 'directory)
+  
+(defgroup utz nil "Utz Customization Settings"
+  :group 'local)
 
 (provide 'utz-basics)
 
