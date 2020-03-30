@@ -355,7 +355,7 @@
      (use-package f)
    #+END_SRC
 
-** TODO Evil
+** DONE Evil
    :PROPERTIES:
    :README:   [[straight:evil/README.md]]
    :END:
@@ -381,7 +381,7 @@
        (evil-mode 1))
    #+END_SRC
 
-*** TODO Evil Org
+*** DONE Evil Org
     :PROPERTIES:
     :README:   [[./straight/repos/evil-org-mode/README.org]]
     :END:
@@ -397,7 +397,7 @@
 	(evil-org-agenda-set-keys))
     #+END_SRC
 
-*** TODO Evil Collection
+*** DONE Evil Collection
     :PROPERTIES:
     :README:   [[./straight/repos/evil-collection/readme.org]]
     :END:
@@ -411,7 +411,7 @@
 	(evil-collection-init))
     #+END_SRC
 
-*** TODO Evil Commentary
+*** DONE Evil Commentary
     :PROPERTIES:
     :README:   [[./straight/repos/evil-commentary/README.md]]
     :END:
@@ -423,7 +423,7 @@
 	:config (evil-commentary-mode))
     #+END_SRC
 
-*** TODO Evil Surround
+*** DONE Evil Surround
     :PROPERTIES:
     :README:   [[./straight/repos/evil-surround/readme.org]]
     :END:
@@ -434,7 +434,7 @@
 	:config (global-evil-surround-mode 1))
     #+END_SRC
 
-*** TODO Evil Magit
+*** DONE Evil Magit
     :PROPERTIES:
     :README:   [[straight:evil-magit/README.org]]
     :END:
@@ -836,7 +836,7 @@
        (org-agenda-files (list org-directory utz-config-file)))
    #+END_SRC
 
-*** TODO Custom Functions
+*** DONE Custom Functions
 
     #+BEGIN_SRC emacs-lisp
       (require 'ol)
@@ -852,7 +852,7 @@
 							       user-emacs-directory)))))
     #+END_SRC
 
-*** TODO Org Bullets
+*** DONE Org Bullets
     :PROPERTIES:
     :README:   [[straight:org-bullets/README.org]]
     :END:
@@ -1097,9 +1097,9 @@
 	      :wk "Use Package"))
     #+END_SRC
 
-* TODO Themes
+* DONE Themes
 
-** TODO Doom Themes
+** DONE Doom Themes
 
    #+BEGIN_SRC emacs-lisp
      (use-package doom-themes
@@ -1114,7 +1114,7 @@
        (doom-themes-org-config))
    #+END_SRC
 
-** TODO Utz Themes
+** DONE Utz Themes
 
    #+BEGIN_SRC emacs-lisp
      (load-theme (utz/get-theme-by-mode utz-theme-mode) t)

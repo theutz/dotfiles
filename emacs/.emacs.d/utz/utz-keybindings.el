@@ -51,6 +51,7 @@
 (utz/set-leader-key :infix "f e"
   "" '(:ignore t :wk "Emacs")
   "r" '(utz/reload-configuration :wk "Reload Configuration")
+  "c" '(utz/edit-custom-file :wk "Edit Custom File")
   "d" '(utz/edit-configuration :wk "Edit Configuration")
   "f" '(utz/edit-custom-functions :wk "Edit Custom Functions")
   "k" '(utz/edit-keybindings :wk "Edit Keybindings"))

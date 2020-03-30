@@ -29,6 +29,12 @@
 			       (expand-file-name "utz" user-emacs-directory))))
 
 ;;;###autoload
+(defun utz/edit-custom-file ()
+  "Manually edit settings from customize."
+  (interactive)
+  (find-file custom-file))
+
+;;;###autoload
 (defun utz/edit-custom-functions ()
   "Edit the custom functions file."
   (interactive)
