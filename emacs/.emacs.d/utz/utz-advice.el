@@ -8,7 +8,7 @@
 
 (defadvice load-theme (before theme-dont-propagate activate)
   "Disable all active themes when loading a new theme."
-  (mapcar #'disable-theme custom-enabled-themes))
+  (mapc #'disable-theme custom-enabled-themes))
 
 (provide 'utz-advice)
 
