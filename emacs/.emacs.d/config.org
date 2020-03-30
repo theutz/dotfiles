@@ -948,9 +948,9 @@
 
 * TODO Keybindings
 
-** TODO Global Keys
+** DONE Global Keys
 
-*** TODO Super
+*** DONE Super
 
     #+BEGIN_SRC emacs-lisp
       (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
@@ -958,7 +958,7 @@
 
 ** TODO Leader Keys
 
-*** TODO b - Buffers
+*** DONE b - Buffers
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "b"
@@ -976,7 +976,7 @@
 	"c" '(helm-colors :wk "Helm Colors"))
     #+END_SRC
 
-*** TODO f - Files
+*** DONE f - Files
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "f"
@@ -984,7 +984,7 @@
 	"s" '(save-buffer :wk  "Save"))
     #+END_SRC
 
-**** TODO E - Emacs
+**** DONE E - Emacs
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "f e"
@@ -994,7 +994,7 @@
 	 "d" '(utz/edit-config-file :wk "Edit Configuration"))
      #+END_SRC
 
-*** TODO n - Narrow / Widen
+*** DONE n - Narrow / Widen
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "n"
@@ -1023,7 +1023,7 @@
 	"" '(:ignore t :wk "Perspective"))
     #+END_SRC
 
-*** TODO q - Quit / Restart
+*** DONE q - Quit / Restart
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "q"
@@ -1048,7 +1048,7 @@
 	"F" '(toggle-frame-fullscreen :wk "Fullscreen"))
     #+END_SRC
 
-**** TODO t - Theme
+**** DONE t - Theme
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "t t"

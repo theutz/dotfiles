@@ -19,10 +19,13 @@
   "h" `(,(general-simulate-key "C-h") :wk "Help")
   "w" `(,(general-simulate-key "C-w") :wk "Windows"))
 
-(utz/set-leader-key :infix "a"
-  "" '(:ignore t :wk "Appearance")
-  "n" '(utz/next-theme :wk "Next Theme")
-  "p" '(utz/prev-theme :wk "Previous Theme"))
+(utz/set-leader-key :infix "c"
+  "" '(:ignore t :wk "Customize")
+  "g" '(customize-group-other-window :wk "Group")
+  "c" '(customize :wk "All")
+  "t" '(customize-themes :wk "Themes")
+  "f" '(customize-face-other-window :wk "Face")
+  "v" '(customize-variable-other-window :wk "Variable"))
 
 (utz/set-leader-key :infix "b"
   "" '(:ignore t :wk "Buffer")
