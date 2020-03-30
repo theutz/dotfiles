@@ -33,6 +33,7 @@
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
+ '(vc-follow-symlinks t)
  '(visible-bell t)
  '(which-key-sort-order (quote which-key-key-order-alpha)))
 (custom-set-faces

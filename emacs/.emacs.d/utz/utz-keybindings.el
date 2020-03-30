@@ -6,24 +6,33 @@
 ;;
 ;;; Code:
 
+(require 'utz-evil)
 (require 'utz-general)
+
+(general-define-key
+ "s-q" '(save-buffers-kill-terminal :wk "Kill Client"))
 
 (utz/set-leader-key
   "SPC" '(helm-M-x :wk "M-x")
-  "0" '(ranger :wk "Ranger"))
+  "0" '(ranger :wk "Ranger")
+  "/" '(helm-ag :wk "Search")
+  "h" `(,(general-simulate-key "C-h") :wk "Help")
+  "w" `(,(general-simulate-key "C-w") :wk "Windows"))
 
 (utz/set-leader-key :infix "b"
   "" '(:ignore t :wk "Buffer")
   "b" '(helm-buffers-list :wk "List Buffers")
+  "d" '(evil-delete-buffer :wk "Delete Buffer")
   "p" '(previous-buffer :wk "Previous Buffer")
   "n" '(next-buffer :wk "Next Buffer")
   "r" '(revert-buffer :wk "Revert Buffer")
   "e" '(eval-buffer :wk "Eval Buffer"))
 
 (utz/set-leader-key :infix "e"
-  "" '(:ignore t :wk "Eval")
+  "" '(:ignore t :wk "Eval / Errors")
   "b" '(eval-buffer :wk "Buffer")
   "e" '(eval-last-sexp :wk "Last Sexp")
+  "l" '(flycheck-list-errors :wk "List Errors")
   "r" '(eval-region :wk "Region")
   "x" '(eval-expression :wk "Expression")
   "d" '(eval-defun :wk "Defun"))
@@ -52,6 +61,14 @@
   "Q" '(save-buffers-kill-emacs :wk "Kill Client and Server")
   "q" '(save-buffers-kill-terminal :wk "Kill Client")
   "R" '(restart-emacs :wk "Restart Emacs"))
+
+(utz/set-help-key
+  "f" '(helpful-callable :wk "Helpful Callable")
+  "F" '(helpful-function :wk "Helpful Function")
+  "v" '(helpful-variable :wk "Helpful Variable")
+  "k" '(helpful-key :wk "Helpful Key")
+  "x" '(helpful-at-point :wk "Helpful at Point")
+  "c" '(helpful-command :wk "Helpful Command"))
 
 (provide 'utz-keybindings)
 

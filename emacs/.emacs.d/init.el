@@ -16,6 +16,7 @@
 (add-to-list 'load-path (expand-file-name "utz"
 					  user-emacs-directory))
 
+;; Require all the things
 (require 'utz-basics)
 (require 'utz-straight)
 (require 'utz-evil)
@@ -25,11 +26,14 @@
 (require 'utz-flycheck)
 (require 'utz-restart-emacs)
 (require 'utz-which-key)
+(require 'utz-ws-butler)
+(require 'utz-paredit)
 (require 'utz-ranger)
 (require 'utz-helpful)
 (require 'utz-company)
 (require 'utz-diminish)
 (require 'utz-delight)
+(require 'utz-sh-mode)
 (require 'utz-funcs)
 (require 'utz-keybindings)
 
