@@ -25,6 +25,7 @@
 (require 'utz-flycheck)
 (require 'utz-restart-emacs)
 (require 'utz-which-key)
+(require 'utz-ranger)
 (require 'utz-helpful)
 (require 'utz-company)
 (require 'utz-diminish)
