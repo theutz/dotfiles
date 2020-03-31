@@ -6,9 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-
-(straight-use-package 'ranger)
 (require 'ranger)
 
 (provide 'utz-ranger)

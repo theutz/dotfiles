@@ -6,8 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'gitignore-mode)
 (require 'gitignore-mode)
 
 (provide 'utz-gitignore)

@@ -6,8 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'doom-themes)
 (require 'doom-themes)
 
 (with-eval-after-load 'doom-themes

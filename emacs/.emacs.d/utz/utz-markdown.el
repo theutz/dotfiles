@@ -6,8 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'markdown-mode)
 (require 'markdown-mode)
 
 (with-eval-after-load 'markdown-mode

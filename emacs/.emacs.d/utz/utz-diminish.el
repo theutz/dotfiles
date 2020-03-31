@@ -6,9 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-
-(straight-use-package 'diminish)
 (require 'diminish)
 
 (with-eval-after-load 'diminish

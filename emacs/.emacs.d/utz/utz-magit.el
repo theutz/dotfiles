@@ -6,9 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-
-(straight-use-package 'magit)
 (require 'magit)
 
 (provide 'utz-magit)

@@ -6,10 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'org)
-(straight-use-package 'org-bullets)
-
 (require 'org)
 
 (with-eval-after-load 'org

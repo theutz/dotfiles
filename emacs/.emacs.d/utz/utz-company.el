@@ -6,9 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'company)
-(straight-use-package 'company-emoji)
 (require 'company)
 
 (with-eval-after-load 'company

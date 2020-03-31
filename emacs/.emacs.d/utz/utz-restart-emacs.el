@@ -6,9 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-
-(straight-use-package 'restart-emacs)
 (require 'restart-emacs)
 
 (provide 'utz-restart-emacs)

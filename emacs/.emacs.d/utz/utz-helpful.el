@@ -6,10 +6,7 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(require 'utz-general)
-
-(straight-use-package 'helpful)
+(require 'general)
 (require 'helpful)
 
 (general-define-key

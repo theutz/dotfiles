@@ -6,11 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'straight)
-(straight-use-package 'helm)
-(straight-use-package 'helm-ag)
-(straight-use-package 'helm-descbinds)
-
 (require 'helm)
 (require 'general)
 

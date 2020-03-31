@@ -6,12 +6,12 @@
 ;;
 ;;; Code:
 
-(require 'straight)
-(straight-use-package 'flycheck)
 (require 'flycheck)
+(require 'delight)
 
 (with-eval-after-load 'flycheck
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  (delight 'flycheck-mode " 🦟"))
 
 (provide 'utz-flycheck)
 

@@ -6,15 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-
-(straight-use-package 'evil)
-(straight-use-package 'evil-org)
-(straight-use-package 'evil-surround)
-(straight-use-package 'evil-collection)
-(straight-use-package 'evil-commentary)
-(straight-use-package 'evil-magit)
-
 (require 'evil)
 
 (setq evil-normal-state-tag "NORMAL"

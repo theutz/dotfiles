@@ -22,14 +22,6 @@
   "f" '(toggle-frame-maximized :wk "Frame Fullscreen")
   "F" '(toggle-frame-maximized :wk "Frame Maximized"))
 
-(utz/set-leader-key :infix "c"
-  "" '(:ignore t :wk "Customize")
-  "g" '(customize-group-other-window :wk "Group")
-  "c" '(customize :wk "All")
-  "t" '(customize-themes :wk "Themes")
-  "f" '(customize-face-other-window :wk "Face")
-  "v" '(customize-variable-other-window :wk "Variable"))
-
 (utz/set-leader-key :infix "b"
   "" '(:ignore t :wk "Buffer")
   "b" '(helm-buffers-list :wk "List Buffers")
@@ -38,6 +30,14 @@
   "n" '(next-buffer :wk "Next Buffer")
   "r" '(revert-buffer :wk "Revert Buffer")
   "e" '(eval-buffer :wk "Eval Buffer"))
+
+(utz/set-leader-key :infix "c"
+  "" '(:ignore t :wk "Customize")
+  "g" '(customize-group-other-window :wk "Group")
+  "c" '(customize :wk "All")
+  "t" '(customize-themes :wk "Themes")
+  "f" '(customize-face-other-window :wk "Face")
+  "v" '(customize-variable-other-window :wk "Variable"))
 
 (utz/set-leader-key :infix "e"
   "" '(:ignore t :wk "Eval / Errors")
@@ -52,7 +52,9 @@
   "" '(:ignore t :wk "Files")
   "r" '(revert-buffer :wk "Revert Buffer")
   "s" '(save-buffer :wk "Save Buffer")
-  "f" '(helm-find-files :wk "Find Files"))
+  "S" '(evil-write-all :wk "Save All")
+  "f" '(helm-find-files :wk "Find Files")
+  "F" '(find-file-other-window :wk "Find Files Other Window"))
 
 (utz/set-leader-key :infix "f e"
   "" '(:ignore t :wk "Emacs")
@@ -70,9 +72,14 @@
 
 (utz/set-leader-key :infix "h"
   "" '(:ignore t :wk "Help")
+  "a" '(apropos :wk "Apropos")
+  "e" '(view-echo-area-messages :wk "View Echo Area Messages")
   "f" '(helpful-callable :wk "Helpful Callable")
   "F" '(helpful-function :wk "Helpful Function")
   "v" '(helpful-variable :wk "Helpful Variable")
+  "o" '(helpful-symbol :wk "Helpful Symbol")
+  "m" '(describe-mode :wk "Describe Mode")
+  "p" '(describe-text-properties :wk "Describe Text Properties")
   "k" '(helpful-key :wk "Helpful Key")
   "x" '(helpful-at-point :wk "Helpful at Point")
   "c" '(helpful-command :wk "Helpful Command"))

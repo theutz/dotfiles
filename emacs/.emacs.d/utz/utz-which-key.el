@@ -6,15 +6,13 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'which-key)
-
 (require 'which-key)
-(require 'utz-diminish)
+(require 'diminish)
 
 (with-eval-after-load 'which-key
   (which-key-mode)
   (which-key-setup-side-window-bottom)
+
   (with-eval-after-load 'diminish
     (diminish 'which-key-mode)))
 

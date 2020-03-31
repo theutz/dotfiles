@@ -6,8 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'general)
 (require 'general)
 
 (with-eval-after-load 'general

@@ -6,8 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'unicode-fonts)
 (require 'unicode-fonts)
 
 (with-eval-after-load 'unicode-fonts

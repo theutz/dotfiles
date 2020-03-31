@@ -6,8 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(straight-use-package 'ws-butler)
 (require 'ws-butler)
 
 (with-eval-after-load 'ws-butler

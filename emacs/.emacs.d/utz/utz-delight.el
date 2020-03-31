@@ -6,9 +6,6 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-
-(straight-use-package 'delight)
 (require 'delight)
 
 (provide 'utz-delight)
