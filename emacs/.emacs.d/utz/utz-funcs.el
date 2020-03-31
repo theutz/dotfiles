@@ -54,6 +54,15 @@
 			 (expand-file-name repo-name
 					   utz-packages-directory)))))
 
+(defun utz/setup-emoji-font (frame)
+  "Use Apple emojis inline.  FRAME is passed to 'set-fontset-font'."
+  (when (eq system-type 'darwin)
+    (set-fontset-font t
+		      'symbol
+		      (font-spec :family "Apple Color Emoji")
+		      frame
+		      'prepend)))
+
 (provide 'utz-funcs)
 
 ;;; utz-funcs.el ends here

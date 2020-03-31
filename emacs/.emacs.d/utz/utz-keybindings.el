@@ -15,9 +15,12 @@
 (utz/set-leader-key
   "SPC" '(helm-M-x :wk "M-x")
   "0" '(ranger :wk "Ranger")
-  "/" '(helm-ag :wk "Search")
-  "h" `(,(general-simulate-key "C-h") :wk "Help")
-  "w" `(,(general-simulate-key "C-w") :wk "Windows"))
+  "/" '(helm-ag :wk "Search"))
+
+(utz/set-leader-key :infix "."
+  "" '(:ignore t :wk "Toggles")
+  "f" '(toggle-frame-maximized :wk "Frame Fullscreen")
+  "F" '(toggle-frame-maximized :wk "Frame Maximized"))
 
 (utz/set-leader-key :infix "c"
   "" '(:ignore t :wk "Customize")
@@ -65,19 +68,37 @@
   "d" '(magit-dispatch :wk "Git Dispatch")
   "a" '(magit-stage :wk "Stage File"))
 
-(utz/set-leader-key :infix "q"
-  "" '(:ignore t :wk "Quit / Restart")
-  "Q" '(save-buffers-kill-emacs :wk "Kill Client and Server")
-  "q" '(save-buffers-kill-terminal :wk "Kill Client")
-  "R" '(restart-emacs :wk "Restart Emacs"))
-
-(utz/set-help-key
+(utz/set-leader-key :infix "h"
+  "" '(:ignore t :wk "Help")
   "f" '(helpful-callable :wk "Helpful Callable")
   "F" '(helpful-function :wk "Helpful Function")
   "v" '(helpful-variable :wk "Helpful Variable")
   "k" '(helpful-key :wk "Helpful Key")
   "x" '(helpful-at-point :wk "Helpful at Point")
   "c" '(helpful-command :wk "Helpful Command"))
+
+(utz/set-leader-key :infix "q"
+  "" '(:ignore t :wk "Quit / Restart")
+  "Q" '(save-buffers-kill-emacs :wk "Kill Client and Server")
+  "q" '(save-buffers-kill-terminal :wk "Kill Client")
+  "R" '(restart-emacs :wk "Restart Emacs"))
+
+(utz/set-leader-key :infix "w"
+  "" '(:ignore t :wk "Window")
+  "c" '(evil-window-delete :wk "Delete")
+  "=" '(balance-windows :wk "Balance")
+  "h" '(evil-window-left :wk "Left")
+  "j" '(evil-window-down :wk "Down")
+  "k" '(evil-window-up :wk "Up")
+  "l" '(evil-window-right :wk "Right")
+  "H" '(evil-window-move-far-left :wk "Left")
+  "J" '(evil-window-move-very-down :wk "Down")
+  "K" '(evil-window-move-very-up :wk "Up")
+  "L" '(evil-window-move-far-right :wk "Right")
+  "o" '(delete-other-windows :wk "Delete Others")
+  "v" '(evil-window-vsplit :wk "Vertical Split")
+  "s" '(evil-window-split :wk "Horizontal Split")
+  "f" '(make-frame :wk "Make Frame"))
 
 (utz/set-localleader-key
   :states '(normal insert visual emacs)

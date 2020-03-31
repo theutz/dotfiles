@@ -7,15 +7,16 @@
 ;;; Code:
 
 (require 'utz-straight)
+(straight-use-package 'which-key)
+
+(require 'which-key)
 (require 'utz-diminish)
 
-(straight-use-package 'which-key)
-(require 'which-key)
-
-(which-key-mode)
-(which-key-setup-side-window-bottom)
-
-(diminish 'which-key-mode)
+(with-eval-after-load 'which-key
+  (which-key-mode)
+  (which-key-setup-side-window-bottom)
+  (with-eval-after-load 'diminish
+    (diminish 'which-key-mode)))
 
 (provide 'utz-which-key)
 

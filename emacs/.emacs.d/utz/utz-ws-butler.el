@@ -10,8 +10,9 @@
 (straight-use-package 'ws-butler)
 (require 'ws-butler)
 
-(add-hook 'prog-mode-hook 'ws-butler-mode)
-(add-hook 'org-mode-hook 'ws-butler-mode)
+(with-eval-after-load 'ws-butler
+  (add-hook 'prog-mode-hook 'ws-butler-mode)
+  (add-hook 'org-mode-hook 'ws-butler-mode))
 
 (provide 'utz-ws-butler)
 

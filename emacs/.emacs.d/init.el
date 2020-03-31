@@ -10,6 +10,7 @@
 (setq custom-file
       (expand-file-name "custom.el"
 			user-emacs-directory))
+(load-file custom-file)
 
 ;; Setup Load Path
 (add-to-list 'load-path
@@ -29,6 +30,8 @@
 (require 'utz-doom-themes)
 (require 'utz-org)
 (require 'utz-which-key)
+(require 'utz-unicode-fonts)
+(require 'utz-spaceline)
 (require 'utz-ws-butler)
 (require 'utz-paredit)
 (require 'utz-ranger)
@@ -38,11 +41,14 @@
 (require 'utz-delight)
 (require 'utz-sh-mode)
 (require 'utz-funcs)
+(require 'utz-hooks)
 (require 'utz-keybindings)
 
 (add-hook 'after-init '(lambda ()
   (load-theme (car custom-enabled-themes))))
 
 (load-file custom-file)
+
+(provide 'init)
 
 ;;; init.el ends here

@@ -7,22 +7,25 @@
 ;;; Code:
 
 (require 'utz-straight)
-
 (straight-use-package 'general)
 (require 'general)
 
-(general-create-definer utz/set-leader-key
-  :prefix "SPC"
-  :non-normal-prefix "M-SPC"
-  :states '(normal visual insert emacs))
+(with-eval-after-load 'general
+  (general-create-definer utz/set-leader-key
+    :prefix "SPC"
+    :non-normal-prefix "M-SPC"
+    :states '(normal visual insert emacs))
 
-(general-create-definer utz/set-localleader-key
-  :prefix ","
-  :non-normal-prefix "M-,"
-  :states '(normal visual emacs))
+  (general-create-definer utz/set-localleader-key
+    :prefix ","
+    :non-normal-prefix "M-,"
+    :states '(normal visual emacs))
 
-(general-create-definer utz/set-help-key
-  :prefix "C-h")
+  (general-create-definer utz/set-help-key
+    :prefix "C-h")
+
+  (general-create-definer utz/set-window-key
+    :prefix "C-w"))
 
 (provide 'utz-general)
 

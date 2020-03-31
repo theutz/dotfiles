@@ -7,11 +7,16 @@
 ;;; Code:
 
 (require 'utz-straight)
-
 (straight-use-package 'company)
+(straight-use-package 'company-emoji)
 (require 'company)
 
-(add-hook 'after-init-hook 'global-company-mode)
+(with-eval-after-load 'company
+  (add-hook 'after-init-hook 'global-company-mode)
+  (require 'company-emoji)
+
+  (with-eval-after-load 'company-emoji
+    (add-to-list 'company-backends 'company-emoji)))
 
 (provide 'utz-company)
 

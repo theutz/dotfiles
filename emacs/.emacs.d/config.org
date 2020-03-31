@@ -3,7 +3,7 @@
 #+EMAIL: michael@theutz.com
 #+STARTUP: content
 
-* TODO Utz
+* DONE Utz
 
 ** DONE Requires
 
@@ -200,7 +200,7 @@
      (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
    #+END_SRC
 
-** TODO Custom File
+** DONE Custom File
 
    We set the custom file so that it's a hidden file, but we don't load it. Because we like to do our customizations manually.
 
@@ -209,7 +209,7 @@
      ;;(load custom-file 'noerror 'nomessage)
    #+END_SRC
 
-** TODO Custom Themes
+** DONE Custom Themes
 
    #+BEGIN_SRC emacs-lisp
      (setq custom-safe-themes t)
@@ -217,7 +217,7 @@
 		   (expand-file-name "themes" user-emacs-directory))
    #+END_SRC
 
-** TODO Exec Path
+** DONE Exec Path
 
    This makes sure homebrew-ed packages (like =figlet=) are available to Emacs.
 
@@ -226,62 +226,62 @@
      (setq exec-path (append exec-path '("/usr/local/bin")))
    #+END_SRC
 
-** TODO Server
+** DONE Server
 
    #+BEGIN_SRC emacs-lisp
      (server-force-delete)
      (server-start)
    #+END_SRC
 
-** TODO Visible Bell
+** DONE Visible Bell
 
    #+BEGIN_SRC emacs-lisp
      (setq visible-bell t)
    #+END_SRC
 
-** TODO Backup Directory
+** DONE Backup Directory
 
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
    #+END_SRC
 
-** TODO Splash Screen
+** DONE Splash Screen
 
    #+BEGIN_SRC emacs-lisp
      (setq inhibit-splash-screen t)
    #+END_SRC
 
-** TODO Scratch Message
+** DONE Scratch Message
 
    #+BEGIN_SRC emacs-lisp
      (setq initial-scratch-message nil)
    #+END_SRC
 
-** TODO Paren Mode
+** DONE Paren Mode
 
    #+BEGIN_SRC emacs-lisp
      (show-paren-mode 1)
    #+END_SRC
 
-** TODO Menu Bar Mode
+** DONE Menu Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (menu-bar-mode 0)
    #+END_SRC
 
-** TODO Scroll Bar Mode
+** DONE Scroll Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (scroll-bar-mode 0)
    #+END_SRC
 
-** TODO Tool Bar Mode
+** DONE Tool Bar Mode
 
    #+BEGIN_SRC emacs-lisp
      (tool-bar-mode 0)
    #+END_SRC
 
-** TODO Line Numbers
+** DONE Line Numbers
 
    #+BEGIN_SRC emacs-lisp
      (setq-default display-line-numbers 'visual
@@ -290,13 +290,13 @@
 		   display-line-numbers-widen t)
    #+END_SRC
 
-** TODO Server
+** DONE Server
 
    #+BEGIN_SRC emacs-lisp
      (server-start)
    #+END_SRC
 
-** TODO Emoji Fonts
+** DONE Emoji Fonts
 
    #+BEGIN_SRC emacs-lisp
      (defun utz/setup-emoji-font (frame)
@@ -327,7 +327,7 @@
      (use-package delight)
    #+END_SRC
 
-** TODO Unicode Fonts
+** DONE Unicode Fonts
 
    #+BEGIN_SRC emacs-lisp
      (use-package unicode-fonts
@@ -444,12 +444,12 @@
 	:after (evil magit))
     #+END_SRC
 
-** TODO General
+** DONE General
    :PROPERTIES:
    :README:   [[straight:general.el/README.org]]
    :END:
 
-*** TODO Load
+*** DONE Load
 
     #+BEGIN_SRC emacs-lisp
       (use-package general
@@ -468,7 +468,7 @@
 	  :prefix "C-h"))
     #+END_SRC
 
-*** TODO Keybindings
+*** DONE Keybindings
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key "h" `(,(general-simulate-key "C-h") :wk "Help")
@@ -608,7 +608,7 @@
        (spaceline-toggle-buffer-size-off))
    #+END_SRC
 
-** TODO Which Key
+** DONE Which Key
 
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
@@ -620,7 +620,7 @@
        (which-key-setup-side-window-bottom))
    #+END_SRC
 
-** TODO Whitespace Butler
+** DONE Whitespace Butler
 
    #+BEGIN_SRC emacs-lisp
      (use-package ws-butler
