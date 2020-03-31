@@ -6,11 +6,65 @@
 ;;
 ;;; Code:
 
-(require 'utz-evil)
-(require 'utz-general)
+(require 'general)
+(require 'evil)
+(require 'evil-surround)
+(require 'evil-collection)
+(require 'evil-commentary)
+(require 'evil-magit)
+(require 'evil-org)
+(require 'evil-org-agenda)
+
+;; Evil
+
+(setq evil-normal-state-tag "NORMAL"
+      evil-visual-state-tag "VISUAL"
+      evil-insert-state-tag "INSERT"
+      evil-emacs-state-tag "EMACS"
+      evil-replace-state-tag "REPLACE"
+      evil-motion-state-tag "MOTION"
+      evil-operator-state-tag "OPERATOR")
+
+(evil-mode 1)
+(global-evil-surround-mode 1)
+(evil-collection-init)
+(evil-commentary-mode)
+
+(add-hook 'org-mode-hook 'evil-org-mode)
+(add-hook 'evil-org-mode-hook '(lambda ()
+				 (evil-org-set-key-theme)))
+(evil-org-agenda-set-keys)
+
+;; Definers
+
+(general-create-definer utz/set-leader-key
+  :prefix "SPC"
+  :non-normal-prefix "M-SPC"
+  :states '(normal visual insert emacs))
+
+(general-create-definer utz/set-localleader-key
+  :prefix ","
+  :non-normal-prefix "M-,"
+  :states '(normal visual emacs))
+
+(general-create-definer utz/set-help-key
+  :prefix "C-h")
+
+(general-create-definer utz/set-window-key
+  :prefix "C-w")
+
+;; Keybindings
 
 (general-define-key
+ "M-x" 'helm-M-x
  "s-q" '(save-buffers-kill-terminal :wk "Kill Client"))
+
+(general-define-key
+ :states 'normal
+ :keymaps 'helpful-mode-map
+ "q" '(evil-window-delete :wk "Delete Window"))
+
+;; Leader Keybindings
 
 (utz/set-leader-key
   "SPC" '(helm-M-x :wk "M-x")
@@ -106,10 +160,13 @@
   "J" '(evil-window-move-very-down :wk "Down")
   "K" '(evil-window-move-very-up :wk "Up")
   "L" '(evil-window-move-far-right :wk "Right")
+  "m" '(maximize-window :wk "Maximize")
   "o" '(delete-other-windows :wk "Delete Others")
   "v" '(evil-window-vsplit :wk "Vertical Split")
   "s" '(evil-window-split :wk "Horizontal Split")
   "f" '(make-frame :wk "Make Frame"))
+
+;; Local Leader Keybindings
 
 (utz/set-localleader-key
   :states '(normal insert visual emacs)
@@ -123,5 +180,4 @@
   "s t" '(org-todo :wk "Cycle State"))
 
 (provide 'utz-keybindings)
-
 ;;; utz-keybindings.el ends here

@@ -25,6 +25,7 @@
  '(display-line-numbers-width 2)
  '(doom-themes-enable-bold t)
  '(doom-themes-padded-modeline t)
+ '(eldoc-minor-mode-string nil)
  '(evil-collection-company-use-tng nil)
  '(evil-echo-state nil)
  '(evil-shift-width 2)

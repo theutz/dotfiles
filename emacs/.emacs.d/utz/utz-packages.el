@@ -1,4 +1,4 @@
-;;; utz-straight.el -- Setup straight.el
+;;; packages.el -- Setup straight.el
 ;;
 ;;; Commentary:
 ;;
@@ -51,6 +51,6 @@
 (straight-use-package 'which-key)
 (straight-use-package 'ws-butler)
 
-(provide 'utz-straight)
+(provide 'utz-packages)
 
-;;; utz-straight.el ends here
+;;; packages.el ends here
