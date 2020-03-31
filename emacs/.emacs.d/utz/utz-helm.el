@@ -6,24 +6,25 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-(require 'utz-general)
-
+(require 'straight)
 (straight-use-package 'helm)
+(straight-use-package 'helm-ag)
+(straight-use-package 'helm-descbinds)
+
 (require 'helm)
-
-(add-hook 'after-init-hook '(lambda () (helm-mode 1)))
-
-(with-eval-after-load 'general
-  (general-define-key "M-x" 'helm-M-x))
+(require 'general)
 
 (with-eval-after-load 'helm
-  (straight-use-package 'helm-ag)
+  (add-hook 'after-init-hook '(lambda ()
+				(helm-mode 1)))
   (require 'helm-ag)
-
-  (straight-use-package 'helm-descbinds)
   (require 'helm-descbinds)
-  (helm-descbinds-mode))
+
+  (when (fboundp 'helm-descbinds-mode)
+    (helm-descbinds-mode))
+
+  (with-eval-after-load 'general
+    (general-define-key "M-x" 'helm-M-x)))
 
 (provide 'utz-helm)
 

@@ -36,8 +36,11 @@
    (quote
     ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/Cellar/emacs-plus/26.3/libexec/emacs/26.3/x86_64-apple-darwin19.3.0" "/usr/local/bin")))
  '(flycheck-emacs-lisp-load-path (quote inherit))
+ '(helm-completion-style (quote emacs))
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
+ '(markdown-command "multimarkdown")
+ '(markdown-open-command "~/bin/mark")
  '(menu-bar-mode nil)
  '(org-M-RET-may-split-line nil)
  '(org-agenda-files (quote ("~/Dropbox/org")))

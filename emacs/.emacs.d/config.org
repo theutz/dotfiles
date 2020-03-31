@@ -183,9 +183,9 @@
 	(narrow-to-page))
     #+END_SRC
 
-* TODO Emacs Basics
+* DONE Emacs Basics
 
-** TODO Encoding
+** DONE Encoding
 
    #+BEGIN_SRC emacs-lisp
      (set-language-environment "UTF-8")
@@ -308,7 +308,7 @@
    #+END_SRC
 
 * TODO Global Packages
-** TODO Diminish
+** DONE Diminish
 
    #+BEGIN_SRC emacs-lisp
      (use-package diminish
@@ -317,7 +317,7 @@
        (diminish 'eldoc-mode))
    #+END_SRC
 
-** TODO Delight
+** DONE Delight
 
    | Source Code |
    |-------------|
@@ -551,7 +551,7 @@
 	 ("[" utz/narrow-page-backward))
      #+END_SRC
 
-** TODO Helm
+** DONE Helm
 
    | Readme    | Source | GitHub |
    |-----------+--------+--------|
@@ -574,7 +574,7 @@
        (helm-mode 1))
    #+END_SRC
 
-*** TODO Helm Ag
+*** DONE Helm Ag
 
     #+BEGIN_SRC emacs-lisp
       (use-package helm-ag
@@ -585,7 +585,7 @@
 	  "s" '(helm-ag :wk "Silver Searcher")))
     #+END_SRC
 
-*** TODO Helm Descbinds
+*** DONE Helm Descbinds
 
     #+BEGIN_SRC emacs-lisp
       (use-package helm-descbinds
@@ -594,7 +594,7 @@
 	(helm-descbinds-mode))
     #+END_SRC
 
-** TODO Spaceline
+** DONE Spaceline
 
    #+BEGIN_SRC emacs-lisp
      (use-package spaceline
@@ -692,7 +692,7 @@
 			       (persp-mode-projectile-bridge-mode 1)))))
     #+END_SRC
 
-** TODO Flycheck
+** DONE Flycheck
 
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
@@ -720,7 +720,7 @@
        :hook ((emacs-lisp-mode org-mode) . rainbow-mode))
    #+END_SRC
 
-** TODO Company
+** DONE Company
 
    #+BEGIN_SRC emacs-lisp
      (use-package company
@@ -732,7 +732,7 @@
        :hook ((after-init . global-company-mode)))
    #+END_SRC
 
-*** TODO Company Emoji
+*** DONE Company Emoji
 
     #+BEGIN_SRC emacs-lisp
       (use-package company-emoji
@@ -749,7 +749,7 @@
        (yas-global-mode 1))
    #+END_SRC
 
-** TODO Magit
+** DONE Magit
 
    #+BEGIN_SRC emacs-lisp
      (use-package magit
@@ -759,7 +759,7 @@
 	 "s" '(magit-status :wk "Status")))
    #+END_SRC
 
-** TODO Restart Emacs
+** DONE Restart Emacs
 
    #+BEGIN_SRC emacs-lisp
      (use-package restart-emacs
@@ -768,7 +768,7 @@
 	 "r" '(restart-emacs :wk "Restart Emacs")))
    #+END_SRC
 
-** TODO Paredit
+** DONE Paredit
 
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
@@ -776,7 +776,7 @@
        :hook ((emacs-lisp-mode . enable-paredit-mode)))
    #+END_SRC
 
-** TODO Helpful
+** DONE Helpful
 
    #+BEGIN_SRC emacs-lisp
      (use-package helpful
@@ -801,7 +801,7 @@
        :defer t)
    #+END_SRC
 
-** TODO Ranger
+** DONE Ranger
    :PROPERTIES:
    :README:   [[straight:ranger.el/README.md]]
    :END:
@@ -816,9 +816,9 @@
        :commands (ranger))
    #+END_SRC
 
-* TODO Language-Based Packages
+* DONE Language-Based Packages
 
-** TODO Org Mode
+** DONE Org Mode
 
    | README |
    |--------|
@@ -870,9 +870,9 @@
 	:after (helm f s dash))
     #+END_SRC
 
-** TODO Keybindings
+** DONE Keybindings
 
-*** TODO Local Leader
+*** DONE Local Leader
 
     #+BEGIN_SRC emacs-lisp
       (general-create-definer utz/set-org-mode-key
@@ -880,7 +880,7 @@
 	:keymaps '(org-mode-map))
     #+END_SRC
 
-**** TODO Non-Prefixed Commands
+**** DONE Non-Prefixed Commands
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-org-mode-key :states '(normal visual emacs)
@@ -888,7 +888,7 @@
 	 "'" '(org-edit-special :wk "Edit Special"))
      #+END_SRC
 
-***** TODO Org Source Mode
+***** DONE Org Source Mode
 
       #+BEGIN_SRC emacs-lisp
 	(add-hook 'org-src-mode-hook
@@ -900,7 +900,7 @@
 		      "s" '(org-edit-src-save :wk "Save"))))
       #+END_SRC
 
-**** TODO L - Links
+**** DONE L - Links
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-org-mode-key :states '(normal visual emacs)
@@ -911,13 +911,13 @@
 	 "o" '(org-open-at-point :wk "Open at Point"))
      #+END_SRC
 
-** TODO Typescript Mode
+** DONE Typescript Mode
 
    #+BEGIN_SRC emacs-lisp
      (use-package typescript-mode)
    #+END_SRC
 
-** TODO Tide
+** DONE Tide
 
    #+BEGIN_SRC emacs-lisp
      (use-package tide
@@ -927,7 +927,7 @@
 	      (before-save . tide-format-before-save)))
    #+END_SRC
 
-** TODO Markdown
+** DONE Markdown
 
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
@@ -940,7 +940,7 @@
        (setq markdown-command "multimarkdown"))
    #+END_SRC
 
-** TODO Gitignore
+** DONE Gitignore
 
    #+BEGIN_SRC emacs-lisp
      (use-package gitignore-mode)

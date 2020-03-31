@@ -77,6 +77,10 @@
   "x" '(helpful-at-point :wk "Helpful at Point")
   "c" '(helpful-command :wk "Helpful Command"))
 
+(utz/set-leader-key :infix "o"
+  "" '(:ignore t :wk "Org")
+  "a" '(org-agenda :wk "Agenda"))
+
 (utz/set-leader-key :infix "q"
   "" '(:ignore t :wk "Quit / Restart")
   "Q" '(save-buffers-kill-emacs :wk "Kill Client and Server")
@@ -103,6 +107,11 @@
 (utz/set-localleader-key
   :states '(normal insert visual emacs)
   :keymaps '(org-mode-map)
+  "SPC" '(org-todo :wk "Cycle State")
+  "l" '(:ignore t :wk "Links")
+  "l i" '(org-insert-link :wk "Insert")
+  "l t" '(org-toggle-link-display :wk "Toggle Link Display")
+  "l o" '(org-open-at-point :wk "Open at Point")
   "s" '(:ignore t :wk "State")
   "s t" '(org-todo :wk "Cycle State"))
 

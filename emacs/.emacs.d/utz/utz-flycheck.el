@@ -6,12 +6,12 @@
 ;;
 ;;; Code:
 
-(require 'utz-straight)
-
+(require 'straight)
 (straight-use-package 'flycheck)
 (require 'flycheck)
 
-(global-flycheck-mode)
+(with-eval-after-load 'flycheck
+  (global-flycheck-mode))
 
 (provide 'utz-flycheck)
 
