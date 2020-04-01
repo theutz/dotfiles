@@ -18,6 +18,18 @@
   :group 'utz
   :type 'directory)
 
+(defcustom utz-leader-key
+  "SPC"
+  "The prefix key to use for keybindings."
+  :group 'utz
+  :type 'string)
+
+(defcustom utz-localleader-key
+  ","
+  "The prefix key to use for 'major-mode' keybindings."
+  :group 'utz
+  :type 'string)
+
 (defgroup utz nil "Utz Customization Settings"
   :group 'local)
 

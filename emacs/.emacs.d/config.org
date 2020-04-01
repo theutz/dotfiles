@@ -337,19 +337,19 @@
        (unicode-fonts-setup))
    #+END_SRC
 
-** TODO dash.el
+** DONE dash.el
 
    #+BEGIN_SRC emacs-lisp
      (use-package dash)
    #+END_SRC
 
-** TODO s.el
+** DONE s.el
 
    #+BEGIN_SRC emacs-lisp
      (use-package s)
    #+END_SRC
 
-** TODO f.el
+** DONE f.el
 
    #+BEGIN_SRC emacs-lisp
      (use-package f)
@@ -475,9 +475,9 @@
 	"w" `(,(general-simulate-key "C-w") :wk "Window"))
     #+END_SRC
 
-** TODO Hydra
+** DONE Hydra
 
-*** TODO Initialization
+*** DONE Initialization
 
     #+BEGIN_SRC emacs-lisp
       (use-package hydra
@@ -487,9 +487,9 @@
 	  "n ." '(utz/hydra-narrow/body :wk "Hydra")))
     #+END_SRC
 
-*** TODO Hydras
+*** DONE Hydras
 
-**** TODO Themes
+**** DONE Themes
 
      #+BEGIN_SRC emacs-lisp
        (with-eval-after-load 'hydra
@@ -507,7 +507,7 @@
 	   ("q" nil "cancel")))
      #+END_SRC
 
-**** TODO Comment
+**** DONE Comment
 
      #+BEGIN_SRC emacs-lisp
        (with-eval-after-load 'hydra
@@ -529,7 +529,7 @@
 	   ("q" nil "cancel")))
      #+END_SRC
 
-**** TODO Narrow
+**** DONE Narrow
 
      #+BEGIN_SRC emacs-lisp
        (defhydra utz/hydra-narrow (:hint nil)
@@ -629,7 +629,7 @@
 	      (org-mode . ws-butler-mode)))
    #+END_SRC
 
-** TODO Projectile
+** DONE Projectile
 
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
@@ -645,7 +645,7 @@
        (helm-projectile-on))
    #+END_SRC
 
-** TODO Persp Mode
+** DONE Persp Mode
 
    #+BEGIN_SRC emacs-lisp
      (use-package persp-mode
@@ -679,7 +679,7 @@
 	     persp-autokill-buffer-on-remove 'kill-weak))
    #+END_SRC
 
-*** TODO Persp Mode Projectile Bridge
+*** DONE Persp Mode Projectile Bridge
 
     #+BEGIN_SRC emacs-lisp
       (use-package persp-mode-projectile-bridge
@@ -701,14 +701,14 @@
        (global-flycheck-mode))
    #+END_SRC
 
-** TODO Undo Tree
+** DONE Undo Tree
 
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
        :diminish)
    #+END_SRC
 
-** TODO Rainbow Mode
+** DONE Rainbow Mode
 
    | Source | GitHub |
    |--------+--------|
@@ -740,7 +740,7 @@
 	(add-to-list 'company-backends 'company-emoji))
     #+END_SRC
 
-** TODO YASnippet
+** DONE YASnippet
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
@@ -794,7 +794,7 @@
 	 "c" '(helpful-command :wk "Helpful Command")))
    #+END_SRC
 
-** TODO Figlet
+** DONE Figlet
 
    #+BEGIN_SRC emacs-lisp
      (use-package figlet
@@ -863,7 +863,7 @@
 	:hook ((org-mode . (lambda () (org-bullets-mode 1)))))
     #+END_SRC
 
-*** TODO Helm Org Rifle
+*** DONE Helm Org Rifle
 
     #+BEGIN_SRC emacs-lisp
       (use-package helm-org-rifle
@@ -946,7 +946,7 @@
      (use-package gitignore-mode)
    #+END_SRC
 
-* TODO Keybindings
+* DONE Keybindings
 
 ** DONE Global Keys
 
@@ -956,7 +956,7 @@
       (general-define-key "s-q" '(save-buffers-kill-terminal :wk "Quit"))
     #+END_SRC
 
-** TODO Leader Keys
+** DONE Leader Keys
 
 *** DONE b - Buffers
 
@@ -968,7 +968,7 @@
 	"d" '(evil-delete-buffer :wk "Delete Buffer"))
     #+END_SRC
 
-*** TODO c - Comments / Colors
+*** DONE c - Comments / Colors
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "c"
@@ -1001,7 +1001,7 @@
 	"" '(:ignore t :wk "Narrow / Widen"))
     #+END_SRC
 
-*** TODO o - Org
+*** DONE o - Org
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "o"
@@ -1009,14 +1009,14 @@
 	"a" '(org-agenda :wk "Agenda"))
     #+END_SRC
 
-*** TODO p - Project
+*** DONE p - Project
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "p"
 	"" '(:ignore t :wk "Project"))
     #+END_SRC
 
-*** TODO P - Perspecitve
+*** DONE P - Perspecitve
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "P"
@@ -1032,14 +1032,14 @@
 	"Q" '(kill-emacs :wk "Quit and Close Server"))
     #+END_SRC
 
-*** TODO s - Search
+*** DONE s - Search
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "s"
 	"" '(:ignore t :wk "Search"))
     #+END_SRC
 
-*** TODO t - Toggles
+*** DONE t - Toggles
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "t"
@@ -1060,7 +1060,7 @@
 	 "p" '(utz/prev-theme :wk "Previous Theme"))
      #+END_SRC
 
-*** TODO u - Universal Argument
+*** DONE u - Universal Argument
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key "u" '(universal-argument :wk "Universal Argument"))
@@ -1068,7 +1068,7 @@
 	"u" 'universal-argument-more)
     #+END_SRC
 
-*** TODO x - Execute / Eval
+*** DONE x - Execute / Eval
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "x"
@@ -1079,14 +1079,14 @@
 	"r" '(eval-region :wk "Region"))
     #+END_SRC
 
-** TODO Help Keys
+** DONE Help Keys
 
    #+BEGIN_SRC emacs-lisp
      (utz/set-help-key "=" '(describe-char :wk "Describe Character")
        "j" '(describe-face :wk "Describe Face"))
    #+END_SRC
 
-*** TODO R - READMEs
+*** DONE R - READMEs
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-help-key :infix "R"
@@ -1120,7 +1120,7 @@
      (load-theme (utz/get-theme-by-mode utz-theme-mode) t)
    #+END_SRC
 
-* TODO Faces
+* DONE Faces
 
   #+BEGIN_SRC emacs-lisp
     (custom-set-faces

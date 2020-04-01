@@ -17,6 +17,12 @@
 (require 'doom-themes)
 (require 'helpful)
 (require 'unicode-fonts)
+(require 'undo-tree)
+(require 'paredit)
+(require 'ws-butler)
+(require 'evil-commentary)
+(require 'projectile)
+(require 'helm-projectile)
 
 (add-hook 'after-init-hook '(lambda ()
 			      (helm-mode 1)))
@@ -34,6 +40,15 @@
   (funcall func))
 
 (unicode-fonts-setup)
+
+(helm-projectile-on)
+
+(diminish 'undo-tree-mode)
+(diminish 'paredit-mode)
+(diminish 'ws-butler-mode)
+(diminish 'evil-commentary-mode)
+(diminish 'auto-revert-mode)
+(diminish 'helm-mode)
 
 (provide 'utz-interface)
 ;;; utz-interface.el ends here

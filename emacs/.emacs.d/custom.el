@@ -46,6 +46,7 @@
  '(org-M-RET-may-split-line nil)
  '(org-agenda-files (quote ("~/Dropbox/org")))
  '(org-directory "~/Dropbox/org")
+ '(persp-auto-resume-time 0.5)
  '(powerline-default-separator (quote wave))
  '(ranger-override-dired (quote ranger))
  '(ranger-override-dired-mode t)

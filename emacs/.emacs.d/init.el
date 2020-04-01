@@ -25,11 +25,11 @@
 (require 'utz-customize)
 (require 'utz-packages)
 (require 'utz-languages)
-(require 'utz-funcs)
 (require 'utz-interface)
-(require 'utz-keybindings)
 (require 'utz-editing)
 (require 'utz-utilities)
+(require 'utz-funcs)
+(require 'utz-keybindings)
 
 ;; Load the Theme
 

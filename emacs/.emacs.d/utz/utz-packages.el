@@ -19,38 +19,54 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'evil)
-(straight-use-package 'evil-org)
-(straight-use-package 'evil-surround)
-(straight-use-package 'evil-collection)
-(straight-use-package 'evil-commentary)
-(straight-use-package 'evil-magit)
-(straight-use-package 'general)
-(straight-use-package 'ranger)
-(straight-use-package 'company)
-(straight-use-package 'delight)
-(straight-use-package 'company-emoji)
-(straight-use-package 'diminish)
-(straight-use-package 'doom-themes)
-(straight-use-package 'flycheck)
-(straight-use-package 'gitignore-mode)
-(straight-use-package 'helm)
-(straight-use-package 'helm-ag)
-(straight-use-package 'helm-descbinds)
-(straight-use-package 'helpful)
-(straight-use-package 'magit)
-(straight-use-package 'markdown-mode)
-(straight-use-package 'org)
-(straight-use-package 'org-bullets)
-(straight-use-package 'paredit)
-(straight-use-package 'restart-emacs)
-(straight-use-package 'spaceline)
-(straight-use-package 'typescript-mode)
-(straight-use-package 'tide)
-(straight-use-package 'unicode-fonts)
-(straight-use-package 'which-key)
-(straight-use-package 'ws-butler)
+(require 'straight)
+
+(dolist (pkg '(
+	       evil
+	       evil-org
+	       evil-surround
+	       evil-collection
+	       evil-commentary
+	       evil-magit
+	       general
+	       ranger
+	       company
+	       delight
+	       company-emoji
+	       diminish
+	       doom-themes
+	       flycheck
+	       gitignore-mode
+	       helm
+	       helm-ag
+	       helm-descbinds
+	       helm-org-rifle
+	       f
+	       s
+	       dash
+	       helpful
+	       magit
+	       markdown-mode
+	       org
+	       org-bullets
+	       paredit
+	       restart-emacs
+	       spaceline
+	       typescript-mode
+	       tide
+	       unicode-fonts
+	       which-key
+	       ws-butler
+	       rainbow-mode
+	       yasnippet
+	       projectile
+	       helm-projectile
+	       persp-mode
+	       persp-mode-projectile-bridge
+	       hydra
+	       figlet
+	       ))
+  (straight-use-package pkg))
 
 (provide 'utz-packages)
-
-;;; packages.el ends here
+;;; utz-packages.el ends here

@@ -14,6 +14,7 @@
 (require 'evil-magit)
 (require 'evil-org)
 (require 'evil-org-agenda)
+(require 'utz-customize)
 
 ;; Evil
 
@@ -38,13 +39,13 @@
 ;; Definers
 
 (general-create-definer utz/set-leader-key
-  :prefix "SPC"
-  :non-normal-prefix "M-SPC"
+  :prefix utz-leader-key
+  :non-normal-prefix (concat "M-" utz-leader-key)
   :states '(normal visual insert emacs))
 
 (general-create-definer utz/set-localleader-key
-  :prefix ","
-  :non-normal-prefix "M-,"
+  :prefix utz-localleader-key
+  :non-normal-prefix (concat "M-" utz-localleader-key)
   :states '(normal visual emacs))
 
 (general-create-definer utz/set-help-key
@@ -63,6 +64,9 @@
  :states 'normal
  :keymaps 'helpful-mode-map
  "q" '(evil-window-delete :wk "Delete Window"))
+
+(general-define-key :keymaps '(universal-argument-map)
+  (concat utz-leader-key " u") 'universal-argument-more)
 
 ;; Leader Keybindings
 
@@ -142,11 +146,18 @@
   "" '(:ignore t :wk "Org")
   "a" '(org-agenda :wk "Agenda"))
 
+(utz/set-leader-key :infix "p"
+  "" '(:ignore t :wk "Project")
+  "p" '(helm-projectile-switch-project :wk "Switch"))
+
 (utz/set-leader-key :infix "q"
   "" '(:ignore t :wk "Quit / Restart")
   "Q" '(save-buffers-kill-emacs :wk "Kill Client and Server")
   "q" '(save-buffers-kill-terminal :wk "Kill Client")
   "R" '(restart-emacs :wk "Restart Emacs"))
+
+(utz/set-leader-key
+  "u" '(universal-argument :wk "Universal Argument"))
 
 (utz/set-leader-key :infix "w"
   "" '(:ignore t :wk "Window")
@@ -167,6 +178,12 @@
   "f" '(make-frame :wk "Make Frame"))
 
 ;; Local Leader Keybindings
+
+(utz/set-localleader-key :states '(normal insert visual emacs)
+  :keymaps '(emacs-lisp-mode-map)
+  "f" '(:ignore t :wk "Find")
+  "f d" '(xref-find-definitions :wk "Definitions")
+  "f D" '(xref-find-definitions-other-window :wk "Definitions Other Window"))
 
 (utz/set-localleader-key
   :states '(normal insert visual emacs)

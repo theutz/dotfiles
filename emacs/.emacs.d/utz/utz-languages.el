@@ -14,6 +14,10 @@
 (require 'markdown-mode)
 (require 'org)
 (require 'org-bullets)
+(require 'f)
+(require 's)
+(require 'dash)
+(require 'helm-org-rifle)
 
 ;; Org
 (add-hook 'org-mode-hook '(lambda ()
