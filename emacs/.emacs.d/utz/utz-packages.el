@@ -22,49 +22,52 @@
 (require 'straight)
 
 (dolist (pkg '(
+	       bm
+	       company
+	       company-emoji
+	       dash
+	       delight
+	       diminish
+	       doom-themes
 	       evil
-	       evil-org
-	       evil-surround
 	       evil-collection
 	       evil-commentary
 	       evil-magit
-	       general
-	       ranger
-	       company
-	       delight
-	       company-emoji
-	       diminish
-	       doom-themes
+	       evil-org
+	       evil-surround
+	       f
+	       figlet
 	       flycheck
+	       general
 	       gitignore-mode
 	       helm
 	       helm-ag
 	       helm-descbinds
 	       helm-org-rifle
-	       f
-	       s
-	       dash
+	       helm-projectile
 	       helpful
+	       hydra
+	       js2-mode
 	       magit
 	       markdown-mode
 	       org
 	       org-bullets
 	       paredit
-	       restart-emacs
-	       spaceline
-	       typescript-mode
-	       tide
-	       unicode-fonts
-	       which-key
-	       ws-butler
-	       rainbow-mode
-	       yasnippet
-	       projectile
-	       helm-projectile
 	       persp-mode
 	       persp-mode-projectile-bridge
-	       hydra
-	       figlet
+	       projectile
+	       rainbow-mode
+	       ranger
+	       restart-emacs
+	       s
+	       spaceline
+	       tide
+	       typescript-mode
+	       unicode-fonts
+	       web-mode
+	       which-key
+	       ws-butler
+	       yasnippet
 	       ))
   (straight-use-package pkg))
 

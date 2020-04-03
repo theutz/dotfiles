@@ -148,7 +148,12 @@
 
 (utz/set-leader-key :infix "p"
   "" '(:ignore t :wk "Project")
-  "p" '(helm-projectile-switch-project :wk "Switch"))
+  "p" '(helm-projectile-switch-project :wk "Switch")
+  "f" '(helm-projectile-find-file :wk "Find file"))
+
+(utz/set-leader-key :infix "P"
+  "" '(:ignore t :wk "Perspective")
+  "P" '(persp-switch :wk "Switch"))
 
 (utz/set-leader-key :infix "q"
   "" '(:ignore t :wk "Quit / Restart")
