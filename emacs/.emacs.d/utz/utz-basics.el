@@ -7,13 +7,15 @@
 ;;; Code:
 
 (require 'server)
+(require 'utz-customize)
 
 ;; Environment Variables
 
-(setenv "PATH"
-	(concat
-	 (getenv "PATH")
-	 ":/usr/local/bin"))
+(dolist (item utz-path-items)
+  (let ((current-path (getenv "PATH")))
+    (if current-path
+	(setenv "PATH" (concat current-path ":" item))
+      (setenv "PATH" item))))
 
 ;; Encoding
 

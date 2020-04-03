@@ -30,6 +30,13 @@
   :group 'utz
   :type 'string)
 
+(defcustom utz-path-items
+  '("/usr/local/bin"
+    "~/.nvm/versions/node/v11.15.0/bin")
+  "Items to add to the PATH variables."
+  :group 'utz
+  :type '(repeat string))
+
 (defgroup utz nil "Utz Customization Settings"
   :group 'local)
 

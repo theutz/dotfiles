@@ -23,6 +23,7 @@
 (require 'evil-commentary)
 (require 'projectile)
 (require 'helm-projectile)
+(require 'bm)
 
 (add-hook 'after-init-hook '(lambda ()
 			      (helm-mode 1)))

@@ -21,8 +21,8 @@
 
 ;; Require all the things
 
-(require 'utz-basics)
 (require 'utz-customize)
+(require 'utz-basics)
 (require 'utz-packages)
 (require 'utz-languages)
 (require 'utz-interface)
