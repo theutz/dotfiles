@@ -26,6 +26,7 @@
 (require 'utz-packages)
 (require 'utz-languages)
 (require 'utz-interface)
+(require 'utz-modeline)
 (require 'utz-editing)
 (require 'utz-utilities)
 (require 'utz-funcs)

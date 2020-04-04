@@ -8,15 +8,20 @@
 
 (require 'diminish)
 (require 'delight)
-(require 'spaceline)
 (require 'spaceline-config)
 (require 'eldoc)
 
 (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
 
-(spaceline-helm-mode)
-(spaceline-info-mode)
-(spaceline-toggle-buffer-size-off)
+(spaceline-compile
+  "utz"
+  '((evil-state)
+    (major-mode)
+    (version-control))
+  '('((line) ":" (column))
+    (projectile-root)))
+
+(setq-default mode-line-format '("%e" (:eval (spaceline-ml-utz))))
 
 (diminish 'auto-revert-mode)
 
