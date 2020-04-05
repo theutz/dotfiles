@@ -15,6 +15,7 @@
 (require 'evil-org)
 (require 'evil-org-agenda)
 (require 'utz-customize)
+(require 'org)
 
 ;; Evil
 
@@ -144,7 +145,12 @@
 
 (utz/set-leader-key :infix "o"
   "" '(:ignore t :wk "Org")
-  "a" '(org-agenda :wk "Agenda"))
+  "a" '(org-agenda :wk "Agenda")
+  "i" '((lambda ()
+	  (interactive)
+	  (find-file
+	   (expand-file-name "inbox.org" org-directory)))
+	:wk "Inbox"))
 
 (utz/set-leader-key :infix "p"
   "" '(:ignore t :wk "Project")
