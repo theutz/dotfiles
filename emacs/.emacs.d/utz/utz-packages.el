@@ -29,6 +29,7 @@
 	       delight
 	       diminish
 	       doom-themes
+	       emojify
 	       evil
 	       evil-collection
 	       evil-commentary

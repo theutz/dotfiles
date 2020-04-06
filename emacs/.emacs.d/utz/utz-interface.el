@@ -1,4 +1,4 @@
-;;; utz-interface.el -- Interface Configuration
+;; utz-interface.el -- Interface Configuration
 ;;
 ;;; Commentary:
 ;;
@@ -24,6 +24,10 @@
 (require 'projectile)
 (require 'helm-projectile)
 (require 'bm)
+(require 'emojify)
+
+(add-hook 'after-init-hook #'global-emojify-mode)
+(global-emojify-mode-line-mode)
 
 (add-hook 'after-init-hook '(lambda ()
 			      (helm-mode 1)))
@@ -43,13 +47,6 @@
 (unicode-fonts-setup)
 
 (helm-projectile-on)
-
-(diminish 'undo-tree-mode)
-(diminish 'paredit-mode)
-(diminish 'ws-butler-mode)
-(diminish 'evil-commentary-mode)
-(diminish 'auto-revert-mode)
-(diminish 'helm-mode)
 
 (provide 'utz-interface)
 ;;; utz-interface.el ends here

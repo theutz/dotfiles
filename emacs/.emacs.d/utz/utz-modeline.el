@@ -57,6 +57,14 @@
 (setq-default mode-line-format '("%e" (:eval (spaceline-ml-utz))))
 
 (diminish 'auto-revert-mode)
+(delight 'helm-mode "☸")
+(delight 'yas-minor-mode "✂")
+(diminish 'undo-tree-mode)
+(diminish 'paredit-mode)
+(diminish 'ws-butler-mode)
+(diminish 'evil-commentary-mode)
+(diminish 'auto-revert-mode)
+(diminish 'helm-mode)
 
 (provide 'utz-modeline)
 ;;; utz-modeline.el ends here
