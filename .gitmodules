@@ -1,3 +1,6 @@
 [submodule "prezto/.zprezto"]
 	path = zsh/.zprezto
 	url = https://github.com/theutz/prezto
+[submodule "emacs/chemacs"]
+	path = emacs/.chemacs
+	url = https://github.com/plexus/chemacs
