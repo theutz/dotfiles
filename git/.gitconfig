@@ -7,7 +7,7 @@
 	name = Michael Utz
 	email = michael@theutz.com
 [merge]
-	tool = Kaleidoscope
+	tool = vscode
 [mergetool]
 	prompt = false
 [mergetool "Kaleidoscope"]
@@ -17,7 +17,7 @@
   cmd = emacsclient -c -a \"\" --eval \"(utz/emerge \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$OUTPUT\\\")\"
   trustExitCode = true
 [diff]
-	tool = Kaleidoscope
+	tool = vscode
 [difftool]
 	prompt = false
 [difftool "Kaleidoscope"]
@@ -40,3 +40,7 @@
 	user = theutz
 [hub]
 	protocol = https
+[mergetool "vscode"]
+	cmd = "code --wait $MERGED"
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
