@@ -1,6 +1,5 @@
 tap "d12frosted/emacs-plus"
 tap "denisidoro/tools"
-tap "federico-terzi/espanso"
 tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -19,7 +18,6 @@ brew "bash"
 brew "bat"
 brew "bfg"
 brew "broot"
-brew "python", link: false
 brew "ccat"
 brew "cmake"
 brew "cmatrix"
@@ -108,8 +106,10 @@ brew "mongodb/brew/mongodb-community"
 brew "rigellute/tap/spotify-tui"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
+cask "adobe-creative-cloud"
 cask "alfred"
 cask "appcleaner"
+cask "bartender"
 cask "brave-browser"
 cask "caprine"
 cask "dash"
@@ -119,12 +119,12 @@ cask "dotnet-sdk"
 cask "dropbox"
 cask "firefox"
 cask "font-3270-nerd-font"
-cask "font-anonymouspro-nerd-font"
+cask "font-anonymice-nerd-font"
 cask "font-arimo-nerd-font"
 cask "font-aurulentsansmono-nerd-font"
 cask "font-bitstreamverasansmono-nerd-font"
 cask "font-cascadia"
-cask "font-cascadia-nerd-font"
+cask "font-caskaydiacove-nerd-font"
 cask "font-codenewroman-nerd-font"
 cask "font-cousine-nerd-font"
 cask "font-dejavusansmono-nerd-font"
@@ -133,22 +133,23 @@ cask "font-fantasquesansmono-nerd-font"
 cask "font-fira-code"
 cask "font-firacode-nerd-font"
 cask "font-firamono-nerd-font"
-cask "font-go-mono-nerd-font"
-cask "font-gohu-nerd-font"
+cask "font-gomono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-hasklig"
-cask "font-hasklig-nerd-font"
+cask "font-hasklug-nerd-font"
 cask "font-heavydata-nerd-font"
 cask "font-hermit-nerd-font"
 cask "font-inconsolata-nerd-font"
 cask "font-inconsolatago-nerd-font"
 cask "font-inconsolatalgc-nerd-font"
+cask "font-input"
 cask "font-iosevka-nerd-font"
 cask "font-jetbrains-mono"
 cask "font-jetbrainsmono-nerd-font"
 cask "font-lekton-nerd-font"
-cask "font-liberationmono-nerd-font"
-cask "font-meslo-nerd-font"
+cask "font-liberation-nerd-font"
+cask "font-materialdesignicons-webfont"
+cask "font-meslolg-nerd-font"
 cask "font-monofur-nerd-font"
 cask "font-monoid-nerd-font"
 cask "font-mononoki"
@@ -157,16 +158,17 @@ cask "font-mplus-nerd-font"
 cask "font-noto-nerd-font"
 cask "font-press-start2p"
 cask "font-profont-nerd-font"
-cask "font-proggyclean-nerd-font"
+cask "font-proggycleantt-nerd-font"
+cask "font-public-sans"
 cask "font-roboto"
 cask "font-roboto-condensed"
 cask "font-roboto-mono"
 cask "font-roboto-slab"
 cask "font-robotomono-nerd-font"
-cask "font-sharetechmono-nerd-font"
+cask "font-saucecodepro-nerd-font"
+cask "font-source-code-pro"
 cask "font-sourcecodepro-nerd-font"
 cask "font-spacemono-nerd-font"
-cask "font-terminus-nerd-font"
 cask "font-tinos-nerd-font"
 cask "font-ubuntu-nerd-font"
 cask "font-ubuntumono-nerd-font"
@@ -176,11 +178,13 @@ cask "google-chrome"
 cask "grammarly"
 cask "image2icon"
 cask "insomnia"
+cask "istat-menus5"
 cask "iterm2"
 cask "kaleidoscope"
 cask "karabiner-elements"
 cask "keybase"
 cask "kindle"
+cask "mate-translate"
 cask "microsoft-edge"
 cask "miro-formerly-realtimeboard"
 cask "mongotron"
@@ -196,39 +200,53 @@ cask "sketch"
 cask "slack"
 cask "spotify"
 cask "the-unarchiver"
+cask "tor-browser"
+cask "transmission"
 cask "visual-studio-code"
 cask "vivaldi"
 cask "vlc"
+cask "webponize"
 cask "whatsapp"
 cask "zoomus"
 mas "Alto's Adventure", id: 1287752517
 mas "Alto's Odyssey", id: 1495097700
+mas "Amphetamine", id: 937984704
+mas "Bear", id: 1091189122
 mas "Bumpr", id: 1166066070
+mas "CARROT Weather", id: 993487541
+mas "Color Ninja", id: 1494948845
 mas "Dato", id: 1470584107
-mas "Dear Reader", id: 1475303629
+mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Fantastical", id: 975937182
 mas "Grammarly for Safari", id: 1462114288
-mas "Hexaflip", id: 1472301467
 mas "Honey", id: 1472777122
+mas "Instapaper", id: 1481302432
+mas "iStat Menus", id: 1319778037
 mas "Keynote", id: 409183694
 mas "LastPass", id: 926036361
 mas "Marked 2", id: 890031187
 mas "Mate Translate", id: 1005088137
+mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Octotree Pro", id: 1457450145
-mas "Overland", id: 1467652041
 mas "Pages", id: 409201541
 mas "PhotoScissors", id: 1499327097
 mas "Pixelmator", id: 407963104
+mas "Pocket", id: 568494494
+mas "PopClip", id: 445189367
+mas "Raindrop.io for Safari", id: 957810159
+mas "Reeder", id: 1449412482
 mas "Relax Melodies", id: 467103113
 mas "ResizeIt", id: 416280139
 mas "Rosetta Stone", id: 1476088902
-mas "Sasquatch", id: 1465346522
+mas "Sip", id: 507257563
 mas "Soulver", id: 413965349
 mas "Spark", id: 1176895641
-mas "Spyder", id: 1469382518
+mas "Things", id: 904280696
 mas "Time Out", id: 402592703
 mas "Twitter", id: 1482454543
 mas "Vimari", id: 1480933944
 mas "Wallpaper Wizard", id: 1266674560
+mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
 mas "Zen Coloring Book For Adults", id: 1063659855
