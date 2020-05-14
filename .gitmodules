@@ -1,12 +1,12 @@
 [submodule "prezto/.zprezto"]
-	path = zsh/.zprezto
+	path = layouts/zsh/.zprezto
 	url = https://github.com/theutz/prezto
 [submodule "emacs/chemacs"]
-	path = emacs/.chemacs
+	path = layouts/emacs/.chemacs
 	url = https://github.com/plexus/chemacs
 [submodule "emacs/.spacemacs"]
-	path = emacs/.spacemacs
+	path = layouts/emacs/.spacemacs
 	url = https://github.com/syl20bnr/spacemacs
 [submodule "emacs/.doom-emacs"]
-	path = emacs/.doom-emacs
+	path = layouts/emacs/.doom-emacs
 	url = https://github.com/theutz/doom-emacs
