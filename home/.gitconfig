@@ -1,0 +1,26 @@
+[color]
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+	pager = less -FMRiX
+[user]
+	name = Michael Utz
+	email = michael@theutz.com
+[credential]
+	helper = osxkeychain
+[submodule]
+	ignore = dirty
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	ignored = !git ls-files -v | grep "^[[:lower:]]"
+	ignore = !git update-index --assume-unchanged
+	unignore  = !git update-index --no-assume-unchanged
+	d = difftool
+[github]
+	user = theutz
+[hub]
+	protocol = https
