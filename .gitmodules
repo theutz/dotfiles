@@ -1,5 +1,5 @@
 [submodule "prezto/.zprezto"]
-	path = zsh/.zprezto
+	path = home/.zprezto
 	url = https://github.com/theutz/prezto
 [submodule "emacs/chemacs"]
 	path = emacs/.chemacs
