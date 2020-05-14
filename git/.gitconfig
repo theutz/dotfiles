@@ -1,0 +1,46 @@
+[color]
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+	pager = less -FMRiX
+[user]
+	name = Michael Utz
+	email = michael@theutz.com
+[merge]
+	tool = vscode
+[mergetool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[mergetool "emacsclient"]
+  cmd = emacsclient -c -a \"\" --eval \"(utz/emerge \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$OUTPUT\\\")\"
+  trustExitCode = true
+[diff]
+	tool = vscode
+[difftool]
+	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[credential]
+	helper = osxkeychain
+[submodule]
+	ignore = dirty
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	ignored = !git ls-files -v | grep "^[[:lower:]]"
+	ignore = !git update-index --assume-unchanged
+	unignore  = !git update-index --no-assume-unchanged
+	d = difftool
+[github]
+	user = theutz
+[hub]
+	protocol = https
+[mergetool "vscode"]
+	cmd = "code --wait $MERGED"
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
