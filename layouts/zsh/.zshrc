@@ -11,6 +11,7 @@ source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "modules/git", from:prezto
+zplug "djui/alias-tips"
 zplug "dracula/zsh", as:theme
 
 # Install unloaded plugins
