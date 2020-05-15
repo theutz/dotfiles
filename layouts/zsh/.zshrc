@@ -11,7 +11,7 @@ bindkey -v
 # }}}
 
 # List plugins to install
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "modules/git", from:prezto
 zplug "djui/alias-tips"
 zplug "dracula/zsh", as:theme
