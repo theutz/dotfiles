@@ -6,6 +6,10 @@ fi
 source ~/.zplug/init.zsh
 #}}}
 
+# Essential ZSH Options {{{
+bindkey -v
+# }}}
+
 # List plugins to install
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "modules/git", from:prezto
