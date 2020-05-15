@@ -7,8 +7,7 @@ fi
 # Essential
 source ~/.zplug/init.zsh
 
-# List all plugins
-
+# List plugins to install
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "modules/git", from:prezto
 zplug "djui/alias-tips"
@@ -26,3 +25,11 @@ fi
 
 # Load all plugins
 zplug load
+
+# Install and load Starship
+if ! type "starship" > /dev/null; then
+  brew install starship
+fi
+
+eval "$(starship init zsh)"
+
