@@ -1,6 +1,3 @@
-[submodule "prezto/.zprezto"]
-	path = layouts/zsh/.zprezto
-	url = https://github.com/theutz/prezto
 [submodule "emacs/chemacs"]
 	path = layouts/emacs/.chemacs
 	url = https://github.com/plexus/chemacs
