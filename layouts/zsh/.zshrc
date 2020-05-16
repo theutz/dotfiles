@@ -42,3 +42,6 @@ fi
 eval "$(starship init zsh)"
 #}}}
 
+# FZF Setup {{{
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# }}}
