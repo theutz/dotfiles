@@ -12,6 +12,7 @@ bindkey -v
 # }}}
 
 # List plugins to install
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "modules/git", from:prezto
 zplug "modules/directory", from:prezto
