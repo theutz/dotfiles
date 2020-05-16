@@ -1,3 +1,4 @@
+# vim: fdm=marker fdl=0
 # Setup Zplug {{{
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
@@ -41,4 +42,3 @@ fi
 eval "$(starship init zsh)"
 #}}}
 
-# vim: fdm=marker fdl=0
