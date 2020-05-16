@@ -14,6 +14,10 @@ bindkey -v
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "modules/git", from:prezto
 zplug "modules/directory", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/homebrew", from:prezto
+zplug "modules/docker", from:prezto
+zplug "modules/utility", from:prezto
 zplug "djui/alias-tips"
 zplug "dracula/zsh", as:theme
 
