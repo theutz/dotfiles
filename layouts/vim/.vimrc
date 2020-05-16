@@ -21,6 +21,7 @@ Plug 'miyakogi/conoline.vim' " set cursor line highlight only in current window
 " Color Schemes {{{2
 Plug 'jacoborus/tender.vim'
 Plug 'haishanh/night-owl.vim'
+Plug 'dracula/Vim', {'as': 'dracula'}
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/lightline_foobar.vim'
 
@@ -115,7 +116,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme night-owl
+colorscheme dracula
 
 " Swap & Backup Files "{{{2
 set directory=$HOME/.vim/swp
