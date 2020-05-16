@@ -60,7 +60,7 @@ Plug 'airblade/vim-rooter' " change project directory to VCS root
 
 " Navigation {{{2
 Plug 'tpope/vim-unimpaired' " pairs of keyboard shortcuts
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder engine
+Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
 Plug 'junegunn/fzf.vim' " fuzzy finder vim integration
 Plug 'scrooloose/nerdtree' " file tree
 Plug 'tmux-plugins/vim-tmux-focus-events' " capture mouse events from tmux
