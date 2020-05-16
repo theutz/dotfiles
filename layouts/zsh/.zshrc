@@ -19,11 +19,6 @@ zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
 zplug "modules/utility", from:prezto
 zplug "djui/alias-tips"
-zplug "junegunn/fzf-bin", \
-  from:gh-r, \
-  as:command, \
-  rename-to:fzf, \
-  use:"*darwin*amd64*"
 zplug "dracula/zsh", as:theme
 
 # Install and Load Plugins {{{
