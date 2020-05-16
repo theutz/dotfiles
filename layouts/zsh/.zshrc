@@ -46,4 +46,4 @@ fi
 eval "$(starship init zsh)"
 #}}}
 
-# vim: fdm=marker
+# vim: fdm=marker fdl=0
