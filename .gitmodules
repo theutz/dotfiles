@@ -1,9 +1,0 @@
-[submodule "emacs/chemacs"]
-	path = layouts/emacs/.chemacs
-	url = https://github.com/plexus/chemacs
-[submodule "emacs/.spacemacs"]
-	path = layouts/emacs/.spacemacs
-	url = https://github.com/syl20bnr/spacemacs
-[submodule "emacs/.doom-emacs"]
-	path = layouts/emacs/.doom-emacs
-	url = https://github.com/theutz/doom-emacs
