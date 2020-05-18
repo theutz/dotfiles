@@ -11,6 +11,29 @@ source ~/.zplug/init.zsh
 bindkey -v
 # }}}
 
+# Prezto Configuration {{{
+zstyle ':prezto:*:*' case-sensitive 'yes'
+zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' ps-context 'yes'
+zstyle ':prezto:module:git:status:ignore' submodules 'none'
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'line' \
+  'cursor' \
+  'root'
+zstyle ':prezto:module:syntax-highlighting' styles \
+  'builtin' 'bg=blue' \
+  'command' 'bg=blue' \
+  'function' 'bg=blue'
+zstyle ':prezto:module:syntax-highlighting' pattern \
+  'rm*-rf*' 'fg=white,bold,bg=red'
+zstyle ':prezto:module:utility' safe-ops 'yes'
+# }}}
+
 # List plugins to install
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 # prezto {{{
