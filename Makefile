@@ -13,6 +13,7 @@ install: \
   install-homebrew \
   install-htop \
   install-starship \
+  install-tmux \
   install-topgrade \
   install-vim \
   install-zsh
@@ -25,6 +26,7 @@ clean: \
   clean-homebrew \
   clean-htop \
   clean-starship \
+  clean-tmux \
   clean-topgrade \
   clean-vim \
   clean-zsh
@@ -70,6 +72,13 @@ install-starship:
 clean-starship:
 	${unstow} starship
 #}}}
+
+# tmux {{{
+install-tmux:
+	${stow} tmux
+clean-tmux:
+	${unstow} tmux
+# }}}
 
 # topgrade {{{
 install-topgrade:
