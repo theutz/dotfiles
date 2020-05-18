@@ -26,6 +26,9 @@ zplug "modules/git", from:prezto
 zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
 # }}}
+# oh-my-zsh {{{
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+# }}}
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "lukechilds/zsh-nvm"
 zplug "djui/alias-tips"
