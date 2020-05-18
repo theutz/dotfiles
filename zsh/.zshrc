@@ -20,6 +20,7 @@ zplug "modules/history", from:prezto
 zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
 zplug "modules/utility", from:prezto
+zplug "lukechilds/zsh-nvm"
 zplug "djui/alias-tips"
 zplug "junegunn/fzf", \
  hook-build:"\"$ZPLUG_REPOS\"/junegunn/fzf/install --key-bindings --completion --no-update-rc"
