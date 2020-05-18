@@ -15,6 +15,13 @@ export VISUAL="$EDITOR"
 export PAGER='less'
 
 #
+# Language
+#
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+#
 # Less
 #
 
