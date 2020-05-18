@@ -36,11 +36,25 @@ clean-bash:
 	${unstow} bash
 #}}}
 
+# bin {{{
+install-bin:
+	${stow} bin
+clean-bin:
+	${unstow} bin
+#}}}
+
 # git {{{
 install-git:
 	${stow} git
 clean-git:
 	${unstow} git
+#}}}
+
+# homebrew {{{
+install-homebrew:
+	${stow} homebrew
+clean-homebrew:
+	${unstow} homebrew
 #}}}
 
 # htop {{{
@@ -57,32 +71,18 @@ clean-starship:
 	${unstow} starship
 #}}}
 
-# vim {{{
-install-vim:
-	${stow} vim
-clean-vim:
-	${unstow} vim
-#}}}
-
-# bin {{{
-install-bin:
-	${stow} bin
-clean-bin:
-	${unstow} bin
-#}}}
-
-# homebrew {{{
-install-homebrew:
-	${stow} homebrew
-clean-homebrew:
-	${unstow} homebrew
-#}}}
-
 # topgrade {{{
 install-topgrade:
 	${stow} topgrade
 clean-topgrade:
 	${unstow} topgrade
+#}}}
+
+# vim {{{
+install-vim:
+	${stow} vim
+clean-vim:
+	${unstow} vim
 #}}}
 
 # zsh {{{
