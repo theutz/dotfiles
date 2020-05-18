@@ -40,6 +40,7 @@ Plug 'jparise/vim-graphql' " graphql language support
 Plug 'jxnblk/vim-mdx-js' " mdx language support
 Plug 'inkarkat/vim-SyntaxRange' " allow syntax definitions as a subset of a filetype
 Plug 'alampros/vim-styled-jsx' " styled-jsx for nextjs
+Plug 'tmux-plugins/vim-tmux' " integration for tmux files
 
 " Editing {{{2
 Plug 'tpope/vim-abolish' " smart substitution
