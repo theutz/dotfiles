@@ -8,25 +8,25 @@ unstow=${stow} --delete
 all: install
 install: \
   install-bash \
+  install-bin \
   install-git \
+  install-homebrew \
   install-htop \
   install-starship \
-  install-vim \
-  install-bin \
-  install-homebrew \
   install-topgrade \
+  install-vim \
   install-zsh
 
 uninstall: clean
 clean: \
   clean-bash \
+  clean-bin \
   clean-git \
+  clean-homebrew \
   clean-htop \
   clean-starship \
-  clean-vim \
-  clean-bin \
-  clean-homebrew \
   clean-topgrade \
+  clean-vim \
   clean-zsh
 
 # bash {{{
