@@ -3,6 +3,7 @@
 .PHONY: all clean install uninstall
 stow=stow --verbose
 unstow=${stow} --delete
+tpm-dir:=${HOME}/.tmux/plugins/tpm
 
 # Make Targets {{{
 all: install
@@ -75,6 +76,9 @@ clean-starship:
 
 # tmux {{{
 install-tmux:
+	if [[ ! -d ${tpm-dir} ]]; then \
+	  git clone https://github.com/tmux-plugins/tpm ${tpm-dir}; \
+	fi
 	${stow} tmux
 clean-tmux:
 	${unstow} tmux
