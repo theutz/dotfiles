@@ -37,14 +37,6 @@ fi
 zplug load
 # }}}
 
-# Install and Load Starship {{{
-if ! type "starship" > /dev/null; then
-  brew install starship
-fi
-
-eval "$(starship init zsh)"
-#}}}
-
 # FZF Setup {{{
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }}}
