@@ -15,6 +15,12 @@ export VISUAL="$EDITOR"
 export PAGER='less'
 
 #
+# Less
+#
+
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+#
 # FZF Setup
 #
 
