@@ -13,13 +13,20 @@ bindkey -v
 
 # List plugins to install
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "modules/git", from:prezto
-zplug "modules/directory", from:prezto
+# prezto {{{
+zplug "modules/environment", from:prezto
+zplug "modules/terminal", from:prezto
+zplug "modules/editor", from:prezto
 zplug "modules/history", from:prezto
+zplug "modules/directory", from:prezto
+zplug "modules/spectrum", from:prezto
+zplug "modules/utility", from:prezto
+zplug "modules/completion", from:prezto
+zplug "modules/git", from:prezto
 zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
-zplug "modules/utility", from:prezto
+# }}}
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "lukechilds/zsh-nvm"
 zplug "djui/alias-tips"
 zplug "junegunn/fzf", \
