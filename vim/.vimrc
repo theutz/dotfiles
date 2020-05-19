@@ -55,6 +55,7 @@ Plug 'kburdett/vim-nuuid' " Work with uuids in vim
 
 " Version Control "{{{2
 Plug 'tpope/vim-fugitive' " git interface
+Plug 'sodapopcan/vim-twiggy' " git branch management
 Plug 'mhinz/vim-signify' " show git changes in gutter
 Plug 'Xuyuanp/nerdtree-git-plugin' " show git changes in NERDTree
 Plug 'airblade/vim-rooter' " change project directory to VCS root
