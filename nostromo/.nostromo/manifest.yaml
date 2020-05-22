@@ -3,4 +3,28 @@ config:
   verbose: false
   aliasesonly: false
   mode: 0
-commands: {}
+commands:
+  dotfiles:
+    keypath: dotfiles
+    name: echo 'Dotfiles Tools'
+    alias: dotfiles
+    aliasonly: false
+    description: ""
+    commands:
+      edit:
+        keypath: dotfiles.edit
+        name: ${EDITOR} ${DOTFILES_DIR}
+        alias: edit
+        aliasonly: false
+        description: Open the dotfiles directory in EDITOR
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
