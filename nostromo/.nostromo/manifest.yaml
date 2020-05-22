@@ -83,6 +83,42 @@ commands:
           language: ""
           snippet: ""
         mode: 2
+      go:
+        keypath: dotfiles.go
+        name: cd ${DOTFILES_DIR}/
+        alias: go
+        aliasonly: false
+        description: ""
+        commands:
+          vim:
+            keypath: dotfiles.go.vim
+            name: cd ${DOTFILES_DIR}/vim
+            alias: vim
+            aliasonly: false
+            description: Change directory to vim files
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+          zsh:
+            keypath: dotfiles.go.zsh
+            name: cd ${DOTFILES_DIR}/zsh
+            alias: zsh
+            aliasonly: false
+            description: Change directory to zsh files
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 0
     subs: {}
     code:
       language: ""
