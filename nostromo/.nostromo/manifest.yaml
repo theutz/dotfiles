@@ -4,18 +4,6 @@ config:
   aliasesonly: false
   mode: 0
 commands:
-  dft:
-    keypath: dft
-    name: dotfiles
-    alias: dft
-    aliasonly: true
-    description: Shortcut for Dotfiles Tools
-    commands: {}
-    subs: {}
-    code:
-      language: ""
-      snippet: ""
-    mode: 2
   dotfiles:
     keypath: dotfiles
     name: echo 'Dotfiles Tools'
@@ -124,3 +112,15 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  dt:
+    keypath: dt
+    name: dotfiles
+    alias: dt
+    aliasonly: true
+    description: Shortcut for Dotfiles Tools
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 2
