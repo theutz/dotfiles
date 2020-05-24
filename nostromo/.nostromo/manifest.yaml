@@ -130,7 +130,7 @@ commands:
         code:
           language: ""
           snippet: ""
-        mode: 0
+        mode: 2
     subs: {}
     code:
       language: ""
