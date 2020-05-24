@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "now": "^19.0.1",
     "share-cli": "^3.0.0"
   }
 }
