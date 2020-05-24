@@ -35,7 +35,7 @@ commands:
             name: ${EDITOR} ${DOTFILES_DIR}/git/
             alias: git
             aliasonly: false
-            description: "Edit git files"
+            description: Edit git files
             commands:
               config:
                 keypath: dotfiles.edit.git.config
