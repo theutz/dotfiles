@@ -10,7 +10,10 @@ delete_branch() {
   echo
   case $yn in
     [Yy]* )
-      git branch --delete --force $CURRENT_BRANCH
+      {
+        git push --delete origin $CURRENT_BRANCH
+        git branch --delete --force $CURRENT_BRANCH
+      } >>$LOG 2>&1
       echo "$CURRENT_BRANCH deleted.\n"
       exit 0
       ;;
