@@ -114,25 +114,25 @@ commands:
               language: ""
               snippet: ""
             mode: 2
-          zprofile:
-            keypath: dotfiles.edit.zprofile
-            name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zprofile
-            alias: zprofile
-            aliasonly: false
-            description: Edit .zprofile
-            commands: {}
-            subs: {}
-            code:
-              language: ""
-              snippet: ""
-            mode: 2
           zsh:
             keypath: dotfiles.edit.zsh
             name: ${EDITOR} ${DOTFILES_DIR}/zsh
             alias: zsh
             aliasonly: false
             description: Edit ZSH related dotfiles
-            commands: {}
+            commands:
+              profile:
+                keypath: dotfiles.edit.zsh.profile
+                name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zprofile
+                alias: profile
+                aliasonly: false
+                description: Edit .zprofile
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
             subs: {}
             code:
               language: ""
