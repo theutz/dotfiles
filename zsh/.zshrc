@@ -1,4 +1,3 @@
-# vim: fdm=marker fdl=0
 # Setup Zplug {{{
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
@@ -82,3 +81,5 @@ eval "$(nostromo completion)"
 # z {{{
 source /usr/local/etc/profile.d/z.sh
 # }}}
+
+# vim: fdm=marker fdl=0
