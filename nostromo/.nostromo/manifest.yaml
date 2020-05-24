@@ -244,3 +244,15 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  "n":
+    keypath: "n"
+    name: nostromo
+    alias: "n"
+    aliasonly: true
+    description: Nostromo shortcut
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
