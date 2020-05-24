@@ -30,6 +30,42 @@ commands:
         aliasonly: false
         description: Open the dotfiles directory in EDITOR
         commands:
+          bash:
+            keypath: dotfiles.edit.bash
+            name: ${EDITOR} ${DOTFILES_DIR}/bash
+            alias: bash
+            aliasonly: false
+            description: Edit bash files
+            commands:
+              profile:
+                keypath: dotfiles.edit.bash.profile
+                name: ${EDITOR} ${DOTFILES_DIR}/bash/.bash_profile
+                alias: profile
+                aliasonly: false
+                description: Edit bash profile
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              rc:
+                keypath: dotfiles.edit.bash.rc
+                name: ${EDITOR} ${DOTFILES_DIR}/bash/.bashrc
+                alias: rc
+                aliasonly: false
+                description: Edit bash runcom
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
           git:
             keypath: dotfiles.edit.git
             name: ${EDITOR} ${DOTFILES_DIR}/git/
@@ -121,6 +157,18 @@ commands:
             aliasonly: false
             description: Edit ZSH related dotfiles
             commands:
+              env:
+                keypath: dotfiles.edit.zsh.env
+                name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zshenv
+                alias: env
+                aliasonly: false
+                description: Edit ZSH environment
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
               profile:
                 keypath: dotfiles.edit.zsh.profile
                 name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zprofile
