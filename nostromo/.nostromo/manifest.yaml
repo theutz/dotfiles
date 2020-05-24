@@ -35,7 +35,7 @@ commands:
             name: ${EDITOR} ${DOTFILES_DIR}/nostromo/.nostromo/manifest.yaml
             alias: nostromo
             aliasonly: false
-            description: Edit Nostromo manifest
+            description: Edit the Nostromo manifest
             commands: {}
             subs: {}
             code:
