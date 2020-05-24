@@ -32,10 +32,10 @@ commands:
         commands:
           git:
             keypath: dotfiles.edit.git
-            name: ""
+            name: ${EDITOR} ${DOTFILES_DIR}/git/
             alias: git
             aliasonly: false
-            description: ""
+            description: "Edit git files"
             commands:
               config:
                 keypath: dotfiles.edit.git.config
