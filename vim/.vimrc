@@ -52,6 +52,7 @@ Plug 'chrisbra/unicode.vim' " complete support for unicode digraphs
 Plug 'wellle/targets.vim' " Add more text objects
 Plug 'mattn/gist-vim' " edit GitHub gists with vim
 Plug 'kburdett/vim-nuuid' " Work with uuids in vim
+Plug 'fadein/vim-FIGlet' " Use figlet in vim
 
 " Version Control "{{{2
 Plug 'tpope/vim-fugitive' " git interface
