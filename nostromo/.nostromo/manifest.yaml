@@ -141,7 +141,7 @@ commands:
     name: dotfiles
     alias: dt
     aliasonly: true
-    description: Shortcut for Dotfiles Tools
+    description: Dotfiles Tools
     commands: {}
     subs: {}
     code:
