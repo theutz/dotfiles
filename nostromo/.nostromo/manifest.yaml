@@ -148,3 +148,15 @@ commands:
       language: ""
       snippet: ""
     mode: 2
+  dte:
+    keypath: dte
+    name: dotfiles edit
+    alias: dte
+    aliasonly: true
+    description: '`dotfiles edit`'
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
