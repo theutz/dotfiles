@@ -1,0 +1,246 @@
+version: 0.7.7
+config:
+  verbose: false
+  aliasesonly: false
+  mode: 0
+commands:
+  cat:
+    keypath: cat
+    name: bat
+    alias: cat
+    aliasonly: true
+    description: Use `bat` instead of `cat`
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
+  dotfiles:
+    keypath: dotfiles
+    name: echo 'Dotfiles Tools'
+    alias: dotfiles
+    aliasonly: false
+    description: ""
+    commands:
+      edit:
+        keypath: dotfiles.edit
+        name: ${EDITOR} ${DOTFILES_DIR}
+        alias: edit
+        aliasonly: false
+        description: Open the dotfiles directory in EDITOR
+        commands:
+          git:
+            keypath: dotfiles.edit.git
+            name: ${EDITOR} ${DOTFILES_DIR}/git/
+            alias: git
+            aliasonly: false
+            description: Edit git files
+            commands:
+              config:
+                keypath: dotfiles.edit.git.config
+                name: ${EDITOR} ${DOTFILES_DIR}/git/.gitconfig
+                alias: config
+                aliasonly: false
+                description: Edit global git config
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              ignore:
+                keypath: dotfiles.edit.git.ignore
+                name: ${EDITOR} ${DOTFILES_DIR}/git/.gitignore_global
+                alias: ignore
+                aliasonly: false
+                description: Edit global gitignore
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+          makefile:
+            keypath: dotfiles.edit.makefile
+            name: ${EDITOR} ${DOTFILES_DIR}/Makefile
+            alias: makefile
+            aliasonly: false
+            description: Edit Makefile that controls dotfiles
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+          nostromo:
+            keypath: dotfiles.edit.nostromo
+            name: ${EDITOR} ${DOTFILES_DIR}/nostromo/.nostromo/manifest.yaml
+            alias: nostromo
+            aliasonly: false
+            description: Edit the Nostromo manifest
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+          tmux:
+            keypath: dotfiles.edit.tmux
+            name: ${EDITOR} ${DOTFILES_DIR}/tmux/.tmux.conf
+            alias: tmux
+            aliasonly: false
+            description: Edit TMUX configuration
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+          vimrc:
+            keypath: dotfiles.edit.vimrc
+            name: ${EDITOR} ${DOTFILES_DIR}/vim/.vimrc
+            alias: vimrc
+            aliasonly: false
+            description: Edit .vimrc
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+          zsh:
+            keypath: dotfiles.edit.zsh
+            name: ${EDITOR} ${DOTFILES_DIR}/zsh
+            alias: zsh
+            aliasonly: false
+            description: Edit ZSH related dotfiles
+            commands:
+              profile:
+                keypath: dotfiles.edit.zsh.profile
+                name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zprofile
+                alias: profile
+                aliasonly: false
+                description: Edit .zprofile
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              rc:
+                keypath: dotfiles.edit.zsh.rc
+                name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zshrc
+                alias: rc
+                aliasonly: false
+                description: Edit .zshrc
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      go:
+        keypath: dotfiles.go
+        name: cd ${DOTFILES_DIR}/
+        alias: go
+        aliasonly: false
+        description: Navigate to dotfiles folder
+        commands:
+          vim:
+            keypath: dotfiles.go.vim
+            name: cd ${DOTFILES_DIR}/vim
+            alias: vim
+            aliasonly: false
+            description: Change directory to vim files
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+          zsh:
+            keypath: dotfiles.go.zsh
+            name: cd ${DOTFILES_DIR}/zsh
+            alias: zsh
+            aliasonly: false
+            description: Change directory to zsh files
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
+  dt:
+    keypath: dt
+    name: dotfiles
+    alias: dt
+    aliasonly: true
+    description: Dotfiles Tools
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 2
+  dte:
+    keypath: dte
+    name: dotfiles edit
+    alias: dte
+    aliasonly: true
+    description: '`dotfiles edit`'
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
+  dtg:
+    keypath: dtg
+    name: dotfiles go
+    alias: dtg
+    aliasonly: true
+    description: '`dotfiles go`'
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
+  ls:
+    keypath: ls
+    name: lsd
+    alias: ls
+    aliasonly: true
+    description: Use `lsd` instead of `ls`
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
