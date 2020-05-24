@@ -13,9 +13,11 @@ install: \
   install-git \
   install-homebrew \
   install-htop \
+  install-node \
   install-tmux \
   install-topgrade \
   install-vim \
+  install-yarn \
   install-zsh
 
 uninstall: clean
@@ -25,9 +27,11 @@ clean: \
   clean-git \
   clean-homebrew \
   clean-htop \
+  clean-node \
   clean-tmux \
   clean-topgrade \
   clean-vim \
+  clean-yarn \
   clean-zsh
 
 # bash {{{
@@ -65,6 +69,13 @@ clean-htop:
 	${unstow} htop
 #}}}
 
+# node {{{
+install-node:
+	${stow} node
+clean-node:
+	${unstow} node
+#}}}
+
 # tmux {{{
 install-tmux:
 	if [[ ! -d ${tpm-dir} ]]; then \
@@ -87,6 +98,13 @@ install-vim:
 	${stow} vim
 clean-vim:
 	${unstow} vim
+#}}}
+
+# yarn {{{
+install-yarn:
+	${stow} yarn
+clean-yarn:
+	${unstow} yarn
 #}}}
 
 # zsh {{{
