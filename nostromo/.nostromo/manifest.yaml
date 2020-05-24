@@ -30,6 +30,18 @@ commands:
               language: ""
               snippet: ""
             mode: 2
+          tmux:
+            keypath: dotfiles.edit.tmux
+            name: ${EDITOR} ${DOTFILES_DIR}/tmux/.tmux.conf
+            alias: tmux
+            aliasonly: false
+            description: Edit TMUX configuration
+            commands: {}
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
           vimrc:
             keypath: dotfiles.edit.vimrc
             name: ${EDITOR} ${DOTFILES_DIR}/vim/.vimrc
