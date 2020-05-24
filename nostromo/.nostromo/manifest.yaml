@@ -280,6 +280,18 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  giaa:
+    keypath: giaa
+    name: git add --all
+    alias: giaa
+    aliasonly: true
+    description: Stage all files
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
   ls:
     keypath: ls
     name: lsd

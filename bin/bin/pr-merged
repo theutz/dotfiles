@@ -10,7 +10,10 @@ delete_branch() {
   echo
   case $yn in
     [Yy]* )
-      git branch --delete --force $CURRENT_BRANCH
+      {
+        git push --delete origin $CURRENT_BRANCH
+        git branch --delete --force $CURRENT_BRANCH
+      } >>$LOG 2>&1
       echo "$CURRENT_BRANCH deleted.\n"
       exit 0
       ;;
@@ -24,15 +27,13 @@ delete_branch() {
 }
 
 main () {
-  echo "Updating Repo..."
-  git fetch --all --prune >$LOG 2>&1
-
-  if [[ $? -eq 0 ]]; then
-    echo
-    echo "Checking out to master branch..."
-    git checkout master >$LOG 2>&1
-    git pull >$LOG 2>&1
-  fi
+  {
+    git fetch --all --prune
+    if [[ $? -eq 0 ]]; then
+      git checkout master
+      git pull
+    fi
+  } >>$LOG 2>&1
 
   if [[ $? -eq 0 ]]; then
     echo
