@@ -4,6 +4,18 @@ config:
   aliasesonly: false
   mode: 0
 commands:
+  cat:
+    keypath: cat
+    name: bat
+    alias: cat
+    aliasonly: true
+    description: Use `bat` instead of `cat`
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
   dotfiles:
     keypath: dotfiles
     name: echo 'Dotfiles Tools'
