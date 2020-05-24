@@ -13,6 +13,7 @@ install: \
   install-git \
   install-homebrew \
   install-htop \
+  install-node \
   install-tmux \
   install-topgrade \
   install-vim \
@@ -25,6 +26,7 @@ clean: \
   clean-git \
   clean-homebrew \
   clean-htop \
+  clean-node \
   clean-tmux \
   clean-topgrade \
   clean-vim \
@@ -63,6 +65,13 @@ install-htop:
 	${stow} htop
 clean-htop:
 	${unstow} htop
+#}}}
+
+# node {{{
+install-node:
+	${stow} node
+clean-node:
+	${unstow} node
 #}}}
 
 # tmux {{{
