@@ -160,3 +160,15 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  dtg:
+    keypath: dtg
+    name: dotfiles go
+    alias: dtg
+    aliasonly: true
+    description: '`dotfiles go`'
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
