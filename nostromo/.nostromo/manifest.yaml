@@ -133,18 +133,18 @@ commands:
                   language: ""
                   snippet: ""
                 mode: 2
-            subs: {}
-            code:
-              language: ""
-              snippet: ""
-            mode: 2
-          zshrc:
-            keypath: dotfiles.edit.zshrc
-            name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zshrc
-            alias: zshrc
-            aliasonly: false
-            description: Edit .zshrc
-            commands: {}
+              rc:
+                keypath: dotfiles.edit.zsh.rc
+                name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zshrc
+                alias: rc
+                aliasonly: false
+                description: Edit .zshrc
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
             subs: {}
             code:
               language: ""
