@@ -17,7 +17,6 @@ install: \
   install-tmux \
   install-topgrade \
   install-vim \
-  install-yarn \
   install-zsh
 
 uninstall: clean
@@ -31,7 +30,6 @@ clean: \
   clean-tmux \
   clean-topgrade \
   clean-vim \
-  clean-yarn \
   clean-zsh
 
 # bash {{{
@@ -98,13 +96,6 @@ install-vim:
 	${stow} vim
 clean-vim:
 	${unstow} vim
-#}}}
-
-# yarn {{{
-install-yarn:
-	${stow} yarn
-clean-yarn:
-	${unstow} yarn
 #}}}
 
 # zsh {{{
