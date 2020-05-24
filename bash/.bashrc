@@ -20,3 +20,9 @@ export NVM_DIR="$HOME/.nvm"
 # nostromo [section begin] {{{
 eval "$(nostromo completion)"
 # nostromo [section end] }}}
+
+# z {{{
+source /usr/local/etc/profile.d/z.sh
+#]}}
+
+# vim: fdm=marker fdl=0
