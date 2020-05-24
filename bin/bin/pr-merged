@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+LOG=/tmp/pr-merged-log
+rm $LOG
+
+delete_branch() {
+  echo
+  read "yn?Do you wish to delete the branch: $CURRENT_BRANCH? "
+  echo
+  case $yn in
+    [Yy]* )
+      git branch --delete --force $CURRENT_BRANCH
+      echo "$CURRENT_BRANCH deleted.\n"
+      exit 0
+      ;;
+    [Nn]* )
+      echo "$CURRENT_BRANCH branch not deleted.\n"
+      git checkout $CURRENT_BRANCH >/dev/null 2>&1
+      exit 1
+      ;;
+    * ) echo "Please answer yes or no.";;
+  esac
+}
+
+main () {
+  echo "Updating Repo..."
+  git fetch --all --prune >$LOG 2>&1
+
+  if [[ $? -eq 0 ]]; then
+    echo
+    echo "Checking out to master branch..."
+    git checkout master >$LOG 2>&1
+    git pull >$LOG 2>&1
+  fi
+
+  if [[ $? -eq 0 ]]; then
+    echo
+    echo "Listing current branches:"
+    git branch --all --verbose
+  fi
+
+  delete_branch
+}
+
+main
