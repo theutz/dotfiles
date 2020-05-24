@@ -14,6 +14,7 @@ install: \
   install-homebrew \
   install-htop \
   install-node \
+  install-nostromo \
   install-tmux \
   install-topgrade \
   install-vim \
@@ -27,6 +28,7 @@ clean: \
   clean-homebrew \
   clean-htop \
   clean-node \
+  clean-nostromo \
   clean-tmux \
   clean-topgrade \
   clean-vim \
@@ -72,6 +74,13 @@ install-node:
 	${stow} node
 clean-node:
 	${unstow} node
+#}}}
+
+# nostromo {{{
+install-nostromo:
+	${stow} nostromo
+clean-nostromo:
+	${unstow} nostromo
 #}}}
 
 # tmux {{{
