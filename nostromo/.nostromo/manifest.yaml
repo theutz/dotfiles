@@ -184,3 +184,15 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  ls:
+    keypath: ls
+    name: lsd
+    alias: ls
+    aliasonly: true
+    description: Use `lsd` instead of `ls`
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
