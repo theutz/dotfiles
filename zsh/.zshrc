@@ -78,3 +78,7 @@ zplug load
 # nostromo [section begin] {{{
 eval "$(nostromo completion)"
 # nostromo [section end] }}}
+
+# z {{{
+source /usr/local/etc/profile.d/z.sh
+# }}}
