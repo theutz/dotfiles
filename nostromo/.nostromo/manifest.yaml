@@ -100,7 +100,7 @@ commands:
         name: cd ${DOTFILES_DIR}/
         alias: go
         aliasonly: false
-        description: ""
+        description: Navigate to dotfiles folder
         commands:
           vim:
             keypath: dotfiles.go.vim
