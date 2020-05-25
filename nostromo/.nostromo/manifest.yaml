@@ -66,6 +66,30 @@ commands:
               language: ""
               snippet: ""
             mode: 2
+          brew:
+            keypath: dotfiles.edit.brew
+            name: ${EDITOR} ${DOTFILES_DIR/homebrew
+            alias: brew
+            aliasonly: false
+            description: Edit Homebrew configuration files
+            commands:
+              file:
+                keypath: dotfiles.edit.brew.file
+                name: ${EDITOR} ${DOTFILES_DIR}/homebrew/.Brewfile
+                alias: file
+                aliasonly: false
+                description: Edit global Brewfile
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+            subs: {}
+            code:
+              language: ""
+              snippet: ""
+            mode: 2
           git:
             keypath: dotfiles.edit.git
             name: ${EDITOR} ${DOTFILES_DIR}/git/
