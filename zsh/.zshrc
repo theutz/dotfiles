@@ -47,6 +47,7 @@ zplug "modules/completion", from:prezto
 zplug "modules/git", from:prezto
 zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
+zplug "modules/tmux", from:prezto
 # }}}
 # oh-my-zsh {{{
 zplug "plugins/colored-man-pages", from:oh-my-zsh
