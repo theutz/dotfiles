@@ -7,21 +7,10 @@
 "                                             
 "                                             
 
-" VimPlug Init {{{1
-
-"{{{2
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" Load Plugins
+if filereadable(expand("~/.vim/plugins.vim"))
+  source ~/.vim/plugins.vim
 endif
-
-" Plugin List {{{1
-
-"{{{2
-call plug#begin('~/.vim/plugged')
-  source ~/.vim/plugins-list.vim
-call plug#end()
 
 " General Settings {{{1
 
