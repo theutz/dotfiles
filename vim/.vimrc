@@ -11,6 +11,7 @@ let config_files = [
   \ "~/.vim/plugins.vim",
   \ "~/.vim/settings.vim",
   \ "~/.vim/functions.vim",
+  \ "~/.vim/autocommands.vim",
   \ ]
 
 for config_file in config_files
@@ -121,12 +122,6 @@ nmap <leader>gK 9999<leader>gk
 
 " tpope/vim-fugitive {{{
 nmap <space>g :G<cr>
-"}}}
-"}}}
-
-" Autocmd {{{
-" Resize {{{
-autocmd VimResized * wincmd =
 "}}}
 "}}}
 " vim: fdm=marker fdl=1
