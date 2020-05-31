@@ -7,83 +7,81 @@
 "                         .88                     88                
 "                     d8888P                      dP                
 
-let mapleader = "\<Space>"
-let maplocalleader = ","
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ","
+let g:which_key_map = {}
 
-" nmap <silent> <TAB> <Plug>(coc-range-select)
-" xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
-" xmap <silent> <TAB> <Plug>(coc-range-select)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-inoremap <C-w>m <C-o>:MaximizerToggle!<CR>
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+" nmap <silent> <tab> <Plug>(coc-range-select)
+" xmap <silent> <s-tab> <Plug>(coc-range-select-backword)
+" xmap <silent> <tab> <Plug>(coc-range-select)
+imap <c-x><c-f> <Plug>(fzf-complete-path)
+imap <c-x><c-j> <Plug>(fzf-complete-file-ag)
+imap <c-x><c-k> <Plug>(fzf-complete-word)
+imap <c-x><c-l> <Plug>(fzf-complete-line)
+inoremap <c-w>m <c-o>:MaximizerToggle!<cr>
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
-
-nmap <leader>F :Format<cr>
+inoremap <silent><expr> <tab> pumvisible() ? "\<c-n>" : <SID>check_back_space() ? "\<tab>" : coc#refresh()
+nmap <leader><tab> <Plug>(fzf-maps-n)
 nmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>F :Format<cr>
 nmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>g :G<cr>
 nmap <leader>gJ 9999<leader>gj
+nmap <leader>gj <Plug>(signify-next-hunk)
 nmap <leader>gK 9999<leader>gk
-nmap <leader>gj <plug>(signify-next-hunk)
-nmap <leader>gk <plug>(signify-prev-hunk)
+nmap <leader>gk <Plug>(signify-prev-hunk)
 nmap <leader>qf <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>w <C-w>
+nmap <leader>w <c-w>
 nmap <silent> [z <Plug>(coc-diagnostic-prev)
 nmap <silent> ]z <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <space><tab> <plug>(fzf-maps-n)
-nmap <space>g :G<cr>
-
-nnoremap <C-w>m :MaximizerToggle!<CR>
+nnoremap <c-w>m :MaximizerToggle!<cr>
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-nnoremap <leader>bd :Bdelete<CR>
-nnoremap <leader>vpi :call <SID>install_plugins()<CR>
-nnoremap <leader>vrs :call <SID>reload_vim_config()<cr>
-nnoremap <silent> <space>A  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>E  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>J  :<C-u>CocNext<CR>
-nnoremap <silent> <space>K  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>O  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>R  :<C-u>CocListResume<CR>
-nnoremap <silent> <space>S  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>X  :<C-u>CocList commands<cr>
-nnoremap <silent> K :call ShowDocumentation()<CR>
-nnoremap <space>! :Filetypes<cr>
-nnoremap <space>/ :Ag 
-nnoremap <space>: :Commands<cr>
-nnoremap <space>? :Helptags<cr>
-nnoremap <space>C :Commits<cr>
-nnoremap <space>F :GFiles<cr>
-nnoremap <space>G :GFiles?<cr>
-nnoremap <space>L :Lines<cr>
-nnoremap <space>T :NERDTreeFind<cr>
-nnoremap <space>W :Windows<cr>
-nnoremap <space>b :Buffers<cr>
-nnoremap <space>c :BCommits<cr>
-nnoremap <space>e :History<cr>
-nnoremap <space>f :Files<cr>
-nnoremap <space>l :BLines<cr>
-nnoremap <space>m :Marks<cr>
-nnoremap <space>q :History:<cr>
-nnoremap <space>s :Snippets<cr>
-nnoremap <space>t :NERDTreeToggle<cr>
-nnoremap <space>u :MundoToggle<cr>
-
-omap <space><tab> <plug>(fzf-maps-o)
-
-vnoremap <C-w>m :MaximizerToggle!<CR>gv
-
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<cr>
+nnoremap <silent> <localleader> :<c-u>WhichKey ','<cr>
+nnoremap <leader>! :Filetypes<cr>
+nnoremap <leader>/ :Ag 
+nnoremap <leader>: :Commands<cr>
+nnoremap <leader>? :Helptags<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>bd :Bdelete<cr>
+nnoremap <leader>c :BCommits<cr>
+nnoremap <leader>C :Commits<cr>
+nnoremap <leader>e :History<cr>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>F :GFiles<cr>
+nnoremap <leader>G :GFiles?<cr>
+nnoremap <leader>l :BLines<cr>
+nnoremap <leader>L :Lines<cr>
+nnoremap <leader>m :Marks<cr>
+nnoremap <leader>q :History:<cr>
+nnoremap <leader>s :Snippets<cr>
+nnoremap <leader>T :NERDTreeFind<cr>
+nnoremap <leader>t :NERDTreeToggle<cr>
+nnoremap <leader>u :MundoToggle<cr>
+nnoremap <leader>vpi :InstallPlugins<cr>
+nnoremap <leader>vrs :ReloadVimConfig<cr>
+nnoremap <leader>W :Windows<cr>
+nnoremap <silent> <leader>A :<c-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>E :<c-u>CocList extensions<cr>
+nnoremap <silent> <leader>J :<c-u>CocNext<cr>
+nnoremap <silent> <leader>K :<c-u>CocPrev<cr>
+nnoremap <silent> <leader>O :<c-u>CocList outline<cr>
+nnoremap <silent> <leader>R :<c-u>CocListResume<cr>
+nnoremap <silent> <leader>S :<c-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>X :<c-u>CocList commands<cr>
+nnoremap <silent> K :call ShowDocumentation()<cr>
+omap <leader><tab> <Plug>(fzf-maps-o)
+vnoremap <c-w>m :MaximizerToggle!<cr>gv
+xmap <leader><tab> <Plug>(fzf-maps-x)
 xmap <leader>a <Plug>(coc-codeaction-selected)
 xmap <leader>f <Plug>(coc-format-selected)
-xmap <space><tab> <plug>(fzf-maps-x)
 
 " vim: fdm=marker fdl=0
