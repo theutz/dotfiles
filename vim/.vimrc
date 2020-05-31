@@ -115,11 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" mhinz/vim-signify {{{2
-let g:signify_vcs_list = ['git']
-let g:signify_update_on_bufenter = 1
-let g:signify_update_on_focusgained = 1
-
 " luochen1990/rainbow {{{2
 let g:rainbow_active=1
 
