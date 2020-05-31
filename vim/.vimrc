@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" christoomey/vim-tmux-runner {{{2
-let g:VtrUseVtrMaps = 1
-
 
 " Commands {{{1
 
