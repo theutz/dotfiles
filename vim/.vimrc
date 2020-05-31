@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" miyakogi/conoline.vim {{{2
-let g:conoline_auto_enable = 1
-
 " itchyny/lightline.vim {{{2
 let g:lightline = {
       \ 'colorscheme': 'nightowl',
