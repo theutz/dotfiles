@@ -24,7 +24,7 @@ set wildmenu
 set tabpagemax=40
 set cursorline
 set nocursorcolumn
-set number relativenumber
+set number relativenumber " hybrid line numbers
 set noerrorbells
 set visualbell
 set mouse=a
