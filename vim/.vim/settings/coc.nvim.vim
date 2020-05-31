@@ -48,4 +48,36 @@ augroup json_config_files
 augroup end
 "}}}
 
+" Keymaps{{{
+" nmap <silent> <tab> <Plug>(coc-range-select)
+" xmap <silent> <s-tab> <Plug>(coc-range-select-backword)
+" xmap <silent> <tab> <Plug>(coc-range-select)
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <tab> pumvisible() ? "\<c-n>" : <SID>check_back_space() ? "\<tab>" : coc#refresh()
+nmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>qf <Plug>(coc-fix-current)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> <leader>A :<c-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>E :<c-u>CocList extensions<cr>
+nnoremap <silent> <leader>J :<c-u>CocNext<cr>
+nnoremap <silent> <leader>K :<c-u>CocPrev<cr>
+nnoremap <silent> <leader>O :<c-u>CocList outline<cr>
+nnoremap <silent> <leader>R :<c-u>CocListResume<cr>
+nnoremap <silent> <leader>S :<c-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>X :<c-u>CocList commands<cr>
+xmap <leader>a <Plug>(coc-codeaction-selected)
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>F :Format<cr>
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
+"}}}
+
 " vim: fdm=marker fdl=0

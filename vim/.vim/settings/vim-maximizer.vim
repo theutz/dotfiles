@@ -7,6 +7,14 @@
 "                                                                                                          
 "                                                                                                          
 
+" Settings{{{
 let g:maximizer_set_default_mapping = 0
+"}}}
+
+" Keymaps{{{
+inoremap <c-w>m <c-o>:MaximizerToggle!<cr>
+nnoremap <c-w>m :MaximizerToggle!<cr>
+vnoremap <c-w>m :MaximizerToggle!<cr>gv
+"}}}
 
 " vim: fdm=marker fdl=0

@@ -36,6 +36,8 @@ set signcolumn=yes
 set splitright
 set splitbelow
 set colorcolumn=80,100
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ","
 "}}}
 
 " Colors {{{
