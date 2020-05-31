@@ -14,55 +14,56 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-  Plug 'itchyny/lightline.vim' " status bar
-  Plug 'kshenoy/vim-signature' " show marks in gutter
-  Plug 'luochen1990/rainbow' " rainbow parentheses
-  Plug 'miyakogi/conoline.vim' " set cursor line highlight only in current window
-  Plug 'jacoborus/tender.vim' " color scheme
-  Plug 'haishanh/night-owl.vim' " color scheme
-  Plug 'dracula/Vim', {'as': 'dracula'} " color scheme
-  Plug 'ayu-theme/ayu-vim' " color scheme
-  Plug 'sainnhe/lightline_foobar.vim' " color scheme
-  Plug 'tpope/vim-obsession' " track sessions better
-  Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server support
-  Plug 'sirver/UltiSnips' " snippets
-  Plug 'scrooloose/nerdcommenter' " commenting
-  Plug 'sheerun/vim-polyglot' " big language pack
-  Plug 'mattn/emmet-vim' " emmet (zen coding) support
-  Plug 'jparise/vim-graphql' " graphql language support
-  Plug 'jxnblk/vim-mdx-js' " mdx language support
-  Plug 'inkarkat/vim-SyntaxRange' " allow syntax definitions as a subset of a filetype
-  Plug 'alampros/vim-styled-jsx' " styled-jsx for nextjs
-  Plug 'tmux-plugins/vim-tmux' " integration for tmux files
-  Plug 'tpope/vim-abolish' " smart substitution
-  Plug 'tpope/vim-surround' " change surrounding text
-  Plug 'simnalamburt/vim-mundo' " undo history
-  Plug 'tpope/vim-repeat' " make more commands repeatable with .
-  Plug 'tpope/vim-speeddating' " auto-incrementable dates
-  Plug 'chrisbra/unicode.vim' " complete support for unicode digraphs
-  Plug 'wellle/targets.vim' " Add more text objects
-  Plug 'mattn/gist-vim' " edit GitHub gists with vim
-  Plug 'kburdett/vim-nuuid' " Work with uuids in vim
-  Plug 'fadein/vim-FIGlet' " Use figlet in vim
-  Plug 'tpope/vim-fugitive' " git interface
-  Plug 'sodapopcan/vim-twiggy' " git branch management
-  Plug 'tpope/vim-rhubarb' " github client for fugitive
-  Plug 'mhinz/vim-signify' " show git changes in gutter
-  Plug 'Xuyuanp/nerdtree-git-plugin' " show git changes in NERDTree
   Plug 'airblade/vim-rooter' " change project directory to VCS root
-  Plug 'tpope/vim-unimpaired' " pairs of keyboard shortcuts
-  Plug 'junegunn/fzf', { 'do': { ->fzf#install() } } " fuzzy finder zsh plugin
-  Plug 'junegunn/fzf.vim' " fuzzy finder vim integration
-  Plug 'scrooloose/nerdtree' " file tree
-  Plug 'tmux-plugins/vim-tmux-focus-events' " capture mouse events from tmux
-  Plug 'moll/vim-bbye' " adds :Bdelete and :Bwipeout
-  Plug 'szw/vim-maximizer' " Easy window maximization
-  Plug 'rizzatti/dash.vim' " open Dash for documentation
+  Plug 'alampros/vim-styled-jsx' " styled-jsx for nextjs
+  Plug 'ayu-theme/ayu-vim' " color scheme
+  Plug 'chrisbra/unicode.vim' " complete support for unicode digraphs
+  Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmux seamlessley
+  Plug 'christoomey/vim-tmux-runner' " use TMUX and vim nicely
+  Plug 'dracula/Vim', {'as': 'dracula'} " color scheme
   Plug 'editorconfig/editorconfig-vim' " apply .editorconfig settings
   Plug 'edkolev/tmuxline.vim' " sync tmux and vim powerline
+  Plug 'fadein/vim-FIGlet' " Use figlet in vim
+  Plug 'haishanh/night-owl.vim' " color scheme
+  Plug 'inkarkat/vim-SyntaxRange' " allow syntax definitions as a subset of a filetype
+  Plug 'itchyny/lightline.vim' " status bar
+  Plug 'jacoborus/tender.vim' " color scheme
+  Plug 'jparise/vim-graphql' " graphql language support
+  Plug 'junegunn/fzf', { 'do': { ->fzf#install() } } " fuzzy finder zsh plugin
+  Plug 'junegunn/fzf.vim' " fuzzy finder vim integration
+  Plug 'jxnblk/vim-mdx-js' " mdx language support
+  Plug 'kburdett/vim-nuuid' " Work with uuids in vim
+  Plug 'kshenoy/vim-signature' " show marks in gutter
+  Plug 'liuchengxu/vim-which-key'
+  Plug 'luochen1990/rainbow' " rainbow parentheses
+  Plug 'mattn/emmet-vim' " emmet (zen coding) support
+  Plug 'mattn/gist-vim' " edit GitHub gists with vim
   Plug 'mattn/webapi-vim' " required for vim-gist
-  Plug 'christoomey/vim-tmux-runner' " use TMUX and vim nicely
-  Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmux seamlessley
+  Plug 'mhinz/vim-signify' " show git changes in gutter
+  Plug 'miyakogi/conoline.vim' " set cursor line highlight only in current window
+  Plug 'moll/vim-bbye' " adds :Bdelete and :Bwipeout
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server support
+  Plug 'rizzatti/dash.vim' " open Dash for documentation
+  Plug 'sainnhe/lightline_foobar.vim' " color scheme
+  Plug 'scrooloose/nerdcommenter' " commenting
+  Plug 'scrooloose/nerdtree' " file tree
+  Plug 'sheerun/vim-polyglot' " big language pack
+  Plug 'simnalamburt/vim-mundo' " undo history
+  Plug 'sirver/UltiSnips' " snippets
+  Plug 'sodapopcan/vim-twiggy' " git branch management
+  Plug 'szw/vim-maximizer' " Easy window maximization
+  Plug 'tmux-plugins/vim-tmux' " integration for tmux files
+  Plug 'tmux-plugins/vim-tmux-focus-events' " capture mouse events from tmux
+  Plug 'tpope/vim-abolish' " smart substitution
+  Plug 'tpope/vim-fugitive' " git interface
+  Plug 'tpope/vim-obsession' " track sessions better
+  Plug 'tpope/vim-repeat' " make more commands repeatable with .
+  Plug 'tpope/vim-rhubarb' " github client for fugitive
+  Plug 'tpope/vim-speeddating' " auto-incrementable dates
+  Plug 'tpope/vim-surround' " change surrounding text
+  Plug 'tpope/vim-unimpaired' " pairs of keyboard shortcuts
+  Plug 'wellle/targets.vim' " Add more text objects
+  Plug 'Xuyuanp/nerdtree-git-plugin' " show git changes in NERDTree
 call plug#end()
 
 " vim: fdm=marker fdl=1
