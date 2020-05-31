@@ -12,6 +12,11 @@ if filereadable(expand("~/.vim/plugins.vim"))
   source ~/.vim/plugins.vim
 endif
 
+" Load Plugin Settings
+if filereadable(expand("~/.vim/settings.vim"))
+  source ~/.vim/settings.vim
+endif
+
 " General Settings {{{1
 
 " General Application {{{2
