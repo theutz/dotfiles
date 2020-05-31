@@ -7,15 +7,14 @@
 "                                             
 "                                             
 
-" Load Plugins
-if filereadable(expand("~/.vim/plugins.vim"))
-  source ~/.vim/plugins.vim
-endif
+let config_files = [
+  \ "~/.vim/plugins.vim",
+  \ "~/.vim/settings.vim",
+  \ ]
 
-" Load Plugin Settings
-if filereadable(expand("~/.vim/settings.vim"))
-  source ~/.vim/settings.vim
-endif
+for config_file in config_files
+  execute "source " . config_file
+endfor
 
 " Functions {{{1
 
