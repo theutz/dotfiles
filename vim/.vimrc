@@ -115,15 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" junegunn/fzf.vim {{{2
-let g:fzf_action = {
-      \ 'ctrl-t': 'tab-split',
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit'
-      \ }
-let g:fzf_buffers_jump = 1
-
-
 " mattn/vim-emmet {{{2
 let g:user_emmet_leader_key=','
 
