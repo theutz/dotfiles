@@ -10,43 +10,27 @@
 let config_files = [
   \ "~/.vim/plugins.vim",
   \ "~/.vim/settings.vim",
+  \ "~/.vim/functions.vim",
   \ ]
 
 for config_file in config_files
   execute "source " . config_file
 endfor
 
-" Functions {{{1
+" Keymaps {{{
 
-" reload_vim_config() {{{2
-if (!exists("*s:reload_vim_config"))
-  function! s:reload_vim_config()
-    source $MYVIMRC
-    redraw " to flush redraws
-    echom "Vim Config Reloaded!"
-  endfunction
-endif
-
-" install_plugins() {{{2
-if (!exists("*s:install_plugins"))
-  function! s:install_plugins()
-    call <SID>reload_vim_config()
-    PlugInstall --sync
-  endfunction
-endif
-
-" Keymaps {{{1
-
-" General {{{2
+" General {{{
 let mapleader = ","
 nnoremap <leader>vrs :call <SID>reload_vim_config()<cr>
 nnoremap <leader>vpi :call <SID>install_plugins()<CR>
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+"}}}
 
-" Window Commands {{{2
+" Window Commands {{{
 nmap <leader>w <C-w>
+"}}}
 
-" junegunn/fzf.vim {{{2
+" junegunn/fzf.vim {{{
 nnoremap <space>f :Files<cr>
 nnoremap <space>F :GFiles<cr>
 nnoremap <space>G :GFiles?<cr>
@@ -71,15 +55,18 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+"}}}
 
-" scrooloose/nerdtree {{{2
+" scrooloose/nerdtree {{{
 nnoremap <space>t :NERDTreeToggle<cr>
 nnoremap <space>T :NERDTreeFind<cr>
+"}}}
 
-" simnalamburt/vim-mundo {{{2
+" simnalamburt/vim-mundo {{{
 nnoremap <space>u :MundoToggle<cr>
+"}}}
 
-" neoclide/coc.nvim {{{2
+" neoclide/coc.nvim {{{
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -113,27 +100,33 @@ nnoremap <silent> <space>S  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>J  :<C-u>CocNext<CR>
 nnoremap <silent> <space>K  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>R  :<C-u>CocListResume<CR>
+"}}}
 
-" szw/vim-maximizer {{{2
+" szw/vim-maximizer {{{
 nnoremap <C-w>m :MaximizerToggle!<CR>
 vnoremap <C-w>m :MaximizerToggle!<CR>gv
 inoremap <C-w>m <C-o>:MaximizerToggle!<CR>
+"}}}
 
-" moll/vim-bbye {{{2
+" moll/vim-bbye {{{
 nnoremap <leader>bd :Bdelete<CR>
+"}}}
 
-" mhinz/vim-signify {{{2
+" mhinz/vim-signify {{{
 nmap <leader>gj <plug>(signify-next-hunk)
 nmap <leader>gk <plug>(signify-prev-hunk)
 nmap <leader>gJ 9999<leader>gj
 nmap <leader>gK 9999<leader>gk
+"}}}
 
-" tpope/vim-fugitive {{{2
+" tpope/vim-fugitive {{{
 nmap <space>g :G<cr>
+"}}}
+"}}}
 
-" Autocmd {{{1
-
-" Resize {{{2
+" Autocmd {{{
+" Resize {{{
 autocmd VimResized * wincmd =
-
+"}}}
+"}}}
 " vim: fdm=marker fdl=1
