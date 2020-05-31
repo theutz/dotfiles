@@ -133,15 +133,6 @@ let g:fzf_action = {
       \ }
 let g:fzf_buffers_jump = 1
 
-" scrooloose/nerdtree {{{2
-let NERDTreeMinimalUI = 1
-let NERDTreeQuitOnOpen = 1
-let NERDTreeIgnore = ['\.swp']
-let NERDTreeMapOpenSplit = "s"
-let NERDTreeMapPreviewSplit = "gs"
-let NERDTreeMapOpenVSplit="v"
-let NERDTreeMapPreviewVSplit="gv"
-let NERDTreeShowHidden=1
 
 " mattn/vim-emmet {{{2
 let g:user_emmet_leader_key=','
