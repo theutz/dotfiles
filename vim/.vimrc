@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" SerVer/ultisnips {{{2
-let g:UltiSnipsSnippetsDir="~/.dotfiles/ultisnips"
-
 " sheerun/vim-polyglot {{{2
 let g:vim_markdown_new_list_item_indent=0
 let g:vim_markdown_auto_insert_bullets = 0
