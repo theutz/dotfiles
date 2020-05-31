@@ -62,6 +62,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'edkolev/tmuxline.vim' " sync tmux and vim powerline
   Plug 'mattn/webapi-vim' " required for vim-gist
   Plug 'christoomey/vim-tmux-runner' " use TMUX and vim nicely
+  Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmux seamlessley
 call plug#end()
 
 " vim: fdm=marker fdl=1
