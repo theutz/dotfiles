@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" luochen1990/rainbow {{{2
-let g:rainbow_active=1
-
 " scrooloose/nerdcommenter {{{2
 let g:NERDSpaceDelims = 1
 
