@@ -115,28 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" itchyny/lightline.vim {{{2
-let g:lightline = {
-      \ 'colorscheme': 'nightowl',
-      \ 'active': {
-      \   'left': [
-      \     [ 'mode', 'paste' ],
-      \     [ 'cocstatus', 'gitbranch', 'obsession' ],
-      \     [ 'readonly', 'filename', 'modified' ]
-      \   ],
-      \   'right': [
-      \     [ 'lineinfo' ],
-      \     [ 'percent' ],
-      \     [ 'fileformat', 'fileencoding', 'filetype' ]
-      \   ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'gitbranch': 'fugitive#head',
-      \   'obsession': 'ObsessionStatus'
-      \ }
-      \ }
-
 " szw/vim-maximizer {{{2
 let g:maximizer_set_default_mapping = 0
 
