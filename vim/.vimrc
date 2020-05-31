@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" mattn/vim-emmet {{{2
-let g:user_emmet_leader_key=','
-
 " mhinz/vim-signify {{{2
 let g:signify_vcs_list = ['git']
 let g:signify_update_on_bufenter = 1
