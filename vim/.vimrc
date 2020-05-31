@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" editorconfig/editorconfig-vim {{{2
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
 " miyakogi/conoline.vim {{{2
 let g:conoline_auto_enable = 1
 
