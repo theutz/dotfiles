@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" szw/vim-maximizer {{{2
-let g:maximizer_set_default_mapping = 0
-
 " edkolev/tmuxline.vim {{{2
 let g:tmuxline_preset = 'full'
 
