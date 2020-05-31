@@ -113,14 +113,6 @@ set textwidth=80
 set undofile
 set undodir=~/.vim/undodir
 
-
-" Commands {{{1
-
-" neoclide/coc.nvim {{{2
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-
 " Functions {{{1
 
 " reload_vim_config() {{{2
