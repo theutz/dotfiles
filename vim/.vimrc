@@ -113,8 +113,6 @@ set textwidth=80
 set undofile
 set undodir=~/.vim/undodir
 
-" Plugin Settings {{{1
-
 
 " Commands {{{1
 
