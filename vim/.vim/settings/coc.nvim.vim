@@ -7,14 +7,16 @@
 "                                                               
 "                                                               
 
-"
-" Functions
-"
+" Functions {{{
+
+" Local {{{
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+"}}}
 
+" Global {{{
 function! ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -22,17 +24,16 @@ function! ShowDocumentation()
     call CocAction('doHover')
   endif
 endfunction
+"}}}
+"}}}
 
-"
-" Commands
-"
+" Commands{{{
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+"}}}
 
-"
-" Autocmd
-"
+" Autocmd {{{
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 augroup mygroup
@@ -45,5 +46,6 @@ augroup json_config_files
   au!
   autocmd BufNewFile,BufRead .prettierrc,.eslintrc set filetype=json
 augroup end
+"}}}
 
 " vim: fdm=marker fdl=0
