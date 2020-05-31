@@ -205,6 +205,7 @@ let NERDTreeMapOpenSplit = "s"
 let NERDTreeMapPreviewSplit = "gs"
 let NERDTreeMapOpenVSplit="v"
 let NERDTreeMapPreviewVSplit="gv"
+let NERDTreeShowHidden=1
 
 " mattn/vim-emmet {{{2
 let g:user_emmet_leader_key=','
