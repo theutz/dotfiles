@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" christoomey/vim-tmux-navigator {{{2
-let g:tmux_navigator_save_on_switch = 1
-
 " SerVer/ultisnips {{{2
 let g:UltiSnipsSnippetsDir="~/.dotfiles/ultisnips"
 
