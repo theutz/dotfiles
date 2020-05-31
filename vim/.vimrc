@@ -115,9 +115,6 @@ set undodir=~/.vim/undodir
 
 " Plugin Settings {{{1
 
-" edkolev/tmuxline.vim {{{2
-let g:tmuxline_preset = 'full'
-
 " netrw {{{2
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
