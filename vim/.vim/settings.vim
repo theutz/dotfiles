@@ -24,8 +24,7 @@ set wildmenu
 set tabpagemax=40
 set cursorline
 set nocursorcolumn
-set number
-set norelativenumber
+set number relativenumber
 set noerrorbells
 set visualbell
 set mouse=a
