@@ -30,4 +30,20 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
+"
+" Autocmd
+"
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup mygroup
+  autocmd!
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+augroup json_config_files
+  au!
+  autocmd BufNewFile,BufRead .prettierrc,.eslintrc set filetype=json
+augroup end
+
 " vim: fdm=marker fdl=0

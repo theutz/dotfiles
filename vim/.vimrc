@@ -233,16 +233,4 @@ nmap <space>g :G<cr>
 " Resize {{{2
 autocmd VimResized * wincmd =
 
-" neoclide/coc.nvim {{{2
-autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup mygroup
-  autocmd!
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-augroup json_config_files
-  au!
-  autocmd BufNewFile,BufRead .prettierrc,.eslintrc set filetype=json
-augroup end
-
 " vim: fdm=marker fdl=1
