@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "create-react-app": "^3.4.1",
+    "gitignore": "^0.6.0",
     "now": "^19.0.1",
     "share-cli": "^3.0.0",
     "tern": "^0.24.3"
