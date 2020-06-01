@@ -162,13 +162,85 @@ commands:
               language: ""
               snippet: ""
             mode: 2
-          vimrc:
-            keypath: dotfiles.edit.vimrc
-            name: ${EDITOR} ${DOTFILES_DIR}/vim/.vimrc
-            alias: vimrc
+          vim:
+            keypath: dotfiles.edit.vim
+            name: ${EDITOR} ${DOTFILES_DIR}/vim
+            alias: vim
             aliasonly: false
-            description: Edit .vimrc
-            commands: {}
+            description: Edit VIM Configuration Files
+            commands:
+              autocommands:
+                keypath: dotfiles.edit.vim.autocommands
+                name: ${EDITOR} ${DOTFILES_DIR}/vim/.vim/autocommands.vim
+                alias: autocommands
+                aliasonly: false
+                description: Edit VIM autocommands
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              functions:
+                keypath: dotfiles.edit.vim.functions
+                name: ${EDITOR} ${DOTFILES_DIR}/vim/.vim/functions.vim
+                alias: functions
+                aliasonly: false
+                description: Edit VIM Functions
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              keymaps:
+                keypath: dotfiles.edit.vim.keymaps
+                name: ${EDITOR} ${DOTFILES_DIR}/vim/.vim/keymaps.vim
+                alias: keymaps
+                aliasonly: false
+                description: Edit VIM Keymaps
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              plugins:
+                keypath: dotfiles.edit.vim.plugins
+                name: ${EDITOR} ${DOTFILES_DIR}/vim/.vim/plugins.vim
+                alias: plugins
+                aliasonly: false
+                description: Edit VIM Plugins
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              rc:
+                keypath: dotfiles.edit.vim.rc
+                name: ${EDITOR} ${DOTFILES_DIR}/vim/.vimrc
+                alias: rc
+                aliasonly: false
+                description: Edit .vimrc
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
+              settings:
+                keypath: dotfiles.edit.vim.settings
+                name: ${EDITOR} ${DOTFILES_DIR}/vim/.vim/settings.vim
+                alias: settings
+                aliasonly: false
+                description: Edit VIM Settings
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
             subs: {}
             code:
               language: ""
@@ -286,6 +358,18 @@ commands:
     alias: dte
     aliasonly: true
     description: '`dotfiles edit`'
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 0
+  dtev:
+    keypath: dtev
+    name: dotfiles edit vim
+    alias: dtev
+    aliasonly: true
+    description: Edit VIM files...
     commands: {}
     subs: {}
     code:
