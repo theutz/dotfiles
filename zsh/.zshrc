@@ -69,8 +69,4 @@ fi
 zplug load
 # }}}
 
-# z {{{
-source /usr/local/etc/profile.d/z.sh
-# }}}
-
 # vim: fdm=marker fdl=0
