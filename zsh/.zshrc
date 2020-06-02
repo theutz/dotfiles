@@ -1,3 +1,12 @@
+#                      dP                         
+#                      88                         
+#    d888888b .d8888b. 88d888b. 88d888b. .d8888b. 
+#       .d8P' Y8ooooo. 88'  `88 88'  `88 88'  `"" 
+# dP  .Y8P          88 88    88 88       88.  ... 
+# 88 d888888P `88888P' dP    dP dP       `88888P' 
+#                                                 
+#                                                 
+
 # Setup Zplug {{{
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
