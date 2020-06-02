@@ -52,6 +52,7 @@ zplug "djui/alias-tips"
 zplug "junegunn/fzf", \
  hook-build:"\"$ZPLUG_REPOS\"/junegunn/fzf/install --key-bindings --completion --no-update-rc"
 zplug "dracula/zsh", as:theme
+zplug "~/.zsh", from:local, use:"**/init.zsh"
 #}}}
 #}}}
 
