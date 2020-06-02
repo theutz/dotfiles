@@ -68,10 +68,6 @@ fi
 zplug load
 # }}}
 
-# FZF Setup {{{
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# }}}
-
 # nostromo [section begin] {{{
 eval "$(nostromo completion)"
 # nostromo [section end] }}}
