@@ -23,9 +23,10 @@ bindkey -v
 source "${DOTFILES_DIR}/zsh/.zpreztorc"
 # }}}
 
-# List plugins to install
+# List plugins to install {{{
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
-# prezto {{{
+
+# Prezto {{{
 zplug "modules/environment", from:prezto
 zplug "modules/terminal", from:prezto
 zplug "modules/editor", from:prezto
@@ -39,15 +40,20 @@ zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
 zplug "modules/tmux", from:prezto
 # }}}
-# oh-my-zsh {{{
+
+# Oh My Zsh {{{
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 # }}}
+
+# Other {{{
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "lukechilds/zsh-nvm"
 zplug "djui/alias-tips"
 zplug "junegunn/fzf", \
  hook-build:"\"$ZPLUG_REPOS\"/junegunn/fzf/install --key-bindings --completion --no-update-rc"
 zplug "dracula/zsh", as:theme
+#}}}
+#}}}
 
 # Install and Load Plugins {{{
 if ! zplug check --verbose; then
