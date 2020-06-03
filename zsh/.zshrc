@@ -39,6 +39,7 @@ zplug "modules/git", from:prezto
 zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
 zplug "modules/tmux", from:prezto
+zplug "modules/prompt", from:prezto
 # }}}
 
 # Oh My Zsh {{{
@@ -51,7 +52,10 @@ zplug "lukechilds/zsh-nvm"
 zplug "djui/alias-tips"
 zplug "junegunn/fzf", \
  hook-build:"\"$ZPLUG_REPOS\"/junegunn/fzf/install --key-bindings --completion --no-update-rc"
-zplug "dracula/zsh", as:theme
+zplug "wfxr/forgit"
+#}}}
+
+# Local {{{
 zplug "~/.zsh", from:local, use:"**/init.zsh"
 zplug "~/.zsh", from:local, use:"**/after.zsh", defer:2
 #}}}
