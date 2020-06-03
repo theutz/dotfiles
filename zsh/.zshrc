@@ -51,9 +51,12 @@ zplug "lukechilds/zsh-nvm"
 zplug "djui/alias-tips"
 zplug "junegunn/fzf", \
  hook-build:"\"$ZPLUG_REPOS\"/junegunn/fzf/install --key-bindings --completion --no-update-rc"
+#}}}
+
+# Local {{{
 zplug "~/.zsh", from:local, use:"**/init.zsh"
 zplug "~/.zsh", from:local, use:"**/after.zsh", defer:2
-#}}}
+# }}}
 #}}}
 
 # Install and Load Plugins {{{
