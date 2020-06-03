@@ -16,6 +16,7 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-rooter' " change project directory to VCS root
   Plug 'alampros/vim-styled-jsx' " styled-jsx for nextjs
+  Plug 'AlphaMycelium/pathfinder.vim' " clippy for vim
   Plug 'ayu-theme/ayu-vim' " color scheme
   Plug 'chrisbra/unicode.vim' " complete support for unicode digraphs
   Plug 'christoomey/vim-tmux-navigator' " navigate between vim and tmux seamlessley
