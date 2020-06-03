@@ -18,6 +18,10 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:editor' ps-context 'yes'
 #}}}
 
+# Module: Prompt {{{
+zstyle ':prezto:module:prompt' theme 'cloud'
+# }}}
+
 # Module: Git {{{
 zstyle ':prezto:module:git:status:ignore' submodules 'none'
 #}}}
