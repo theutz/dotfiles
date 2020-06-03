@@ -43,6 +43,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'miyakogi/conoline.vim' " set cursor line highlight only in current window
   Plug 'moll/vim-bbye' " adds :Bdelete and :Bwipeout
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server support
+  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'} " use vim to edit chrome textareas
   Plug 'rizzatti/dash.vim' " open Dash for documentation
   Plug 'sainnhe/lightline_foobar.vim' " color scheme
   Plug 'scrooloose/nerdcommenter' " commenting
