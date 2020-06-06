@@ -388,6 +388,18 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  forgit:
+    keypath: forgit
+    name: echo "Forgit Aliases"
+    alias: forgit
+    aliasonly: false
+    description: Forgit Aliases
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 2
   giaa:
     keypath: giaa
     name: git add --all
