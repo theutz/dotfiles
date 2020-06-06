@@ -455,6 +455,18 @@ commands:
           language: ""
           snippet: ""
         mode: 2
+      ignore:
+        keypath: forgit.ignore
+        name: forgit::ignore
+        alias: ignore
+        aliasonly: false
+        description: Forgit Ignore
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
     subs: {}
     code:
       language: ""
