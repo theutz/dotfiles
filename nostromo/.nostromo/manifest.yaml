@@ -2,7 +2,7 @@ version: 0.7.7
 config:
   verbose: false
   aliasesonly: false
-  mode: 0
+  mode: 2
 commands:
   cat:
     keypath: cat
