@@ -443,6 +443,18 @@ commands:
           language: ""
           snippet: ""
         mode: 2
+      diff:
+        keypath: forgit.diff
+        name: forgit::diff
+        alias: diff
+        aliasonly: false
+        description: Forgit Diff
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
     subs: {}
     code:
       language: ""
