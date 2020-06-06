@@ -479,6 +479,18 @@ commands:
           language: ""
           snippet: ""
         mode: 2
+      reset:
+        keypath: forgit.reset
+        name: forgit::reset::head
+        alias: reset
+        aliasonly: false
+        description: Forgit Reset HEAD
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
       stash:
         keypath: forgit.stash
         name: forgit::stash::show
