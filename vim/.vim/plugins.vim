@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim' " status bar
   Plug 'jacoborus/tender.vim' " color scheme
   Plug 'jparise/vim-graphql' " graphql language support
+  Plug 'junegunn/vim-easy-align' " easy alignment plugin
   Plug 'junegunn/fzf', { 'do': { ->fzf#install() } } " fuzzy finder zsh plugin
   Plug 'junegunn/fzf.vim' " fuzzy finder vim integration
   Plug 'jxnblk/vim-mdx-js' " mdx language support
