@@ -2,7 +2,7 @@ version: 0.7.7
 config:
   verbose: false
   aliasesonly: false
-  mode: 0
+  mode: 2
 commands:
   cat:
     keypath: cat
@@ -388,6 +388,126 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  f:
+    keypath: f
+    name: forgit
+    alias: f
+    aliasonly: true
+    description: Alias for Forgit
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 2
+  forgit:
+    keypath: forgit
+    name: echo "Forgit Aliases"
+    alias: forgit
+    aliasonly: false
+    description: Forgit Aliases
+    commands:
+      add:
+        keypath: forgit.add
+        name: forgit::add
+        alias: add
+        aliasonly: false
+        description: Forgit Add
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      checkout:
+        keypath: forgit.checkout
+        name: forgit::restore
+        alias: checkout
+        aliasonly: false
+        description: Forgit Checkout
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      clean:
+        keypath: forgit.clean
+        name: forgit::clean
+        alias: clean
+        aliasonly: false
+        description: Forgit Clean
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      diff:
+        keypath: forgit.diff
+        name: forgit::diff
+        alias: diff
+        aliasonly: false
+        description: Forgit Diff
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      ignore:
+        keypath: forgit.ignore
+        name: forgit::ignore
+        alias: ignore
+        aliasonly: false
+        description: Forgit Ignore
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      log:
+        keypath: forgit.log
+        name: forgit::log
+        alias: log
+        aliasonly: false
+        description: Forgit Log
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      reset:
+        keypath: forgit.reset
+        name: forgit::reset::head
+        alias: reset
+        aliasonly: false
+        description: Forgit Reset HEAD
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+      stash:
+        keypath: forgit.stash
+        name: forgit::stash::show
+        alias: stash
+        aliasonly: false
+        description: Forgit Stash
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 2
   giaa:
     keypath: giaa
     name: git add --all
