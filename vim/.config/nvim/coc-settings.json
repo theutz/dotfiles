@@ -1,8 +1,5 @@
 {
   "tsserver.npm": "/usr/local/bin/npm",
   "prettier.eslintIntegration": true,
-  "coc.source.emoji.enable": true,
-  "coc.source.emoji.filetypes": null,
   "coc.preferences.hoverTarget": "echo",
-  "snippets.ultisnips.directories": ["~/.dotfiles/ultisnips"]
 }
