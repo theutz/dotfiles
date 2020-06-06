@@ -467,6 +467,18 @@ commands:
           language: ""
           snippet: ""
         mode: 2
+      log:
+        keypath: forgit.log
+        name: forgit::log
+        alias: log
+        aliasonly: false
+        description: Forgit Log
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
     subs: {}
     code:
       language: ""
