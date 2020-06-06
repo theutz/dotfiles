@@ -388,6 +388,18 @@ commands:
       language: ""
       snippet: ""
     mode: 0
+  f:
+    keypath: f
+    name: forgit
+    alias: f
+    aliasonly: true
+    description: Alias for Forgit
+    commands: {}
+    subs: {}
+    code:
+      language: ""
+      snippet: ""
+    mode: 2
   forgit:
     keypath: forgit
     name: echo "Forgit Aliases"
