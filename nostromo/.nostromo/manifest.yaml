@@ -406,7 +406,19 @@ commands:
     alias: forgit
     aliasonly: false
     description: Forgit Aliases
-    commands: {}
+    commands:
+      add:
+        keypath: forgit.add
+        name: forgit::add
+        alias: add
+        aliasonly: false
+        description: Forgit Add
+        commands: {}
+        subs: {}
+        code:
+          language: ""
+          snippet: ""
+        mode: 2
     subs: {}
     code:
       language: ""
