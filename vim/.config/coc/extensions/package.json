@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "coc-marketplace": ">=1.7.0"
+    "coc-json": ">=1.2.6",
+    "coc-marketplace": ">=1.7.0",
+    "coc-prettier": ">=1.1.14",
+    "coc-snippets": ">=2.1.26",
+    "coc-tsserver": ">=1.5.1"
   }
 }

@@ -2,4 +2,12 @@
   "tsserver.npm": "/usr/local/bin/npm",
   "prettier.eslintIntegration": true,
   "coc.preferences.hoverTarget": "echo",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "json"
+  ]
 }
