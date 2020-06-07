@@ -39,7 +39,6 @@ zplug "modules/git", from:prezto
 zplug "modules/homebrew", from:prezto
 zplug "modules/docker", from:prezto
 zplug "modules/tmux", from:prezto
-zplug "modules/prompt", from:prezto
 # }}}
 
 # Oh My Zsh {{{
