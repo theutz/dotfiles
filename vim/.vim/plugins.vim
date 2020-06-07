@@ -45,6 +45,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'moll/vim-bbye' " adds :Bdelete and :Bwipeout
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server support
   Plug 'neoclide/jsonc.vim' " support for JSON with comments
+  Plug 'rafi/awesome-vim-colorschemes' " color scheme pack
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'} " use vim to edit chrome textareas
   Plug 'rizzatti/dash.vim' " open Dash for documentation
   Plug 'sainnhe/lightline_foobar.vim' " color scheme
