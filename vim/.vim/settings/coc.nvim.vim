@@ -31,6 +31,7 @@ endfunction
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "}}}
 
 " Autocmd {{{
@@ -78,6 +79,7 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>F :Format<cr>
 inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
+nmap <localleader>p :Prettier<cr>
 "}}}
 
 " vim: fdm=marker fdl=0

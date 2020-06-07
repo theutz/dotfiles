@@ -8,7 +8,7 @@
 "        d8888P                                          
 
 let g:lightline = {
-      \ 'colorscheme': 'nightowl',
+      \ 'colorscheme': 'tender',
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'paste' ],
