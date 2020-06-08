@@ -44,3 +44,6 @@
 	cmd = "code --wait $MERGED"
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
+[pull]
+	ff = only
+	rebase = false
