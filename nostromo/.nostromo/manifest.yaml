@@ -265,6 +265,18 @@ commands:
                   language: ""
                   snippet: ""
                 mode: 2
+              prezto:
+                keypath: dotfiles.edit.zsh.prezto
+                name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zpreztorc
+                alias: prezto
+                aliasonly: false
+                description: Edit Prezto Config
+                commands: {}
+                subs: {}
+                code:
+                  language: ""
+                  snippet: ""
+                mode: 2
               profile:
                 keypath: dotfiles.edit.zsh.profile
                 name: ${EDITOR} ${DOTFILES_DIR}/zsh/.zprofile

@@ -39,6 +39,8 @@ zstyle ':prezto:module:syntax-highlighting' pattern \
 #}}}
 
 # Module: TMUX {{{
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 zstyle ':prezto:module:tmux:session' name 'theutz'
 # }}}
 
