@@ -41,6 +41,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/gist-vim' " edit GitHub gists with vim
   Plug 'mattn/webapi-vim' " required for vim-gist
   Plug 'mhinz/vim-signify' " show git changes in gutter
+  Plug 'mileszs/ack.vim' " use ack/ag for vimgrep
   Plug 'miyakogi/conoline.vim' " set cursor line highlight only in current window
   Plug 'moll/vim-bbye' " adds :Bdelete and :Bwipeout
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server support
