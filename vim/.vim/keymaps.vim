@@ -12,5 +12,6 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <leader>vpi :InstallPlugins<cr>
 nnoremap <leader>vrs :ReloadVimConfig<cr>
 nnoremap <silent> K :call ShowDocumentation()<cr>
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " vim: fdm=marker fdl=0
