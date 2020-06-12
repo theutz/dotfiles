@@ -47,3 +47,5 @@
 [pull]
 	ff = only
 	rebase = false
+[rebase]
+	autosquash = true
