@@ -34,7 +34,7 @@ nnoremap <leader>C :Commits<cr>
 nnoremap <leader>e :History<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>F :GFiles<cr>
-nnoremap <leader>G :GFiles?<cr>
+nnoremap <leader>F? :GFiles?<cr>
 nnoremap <leader>l :BLines<cr>
 nnoremap <leader>L :Lines<cr>
 nnoremap <leader>m :Marks<cr>
