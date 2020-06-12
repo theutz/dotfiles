@@ -48,7 +48,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server support
   Plug 'neoclide/jsonc.vim' " support for JSON with comments
   Plug 'rafi/awesome-vim-colorschemes' " color scheme pack
-  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'} " use vim to edit chrome textareas
   Plug 'rizzatti/dash.vim' " open Dash for documentation
   Plug 'sainnhe/lightline_foobar.vim' " color scheme
   Plug 'scrooloose/nerdcommenter' " commenting
@@ -70,6 +69,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-unimpaired' " pairs of keyboard shortcuts
   Plug 'wellle/targets.vim' " Add more text objects
   Plug 'Xuyuanp/nerdtree-git-plugin' " show git changes in NERDTree
+  if has('nvim')
+    Plug 'raghur/vim-ghost', {'do': ':GhostInstall'} " use vim to edit chrome textareas
+  endif
+  if has('python3') && has('timers')
+    Plug 'AlphaMycelium/pathfinder.vim'
+  else
+    echoerr 'pathfinder.vim is not supported on this Vim installation'
+  endif
 call plug#end()
 
 " vim: fdm=marker fdl=1
