@@ -65,6 +65,7 @@ brew "lsd"
 brew "make"
 brew "mas"
 brew "mdcat"
+brew "mdv"
 brew "multimarkdown"
 brew "n"
 brew "neovim"
@@ -80,6 +81,7 @@ brew "postgresql", restart_service: true
 brew "ranger"
 brew "rename"
 brew "ripgrep"
+brew "ruby"
 brew "rust"
 brew "shellcheck"
 brew "shpotify"
@@ -108,6 +110,7 @@ brew "wget"
 brew "yarn"
 brew "yq"
 brew "z"
+brew "zplug"
 brew "zsh"
 brew "d12frosted/emacs-plus/emacs-plus"
 brew "github/gh/gh"
@@ -188,15 +191,18 @@ cask "font-ubuntumono-nerd-font"
 cask "font-vt323"
 cask "google-backup-and-sync"
 cask "google-chrome"
+cask "gpg-suite"
 cask "grammarly"
 cask "graphql-playground"
 cask "image2icon"
 cask "insomnia"
+cask "istat-menus5"
 cask "iterm2"
 cask "kaleidoscope"
 cask "karabiner-elements"
 cask "keybase"
 cask "kindle"
+cask "mate-translate"
 cask "microsoft-edge"
 cask "miro-formerly-realtimeboard"
 cask "mongotron"
@@ -231,7 +237,6 @@ mas "CARROT Weather", id: 993487541
 mas "Color Ninja", id: 1494948845
 mas "Dato", id: 1470584107
 mas "DuckDuckGo Privacy Essentials", id: 1482920575
-mas "Fantastical", id: 975937182
 mas "Grammarly for Safari", id: 1462114288
 mas "Honey", id: 1472777122
 mas "Instapaper", id: 1481302432
@@ -256,7 +261,6 @@ mas "ResizeIt", id: 416280139
 mas "Rosetta Stone", id: 1476088902
 mas "Sip", id: 507257563
 mas "Soulver", id: 413965349
-mas "Spark", id: 1176895641
 mas "Things", id: 904280696
 mas "Time Out", id: 402592703
 mas "Twitter", id: 1482454543
