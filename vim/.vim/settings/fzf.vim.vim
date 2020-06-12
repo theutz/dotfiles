@@ -26,7 +26,6 @@ nmap <leader><tab> <Plug>(fzf-maps-n)
 omap <leader><tab> <Plug>(fzf-maps-o)
 xmap <leader><tab> <Plug>(fzf-maps-x)
 " Others
-nnoremap <leader>! :Filetypes<cr>
 nnoremap <leader>/ :Ag 
 nnoremap <leader>: :Commands<cr>
 nnoremap <leader>? :Helptags<cr>

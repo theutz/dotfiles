@@ -7,6 +7,23 @@
 "                                                                                                                                    
 "                                                                                                                                    
 
-let g:VtrUseVtrMaps = 1
+" Settings{{{
+let g:VtrUseVtrMaps = 0
+"}}}
+
+" Keymaps{{{
+nnoremap <leader>vsc :VtrSendCommandToRunner!<cr>
+nnoremap <leader>vva  :VtrAttachToPane<cr>
+nnoremap <leader>vror :VtrReorientRunner<cr>
+nnoremap <leader>vsc  :VtrSendCommandToRunner<cr>
+nnoremap <leader>vsf  :VtrSendFile<cr>
+nnoremap <leader>vsl  :VtrSendLinesToRunner<cr>
+nnoremap <leader>vor  :VtrOpenRunner<cr>
+nnoremap <leader>vkr  :VtrKillRunner<cr>
+nnoremap <leader>vfr  :VtrFocusRunner<cr>
+nnoremap <leader>vdr  :VtrDetachRunner<cr>
+nnoremap <leader>vcr  :VtrClearRunner<cr>
+nnoremap <leader>vfc  :VtrFlushCommand<cr>
+"}}}
 
 " vim: fdm=marker fdl=0
