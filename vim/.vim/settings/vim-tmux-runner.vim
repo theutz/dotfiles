@@ -9,10 +9,14 @@
 
 " Settings{{{
 let g:VtrUseVtrMaps = 0
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewLine = 1
+let g:VtrClearSequence = ""
 "}}}
 
 " Keymaps{{{
-nnoremap <leader>vsc :VtrSendCommandToRunner!<cr>
+nnoremap <leader>vsc  :VtrSendCommandToRunner!<cr>
 nnoremap <leader>vva  :VtrAttachToPane<cr>
 nnoremap <leader>vror :VtrReorientRunner<cr>
 nnoremap <leader>vsc  :VtrSendCommandToRunner<cr>
