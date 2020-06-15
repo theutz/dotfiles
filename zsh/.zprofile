@@ -14,7 +14,7 @@ fi
 #}}}
 
 # Editors {{{
-export EDITOR="nvim"
+export EDITOR="vim"
 export VISUAL="$EDITOR"
 export PAGER='less'
 #}}}
