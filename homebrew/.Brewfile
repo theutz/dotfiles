@@ -8,6 +8,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "huytd/cask-fonts"
 tap "jesseduffield/lazydocker"
 tap "mongodb/brew"
 tap "pokanop/pokanop"
@@ -68,7 +69,6 @@ brew "mdcat"
 brew "mdv"
 brew "multimarkdown"
 brew "n"
-brew "neovim"
 brew "noti"
 brew "onefetch"
 brew "openvpn", restart_service: true
@@ -96,6 +96,7 @@ brew "toilet"
 brew "topgrade"
 brew "translate-shell"
 brew "trash"
+brew "travis"
 brew "tree"
 brew "tty-clock"
 brew "um"
@@ -112,7 +113,7 @@ brew "yq"
 brew "z"
 brew "zplug"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus"
+brew "d12frosted/emacs-plus/emacs-plus@26", link: false
 brew "github/gh/gh"
 brew "heroku/brew/heroku"
 brew "jesseduffield/lazydocker/lazydocker"
@@ -153,6 +154,7 @@ cask "font-gomono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-hasklig"
 cask "font-hasklug-nerd-font"
+cask "font-haskplex-nerd"
 cask "font-heavydata-nerd-font"
 cask "font-hermit-nerd-font"
 cask "font-inconsolata-nerd-font"
@@ -250,6 +252,7 @@ mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Octotree Pro", id: 1457450145
 mas "Pages", id: 409201541
+mas "Paprika Recipe Manager 3", id: 1303222628
 mas "PhotoScissors", id: 1499327097
 mas "Pixelmator", id: 407963104
 mas "Pocket", id: 568494494
