@@ -72,4 +72,6 @@ fi
 zplug load
 # }}}
 
+bindkey '^_' undo
+
 # vim: fdm=marker fdl=0
