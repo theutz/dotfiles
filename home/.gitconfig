@@ -31,18 +31,14 @@
 	rebase = false
 [rebase]
 	autosquash = true
-[mergetool "nvim"]
-	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
-[merge]
-	tool = nvim
-[mergetool]
-	prompt = false
-	trustExitCode = true
-[diff]
-	tool = nvim
-[difftool]
-	trustExitCode = true
 [commit]
 	verbose = true
-[difftool "nvim"]
-	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = vscode
+	ff = false
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
