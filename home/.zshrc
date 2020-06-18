@@ -8,6 +8,9 @@ autoload -U promptinit
 promptinit
 prompt pure
 
+# Setup homebrew
+eval "$(brew shellenv)"
+
 # Setup GPG
 export GPG_TTY="$(tty)"
 
@@ -26,3 +29,8 @@ fi
 if [ -f "${HOME}/google-cloud-sdk/completion.zsh.inc" ]; then
   . "${HOME}/google-cloud-sdk/completion.zsh.inc"
 fi
+
+# Setup git completion
+zstyle ':completion:*:*:git:*' script "${HOMEBREW_PREFIX}/share/zsh/site-functions/git-completion.bash"
+fpath+="${HOMEBREW_PREFIX}/share/zsh/site-functions/_git"
+autoload -Uz compinit && compinit
