@@ -1,0 +1,39 @@
+; vim: noet sw=4 ts=4
+[color]
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+	pager = less -FMRiX
+	editor = code --wait
+[user]
+	name = Michael Utz
+	email = michael@theutz.com
+[credential]
+	helper = osxkeychain
+[submodule]
+	ignore = dirty
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[github]
+	user = theutz
+[hub]
+	protocol = https
+[pull]
+	ff = only
+	rebase = false
+[rebase]
+	autosquash = true
+[commit]
+	verbose = true
+[merge]
+	tool = vscode
+	ff = false
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
