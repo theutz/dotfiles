@@ -1,3 +1,4 @@
+# Setup keybindings
 bindkey -v
 bindkey '^_' undo
 
