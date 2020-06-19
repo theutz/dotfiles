@@ -2,6 +2,12 @@
 bindkey -v
 bindkey '^_' undo
 
+# Set options
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt EXTENDED_GLOB
+setopt ALIASES
+
 # Setup Prompt
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit
