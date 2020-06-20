@@ -1,3 +1,6 @@
 [submodule "home/.zsh/pure"]
 	path = home/.zsh/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule "home/.zprezto"]
+	path = home/.zprezto
+	url = https://github.com/theutz/prezto

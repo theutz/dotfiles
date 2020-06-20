@@ -1,2 +1,1 @@
-export EDITOR="vim"
-export VISUAL="code"
+.zprezto/runcoms/zshenv
