@@ -13,3 +13,6 @@
 # Temporary
 .netrwhist
 *~
+
+# Vim
+Session.vim
