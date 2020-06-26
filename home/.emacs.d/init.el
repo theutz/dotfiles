@@ -13,3 +13,8 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
+
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode))
