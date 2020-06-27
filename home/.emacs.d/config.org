@@ -17,10 +17,42 @@
       "Edit this config file."
       (interactive)
       (find-file utz-config-file))
+
+    (defun utz/delete-frame ()
+      "Delete the selected frame."
+      (interactive)
+      (condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
   #+END_SRC
 
 * Emacs Settings
 
+** Initialize Server
+
+   #+BEGIN_SRC emacs-lisp
+     (server-start)
+   #+END_SRC
+   
+** Setup UTF-8
+
+  #+BEGIN_SRC emacs-lisp
+    (setq-default buffer-file-coding-system 'utf-8-unix)
+    (set-default-coding-systems 'utf-8-unix)
+    (setq locale-coding-system 'utf-8-unix)
+    (prefer-coding-system 'utf-8-unix)
+    (set-terminal-coding-system 'utf-8-unix)
+  #+END_SRC
+
+** File Association
+   
+*** sh-mode
+
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.zpreztorc\\'" . sh-mode))
+      (add-to-list 'auto-mode-alist '("\\.zprofile\\'" . sh-mode))
+    #+END_SRC
+
+** Miscellaneous
+   
   #+BEGIN_SRC emacs-lisp
     (setq org-confirm-babel-evaluate nil
 	  inhibit-startup-screen t
@@ -212,6 +244,12 @@
 
 * Keymaps
 
+** Global
+
+   #+BEGIN_SRC emacs-lisp
+     (general-define-key "s-q" 'utz/delete-frame)
+   #+END_SRC
+
 ** Leader
 
    #+BEGIN_SRC emacs-lisp
@@ -225,7 +263,18 @@
        "SPC" '(helm-M-x :wk "M-x"))
    #+END_SRC
 
-*** F - Files
+*** b - Buffers
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "b"
+	"" '(:ignore t :wk "Buffer")
+	"b" '(helm-buffers-list :wk "List Buffers")
+	"d" '(kill-this-buffer :wk "Delete Buffer"))
+    #+END_SRC
+
+    #+RESULTS:
+
+*** f - Files
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "f"
@@ -241,11 +290,19 @@
        (utz/set-leader-key :infix "f e"
 	 "" '(:ignore t :wk "Emacs Files")
 	 "d" '(utz/edit-config-file :wk "Edit Configuration File")
-	 "r" '(utz/load-config-file :wk "Load Configuration File")
-	 "R" '(restart-emacs :wk "Restart Emacs"))
+	 "r" '(utz/load-config-file :wk "Load Configuration File"))
      #+END_SRC
 
-*** G - Git
+*** F - Frames
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "F"
+	"" '(:ignore t :wk "Frames")
+	"d" '(delete-frame :wk "Delete")
+	"n" '(make-frame :wk "Make"))
+    #+END_SRC
+
+*** g - Git
     
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "g"
@@ -253,6 +310,16 @@
 	  "a" '(magit-stage :wk "Stage")
 	  "r" '(magit-unstage :wk "Un-stage")
 	  "g" '(magit-status :wk "Status"))
+    #+END_SRC
+
+*** q - Quit
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "q"
+	"" '(:ignore t :wk "Quit")
+	"q" '(utz/delete-frame :wk "Delete Frame")
+	"Q" '(kill-emacs :wk "Quit Emacs")
+	"r" '(restart-emacs :wk "Restart Emacs"))
     #+END_SRC
 
 ** Local Leader
@@ -299,3 +366,4 @@
    #+BEGIN_SRC emacs-lisp
      (general-define-key :states '(insert) "C-SPC" 'company-complete)
    #+END_SRC
+
