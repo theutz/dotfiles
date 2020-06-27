@@ -23,10 +23,10 @@
 
   #+BEGIN_SRC emacs-lisp
     (setq org-confirm-babel-evaluate nil
-	    inhibit-startup-screen t
-	    initial-scratch-message nil
-	    display-line-numbers-type 'visual
-	    vc-follow-symlinks t)
+	  inhibit-startup-screen t
+	  initial-scratch-message nil
+	  display-line-numbers-type 'visual
+	  vc-follow-symlinks t)
 
     (global-display-line-numbers-mode 1)
     (tool-bar-mode 0)
@@ -114,6 +114,14 @@
       (evil-collection-init)
     #+END_SRC
 
+*** Evil Commentary
+
+    #+BEGIN_SRC emacs-lisp
+      (straight-use-package 'evil-commentary)
+      (require 'evil-commentary)
+      (evil-commentary-mode)
+    #+END_SRC
+    
 ** YASnippet
 
   #+BEGIN_SRC emacs-lisp
@@ -180,6 +188,13 @@
        (require 'treemacs))
    #+END_SRC
 
+** Helpful
+
+   #+BEGIN_SRC emacs-lisp
+     (straight-use-package 'helpful)
+     (require 'helpful)
+   #+END_SRC
+
 ** Theme
 
    #+BEGIN_SRC emacs-lisp
@@ -206,14 +221,17 @@
 
      (utz/set-leader-key
        "" '(:ignore t :wk "Leader")
+       "h" `(,(general-simulate-key "C-h") :wk "Help")
        "SPC" '(helm-M-x :wk "M-x"))
    #+END_SRC
-  
+
 *** F - Files
 
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "f"
 	"" '(:ignore t :wk "Files")
+	"f" '(helm-find-files :wk "Find Files")
+	"s" '(save-buffer :wk "Save")
 	"t" '(treemacs :wk "Treemacs"))
     #+END_SRC
 
@@ -232,7 +250,9 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "g"
 	  "" '(:ignore t :wk "Git")
-	  "s" 'magit-status)
+	  "a" '(magit-stage :wk "Stage")
+	  "r" '(magit-unstage :wk "Un-stage")
+	  "g" '(magit-status :wk "Status"))
     #+END_SRC
 
 ** Local Leader
@@ -264,8 +284,16 @@
    #+BEGIN_SRC emacs-lisp
      (general-create-definer utz/set-help-key
        :prefix "C-h")
+
+     (utz/set-help-key
+       "f" '(helpful-callable :wk "Callable")
+       "v" '(helpful-variable :wk "Variable")
+       "x" '(helpful-at-point :wk "At Point")
+       "k" '(helpful-at-key :wk "Key")
+       "F" '(helpful-function :wk "Function")
+       "c" '(helpful-command :wk "Command"))
    #+END_SRC
-   
+
 ** Insert Mode
 
    #+BEGIN_SRC emacs-lisp
