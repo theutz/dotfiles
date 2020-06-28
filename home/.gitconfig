@@ -4,7 +4,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -FMRiX
-	editor = code --wait
+	editor = emacsclient -a '' -c
 [user]
 	name = Michael Utz
 	email = michael@theutz.com
