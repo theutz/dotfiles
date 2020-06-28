@@ -18,7 +18,7 @@
     (defun utz/edit-config-file ()
       "Edit this config file."
       (interactive)
-      (find-file utz-config-file))
+      (find-file-other-frame utz-config-file))
 
     (defun utz/delete-frame ()
       "Delete the selected frame."
@@ -31,7 +31,7 @@
 ** Initialize Server
 
    #+BEGIN_SRC emacs-lisp
-     (server-start)
+     ;; (server-start)
    #+END_SRC
    
 ** Setup UTF-8
@@ -210,9 +210,9 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
-       :init (setq lsp-keymap-prefix "SPC l")
+       :init (setq lsp-keymap-prefix "s-l")
        :hook (
-	      (lsp-mode . lsp-enable-which-key-integration))
+	     (lsp-mode . lsp-enable-which-key-integration))
        :commands (lsp))
    #+END_SRC
 
@@ -240,6 +240,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package web-mode
+       :init
+       (setq web-mode-code-indent-offset 2)
        :mode
        ("\\.html?\\'" . web-mode)
        ("\\.jsx?\\'" . web-mode)
@@ -314,6 +316,20 @@
      (require 'which-key)
      (which-key-mode)
      (which-key-setup-side-window-right-bottom)
+   #+END_SRC
+
+** Prettier JS
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package prettier-js
+       :hook (web-mode . prettier-js-mode))
+   #+END_SRC
+
+** Add node_modules Path
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package add-node-modules-path
+       :hook (web-mode . add-node-modules-path))
    #+END_SRC
 
 ** All The Icons
