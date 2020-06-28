@@ -98,9 +98,10 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package org
-       :custom
-       org-directory (expand-file-name "org" "~")
-       org-archive-location (expand-file-name "archive.org" org-directory))
+       :init
+       (setq org-directory (expand-file-name "org" "~")
+	     org-archive-location (expand-file-name "archive.org" org-directory)
+	     org-default-notes-file (expand-file-name "inbox.org" org-directory)))
    #+END_SRC
    
 *** Org Bullets
@@ -108,6 +109,12 @@
     #+BEGIN_SRC emacs-lisp
       (use-package org-bullets
 	:hook (org-mode . (lambda () (org-bullets-mode 1))))
+    #+END_SRC
+
+*** Org Rifle
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package helm-org-rifle)
     #+END_SRC
 
 ** Evil
