@@ -425,6 +425,16 @@
 	  "g" '(magit-status :wk "Status"))
     #+END_SRC
 
+*** o - Org
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "o"
+	"" '(:ignore t :wk "Org")
+	"c" '(org-capture :wk "Capture")
+	"a" '(org-agenda :wk "Agenda")
+	"r" '(helm-org-rifle :wk "Rifle"))
+    #+END_SRC
+
 *** p - Project
 
     #+BEGIN_SRC emacs-lisp
