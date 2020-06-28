@@ -22,7 +22,9 @@
 	(eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
 
+  (setq straight-use-package-by-default t)
   (require 'straight)
+  (straight-use-package 'use-package)
   (straight-use-package 'org)
   (require 'org)
 

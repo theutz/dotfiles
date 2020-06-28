@@ -5,13 +5,14 @@
 * Variables and Functions
 
   #+BEGIN_SRC emacs-lisp
+    (defconst utz-init-file (expand-file-name "init.el" user-emacs-directory))
     (defconst utz-config-file (expand-file-name "config.org" user-emacs-directory))
     (defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
 
     (defun utz/load-config-file ()
 	"(Re)load configuration file."
 	(interactive)
-	(org-babel-load-file utz-config-file))
+	(load-file utz-init-file))
 
     (defun utz/edit-config-file ()
       "Edit this config file."
@@ -72,29 +73,25 @@
 ** General.el
 
   #+BEGIN_SRC emacs-lisp
-    (straight-use-package 'general)
-    (require 'general)
+    (use-package general)
   #+END_SRC
 
 ** Magit
 
    #+BEGIN_SRC emacs-lisp
-     (straight-use-package 'magit)
-     (require 'magit)
+     (use-package magit)
    #+END_SRC
 
 ** Evil
 
   #+BEGIN_SRC emacs-lisp
-    (straight-use-package 'evil)
-
-    (setq evil-want-integration t
-	  evil-want-keybinding nil)
-
-    (require 'evil)
-
-    (setq evil-shift-width 2)
-    (evil-mode 1)
+    (use-package evil
+      :init
+      (setq evil-want-integration t
+	    evil-want-keybinding nil
+	    evil-shift-width 2)
+      :config
+      (evil-mode 1))
   #+END_SRC
 
 *** Evil Org
@@ -164,6 +161,16 @@
     (yas-global-mode 1)
   #+END_SRC
 
+** Projectile
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package projectile
+       :general
+       (:keymaps '(projectile-mode-map) "s-p" 'projectile-command-map)
+       :config
+       (projectile-mode +1))
+   #+END_SRC
+
 ** Flycheck
 
   #+BEGIN_SRC emacs-lisp
@@ -191,10 +198,19 @@
 ** Helm
 
    #+BEGIN_SRC emacs-lisp
-     (straight-use-package 'helm)
-     (require 'helm)
-     (helm-mode 1)
+     (use-package helm
+       :config
+       (helm-mode 1))
    #+END_SRC
+
+*** Helm Projectile
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package helm-projectile
+	:after (helm projectile)
+	:config
+	(helm-projectile-on))
+    #+END_SRC
 
 ** Which Key
 
@@ -247,7 +263,8 @@
 ** Global
 
    #+BEGIN_SRC emacs-lisp
-     (general-define-key "s-q" 'utz/delete-frame)
+     (general-define-key "s-q" 'utz/delete-frame
+			 "C-q" 'kill-emacs)
    #+END_SRC
 
 ** Leader
@@ -279,12 +296,13 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "f"
 	"" '(:ignore t :wk "Files")
-	"f" '(helm-find-files :wk "Find Files")
-	"s" '(save-buffer :wk "Save")
+	"f" '(helm-projectile :wk "Find Files in Project")
+	"F" '(helm-find-files :wk "Find Files")
+	"s" '(save-buffer :wk "Save Buffer")
 	"t" '(treemacs :wk "Treemacs"))
     #+END_SRC
 
-**** E - Emacs Files
+**** e - Emacs Files
 
      #+BEGIN_SRC emacs-lisp
        (utz/set-leader-key :infix "f e"
