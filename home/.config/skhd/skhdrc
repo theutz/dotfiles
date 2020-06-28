@@ -1,0 +1,26 @@
+#
+# Windows
+#
+
+# Focus
+cmd + alt + ctrl - n : yabai -m window --focus next
+cmd + alt + ctrl - p : yabai -m window --focus prev
+cmd + alt + ctrl - h : yabai -m window --focus west
+cmd + alt + ctrl - j : yabai -m window --focus south
+cmd + alt + ctrl - k : yabai -m window --focus north
+cmd + alt + ctrl - l : yabai -m window --focus east
+
+# Swap
+cmd + alt + shift - n : yabai -m window --swap next
+cmd + alt + shift - p : yabai -m window --swap prev
+cmd + alt + shift - h : yabai -m window --swap west
+cmd + alt + shift - j : yabai -m window --swap south
+cmd + alt + shift - k : yabai -m window --swap north
+cmd + alt + shift - l : yabai -m window --swap east
+
+# Float
+cmd + alt + ctrl - return : yabai -m window --toggle zoom-parent
+cmd + alt + ctrl - space : yabai -m window --toggle zoom-fullscreen
+
+# Split
+cmd + alt + ctrl - 0x2F : yabai -m window --toggle split
