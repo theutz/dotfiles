@@ -32,3 +32,9 @@ cmd + alt + ctrl - space : yabai -m window --toggle zoom-fullscreen
 
 # Split
 cmd + alt + ctrl - 0x2F : yabai -m window --toggle split
+
+#
+# Other
+#
+ctrl + alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+cmd + alt + ctrl - r : skhd --reload && noti -t 'skhd' -m 'Reload config!'
