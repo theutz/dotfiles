@@ -1,16 +1,51 @@
-.PHONY: install uninstall
 SHELL := /bin/bash
+
+.PHONY: install \
+	clean \
+	stow-home \
+	unstow-home \
+	link-org-files \
+	clean-org-files \
+	desktop-icons-off \
+	desktop-icons-on
+
+# Primary Commands
+
+install: stow-home \
+	desktop-icons-off \
+	link-org-files
+
+clean: unstow-home \
+	desktop-icons-on \
+	clean-org-files
+
+# Stow
+stow-home: 
+	stow --verbose home
+
+unstow-home:
+	stow --verbose --delete home
+
+# Desktop Icons
+
+desktop-icons-off:
+	defaults write com.apple.finder CreateDesktop false
+	killall Finder
+
+desktop-icons-on:
+	defaults write com.apple.finder CreateDesktop true
+	killall Finder
+
+# Org Files
 
 ACTUAL_ORG_FILES=${HOME}/Library/Mobile\ Documents/iCloud\~com\~appsonthemove\~beorg/Documents/org
 ORG_DIRECTORY=${HOME}/org
 
-install:
-	stow --verbose home
+link-org-files:
 	rm -rf $(ORG_DIRECTORY)
 	if [ -d $(ACTUAL_ORG_FILES) ]; then \
 		ln -s $(ACTUAL_ORG_FILES) $(ORG_DIRECTORY); \
 	fi
 
-uninstall:
-	stow --verbose --delete home
+clean-org-files:
 	rm -rf $(ORG_DIRECTORY)
