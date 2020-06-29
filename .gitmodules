@@ -4,3 +4,6 @@
 [submodule "home/.config/kitty/kitty-themes"]
 	path = home/.config/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
+[submodule "home/.config/ubersicht/widgets/nibar"]
+	path = home/.config/ubersicht/widgets/nibar
+	url = https://github.com/kkga/nibar

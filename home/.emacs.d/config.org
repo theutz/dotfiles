@@ -219,7 +219,7 @@
 *** LSP UI
 
     #+BEGIN_SRC emacs-lisp
-      (use-package lsp-ui :commands (lsp-ui-mode) :disabled)
+      (use-package lsp-ui :commands (lsp-ui-mode))
     #+END_SRC
 
 *** Helm LSP
@@ -283,7 +283,6 @@
 
     #+BEGIN_SRC emacs-lisp
       (use-package company-box
-	:disabled
 	:hook (company-mode . company-box-mode))
     #+END_SRC
 

@@ -27,13 +27,13 @@ cmd + alt + ctrl - p : yabai -m space --focus prev
 
 # Move
 
-cmd + alt + shift - n : yabai -m window --space next
-cmd + alt + shift - p : yabai -m window --space prev
+cmd + alt + shift - n : yabai -m window --space next && yabai -m space --focus next
+cmd + alt + shift - p : yabai -m window --space prev && yabai -m space --focus prev
 
 # Manage
 
-cmd + alt + shift - 0x18 : yabai -m space --create
-cmd + alt + shift - 0x1B : yabai -m space --destroy
+cmd + alt + shift - 0x18 : yabai -m space --create && yabai -m space --focus last
+cmd + alt + shift - 0x1B : yabai -m space --destroy && yabai -m space --focus recent
 
 # -----------
 # - Windows -
