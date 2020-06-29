@@ -124,6 +124,7 @@
       :init
       (setq evil-want-integration t
 	    evil-want-keybinding nil
+	    evil-want-C-u-scroll t
 	    evil-shift-width 2)
       :config
       (evil-mode 1))
@@ -387,8 +388,14 @@
 
      (utz/set-leader-key
        "" '(:ignore t :wk "Leader")
+       "u" '(universal-argument :wk "Universal Argument")
        "h" `(,(general-simulate-key "C-h") :wk "Help")
        "SPC" '(helm-M-x :wk "M-x"))
+
+     (utz/set-leader-key
+       :keymaps '(universal-argument-map)
+       "u" '(universal-argument-more :wk "Universal Argument (more...)"))
+  
    #+END_SRC
 
 *** b - Buffers
