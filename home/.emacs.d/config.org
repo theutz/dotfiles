@@ -211,15 +211,15 @@
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
        :init (setq lsp-keymap-prefix "s-l")
-       :hook (
-	     (lsp-mode . lsp-enable-which-key-integration))
+       :hook ((lsp-mode . lsp-enable-which-key-integration)
+	      (web-mode . lsp-mode))
        :commands (lsp))
    #+END_SRC
 
 *** LSP UI
 
     #+BEGIN_SRC emacs-lisp
-      (use-package lsp-ui :commands (lsp-ui-mode))
+      (use-package lsp-ui :commands (lsp-ui-mode) :disabled)
     #+END_SRC
 
 *** Helm LSP
@@ -283,6 +283,7 @@
 
     #+BEGIN_SRC emacs-lisp
       (use-package company-box
+	:disabled
 	:hook (company-mode . company-box-mode))
     #+END_SRC
 
