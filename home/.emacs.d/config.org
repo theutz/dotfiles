@@ -2,29 +2,48 @@
 #+AUTHOR: Michael Utz <michael@theutz.com>
 #+STARTUP: content
 
-* Variables and Functions
+* UTZ Namespace
 
-  #+BEGIN_SRC emacs-lisp
-    (defconst utz-init-file (expand-file-name "init.el" user-emacs-directory))
-    (defconst utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
-    (defconst utz-config-file (expand-file-name "config.org" user-emacs-directory))
-    (defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
+** Variables
 
-    (defun utz/load-config-file ()
-	"(Re)load configuration file."
+    #+BEGIN_SRC emacs-lisp
+      (defconst utz-init-file (expand-file-name "init.el" user-emacs-directory))
+    #+END_SRC
+
+    #+BEGIN_SRC emacs-lisp
+      (defconst utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
+    #+END_SRC
+  
+    #+BEGIN_SRC emacs-lisp
+      (defconst utz-config-file (expand-file-name "config.org" user-emacs-directory))
+    #+END_SRC
+  
+    #+BEGIN_SRC emacs-lisp
+      (defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
+    #+END_SRC
+ 
+** Functions
+   
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/load-config-file ()
+	  "(Re)load configuration file."
+	  (interactive)
+	  (load-file utz-init-file))
+    #+END_SRC
+    
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/edit-config-file ()
+	"Edit this config file."
 	(interactive)
-	(load-file utz-init-file))
+	(find-file-other-frame utz-config-file))
+    #+END_SRC
 
-    (defun utz/edit-config-file ()
-      "Edit this config file."
-      (interactive)
-      (find-file-other-frame utz-config-file))
-
-    (defun utz/delete-frame ()
-      "Delete the selected frame."
-      (interactive)
-      (condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
-  #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/delete-frame ()
+	"Delete the selected frame."
+	(interactive)
+	(condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
+    #+END_SRC
 
 * Emacs Settings
 
@@ -94,6 +113,21 @@
      (use-package magit)
    #+END_SRC
 
+*** Forge
+    
+    #+BEGIN_SRC emacs-lisp
+      (use-package forge
+	:after magit)
+    #+END_SRC
+
+*** Magit TODOs
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package magit-todos
+	:after magit
+	:hook '(magit . magit-todos))
+    #+END_SRC
+    
 ** Org Mode
 
    #+BEGIN_SRC emacs-lisp
@@ -220,7 +254,10 @@
 *** LSP UI
 
     #+BEGIN_SRC emacs-lisp
-      (use-package lsp-ui :commands (lsp-ui-mode))
+      (use-package lsp-ui
+	:commands (lsp-ui-mode)
+	:config
+	(add-to-list 'lsp-ui-doc-frame-parameters '(no-accept-focus . t)))
     #+END_SRC
 
 *** Helm LSP
@@ -347,6 +384,13 @@
      (with-eval-after-load 'all-the-icons
        (require 'treemacs))
    #+END_SRC
+   
+*** Treemacs Projectile
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package treemacs-projectile
+	:after (treemacs projectile))
+    #+END_SRC
 
 ** Helpful
 
@@ -404,7 +448,9 @@
       (utz/set-leader-key :infix "b"
 	"" '(:ignore t :wk "Buffer")
 	"b" '(helm-buffers-list :wk "List Buffers")
-	"d" '(kill-this-buffer :wk "Delete Buffer"))
+	"d" '(kill-this-buffer :wk "Delete Buffer")
+	"n" '(next-buffer :wk "Next buffer")
+	"p" '(previous-buffer :wk "Previous Buffer"))
     #+END_SRC
 
     #+RESULTS:
@@ -448,6 +494,14 @@
 	  "g" '(magit-status :wk "Status"))
     #+END_SRC
 
+*** l - Language
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "l"
+        "" '(:ignore t :wk "Language")
+	"l" `(,(general-simulate-key "s-l") :wk "Language Server"))
+    #+END_SRC
+    
 *** o - Org
 
     #+BEGIN_SRC emacs-lisp

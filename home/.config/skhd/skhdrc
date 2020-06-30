@@ -1,6 +1,27 @@
-# ===========
-# == YABAI ==
-# ===========
+# =========== #
+# == YABAI == #
+# =========== #
+
+# ---------------- #
+# - Setup Modes - #
+# ---------------- #
+
+:: default : noti -t 'skhd' -m 'default'
+:: normalmode @ : noti -t 'skhd' -m 'normalmode'
+:: prevmode @ : noti -t 'skhd' -m 'prevmode'
+:: nextmode @ : noti -t 'skhd' -m 'nextmode'
+:: insertmode @ : noti -t 'skhd' -m 'insertmode' 
+:: deletemode @ : noti -t 'skhd' -m 'deletemode'
+:: spacemode @ : noti -t 'skhd' -m 'spacemode'
+
+default < cmd - escape ; normalmode
+normalmode < escape ; default
+normalmode, nextmode < 0x21 ; prevmode
+normalmode, prevmode < 0x1E ; nextmode
+normalmode < d ; deletemode
+normalmode < i ; insertmode
+normalmode < s ; spacemode
+prevmode, nextmode, insertmode, deletemode, spacemode < escape ; normalmode
 
 # -----------
 # - Display -
@@ -8,13 +29,13 @@
 
 # Focus
 
-cmd + alt + ctrl - 0x21 : yabai -m display --focus next
-cmd + alt + ctrl - 0x1E : yabai -m display --focus prev
+nextmode < d : yabai -m display --focus next
+prevmode < d : yabai -m display --focus prev
 
 # Move
 
-cmd + alt + shift - 0x21 : yabai -m space --display next
-cmd + alt + shift - 0x1E : yabai -m space --display prev
+nextmode < shift - d : yabai -m space --display next
+prevmode < shift - d : yabai -m space --display prev
 
 # ----------
 # - Spaces -
@@ -22,18 +43,37 @@ cmd + alt + shift - 0x1E : yabai -m space --display prev
 
 # Focus
 
-cmd + alt + ctrl - n : yabai -m space --focus next
-cmd + alt + ctrl - p : yabai -m space --focus prev
+prevmode < s : yabai -m space --focus prev; skhd -k escape
+nextmode < s : yabai -m space --focus next; skhd -k escape
+spacemode < l : yabai -m space --focus next;
+spacemode < h : yabai -m space --focus prev
 
 # Move
 
-cmd + alt + shift - n : yabai -m window --space next && yabai -m space --focus next
-cmd + alt + shift - p : yabai -m window --space prev && yabai -m space --focus prev
+nextmode < shift - s : yabai -m window --space next && \
+	 yabai -m space --focus next; \
+	 skhd -k escape
+prevmode < shift - s : yabai -m window --space prev && \
+	 yabai -m space --focus prev; \
+	 skhd -k escape
+spacemode < shift - h : yabai -m window --space prev && \
+	  yabai -m space --focus prev
+spacemode < shift - l : yabai -m window --space next && \
+	  yabai -m space --focus next
 
 # Manage
 
-cmd + alt + shift - 0x18 : yabai -m space --create && yabai -m space --focus last
-cmd + alt + shift - 0x1B : yabai -m space --destroy && yabai -m space --focus recent
+insertmode < s : yabai -m space --create && \
+	   yabai -m space --focus last; \
+	   skhd -k escape
+deletemode < s : i="$(yabai -m query --spaces --space | jq .index)"; \
+	   yabai -m space --destroy && \
+	   yabai -m space --focus $(expr $i - 1); \
+	   skhd -k escape
+spacemode < i : yabai -m space --create
+spacemode < d : i="$(yabai -m query --spaces --space | jq .index)"; \
+	  yabai -m space --destroy && \
+	  yabai -m space --focus $(expr $i - 1) 
 
 # -----------
 # - Windows -
@@ -41,23 +81,33 @@ cmd + alt + shift - 0x1B : yabai -m space --destroy && yabai -m space --focus re
 
 # Focus
 
-cmd + alt + ctrl - j : yabai -m window --focus next
-cmd + alt + ctrl - k : yabai -m window --focus prev
+normalmode < h : yabai -m window --focus west
+normalmode < j : yabai -m window --focus south
+normalmode < k : yabai -m window --focus north
+normalmode < l : yabai -m window --focus east
 
 # Move
 
-cmd + alt + shift - j : yabai -m window --swap next
-cmd + alt + shift - k : yabai -m window --swap prev
+normalmode < shift - h : yabai -m window --swap west
+normalmode < shift - j : yabai -m window --swap south
+normalmode < shift - k : yabai -m window --swap north
+normalmode < shift - l : yabai -m window --swap east
+
+# Close
+deletemode < w : yabai -m window --close
 
 # Toggles
 
-cmd + alt + ctrl - return : yabai -m window --toggle zoom-parent
-cmd + alt + ctrl - space : yabai -m window --toggle zoom-fullscreen
-cmd + alt + ctrl - 0x2F : yabai -m window --toggle split
+normalmode < z : yabai -m window --toggle zoom-parent
+normalmode < shift - z : yabai -m window --toggle zoom-fullscreen
+normalmode < v : yabai -m window --toggle split
 
 # ---------
 # - Other -
 # ---------
 
-ctrl + alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
-cmd + alt + ctrl - r : skhd --reload && noti -t 'skhd' -m 'Reload config!'
+normalmode < t : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~; \
+	   skhd -k escape
+normalmode < shift - 8 : skhd --reload && \
+	   noti -t 'skhd' -m 'Configuration Reloaded'; \
+	   skhd -k "cmd + alt + ctrl - i"
