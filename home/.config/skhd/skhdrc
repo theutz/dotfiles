@@ -2,17 +2,17 @@
 # == YABAI == #
 # =========== #
 
-# ---------------- #
+# --------------- #
 # - Setup Modes - #
-# ---------------- #
+# --------------- #
 
-:: default : noti -t 'skhd' -m 'default'
-:: normalmode @ : noti -t 'skhd' -m 'normalmode'
-:: prevmode @ : noti -t 'skhd' -m 'prevmode'
-:: nextmode @ : noti -t 'skhd' -m 'nextmode'
-:: insertmode @ : noti -t 'skhd' -m 'insertmode' 
-:: deletemode @ : noti -t 'skhd' -m 'deletemode'
-:: spacemode @ : noti -t 'skhd' -m 'spacemode'
+:: default : echo "default" > ~/.skhd_mode
+:: normalmode @ : echo "normal" > ~/.skhd_mode
+:: prevmode @ : echo "prev" > ~/.skhd_mode
+:: nextmode @ : echo "next" > ~/.skhd_mode
+:: insertmode @ : echo "insert" > ~/.skhd_mode 
+:: deletemode @ : echo "delete" > ~/.skhd_mode
+:: spacemode @ : echo "space" > ~/.skhd_mode
 
 default < cmd - escape ; normalmode
 normalmode < escape ; default
@@ -29,13 +29,15 @@ prevmode, nextmode, insertmode, deletemode, spacemode < escape ; normalmode
 
 # Focus
 
-nextmode < d : yabai -m display --focus next
-prevmode < d : yabai -m display --focus prev
+nextmode < d : yabai -m display --focus next; \
+	 skhd -k escape
+prevmode < d : yabai -m display --focus prev; \
+	 skhd -k escape
 
 # Move
 
-nextmode < shift - d : yabai -m space --display next
-prevmode < shift - d : yabai -m space --display prev
+nextmode < shift - d : yabai -m window --display next
+prevmode < shift - d : yabai -m window --display prev
 
 # ----------
 # - Spaces -
