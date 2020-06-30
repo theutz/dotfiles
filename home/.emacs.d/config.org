@@ -489,6 +489,9 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "g"
 	  "" '(:ignore t :wk "Git")
+	  "b" '(magit-blame :wk "Blame")
+	  "c" '(magit-commit :wk "Commit")
+	  "l" '(magit-log :wk "Log")
 	  "s" '(magit-stage :wk "Stage")
 	  "u" '(magit-unstage :wk "Un-stage")
 	  "g" '(magit-status :wk "Status"))
