@@ -5,22 +5,26 @@
 * UTZ Namespace
 
 ** Variables
+   
+   #+BEGIN_SRC emacs-lisp
+     (defconst utz-dotfiles-dir (expand-file-name ".dotfiles" "~"))
+   #+END_SRC
 
-    #+BEGIN_SRC emacs-lisp
-      (defconst utz-init-file (expand-file-name "init.el" user-emacs-directory))
-    #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defconst utz-init-file (expand-file-name "init.el" user-emacs-directory))
+   #+END_SRC
 
-    #+BEGIN_SRC emacs-lisp
-      (defconst utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
-    #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defconst utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
+   #+END_SRC
   
-    #+BEGIN_SRC emacs-lisp
-      (defconst utz-config-file (expand-file-name "config.org" user-emacs-directory))
-    #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defconst utz-config-file (expand-file-name "config.org" user-emacs-directory))
+   #+END_SRC
   
-    #+BEGIN_SRC emacs-lisp
-      (defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
-    #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
+   #+END_SRC
  
 ** Functions
    
@@ -43,6 +47,26 @@
 	"Delete the selected frame."
 	(interactive)
 	(condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
+    #+END_SRC
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/find-skhdrc (arg)
+	"Open SKHD configuration file in a new window.\nUse `C-u' to open in a new frame."
+	(interactive "P")
+	(let ((file (expand-file-name "home/.config/skhd/skhdrc" utz-dotfiles-dir)))
+	  (if arg
+	      (find-file-other-frame file)
+	    (find-file-other-window file))))
+    #+END_SRC
+
+    #+BEGIN_SRC emacs-lisp
+      (defun utz/find-yabairc (arg)
+	"Open Yabai configuration file in a new window.\nUse `C-u' to open in a new frame."
+	(interactive "P")
+	(let ((file (expand-file-name "home/.config/yabai/yabairc" utz-dotfiles-dir)))
+	  (if arg
+	      (find-file-other-frame file)
+	    (find-file-other-window file))))
     #+END_SRC
 
 * Emacs Settings
@@ -466,6 +490,15 @@
 	"t" '(treemacs :wk "Treemacs"))
     #+END_SRC
 
+**** c - Config Files
+
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "f c"
+	 "" '(:ignore t :wk "Configuration Files")
+	 "y" '(utz/find-yabairc :wk "Yabai")
+	 "s" '(utz/find-skhdrc :wk "SKHD"))
+     #+END_SRC
+     
 **** e - Emacs Files
 
      #+BEGIN_SRC emacs-lisp
