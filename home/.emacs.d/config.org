@@ -2,10 +2,8 @@
 #+AUTHOR: Michael Utz <michael@theutz.com>
 #+STARTUP: content
 
-* UTZ Namespace
+* Constants
 
-** Variables
-   
    #+BEGIN_SRC emacs-lisp
      (defconst utz-dotfiles-dir (expand-file-name ".dotfiles" "~"))
    #+END_SRC
@@ -25,49 +23,6 @@
    #+BEGIN_SRC emacs-lisp
      (defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
    #+END_SRC
- 
-** Functions
-   
-    #+BEGIN_SRC emacs-lisp
-      (defun utz/load-config-file ()
-	  "(Re)load configuration file."
-	  (interactive)
-	  (load-file utz-init-file))
-    #+END_SRC
-    
-    #+BEGIN_SRC emacs-lisp
-      (defun utz/edit-config-file ()
-	"Edit this config file."
-	(interactive)
-	(find-file-other-frame utz-config-file))
-    #+END_SRC
-
-    #+BEGIN_SRC emacs-lisp
-      (defun utz/delete-frame ()
-	"Delete the selected frame."
-	(interactive)
-	(condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
-    #+END_SRC
-
-    #+BEGIN_SRC emacs-lisp
-      (defun utz/find-skhdrc (arg)
-	"Open SKHD configuration file in a new window.\nUse `C-u' to open in a new frame."
-	(interactive "P")
-	(let ((file (expand-file-name "home/.config/skhd/skhdrc" utz-dotfiles-dir)))
-	  (if arg
-	      (find-file-other-frame file)
-	    (find-file-other-window file))))
-    #+END_SRC
-
-    #+BEGIN_SRC emacs-lisp
-      (defun utz/find-yabairc (arg)
-	"Open Yabai configuration file in a new window.\nUse `C-u' to open in a new frame."
-	(interactive "P")
-	(let ((file (expand-file-name "home/.config/yabai/yabairc" utz-dotfiles-dir)))
-	  (if arg
-	      (find-file-other-frame file)
-	    (find-file-other-window file))))
-    #+END_SRC
 
 * Emacs Settings
 
@@ -374,10 +329,10 @@
 ** Which Key
 
    #+BEGIN_SRC emacs-lisp
-     (straight-use-package 'which-key)
-     (require 'which-key)
-     (which-key-mode)
-     (which-key-setup-side-window-right-bottom)
+     (use-package which-key
+       :config
+       (which-key-setup-side-window-bottom)
+       (which-key-mode))
    #+END_SRC
 
 ** Prettier JS
@@ -438,6 +393,90 @@
        (doom-themes-treemacs-config))
    #+END_SRC
 
+* Macros
+
+** Keymaps
+
+   #+BEGIN_SRC emacs-lisp
+     (general-create-definer utz/set-leader-key
+       :prefix "SPC"
+       :keymaps '(normal emacs visual))
+   #+END_SRC
+
+** Commands
+
+  #+BEGIN_SRC emacs-lisp
+	(defmacro utz/find-config-file (name shortcut-key file)
+	  "A macro for creating commands that open configuration files.
+
+    NAME should represent the configuration file, e.g. `zshrc' or `emacs'.
+    SHORTCUT-KEY will be appended to the `:infix' for \[utz/set-leader-key].
+    FILE is the absolute path that should be opened.
+
+    \(fn NAME SHORTCUT-KEY FILE)"
+	  (let ((funsymbol (intern (format "utz/find-config-%s" name)))
+		(doc (format "Open %s configuration file.\n`C-u' for a new window.\n`C-u C-u' for a new frame." name))
+		(shortcut (format "f c %s" shortcut-key)))
+	    `(progn
+	       (defun ,funsymbol (arg) ,doc
+		      (interactive "P")
+		      (cond ((equal '(4) arg) (find-file-other-window ,file))
+			    ((equal '(16) arg) (find-file-other-frame ,file))
+			    (t (find-file ,file))))
+	       (utz/set-leader-key ,shortcut '(,funsymbol :wk ,name)))))
+  #+END_SRC
+   
+* Functions
+
+** Reload Emacs Configuration File
+
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/load-config-file (arg)
+	"(Re)load emacs with a fresh configuration file."
+	(interactive "P")
+	(cond ((equal '(4) arg) (load-file utz-init-file))
+	      (t (org-babel-load-file utz-config-file))))
+	;; (let ((file (cond ((equal '(4) arg) utz-init-file)
+	;; 		     (t utz-config-file))))
+	;;   (message file)
+	;;   (load-file file)))
+   #+END_SRC
+    
+** Edit Configuration Files
+
+*** Emacs
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/find-config-file "emacs" "e" utz-config-file)
+    #+END_SRC
+     
+*** SKHD
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/find-config-file "skhd" "s" (expand-file-name "home/.config/skhd/skhdrc" utz-dotfiles-dir))
+    #+END_SRC
+
+*** Yabai
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/find-config-file "yabai" "y" (expand-file-name "home/.config/yabai/yabairc" utz-dotfiles-dir))
+    #+END_SRC
+
+*** ZSH
+     
+   #+BEGIN_SRC emacs-lisp
+     (utz/find-config-file "zshrc" "z" (expand-file-name ".zshrc" "~"))
+   #+END_SRC
+
+** Miscellaneous
+    
+   #+BEGIN_SRC emacs-lisp
+     (defun utz/delete-frame ()
+       "Delete the selected frame."
+       (interactive)
+       (condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
+   #+END_SRC
+
 * Keymaps
 
 ** Global
@@ -450,10 +489,6 @@
 ** Leader
 
    #+BEGIN_SRC emacs-lisp
-     (general-create-definer utz/set-leader-key
-       :prefix "SPC"
-       :keymaps '(normal emacs visual))
-
      (utz/set-leader-key
        "" '(:ignore t :wk "Leader")
        "u" '(universal-argument :wk "Universal Argument")
@@ -463,7 +498,6 @@
      (utz/set-leader-key
        :keymaps '(universal-argument-map)
        "u" '(universal-argument-more :wk "Universal Argument (more...)"))
-  
    #+END_SRC
 
 *** b - Buffers
@@ -490,23 +524,12 @@
 	"t" '(treemacs :wk "Treemacs"))
     #+END_SRC
 
-**** c - Config Files
-
-     #+BEGIN_SRC emacs-lisp
-       (utz/set-leader-key :infix "f c"
-	 "" '(:ignore t :wk "Configuration Files")
-	 "y" '(utz/find-yabairc :wk "Yabai")
-	 "s" '(utz/find-skhdrc :wk "SKHD"))
-     #+END_SRC
-     
-**** e - Emacs Files
-
-     #+BEGIN_SRC emacs-lisp
-       (utz/set-leader-key :infix "f e"
-	 "" '(:ignore t :wk "Emacs Files")
-	 "d" '(utz/edit-config-file :wk "Edit Configuration File")
-	 "r" '(utz/load-config-file :wk "Load Configuration File"))
-     #+END_SRC
+*** c - Configuration Files
+    
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "f c"
+	"" '(:ignore t :wk "Configuration"))
+    #+END_SRC
 
 *** F - Frames
 
@@ -568,7 +591,8 @@
 	"" '(:ignore t :wk "Quit")
 	"q" '(utz/delete-frame :wk "Delete Frame")
 	"Q" '(kill-emacs :wk "Quit Emacs")
-	"r" '(restart-emacs :wk "Restart Emacs"))
+	"r" '(utz/load-config-file :wk "Reload Configuration")
+	"R" '(restart-emacs :wk "Restart Emacs"))
     #+END_SRC
 
 *** w - Window
