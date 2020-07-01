@@ -50,12 +50,17 @@ nextmode < s : yabai -m space --focus next; skhd -k escape
 spacemode < l : yabai -m space --focus next;
 spacemode < h : yabai -m space --focus prev
 
-# Move
+# Move Space
 
-nextmode < shift - s : yabai -m window --space next && \
+prevmode < shift - s : yabai -m space --move prev; skhd -k escape
+nextmode < shift - s : yabai -m space --move next; skhd -k escape
+
+# Move Window
+
+nextmode < shift - w : yabai -m window --space next && \
 	 yabai -m space --focus next; \
 	 skhd -k escape
-prevmode < shift - s : yabai -m window --space prev && \
+prevmode < shift - w : yabai -m window --space prev && \
 	 yabai -m space --focus prev; \
 	 skhd -k escape
 spacemode < shift - h : yabai -m window --space prev && \
@@ -110,6 +115,7 @@ normalmode < v : yabai -m window --toggle split
 
 normalmode < t : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~; \
 	   skhd -k escape
-normalmode < shift - 8 : skhd --reload && \
-	   noti -t 'skhd' -m 'Configuration Reloaded'; \
-	   skhd -k "cmd + alt + ctrl - i"
+normalmode < e : emacsclient -c -a '' -n
+normalmode < shift - 8 : skhd -k escape && \
+	   skhd --reload && \
+	   noti -t 'skhd' -m 'Configuration Reloaded';
