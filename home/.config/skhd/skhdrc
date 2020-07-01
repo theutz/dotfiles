@@ -1,23 +1,30 @@
-# =========== #
-# == YABAI == #
-# =========== #
+# ========== #
+# == SKHD == #
+# ========== #
 
 # --------------- #
 # - Setup Modes - #
 # --------------- #
 
-:: default : echo "default" > ~/.skhd_mode
-:: normalmode @ : echo "normal" > ~/.skhd_mode
-:: prevmode @ : echo "prev" > ~/.skhd_mode
-:: nextmode @ : echo "next" > ~/.skhd_mode
-:: insertmode @ : echo "insert" > ~/.skhd_mode 
-:: deletemode @ : echo "delete" > ~/.skhd_mode
-:: spacemode @ : echo "space" > ~/.skhd_mode
+:: default : echo "default" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
+:: normalmode @ : echo "normal" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
+:: prevmode @ : echo "prev" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
+:: nextmode @ : echo "next" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
+:: insertmode @ : echo "insert" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
+:: deletemode @ : echo "delete" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
+:: spacemode @ : echo "space" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
 
 default < cmd - escape ; normalmode
 normalmode < escape ; default
-normalmode, nextmode < 0x21 ; prevmode
-normalmode, prevmode < 0x1E ; nextmode
+normalmode, nextmode, spacemode < 0x21 ; prevmode
+normalmode, prevmode, spacemode < 0x1E ; nextmode
 normalmode < d ; deletemode
 normalmode < i ; insertmode
 normalmode < s ; spacemode
@@ -29,7 +36,7 @@ prevmode, nextmode, insertmode, deletemode, spacemode < escape ; normalmode
 
 # Focus
 
-nextmode < d : yabai -m display --focus next; \
+nextmode < d : yabai -m display --focus next; /\
 	 skhd -k escape
 prevmode < d : yabai -m display --focus prev; \
 	 skhd -k escape
