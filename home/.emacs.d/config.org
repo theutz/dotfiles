@@ -456,12 +456,22 @@
 * Macros
 ** Keymaps
 
+   Set the main leader to =SPC=.
+   
    #+BEGIN_SRC emacs-lisp
      (general-create-definer utz/set-leader-key
        :prefix "SPC"
        :keymaps '(normal emacs visual))
    #+END_SRC
 
+   Set the local leader key to =,=.
+
+   #+BEGIN_SRC emacs-lisp
+     (general-create-definer utz/set-localleader-key
+       :prefix ","
+       :non-normal-prefix "M-,")
+   #+END_SRC
+   
 ** Commands
 
   #+BEGIN_SRC emacs-lisp
@@ -571,13 +581,19 @@
 
 ** Leader
 
+   Setup shortcuts that occur at the top-level of the leader keymap.
+   
    #+BEGIN_SRC emacs-lisp
      (utz/set-leader-key
        "" '(:ignore t :wk "Leader")
        "u" '(universal-argument :wk "Universal Argument")
        "h" `(,(general-simulate-key "C-h") :wk "Help")
        "SPC" '(helm-M-x :wk "M-x"))
+   #+END_SRC
 
+   And allow =SPC u= to be pressed multiple times, adding additional universal arguments.
+   
+   #+BEGIN_SRC emacs-lisp
      (utz/set-leader-key
        :keymaps '(universal-argument-map)
        "u" '(universal-argument-more :wk "Universal Argument (more...)"))
@@ -649,11 +665,32 @@
     #+BEGIN_SRC emacs-lisp
       (utz/set-leader-key :infix "o"
 	"" '(:ignore t :wk "Org")
-	"c" '(org-capture :wk "Capture")
-	"a" '(org-agenda :wk "Agenda")
-	"r" '(helm-org-rifle :wk "Rifle"))
+	"c" '(org-capture :wk "Capture"))
     #+END_SRC
 
+**** a - Org Agenda
+    
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-leader-key :infix "o a"
+	"" '(:ignore t :wk "Agenda")
+	"a" '(org-agenda :wk "Agenda"))
+    #+END_SRC
+
+**** r - Org Rifle
+     
+     #+BEGIN_SRC emacs-lisp
+       (utz/set-leader-key :infix "o r"
+	 "" '(:ignore t :wk "Rifle")
+	 "r" '(helm-org-rifle :wk "Open Buffers")
+	 "R" '(helm-org-rifle-occur :wk "Open Buffers (Occur)")
+	 "a" '(helm-org-rifle-agenda-files :wk "Agenda Files")
+	 "A" '(helm-org-rifle-occur-agenda-files :wk "Agenda Files (Occur)")
+	 "b" '(helm-org-rifle-current-buffer :wk "Current Buffer")
+	 "B" '(helm-org-rifle-occur-current-buffer :wk "Current Buffer (Occur)")
+	 "o" '(helm-org-rifle-org-directory :wk "Org Directory")
+	 "O" '(helm-org-rifle-occur-org-directory :wk "Org Directory (Occur)"))
+     #+END_SRC
+     
 *** p - Project
 
     #+BEGIN_SRC emacs-lisp
@@ -687,12 +724,6 @@
 
 ** Local Leader
 
-   #+BEGIN_SRC emacs-lisp
-     (general-create-definer utz/set-localleader-key
-       :prefix ","
-       :non-normal-prefix "M-,")
-   #+END_SRC
-   
 *** Org Special Edit
 
    #+BEGIN_SRC emacs-lisp
