@@ -164,6 +164,7 @@
     #+END_SRC
     
 ** Org Mode
+*************** TODO Setup capture templates
 
    #+BEGIN_SRC emacs-lisp
      (use-package org
@@ -171,7 +172,9 @@
        (setq org-directory (expand-file-name "~/org")
 	     org-archive-location (expand-file-name "archive.org" org-directory)
 	     org-default-notes-file (expand-file-name "inbox.org" org-directory)
-	     org-capture-templates nil))
+	     org-capture-templates nil)
+       :config
+       (require 'org-inlinetask))
    #+END_SRC
    
 *** Org Bullets
