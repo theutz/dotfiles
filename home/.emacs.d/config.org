@@ -727,21 +727,25 @@
 
 ** Local Leader
 
-*** Org Special Edit
+*** Org
 
-   #+BEGIN_SRC emacs-lisp
-     (utz/set-localleader-key
-       :states '(normal insert)
-       :keymaps '(org-mode-map)
-       "'" '(org-edit-special :wk "Edit Special"))
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-localleader-key
+	:states '(normal insert)
+	:keymaps '(org-mode-map)
+	"'" '(org-edit-special :wk "Edit Special"))
+    #+END_SRC
 
-     (add-hook 'org-src-mode-hook
-	       (lambda ()
-		 (utz/set-localleader-key
-		   :states '(normal insert)
-		   :keymaps '(org-src-mode-map)
-		   "'" '(org-edit-src-exit :wk "Exit"))))
-   #+END_SRC
+**** Special Edit
+
+     #+BEGIN_SRC emacs-lisp
+       (add-hook 'org-src-mode-hook
+		 (lambda ()
+		   (utz/set-localleader-key
+		     :states '(normal)
+		     :keymap 'org-src-mode-map
+		     "'" '(org-edit-src-exit :wk "Exit"))))
+     #+END_SRC
 
 ** Help
 
