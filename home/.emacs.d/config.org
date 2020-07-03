@@ -1,6 +1,9 @@
 #+TITLE: My Emacs Configuration
-#+AUTHOR: Michael Utz <michael@theutz.com>
-#+STARTUP: content
+#+AUTHOR: Michael Utz
+#+EMAIL: michael@theutz.com
+#+DESCRIPTION: This document contains my entire Emacs configuration.
+#+LANGUAGE: en
+#+STARTUP: overview hideblocks
 
 * Constants
 
@@ -62,21 +65,74 @@
      (load custom-file)
    #+END_SRC
 
-** Miscellaneous
-   
-  #+BEGIN_SRC emacs-lisp
-    (setq org-confirm-babel-evaluate nil
-	  inhibit-startup-screen t
-	  initial-scratch-message nil
-	  display-line-numbers-type 'visual
-	  vc-follow-symlinks t)
+** Minor Modes
+*** Tool Bar Mode
 
-    (global-display-line-numbers-mode 1)
-    (tool-bar-mode 0)
-    (menu-bar-mode 0)
-    (show-paren-mode 1)
-    (scroll-bar-mode 0)
-  #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+     (tool-bar-mode 0)
+    #+END_SRC
+  
+*** Menu Bar Mode
+   
+    #+BEGIN_SRC emacs-lisp
+     (menu-bar-mode 0)
+    #+END_SRC
+  
+*** Show Paren Mode 
+
+    #+BEGIN_SRC emacs-lisp
+     (show-paren-mode 1)
+    #+END_SRC
+
+*** Global Display Line Numbers Mode   
+
+    #+BEGIN_SRC emacs-lisp
+     (global-display-line-numbers-mode 1)
+    #+END_SRC
+   
+*** Scroll Bar Mode
+   
+    #+BEGIN_SRC emacs-lisp
+     (scroll-bar-mode 0)
+    #+END_SRC
+   
+** Variables
+
+*** Org Confirm Babel Evaluate
+    
+   #+BEGIN_SRC emacs-lisp
+    (setq org-confirm-babel-evaluate nil)
+   #+END_SRC
+  
+*** Inhibit Startup Screen
+    
+    #+BEGIN_SRC emacs-lisp
+      (setq inhibit-startup-screen t)
+    #+END_SRC
+   
+*** Initial Scratch Message
+    
+    #+BEGIN_SRC emacs-lisp
+      (setq initial-scratch-message nil)
+    #+END_SRC
+    
+*** Display Line Numbers Type
+
+    #+BEGIN_SRC emacs-lisp
+      (setq display-line-numbers-type 'visual)
+    #+END_SRC
+    
+*** VC Follow Symlinks
+    
+    #+BEGIN_SRC emacs-lisp
+      (setq vc-follow-symlinks t)
+    #+END_SRC
+
+*** Narrow to Region
+
+    #+BEGIN_SRC emacs-lisp
+      (put 'narrow-to-region 'disabled nil)
+    #+END_SRC
 
 * Packages
 
@@ -112,9 +168,10 @@
    #+BEGIN_SRC emacs-lisp
      (use-package org
        :init
-       (setq org-directory (expand-file-name "org" "~")
+       (setq org-directory (expand-file-name "~/org")
 	     org-archive-location (expand-file-name "archive.org" org-directory)
-	     org-default-notes-file (expand-file-name "inbox.org" org-directory)))
+	     org-default-notes-file (expand-file-name "inbox.org" org-directory)
+	     org-capture-templates nil))
    #+END_SRC
    
 *** Org Bullets
@@ -138,6 +195,7 @@
       (setq evil-want-integration t
 	    evil-want-keybinding nil
 	    evil-want-C-u-scroll t
+	    evil-split-window-below nil
 	    evil-shift-width 2)
       :config
       (evil-mode 1))
@@ -255,6 +313,8 @@
 
 ** Web Mode
 
+   Setup [[http://web-mode.org/][Web Mode]] for emacs.
+
    #+BEGIN_SRC emacs-lisp
      (use-package web-mode
        :init
@@ -359,9 +419,9 @@
 ** Treemacs
 
    #+BEGIN_SRC emacs-lisp
-     (straight-use-package 'treemacs)
-     (with-eval-after-load 'all-the-icons
-       (require 'treemacs))
+     (use-package treemacs
+       :config
+       (treemacs-git-mode 'deferred))
    #+END_SRC
    
 *** Treemacs Projectile
@@ -394,7 +454,6 @@
    #+END_SRC
 
 * Macros
-
 ** Keymaps
 
    #+BEGIN_SRC emacs-lisp
@@ -444,13 +503,33 @@
     
 ** Edit Configuration Files
 
-*** Emacs
+*** Emacs Configuration
+
+    Open /this/ file.
 
     #+BEGIN_SRC emacs-lisp
       (utz/find-config-file "emacs" "e" utz-config-file)
     #+END_SRC
+
+*** Emacs Custom
+
+    Open the ~custom.el~ file where Easy Customization settings are saved.
+    
+    #+BEGIN_SRC emacs-lisp
+      (utz/find-config-file "emacs-custom" "," utz-custom-file)
+    #+END_SRC
+
+*** Emacs Init
+
+    Open the ~init.el~ that bootstraps emacs.
+    
+    #+BEGIN_SRC emacs-lisp
+      (utz/find-config-file "emacs-init" "i" utz-init-file)
+    #+END_SRC
      
 *** SKHD
+
+    Open the configuration file for [[https://github.com/koekeishiya/skhd][skhd]].
 
     #+BEGIN_SRC emacs-lisp
       (utz/find-config-file "skhd" "s" (expand-file-name "home/.config/skhd/skhdrc" utz-dotfiles-dir))
@@ -458,11 +537,15 @@
 
 *** Yabai
 
+    Open the configuration file for [[https://github.com/koekeishiya/yabai/wiki][yabai]].
+
     #+BEGIN_SRC emacs-lisp
       (utz/find-config-file "yabai" "y" (expand-file-name "home/.config/yabai/yabairc" utz-dotfiles-dir))
     #+END_SRC
 
 *** ZSH
+
+    Open the runtime configuration for zsh.
      
    #+BEGIN_SRC emacs-lisp
      (utz/find-config-file "zshrc" "z" (expand-file-name ".zshrc" "~"))
