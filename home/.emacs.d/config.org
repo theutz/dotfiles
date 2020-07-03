@@ -172,7 +172,8 @@
        (setq org-directory (expand-file-name "~/org")
 	     org-archive-location (expand-file-name "archive.org" org-directory)
 	     org-default-notes-file (expand-file-name "inbox.org" org-directory)
-	     org-capture-templates nil)
+	     org-capture-templates '(("t" "Todo" entry (file org-default-notes-file)
+				      "* TODO %?\n\t%i\n\t%a")))
        :config
        (require 'org-inlinetask))
    #+END_SRC
@@ -328,6 +329,25 @@
        ("\\.tsx?\\'" . web-mode))
    #+END_SRC
 
+** vterm
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package vterm
+       :init
+       (setq vterm-kill-buffer-on-exit t)
+       :config
+       (add-hook 'vterm-mode-hook (lambda ()
+				    (setq-local evil-insert-state-cursor 'box)
+				    (evil-insert-state))))
+   #+END_SRC
+
+*** multi-vterm
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package multi-vterm
+	:after vterm)
+    #+END_SRC
+   
 ** Flycheck
 
   #+BEGIN_SRC emacs-lisp
@@ -439,6 +459,12 @@
    #+BEGIN_SRC emacs-lisp
      (straight-use-package 'helpful)
      (require 'helpful)
+   #+END_SRC
+
+** Finder+
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package finder+)
    #+END_SRC
 
 ** Theme
@@ -727,6 +753,17 @@
 
 ** Local Leader
 
+*** vterm
+
+    #+BEGIN_SRC emacs-lisp
+      (utz/set-localleader-key
+	:states '(normal)
+	:keymap 'vterm-mode-map
+	"c" '(multi-vterm :wk "Create New Terminal")
+	"n" '(multi-vterm-next :wk "Next Terminal")
+	"p" '(multi-vterm-prev :wk "Previous Terminal"))
+    #+END_SRC
+    
 *** Org
 
     #+BEGIN_SRC emacs-lisp
