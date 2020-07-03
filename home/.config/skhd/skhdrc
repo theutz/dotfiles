@@ -8,7 +8,7 @@
 
 :: default : echo "default" > ~/.skhd_mode && \
    osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
-:: normalmode @ : echo "normal" > ~/.skhd_mode && \
+:: windowmode @ : echo "window" > ~/.skhd_mode && \
    osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
 :: prevmode @ : echo "prev" > ~/.skhd_mode && \
    osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
@@ -20,15 +20,18 @@
    osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
 :: spacemode @ : echo "space" > ~/.skhd_mode && \
    osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
+:: applaunch @ : echo "applaunch" > ~/.skhd_mode && \
+   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
 
-default < cmd - escape ; normalmode
-normalmode < escape ; default
-normalmode, nextmode, spacemode < 0x21 ; prevmode
-normalmode, prevmode, spacemode < 0x1E ; nextmode
-normalmode < d ; deletemode
-normalmode < i ; insertmode
-normalmode < s ; spacemode
-prevmode, nextmode, insertmode, deletemode, spacemode < escape ; normalmode
+default < cmd - escape ; windowmode
+windowmode < escape ; default
+windowmode, nextmode < 0x21 ; prevmode
+windowmode, prevmode < 0x1E ; nextmode
+windowmode < d ; deletemode
+windowmode < i ; insertmode
+windowmode < s ; spacemode
+windowmode < a ; applaunch
+prevmode, nextmode, insertmode, deletemode, spacemode, applaunch < escape ; windowmode
 
 # -----------
 # - Display -
@@ -36,15 +39,19 @@ prevmode, nextmode, insertmode, deletemode, spacemode < escape ; normalmode
 
 # Focus
 
-nextmode < d : yabai -m display --focus next; /\
+nextmode < d : yabai -m display --focus next; \
 	 skhd -k escape
 prevmode < d : yabai -m display --focus prev; \
 	 skhd -k escape
 
 # Move
 
-nextmode < shift - d : yabai -m window --display next
-prevmode < shift - d : yabai -m window --display prev
+nextmode < shift - d : yabai -m window --display next && \
+	 yabai -m display --focus next; \
+	 skhd -k escape
+prevmode < shift - d : yabai -m window --display prev && \
+	 yabai -m display --focus prev; \
+	 skhd -k escape
 
 # ----------
 # - Spaces -
@@ -52,15 +59,19 @@ prevmode < shift - d : yabai -m window --display prev
 
 # Focus
 
-prevmode < s : yabai -m space --focus prev; skhd -k escape
-nextmode < s : yabai -m space --focus next; skhd -k escape
+prevmode < s : yabai -m space --focus prev; \
+	 skhd -k escape
+nextmode < s : yabai -m space --focus next; \
+	 skhd -k escape
 spacemode < l : yabai -m space --focus next;
 spacemode < h : yabai -m space --focus prev
 
 # Move Space
 
-prevmode < shift - s : yabai -m space --move prev; skhd -k escape
-nextmode < shift - s : yabai -m space --move next; skhd -k escape
+prevmode < shift - s : yabai -m space --move prev; \
+	 skhd -k escape
+nextmode < shift - s : yabai -m space --move next; \
+	 skhd -k escape
 
 # Move Window
 
@@ -95,34 +106,44 @@ spacemode < d : i="$(yabai -m query --spaces --space | jq .index)"; \
 
 # Focus
 
-normalmode < h : yabai -m window --focus west
-normalmode < j : yabai -m window --focus south
-normalmode < k : yabai -m window --focus north
-normalmode < l : yabai -m window --focus east
+windowmode < h : yabai -m window --focus west
+windowmode < j : yabai -m window --focus south
+windowmode < k : yabai -m window --focus north
+windowmode < l : yabai -m window --focus east
 
 # Move
 
-normalmode < shift - h : yabai -m window --swap west
-normalmode < shift - j : yabai -m window --swap south
-normalmode < shift - k : yabai -m window --swap north
-normalmode < shift - l : yabai -m window --swap east
+windowmode < shift - h : yabai -m window --swap west
+windowmode < shift - j : yabai -m window --swap south
+windowmode < shift - k : yabai -m window --swap north
+windowmode < shift - l : yabai -m window --swap east
 
 # Close
-deletemode < w : yabai -m window --close
+
+deletemode < d : yabai -m window --close; \
+	   skhd -k escape
 
 # Toggles
 
-normalmode < z : yabai -m window --toggle zoom-parent
-normalmode < shift - z : yabai -m window --toggle zoom-fullscreen
-normalmode < v : yabai -m window --toggle split
+windowmode < z : yabai -m window --toggle zoom-parent
+windowmode < shift - z : yabai -m window --toggle zoom-fullscreen
+windowmode < v : yabai -m window --toggle split
 
-# ---------
-# - Other -
-# ---------
+# -------------- #
+# - App Launch - #
+# -------------- #
 
-normalmode < t : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~; \
+applaunch < t : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~; \
+	   skhd -k escape; \
 	   skhd -k escape
-normalmode < e : emacsclient -c -a '' -n
-normalmode < shift - 8 : skhd -k escape && \
+applaunch < e : emacsclient -c -a '' -n; \
+	  skhd -k escape; \
+	  skhd -k escape
+
+# --------- #
+# - Other - #
+# --------- #
+
+windowmode < shift - 8 : skhd -k escape && \
 	   skhd --reload && \
 	   noti -t 'skhd' -m 'Configuration Reloaded';

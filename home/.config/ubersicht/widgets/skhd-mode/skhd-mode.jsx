@@ -17,19 +17,19 @@ const heading = css`
 `;
 
 export const render = ({ output, error }) => {
-  const mode = output.trim()
+  const mode = output.trim();
 
-  if (mode === 'default') return
+  if (mode === "default") return;
 
-  const color = ['normal'].includes(mode)
-              ? '#3FEEE6'
-              : ['prev', 'next'].includes(mode)
-              ? '#55BCC9'
-              : ['space'].includes(mode)
-              ? '#97CAEF'
-	      : ['delete', 'insert'].includes(mode)
-	      ? '#FC4445'
-	      : '#CAFAFE'
+  const color = ["window"].includes(mode)
+    ? "#3FEEE6"
+    : ["prev", "next"].includes(mode)
+    ? "#55BCC9"
+    : ["space"].includes(mode)
+    ? "#97CAEF"
+    : ["delete", "insert"].includes(mode)
+    ? "#FC4445"
+    : "#CAFAFE";
 
   const boundary = css`
     top: 0;
@@ -45,7 +45,9 @@ export const render = ({ output, error }) => {
 
   return (
     <div className={boundary}>
-      <h1 className={heading} key={mode}>{mode}</h1>
+      <h1 className={heading} key={mode}>
+        {mode}
+      </h1>
     </div>
   );
 };
