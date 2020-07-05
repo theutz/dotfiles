@@ -9,21 +9,9 @@
 ;; ------
 
 (let ((gc-cons-threshold most-positive-fixnum))
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-	(bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-	  (url-retrieve-synchronously
-	   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-	   'silent 'inhibit-cookies)
-	(goto-char (point-max))
-	(eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
+  (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-  (setq straight-use-package-by-default t)
-  (require 'straight)
+  (require 'setup-straight)
   (straight-use-package 'use-package)
   (straight-use-package 'org)
   (require 'org)
@@ -34,4 +22,9 @@
   (garbage-collect))
 
 (provide 'init.el)
+
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
+
 ;;; init.el ends here

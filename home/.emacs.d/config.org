@@ -5,6 +5,12 @@
 #+LANGUAGE: en
 #+STARTUP: overview hideblocks
 
+#+BEGIN_SRC emacs-lisp
+  (require 'setup-straight)
+  (setq straight-use-package-by-default t)
+  (straight-use-package 'use-package)
+#+END_SRC
+
 * Constants
 
    #+BEGIN_SRC emacs-lisp
