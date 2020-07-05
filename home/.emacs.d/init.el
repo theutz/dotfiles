@@ -1,30 +1,27 @@
-;;;; init.el -- The main starting point.
-;; =====================================
-
+;;;; init.el -- Bootstrap my Emacs configuration
+;;
 ;;; Commentary:
-;; ------------
-;; We'll use org-babel from here-on-out.
-
+;; This is the main entry point for my Emacs configuration.
+;;
+;; The primary goal is to add the "lisp" directory to the load-path, so
+;; that we can get everything up-and-running.
+;;
+;; We also suspend garbage collection during this process to speed-up
+;; load times ever-so-slightly.
+;;
 ;;; Code:
-;; ------
 
 (let ((gc-cons-threshold most-positive-fixnum))
   (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-  (require 'setup-straight)
-  (straight-use-package 'use-package)
-  (straight-use-package 'org)
-  (require 'org)
-
-  (org-babel-load-file
-   (expand-file-name "config.org" user-emacs-directory))
+  (require 'config)
 
   (garbage-collect))
 
 (provide 'init.el)
 
 ;; Local Variables:
-;; byte-compile-warnings: (not free-vars unresolved)
+;; byte-compile-warnings: (not unresolved)
 ;; End:
 
 ;;; init.el ends here
