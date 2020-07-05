@@ -272,6 +272,14 @@
     (yas-global-mode 1)
   #+END_SRC
 
+** Git Gutter
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package git-gutter
+       :config
+       (global-git-gutter-mode +1))
+   #+END_SRC
+
 ** Projectile
 
    #+BEGIN_SRC emacs-lisp
@@ -326,7 +334,8 @@
        :mode
        ("\\.html?\\'" . web-mode)
        ("\\.jsx?\\'" . web-mode)
-       ("\\.tsx?\\'" . web-mode))
+       ("\\.tsx?\\'" . web-mode)
+       ("\\.json\\'" . web-mode))
    #+END_SRC
 
 ** vterm
