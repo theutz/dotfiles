@@ -1,6 +1,8 @@
-;;;; setup-straight.el -- Setup straight.el
+;;;; straight-init.el -- Setup straight.el
 
 ;;; Commentary:
+;;
+;; Bootstrap straight.el and set it's basic options.
 ;;
 
 ;;; Code:
@@ -18,12 +20,22 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(defvar straight-use-package-by-default t)
-(require 'straight)
+;; Must be defined before requiring straight
 
-(provide 'setup-straight)
+(setq straight-use-package-by-default t)
+
+;; Actually require straight.el and use-package
+
+(require 'straight)
+(straight-use-package 'use-package)
+(require 'use-package)
+
+;; provide this module
+
+(provide 'straight-init)
 
 ;;; Local Variables:
 ;;; byte-compile-warnings: (not free-vars)
 ;;; End:
-;;; setup-straight.el ends here
+
+;;; straight-init.el ends here

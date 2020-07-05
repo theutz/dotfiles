@@ -1,22 +1,21 @@
 ;;; config.el -- Generated from config.org
+
 ;;; Commentary:
+;;
+;; This is pretty-much the config.
+;;
+
 ;;; Code:
 
-(setq-default flycheck-emacs-lisp-load-path 'inherit)
-(require 'setup-straight)
-(setq straight-use-package-by-default t)
-(straight-use-package 'use-package)
-(require 'use-package)
-
-(defconst utz-dotfiles-dir (expand-file-name ".dotfiles" "~"))
-
-(defconst utz-init-file (expand-file-name "init.el" user-emacs-directory))
-
-(defconst utz-custom-file (expand-file-name "custom.el" user-emacs-directory))
-
-(defconst utz-config-file (expand-file-name "config.org" user-emacs-directory))
-
-(defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
+(require 'utz-vars)
+(require 'straight-init)
+(require 'general-init)
+(require 'evil-init)
+(require 'org-init)
+(require 'helm-init)
+(require 'magit-init)
+(require 'utz-macros)
+(require 'utz-funcs)
 
 (use-package sh-script
   :mode (("\\.zpreztorc\\'" . sh-mode)
@@ -26,6 +25,7 @@
 	 ("\\zshenv\\'" . sh-mode)
 	 ("\\zshrc\\'" . sh-mode)))
 
+(setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq custom-file utz-custom-file)
 (load custom-file)
 
@@ -60,93 +60,6 @@
 (put 'narrow-to-region 'disabled nil)
 
 (setq-default indent-tabs-mode 2)
-
-(use-package general
-  :demand t
-  :init
-  (declare-function general-define-key "general")
-  (declare-function general--simulate-keys "general")
-  :functions (general-simulate-C-h
-	      general-simulate-C-w
-	      general-simulate-s-l))
-
-(use-package magit)
-
-(use-package forge
-  :after magit)
-
-(use-package magit-todos
-  :after magit
-  :hook '(magit . magit-todos))
-
-(use-package org
-  :defines org-capture-templates
-  :init
-  (setq org-directory (expand-file-name "~/org")
-	org-archive-location (expand-file-name "archive.org" org-directory)
-	org-default-notes-file (expand-file-name "inbox.org" org-directory)
-	org-capture-templates '(("t" "Todo" entry (file org-default-notes-file)
-				 "* TODO %?\n\t%i\n\t%a")))
-  :config
-  (require 'org-inlinetask))
-
-(use-package org-bullets
-  :init
-  (declare-function org-bullets-mode "org-bullets")
-  :hook (org-mode . (lambda () (org-bullets-mode 1))))
-
-(use-package helm-org-rifle)
-
-(use-package evil
-  :init
-  (declare-function evil-mode "evil")
-  (declare-function evil-insert-state "evil")
-  (declare-function evil-set-command-property "evil")
-
-  (setq evil-want-integration t
-	evil-want-keybinding nil
-	evil-want-C-u-scroll t
-	evil-split-window-below nil
-	evil-shift-width 2)
-  :config
-  (evil-mode 1))
-
-(use-package evil-surround
-  :after evil
-  :init
-  (declare-function global-evil-surround-mode "evil-surround")
-  :config
-  (global-evil-surround-mode 1))
-
-(use-package treemacs-evil
-  :after (evil treemacs))
-
-(use-package evil-collection
-  :after evil
-  :init
-  (declare-function evil-collection-init "evil-collection")
-  :config
-  (evil-collection-init))
-
-(use-package evil-commentary
-  :after evil
-  :init
-  (declare-function evil-commentary-mode "evil-commentary")
-  :config
-  (evil-commentary-mode))
-
-(use-package evil-magit
-  :after (evil magit))
-
-(use-package evil-org
-  :after evil
-  :init
-  (declare-function evil-org-set-key-theme "evil-org")
-  (declare-function evil-org-agenda-set-keys "evil-org")
-  :hook ((org-mode . evil-org-mode)
-	  (evil-org-mode . (lambda () (evil-org-set-key-theme))))
-  :config
-  (evil-org-agenda-set-keys))
 
 (use-package yasnippet
   :init
@@ -227,20 +140,6 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
-(use-package helm
-  :functions helm-mode
-  :config
-  (helm-mode 1))
-
-(use-package helm-projectile
-  :init
-  (declare-function helm-projectile-on "helm-projectile")
-  :config
-  (helm-projectile-on))
-
-(use-package helm-ag
-  :after (helm exec-path-from-shell))
-
 (use-package which-key
   :demand t
   :init
@@ -284,58 +183,6 @@
   (doom-themes-visual-bell-config)
   (doom-themes-org-config)
   (doom-themes-treemacs-config))
-
-(general-create-definer utz/set-leader-key
-  :prefix "SPC"
-  :keymaps '(normal emacs visual))
-
-(general-create-definer utz/set-localleader-key
-  :prefix ","
-  :non-normal-prefix "M-,")
-
-(defmacro utz/find-config-file (name shortcut-key file)
-      "A macro for creating commands that open configuration files.
-
-NAME should represent the configuration file, e.g. `zshrc' or `emacs'.
-SHORTCUT-KEY will be appended to the `:infix' for \[utz/set-leader-key].
-FILE is the absolute path that should be opened.
-
-\(fn NAME SHORTCUT-KEY FILE)"
-      (let ((funsymbol (intern (format "utz/find-config-%s" name)))
-	    (doc (format "Open %s configuration file.\n`C-u' for a new window.\n`C-u C-u' for a new frame." name))
-	    (shortcut (format "f c %s" shortcut-key)))
-	`(progn
-	   (defun ,funsymbol (arg) ,doc
-		  (interactive "P")
-		  (cond ((equal '(4) arg) (find-file-other-window ,file))
-			((equal '(16) arg) (find-file-other-frame ,file))
-			(t (find-file ,file))))
-	   (utz/set-leader-key ,shortcut '(,funsymbol :wk ,name)))))
-
-(defun utz/load-config-file (arg)
-   "(Re)load Emacs with a fresh configuration file.
-
-ARG specifies 'universal-argument' usage."
-   (interactive "P")
-   (cond ((equal '(4) arg) (load-file utz-init-file))
-	 (t (org-babel-load-file utz-config-file))))
-
-(utz/find-config-file "emacs" "e" utz-config-file)
-
-(utz/find-config-file "emacs-custom" "," utz-custom-file)
-
-(utz/find-config-file "emacs-init" "i" utz-init-file)
-
-(utz/find-config-file "skhd" "s" (expand-file-name "home/.config/skhd/skhdrc" utz-dotfiles-dir))
-
-(utz/find-config-file "yabai" "y" (expand-file-name "home/.config/yabai/yabairc" utz-dotfiles-dir))
-
-(utz/find-config-file "zshrc" "z" (expand-file-name ".zshrc" "~"))
-
-(defun utz/delete-frame ()
-  "Delete the selected frame."
-  (interactive)
-  (condition-case nil (delete-frame) (error (save-buffers-kill-terminal))))
 
 (general-define-key "s-q" 'utz/delete-frame
 		    "C-q" 'kill-emacs)
