@@ -1,37 +1,27 @@
-;;;; init.el -- The main starting point.
-;; =====================================
-
+;;;; init.el -- Bootstrap my Emacs configuration
+;;
 ;;; Commentary:
-;; ------------
-;; We'll use org-babel from here-on-out.
-
+;; This is the main entry point for my Emacs configuration.
+;;
+;; The primary goal is to add the "lisp" directory to the load-path, so
+;; that we can get everything up-and-running.
+;;
+;; We also suspend garbage collection during this process to speed-up
+;; load times ever-so-slightly.
+;;
 ;;; Code:
-;; ------
 
 (let ((gc-cons-threshold most-positive-fixnum))
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-	(bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-	  (url-retrieve-synchronously
-	   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-	   'silent 'inhibit-cookies)
-	(goto-char (point-max))
-	(eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
+  (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-  (setq straight-use-package-by-default t)
-  (require 'straight)
-  (straight-use-package 'use-package)
-  (straight-use-package 'org)
-  (require 'org)
-
-  (org-babel-load-file
-   (expand-file-name "config.org" user-emacs-directory))
+  (require 'config)
 
   (garbage-collect))
 
 (provide 'init.el)
+
+;; Local Variables:
+;; byte-compile-warnings: (not unresolved)
+;; End:
+
 ;;; init.el ends here
