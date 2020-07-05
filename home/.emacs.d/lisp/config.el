@@ -61,6 +61,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 (setq-default indent-tabs-mode 2)
+(setq-default tab-width 2)
 
 (use-package yasnippet
   :init
