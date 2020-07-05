@@ -1,12 +1,12 @@
-;;;; config.el -- Generated from config.org
-
+;;; config.el -- Generated from config.org
 ;;; Commentary:
-
 ;;; Code:
 
+(setq-default flycheck-emacs-lisp-load-path 'inherit)
 (require 'setup-straight)
 (setq straight-use-package-by-default t)
 (straight-use-package 'use-package)
+(require 'use-package)
 
 (defconst utz-dotfiles-dir (expand-file-name ".dotfiles" "~"))
 
@@ -18,14 +18,13 @@
 
 (defconst utz-snippets-directory (expand-file-name "snippets" user-emacs-directory))
 
-;; (server-start)
-
-(add-to-list 'auto-mode-alist '("\\.zpreztorc\\'" . sh-mode))
-(add-to-list 'auto-mode-alist '("\\zpreztorc\\'" . sh-mode))
-(add-to-list 'auto-mode-alist '("\\.zprofile\\'" . sh-mode))
-(add-to-list 'auto-mode-alist '("\\zprofile\\'" . sh-mode))
-(add-to-list 'auto-mode-alist '("\\zshenv\\'" . sh-mode))
-(add-to-list 'auto-mode-alist '("\\zshrc\\'" . sh-mode))
+(use-package sh-script
+  :mode (("\\.zpreztorc\\'" . sh-mode)
+	 ("\\zpreztorc\\'" . sh-mode)
+	 ("\\.zprofile\\'" . sh-mode)
+	 ("\\zprofile\\'" . sh-mode)
+	 ("\\zshenv\\'" . sh-mode)
+	 ("\\zshrc\\'" . sh-mode)))
 
 (setq custom-file utz-custom-file)
 (load custom-file)
@@ -46,12 +45,14 @@
 (prefer-coding-system 'utf-8-unix)
 (set-terminal-coding-system 'utf-8-unix)
 
+(defvar org-confirm-babel-evaluate)
 (setq org-confirm-babel-evaluate nil)
 
 (setq inhibit-startup-screen t)
 
 (setq initial-scratch-message nil)
 
+(defvar display-line-numbers-type)
 (setq display-line-numbers-type 'visual)
 
 (setq vc-follow-symlinks t)
@@ -60,7 +61,14 @@
 
 (setq-default indent-tabs-mode 2)
 
-(use-package general)
+(use-package general
+  :demand t
+  :init
+  (declare-function general-define-key "general")
+  (declare-function general--simulate-keys "general")
+  :functions (general-simulate-C-h
+	      general-simulate-C-w
+	      general-simulate-s-l))
 
 (use-package magit)
 
@@ -72,6 +80,7 @@
   :hook '(magit . magit-todos))
 
 (use-package org
+  :defines org-capture-templates
   :init
   (setq org-directory (expand-file-name "~/org")
 	org-archive-location (expand-file-name "archive.org" org-directory)
@@ -82,12 +91,18 @@
   (require 'org-inlinetask))
 
 (use-package org-bullets
+  :init
+  (declare-function org-bullets-mode "org-bullets")
   :hook (org-mode . (lambda () (org-bullets-mode 1))))
 
 (use-package helm-org-rifle)
 
 (use-package evil
   :init
+  (declare-function evil-mode "evil")
+  (declare-function evil-insert-state "evil")
+  (declare-function evil-set-command-property "evil")
+
   (setq evil-want-integration t
 	evil-want-keybinding nil
 	evil-want-C-u-scroll t
@@ -96,52 +111,62 @@
   :config
   (evil-mode 1))
 
-(with-eval-after-load 'evil
-  (straight-use-package 'evil-org)
-  (require 'evil-org)
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-	    (lambda ()
-	      (evil-org-set-key-theme)))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
-
-(with-eval-after-load 'evil
-  (straight-use-package 'evil-surround)
-  (require 'evil-surround)
+(use-package evil-surround
+  :after evil
+  :init
+  (declare-function global-evil-surround-mode "evil-surround")
+  :config
   (global-evil-surround-mode 1))
 
-(with-eval-after-load 'evil
-  (with-eval-after-load 'magit
-    (straight-use-package 'evil-magit)
-    (require 'evil-magit)))
+(use-package treemacs-evil
+  :after (evil treemacs))
 
-(straight-use-package 'treemacs-evil)
-(with-eval-after-load 'evil
-  (with-eval-after-load 'treemacs
-    (require 'treemacs-evil)))
+(use-package evil-collection
+  :after evil
+  :init
+  (declare-function evil-collection-init "evil-collection")
+  :config
+  (evil-collection-init))
 
-(straight-use-package 'evil-collection)
-(require 'evil-collection)
-(evil-collection-init)
+(use-package evil-commentary
+  :after evil
+  :init
+  (declare-function evil-commentary-mode "evil-commentary")
+  :config
+  (evil-commentary-mode))
 
-(straight-use-package 'evil-commentary)
-(require 'evil-commentary)
-(evil-commentary-mode)
+(use-package evil-magit
+  :after (evil magit))
 
-(straight-use-package 'yasnippet)
-(require 'yasnippet)
-(setq yas-snippet-dirs '(utz-snippets-directory))
-(setq yas-verbosity 2)
-(yas-global-mode 1)
+(use-package evil-org
+  :after evil
+  :init
+  (declare-function evil-org-set-key-theme "evil-org")
+  (declare-function evil-org-agenda-set-keys "evil-org")
+  :hook ((org-mode . evil-org-mode)
+	  (evil-org-mode . (lambda () (evil-org-set-key-theme))))
+  :config
+  (evil-org-agenda-set-keys))
+
+(use-package yasnippet
+  :init
+  (declare-function yas-global-mode "yasnippet")
+  :config
+  (setq yas-snippet-dirs '(utz-snippets-directory)
+	yas-verbosity 2)
+  (yas-global-mode 1))
 
 (use-package git-gutter
+  :init
+  (declare-function global-git-gutter-mode "git-gutter")
   :config
   (global-git-gutter-mode +1))
 
 (use-package projectile
   :general
   (:keymaps '(projectile-mode-map) "s-p" 'projectile-command-map)
+  :init
+  (declare-function projectile-mode "projectile")
   :config
   (projectile-mode +1))
 
@@ -165,13 +190,13 @@
 (use-package web-mode
   :init
   (setq web-mode-code-indent-offset 2)
-  :mode
-  ("\\.html?\\'" . web-mode)
-  ("\\.jsx?\\'" . web-mode)
-  ("\\.tsx?\\'" . web-mode)
-  ("\\.json\\'" . web-mode))
+  :mode ("\\.html?\\'"
+	 "\\.jsx?\\'"
+	 "\\.tsx?\\'"
+	 "\\.json\\'"))
 
 (use-package vterm
+  :after evil
   :init
   (setq vterm-kill-buffer-on-exit t)
   :config
@@ -183,16 +208,18 @@
   :after vterm)
 
 (use-package flycheck
+  :functions global-flycheck-mode
   :after (exec-path-from-shell)
   :config
   (global-flycheck-mode))
 
 (use-package exec-path-from-shell
+  :init
+  (declare-function exec-path-from-shell-initialize "exec-path-from-shell")
   :config
   (exec-path-from-shell-initialize))
 
-(straight-use-package 'restart-emacs)
-(require 'restart-emacs)
+(use-package restart-emacs)
 
 (use-package company
   :hook (after-init . global-company-mode))
@@ -201,10 +228,13 @@
   :hook (company-mode . company-box-mode))
 
 (use-package helm
+  :functions helm-mode
   :config
   (helm-mode 1))
 
 (use-package helm-projectile
+  :init
+  (declare-function helm-projectile-on "helm-projectile")
   :config
   (helm-projectile-on))
 
@@ -212,6 +242,10 @@
   :after (helm exec-path-from-shell))
 
 (use-package which-key
+  :demand t
+  :init
+  (declare-function which-key-setup-side-window-bottom "which-key")
+  (declare-function which-key-mode "which-key")
   :config
   (which-key-setup-side-window-bottom)
   (which-key-mode))
@@ -222,30 +256,33 @@
 (use-package add-node-modules-path
   :hook (web-mode . add-node-modules-path))
 
-(straight-use-package 'all-the-icons)
-(require 'all-the-icons)
+(use-package all-the-icons)
 
 (use-package treemacs
+  :init
+  (declare-function treemacs-git-mode "treemacs")
   :config
   (treemacs-git-mode 'deferred))
 
 (use-package treemacs-projectile
   :after (treemacs projectile))
 
-(straight-use-package 'helpful)
-(require 'helpful)
+(use-package helpful)
 
 (use-package finder+)
 
-(straight-use-package 'doom-themes)
-(require 'doom-themes)
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italic t)
-(load-theme 'doom-one t)
+(use-package doom-themes
+  :functions (doom-themes-visual-bell-config
+	     doom-themes-org-config
+	     doom-themes-treemacs-config)
+  :config
+  (setq doom-themes-enable-bold t
+	doom-themes-enable-italic t)
 
-(doom-themes-visual-bell-config)
-(doom-themes-org-config)
-(with-eval-after-load 'treemacs
+  (load-theme 'doom-one t)
+
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config)
   (doom-themes-treemacs-config))
 
 (general-create-definer utz/set-leader-key
@@ -276,14 +313,12 @@ FILE is the absolute path that should be opened.
 	   (utz/set-leader-key ,shortcut '(,funsymbol :wk ,name)))))
 
 (defun utz/load-config-file (arg)
-   "(Re)load emacs with a fresh configuration file."
+   "(Re)load Emacs with a fresh configuration file.
+
+ARG specifies 'universal-argument' usage."
    (interactive "P")
    (cond ((equal '(4) arg) (load-file utz-init-file))
 	 (t (org-babel-load-file utz-config-file))))
-   ;; (let ((file (cond ((equal '(4) arg) utz-init-file)
-   ;; 		     (t utz-config-file))))
-   ;;   (message file)
-   ;;   (load-file file)))
 
 (utz/find-config-file "emacs" "e" utz-config-file)
 
