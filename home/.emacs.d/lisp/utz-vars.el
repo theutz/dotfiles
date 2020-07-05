@@ -19,7 +19,7 @@
 (defconst utz-custom-file (expand-file-name "custom.el" utz-emacs-dir)
   "Location of my actual custom file, before the symlink.")
 
-(defconst utz-config-file (expand-file-name "config.org" utz-emacs-dir)
+(defconst utz-config-file (expand-file-name "lisp/config.el" utz-emacs-dir)
   "Location of my actual config file, before the symlink.")
 
 (defconst utz-config-dir (expand-file-name "lisp" utz-emacs-dir)

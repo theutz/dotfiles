@@ -11,6 +11,18 @@
 
 (use-package org
   :defines org-capture-templates
+  :general
+  (utz/set-leader-key/o "c" '(org-capture :wk "Capture"))
+  (utz/set-leader-key/o-a "a" '(org-agenda :wk "Agenda"))
+  (utz/set-leader-key/o-r
+    "r" '(helm-org-rifle :wk "Open Buffers")
+    "R" '(helm-org-rifle-occur :wk "Open Buffers (Occur)")
+    "a" '(helm-org-rifle-agenda-files :wk "Agenda Files")
+    "A" '(helm-org-rifle-occur-agenda-files :wk "Agenda Files (Occur)")
+    "b" '(helm-org-rifle-current-buffer :wk "Current Buffer")
+    "B" '(helm-org-rifle-occur-current-buffer :wk "Current Buffer (Occur)")
+    "o" '(helm-org-rifle-org-directory :wk "Org Directory")
+    "O" '(helm-org-rifle-occur-org-directory :wk "Org Directory (Occur)"))
   :init
   (setq org-directory (expand-file-name "~/org")
 	org-archive-location (expand-file-name "archive.org" org-directory)
