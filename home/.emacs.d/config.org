@@ -135,6 +135,12 @@
       (put 'narrow-to-region 'disabled nil)
     #+END_SRC
 
+*** Tab Width
+
+    #+BEGIN_SRC emacs-lisp
+      (setq-default indent-tabs-mode 2)
+    #+END_SRC
+
 * Packages
 
 ** General.el
