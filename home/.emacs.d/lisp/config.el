@@ -14,6 +14,7 @@
 (require 'org-init)
 (require 'helm-init)
 (require 'magit-init)
+(require 'web-init)
 (require 'utz-macros)
 (require 'utz-funcs)
 (require 'project-setup)
@@ -28,6 +29,8 @@
 (menu-bar-mode 0)
 
 (show-paren-mode 1)
+
+(global-whitespace-mode 1)
 
 (global-display-line-numbers-mode 1)
 
@@ -57,76 +60,75 @@
 (setq-default tab-width 2)
 
 (general-define-key "s-q" 'utz/delete-frame
-		    "C-q" 'kill-emacs)
+										"C-q" 'kill-emacs)
+
+(utz/set-leader-key "u" '(universal-argument :wk "Universal Argument")
+	"h" `(,(general-simulate-key "C-h") :wk "Help")
+	"SPC" '(helm-M-x :wk "M-x"))
 
 (utz/set-leader-key
-  "u" '(universal-argument :wk "Universal Argument")
-  "h" `(,(general-simulate-key "C-h") :wk "Help")
-  "SPC" '(helm-M-x :wk "M-x"))
-
-(utz/set-leader-key
-  :keymaps '(universal-argument-map)
-  "u" '(universal-argument-more :wk "Universal Argument (more...)"))
+	:keymaps '(universal-argument-map)
+	"u" '(universal-argument-more :wk "Universal Argument (more...)"))
 
 (utz/set-leader-key/b
-  "b" '(helm-buffers-list :wk "List Buffers")
-  "e" '(eval-buffer :wk "Evaluate Current Buffer")
-  "d" '(kill-this-buffer :wk "Delete Buffer")
-  "n" '(next-buffer :wk "Next buffer")
-  "p" '(previous-buffer :wk "Previous Buffer"))
+	"b" '(helm-buffers-list :wk "List Buffers")
+	"e" '(eval-buffer :wk "Evaluate Current Buffer")
+	"d" '(kill-this-buffer :wk "Delete Buffer")
+	"n" '(next-buffer :wk "Next buffer")
+	"p" '(previous-buffer :wk "Previous Buffer"))
 
 (utz/set-leader-key/f
-  "f" '(helm-projectile :wk "Find Files in Project")
-  "F" '(helm-find-files :wk "Find Files")
-  "s" '(save-buffer :wk "Save Buffer")
-  "t" '(treemacs :wk "Treemacs"))
+	"f" '(helm-projectile :wk "Find Files in Project")
+	"F" '(helm-find-files :wk "Find Files")
+	"s" '(save-buffer :wk "Save Buffer")
+	"t" '(treemacs :wk "Treemacs"))
 
 (utz/set-leader-key/F
-  "d" '(delete-frame :wk "Delete")
-  "n" '(make-frame :wk "Make"))
+	"d" '(delete-frame :wk "Delete")
+	"n" '(make-frame :wk "Make"))
 
 (utz/set-leader-key/g
-    "b" '(magit-blame :wk "Blame")
-    "c" '(magit-commit :wk "Commit")
-    "l" '(magit-log :wk "Log")
-    "s" '(magit-stage :wk "Stage")
-    "u" '(magit-unstage :wk "Un-stage")
-    "g" '(magit-status :wk "Status"))
+	"b" '(magit-blame :wk "Blame")
+	"c" '(magit-commit :wk "Commit")
+	"l" '(magit-log :wk "Log")
+	"s" '(magit-stage :wk "Stage")
+	"u" '(magit-unstage :wk "Un-stage")
+	"g" '(magit-status :wk "Status"))
 
 (utz/set-leader-key/l
-  "l" `(,(general-simulate-key "s-l") :wk "Language Server"))
+	"l" `(,(general-simulate-key "s-l") :wk "Language Server"))
 
 (utz/set-leader-key/q
-  "q" '(utz/delete-frame :wk "Delete Frame")
-  "Q" '(kill-emacs :wk "Quit Emacs")
-  "r" '(utz/load-config-file :wk "Reload Configuration")
-  "R" '(restart-emacs :wk "Restart Emacs"))
+	"q" '(utz/delete-frame :wk "Delete Frame")
+	"Q" '(kill-emacs :wk "Quit Emacs")
+	"r" '(utz/load-config-file :wk "Reload Configuration")
+	"R" '(restart-emacs :wk "Restart Emacs"))
 
 (utz/set-leader-key/w
-  "" `(,(general-simulate-key "C-w") :wk "Window"))
+	"" `(,(general-simulate-key "C-w") :wk "Window"))
 
 (utz/set-localleader-key
-  :states '(normal)
-  :keymap 'vterm-mode-map
-  "c" '(multi-vterm :wk "Create New Terminal")
-  "n" '(multi-vterm-next :wk "Next Terminal")
-  "p" '(multi-vterm-prev :wk "Previous Terminal"))
+	:states '(normal)
+	:keymap 'vterm-mode-map
+	"c" '(multi-vterm :wk "Create New Terminal")
+	"n" '(multi-vterm-next :wk "Next Terminal")
+	"p" '(multi-vterm-prev :wk "Previous Terminal"))
 
 (utz/set-localleader-key
-  :states '(normal insert)
-  :keymaps '(org-mode-map)
-  "'" '(org-edit-special :wk "Edit Special"))
+	:states '(normal insert)
+	:keymaps '(org-mode-map)
+	"'" '(org-edit-special :wk "Edit Special"))
 
 (general-create-definer utz/set-help-key
-  :prefix "C-h")
+	:prefix "C-h")
 
 (utz/set-help-key
-  "f" '(helpful-callable :wk "Callable")
-  "v" '(helpful-variable :wk "Variable")
-  "x" '(helpful-at-point :wk "At Point")
-  "k" '(helpful-at-key :wk "Key")
-  "F" '(helpful-function :wk "Function")
-  "c" '(helpful-command :wk "Command"))
+	"f" '(helpful-callable :wk "Callable")
+	"v" '(helpful-variable :wk "Variable")
+	"x" '(helpful-at-point :wk "At Point")
+	"k" '(helpful-at-key :wk "Key")
+	"F" '(helpful-function :wk "Function")
+	"c" '(helpful-command :wk "Command"))
 
 (general-define-key :states '(insert) "C-SPC" 'company-complete)
 
