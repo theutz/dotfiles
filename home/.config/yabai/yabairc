@@ -26,8 +26,12 @@ yabai -m config window_gap $PAD
 
 # = Mouse =
 
-#yabai -m config focus_follows_mouse autoraise
-#yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_follows_focus on
+
+# = Rules =
+
+yabai -m rule --add app="^System Preferences$" manage=off
 
 # = Signals =
 

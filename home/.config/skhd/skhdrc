@@ -12,19 +12,11 @@
 :: windowmode @ : echo "window" > ~/.skhd_mode && \
    osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
 
-:: spacemode @ : echo "space" > ~/.skhd_mode && \
-   osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
-
 # To Window Mode
 default < cmd - escape ; windowmode
-spacemode < escape ; windowmode
 
 # To Default Mode
 windowmode < escape ; default
-
-# To Space Mode
-windowmode < cmd - escape ; spacemode
-
 
 # ------------
 # - Displays -
@@ -32,13 +24,13 @@ windowmode < cmd - escape ; spacemode
 
 # Focus Display
 
-spacemode < h : yabai -m display --focus prev
-spacemode < l : yabai -m display --focus next
+windowmode < a : yabai -m display --focus prev
+windowmode < d : yabai -m display --focus next
 
 # Move Window to Display
 
-spacemode < shift - h : yabai -m window --display prev
-spacemode < shift - l : yabai -m window --display next
+windowmode < shift - a : yabai -m window --display prev
+windowmode < shift - d : yabai -m window --display next
 
 # ----------
 # - Spaces -
@@ -46,26 +38,26 @@ spacemode < shift - l : yabai -m window --display next
 
 # Focus
 
-spacemode < j : yabai -m space --focus prev
-spacemode < k : yabai -m space --focus next
+windowmode < w : yabai -m space --focus prev
+windowmode < s : yabai -m space --focus next
 
-# Move Space
+# Shuffle Space
 
-spacemode < alt - j : yabai -m space --move prev
-spacemode < alt - k : yabai -m space --move next
+# spacemode < 0x21 : yabai -m space --move prev
+# spacemode < 0x1E : yabai -m space --move next
 
 # Move Window to Space
 
-spacemode < shift - j : yabai -m window --space prev
-spacemode < shift - k : yabai -m window --space next
+windowmode < shift - w : yabai -m window --space prev
+windowmode < shift - s : yabai -m window --space next
 
 # Create
 
-spacemode < i : yabai -m space --create
+windowmode < 0x18 : yabai -m space --create
 
 # Destroy
 
-spacemode < x : yabai -m space --destroy
+windowmode < 0x1B : yabai -m space --destroy
 
 # -----------
 # - Windows -
@@ -87,7 +79,7 @@ windowmode < shift - l : yabai -m window --swap east
 
 # Close
 
-windowmode < d : yabai -m window --close
+# windowmode < d : yabai -m window --close
 
 # Toggles
 
@@ -100,4 +92,6 @@ windowmode < v : yabai -m window --toggle split
 # --------- #
 
 windowmode < shift - 8 : skhd --reload && \
-	   noti -t 'skhd' -m 'Configuration Reloaded';
+           noti -t 'skhd' -m 'Configuration Reloaded'
+windowmode < ctrl + shift - 8 : brew services restart yabai && \
+           noti -t 'yabai' -m 'Configuration Reloaded'
