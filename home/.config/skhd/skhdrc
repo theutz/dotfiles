@@ -101,6 +101,8 @@ windowmode < v : yabai -m window --toggle split
 # --------- #
 
 windowmode < shift - 8 : skhd --reload && \
-           noti -t 'skhd' -m 'Configuration Reloaded'
+           noti -t 'skhd' -m 'Configuration Reloaded' && \
+           echo "default" > ~/.skhd_mode && \
+           osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"skhd-mode-skhd-mode-jsx\""
 windowmode < ctrl + shift - 8 : brew services restart yabai && \
            noti -t 'yabai' -m 'Configuration Reloaded'
