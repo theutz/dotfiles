@@ -6,12 +6,14 @@
 # - Setup Modes - #
 # --------------- #
 
-:: default : echo "default" && skhd-refresh-widget
-:: normal @ : echo "normal" && skhd-refresh-widget
-:: normalg @ : echo "normal (g)" && skhd-refresh-widget
-:: normalctrlw @ : echo "normal (ctrl + w)" && skhd-refresh-widget
-:: yank @ : echo "yank" && skhd-refresh-widget
-:: yankg @ : echo "yank (g)" && skhd-refresh-widget
+:: default : skhd-refresh-widget "default"
+:: normal @ : skhd-refresh-widget "normal"
+:: normalg @ : skhd-refresh-widget "normal (g)"
+:: yank @ : skhd-refresh-widget "yank"
+:: yankg @ : skhd-refresh-widget "yank (g)"
+:: ex @ : skhd-refresh-widget "ex"
+
+# ---------------
 
 default < cmd - escape ; normal
 normal < escape ; default
@@ -19,191 +21,70 @@ normal < escape ; default
 normal < g ; normalg
 normalg < escape ; normal
 
-normal < ctrl - w ; normalctrlw
-normalctrlw < escape ; normal
-
 normal < d ; yank
 yank < escape ; normal
 
 yank < g ; yankg
 yankg < escape ; yank
 
-# ---------------- #
-# - Default Mode - #
-# ---------------- #
-
-cmd + ctrl + alt - r : skhd-reload
+normal < shift - 0x29 ; ex
+ex < escape ; normal
 
 # ----------- #
-# - Motions - #
+# - Hotkeys - #
 # ----------- #
 
-normal < h : yabai-cycle-focus-counterclockwise
-normal < l : yabai-cycle-focus-clockwise
-normal < j : yabai-cycle-focus-downwards
-normal < k : yabai-cycle-focus-upwards
-
-# Cycle focus through window indices descending
-normalg < j : \
-        { \
-          yabai -m window --focus next || \
-          yabai -m window --focus first \
-        }; \
-        skhd -k "escape"
-
-# Cycle focus through window indices ascending
-normalg < k : \
-        { \
-          yabai -m window --focus prev || \
-          yabai -m window --focus last \
-        }; \
-        skhd -k "escape"
-
-# Cycle focus through space indices ascending
-normalg < t : \
-        { \
-          yabai -m space --focus next || \
-          yabai -m space --focus first \
-        }; \
-        skhd -k "escape"
-
-# Cycle focus through space indices descending
-normalg < shift - t : \
-        { \
-          yabai -m space --focus prev || \
-          yabai -m space --focus last \
-        }; \
-        skhd -k "escape"
-
-# ----------------- #
-# - CTRL + W Mode - #
-# ----------------- #
-
-normalctrlw < 1 : \
-            yabai -m space --focus 1; \
-            skhd -k "escape"
-normalctrlw < 2 : \
-            yabai -m space --focus 2; \
-            skhd -k "escape"
-normalctrlw < 3 : \
-            yabai -m space --focus 3; \
-            skhd -k "escape"
-normalctrlw < 4 : \
-            yabai -m space --focus 4; \
-            skhd -k "escape"
-normalctrlw < 5 : \
-            yabai -m space --focus 5; \
-            skhd -k "escape"
-normalctrlw < 6 : \
-            yabai -m space --focus 6; \
-            skhd -k "escape"
-normalctrlw < 7 : \
-            yabai -m space --focus 7; \
-            skhd -k "escape"
-normalctrlw < 8 : \
-            yabai -m space --focus 8; \
-            skhd -k "escape"
-normalctrlw < 9 : \
-            yabai -m space --focus 9; \
-            skhd -k "escape"
-
-# Create a new space on the current display and move the current window to it
-normalctrlw < shift - t : \
-       yabai -m space --create && \
-       NEW_SPACE_INDEX="$(yabai -m query --spaces --display | jq '.[-1].index')" && \
-       WINDOW_ID="$(yabai -m query --windows --window | jq '.id')" && \
-       yabai -m window --space $NEW_SPACE_INDEX && \
-       yabai -m space --focus $NEW_SPACE_INDEX && \
-       yabai -m window $WINDOW_ID --focus; \
-       skhd -k "escape"
-
-# Destroy the current space and move all windows to the last space
-normalctrlw < c : \
-       for window in $(yabai -m query --windows --space | jq '.[].id'); do \
-           yabai -m window $window --space prev; \
-       done; \
-       yabai -m space --destroy; \
-       yabai -m space --focus last; \
-       skhd -k "escape"
-
-# ------------- #
-# - Yank Mode - #
-# ------------- #
-
-# Move the currently focused window to space (n)
-yank < 1 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 1 && \
-     yabai -m window --space 1 && \
-     yabai -m space --focus 1 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 2 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 2 && \
-     yabai -m space --focus 2 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 3 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 3 && \
-     yabai -m space --focus 3 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 4 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 4 && \
-     yabai -m space --focus 4 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 5 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 5 && \
-     yabai -m space --focus 5 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 6 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 6 && \
-     yabai -m space --focus 6 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 7 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 7 && \
-     yabai -m space --focus 7 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 8 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 8 && \
-     yabai -m space --focus 8 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-yank < 9 : \
-     ID="$(yabai -m query --windows --window | jq '.id')"; \
-     yabai -m window --space 9 && \
-     yabai -m space --focus 9 && \
-     yabai -m window --focus $ID; \
-     skhd -k "escape";
-
-# Move the currently focused window to the next space
-yankg < t : \
-      yabai -m window --space next && \
-      yabai -m space --focus next && \
-      yabai -m window --focus last; \
-      skhd -k "escape"; \
-      skhd -k "escape"
-
-# Move the currently focused window the the previous space
-yankg < shift - t : \
-      yabai -m window --space prev && \
-      yabai -m space --focus prev && \
-      yabai -m window --focus last; \
-      skhd -k "escape"; \
-      skhd -k "escape"
-
-# ----------- #
-# ----------- #
-# Re-balance the windows
 normal < tab : yabai -m space --balance
+normal < h : yabai-cycle-window-focus-counterclockwise
+normal < l : yabai-cycle-window-focus-clockwise
+normal < j : yabai-cycle-window-focus-downwards
+normal < k : yabai-cycle-window-focus-upwards
+normal < ctrl - u : yabai-cycle-focus-to-prev-display
+normal < ctrl - d : yabai-cycle-focus-to-next-display
+normal < shift - h : yabai-cycle-focus-to-prev-space
+normal < shift - l : yabai-cycle-focus-to-next-space
+normal < shift - t : yabai-move-current-window-to-new-space
+normal < c : yabai-destroy-current-space
+normal < 1 : yabai -m space --focus 1
+normal < 2 : yabai -m space --focus 2
+normal < 3 : yabai -m space --focus 3
+normal < 4 : yabai -m space --focus 4
+normal < 5 : yabai -m space --focus 5
+normal < 6 : yabai -m space --focus 6
+normal < 7 : yabai -m space --focus 7
+normal < 8 : yabai -m space --focus 8
+normal < 9 : yabai -m space --focus 9
+
+# ---------------
+
+normalg < j : yabai-cycle-window-focus-by-index-desc; skhd-escape-mode
+normalg < k : yabai-cycle-window-focus-by-index-asc; skhd-escape-mode
+normalg < t : yabai-cycle-focus-to-prev-space; skhd-escape-mode
+normalg < shift - t : yabai-cycle-focus-to-next-space; skhd-escape-mode
+
+# ---------------
+
+yank < 1 : yabai-move-current-window-to-space-by-index 1
+yank < 2 : yabai-move-current-window-to-space-by-index 2
+yank < 3 : yabai-move-current-window-to-space-by-index 3
+yank < 4 : yabai-move-current-window-to-space-by-index 4
+yank < 5 : yabai-move-current-window-to-space-by-index 5
+yank < 6 : yabai-move-current-window-to-space-by-index 6
+yank < 7 : yabai-move-current-window-to-space-by-index 7
+yank < 8 : yabai-move-current-window-to-space-by-index 8
+yank < 9 : yabai-move-current-window-to-space-by-index 9
+yank < ctrl - d : yabai-move-current-window-to-next-display
+yank < ctrl - u : yabai-move-current-window-to-prev-display
+yank < shift - h : yabai-move-current-window-to-prev-space; skhd-escape-mode
+yank < shift - l : yabai-move-current-window-to-next-space; skhd-escape-mode
+
+# ---------------
+
+yankg < t : yabai-move-current-window-to-next-space; skhd-escape-mode 2
+yankg < shift - t : yabai-move-current-window-to-prev-space; skhd-escape-mode 2
+
+# ---------------
+
+ex < s : skhd-reload; skhd-escape-mode 2
+ex < y : brew services restart yabai; skhd-escape-mode 2
+ex < m : yabai-toggle-mouse-autofocus; skhd-escape-mode 2
