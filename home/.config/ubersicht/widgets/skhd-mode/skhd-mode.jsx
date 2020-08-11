@@ -1,6 +1,6 @@
-import { css, keyframes } from "uebersicht";
+import { css } from "uebersicht";
 
-export const command = "cat $HOME/.skhd_mode";
+export const command = "tail -n 1 /usr/local/var/log/skhd/skhd.out.log";
 
 export const refreshFrequency = false;
 
@@ -16,20 +16,21 @@ const heading = css`
   font-size: 12px;
 `;
 
-export const render = ({ output, error }) => {
+export const render = ({ output }) => {
   const mode = output.trim();
+  console.log(mode)
 
-  if (mode === "default") return;
+  if (mode === 'default') return;
 
-  const color = ["window"].includes(mode)
-    ? "#3FEEE6"
-    : ["prev", "next"].includes(mode)
-    ? "#55BCC9"
-    : ["space"].includes(mode)
-    ? "#97CAEF"
-    : ["delete", "insert"].includes(mode)
-    ? "#FC4445"
-    : "#CAFAFE";
+  const color = ["focus"].includes(mode)
+        ? "#3FEEE6"
+        : ["swap"].includes(mode)
+        ? "#55BCC9"
+        : ["command"].includes(mode)
+        ? "#97CAEF"
+        : ["delete", "insert"].includes(mode)
+        ? "#FC4445"
+        : "#CAFAFE";
 
   const boundary = css`
     top: 0;
