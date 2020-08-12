@@ -5,8 +5,9 @@
 # = Layout =
 
 yabai -m config layout bsp
-# yabai -m config window_placement first_child
+yabai -m config window_placement second_child
 yabai -m config external_bar all:20:0
+yabai -m config auto_balance on
 
 # = Opacity =
 
@@ -26,16 +27,14 @@ yabai -m config window_gap $PAD
 
 # = Mouse =
 
-#yabai -m config focus_follows_mouse autoraise
-#yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_follows_focus on
+
+# = Rules =
+
+yabai -m rule --add app="^System Preferences$" manage=off
 
 # = Signals =
 
-yabai -m signal --add event=space_changed \
-      action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"'"
-yabai -m signal --add event=display_changed \
-      action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"'"
-yabai -m signal --add event=space_changed \
-      action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"'"
-yabai -m signal --add event=display_changed \
-      action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"'"
+yabai -m signal --add event=space_changed action="zsh -c yabai_update_ubersicht"
+yabai -m signal --add event=display_changed action="zsh -c yabai_update_ubersicht"
