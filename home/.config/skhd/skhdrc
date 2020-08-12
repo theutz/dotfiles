@@ -43,7 +43,6 @@ normal < ctrl - u : yabai_cycle_focus_to_prev_display
 normal < ctrl - d : yabai_cycle_focus_to_next_display
 normal < shift - h : yabai_cycle_focus_to_prev_space
 normal < shift - l : yabai_cycle_focus_to_next_space
-normal < shift - t : yabai_move_current_window_to_new_space
 normal < c : yabai_destroy_current_space
 normal < 1 : yabai -m space --focus 1
 normal < 2 : yabai -m space --focus 2
@@ -73,15 +72,25 @@ yank < 6 : yabai_move_current_window_to_space_by_index 6; skhd_escape_mode
 yank < 7 : yabai_move_current_window_to_space_by_index 7; skhd_escape_mode
 yank < 8 : yabai_move_current_window_to_space_by_index 8; skhd_escape_mode
 yank < 9 : yabai_move_current_window_to_space_by_index 9; skhd_escape_mode
+yank < shift - 1 : yabai_move_space 1; skhd_escape_mode
+yank < shift - 2 : yabai_move_space 2; skhd_escape_mode
+yank < shift - 3 : yabai_move_space 3; skhd_escape_mode
+yank < shift - 4 : yabai_move_space 4; skhd_escape_mode
+yank < shift - 5 : yabai_move_space 5; skhd_escape_mode
+yank < shift - 6 : yabai_move_space 6; skhd_escape_mode
+yank < shift - 7 : yabai_move_space 7; skhd_escape_mode
+yank < shift - 8 : yabai_move_space 8; skhd_escape_mode
+yank < shift - 9 : yabai_move_space 9; skhd_escape_mode
 yank < ctrl - d : yabai_move_current_window_to_next_display; skhd_escape_mode
 yank < ctrl - u : yabai_move_current_window_to_prev_display; skhd_escape_mode
 yank < shift - h : yabai_move_current_window_to_prev_space; skhd_escape_mode
 yank < shift - l : yabai_move_current_window_to_next_space; skhd_escape_mode
+yank < shift - t : yabai_move_current_window_to_new_space; skhd_escape_mode
 
 # ---------------
 
-yankg < t : yabai -m space --move next; yabai_update_ubersicht; skhd_escape_mode 2
-yankg < shift - t : yabai -m space --move prev; yabai_update_ubersicht; skhd_escape_mode 2
+yankg < t : yabai_move_space next; skhd_escape_mode 2
+yankg < shift - t : yabai_move_space prev; skhd_escape_mode 2
 
 # ---------------
 

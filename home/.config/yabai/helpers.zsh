@@ -65,14 +65,18 @@ yabai_cycle_focus_to_prev_space() {
 }
 
 yabai_get_window_id() {
-    local id="$(yabai -m query --windows --window | jq '.id')"
+    local id
+    id="$(yabai -m query --windows --window | jq '.id')"
     echo "$id"
 }
 
 yabai_move_current_window_to_new_space() {
     if yabai -m space --create; then
-        local new_space_index="$(yabai -m query --spaces --display | jq '.[-1].index')"
-        local window_id="$(yabai-get-window-id)"
+        local new_space_index
+        new_space_index="$(yabai -m query --spaces --display | jq '.[-1].index')"
+
+        local window_id
+        window_id="$(yabai_get_window_id)"
 
         yabai -m window --space "$new_space_index"
         yabai -m window --focus "$window_id"
@@ -80,14 +84,16 @@ yabai_move_current_window_to_new_space() {
 }
 
 yabai_get_window_ids_in_current_space() {
-    local ids="$(yabai -m query --windows --space | jq '.[].id')"
+    local ids
+    ids="$(yabai -m query --windows --space | jq '.[].id')"
     echo "$ids"
 }
 
 yabai_destroy_current_space() {
-    local current_window_id="$(yabai-get-window-id)"
+    local current_window_id
+    current_window_id="$(yabai_get_window_id)"
 
-    for window_id in $(yabai-get-window-ids-in-current-space); do
+    for window_id in $(yabai_get_window_ids-in-current-space); do
         yabai -m window "$window_id" --space prev
     done
     yabai -m space --destroy
@@ -95,21 +101,29 @@ yabai_destroy_current_space() {
 }
 
 yabai_move_current_window_to_next_space() {
-    local id="$(yabai-get-window-id)"
+    local id
+    id="$(yabai_get_window_id)"
     yabai -m window --space next
     yabai -m window --focus "$id"
 }
 
 yabai_move_current_window_to_prev_space() {
-    local id="$(yabai-get-window-id)"
+    local id
+    id="$(yabai_get_window_id)"
     yabai -m window --space prev
     yabai -m window --focus "$id"
 }
 
 yabai_move_current_window_to_space_by_index() {
-    local id="$(yabai-get-window-id)"
+    local id
+    id="$(yabai_get_window_id)"
     yabai -m window --space "$1"
     yabai -m window --focus "$id"
+}
+
+yabai_move_space() {
+    yabai -m space --move "$1"
+    yabai_update_ubersicht
 }
 
 yabai_cycle_focus_to_next_display() {
@@ -127,13 +141,15 @@ yabai_cycle_focus_to_prev_display() {
 }
 
 yabai_move_current_window_to_next_display() {
-    local id="$(yabai-get-window-id)"
+    local id
+    id="$(yabai_get_window_id)"
     yabai -m window --display next
     yabai -m window --focus "$id"
 }
 
 yabai_move_current_window_to_prev_display() {
-    local id="$(yabai-get-window-id)"
+    local id
+    id="$(yabai_get_window_id)"
     yabai -m window --display prev
     yabai -m window --focus "$id"
 }
@@ -162,12 +178,10 @@ yabai_cycle_swap_window_downwards() {
 }
 
 yabai_update_ubersicht() {
-    echo "updating"
     osascript -e 'tell application "Übersicht" to refresh widget id "nibar-spaces-primary-jsx"'
     osascript -e 'tell application "Übersicht" to refresh widget id "nibar-spaces-secondary-jsx"'
 }
 
-
 # Local Variables:
-# flycheck-shellcheck-excluded-warnings: ("SC2155" "SC2039")
+# flycheck-shellcheck-excluded-warnings: ("SC2039")
 # End:

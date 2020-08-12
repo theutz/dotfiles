@@ -13,7 +13,7 @@ function skhd_refresh_widget {
 function skhd_reload {
   skhd --reload
   noti -t 'skhd' -m 'Configuration Reloaded!'
-  skhd-refresh-widget "default"
+  skhd_refresh_widget "default"
 }
 
 function skhd_escape_mode {
