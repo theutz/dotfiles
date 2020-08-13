@@ -9,8 +9,17 @@ yabai_cycle_window_focus_clockwise() {
         yabai -m window --focus first
     elif yabai -m display --focus last; then
         yabai -m window --focus first
-    else
-        exit 1
+    else exit 1
+    fi
+}
+
+yabai_swap_window_clockwise() {
+    local id="$(yabai_get_window_id)"
+    if yabai -m window --swap east; then :
+    elif yabai -m window --swap next; then :
+    elif yabai -m window --display next; then
+        yabai -m window --focus "$id"
+    else exit 1
     fi
 }
 
@@ -24,6 +33,16 @@ yabai_cycle_window_focus_counterclockwise() {
     fi
 }
 
+yabai_swap_window_counterclockwise() {
+    local id="$(yabai_get_window_id)"
+    if yabai -m window --swap west; then :
+    elif yabai -m window --swap prev; then :
+    elif yabai -m window --display prev; then
+        yabai -m window --focus "$id"
+    else exit 1
+    fi
+}
+
 yabai_cycle_window_focus_downwards() {
     if yabai -m window --focus south; then :
     elif yabai -m window --focus next; then :
@@ -32,10 +51,26 @@ yabai_cycle_window_focus_downwards() {
     fi
 }
 
+yabai_swap_window_downwards() {
+    if yabai -m window --swap south; then :
+    elif yabai -m window --swap next; then :
+    elif yabai -window --swap first; then :
+    else exit 1
+    fi
+}
+
 yabai_cycle_window_focus_upwards() {
     if yabai -m window --focus north; then :
     elif yabai -m window --focus prev; then :
     elif yabai -m window --focus last; then :
+    else exit 1
+    fi
+}
+
+yabai_swap_window_upwards() {
+    if yabai -m window --swap north; then :
+    elif yabai -m window --swap prev; then :
+    elif yabai -m window --swap last; then :
     else exit 1
     fi
 }
