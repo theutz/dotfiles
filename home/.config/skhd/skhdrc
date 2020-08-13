@@ -48,6 +48,8 @@ normal < y : yabai -m space --mirror y-axis
 normal < x : yabai -m space --mirror x-axis
 normal < r : yabai -m space --rotate 270
 normal < shift - r : yabai -m space --rotate 90
+normal < z : yabai -m window --toggle zoom-parent
+normal < shift - z : yabai -m window --toggle zoom-fullscreen
 normal < 1 : yabai -m space --focus 1
 normal < 2 : yabai -m space --focus 2
 normal < 3 : yabai -m space --focus 3
@@ -102,6 +104,8 @@ yankg < shift - t : yabai_move_space prev; skhd_escape_mode 2
 
 # ---------------
 
-ex < s : skhd_reload; skhd_escape_mode 2
-ex < y : brew services restart yabai; skhd_escape_mode 2
+ex < s : skhd_reload & skhd_escape_mode 2
+ex < y : brew services restart yabai & skhd_escape_mode 2
 ex < m : yabai_toggle_mouse_autofocus; skhd_escape_mode 2
+ex < k : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~ & skhd_escape_mode 2
+ex < e : brew services restart emacs-plus@27 & skhd_escape_mode 2
