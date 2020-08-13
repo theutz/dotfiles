@@ -143,15 +143,19 @@ yabai_cycle_focus_to_prev_display() {
 yabai_move_current_window_to_next_display() {
     local id
     id="$(yabai_get_window_id)"
-    yabai -m window --display next
-    yabai -m window --focus "$id"
+
+    if yabai -m window --display next; then
+        yabai -m window --focus "$id"
+    fi
 }
 
 yabai_move_current_window_to_prev_display() {
     local id
     id="$(yabai_get_window_id)"
-    yabai -m window --display prev
-    yabai -m window --focus "$id"
+
+    if yabai -m window --display prev; then
+        yabai -m window --focus "$id"
+    fi
 }
 
 yabai_toggle_mouse_autofocus() {
