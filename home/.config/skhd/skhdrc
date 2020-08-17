@@ -50,6 +50,7 @@ normal < r : yabai -m space --rotate 270
 normal < shift - r : yabai -m space --rotate 90
 normal < z : yabai -m window --toggle zoom-parent
 normal < shift - z : yabai -m window --toggle zoom-fullscreen
+normal < shift - t : yabai -m space --create
 normal < 1 : yabai -m space --focus 1
 normal < 2 : yabai -m space --focus 2
 normal < 3 : yabai -m space --focus 3
