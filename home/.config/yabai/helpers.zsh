@@ -128,7 +128,7 @@ yabai_destroy_current_space() {
     local current_window_id
     current_window_id="$(yabai_get_window_id)"
 
-    for window_id in $(yabai_get_window_ids-in-current-space); do
+    for window_id in $(yabai_get_window_ids_in_current_space); do
         yabai -m window "$window_id" --space prev
     done
     yabai -m space --destroy
