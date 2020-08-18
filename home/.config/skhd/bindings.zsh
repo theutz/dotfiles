@@ -281,3 +281,17 @@ function skhd_yank_shift_t () {
     yabai_move_current_window_to_new_space
     skhd_escape_mode
 }
+
+# ------------ #
+# - Yank (G) - #
+# ------------ #
+
+function skhd_yank_g_t () {
+  yabai_move_space next
+  skhd_escape_mode 2
+}
+
+function skhd_yank_g_shift_t () {
+    yabai_move_space prev
+    skhd_escape_mode 2
+}

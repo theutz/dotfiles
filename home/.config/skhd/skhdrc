@@ -101,8 +101,8 @@ yank < shift - t : skhd_yank_shift_t
 
 # ---------------
 
-yankg < t : yabai_move_space next; skhd_escape_mode 2
-yankg < shift - t : yabai_move_space prev; skhd_escape_mode 2
+yankg < t : skhd_yank_g_t
+yankg < shift - t : skhd_yank_g_shift_t
 
 # ---------------
 
