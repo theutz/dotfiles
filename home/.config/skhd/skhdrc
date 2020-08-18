@@ -47,6 +47,7 @@ normal < c : yabai_destroy_current_space
 normal < y : yabai -m space --mirror y-axis
 normal < x : yabai -m space --mirror x-axis
 normal < r : yabai -m space --rotate 270
+normal < v : yabai -m window --toggle split
 normal < shift - r : yabai -m space --rotate 90
 normal < z : yabai -m window --toggle zoom-parent
 normal < shift - z : yabai -m window --toggle zoom-fullscreen
