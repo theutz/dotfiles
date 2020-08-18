@@ -106,9 +106,9 @@ yankg < shift - t : skhd_yank_g_shift_t
 
 # ---------------
 
-ex < s : skhd_reload & skhd_escape_mode 2
-ex < y : brew services restart yabai & skhd_escape_mode 2
-ex < m : yabai_toggle_mouse_autofocus; skhd_escape_mode 2
-ex < k : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~ & skhd_escape_mode 2
-ex < e : brew services restart emacs-plus@27 & skhd_escape_mode 2
-ex < x : org-capture & skhd_escape_mode 2
+ex < s : skhd_ex_s
+ex < y : skhd_ex_y
+ex < m : skdh_ex_m
+ex < k : skhd_ex_k
+ex < e : skhd_ex_e
+ex < x : skhd_ex_x

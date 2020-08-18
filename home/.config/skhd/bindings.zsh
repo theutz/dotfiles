@@ -295,3 +295,37 @@ function skhd_yank_g_shift_t () {
     yabai_move_space prev
     skhd_escape_mode 2
 }
+
+# ------ #
+# - Ex - #
+# ------ #
+
+function skhd_ex_s () {
+    skhd_reload & \
+        skhd_escape_mode 2
+}
+
+function skhd_ex_y () {
+    brew services restart yabai & \
+        skhd_escape_mode 2
+}
+
+function skhd_ex_m () {
+    yabai_toggle_mouse_autofocus
+    skhd_escape_mode 2
+}
+
+function skhd_ex_k () {
+    /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~ & \
+        skhd_escape_mode 2
+}
+
+function skhd_ex_e () {
+    brew services restart emacs-plus@27 & \
+        skhd_escape_mode 2
+}
+
+function skhd_ex_x () {
+    org-capture & \
+        skhd_escape_mode 2
+}
