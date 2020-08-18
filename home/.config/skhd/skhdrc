@@ -64,10 +64,10 @@ normal < 9 : skhd_normal_9
 
 # ---------------
 
-normalg < j : yabai_cycle_window_focus_by_index_desc; skhd_escape_mode
-normalg < k : yabai_cycle_window_focus_by_index_asc; skhd_escape_mode
-normalg < t : yabai_cycle_focus_to_next_space; skhd_escape_mode
-normalg < shift - t : yabai_cycle_focus_to_prev_space; skhd_escape_mode
+normalg < j : skhd_normal_g_j
+normalg < k : skhd_normal_g_k
+normalg < t : skhd_normal_g_t
+normalg < shift - t : skhd_normal_g_shift_t
 
 # ---------------
 

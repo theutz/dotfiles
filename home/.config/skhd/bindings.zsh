@@ -117,3 +117,28 @@ function skhd_normal_8 () {
 function skhd_normal_9 () {
     yabai -m space --focus 9
 }
+
+# -------------- #
+# - Normal (G) - #
+# -------------- #
+
+function skhd_normal_g_j () {
+    yabai_cycle_window_focus_by_index_desc
+    skhd_escape_mode
+}
+
+function skhd_normal_g_k () {
+    yabai_cycle_window_focus_by_index_asc
+    skhd_escape_mode
+}
+
+function skhd_normal_g_t () {
+    yabai_cycle_focus_to_next_space
+    skhd_escape_mode
+}
+
+function skhd_normal_g_shift_t () {
+    yabai_cycle_focus_to_prev_space
+    skhd_escape_mode
+}
+
