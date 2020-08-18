@@ -38,7 +38,7 @@ desktop-icons-on:
 
 # Org Files
 
-ACTUAL_ORG_FILES=${HOME}/Library/Mobile\ Documents/iCloud\~com\~appsonthemove\~beorg/Documents/org
+ACTUAL_ORG_FILES=${HOME}/Dropbox/org
 ORG_DIRECTORY=${HOME}/org
 
 link-org-files:
