@@ -34,33 +34,33 @@ ex < escape ; normal
 # - Hotkeys - #
 # ----------- #
 
-normal < tab : yabai -m space --balance
-normal < h : yabai_cycle_window_focus_counterclockwise
-normal < l : yabai_cycle_window_focus_clockwise
-normal < j : yabai_cycle_window_focus_downwards
-normal < k : yabai_cycle_window_focus_upwards
-normal < ctrl - u : yabai_cycle_focus_to_prev_display
-normal < ctrl - d : yabai_cycle_focus_to_next_display
-normal < shift - h : yabai_cycle_focus_to_prev_space
-normal < shift - l : yabai_cycle_focus_to_next_space
-normal < c : yabai_destroy_current_space
-normal < y : yabai -m space --mirror y-axis
-normal < x : yabai -m space --mirror x-axis
-normal < r : yabai -m space --rotate 270
-normal < v : yabai -m window --toggle split
-normal < shift - r : yabai -m space --rotate 90
-normal < z : yabai -m window --toggle zoom-parent
-normal < shift - z : yabai -m window --toggle zoom-fullscreen
-normal < shift - t : yabai -m space --create
-normal < 1 : yabai -m space --focus 1
-normal < 2 : yabai -m space --focus 2
-normal < 3 : yabai -m space --focus 3
-normal < 4 : yabai -m space --focus 4
-normal < 5 : yabai -m space --focus 5
-normal < 6 : yabai -m space --focus 6
-normal < 7 : yabai -m space --focus 7
-normal < 8 : yabai -m space --focus 8
-normal < 9 : yabai -m space --focus 9
+normal < tab : skhd_normal_tab
+normal < h : skhd_normal_h
+normal < l : skhd_normal_l
+normal < j : skhd_normal_j
+normal < k : skhd_normal_k
+normal < ctrl - u : skhd_normal_ctrl_u
+normal < ctrl - d : skhd_normal_ctrl_d
+normal < shift - h : skhd_normal_shift_h
+normal < shift - l : skhd_normal_shift_l
+normal < c : skhd_normal_c
+normal < y : skhd_normal_y
+normal < x : skhd_normal_x
+normal < r : skhd_normal_r
+normal < shift - r : skhd_normal_shift_r
+normal < v : skhd_normal_v
+normal < z : skhd_normal_z
+normal < shift - z : skhd_normal_shift_z
+normal < shift - t : skhd_normal_shift_t
+normal < 1 : skhd_normal_1
+normal < 2 : skhd_normal_2
+normal < 3 : skhd_normal_3
+normal < 4 : skhd_normal_4
+normal < 5 : skhd_normal_5
+normal < 6 : skhd_normal_6
+normal < 7 : skhd_normal_7
+normal < 8 : skhd_normal_8
+normal < 9 : skhd_normal_9
 
 # ---------------
 
