@@ -217,8 +217,8 @@ yabai_cycle_swap_window_downwards() {
 }
 
 yabai_update_ubersicht() {
-    osascript -e 'tell application "Übersicht" to refresh widget id "nibar-spaces-primary-jsx"'
-    osascript -e 'tell application "Übersicht" to refresh widget id "nibar-spaces-secondary-jsx"'
+    osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "nibar-spaces-primary-jsx"'
+    osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "nibar-spaces-secondary-jsx"'
 }
 
 # Local Variables:
