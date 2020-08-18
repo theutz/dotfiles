@@ -142,3 +142,142 @@ function skhd_normal_g_shift_t () {
     skhd_escape_mode
 }
 
+
+# -------- #
+# - Yank - #
+# -------- #
+
+function skhd_yank_1 () {
+    yabai_move_current_window_to_space_by_index 1
+    skhd_escape_mode
+}
+
+function skhd_yank_2 () {
+    yabai_move_current_window_to_space_by_index 2
+    skhd_escape_mode
+}
+
+function skhd_yank_3 () {
+    yabai_move_current_window_to_space_by_index 3
+    skhd_escape_mode
+}
+
+function skhd_yank_4 () {
+    yabai_move_current_window_to_space_by_index 4
+    skhd_escape_mode
+}
+
+function skhd_yank_5 () {
+    yabai_move_current_window_to_space_by_index 5
+    skhd_escape_mode
+}
+
+function skhd_yank_6 () {
+    yabai_move_current_window_to_space_by_index 6
+    skhd_escape_mode
+}
+
+function skhd_yank_7 () {
+    yabai_move_current_window_to_space_by_index 7
+    skhd_escape_mode
+}
+
+function skhd_yank_8 () {
+    yabai_move_current_window_to_space_by_index 8
+    skhd_escape_mode
+}
+
+function skhd_yank_9 () {
+    yabai_move_current_window_to_space_by_index 9
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_1 () {
+    yabai_move_space 1
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_2 () {
+    yabai_move_space 2
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_3 () {
+    yabai_move_space 3
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_4 () {
+    yabai_move_space 4
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_5 () {
+    yabai_move_space 5
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_6 () {
+    yabai_move_space 6
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_7 () {
+    yabai_move_space 7
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_8 () {
+    yabai_move_space 8
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_9 () {
+    yabai_move_space 9
+    skhd_escape_mode
+}
+
+function skhd_yank_h () {
+    yabai_swap_window_counterclockwise
+    skhd_escape_mode
+}
+
+function skhd_yank_j () {
+    yabai_swap_window_downwards
+    skhd_escape_mode
+}
+
+function skhd_yank_k () {
+    yabai_swap_window_upwards
+    skhd_escape_mode
+}
+
+function skhd_yank_l () {
+    yabai_swap_window_clockwise
+    skhd_escape_mode
+}
+
+function skhd_yank_ctrl_d () {
+    yabai_move_current_window_to_next_display
+    skhd_escape_mode
+}
+
+function skhd_yank_ctrl_u () {
+    yabai_move_current_window_to_prev_display
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_h () {
+    yabai_move_current_window_to_prev_space
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_l () {
+    yabai_move_current_window_to_next_space
+    skhd_escape_mode
+}
+
+function skhd_yank_shift_t () {
+    yabai_move_current_window_to_new_space
+    skhd_escape_mode
+}

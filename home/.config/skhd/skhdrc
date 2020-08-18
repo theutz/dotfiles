@@ -71,33 +71,33 @@ normalg < shift - t : skhd_normal_g_shift_t
 
 # ---------------
 
-yank < 1 : yabai_move_current_window_to_space_by_index 1; skhd_escape_mode
-yank < 2 : yabai_move_current_window_to_space_by_index 2; skhd_escape_mode
-yank < 3 : yabai_move_current_window_to_space_by_index 3; skhd_escape_mode
-yank < 4 : yabai_move_current_window_to_space_by_index 4; skhd_escape_mode
-yank < 5 : yabai_move_current_window_to_space_by_index 5; skhd_escape_mode
-yank < 6 : yabai_move_current_window_to_space_by_index 6; skhd_escape_mode
-yank < 7 : yabai_move_current_window_to_space_by_index 7; skhd_escape_mode
-yank < 8 : yabai_move_current_window_to_space_by_index 8; skhd_escape_mode
-yank < 9 : yabai_move_current_window_to_space_by_index 9; skhd_escape_mode
-yank < shift - 1 : yabai_move_space 1; skhd_escape_mode
-yank < shift - 2 : yabai_move_space 2; skhd_escape_mode
-yank < shift - 3 : yabai_move_space 3; skhd_escape_mode
-yank < shift - 4 : yabai_move_space 4; skhd_escape_mode
-yank < shift - 5 : yabai_move_space 5; skhd_escape_mode
-yank < shift - 6 : yabai_move_space 6; skhd_escape_mode
-yank < shift - 7 : yabai_move_space 7; skhd_escape_mode
-yank < shift - 8 : yabai_move_space 8; skhd_escape_mode
-yank < shift - 9 : yabai_move_space 9; skhd_escape_mode
-yank < h : yabai_swap_window_counterclockwise; skhd_escape_mode
-yank < j : yabai_swap_window_downwards; skhd_escape_mode
-yank < k : yabai_swap_window_upwards ; skhd_escape_mode
-yank < l : yabai_swap_window_clockwise; skhd_escape_mode
-yank < ctrl - d : yabai_move_current_window_to_next_display; skhd_escape_mode
-yank < ctrl - u : yabai_move_current_window_to_prev_display; skhd_escape_mode
-yank < shift - h : yabai_move_current_window_to_prev_space; skhd_escape_mode
-yank < shift - l : yabai_move_current_window_to_next_space; skhd_escape_mode
-yank < shift - t : yabai_move_current_window_to_new_space; skhd_escape_mode
+yank < 1 : skhd_yank_1
+yank < 2 : skhd_yank_2
+yank < 3 : skhd_yank_3
+yank < 4 : skhd_yank_4
+yank < 5 : skhd_yank_5
+yank < 6 : skhd_yank_6
+yank < 7 : skhd_yank_7
+yank < 8 : skhd_yank_8
+yank < 9 : skhd_yank_9
+yank < h : skhd_yank_h
+yank < j : skhd_yank_j
+yank < k : skhd_yank_k
+yank < l : skhd_yank_l
+yank < shift - 1 : skhd_yank_shift_1
+yank < shift - 2 : skhd_yank_shift_2
+yank < shift - 3 : skhd_yank_shift_3
+yank < shift - 4 : skhd_yank_shift_4
+yank < shift - 5 : skhd_yank_shift_5
+yank < shift - 6 : skhd_yank_shift_6
+yank < shift - 7 : skhd_yank_shift_7
+yank < shift - 8 : skhd_yank_shift_8
+yank < shift - 9 : skhd_yank_shift_9
+yank < ctrl - d : skhd_yank_ctrl_d
+yank < ctrl - u : skhd_yank_ctrl_u
+yank < shift - h : skhd_yank_shift_h
+yank < shift - l : skhd_yank_shift_l
+yank < shift - t : skhd_yank_shift_t
 
 # ---------------
 
