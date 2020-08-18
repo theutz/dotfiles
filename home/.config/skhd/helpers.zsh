@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+#set -euo pipefail
 
 function skhd_refresh_widget {
   if [ -z "$1" ]; then
