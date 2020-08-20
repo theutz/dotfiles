@@ -287,12 +287,12 @@ function skhd_yank_shift_t () {
 # ------------ #
 
 function skhd_yank_g_t () {
-  yabai_move_space next
-  skhd_escape_mode 2
+    yabai -m space --display next
+    skhd_escape_mode 2
 }
 
 function skhd_yank_g_shift_t () {
-    yabai_move_space prev
+    yabai -m space --display prev
     skhd_escape_mode 2
 }
 
