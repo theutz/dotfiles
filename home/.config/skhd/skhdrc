@@ -30,85 +30,100 @@ yankg < escape ; yank
 normal < shift - 0x29 ; ex
 ex < escape ; normal
 
+# ---------------- #
+# - Default Mode - #
+# ---------------- #
+cmd + ctrl + alt - h : yabai -m space --focus prev || yabai -m space --focus last
+cmd + ctrl + alt - l : yabai -m space --focus next || yabai -m space --focus first
+cmd + ctrl + alt - j : yabai -m window --focus prev || yabai -m window --focus last
+cmd + ctrl + alt - k : yabai -m window --focus next || yabai -m window --focus first
+cmd + ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
+cmd + ctrl + alt - 0x2C : yabai -m window --toggle split # key: /
+cmd + ctrl + alt - t : yabai -m space --create && \
+    yabai -m window --space last && \
+    yabai -m space --focus last && \
+    yabai -m window --focus first
+cmd + ctrl + alt - x : yabai -m space --destroy
+
 # ----------- #
 # - Hotkeys - #
 # ----------- #
 
-normal < tab : yabai -m space --balance
-normal < h : yabai_cycle_window_focus_counterclockwise
-normal < l : yabai_cycle_window_focus_clockwise
-normal < j : yabai_cycle_window_focus_downwards
-normal < k : yabai_cycle_window_focus_upwards
-normal < ctrl - u : yabai_cycle_focus_to_prev_display
-normal < ctrl - d : yabai_cycle_focus_to_next_display
-normal < shift - h : yabai_cycle_focus_to_prev_space
-normal < shift - l : yabai_cycle_focus_to_next_space
-normal < c : yabai_destroy_current_space
-normal < y : yabai -m space --mirror y-axis
-normal < x : yabai -m space --mirror x-axis
-normal < r : yabai -m space --rotate 270
-normal < v : yabai -m window --toggle split
-normal < shift - r : yabai -m space --rotate 90
-normal < z : yabai -m window --toggle zoom-parent
-normal < shift - z : yabai -m window --toggle zoom-fullscreen
-normal < shift - t : yabai -m space --create
-normal < 1 : yabai -m space --focus 1
-normal < 2 : yabai -m space --focus 2
-normal < 3 : yabai -m space --focus 3
-normal < 4 : yabai -m space --focus 4
-normal < 5 : yabai -m space --focus 5
-normal < 6 : yabai -m space --focus 6
-normal < 7 : yabai -m space --focus 7
-normal < 8 : yabai -m space --focus 8
-normal < 9 : yabai -m space --focus 9
+normal < tab : skhd_normal_tab
+normal < h : skhd_normal_h
+normal < l : skhd_normal_l
+normal < j : skhd_normal_j
+normal < k : skhd_normal_k
+normal < ctrl - u : skhd_normal_ctrl_u
+normal < ctrl - d : skhd_normal_ctrl_d
+normal < shift - h : skhd_normal_shift_h
+normal < shift - l : skhd_normal_shift_l
+normal < c : skhd_normal_c
+normal < y : skhd_normal_y
+normal < x : skhd_normal_x
+normal < r : skhd_normal_r
+normal < shift - r : skhd_normal_shift_r
+normal < v : skhd_normal_v
+normal < z : skhd_normal_z
+normal < shift - z : skhd_normal_shift_z
+normal < shift - t : skhd_normal_shift_t
+normal < 1 : skhd_normal_1
+normal < 2 : skhd_normal_2
+normal < 3 : skhd_normal_3
+normal < 4 : skhd_normal_4
+normal < 5 : skhd_normal_5
+normal < 6 : skhd_normal_6
+normal < 7 : skhd_normal_7
+normal < 8 : skhd_normal_8
+normal < 9 : skhd_normal_9
 
 # ---------------
 
-normalg < j : yabai_cycle_window_focus_by_index_desc; skhd_escape_mode
-normalg < k : yabai_cycle_window_focus_by_index_asc; skhd_escape_mode
-normalg < t : yabai_cycle_focus_to_next_space; skhd_escape_mode
-normalg < shift - t : yabai_cycle_focus_to_prev_space; skhd_escape_mode
+normalg < j : skhd_normal_g_j
+normalg < k : skhd_normal_g_k
+normalg < t : skhd_normal_g_t
+normalg < shift - t : skhd_normal_g_shift_t
 
 # ---------------
 
-yank < 1 : yabai_move_current_window_to_space_by_index 1; skhd_escape_mode
-yank < 2 : yabai_move_current_window_to_space_by_index 2; skhd_escape_mode
-yank < 3 : yabai_move_current_window_to_space_by_index 3; skhd_escape_mode
-yank < 4 : yabai_move_current_window_to_space_by_index 4; skhd_escape_mode
-yank < 5 : yabai_move_current_window_to_space_by_index 5; skhd_escape_mode
-yank < 6 : yabai_move_current_window_to_space_by_index 6; skhd_escape_mode
-yank < 7 : yabai_move_current_window_to_space_by_index 7; skhd_escape_mode
-yank < 8 : yabai_move_current_window_to_space_by_index 8; skhd_escape_mode
-yank < 9 : yabai_move_current_window_to_space_by_index 9; skhd_escape_mode
-yank < shift - 1 : yabai_move_space 1; skhd_escape_mode
-yank < shift - 2 : yabai_move_space 2; skhd_escape_mode
-yank < shift - 3 : yabai_move_space 3; skhd_escape_mode
-yank < shift - 4 : yabai_move_space 4; skhd_escape_mode
-yank < shift - 5 : yabai_move_space 5; skhd_escape_mode
-yank < shift - 6 : yabai_move_space 6; skhd_escape_mode
-yank < shift - 7 : yabai_move_space 7; skhd_escape_mode
-yank < shift - 8 : yabai_move_space 8; skhd_escape_mode
-yank < shift - 9 : yabai_move_space 9; skhd_escape_mode
-yank < h : yabai_swap_window_counterclockwise; skhd_escape_mode
-yank < j : yabai_swap_window_downwards; skhd_escape_mode
-yank < k : yabai_swap_window_upwards ; skhd_escape_mode
-yank < l : yabai_swap_window_clockwise; skhd_escape_mode
-yank < ctrl - d : yabai_move_current_window_to_next_display; skhd_escape_mode
-yank < ctrl - u : yabai_move_current_window_to_prev_display; skhd_escape_mode
-yank < shift - h : yabai_move_current_window_to_prev_space; skhd_escape_mode
-yank < shift - l : yabai_move_current_window_to_next_space; skhd_escape_mode
-yank < shift - t : yabai_move_current_window_to_new_space; skhd_escape_mode
+yank < 1 : skhd_yank_1
+yank < 2 : skhd_yank_2
+yank < 3 : skhd_yank_3
+yank < 4 : skhd_yank_4
+yank < 5 : skhd_yank_5
+yank < 6 : skhd_yank_6
+yank < 7 : skhd_yank_7
+yank < 8 : skhd_yank_8
+yank < 9 : skhd_yank_9
+yank < h : skhd_yank_h
+yank < j : skhd_yank_j
+yank < k : skhd_yank_k
+yank < l : skhd_yank_l
+yank < shift - 1 : skhd_yank_shift_1
+yank < shift - 2 : skhd_yank_shift_2
+yank < shift - 3 : skhd_yank_shift_3
+yank < shift - 4 : skhd_yank_shift_4
+yank < shift - 5 : skhd_yank_shift_5
+yank < shift - 6 : skhd_yank_shift_6
+yank < shift - 7 : skhd_yank_shift_7
+yank < shift - 8 : skhd_yank_shift_8
+yank < shift - 9 : skhd_yank_shift_9
+yank < ctrl - d : skhd_yank_ctrl_d
+yank < ctrl - u : skhd_yank_ctrl_u
+yank < shift - h : skhd_yank_shift_h
+yank < shift - l : skhd_yank_shift_l
+yank < shift - t : skhd_yank_shift_t
 
 # ---------------
 
-yankg < t : yabai_move_space next; skhd_escape_mode 2
-yankg < shift - t : yabai_move_space prev; skhd_escape_mode 2
+yankg < t : skhd_yank_g_t
+yankg < shift - t : skhd_yank_g_shift_t
 
 # ---------------
 
-ex < s : skhd_reload & skhd_escape_mode 2
-ex < y : brew services restart yabai & skhd_escape_mode 2
-ex < m : yabai_toggle_mouse_autofocus; skhd_escape_mode 2
-ex < k : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~ & skhd_escape_mode 2
-ex < e : brew services restart emacs-plus@27 & skhd_escape_mode 2
-ex < x : org-capture & skhd_escape_mode 2
+ex < s : skhd_ex_s
+ex < y : skhd_ex_y
+ex < m : skdh_ex_m
+ex < k : skhd_ex_k
+ex < e : skhd_ex_e
+ex < x : skhd_ex_x

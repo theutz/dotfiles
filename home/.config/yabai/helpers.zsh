@@ -3,14 +3,55 @@
 # shellcheck source=../skhd/helpers.zsh
 . "$HOME/.config/skhd/helpers.zsh"
 
-yabai_cycle_window_focus_clockwise() {
-    if yabai -m window --focus east; then :
-    elif yabai -m window --focus next; then
-        yabai -m window --focus first
-    elif yabai -m display --focus last; then
-        yabai -m window --focus first
-    else exit 1
+yabye() {
+    local out
+
+    if
+        out=$(eval yabai -m "$@" 2>&1 1>/dev/null)
+    then
+        return 0
+    else
+        noti -t yabai -m "$out"
+        return 1
     fi
+}
+
+yabai_cycle_window_focus_clockwise() {
+    local output;
+
+    # Try east window
+
+    if
+        output="$(yabai -m window --focus east 2>&1 > /dev/null)"
+    then
+        exit 0
+    else
+        noti -t yabai -m "$output"
+    fi
+
+    # Try next window
+
+    if
+        output="$(yabai -m window --focus next 2>&1 > /dev/null)"
+    then
+        yabai -m window --focus first
+        exit 0
+    else
+        noti -t yabai -m "$output"
+    fi
+
+    # Try next display
+
+    if
+        output="$(yabai -m display --focus last 2>&1 > /dev/null)"
+    then
+        yabai -m window --focus first
+        exit 0
+    else
+        noti -t yabai -m "$output"
+    fi
+
+    exit 1
 }
 
 yabai_swap_window_clockwise() {
