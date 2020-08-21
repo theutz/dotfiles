@@ -30,6 +30,21 @@ yankg < escape ; yank
 normal < shift - 0x29 ; ex
 ex < escape ; normal
 
+# ---------------- #
+# - Default Mode - #
+# ---------------- #
+cmd + ctrl + alt - h : yabai -m space --focus prev || yabai -m space --focus last
+cmd + ctrl + alt - l : yabai -m space --focus next || yabai -m space --focus first
+cmd + ctrl + alt - j : yabai -m window --focus prev || yabai -m window --focus last
+cmd + ctrl + alt - k : yabai -m window --focus next || yabai -m window --focus first
+cmd + ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
+cmd + ctrl + alt - 0x2C : yabai -m window --toggle split # key: /
+cmd + ctrl + alt - t : yabai -m space --create && \
+    yabai -m window --space last && \
+    yabai -m space --focus last && \
+    yabai -m window --focus first
+cmd + ctrl + alt - x : yabai -m space --destroy
+
 # ----------- #
 # - Hotkeys - #
 # ----------- #
