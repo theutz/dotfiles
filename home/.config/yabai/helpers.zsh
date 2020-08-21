@@ -17,41 +17,13 @@ yabye() {
 }
 
 yabai_cycle_window_focus_clockwise() {
-    local output;
-
-    # Try east window
-
-    if
-        output="$(yabai -m window --focus east 2>&1 > /dev/null)"
-    then
-        exit 0
-    else
-        noti -t yabai -m "$output"
-    fi
-
-    # Try next window
-
-    if
-        output="$(yabai -m window --focus next 2>&1 > /dev/null)"
-    then
+    if yabai -m window --focus east; then :
+    elif yabai -m display --focus next; then
         yabai -m window --focus first
-        exit 0
-    else
-        noti -t yabai -m "$output"
-    fi
-
-    # Try next display
-
-    if
-        output="$(yabai -m display --focus last 2>&1 > /dev/null)"
-    then
+    elif yabai -m display --focus first; then
         yabai -m window --focus first
-        exit 0
-    else
-        noti -t yabai -m "$output"
+    else exit 1
     fi
-
-    exit 1
 }
 
 yabai_swap_window_clockwise() {
