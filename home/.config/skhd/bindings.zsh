@@ -326,6 +326,13 @@ function skhd_ex_e () {
 }
 
 function skhd_ex_x () {
-    org-capture & \
-        skhd_escape_mode 2
+    output="$(org-capture 2>&1)"
+
+    if [ $? = 0 ]; then :
+    else
+        echo "$output"
+        noti -t "Org Capture" -m "$output"
+    fi
+
+    skhd_escape_mode 2
 }
