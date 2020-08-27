@@ -20,21 +20,32 @@ clean: unstow-home \
 	clean-org-files
 
 # Stow
-stow-home: 
-	stow --verbose home
+
+stow-home:
+	@echo "Stowing dotfiles..."
+	@stow --verbose home
+	@echo "Done."
 
 unstow-home:
-	stow --verbose --delete home
+	@echo "Un-stowing dotfiles..."
+	@stow --verbose --delete home
+	@echo "Done."
 
 # Desktop Icons
 
 desktop-icons-off:
-	defaults write com.apple.finder CreateDesktop false
-	killall Finder
+	@echo
+	@echo "Turning off desktop icons..."
+	@defaults write com.apple.finder CreateDesktop false
+	@killall Finder
+	@echo "Done."
 
 desktop-icons-on:
-	defaults write com.apple.finder CreateDesktop true
-	killall Finder
+	@echo
+	@echo "Turning on desktop icons..."
+	@defaults write com.apple.finder CreateDesktop true
+	@killall Finder
+	@echo "Done."
 
 # Org Files
 
@@ -42,10 +53,18 @@ ACTUAL_ORG_FILES=${HOME}/Dropbox/org
 ORG_DIRECTORY=${HOME}/org
 
 link-org-files:
-	rm -rf $(ORG_DIRECTORY)
-	if [ -d $(ACTUAL_ORG_FILES) ]; then \
+	@echo
+	@echo "Linking org files..."
+	@rm -rf $(ORG_DIRECTORY)
+	@if [ -d $(ACTUAL_ORG_FILES) ]; then \
 		ln -s $(ACTUAL_ORG_FILES) $(ORG_DIRECTORY); \
+		echo "Done."; \
+	else \
+		echo "Org files directory doesn't exist."; \
 	fi
 
 clean-org-files:
-	rm -rf $(ORG_DIRECTORY)
+	@echo
+	@echo "Cleaning org files..."
+	@rm -rf $(ORG_DIRECTORY)
+	@echo "Done."
