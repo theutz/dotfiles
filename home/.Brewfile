@@ -1,5 +1,6 @@
 tap "d12frosted/emacs-plus"
 tap "denisidoro/tools"
+tap "federico-terzi/espanso"
 tap "github/gh"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -10,17 +11,21 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "huytd/cask-fonts"
 tap "jesseduffield/lazydocker"
+tap "jesseduffield/lazynpm"
 tap "koekeishiya/formulae"
 tap "mongodb/brew"
 tap "pokanop/pokanop"
 tap "rigellute/tap"
+tap "thoughtbot/formulae"
 tap "universal-ctags/universal-ctags"
 tap "wtfutil/wtfutil"
 cask "xquartz"
 brew "asciiquarium"
+brew "aspell"
 brew "bash"
 brew "bat"
 brew "bfg"
+brew "broot"
 brew "ccat"
 brew "cmake"
 brew "cmatrix"
@@ -53,13 +58,17 @@ brew "git-quick-stats"
 brew "git-secrets"
 brew "gitleaks"
 brew "global"
+brew "gnupg", link: false
+brew "gpgme"
 brew "go"
 brew "grip"
 brew "htop"
 brew "hub"
+brew "hunspell"
 brew "imagemagick"
 brew "ispell"
 brew "jq"
+brew "kubernetes-cli"
 brew "legit"
 brew "less"
 brew "lolcat"
@@ -70,6 +79,7 @@ brew "mdcat"
 brew "mdv"
 brew "multimarkdown"
 brew "n"
+brew "neovim"
 brew "noti"
 brew "onefetch"
 brew "openvpn", restart_service: true
@@ -81,11 +91,11 @@ brew "postgresql", restart_service: true
 brew "ranger"
 brew "rename"
 brew "ripgrep"
-brew "ruby"
 brew "rust"
 brew "shellcheck"
 brew "shpotify"
 brew "speedtest-cli"
+brew "starship"
 brew "stow"
 brew "surfraw"
 brew "the_silver_searcher"
@@ -107,25 +117,30 @@ brew "vtclock"
 brew "w3m"
 brew "watch"
 brew "wget"
+brew "xapian"
 brew "yarn"
 brew "yq"
-brew "zplug"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-modern-black-variant-icon"]
+brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-modern-black-variant-icon", "with-xwidgets"]
 brew "github/gh/gh"
 brew "heroku/brew/heroku"
 brew "jesseduffield/lazydocker/lazydocker"
+brew "jesseduffield/lazynpm/lazynpm"
 brew "koekeishiya/formulae/skhd", args: ["with-logging"]
 brew "koekeishiya/formulae/yabai"
 brew "mongodb/brew/mongodb-community"
+brew "pokanop/pokanop/nostromo"
 brew "rigellute/tap/spotify-tui"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
 cask "adobe-creative-cloud"
 cask "airtable"
+cask "alacritty"
 cask "alfred"
+cask "amethyst"
 cask "appcleaner"
 cask "bartender"
+cask "bettertouchtool"
 cask "brave-browser"
 cask "caprine"
 cask "dash"
@@ -134,11 +149,75 @@ cask "docker"
 cask "dotnet-sdk"
 cask "dropbox"
 cask "firefox"
+cask "font-3270-nerd-font"
+cask "font-anonymice-nerd-font"
+cask "font-anonymouspro-nerd-font"
+cask "font-arimo-nerd-font"
+cask "font-aurulentsansmono-nerd-font"
+cask "font-bitstreamverasansmono-nerd-font"
 cask "font-cascadia"
+cask "font-cascadia-nerd-font"
+cask "font-caskaydiacove-nerd-font"
+cask "font-codenewroman-nerd-font"
+cask "font-cousine-nerd-font"
+cask "font-dejavusansmono-nerd-font"
+cask "font-droidsansmono-nerd-font"
+cask "font-fantasquesansmono-nerd-font"
+cask "font-fira-code"
+cask "font-firacode-nerd-font"
+cask "font-firamono-nerd-font"
+cask "font-go-mono-nerd-font"
+cask "font-gohu-nerd-font"
+cask "font-gomono-nerd-font"
 cask "font-hack-nerd-font"
+cask "font-hasklig"
+cask "font-hasklig-nerd-font"
+cask "font-hasklug-nerd-font"
 cask "font-haskplex-nerd"
+cask "font-heavydata-nerd-font"
+cask "font-hermit-nerd-font"
+cask "font-inconsolata-nerd-font"
+cask "font-inconsolatago-nerd-font"
+cask "font-inconsolatalgc-nerd-font"
+cask "font-input"
+cask "font-iosevka-nerd-font"
+cask "font-jetbrains-mono"
+cask "font-jetbrainsmono-nerd-font"
+cask "font-lekton-nerd-font"
+cask "font-liberation-nerd-font"
+cask "font-liberationmono-nerd-font"
+cask "font-materialdesignicons-webfont"
+cask "font-meslo-nerd-font"
+cask "font-meslolg-nerd-font"
+cask "font-monofur-nerd-font"
+cask "font-monoid-nerd-font"
+cask "font-mononoki"
+cask "font-mononoki-nerd-font"
+cask "font-mplus-nerd-font"
+cask "font-noto-nerd-font"
+cask "font-press-start2p"
+cask "font-profont-nerd-font"
+cask "font-proggyclean-nerd-font"
+cask "font-proggycleantt-nerd-font"
+cask "font-public-sans"
+cask "font-roboto"
+cask "font-roboto-condensed"
+cask "font-roboto-mono"
+cask "font-roboto-slab"
+cask "font-robotomono-nerd-font"
+cask "font-saucecodepro-nerd-font"
+cask "font-sharetechmono-nerd-font"
+cask "font-source-code-pro"
+cask "font-sourcecodepro-nerd-font"
+cask "font-spacemono-nerd-font"
+cask "font-terminus-nerd-font"
+cask "font-tinos-nerd-font"
+cask "font-ubuntu-nerd-font"
+cask "font-ubuntumono-nerd-font"
+cask "font-vt323"
 cask "google-backup-and-sync"
 cask "google-chrome"
+cask "google-cloud-sdk"
 cask "gpg-suite"
 cask "grammarly"
 cask "graphql-playground"
@@ -149,8 +228,9 @@ cask "kaleidoscope"
 cask "karabiner-elements"
 cask "keybase"
 cask "kindle"
+cask "kitematic"
 cask "kitty"
-cask "mate-translate"
+cask "macvim"
 cask "microsoft-edge"
 cask "miro-formerly-realtimeboard"
 cask "mongotron"
@@ -161,16 +241,17 @@ cask "notion"
 cask "now"
 cask "omnidisksweeper"
 cask "pgadmin4"
-cask "qutebrowser"
 cask "rectangle"
 cask "robo-3t"
 cask "sequel-pro"
 cask "sketch"
 cask "slack"
 cask "spotify"
+cask "tableplus"
 cask "the-unarchiver"
 cask "tor-browser"
 cask "transmission"
+cask "typora"
 cask "ubersicht"
 cask "visual-studio-code"
 cask "vivaldi"
@@ -181,35 +262,36 @@ cask "zoomus"
 mas "Alto's Adventure", id: 1287752517
 mas "Alto's Odyssey", id: 1495097700
 mas "Amphetamine", id: 937984704
+mas "Apple Configurator 2", id: 1037126344
 mas "Bear", id: 1091189122
 mas "Bumpr", id: 1166066070
 mas "CARROT Weather", id: 993487541
+mas "Clear Day", id: 411543336
+mas "Countdowns", id: 926707738
 mas "Dato", id: 1470584107
 mas "Day One", id: 1055511498
-mas "Dear Reader", id: 1475303629
 mas "Developer", id: 640199958
-mas "Don't Bug Me!", id: 1461998483
 mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Entity Pro", id: 1503988785
+mas "Flynth", id: 1509714513
 mas "Grammarly for Safari", id: 1462114288
 mas "Honey", id: 1472777122
+mas "Houseparty", id: 1381523962
 mas "Instapaper", id: 1481302432
 mas "Keynote", id: 409183694
 mas "LastPass", id: 926036361
-mas "Lifeslide", id: 1472966601
 mas "Marked 2", id: 890031187
 mas "Mate Translate", id: 1005088137
-mas "Mate Translate", id: 1005088137
 mas "MindNode", id: 1289197285
-mas "Mini Motorways", id: 1456188526
+mas "Night Sky", id: 475772902
 mas "Numbers", id: 409203825
 mas "Octotree Pro", id: 1457450145
 mas "Pages", id: 409201541
-mas "PaintyMob", id: 1476276168
 mas "Paletter", id: 1494948845
 mas "Paprika Recipe Manager 3", id: 1303222628
-mas "Patterned", id: 1451427346
 mas "PhotoScissors", id: 1499327097
 mas "Pixelmator", id: 407963104
+mas "Playgrounds", id: 1496833156
 mas "Pocket", id: 568494494
 mas "PopClip", id: 445189367
 mas "Raindrop.io for Safari", id: 957810159
@@ -219,14 +301,14 @@ mas "ResizeIt", id: 416280139
 mas "Rosetta Stone", id: 1476088902
 mas "Sip", id: 507257563
 mas "Soulver", id: 413965349
-mas "Stellar Commanders", id: 1469802512
-mas "Things", id: 904280696
-mas "Time Out", id: 402592703
-mas "tint.", id: 1464860034
+mas "Soulver 3", id: 1508732804
+mas "Spark", id: 1176895641
+mas "System Designer", id: 1102494854
+mas "Talon", id: 1492913323
+mas "Township", id: 781424368
 mas "Twitter", id: 1482454543
 mas "Vimari", id: 1480933944
 mas "Wallpaper Wizard", id: 1266674560
-mas "WCF", id: 1466835143
 mas "WhatsApp", id: 1147396723
-mas "Word Laces", id: 1445098386
+mas "Xcode", id: 497799835
 mas "Zen Coloring Book For Adults", id: 1063659855
