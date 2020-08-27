@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+export THEUTZ_AT_GMAIL_CHROME_PROFILE="Profile 2"
+export MICHAEL_AT_THEUTZ_CHROME_PROFILE="Profile 4"
+export MICHAEL_UTZ_AT_UNITY_CHROME_PROFILE="Default"
