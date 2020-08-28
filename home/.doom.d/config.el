@@ -54,3 +54,10 @@
 ;; they are implemented.
 
 (map! :leader :desc "Open in Kitty" "o k" '+macos/open-in-kitty)
+
+(defun my-open-calendar ()
+  (interactive)
+  (cfw:open-calendar-buffer
+   :contents-sources
+   (list
+    (cfw:org-create-source "Green"))))
