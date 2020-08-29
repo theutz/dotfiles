@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-split-window-below t)
+ '(evil-vsplit-window-right t)
  '(line-spacing 0.25)
  '(org-capture-templates
    '(("t" "Personal todo" entry
