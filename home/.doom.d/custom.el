@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(calendar-date-style 'european)
+ '(diary-file (expand-file-name "diary.org" org-directory))
  '(evil-split-window-below t)
  '(evil-vsplit-window-right t)
  '(line-spacing 0.25)
@@ -47,7 +49,8 @@
  %a" :prepend t :heading "Notes")
      ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?
  %i
- %a" :prepend t :heading "Changelog"))))
+ %a" :prepend t :heading "Changelog")))
+ '(org-log-done 'note))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

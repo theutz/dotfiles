@@ -59,3 +59,12 @@
    :contents-sources
    (list
     (cfw:org-create-source "Green"))))
+
+(let ((prezto-files-list '("\\.?zshenv"
+                           "\\.?zshrc"
+                           "\\.?zprofile"
+                           "\\.?zlogin"
+                           "\\.?zlogout"
+                           "\\.?zpreztorc")))
+  (dolist (elt prezto-files-list nil)
+    (add-to-list 'auto-mode-alist `(,elt . sh-mode))))
