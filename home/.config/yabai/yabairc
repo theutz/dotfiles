@@ -33,6 +33,7 @@ yabai -m config mouse_follows_focus on
 # = Rules =
 
 yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="1password" manage=on
 
 # = Signals =
 
