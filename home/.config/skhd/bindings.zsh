@@ -83,38 +83,56 @@ function skhd_normal_shift_t () {
 }
 
 function skhd_normal_1 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 1) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 1
 }
 
 function skhd_normal_2 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 2) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 2
 }
 
 function skhd_normal_3 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 3) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 3
 }
 
 function skhd_normal_4 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 4) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 4
 }
 
 function skhd_normal_5 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 5) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 5
 }
 
 function skhd_normal_6 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 6) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 6
 }
 
 function skhd_normal_7 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 7) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 7
 }
 
 function skhd_normal_8 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 8) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 8
 }
 
 function skhd_normal_9 () {
+    local display="$(yabai -m query --spaces | jq '.[] | select(.index == 9) | .display')"
+    yabai -m display --focus $display
     yabai -m space --focus 9
 }
 
