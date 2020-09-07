@@ -50,6 +50,7 @@
      ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?
  %i
  %a" :prepend t :heading "Changelog")))
+ '(org-journal-date-format "%A, %B %d, %Y")
  '(org-journal-dir "/Users/michael.utz/org/journal/")
  '(org-journal-enable-agenda-integration t)
  '(org-log-done 'note))
