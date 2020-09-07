@@ -53,6 +53,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Setup Org Calendar
 (defun my-open-calendar ()
   (interactive)
   (cfw:open-calendar-buffer
@@ -60,6 +61,7 @@
    (list
     (cfw:org-create-source "Green"))))
 
+;; Prezto Files
 (let ((prezto-files-list '("\\.?zshenv"
                            "\\.?zshrc"
                            "\\.?zprofile"
@@ -68,3 +70,6 @@
                            "\\.?zpreztorc")))
   (dolist (elt prezto-files-list nil)
     (add-to-list 'auto-mode-alist `(,elt . sh-mode))))
+
+;; org-journal files
+(add-to-list 'auto-mode-alist '("journal/[0-9]\\\{8\\\}\\'" . org-journal-mode))

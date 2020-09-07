@@ -50,6 +50,8 @@
      ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?
  %i
  %a" :prepend t :heading "Changelog")))
+ '(org-journal-dir "/Users/michael.utz/org/journal/")
+ '(org-journal-enable-agenda-integration t)
  '(org-log-done 'note))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
