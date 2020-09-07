@@ -52,7 +52,6 @@
  %a" :prepend t :heading "Changelog")))
  '(org-journal-date-format "%A, %B %d, %Y")
  '(org-journal-dir "/Users/michael.utz/org/journal/")
- '(org-journal-enable-agenda-integration t)
  '(org-log-done 'note))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
