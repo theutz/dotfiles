@@ -61,6 +61,11 @@
    (list
     (cfw:org-create-source "Green"))))
 
+;; org-journal files
+(add-to-list 'auto-mode-alist '("journal/[0-9]\\\{8\\\}\\'" . org-journal-mode))
+(setq org-agenda-file-regexp "\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'"
+      org-agenda-files `(,org-directory ,org-journal-dir))
+
 ;; Prezto Files
 (let ((prezto-files-list '("\\.?zshenv"
                            "\\.?zshrc"
@@ -70,11 +75,3 @@
                            "\\.?zpreztorc")))
   (dolist (elt prezto-files-list nil)
     (add-to-list 'auto-mode-alist `(,elt . sh-mode))))
-
-;; org-journal files
-(add-to-list 'auto-mode-alist '("journal/[0-9]\\\{8\\\}\\'" . org-journal-mode))
-(setq org-agenda-file-regexp "\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'")
-(let ((directories `(,org-directory
-                     ,org-journal-dir)))
-  (dolist (elt directories nil)
-    (add-to-list 'org-agenda-files elt)))
