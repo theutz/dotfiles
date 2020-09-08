@@ -66,12 +66,13 @@
 (setq org-agenda-file-regexp "\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'"
       org-agenda-files `(,org-directory ,org-journal-dir))
 
-;; Prezto Files
-(let ((prezto-files-list '("\\.?zshenv"
-                           "\\.?zshrc"
-                           "\\.?zprofile"
-                           "\\.?zlogin"
-                           "\\.?zlogout"
-                           "\\.?zpreztorc")))
-  (dolist (elt prezto-files-list nil)
+;; Config ZSH Files
+(let ((config-files-list '("\\.?zshenv\\'"
+                           "\\.?zshrc\\'"
+                           "\\.?zprofile\\'"
+                           "\\.?zlogin\\'"
+                           "\\.?zlogout\\'"
+                           "\\.?zpreztorc\\'"
+                           "yabairc\\'")))
+  (dolist (elt config-files-list nil)
     (add-to-list 'auto-mode-alist `(,elt . sh-mode))))
