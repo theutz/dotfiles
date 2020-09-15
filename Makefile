@@ -7,15 +7,13 @@ SHELL := /bin/bash
 	link-org-files \
 	clean-org-files \
 	desktop-icons-off \
-	desktop-icons-on \
-	install-chrome-profiles
+	desktop-icons-on
 
 # Primary Commands
 
 install: stow-home \
 	desktop-icons-off \
-	link-org-files \
-	install-chrome-profiles
+	link-org-files
 
 clean: unstow-home \
 	desktop-icons-on \
@@ -71,24 +69,3 @@ clean-org-files:
 	@rm -rf $(ORG_DIRECTORY)
 	@echo "Done."
 
-# Chrome Profiles
-
-CHROME_PROFILES_DIR=${HOME}/.config/chrome
-CHROME_PROFILES_CONFIG=${CHROME_PROFILES_DIR}/profiles.zsh
-CHROME_PROFILES_CONFIG_EXAMPLE=${CHROME_PROFILES_DIR}/profiles.example.zsh
-
-install-chrome-profiles:
-	@echo
-	@echo "Installing Google Chrome profiles..."
-	@if [ -a $(CHROME_PROFILES_CONFIG) ]; then \
-		echo "Profiles already installed."; \
-	else \
-		cp -f $(CHROME_PROFILES_CONFIG_EXAMPLE) $(CHROME_PROFILES_CONFIG); \
-		echo "Done."; \
-	fi
-
-remove-chrome-profiles:
-	@echo
-	@echo "Removing Google Chrome profiles..."
-	@rm -rf $(CHROME_PROFILES_CONFIG)
-	@echo "Done."
