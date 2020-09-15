@@ -79,7 +79,6 @@ brew "ossp-uuid"
 brew "pandoc"
 brew "png2ico"
 brew "poppler"
-brew "postgresql", restart_service: true
 brew "ranger"
 brew "rename"
 brew "ripgrep"
@@ -118,7 +117,6 @@ brew "heroku/brew/heroku"
 brew "jesseduffield/lazydocker/lazydocker"
 brew "koekeishiya/formulae/skhd", args: ["with-logging"]
 brew "koekeishiya/formulae/yabai"
-brew "mongodb/brew/mongodb-community"
 brew "rigellute/tap/spotify-tui"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
