@@ -115,7 +115,6 @@ brew "zsh"
 brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-modern-black-variant-icon"]
 brew "heroku/brew/heroku"
 brew "jesseduffield/lazydocker/lazydocker"
-brew "koekeishiya/formulae/yabai"
 brew "rigellute/tap/spotify-tui"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
