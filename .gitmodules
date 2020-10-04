@@ -4,12 +4,12 @@
 [submodule "home/.config/kitty/kitty-themes"]
 	path = home/.config/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
-[submodule "home/.emacs.d"]
-	path = home/.emacs.d
-	url = https://github.com/theutz/doom-emacs.git
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/theutz/tpm
 [submodule "chemacs"]
 	path = chemacs
 	url = https://github.com/plexus/chemacs.git
+[submodule "home/.doom-emacs"]
+	path = home/.doom-emacs
+	url = https://github.com/theutz/doom-emacs.git
