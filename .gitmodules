@@ -13,6 +13,6 @@
 [submodule "home/chemacs"]
 	path = home/chemacs
 	url = https://github.com/plexus/chemacs.git
-[submodule "home/.emacs.d"]
-	path = home/.emacs.d
+[submodule "home/.utzmacs"]
+	path = home/.utzmacs
 	url = https://github.com/theutz/utzmacs.git
