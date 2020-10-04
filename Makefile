@@ -75,22 +75,16 @@ clean-org-files:
 
 # Chemacs
 
-CHEMACS_FILE=.emacs
-CHEMACS_SRC=${PWD}/chemacs/$(CHEMACS_FILE)
-CHEMACS_DEST=${HOME}
+CHEMACS_INSTALLER=${HOME}/chemacs/install.sh
 
 install-chemacs:
 	@echo
 	@echo "Installing Chemacs..."
-	@if [ ! -a $(CHEMACS_SRC) ]; then \
-		ln -s $(CHEMACS_SRC) $(CHEMACS_DEST); \
-		echo "Done."; \
-	else \
-		echo "Chemacs script does not exist."; \
-	fi
+	. $(CHEMACS_INSTALLER)
+	@echo "Done."
 
 clean-chemacs:
 	@echo
 	@echo "Uninstalling Chemacs..."
-	@rm -rf $(CHEMACS_DEST)/$(CHEMACS_FILE)
+	@rm -rf ~/.emacs
 	@echo "Done."

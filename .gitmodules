@@ -7,9 +7,12 @@
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/theutz/tpm
-[submodule "chemacs"]
-	path = chemacs
-	url = https://github.com/plexus/chemacs.git
 [submodule "home/.doom-emacs"]
 	path = home/.doom-emacs
 	url = https://github.com/theutz/doom-emacs.git
+[submodule "home/chemacs"]
+	path = home/chemacs
+	url = https://github.com/plexus/chemacs.git
+[submodule "home/.emacs.d"]
+	path = home/.emacs.d
+	url = https://github.com/theutz/utzmacs.git
