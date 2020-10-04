@@ -7,17 +7,21 @@ SHELL := /bin/bash
 	link-org-files \
 	clean-org-files \
 	desktop-icons-off \
-	desktop-icons-on
+	desktop-icons-on \
+	install-chemacs \
+	clean-chemacs
 
 # Primary Commands
 
 install: stow-home \
 	desktop-icons-off \
-	link-org-files
+	link-org-files \
+	install-chemacs
 
 clean: unstow-home \
 	desktop-icons-on \
-	clean-org-files
+	clean-org-files \
+	clean-chemacs
 
 # Stow
 
@@ -69,3 +73,24 @@ clean-org-files:
 	@rm -rf $(ORG_DIRECTORY)
 	@echo "Done."
 
+# Chemacs
+
+CHEMACS_FILE=.emacs
+CHEMACS_SRC=${PWD}/chemacs/$(CHEMACS_FILE)
+CHEMACS_DEST=${HOME}
+
+install-chemacs:
+	@echo
+	@echo "Installing Chemacs..."
+	@if [ ! -a $(CHEMACS_SRC) ]; then \
+		ln -s $(CHEMACS_SRC) $(CHEMACS_DEST); \
+		echo "Done."; \
+	else \
+		echo "Chemacs script does not exist."; \
+	fi
+
+clean-chemacs:
+	@echo
+	@echo "Uninstalling Chemacs..."
+	@rm -rf $(CHEMACS_DEST)/$(CHEMACS_FILE)
+	@echo "Done."
