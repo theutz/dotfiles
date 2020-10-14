@@ -7,21 +7,17 @@ SHELL := /bin/bash
 	link-org-files \
 	clean-org-files \
 	desktop-icons-off \
-	desktop-icons-on \
-	install-chemacs \
-	clean-chemacs
+	desktop-icons-on
 
 # Primary Commands
 
 install: stow-home \
 	desktop-icons-off \
-	link-org-files \
-	install-chemacs
+	link-org-files
 
 clean: unstow-home \
 	desktop-icons-on \
-	clean-org-files \
-	clean-chemacs
+	clean-org-files
 
 # Stow
 
@@ -71,20 +67,4 @@ clean-org-files:
 	@echo
 	@echo "Cleaning org files..."
 	@rm -rf $(ORG_DIRECTORY)
-	@echo "Done."
-
-# Chemacs
-
-CHEMACS_INSTALLER=${HOME}/chemacs/install.sh
-
-install-chemacs:
-	@echo
-	@echo "Installing Chemacs..."
-	. $(CHEMACS_INSTALLER)
-	@echo "Done."
-
-clean-chemacs:
-	@echo
-	@echo "Uninstalling Chemacs..."
-	@rm -rf ~/.emacs
 	@echo "Done."
