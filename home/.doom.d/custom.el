@@ -3,56 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(calendar-date-style 'european)
- '(diary-file (expand-file-name "diary.org" org-directory))
- '(evil-split-window-below t)
- '(evil-vsplit-window-right t)
- '(line-spacing 0.25)
- '(org-capture-templates
-   '(("t" "Personal todo" entry
-      (file +org-capture-todo-file)
-      "* TODO %?
-%i
-%a" :prepend t)
-     ("n" "Personal notes" entry
-      (file +org-capture-notes-file)
-      "* %u %?
-%i
-%a" :prepend t)
-     ("j" "Journal" entry
-      (file+olp+datetree +org-capture-journal-file)
-      "* %U %?
-%i
-%a" :prepend t)
-     ("p" "Templates for projects")
-     ("pt" "Project-local todo" entry
-      (file+headline +org-capture-project-todo-file "Inbox")
-      "* TODO %?
-%i
-%a" :prepend t)
-     ("pn" "Project-local notes" entry
-      (file+headline +org-capture-project-notes-file "Inbox")
-      "* %U %?
-%i
-%a" :prepend t)
-     ("pc" "Project-local changelog" entry
-      (file+headline +org-capture-project-changelog-file "Unreleased")
-      "* %U %?
-%i
-%a" :prepend t)
-     ("o" "Centralized templates for projects")
-     ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?
- %i
- %a" :heading "Tasks" :prepend nil)
-     ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?
- %i
- %a" :prepend t :heading "Notes")
-     ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?
- %i
- %a" :prepend t :heading "Changelog")))
- '(org-journal-date-format "%A, %B %d, %Y")
- '(org-journal-dir "/Users/michael.utz/org/journal/")
- '(org-log-done 'note))
+ '(custom-safe-themes
+   '("587938eeeaefd2b2f68a0970e02985246a28c02c1c140cb0943d2b6909c47261" "bf387180109d222aee6bb089db48ed38403a1e330c9ec69fe1f52460a8936b66" default)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
