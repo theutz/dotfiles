@@ -1,1 +1,9 @@
-home/.config/karabiner
+# ssh
+home/.ssh
+!home/.ssh/config
+
+# karabiner
+home/.config/karabiner/automatic_backups
+
+# configstore
+home/.config/configstore/update-notifier-npm.json
