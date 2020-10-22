@@ -1,0 +1,25 @@
+{
+  "title": "Use Right Command for Hyper",
+  "rules": [
+    {
+      "description": "Pressing Right Command presses Command, Control, Option, and Shift at once.",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_command",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command",
+              "modifiers": ["left_option", "left_control", "left_shift"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
