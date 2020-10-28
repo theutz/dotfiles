@@ -1,4 +1,5 @@
 tap "d12frosted/emacs-plus"
+tap "datawire/blackbird"
 tap "denisidoro/tools"
 tap "github/gh"
 tap "heroku/brew"
@@ -14,8 +15,10 @@ tap "koekeishiya/formulae"
 tap "mongodb/brew"
 tap "pokanop/pokanop"
 tap "rigellute/tap"
+tap "smartlyio/devbox", "https://github.com/smartlyio/homebrew-devbox.git"
 tap "universal-ctags/universal-ctags"
 tap "wtfutil/wtfutil"
+cask "osxfuse"
 cask "xquartz"
 brew "asciiquarium"
 brew "automake"
@@ -59,11 +62,11 @@ brew "go"
 brew "grip"
 brew "htop"
 brew "hub"
-brew "imagemagick"
 brew "ispell"
 brew "jq"
 brew "legit"
 brew "less"
+brew "libvterm"
 brew "lolcat"
 brew "lsd"
 brew "make"
@@ -72,6 +75,8 @@ brew "mdcat"
 brew "mdv"
 brew "multimarkdown"
 brew "n"
+brew "neovim"
+brew "nodenv"
 brew "noti"
 brew "onefetch"
 brew "openvpn", restart_service: true
@@ -80,9 +85,9 @@ brew "pandoc"
 brew "png2ico"
 brew "poppler"
 brew "ranger"
+brew "rbenv"
 brew "rename"
 brew "ripgrep"
-brew "ruby"
 brew "rust"
 brew "shellcheck"
 brew "shpotify"
@@ -112,12 +117,14 @@ brew "yarn"
 brew "yq"
 brew "zplug"
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-modern-black-variant-icon"]
+brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-modern-sjrmanning-icon"]
 brew "heroku/brew/heroku"
 brew "jesseduffield/lazydocker/lazydocker"
 brew "rigellute/tap/spotify-tui"
+brew "smartlyio/devbox/devbox"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "1password"
+cask "1password-cli"
 cask "adobe-creative-cloud"
 cask "airtable"
 cask "alfred"
@@ -125,6 +132,8 @@ cask "appcleaner"
 cask "bartender"
 cask "brave-browser"
 cask "caprine"
+cask "cheatsheet"
+cask "customshortcuts"
 cask "dash"
 cask "discord"
 cask "docker"
@@ -133,22 +142,27 @@ cask "dropbox"
 cask "firefox"
 cask "font-blex-mono-nerd-font"
 cask "font-cascadia-code"
+cask "font-daddy-time-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-haskplex-nerd"
 cask "font-im-writing-nerd-font"
+cask "font-roboto-mono-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
+cask "franz"
 cask "google-backup-and-sync"
-cask "google-chrome"
 cask "gpg-suite"
 cask "grammarly"
 cask "graphql-playground"
+cask "hammerspoon"
 cask "image2icon"
 cask "insomnia"
 cask "iterm2"
 cask "kaleidoscope"
 cask "karabiner-elements"
 cask "keybase"
-cask "kindle"
+cask "keycue"
 cask "kitty"
+cask "microsoft-auto-update"
 cask "microsoft-edge"
 cask "mongotron"
 cask "monodraw"
@@ -157,47 +171,57 @@ cask "nordvpn"
 cask "notion"
 cask "now"
 cask "omnidisksweeper"
+cask "paletro"
 cask "pgadmin4"
 cask "qutebrowser"
+cask "raindropio"
 cask "rectangle"
 cask "robo-3t"
 cask "sequel-pro"
 cask "sketch"
-cask "slack"
+cask "spectacle"
 cask "spotify"
+cask "textexpander"
 cask "the-unarchiver"
 cask "tor-browser"
 cask "transmission"
 cask "visual-studio-code"
 cask "vivaldi"
 cask "vlc"
-cask "whatsapp"
 cask "zoomus"
+mas "2048 Game", id: 871033113
+mas "Airmail", id: 918858936
 mas "Alto's Adventure", id: 1287752517
 mas "Alto's Odyssey", id: 1495097700
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
 mas "Bumpr", id: 1166066070
 mas "CARROT Weather", id: 993487541
+mas "com.blindflugstudios.stellarcommandersOSX", id: 1469802512
 mas "Dato", id: 1470584107
 mas "Day One", id: 1055511498
 mas "Dear Reader", id: 1475303629
 mas "Developer", id: 640199958
 mas "Don't Bug Me!", id: 1461998483
 mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Fantastical", id: 975937182
+mas "GarageBand", id: 682658836
 mas "Grammarly for Safari", id: 1462114288
 mas "Honey", id: 1472777122
+mas "iMovie", id: 408981434
 mas "Instapaper", id: 1481302432
+mas "iStat Menus", id: 1319778037
 mas "Keynote", id: 409183694
+mas "Kindle", id: 405399194
 mas "LastPass", id: 926036361
 mas "Lifeslide", id: 1472966601
 mas "Marked 2", id: 890031187
 mas "Mate Translate", id: 1005088137
-mas "Mate Translate", id: 1005088137
 mas "MindNode", id: 1289197285
 mas "Mini Motorways", id: 1456188526
 mas "Numbers", id: 409203825
-mas "Octotree Pro", id: 1457450145
+mas "Octotree", id: 1457450145
+mas "OmniFocus", id: 1346203938
 mas "Pages", id: 409201541
 mas "PaintyMob", id: 1476276168
 mas "Paletter", id: 1494948845
@@ -214,9 +238,10 @@ mas "Relax Melodies", id: 467103113
 mas "ResizeIt", id: 416280139
 mas "Rosetta Stone", id: 1476088902
 mas "Sip", id: 507257563
+mas "Slack", id: 803453959
 mas "Soulver", id: 413965349
+mas "Soulver 3", id: 1508732804
 mas "Spark", id: 1176895641
-mas "Stellar Commanders", id: 1469802512
 mas "Talon", id: 1492913323
 mas "Things", id: 904280696
 mas "Time Out", id: 402592703
