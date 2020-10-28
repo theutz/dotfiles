@@ -65,6 +65,7 @@
 (add-to-list 'auto-mode-alist '("journal/[0-9]\\\{8\\\}\\'" . org-journal-mode))
 (setq org-agenda-file-regexp "\\`\\\([^.].*\\.org\\\|[0-9]\\\{8\\\}\\\(\\.gpg\\\)?\\\)\\'"
       org-agenda-files `(,(expand-file-name org-directory) ,(expand-file-name org-journal-dir org-directory)))
+(add-to-list 'org-modules 'org-habit)
 
 ;; Config ZSH Files
 (let ((config-files-list '("\\.?zshenv\\'"
