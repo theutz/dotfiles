@@ -8,3 +8,4 @@ home/.config/karabiner/automatic_backups
 # configstore
 home/.config/configstore/update-notifier-npm.json
 home/.config/yarn
+/home/.config/spotify-tui/
