@@ -68,12 +68,18 @@
 ;; org-modules
 (add-to-list 'org-modules 'org-habit)
 
+;; org tags
+(setq org-tags-persistent-alist '((:startgroup . nil)
+                                  ("@work" . ?w) ("@personal" . ?p)
+                                  (:endgroup . nil)
+                                  ("MacBook" . ?m) ("iPhone" . ?i)))
+
 ;; deft
 (setq deft-directory (expand-file-name "~/Dropbox/notes"))
 (setq deft-default-extension "md")
 
 ;; org-capture
-(setq +org-capture-todo-file (expand-file-name "inbox.org" org-directory))
+(setq +org-capture-todo-file (expand-file-name "todo.org" org-directory))
 (setq org-capture-templates
       '(("t" "Personal todo" entry
          (file +org-capture-todo-file)
