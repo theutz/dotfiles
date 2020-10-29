@@ -16,11 +16,11 @@
                 },
                 "rules": [
                     {
-                        "description": "Pressing Right Command presses Command, Control, Option, and Shift at once.",
+                        "description": "Pressing Right Option presses Command, Control, Option, and Shift at once.",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "right_command",
+                                    "key_code": "right_option",
                                     "modifiers": {
                                         "optional": [
                                             "any"
