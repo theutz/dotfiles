@@ -63,12 +63,22 @@ local appShortcuts = {
   {"Dash", "d"}
 }
 
+local k = hs.hotkey.modal.new(hyper, "g")
+function k:entered() hs.alert('Goto...') end
+function k:exited() hs.alert('Goto...done') end
+k:bind('', 'escape', function () k:exit() end)
+
 for i = 1, #appShortcuts do
   local app,key = table.unpack(appShortcuts[i])
+  local launchFn = function ()
+    hs.application.launchOrFocus(app)
+  end
 
-  hs.hotkey.bindSpec({hyper, key}, app, function ()
-      hs.application.launchOrFocus(app)
-  end)
+  hs.hotkey.bindSpec({hyper, key}, app, launchFn)
+  -- k:bind('', key, app, function ()
+  --          launchFn()
+  --          k:exit()
+  -- end)
 end
 
 -- Report Success!!
