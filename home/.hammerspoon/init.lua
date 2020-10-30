@@ -7,10 +7,17 @@ Install:updateRepo()
 local hyper = {"ctrl", "alt", "cmd", "shift"}
 
 Install:andUse('ReloadConfiguration', {
-  start = true,
-  hotkeys = {
-    reloadConfiguration = {hyper, "r" }}
-  })
+                 start = true,
+                 hotkeys = {
+                   reloadConfiguration = {hyper, "r" }
+                 },
+                 config = {
+                   watch_paths = {
+                     hs.configDir,
+                     os.getenv("HOME") .. "/.dotfiles/home/.hammerspoon/init.lua"
+                   }
+                 },
+})
 
 -- Other Hotkeys to bind
 hs.hotkey.bindSpec({hyper, "v"}, "Visual Studio Code", function ()
