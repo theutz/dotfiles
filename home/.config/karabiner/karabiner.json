@@ -16,7 +16,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Pressing Right Option presses Command, Control, Option, and Shift at once.",
+                        "description": "Right Option as Hyper",
                         "manipulators": [
                             {
                                 "from": {
@@ -201,6 +201,14 @@
                     },
                     "to": {
                         "key_code": "escape"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "escape"
+                    },
+                    "to": {
+                        "key_code": "f20"
                     }
                 }
             ],

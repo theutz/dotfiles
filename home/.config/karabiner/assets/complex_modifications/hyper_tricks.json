@@ -1,0 +1,45 @@
+{
+  "title": "Hyper Tricks",
+  "rules": [
+    {
+      "description": "Right Option as Hyper",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_option",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command",
+              "modifiers": ["left_option", "left_control", "left_shift"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Escape as Hyper F20",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f20",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "i",
+              "modifiers": ["command", "option", "control", "shift"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
