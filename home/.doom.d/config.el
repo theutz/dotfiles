@@ -76,7 +76,6 @@
 
 ;; deft
 (setq deft-directory (expand-file-name "~/Dropbox/notes"))
-(setq deft-default-extension "md")
 
 ;; org-capture
 (setq +org-capture-todo-file (expand-file-name "todo.org" org-directory))
