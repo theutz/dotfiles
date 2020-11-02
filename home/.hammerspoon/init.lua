@@ -29,7 +29,6 @@ Install:andUse('WinWin', {
                  fn = function (WinWin)
                    hs.window.animationDuration = 0
 
-                   local hammer = {"ctrl", "alt", "cmd"}
                    local moves = {
                      {"halfleft", "h"},
                      {"halfdown", "j"},
@@ -38,48 +37,21 @@ Install:andUse('WinWin', {
                      {"maximize", "return"}
                    }
 
-                   for i = 1, #moves do
-                     local move,key = table.unpack(moves[i])
+                   hs.fnutils.map(moves, function (item)
+                                    local move,key = table.unpack(item)
 
-                     hs.hotkey.bindSpec({hammer, key}, nil, function ()
-                         WinWin:moveAndResize(move)
-                     end)
-                   end
+                                    hs.hotkey.bindSpec({{"ctrl", "alt", "cmd"}, key}, nil, function ()
+                                        WinWin:moveAndResize(move)
+                                    end)
+                   end)
                  end
 })
 
 -- Other Hotkeys to bind
 
-local appShortcuts = {
-  {"Zoom.us", "z"},
-  {"Spotify", "m"},
-  {"Fantastical", "f"},
-  {"Google Chrome", "g"},
-  {"Airmail", "a"},
-  {"Emacs", "e"},
-  {"TextExpander", "t"},
-  {"iTerm", "i"},
-  {"Slack", "s"},
-  {"Dash", "d"}
-}
-
-local k = hs.hotkey.modal.new(hyper, "g")
-function k:entered() hs.alert('Goto...') end
-function k:exited() hs.alert('Goto...done') end
-k:bind('', 'escape', function () k:exit() end)
-
-for i = 1, #appShortcuts do
-  local app,key = table.unpack(appShortcuts[i])
-  local launchFn = function ()
-    hs.application.launchOrFocus(app)
-  end
-
-  hs.hotkey.bindSpec({hyper, key}, app, launchFn)
-  -- k:bind('', key, app, function ()
-  --          launchFn()
-  --          k:exit()
-  -- end)
-end
+hs.hotkey.bindSpec({'', 'f20'}, function ()
+      hs.hints.windowHints()
+end)
 
 -- Report Success!!
 
