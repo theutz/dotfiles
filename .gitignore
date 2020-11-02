@@ -5,7 +5,8 @@ home/.ssh
 # karabiner
 home/.config/karabiner/automatic_backups
 
-# configstore
+# config
 home/.config/configstore/update-notifier-npm.json
 home/.config/yarn
-/home/.config/spotify-tui/
+home/.config/spotify-tui/
+home/.config/telepresence
