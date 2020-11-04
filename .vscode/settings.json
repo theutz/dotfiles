@@ -1,5 +1,7 @@
 {
   "path-intellisense.absolutePathToWorkspace": false,
-  "Lua.diagnostics.globals": ["hs", "spoon"],
-  "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace"
+  "Lua.diagnostics.globals": [
+    "hs",
+    "spoon"
+  ]
 }
