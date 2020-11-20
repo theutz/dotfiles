@@ -27,17 +27,31 @@
 	autostash = true
 [commit]
 	verbose = true
+
+# Merge / Mergetool
 [merge]
-	tool = vscode
+	tool = emerge
 	ff = false
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
-[diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "emacs"]
+	cmd = emacs --eval $MERGED
+[mergetool "emacsclient"]
+	cmd = emacsclient -c -a '' --eval $MERGED
 [mergetool]
 	keepBackup = false
+
+# Diff
+[diff]
+	tool = ediff
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "emacs"]
+	cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+[difftool "emacsclient"]
+	cmd = emacsclient -c -a '' --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+
+# Aliases
 [alias]
 	ignore = !git update-index --assume-unchanged
 	unignore = !git update-index --no-assume-unchanged
