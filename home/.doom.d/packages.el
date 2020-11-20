@@ -50,3 +50,5 @@
 ;(unpin! t)
 
 (package! ox-slack)
+
+(package! centered-window)
