@@ -24,6 +24,7 @@
 	rebase = false
 [rebase]
 	autosquash = true
+	autostash = true
 [commit]
 	verbose = true
 [merge]
