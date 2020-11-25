@@ -114,3 +114,7 @@
                            "yabairc\\'")))
   (dolist (elt config-files-list nil)
     (add-to-list 'auto-mode-alist `(,elt . sh-mode))))
+
+;; LSP Mode
+(setq-hook! 'typescript-mode-hook +format-with-lsp nil)
+(setq! lsp-eslint-validate ["javascript" "javascriptreact" "typescript" "typescriptreact"])
