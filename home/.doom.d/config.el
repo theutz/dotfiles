@@ -3,6 +3,10 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+(defun pick-random (items)
+  (let* ((size (length items))
+         (index (random size)))
+    (nth index items)))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -19,13 +23,22 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "IBM Plex Mono" :size 14 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14))
+(let ((font (pick-random '("IBM Plex Mono"
+                           "SF Mono"))))
+  (setq doom-font (font-spec :family font :size 14 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family font :size 14)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-challenger-deep)
+(setq doom-theme (pick-random '(doom-palenight
+                                doom-outrun-electric
+                                doom-spacegray
+                                doom-snazzy
+                                doom-vibrant
+                                doom-wilmersdorf
+                                doom-nord
+                                doom-laserwave)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
