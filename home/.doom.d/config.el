@@ -33,7 +33,7 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme (pick-random '(doom-palenight
                                 doom-outrun-electric
-                                doom-spacegray
+                                doom-spacegrey
                                 doom-snazzy
                                 doom-vibrant
                                 doom-wilmersdorf
