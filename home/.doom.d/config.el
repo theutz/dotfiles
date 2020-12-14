@@ -135,3 +135,6 @@
 
 ;; Fullscreen at startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+;; Open markdown files in Marked 2
+(setq markdown-open-command "~/bin/mark")
