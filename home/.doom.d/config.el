@@ -3,10 +3,7 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-(defun pick-random (items)
-  (let* ((size (length items))
-         (index (random size)))
-    (nth index items)))
+(load-file (expand-file-name "theutz/util.el" doom-private-dir))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -23,28 +20,28 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(let ((font (pick-random '("BlexMono Nerd Font"
-                           "Hasklug Nerd Font"
-                           "Monoid Nerd Font"
-                           "RobotoMono Nerd Font"))))
-  (setq doom-font (font-spec :family font :size 14 :weight 'regular)
-        doom-variable-pitch-font (font-spec :family font :size 14)))
+(setq doom-font (font-spec :family theutz-font :size 14 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family theutz-font :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme (pick-random '(doom-palenight
-                                doom-outrun-electric
-                                doom-spacegrey
-                                doom-snazzy
-                                doom-vibrant
-                                doom-wilmersdorf
-                                doom-nord
-                                doom-laserwave)))
+(setq doom-theme theutz-theme)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(setq theutz-dropbox "~/Dropbox"
+      theutz-dropbox-emacs (expand-file-name "emacs" theutz-dropbox))
+
+(defun read-lines (filename)
+  (with-temp-buffer
+    (insert-file-contents filename)
+    (split-string (buffer-string) "\n" t)))
+
+(setq org-gcal-client-id (car (read-lines (expand-file-name "gcal_client_id" theutz-dropbox-emacs)))
+      org-gcal-client-secret (car (read-lines (expand-file-name "gcal_client_secret" theutz-dropbox-emacs)))
+      org-gcal-file-alist '(("michael.utz@smartly.io" . (expand-file-name "schedule.org" org-directory))))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -67,13 +64,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-;; Setup Org Calendar
-(defun my-open-calendar ()
-  (interactive)
-  (cfw:open-calendar-buffer
-   :contents-sources
-   (list (cfw:org-create-source "Green"))))
 
 ;; org-journal files
 (add-to-list 'auto-mode-alist '("journal/[0-9]\\\{8\\\}\\'" . org-journal-mode))
@@ -141,9 +131,22 @@
 ;; Open markdown files in Marked 2
 (setq markdown-open-command "~/bin/mark")
 
-(defun doom/what-changed ()
+(defun theutz/doom-what-changed ()
   "Compare the init.el that's in use with what's available in the newest version of doom."
   (interactive)
   (let ((old-file (expand-file-name "init.el" doom-private-dir))
         (new-file (expand-file-name "init.example.el" user-emacs-directory)))
     (ediff old-file new-file)))
+
+(defun theutz/open-calendar ()
+  (interactive)
+  (cfw:open-calendar-buffer
+   :contents-sources
+   (list
+    ;; (cfw:org-create-source "Green")  ; org-agenda source
+    ;; (cfw:org-create-file-source "cal" "/path/to/cal.org" "Cyan")  ; other org source
+    ;; (cfw:howm-create-source "Blue")  ; howm source
+    ;; (cfw:cal-create-source "Orange") ; diary source
+    ;; (cfw:ical-create-source "Moon" "~/moon.ics" "Gray")  ; ICS source1
+    (cfw:ical-create-source "Smartly" "https://calendar.google.com/calendar/ical/michael.utz%40smartly.io/private-ebc1bdad8071c23914f4411d2f515d50/basic.ics" "Green")
+   )))
