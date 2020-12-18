@@ -1,5 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+(load! "lisp/vars")
 (load! "lisp/autoload")
 (load! "lisp/util")
 
@@ -32,17 +33,6 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-(setq theutz-dropbox "~/Dropbox"
-      theutz-dropbox-emacs (expand-file-name "emacs" theutz-dropbox))
-
-(defun read-lines (filename)
-  (with-temp-buffer
-    (insert-file-contents filename)
-    (split-string (buffer-string) "\n" t)))
-
-(setq org-gcal-client-id (car (read-lines (expand-file-name "gcal_client_id" theutz-dropbox-emacs)))
-      org-gcal-client-secret (car (read-lines (expand-file-name "gcal_client_secret" theutz-dropbox-emacs)))
-      org-gcal-file-alist '(("michael.utz@smartly.io" . (expand-file-name "schedule.org" org-directory))))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -65,6 +55,15 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; theutz dropbox
+(setq theutz-dropbox "~/Dropbox"
+      theutz-dropbox-emacs (expand-file-name "emacs" theutz-dropbox))
+
+;; org-gcal
+(setq org-gcal-client-id (car (theutz/read-lines (expand-file-name "gcal_client_id" theutz-dropbox-emacs)))
+      org-gcal-client-secret (car (theutz/read-lines (expand-file-name "gcal_client_secret" theutz-dropbox-emacs)))
+      org-gcal-file-alist '(("michael.utz@smartly.io" . (expand-file-name "schedule.org" org-directory))))
 
 ;; org-journal files
 (add-to-list 'auto-mode-alist '("journal/[0-9]\\\{8\\\}\\'" . org-journal-mode))
