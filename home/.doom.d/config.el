@@ -23,8 +23,10 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(let ((font (pick-random '("IBM Plex Mono"
-                           "SF Mono"))))
+(let ((font (pick-random '("BlexMono Nerd Font"
+                           "Hasklug Nerd Font"
+                           "Monoid Nerd Font"
+                           "RobotoMono Nerd Font"))))
   (setq doom-font (font-spec :family font :size 14 :weight 'regular)
         doom-variable-pitch-font (font-spec :family font :size 14)))
 
