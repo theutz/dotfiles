@@ -138,3 +138,10 @@
 
 ;; Open markdown files in Marked 2
 (setq markdown-open-command "~/bin/mark")
+
+(defun doom/what-changed ()
+  "Compare the init.el that's in use with what's available in the newest version of doom."
+  (interactive)
+  (let ((old-file (expand-file-name "init.el" doom-private-dir))
+        (new-file (expand-file-name "init.example.el" user-emacs-directory)))
+    (ediff old-file new-file)))
