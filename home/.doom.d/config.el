@@ -90,3 +90,7 @@
 ;;
 (setq markdown-open-command "~/bin/mark")
 
+;;
+;; Encryption
+;;
+(setq! epa-file-cache-passphrase-for-symmetric-encryption t)
