@@ -55,9 +55,14 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;;
+;; Org
+;;
 (load! "lisp/org")
 
+;;
 ;; Config ZSH Files
+;;
 (let ((config-files-list '("\\.?zshenv\\'"
                            "\\.?zshrc\\'"
                            "\\.?zprofile\\'"
@@ -68,14 +73,20 @@
   (dolist (elt config-files-list nil)
     (add-to-list 'auto-mode-alist `(,elt . sh-mode))))
 
+;;
 ;; LSP Mode
+;;
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
 (setq! lsp-eslint-validate ["javascript" "javascriptreact" "typescript" "typescriptreact"])
 (setq! lsp-yaml-format-enable nil) ; let prettier handle this
 
+;;
 ;; Fullscreen at startup
+;;
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+;;
 ;; Open markdown files in Marked 2
+;;
 (setq markdown-open-command "~/bin/mark")
 
