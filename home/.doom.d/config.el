@@ -76,7 +76,7 @@
 ;;
 ;; LSP Mode
 ;;
-(setq-hook! 'typescript-mode-hook +format-with-lsp nil)
+(setq! +format-with-lsp nil)
 (setq! lsp-eslint-validate ["javascript" "javascriptreact" "typescript" "typescriptreact"])
 (setq! lsp-yaml-format-enable nil) ; let prettier handle this
 
