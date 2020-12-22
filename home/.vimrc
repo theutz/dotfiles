@@ -6,6 +6,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Basic Settings
+let mapleader = " "
+let maplocalleader = ","
+
 " Plugins
 
 call plug#begin('~/.vim/plugged')
@@ -22,3 +26,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'MaxMEllon/vim-jsx-pretty'
 call plug#end()
 
+" Mappings
+
+nnoremap <Leader>f :FZF<CR>
