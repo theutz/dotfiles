@@ -94,3 +94,8 @@
 ;; Encryption
 ;;
 (setq! epa-file-cache-passphrase-for-symmetric-encryption t)
+
+;;
+;; Ranger
+;;
+(map! :leader :desc "Open in Ranger" :n "f v" 'ranger)
