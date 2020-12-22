@@ -7,8 +7,7 @@
     doom-snazzy
     doom-vibrant
     doom-wilmersdorf
-    doom-nord
-    doom-laserwave)
+    doom-nord)
   "List of themes that will be randomly selected from at startup.")
 
 (defconst theutz-theme (theutz/pick-random theutz-themes)
