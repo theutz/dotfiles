@@ -48,3 +48,9 @@ if [[ $TERM =~ '^eterm' ]]; then
 else
 	export TERM="xterm-256color"
 fi
+
+#
+# Vi Mode
+#
+bindkey -v
+export KEYTIMEOUT=1
