@@ -71,3 +71,10 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
+
+#
+# Kitty
+#
+
+# Must be loaded after `compinit`
+kitty + complete setup zsh | source /dev/stdin
