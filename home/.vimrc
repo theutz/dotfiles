@@ -43,10 +43,9 @@ Plug 'junegunn/fzf.vim'
 " Version Control
 Plug 'tpope/vim-fugitive'
 
-" JS / TS / React
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
+" Syntax Highlighting
+Plug 'sheerun/vim-polyglot'
+
 
 " User Interface
 Plug 'vim-airline/vim-airline'
