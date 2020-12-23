@@ -43,6 +43,10 @@ Plug 'tpope/vim-unimpaired'
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+Plug 'francoiscabrol/ranger.vim'
+if has("nvim")
+  Plug 'rbgrouleff/bclose.vim'
+endif
 
 " Version Control
 Plug 'tpope/vim-fugitive'
@@ -72,6 +76,11 @@ colorscheme spaceduck
 
 " Airline
 let g:airline_theme = 'spaceduck'
+
+" Ranger
+let g:ranger_map_keys = 0
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
 "}}}
 
 " Functions
@@ -88,8 +97,10 @@ endfunction
 
 " Mappings
 "{{{
-nnoremap <C-p> :FZF<CR>
+nnoremap <Leader>f :FZF<CR>
 nnoremap <Leader>t :NERDTreeToggle<CR>
+nnoremap <Leader>r :RangerCurrentFile<CR>
+nnoremap <Leader>R :Ranger<CR>
 nnoremap <LocalLeader><Space> :nohlsearch<CR>
 "}}}
 
