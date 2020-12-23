@@ -88,3 +88,13 @@ eval "$(starship init zsh)"
 # FZF
 #
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#
+# TMUX
+#
+
+# Ensure Tmux Plugin Manager is installed.
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+  mkdir -p ~/.tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
