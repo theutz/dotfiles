@@ -49,7 +49,6 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 
 call plug#end()
 
-" Mappings
 "
 " Functions
 "
@@ -62,4 +61,8 @@ function! ToggleNumberStyle()
   endif
 endfunction
 
-nnoremap <Leader>f :FZF<CR>
+"
+" Mappings
+"
+nnoremap <C-p> :FZF<CR>
+nnoremap <LocalLeader><Space> :nohlsearch<CR>
