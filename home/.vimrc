@@ -1,6 +1,6 @@
 " 
 " Basic Settings
-"
+"{{{
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -23,10 +23,10 @@ let mapleader = " "
 let maplocalleader = ","
 
 filetype indent on
-
+"}}}
 "
 " Plugins
-"
+"{{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -73,7 +73,7 @@ let g:airline_theme = 'spaceduck'
 "}}}
 
 " Functions
-"
+"{{{
 function! ToggleNumberStyle()
   if (&relativenumber == 1)
     set norelativenumber
@@ -82,11 +82,12 @@ function! ToggleNumberStyle()
     set relativenumber
   endif
 endfunction
-
+"}}}
 "
 " Mappings
-"
+"{{{
 nnoremap <C-p> :FZF<CR>
 nnoremap <LocalLeader><Space> :nohlsearch<CR>
+"}}}
 " vim: fdm=marker fdl=0
 
