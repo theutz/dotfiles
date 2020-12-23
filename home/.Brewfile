@@ -22,6 +22,7 @@ tap "wtfutil/wtfutil"
 cask "osxfuse"
 cask "xquartz"
 brew "asciiquarium"
+brew "aspell"
 brew "automake"
 brew "bash"
 brew "bat"
@@ -100,6 +101,7 @@ brew "rust"
 brew "shellcheck"
 brew "shpotify"
 brew "speedtest-cli"
+brew "starship"
 brew "stern"
 brew "stow"
 brew "surfraw"
@@ -196,6 +198,7 @@ mas "Bumpr", id: 1166066070
 mas "Day One", id: 1055511498
 mas "Developer", id: 640199958
 mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Entity Pro", id: 1503988785
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "Grammarly for Safari", id: 1462114288
@@ -209,9 +212,11 @@ mas "Marked 2", id: 890031187
 mas "Mate Translate", id: 1005088137
 mas "MindNode", id: 1289197285
 mas "Notability", id: 736189492
+mas "Noto", id: 1459055246
 mas "Numbers", id: 409203825
 mas "Octotree", id: 1457450145
 mas "OmniFocus", id: 1346203938
+mas "OTP Auth", id: 1471867429
 mas "Pages", id: 409201541
 mas "Paletter", id: 1494948845
 mas "Paprika Recipe Manager 3", id: 1303222628
@@ -220,11 +225,14 @@ mas "Playgrounds", id: 1496833156
 mas "PopClip", id: 445189367
 mas "Raindrop.io for Safari", id: 957810159
 mas "Reeder", id: 1529448980
+mas "Relax Melodies", id: 467103113
 mas "ResizeIt", id: 416280139
 mas "Rosetta Stone", id: 1476088902
 mas "Slack", id: 803453959
+mas "Sorted", id: 1306893526
 mas "Soulver 3", id: 1508732804
 mas "Talon", id: 1492913323
+mas "Taskheat", id: 1431995750
 mas "The Pathless", id: 1441675155
 mas "Things", id: 904280696
 mas "Twitter", id: 1482454543
