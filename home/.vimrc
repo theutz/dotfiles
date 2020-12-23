@@ -1,4 +1,3 @@
-" 
 " Basic Settings
 "{{{
 set tabstop=2
@@ -24,7 +23,7 @@ let maplocalleader = ","
 
 filetype indent on
 "}}}
-"
+
 " Plugins
 "{{{
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -46,7 +45,6 @@ Plug 'tpope/vim-fugitive'
 " Syntax Highlighting
 Plug 'sheerun/vim-polyglot'
 
-
 " User Interface
 Plug 'vim-airline/vim-airline'
 
@@ -54,6 +52,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'pineapplegiant/spaceduck'
 
 call plug#end()
+"}}}
 
 " Post-Plugin Settings
 "{{{
@@ -82,7 +81,7 @@ function! ToggleNumberStyle()
   endif
 endfunction
 "}}}
-"
+
 " Mappings
 "{{{
 nnoremap <C-p> :FZF<CR>
