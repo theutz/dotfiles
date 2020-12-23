@@ -13,6 +13,7 @@ set lazyredraw
 set showmatch
 set incsearch
 set hlsearch
+set modeline
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
@@ -87,3 +88,5 @@ endfunction
 "
 nnoremap <C-p> :FZF<CR>
 nnoremap <LocalLeader><Space> :nohlsearch<CR>
+" vim: fdm=marker fdl=0
+
