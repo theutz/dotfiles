@@ -50,5 +50,16 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 call plug#end()
 
 " Mappings
+"
+" Functions
+"
+function! ToggleNumberStyle()
+  if (&relativenumber == 1)
+    set norelativenumber
+    set number
+  else
+    set relativenumber
+  endif
+endfunction
 
 nnoremap <Leader>f :FZF<CR>
