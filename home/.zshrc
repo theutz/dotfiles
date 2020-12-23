@@ -54,3 +54,20 @@ fi
 #
 bindkey -v
 export KEYTIMEOUT=1
+
+#
+# Plugins
+#
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "wfxr/forgit"
+
+if ! zplug check --verbose; then
+	printf "Install? [y/N]: "
+	if read -q; then
+		echo; zplug install
+	fi
+fi
+
+zplug load --verbose
