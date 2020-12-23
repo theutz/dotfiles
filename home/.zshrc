@@ -1,3 +1,9 @@
+# Options
+#{{{
+setopt auto_cd
+setopt extended_glob
+# }}}
+
 # Editors
 #{{{
 export EDITOR="nvim"
