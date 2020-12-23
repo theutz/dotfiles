@@ -78,3 +78,8 @@ zplug load --verbose
 
 # Must be loaded after `compinit`
 kitty + complete setup zsh | source /dev/stdin
+
+#
+# Starship
+#
+eval "$(starship init zsh)"
