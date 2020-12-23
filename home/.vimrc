@@ -47,9 +47,30 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
+" User Interface
+Plug 'vim-airline/vim-airline'
+
+" Color Schemes
+Plug 'pineapplegiant/spaceduck'
+
 call plug#end()
 
-"
+" Post-Plugin Settings
+"{{{
+
+" Color scheme
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+endif
+
+colorscheme spaceduck
+
+" Airline
+let g:airline_theme = 'spaceduck'
+"}}}
+
 " Functions
 "
 function! ToggleNumberStyle()
