@@ -42,6 +42,7 @@ Plug 'tpope/vim-unimpaired'
 " Navigation
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
@@ -63,11 +64,10 @@ call plug#end()
 
 " Color scheme
 if exists('+termguicolors')
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-	set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
-
 colorscheme spaceduck
 
 " Airline
@@ -89,7 +89,9 @@ endfunction
 " Mappings
 "{{{
 nnoremap <C-p> :FZF<CR>
+nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <LocalLeader><Space> :nohlsearch<CR>
 "}}}
+
 " vim: fdm=marker fdl=0
 
