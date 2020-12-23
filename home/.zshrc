@@ -83,3 +83,8 @@ kitty + complete setup zsh | source /dev/stdin
 # Starship
 #
 eval "$(starship init zsh)"
+
+#
+# FZF
+#
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
