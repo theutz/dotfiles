@@ -1,4 +1,27 @@
-" Setup vim-plug
+" 
+" Basic Settings
+"
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set relativenumber
+set showcmd
+set cursorline
+set wildmenu
+set lazyredraw
+set showmatch
+set incsearch
+set hlsearch
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+
+let mapleader = " "
+let maplocalleader = ","
+
+filetype indent on
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -6,11 +29,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Basic Settings
-let mapleader = " "
-let maplocalleader = ","
-
-" Plugins
 
 call plug#begin('~/.vim/plugged')
   " Navigation
