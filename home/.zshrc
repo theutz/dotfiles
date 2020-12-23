@@ -102,6 +102,7 @@ fi
 # Aliases
 #{{{
 alias lg="lazygit"
+alias rr="ranger"
 # }}}
 
 # vim: fdm=marker fdl=0
