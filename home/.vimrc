@@ -35,6 +35,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Editing
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+
 " Navigation
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim'
