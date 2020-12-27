@@ -108,6 +108,15 @@ if [[ ! -d ~/.tmux/plugins/tpm ]]; then
 fi
 # }}}
 
+# Emacs
+# {{{
+
+# Ensure Doom Emacs is installed.
+if [[ ! -d ~/.emacs.d ]]; then
+	git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
+fi
+# }}}
+
 # Aliases
 #{{{
 alias lg="lazygit"
