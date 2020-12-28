@@ -86,6 +86,7 @@ let g:airline_theme = 'spaceduck'
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
+
 " Which Key
 let g:which_key_map = {}
 call which_key#register('<Space>', 'g:which_key_map')
@@ -105,13 +106,6 @@ endfunction
 
 " Mappings
 "{{{
-nnoremap <Leader>f :FZF<CR>
-nnoremap <Leader>t :NERDTreeToggle<CR>
-nnoremap <Leader>r :RangerCurrentFile<CR>
-nnoremap <Leader>R :Ranger<CR>
-nnoremap <LocalLeader><Space> :nohlsearch<CR>
-nnoremap <Leader>qri :so $MYVIMRC <bar> PlugInstall <bar> so $MYVIMRC<CR>
-nnoremap <Leader>qrr :so $MYVIMRC<CR>
 
 " Setup Which Key{{{
 nnoremap <silent> <Leader> :<C-u>WhichKey '<Space>'<CR>
@@ -157,6 +151,7 @@ let g:which_key_map.q.r.r = 'Reload Configuration'
 "}}}
 "}}}
 "}}}
+
 " Autocommands
 "{{{
 
@@ -164,6 +159,11 @@ let g:which_key_map.q.r.r = 'Reload Configuration'
 augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+
+" Open man pages in a vertical split
+augroup man_pages
+  autocmd BufEnter *.txt if &filetype == 'man' | wincmd L | endif
 augroup END
 "}}}
 
