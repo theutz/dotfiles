@@ -143,6 +143,20 @@ let g:which_key_map.t['<Space>'] = 'Search Highlight'
 
 "}}}
 
+" +quit {{{
+let g:which_key_map.q = { 'name': '+Quit' }
+
+" +reload {{{
+let g:which_key_map.q.r = { 'name': '+Reload' }
+
+nnoremap <silent> <Leader>qri :source $MYVIMRC <Bar> PlugInstall<CR>
+let g:which_key_map.q.r.i = 'Install Plugins'
+
+nnoremap <silent> <Leader>qrr :source $MYVIMRC <Bar> echo $MYVIMRC . " reloaded!"<CR>
+let g:which_key_map.q.r.r = 'Reload Configuration'
+"}}}
+"}}}
+"}}}
 " Autocommands
 "{{{
 
