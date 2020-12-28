@@ -116,6 +116,20 @@ nnoremap <Leader>qrr :so $MYVIMRC<CR>
 " Setup Which Key{{{
 nnoremap <silent> <Leader> :<C-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <Leader> :<C-u>WhichKeyVisual '<Space>'<CR>
+
+" +files{{{
+let g:which_key_map.f = { 'name': '+Files' }
+
+nnoremap <Leader>ff :FZF<CR>
+let g:which_key_map.f.f = 'FZF'
+
+nnoremap <Leader>fn :NERDTreeToggle<CR>
+let g:which_key_map.f.n = 'NERDTree'
+
+nnoremap <Leader>fr :RangerCurrentFile<CR>
+let g:which_key_map.f.r = 'Ranger (Current File)'
+nnoremap <Leader>fR :Ranger<CR>
+let g:which_key_map.f.R = 'Ranger (Current Working Directory)'
 "}}}
 
 " +toggles {{{
