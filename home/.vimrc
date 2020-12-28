@@ -108,5 +108,15 @@ nnoremap <Leader>qri :so $MYVIMRC <bar> PlugInstall <bar> so $MYVIMRC<CR>
 nnoremap <Leader>qrr :so $MYVIMRC<CR>
 "}}}
 
+" Autocommands
+"{{{
+
+" Open help in a vertical split
+augroup vimrc_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+"}}}
+
 " vim: fdm=marker fdl=0
 
