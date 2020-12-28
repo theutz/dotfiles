@@ -120,7 +120,10 @@ fi
 # Aliases
 #{{{
 alias lg="lazygit"
-alias rr="ranger"
+
+# By sourcing ranger, we allow it to tell the shell to
+# `cd` to the last opened directory.
+alias rr="source ranger"
 # }}}
 
 # vim: fdm=marker fdl=0
