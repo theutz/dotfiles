@@ -87,7 +87,7 @@ let g:ranger_replace_netrw = 1
 
 " Functions
 "{{{
-function! ToggleNumberStyle()
+function! s:ToggleNumberStyle()
   if (&relativenumber == 1)
     set norelativenumber
     set number
@@ -106,6 +106,7 @@ nnoremap <Leader>R :Ranger<CR>
 nnoremap <LocalLeader><Space> :nohlsearch<CR>
 nnoremap <Leader>qri :so $MYVIMRC <bar> PlugInstall <bar> so $MYVIMRC<CR>
 nnoremap <Leader>qrr :so $MYVIMRC<CR>
+nnoremap <Leader>tn :call <SID>ToggleNumberStyle()<CR>
 "}}}
 
 " Autocommands
