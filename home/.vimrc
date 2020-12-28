@@ -137,6 +137,10 @@ let g:which_key_map.t = { 'name': '+Toggles' }
 
 nnoremap <Leader>tn :call <SID>ToggleNumberStyle()<CR>
 let g:which_key_map.t.n = 'Number Style'
+
+nnoremap <Leader>t<Space> :nohlsearch<CR>
+let g:which_key_map.t['<Space>'] = 'Search Highlight'
+
 "}}}
 
 " Autocommands
