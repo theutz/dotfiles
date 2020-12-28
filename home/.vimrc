@@ -57,6 +57,7 @@ Plug 'sheerun/vim-polyglot'
 " User Interface
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-obsession'
 
 " Color Schemes
 Plug 'pineapplegiant/spaceduck'
@@ -103,6 +104,8 @@ nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <Leader>r :RangerCurrentFile<CR>
 nnoremap <Leader>R :Ranger<CR>
 nnoremap <LocalLeader><Space> :nohlsearch<CR>
+nnoremap <Leader>qri :so $MYVIMRC <bar> PlugInstall <bar> so $MYVIMRC<CR>
+nnoremap <Leader>qrr :so $MYVIMRC<CR>
 "}}}
 
 " vim: fdm=marker fdl=0
