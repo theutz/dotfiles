@@ -18,7 +18,7 @@ set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 
-let mapleader = " "
+let mapleader = "\<Space>"
 let maplocalleader = ","
 
 filetype indent on
