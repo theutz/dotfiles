@@ -10,6 +10,8 @@ set cursorline
 set wildmenu
 set lazyredraw
 set showmatch
+set timeout " default, but necessary for vim-which-key
+set timeoutlen=500
 set incsearch
 set hlsearch
 set modeline
@@ -58,6 +60,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
+Plug 'liuchengxu/vim-which-key'
 
 " Color Schemes
 Plug 'pineapplegiant/spaceduck'
@@ -83,6 +86,9 @@ let g:airline_theme = 'spaceduck'
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
+" Which Key
+let g:which_key_map = {}
+call which_key#register('<Space>', 'g:which_key_map')
 "}}}
 
 " Functions
@@ -106,7 +112,17 @@ nnoremap <Leader>R :Ranger<CR>
 nnoremap <LocalLeader><Space> :nohlsearch<CR>
 nnoremap <Leader>qri :so $MYVIMRC <bar> PlugInstall <bar> so $MYVIMRC<CR>
 nnoremap <Leader>qrr :so $MYVIMRC<CR>
+
+" Setup Which Key{{{
+nnoremap <silent> <Leader> :<C-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <Leader> :<C-u>WhichKeyVisual '<Space>'<CR>
+"}}}
+
+" +toggles {{{
+let g:which_key_map.t = { 'name': '+Toggles' }
+
 nnoremap <Leader>tn :call <SID>ToggleNumberStyle()<CR>
+let g:which_key_map.t.n = 'Number Style'
 "}}}
 
 " Autocommands
