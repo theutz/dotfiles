@@ -59,6 +59,9 @@ fi
 #{{{
 bindkey -v
 export KEYTIMEOUT=1
+
+# This fixes character deletion after using history
+bindkey "^?" backward-delete-char
 # }}}
 
 # Plugins
