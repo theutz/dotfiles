@@ -110,3 +110,8 @@
 ;; VTerm
 ;;
 (setq! vterm-max-scrollback 100000)
+
+;;
+;; Ace Window
+;;
+(map! :leader :desc "ace-window" :n "w a" 'ace-window)
