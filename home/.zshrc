@@ -6,8 +6,8 @@ setopt extended_glob
 
 # Editors
 #{{{
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="emacsclient --create-frame --alternate-editor=''"
+export VISUAL="emacsclient --create-frame --alternate-editor=''"
 export PAGER="less"
 # }}}
 
