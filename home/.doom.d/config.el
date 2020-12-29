@@ -99,3 +99,9 @@
 ;; Ranger
 ;;
 (map! :leader :desc "Open in Ranger" :n "f v" 'ranger)
+
+;;
+;; Disable Quits
+;;
+(map! :desc "Delete Frame" :g "s-q" 'doom/delete-frame-with-prompt)
+(evil-ex-define-cmd "q" 'doom/delete-frame-with-prompt)
