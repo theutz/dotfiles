@@ -6,8 +6,9 @@ setopt extended_glob
 
 # Editors
 #{{{
-export EDITOR="emacsclient --create-frame --alternate-editor=''"
-export VISUAL="emacsclient --create-frame --alternate-editor=''"
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient --tty"
+export VISUAL="emacsclient --create-frame"
 export PAGER="less"
 # }}}
 
@@ -128,5 +129,11 @@ alias lg="lazygit"
 # `cd` to the last opened directory.
 alias rr="source ranger"
 # }}}
+
+# Aliases
+#{{{
+alias e="${VISUAL:-EDITOR}"
+alias en="e --no-wait"
+#}}}
 
 # vim: fdm=marker fdl=0
