@@ -105,3 +105,8 @@
 ;;
 (map! :desc "Delete Frame" :g "s-q" 'doom/delete-frame-with-prompt)
 (evil-ex-define-cmd "q" 'doom/delete-frame-with-prompt)
+
+;;
+;; VTerm
+;;
+(setq! vterm-max-scrollback 100000)
