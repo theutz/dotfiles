@@ -114,4 +114,5 @@
 ;;
 ;; Ace Window
 ;;
+(setq! aw-dispatch-always t)
 (map! :leader :desc "ace-window" :n "w a" 'ace-window)
