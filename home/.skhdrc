@@ -1,0 +1,128 @@
+#
+# Default Mode
+#{{{
+:: default : noti -t "Default Mode" -m "in SKHD"
+
+cmd - tab : noti -t "CMD + Tab?" -m "Don't do it!"
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+#}}}
+
+#
+# Yabai Mode
+# {{{
+:: yabai @ : noti -t "Yabai Mode" -m "in SKHD"
+default < cmd - escape ; yabai
+yabai < escape ; default
+
+yabai < h : ( \
+                yabai -m space --focus prev || \
+                yabai -m space --focus last \
+            ); \
+            yabai -m window --focus mouse
+yabai < j : yabai -m window --focus next || \
+            yabai -m window --focus first
+yabai < k : yabai -m window --focus prev || \
+            yabai -m window --focus last
+yabai < l : ( \
+                yabai -m space --focus next || \
+                yabai -m space --focus first \
+            ); \
+            yabai -m window --focus mouse
+
+yabai < p : SKHD_CURRENT_WINDOW="$(yabai -m query --windows --window | jq .id)"; \
+            SKHD_TARGET_SPACE="$((`yabai -m query --spaces --space | jq .index` + 1 ))"; \
+            noti -t "Target Space" -m $SKHD_TARGET_SPACE; \
+            yabai -m space --create; \
+            yabai -m space --focus last; \
+            yabai -m space --move $SKHD_TARGET_SPACE; \
+            yabai -m window $SKHD_CURRENT_WINDOW --space $SKHD_TARGET_SPACE; \
+            yabai -m space --focus $SKHD_TARGET_SPACE
+
+yabai < return : yabai -m window --toggle zoom-fullscreen
+yabai < space : yabai -m window --toggle zoom-parent
+#}}}
+
+#
+# Yabai > Goto Mode
+#{{{
+:: g_ @ : noti -t "g Mode" -m "Goto..."
+yabai < g ; g_
+g_ < escape ; yabai
+
+g_ < j : \
+        yabai -m window --focus south || \
+        skhd -k 'escape'; \
+        skhd -k 'j'
+g_ < k : \
+        yabai -m window --focus north || \
+        skhd -k 'escape'; \
+        skhd -k 'k'
+#}}}
+
+#
+# Yabai > Prev Mode
+# {{{
+:: prev_ @ : noti -t "[ mode" -m "Previous..."
+yabai < 0x21 ; prev_
+prev_ < escape ; yabai
+
+prev_ < w : ( \
+                yabai -m window --swap prev || \
+                yabai -m window --swap last \
+            ); \
+            skhd -k escape
+prev_ < s : ( \
+                ( \
+                    yabai -m window --space prev && \
+                    yabai -m space --focus prev \
+                ) || \
+                ( \
+                    yabai -m space --create && \
+                    yabai -m window --space last && \
+                    yabai -m space --focus last \
+                ) \
+            ); \
+            skhd -k escape
+#}}}
+
+#
+# Yabai > Next Mode
+#{{{
+:: next_ @ : noti -t "] mode" -m "Next..."
+yabai < 0x1E ; next_
+next_ < escape ; yabai
+
+next_ < w : ( \
+                yabai -m window --swap next || \
+                yabai -m window --swap first \
+            ); \
+            skhd -k escape
+next_ < s : ( \
+                ( \
+                    yabai -m window --space next && \
+                    yabai -m space --focus next \
+                ) || \
+                ( \
+                    yabai -m space --create && \
+                    yabai -m window --space last && \
+                    yabai -m space --focus last \
+                ) \
+            );  \
+            skhd -k escape
+#}}}
+
+#
+# Yabai > Delete Mode
+#{{{
+:: d_ @ : noti -t "d mode" -m "Delete..."
+yabai < d ; d_
+d_ < escape ; yabai
+
+d_ < s : \
+        SKHD_CURRENT_SPACE="$(yabai -m query --spaces --space | jq .index)"; \
+        yabai -m space --destroy && \
+        yabai -m space --focus $SKHD_CURRENT_SPACE; \
+        skhd -k escape
+#}}}
+
+# vim: fdm=marker 
