@@ -116,3 +116,9 @@
 ;;
 (setq! aw-dispatch-always t)
 (map! :leader :desc "ace-window" :n "w a" 'ace-window)
+
+;;
+;; Centaur Tabs
+;;
+(map! :desc "Next Tab" :g "s-}" 'centaur-tabs-forward)
+(map! :desc "Prev Tab" :g "s-{" 'centaur-tabs-backward)
