@@ -134,4 +134,4 @@ d_ < s : \
         skhd -k escape
 #}}}
 
-# vim: fdm=marker 
+# vim: fdm=marker fdl=0

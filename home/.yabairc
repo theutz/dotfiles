@@ -28,3 +28,6 @@ for pads in $pad_dimensions
 do
     yabai -m config "$pads" 10
 done
+
+# Setup Exceptions
+yabai -m rule --add app="^Mate Translate$" manage=off
