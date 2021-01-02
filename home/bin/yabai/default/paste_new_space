@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+current_window="$(yabai -m query --windows --window | jq .id)"
+target_space="$((`yabai -m query --spaces --space | jq .index` + 1 ))"
+
+noti -t "Paste Window in New Space" -m "Space #${target_space}"
+
+yabai -m space --create
+yabai -m space --focus last
+yabai -m space --move $target_space
+yabai -m window $current_window --space $target_space
+yabai -m space --focus $target_space

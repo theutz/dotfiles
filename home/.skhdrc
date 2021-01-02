@@ -29,14 +29,7 @@ yabai < l : ( \
             ); \
             yabai -m window --focus mouse
 
-yabai < p : SKHD_CURRENT_WINDOW="$(yabai -m query --windows --window | jq .id)"; \
-            SKHD_TARGET_SPACE="$((`yabai -m query --spaces --space | jq .index` + 1 ))"; \
-            noti -t "Target Space" -m $SKHD_TARGET_SPACE; \
-            yabai -m space --create; \
-            yabai -m space --focus last; \
-            yabai -m space --move $SKHD_TARGET_SPACE; \
-            yabai -m window $SKHD_CURRENT_WINDOW --space $SKHD_TARGET_SPACE; \
-            yabai -m space --focus $SKHD_TARGET_SPACE
+yabai < p : source ~/bin/yabai/default/paste_new_space
 
 yabai < return : yabai -m window --toggle zoom-fullscreen
 yabai < space : yabai -m window --toggle zoom-parent
