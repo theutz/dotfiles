@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+setopt shwordsplit
+
+current_space="$(yabai -m query --spaces --space | jq .index)"
+windows_in_space="$(yabai -m query --windows --space | jq -r 'map(.id) | join(",") | gsub(","; " ")')"
+
+yabai -m space --destroy
+for win in $windows_in_space; do
+    echo $win
+    yabai -m window $win --space $current_space 
+done
+yabai -m space --focus $current_space
+skhd -k escape
+
+unsetopt shwordsplit
