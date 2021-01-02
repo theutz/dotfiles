@@ -43,6 +43,15 @@ yabai < space : yabai -m window --toggle zoom-parent
 #}}}
 
 #
+# Yabai > Toggle Mode
+#
+:: t_ @ : noti -t "t Mode" -m "Toggle..."
+yabai < t ; t_
+t_ < escape ; yabai
+
+t_ < f : source ~/bin/yabai/toggle/focus_follows_mouse
+
+#
 # Yabai > Goto Mode
 #{{{
 :: g_ @ : noti -t "g Mode" -m "Goto..."
