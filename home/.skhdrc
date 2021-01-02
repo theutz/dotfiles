@@ -3,7 +3,7 @@
 #{{{
 :: default : noti -t "Default Mode" -m "in SKHD"
 
-cmd - tab : noti -t "CMD + Tab?" -m "Don't do it!"
+cmd - tab -> : noti -t "Ah ah ah..." -m "CMD + Tab? Don't do it!"
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 #}}}
 
