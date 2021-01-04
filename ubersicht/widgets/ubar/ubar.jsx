@@ -1,7 +1,7 @@
 import parse from "./lib/parse.jsx";
 import { styled } from "uebersicht";
 
-export const refreshFrequency = 500;
+export const refreshFrequency = 1000;
 export const command = "./ubar/scripts/status.zsh";
 
 export const className = `
@@ -29,7 +29,7 @@ const Separator = styled("div")`
 `;
 
 const Item = styled("span")`
-  padding: 1px 2px;
+  padding: 1px 6px;
   border: 2px solid transparent;
 `;
 
@@ -37,25 +37,40 @@ const HighlightedItem = styled(Item)`
   border-color: rgba(255, 0, 0, 0.5);
 `;
 
+const Error = ({ children }) => <Container>ERROR: {children}</Container>;
+
 const VR = () => <Separator>|</Separator>;
 
 const range = (count) => Array.from({ length: count }).map((_, i) => i + 1);
 
-export const render = ({ output }) => {
-  const { space, display } = parse(output);
+export const render = ({ output, error }) => {
+  const data = parse(output);
+
+  if (typeof data === "undefined") {
+    return <Error>`data` is undefined</Error>;
+  }
+
+  if (typeof data.error !== "undefined") {
+    return <Error>{data.error}</Error>;
+  }
+
+  if (typeof error !== "undefined") {
+    return <Error>{error}</Error>;
+  }
+
+  const { space = {}, display = {} } = data;
   const displayArr = range(display.count);
   const spaceArr = range(space.count);
 
   return (
     <Container>
-      <Section>{/* Display: {display.index}/{display.count} */}</Section>
       <Section>
         Display:{" "}
         {displayArr.map((x) =>
           x === display.index ? (
-            <HighlightedItem>{x}</HighlightedItem>
+            <HighlightedItem key={x}>{x}</HighlightedItem>
           ) : (
-            <Item>{x}</Item>
+            <Item key={x}>{x}</Item>
           )
         )}
       </Section>
@@ -64,9 +79,9 @@ export const render = ({ output }) => {
         Space:{" "}
         {spaceArr.map((x) =>
           x === space.index ? (
-            <HighlightedItem>{x}</HighlightedItem>
+            <HighlightedItem key={x}>{x}</HighlightedItem>
           ) : (
-            <Item>{x}</Item>
+            <Item key={x}>{x}</Item>
           )
         )}
       </Section>

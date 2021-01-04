@@ -2,10 +2,28 @@
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -t|--title) title="$2"; shift; shift;;
-        -m|--message) message="$2"; shift; shift;;;
-        -*|--*) echo "error: $1 is not a valid flag"; shift;;
-        *) positional+="$1"; shift;;
+        -t|--title)
+            title="$2"
+            shift
+            shift
+            ;;
+        -m|--message)
+            message="$2"
+            shift
+            shift
+            ;;
+        -r|--update)
+            osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "ubar-ubar-jsx"'
+            shift
+            ;;
+        -*|--*)
+            echo "error: $1 is not a valid flag"
+            shift
+            ;;
+        *)
+            positional+="$1"
+            shift
+            ;;
     esac
 done
 
