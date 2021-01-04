@@ -24,8 +24,8 @@ yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
 yabai < p : source ~/bin/yabai/default/paste_new_space
 yabai < shift - A : yabai -m space --create; yabai -m window --space last
 
-yabai < return : yabai -m window --toggle zoom-fullscreen
-yabai < space : yabai -m window --toggle zoom-parent
+yabai < m : source ~/bin/yabai/default/cycle_maximize
+yabai < shift - m : source ~/bin/yabai/default/cycle_maximize_reverse
 #}}}
 
 #
