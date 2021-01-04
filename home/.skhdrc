@@ -17,6 +17,7 @@ yabai < h : yabai -m space --focus prev; yabai -m window --focus mouse
 yabai < j : yabai -m window --focus next
 yabai < k : yabai -m window --focus prev
 yabai < l : yabai -m space --focus next; yabai -m window --focus mouse
+
 yabai < 0 : yabai -m space --focus first; yabai -m window --focus mouse
 yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
 
@@ -114,11 +115,6 @@ yabai < d ; d_
 d_ < escape ; yabai
 
 d_ < s : source ~/bin/yabai/delete/space
-# d_ < s : \
-#         SKHD_CURRENT_SPACE="$(yabai -m query --spaces --space | jq .index)"; \
-#         yabai -m space --destroy && \
-#         yabai -m space --focus $SKHD_CURRENT_SPACE; \
-#         skhd -k escape
 #}}}
 
 # vim: fdm=marker fdl=0

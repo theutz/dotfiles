@@ -1,7 +1,7 @@
 import parse from "./lib/parse.jsx";
 import { styled } from "uebersicht";
 
-export const refreshFrequency = 1000;
+export const refreshFrequency = 500;
 export const command = "./ubar/scripts/status.zsh";
 
 export const className = `
