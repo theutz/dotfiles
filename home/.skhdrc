@@ -18,8 +18,7 @@ yabai < j : yabai -m window --focus next
 yabai < k : yabai -m window --focus prev
 yabai < l : yabai -m space --focus next; yabai -m window --focus mouse
 yabai < 0 : yabai -m space --focus first; yabai -m window --focus mouse
-# FIXME: `last` doesn't work here
-yabai < shift - 4 : yabai -m space --focus last; yabai -m window --focus mouse
+yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
 
 yabai < p : source ~/bin/yabai/default/paste_new_space
 yabai < shift - A : yabai -m space --create; yabai -m window --space last

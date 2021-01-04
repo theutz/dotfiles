@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+last_space_index="$(yabai -m query --spaces | jq '[ .[] | select(.display | contains(1)) | .index ] | last')"
+
+yabai -m space --focus $last_space_index
+yabai -m window --focus mouse
