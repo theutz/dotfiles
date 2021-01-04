@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 SPACE_INDEX="$(yabai -m query --spaces --space | jq .index)"
-SPACE_COUNT="$(yabai -m query --spaces | jq length)"
+SPACE_COUNT="$(yabai -m query --spaces | jq '[ .[] | select(.display | contains(1)) ] | length')"
 DISPLAY_INDEX="$(yabai -m query --displays --display | jq .index)"
 DISPLAY_COUNT="$(yabai -m query --displays | jq length)"
 SKHD_MODE="$(cat $UBAR_MODE_FILE)"
