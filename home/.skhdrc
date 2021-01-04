@@ -3,9 +3,8 @@
 #{{{
 :: default : ubar --update --mode "Default"
 
-cmd - tab -> : noti -t "Ah ah ah..." -m "CMD + Tab? Don't do it!"
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-#}}}
+# }}}
 
 #
 # Yabai Mode
@@ -30,12 +29,13 @@ yabai < space : yabai -m window --toggle zoom-parent
 
 #
 # Yabai > Toggle Mode
-#
+#{{{
 :: t_ @ : ubar --update --mode "Yabai > Toggle"
 yabai < t ; t_
 t_ < escape ; yabai
 
 t_ < f : source ~/bin/yabai/toggle/focus_follows_mouse
+#}}}
 
 #
 # Yabai > Goto Mode
