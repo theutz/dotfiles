@@ -66,7 +66,16 @@ export const render = ({ output, error }) => {
 
   return (
     <Container>
-      <Section>Mode: {skhd.mode || <Waiting />}</Section>
+      <Section>
+        Mode:{" "}
+        {skhd.mode === "Default" ? (
+          <Item>{skhd.mode}</Item>
+        ) : typeof skhd.mode === "undefined" ? (
+          <Waiting />
+        ) : (
+          <HighlightedItem>{skhd.mode}</HighlightedItem>
+        )}
+      </Section>
       <VR />
       <Section>
         Display:{" "}
