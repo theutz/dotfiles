@@ -4,6 +4,7 @@ SPACE_INDEX="$(yabai -m query --spaces --space | jq .index)"
 SPACE_COUNT="$(yabai -m query --spaces | jq length)"
 DISPLAY_INDEX="$(yabai -m query --displays --display | jq .index)"
 DISPLAY_COUNT="$(yabai -m query --displays | jq length)"
+SKHD_MODE="$(cat $UBAR_MODE_FILE)"
 
 echo $(cat <<-EOF
 {
@@ -14,6 +15,9 @@ echo $(cat <<-EOF
     "display": {
         "index": $DISPLAY_INDEX,
         "count": $DISPLAY_COUNT
+    },
+    "skhd": {
+        "mode": "$SKHD_MODE"
     }
 }
 EOF

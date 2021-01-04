@@ -1,7 +1,7 @@
 #
 # Default Mode
 #{{{
-:: default : noti -t "Default Mode" -m "in SKHD"
+:: default : ubar --update --mode "Default"
 
 cmd - tab -> : noti -t "Ah ah ah..." -m "CMD + Tab? Don't do it!"
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
@@ -10,7 +10,7 @@ ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 #
 # Yabai Mode
 # {{{
-:: yabai @ : noti -t "Yabai Mode" -m "in SKHD"
+:: yabai @ : ubar --update --mode "Yabai"
 default < cmd - escape ; yabai
 yabai < escape ; default
 
@@ -31,7 +31,7 @@ yabai < space : yabai -m window --toggle zoom-parent
 #
 # Yabai > Toggle Mode
 #
-:: t_ @ : noti -t "t Mode" -m "Toggle..."
+:: t_ @ : ubar --update --mode "Yabai > Toggle"
 yabai < t ; t_
 t_ < escape ; yabai
 
@@ -40,7 +40,7 @@ t_ < f : source ~/bin/yabai/toggle/focus_follows_mouse
 #
 # Yabai > Goto Mode
 #{{{
-:: g_ @ : noti -t "g Mode" -m "Goto..."
+:: g_ @ : ubar --update --mode "Yabai > Goto"
 yabai < g ; g_
 g_ < escape ; yabai
 
@@ -57,7 +57,7 @@ g_ < k : \
 #
 # Yabai > Prev Mode
 # {{{
-:: prev_ @ : noti -t "[ mode" -m "Previous..."
+:: prev_ @ : ubar --update --mode "Yabai > Prev"
 yabai < 0x21 ; prev_
 prev_ < escape ; yabai
 
@@ -83,7 +83,7 @@ prev_ < s : ( \
 #
 # Yabai > Next Mode
 #{{{
-:: next_ @ : noti -t "] mode" -m "Next..."
+:: next_ @ : ubar --update --mode "Yabai > Next"
 yabai < 0x1E ; next_
 next_ < escape ; yabai
 
@@ -109,7 +109,7 @@ next_ < s : ( \
 #
 # Yabai > Delete Mode
 #{{{
-:: d_ @ : noti -t "d mode" -m "Delete..."
+:: d_ @ : ubar --update --mode "Yabai > Delete"
 yabai < d ; d_
 d_ < escape ; yabai
 

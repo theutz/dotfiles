@@ -41,6 +41,8 @@ const Error = ({ children }) => <Container>ERROR: {children}</Container>;
 
 const VR = () => <Separator>|</Separator>;
 
+const Waiting = () => <Item>...</Item>;
+
 const range = (count) => Array.from({ length: count }).map((_, i) => i + 1);
 
 export const render = ({ output, error }) => {
@@ -58,31 +60,41 @@ export const render = ({ output, error }) => {
     return <Error>{error}</Error>;
   }
 
-  const { space = {}, display = {} } = data;
+  const { space = {}, display = {}, skhd = {} } = data;
   const displayArr = range(display.count);
   const spaceArr = range(space.count);
 
   return (
     <Container>
+      <Section>Mode: {skhd.mode || <Waiting />}</Section>
+      <VR />
       <Section>
         Display:{" "}
-        {displayArr.map((x) =>
-          x === display.index ? (
-            <HighlightedItem key={x}>{x}</HighlightedItem>
-          ) : (
-            <Item key={x}>{x}</Item>
+        {display.index ? (
+          displayArr.map((x) =>
+            x === display.index ? (
+              <HighlightedItem key={x}>{x}</HighlightedItem>
+            ) : (
+              <Item key={x}>{x}</Item>
+            )
           )
+        ) : (
+          <Waiting />
         )}
       </Section>
       <VR />
       <Section>
         Space:{" "}
-        {spaceArr.map((x) =>
-          x === space.index ? (
-            <HighlightedItem key={x}>{x}</HighlightedItem>
-          ) : (
-            <Item key={x}>{x}</Item>
+        {space.index ? (
+          spaceArr.map((x) =>
+            x === space.index ? (
+              <HighlightedItem key={x}>{x}</HighlightedItem>
+            ) : (
+              <Item key={x}>{x}</Item>
+            )
           )
+        ) : (
+          <Waiting />
         )}
       </Section>
     </Container>

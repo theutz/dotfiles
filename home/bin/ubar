@@ -2,13 +2,8 @@
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -t|--title)
-            title="$2"
-            shift
-            shift
-            ;;
-        -m|--message)
-            message="$2"
+        -m|--mode)
+            mode="$2"
             shift
             shift
             ;;
@@ -28,3 +23,28 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 set -- "${positional[@]}"
+
+# 
+# Environment Variables
+# {{{
+if [[ ! -n $UBAR_MODE_FILE ]]; then 
+    UBAR_MODE_FILE="${HOME}/.ubar/mode"
+
+    if [[ ! -d $(dirname $UBAR_MODE_FILE) ]]; then
+        mkdir -p $(dirname $UBAR_MODE_FILE);
+    fi
+
+    if [[ ! -f $UBAR_MODE_FILE ]]; then
+        touch $UBAR_MODE_FILE
+    fi
+fi
+#}}}
+
+#
+# Do the Stuff
+#{{{
+if [[ -n $mode ]]; then 
+    echo $mode >! $UBAR_MODE_FILE
+fi
+
+#}}}

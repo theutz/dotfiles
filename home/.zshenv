@@ -55,4 +55,9 @@ fi
 export ZPLUG_HOME=/usr/local/opt/zplug
 # }}}
 
+# Ubar
+# {{{
+export UBAR_MODE_FILE="${HOME}/.ubar/mode"
+#}}}
+
 # vim: fdm=marker fdl=0
