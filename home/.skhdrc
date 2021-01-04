@@ -21,11 +21,26 @@ yabai < l : yabai -m space --focus next; yabai -m window --focus mouse
 yabai < 0 : yabai -m space --focus first; yabai -m window --focus mouse
 yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
 
-yabai < p : source ~/bin/yabai/default/paste_new_space
-yabai < shift - A : yabai -m space --create; yabai -m window --space last
+yabai < i : source ~/bin/yabai/default/paste_new_space
+yabai < shift - a : yabai -m space --create; yabai -m window --space last
 
 yabai < m : source ~/bin/yabai/default/cycle_maximize
 yabai < shift - m : source ~/bin/yabai/default/cycle_maximize_reverse
+
+yabai < r : yabai -m space --rotate 90
+yabai < shift - r : yabai -m space --rotate 270
+yabai < x : yabai -m space --mirror x-axis
+yabai < y : yabai -m space --mirror y-axis
+yabai < b : yabai -m space --balance
+yabai < s : yabai -m window --toggle split
+
+yabai < shift - h : yabai -m window --space prev
+yabai < shift - j : yabai -m window --swap next
+yabai < shift - k : yabai -m window --swap prev
+yabai < shift - l : yabai -m window --space next
+
+yabai < ctrl - d : yabai -m space --move next
+yabai < ctrl - u : yabai -m space --move prev
 #}}}
 
 #
@@ -35,7 +50,14 @@ yabai < shift - m : source ~/bin/yabai/default/cycle_maximize_reverse
 yabai < t ; t_
 t_ < escape ; yabai
 
-t_ < f : source ~/bin/yabai/toggle/focus_follows_mouse
+t_ < m : source ~/bin/yabai/toggle/focus_follows_mouse; \
+   skhd -k escape
+t_ < f : yabai -m window --toggle float; \
+   skhd -k escape
+t_ < s : yabai -m window --toggle sticky; \
+   skhd -k escape
+t_ < b : yabai -m window --toggle border; \
+   skhd -k escape
 #}}}
 
 #
