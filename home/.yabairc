@@ -16,18 +16,14 @@ yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.85
 
 # Setup appearance
-pad_dimensions="
-    top_padding \
-    bottom_padding \
-    left_padding \
-    right_padding \
-    window_gap \
-";
+pad=10
 
-for pads in $pad_dimensions
-do
-    yabai -m config "$pads" 10
-done
+yabai -m config top_padding $pad
+yabai -m config left_padding $pad
+yabai -m config right_padding $pad
+yabai -m config bottom_padding $(( $pad * 4 ))
+yabai -m config window_gap $pad
 
 # Setup Exceptions
 yabai -m rule --add app="^Mate Translate$" manage=off
+yabai -m rule --add app="^Bartender" manage=off
