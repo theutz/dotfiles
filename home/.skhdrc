@@ -3,7 +3,9 @@
 #{{{
 :: default : ubar --update --mode "Default"
 
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" \
+     && sleep 3 \
+     && osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
 # }}}
 
 #
