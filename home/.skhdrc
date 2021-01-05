@@ -21,7 +21,8 @@ yabai < l : yabai -m space --focus next; yabai -m window --focus mouse
 yabai < 0 : yabai -m space --focus first; yabai -m window --focus mouse
 yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
 
-yabai < i : source ~/bin/yabai/default/paste_new_space
+yabai < shift - i : source ~/bin/yabai/default/prepend_in_new_space
+yabai < a : source ~/bin/yabai/default/append_in_next_space
 yabai < shift - a : yabai -m space --create; yabai -m window --space last
 
 yabai < m : source ~/bin/yabai/default/cycle_maximize
