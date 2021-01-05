@@ -33,27 +33,20 @@ const RightContainer = styled(Container)`
 `;
 
 const Section = styled("div")`
-  border-color: #888;
-  border-width: 2px;
-  padding: 0 0.5em;
+  padding: 0;
 
   &:not(:last-child) {
-    border-right-style: solid;
-    margin-right: 0.5em;
-    padding-right: 0.5em;
+    margin-right: 2em;
   }
 `;
 
 const Label = styled("span")`
-  padding-right: 0.5em;
+  padding-right: 1em;
   color: #888;
 `;
 
 const Item = styled("span")`
-  padding: 1px ${(props) => (props.compact ? "2px" : "6px")};
-  border-style: solid;
-  border-color: ${(props) => (props.highlight ? "#ff0000" : "transparent")};
-  border-width: ${(props) => (props.compact ? "0" : "1px")};
+  padding: 2px ${(props) => (props.compact ? "2px" : "6px")};
   background-color: ${(props) => (props.highlight ? "#660000" : "transparent")};
 `;
 
@@ -74,7 +67,7 @@ const Space = ({ space: { index, count } }) => {
 
   return (
     <Section>
-      <Label>Space</Label>
+      <Label>🪐</Label>
       {spaceArr.map((x) => (
         <Item key={x} highlight={x === index}>
           {x}
@@ -91,7 +84,7 @@ const Display = ({ display: { count, index } }) => {
 
   return (
     <Section>
-      <Label>Display</Label>
+      <Label>🖥</Label>
       {displayArr.map((x) => (
         <Item key={x} highlight={x === index}>
           {x}
@@ -125,7 +118,6 @@ const Window = ({ window }) => {
   return (
     <>
       <Section>
-        <Label>Window</Label>
         <Item compact>{splitIcon}</Item>
         <Item compact>{zoomIcon}</Item>
         <Item compact>{floatIcon}</Item>
