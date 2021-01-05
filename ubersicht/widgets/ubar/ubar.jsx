@@ -175,8 +175,10 @@ export const render = ({ output, error }) => {
       message = "An unknown error occurred, bro.";
     }
 
+    console.error(message);
     return <Error>{message}</Error>;
   } else if (Boolean(dataError)) {
+    console.error("Data Error:", dataError);
     return <Error>{dataError}</Error>;
   }
 
