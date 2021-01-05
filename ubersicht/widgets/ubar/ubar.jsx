@@ -110,10 +110,10 @@ const Space = ({ space: { index, count } }) => {
   );
 };
 
-const Window = ({ window }) => {
-  if (!window) return null;
+const Window = ({ data }) => {
+  if (!data) return null;
 
-  const { split, zoom, floating, sticky } = window;
+  const { split, zoom, floating, sticky } = data;
 
   const splitIcon = split === "horizontal" ? "↔️" : "↕️";
   const zoomIcon = (() => {
@@ -153,10 +153,11 @@ export const render = ({ output, error }) => {
   }
 
   if (typeof error !== "undefined") {
-    return <Error>{error}</Error>;
+    console.log(error);
+    return <Error>📛</Error>;
   }
 
-  const { space = {}, display = {}, skhd = {}, window } = data;
+  const { space = {}, display = {}, skhd = {}, window: windowData } = data;
 
   return (
     <>
@@ -168,7 +169,7 @@ export const render = ({ output, error }) => {
         <Space space={space} />
       </Container>
       <Container side="right">
-        <Window window={window} />
+        <Window data={windowData} />
       </Container>
     </>
   );
