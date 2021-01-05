@@ -17,6 +17,7 @@ export const className = `
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     opacity: 0.9;
+    padding: 0 1em;
 `;
 
 const Container = styled("div")`
@@ -24,12 +25,19 @@ const Container = styled("div")`
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: ${(props) => {
+    return (() => {
+      switch (props.side) {
+        case "left":
+          return "flex-start";
+        case "right":
+          return "flex-end";
+        default:
+          return "center";
+      }
+    })();
+  }};
   align-items: center;
-`;
-
-const RightContainer = styled(Container)`
-  justify-content: flex-start;
 `;
 
 const Section = styled("div")`
@@ -47,7 +55,9 @@ const Label = styled("span")`
 
 const Item = styled("span")`
   padding: 2px ${(props) => (props.compact ? "2px" : "6px")};
-  background-color: ${(props) => (props.highlight ? "#660000" : "transparent")};
+  background-color: ${(props) => (props.highlight ? "#fff" : "transparent")};
+  border-radius: ${(props) => (props.circle ? "50%" : "0")};
+  color: ${(props) => (props.highlight ? "#000" : "inherit")};
 `;
 
 const Error = ({ children }) => <Container>ERROR: {children}</Container>;
@@ -55,24 +65,13 @@ const Error = ({ children }) => <Container>ERROR: {children}</Container>;
 const range = (count) => Array.from({ length: count }).map((_, i) => i + 1);
 
 const Mode = ({ mode }) => {
-  if (!mode || mode === "Default") return null;
+  if (!mode) return null;
 
-  return <Section>{<Item highlight>{mode}</Item>}</Section>;
-};
-
-const Space = ({ space: { index, count } }) => {
-  const spaceArr = range(count);
-
-  if (!count) return null;
+  const isDefault = mode === "Default";
 
   return (
     <Section>
-      <Label>🪐</Label>
-      {spaceArr.map((x) => (
-        <Item key={x} highlight={x === index}>
-          {x}
-        </Item>
-      ))}
+      {<Item highlight={!isDefault}>{isDefault ? "🤓" : mode}</Item>}
     </Section>
   );
 };
@@ -86,7 +85,24 @@ const Display = ({ display: { count, index } }) => {
     <Section>
       <Label>🖥</Label>
       {displayArr.map((x) => (
-        <Item key={x} highlight={x === index}>
+        <Item key={x} highlight={x === index} circle>
+          {x}
+        </Item>
+      ))}
+    </Section>
+  );
+};
+
+const Space = ({ space: { index, count } }) => {
+  const spaceArr = range(count);
+
+  if (!count) return null;
+
+  return (
+    <Section>
+      <Label>🪐</Label>
+      {spaceArr.map((x) => (
+        <Item key={x} highlight={x === index} circle>
           {x}
         </Item>
       ))}
@@ -116,14 +132,12 @@ const Window = ({ window }) => {
   const stickyIcon = Boolean(sticky) ? "🧞" : "🪔";
 
   return (
-    <>
-      <Section>
-        <Item compact>{splitIcon}</Item>
-        <Item compact>{zoomIcon}</Item>
-        <Item compact>{floatIcon}</Item>
-        <Item compact>{stickyIcon}</Item>
-      </Section>
-    </>
+    <Section>
+      <Item>{splitIcon}</Item>
+      <Item>{zoomIcon}</Item>
+      <Item>{floatIcon}</Item>
+      <Item>{stickyIcon}</Item>
+    </Section>
   );
 };
 
@@ -146,12 +160,14 @@ export const render = ({ output, error }) => {
 
   return (
     <>
-      <RightContainer>
+      <Container side="left">
         <Mode mode={skhd.mode} />
-      </RightContainer>
+      </Container>
       <Container>
         <Display display={display} />
         <Space space={space} />
+      </Container>
+      <Container side="right">
         <Window window={window} />
       </Container>
     </>
