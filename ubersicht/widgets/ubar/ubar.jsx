@@ -94,7 +94,8 @@ const Display = ({ display: { count, index } }) => {
 
 const Window = ({ window }) => {
   if (!window) return null;
-  const { split, zoom } = window;
+
+  const { split, zoom, floating, sticky } = window;
 
   const splitIcon = split === "horizontal" ? "↔" : "↕";
   const zoomIcon = (() => {
@@ -109,11 +110,14 @@ const Window = ({ window }) => {
         return "🌑";
     }
   })();
+  const floatIcon = Boolean(floating) ? "⛵" : "⚓";
+  const stickyIcon = Boolean(sticky) ? "🧞" : "🪔";
 
   return (
     <>
       <Section>
-        Window: <Item compact>{splitIcon}</Item> <Item compact>{zoomIcon}</Item>
+        Window: <Item compact>{splitIcon}</Item> <Item compact>{zoomIcon}</Item>{" "}
+        {<Item compact>{floatIcon}</Item>} {<Item compact>{stickyIcon}</Item>}
       </Section>
     </>
   );

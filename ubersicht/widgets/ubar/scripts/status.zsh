@@ -8,6 +8,8 @@ DISPLAY_COUNT="$(yabai -m query --displays | jq length)"
 SKHD_MODE="$(cat $UBAR_MODE_FILE)"
 WINDOW_SPLIT="$(yabai -m query --windows --window | jq .split)"
 WINDOW_ZOOM="$(yabai -m query --windows --window | jq -f ./ubar/scripts/get-zoom-from-window.jq)"
+WINDOW_STICKY="$(yabai -m query --windows --window | jq .sticky)"
+WINDOW_FLOATING="$(yabai -m query --windows --window | jq .floating)"
 
 echo $(cat <<-EOF
 {
@@ -24,7 +26,9 @@ echo $(cat <<-EOF
     },
     "window": {
         "split": $WINDOW_SPLIT,
-        "zoom": $WINDOW_ZOOM
+        "zoom": $WINDOW_ZOOM,
+        "sticky": $WINDOW_STICKY,
+        "floating": $WINDOW_FLOATING
     }
 }
 EOF
