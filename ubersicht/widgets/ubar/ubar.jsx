@@ -78,7 +78,6 @@ const Space = ({ space: { index, count } }) => {
           )
         )}
       </Section>
-      <VR />
     </>
   );
 };
