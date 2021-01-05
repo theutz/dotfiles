@@ -5,22 +5,27 @@ export const refreshFrequency = 500;
 export const command = "./ubar/scripts/status.zsh";
 
 export const className = `
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 30px;
-    background-color: #000000;
-    color: #ccc;
-    font-family: "SF Mono", monospace;
-    font-size: 14px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    opacity: 0.9;
-    padding: 0 1em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: #000000;
+  color: #ccc;
+  font-family: "SF Mono", monospace;
+  font-size: 14px;
+  opacity: 0.9;
+  padding: 0 1em;
 `;
 
-const Container = styled("div")`
+const Grid = styled("div")`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;
+
+const Area = styled("div")`
   height: 100%;
   width: 100%;
   display: flex;
@@ -60,7 +65,7 @@ const Item = styled("span")`
   color: ${(props) => (props.highlight ? "#000" : "inherit")};
 `;
 
-const Error = ({ children }) => <Container>ERROR: {children}</Container>;
+const Error = ({ children }) => <Area>📛 ERROR: {children}</Area>;
 
 const range = (count) => Array.from({ length: count }).map((_, i) => i + 1);
 
@@ -153,24 +158,33 @@ export const render = ({ output, error }) => {
   }
 
   if (typeof error !== "undefined") {
-    console.log(error);
-    return <Error>📛</Error>;
+    let message;
+
+    if (error && error.message) {
+      ({ message } = error);
+    } else if (typeof error === "string") {
+      message = error;
+    } else {
+      message = "An unknown error occurred, bro.";
+    }
+
+    return <Error>{message}</Error>;
   }
 
   const { space = {}, display = {}, skhd = {}, window: windowData } = data;
 
   return (
-    <>
-      <Container side="left">
+    <Grid>
+      <Area side="left">
         <Mode mode={skhd.mode} />
-      </Container>
-      <Container>
+      </Area>
+      <Area>
         <Display display={display} />
         <Space space={space} />
-      </Container>
-      <Container side="right">
+      </Area>
+      <Area side="right">
         <Window data={windowData} />
-      </Container>
-    </>
+      </Area>
+    </Grid>
   );
 };
