@@ -68,19 +68,20 @@ if [[ ! -d ~/.emacs.d ]]; then
 fi
 # }}}
 
+# fasd
+# {{{
+eval "$(fasd --init auto)"
+#}}}
+
 # Aliases
 #{{{
 alias lg="lazygit"
+alias e="${VISUAL:-EDITOR}"
+alias en="e --no-wait"
 
 # By sourcing ranger, we allow it to tell the shell to
 # `cd` to the last opened directory.
 alias rr="source ranger"
 # }}}
-
-# Aliases
-#{{{
-alias e="${VISUAL:-EDITOR}"
-alias en="e --no-wait"
-#}}}
 
 # vim: fdm=marker fdl=0
