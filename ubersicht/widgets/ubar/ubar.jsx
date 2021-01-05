@@ -1,5 +1,5 @@
 import parse from "./lib/parse.jsx";
-import { styled } from "uebersicht";
+import { styled, React } from "uebersicht";
 
 export const refreshFrequency = 500;
 export const command = "./ubar/scripts/status.zsh";
@@ -41,9 +41,69 @@ const Error = ({ children }) => <Container>ERROR: {children}</Container>;
 
 const VR = () => <Separator>|</Separator>;
 
-const Waiting = () => <Item>...</Item>;
-
 const range = (count) => Array.from({ length: count }).map((_, i) => i + 1);
+
+const Mode = ({ mode }) => {
+  if (!mode) return null;
+
+  return (
+    <>
+      <Section>
+        Mode:{" "}
+        {mode === "Default" ? (
+          <Item>{mode}</Item>
+        ) : (
+          <HighlightedItem>{mode}</HighlightedItem>
+        )}
+      </Section>
+      <VR />
+    </>
+  );
+};
+
+const Space = ({ space: { index, count } }) => {
+  const spaceArr = range(count);
+
+  if (!count) return null;
+
+  return (
+    <>
+      <Section>
+        Space:{" "}
+        {spaceArr.map((x) =>
+          x === index ? (
+            <HighlightedItem key={x}>{x}</HighlightedItem>
+          ) : (
+            <Item key={x}>{x}</Item>
+          )
+        )}
+      </Section>
+      <VR />
+    </>
+  );
+};
+
+const Display = ({ display: { count, index } }) => {
+  const displayArr = range(count);
+
+  if (!count) return null;
+
+  return (
+    <>
+      <Section>
+        Display:{" "}
+        {displayArr.map((x) =>
+          x === index ? (
+            <HighlightedItem key={x}>{x}</HighlightedItem>
+          ) : (
+            <Item key={x}>{x}</Item>
+          )
+        )}
+      </Section>
+      <VR />
+    </>
+  );
+};
 
 export const render = ({ output, error }) => {
   const data = parse(output);
@@ -61,51 +121,12 @@ export const render = ({ output, error }) => {
   }
 
   const { space = {}, display = {}, skhd = {} } = data;
-  const displayArr = range(display.count);
-  const spaceArr = range(space.count);
 
   return (
     <Container>
-      <Section>
-        Mode:{" "}
-        {skhd.mode === "Default" ? (
-          <Item>{skhd.mode}</Item>
-        ) : typeof skhd.mode === "undefined" ? (
-          <Waiting />
-        ) : (
-          <HighlightedItem>{skhd.mode}</HighlightedItem>
-        )}
-      </Section>
-      <VR />
-      <Section>
-        Display:{" "}
-        {display.index ? (
-          displayArr.map((x) =>
-            x === display.index ? (
-              <HighlightedItem key={x}>{x}</HighlightedItem>
-            ) : (
-              <Item key={x}>{x}</Item>
-            )
-          )
-        ) : (
-          <Waiting />
-        )}
-      </Section>
-      <VR />
-      <Section>
-        Space:{" "}
-        {space.index ? (
-          spaceArr.map((x) =>
-            x === space.index ? (
-              <HighlightedItem key={x}>{x}</HighlightedItem>
-            ) : (
-              <Item key={x}>{x}</Item>
-            )
-          )
-        ) : (
-          <Waiting />
-        )}
-      </Section>
+      <Mode mode={skhd.mode} />
+      <Display display={display} />
+      <Space space={space} />
     </Container>
   );
 };
