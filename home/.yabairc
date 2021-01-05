@@ -37,3 +37,4 @@ update_ubar="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refres
 
 yabai -m signal --add event=space_changed action=$update_ubar
 yabai -m signal --add event=display_changed action=$update_ubar
+yabai -m signal --add event=window_changed action=$update_ubar

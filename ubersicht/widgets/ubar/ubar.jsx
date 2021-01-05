@@ -22,10 +22,16 @@ const Container = styled("div")`
   padding: 5px;
 `;
 
-const Section = styled("div")``;
+const Section = styled("div")`
+  border-color: white;
+  border-width: 2px;
+  padding: 0 0.5em;
 
-const Separator = styled("div")`
-  margin: 0 0.5em;
+  &:not(:last-child) {
+    border-right-style: solid;
+    margin-right: 0.5em;
+    padding-right: 0.5em;
+  }
 `;
 
 const Item = styled("span")`
@@ -39,25 +45,20 @@ const HighlightedItem = styled(Item)`
 
 const Error = ({ children }) => <Container>ERROR: {children}</Container>;
 
-const VR = () => <Separator>|</Separator>;
-
 const range = (count) => Array.from({ length: count }).map((_, i) => i + 1);
 
 const Mode = ({ mode }) => {
   if (!mode) return null;
 
   return (
-    <>
-      <Section>
-        Mode:{" "}
-        {mode === "Default" ? (
-          <Item>{mode}</Item>
-        ) : (
-          <HighlightedItem>{mode}</HighlightedItem>
-        )}
-      </Section>
-      <VR />
-    </>
+    <Section>
+      Mode:{" "}
+      {mode === "Default" ? (
+        <Item>{mode}</Item>
+      ) : (
+        <HighlightedItem>{mode}</HighlightedItem>
+      )}
+    </Section>
   );
 };
 
@@ -67,18 +68,16 @@ const Space = ({ space: { index, count } }) => {
   if (!count) return null;
 
   return (
-    <>
-      <Section>
-        Space:{" "}
-        {spaceArr.map((x) =>
-          x === index ? (
-            <HighlightedItem key={x}>{x}</HighlightedItem>
-          ) : (
-            <Item key={x}>{x}</Item>
-          )
-        )}
-      </Section>
-    </>
+    <Section>
+      Space:{" "}
+      {spaceArr.map((x) =>
+        x === index ? (
+          <HighlightedItem key={x}>{x}</HighlightedItem>
+        ) : (
+          <Item key={x}>{x}</Item>
+        )
+      )}
+    </Section>
   );
 };
 
@@ -88,18 +87,28 @@ const Display = ({ display: { count, index } }) => {
   if (!count) return null;
 
   return (
+    <Section>
+      Display:{" "}
+      {displayArr.map((x) =>
+        x === index ? (
+          <HighlightedItem key={x}>{x}</HighlightedItem>
+        ) : (
+          <Item key={x}>{x}</Item>
+        )
+      )}
+    </Section>
+  );
+};
+
+const Window = ({ window }) => {
+  if (!window) return null;
+  const { split, zoom } = window;
+
+  return (
     <>
       <Section>
-        Display:{" "}
-        {displayArr.map((x) =>
-          x === index ? (
-            <HighlightedItem key={x}>{x}</HighlightedItem>
-          ) : (
-            <Item key={x}>{x}</Item>
-          )
-        )}
+        Window: <Item>{split}</Item> <Item>{zoom}</Item>
       </Section>
-      <VR />
     </>
   );
 };
@@ -119,13 +128,14 @@ export const render = ({ output, error }) => {
     return <Error>{error}</Error>;
   }
 
-  const { space = {}, display = {}, skhd = {} } = data;
+  const { space = {}, display = {}, skhd = {}, window } = data;
 
   return (
     <Container>
       <Mode mode={skhd.mode} />
       <Display display={display} />
       <Space space={space} />
+      <Window window={window} />
     </Container>
   );
 };
