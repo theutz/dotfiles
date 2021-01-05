@@ -6,20 +6,24 @@ export const command = "./ubar/scripts/status.zsh";
 
 export const className = `
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #ccc;
+  font-family: "SF Mono", monospace;
+  font-size: 14px;
+`;
+
+const Grid = styled("div")`
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 30px;
   background-color: #000000;
-  color: #ccc;
-  font-family: "SF Mono", monospace;
-  font-size: 14px;
   opacity: 0.9;
   padding: 0 1em;
-`;
-
-const Grid = styled("div")`
-  height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -65,7 +69,18 @@ const Item = styled("span")`
   color: ${(props) => (props.highlight ? "#000" : "inherit")};
 `;
 
-const Error = ({ children }) => <Area>📛 ERROR: {children}</Area>;
+const UnstyledError = ({ children, className }) => (
+  <div className={className}>
+    📛 ERROR: {children && children.message ? children.message : children}
+  </div>
+);
+const Error = styled(UnstyledError)`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+`;
 
 const range = (count) => Array.from({ length: count }).map((_, i) => i + 1);
 
@@ -147,20 +162,12 @@ const Window = ({ data }) => {
 };
 
 export const render = ({ output, error }) => {
-  const data = parse(output);
+  const { space, display, skhd, window, error: dataError } = parse(output);
 
-  if (typeof data === "undefined") {
-    return <Error>`data` is undefined</Error>;
-  }
-
-  if (typeof data.error !== "undefined") {
-    return <Error>{data.error}</Error>;
-  }
-
-  if (typeof error !== "undefined") {
+  if (Boolean(error)) {
     let message;
 
-    if (error && error.message) {
+    if (Boolean(error.message)) {
       ({ message } = error);
     } else if (typeof error === "string") {
       message = error;
@@ -169,9 +176,9 @@ export const render = ({ output, error }) => {
     }
 
     return <Error>{message}</Error>;
+  } else if (Boolean(dataError)) {
+    return <Error>{dataError}</Error>;
   }
-
-  const { space = {}, display = {}, skhd = {}, window: windowData } = data;
 
   return (
     <Grid>
@@ -183,7 +190,7 @@ export const render = ({ output, error }) => {
         <Space space={space} />
       </Area>
       <Area side="right">
-        <Window data={windowData} />
+        <Window window={window} />
       </Area>
     </Grid>
   );
