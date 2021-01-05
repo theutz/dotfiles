@@ -12,3 +12,4 @@ home/.config/spotify-tui/
 home/.config/telepresence
 /home/.tmux/resurrect/
 home/.config/configstore
+/.log/
