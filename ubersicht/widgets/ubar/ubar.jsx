@@ -23,7 +23,7 @@ const Container = styled("div")`
 `;
 
 const Section = styled("div")`
-  border-color: white;
+  border-color: #ffffff88;
   border-width: 2px;
   padding: 0 0.5em;
 
@@ -35,12 +35,13 @@ const Section = styled("div")`
 `;
 
 const Item = styled("span")`
-  padding: 1px 6px;
-  border: 2px solid transparent;
-`;
-
-const HighlightedItem = styled(Item)`
-  border-color: rgba(255, 0, 0, 0.5);
+  padding: 1px ${(props) => (props.compact ? "0" : "6px")};
+  border-style: solid;
+  border-color: ${(props) => (props.highlight ? "#FF000088" : "transparent")};
+  border-width: ${(props) => (props.compact ? "0" : "1px")};
+  background-color: ${(props) =>
+    props.highlight ? "#FF000088" : "transparent"};
+  text-shadow: 1px 1px 3px #000000ff;
 `;
 
 const Error = ({ children }) => <Container>ERROR: {children}</Container>;
@@ -52,12 +53,7 @@ const Mode = ({ mode }) => {
 
   return (
     <Section>
-      Mode:{" "}
-      {mode === "Default" ? (
-        <Item>{mode}</Item>
-      ) : (
-        <HighlightedItem>{mode}</HighlightedItem>
-      )}
+      Mode: {<Item highlight={mode !== "Default"}>{mode}</Item>}
     </Section>
   );
 };
@@ -70,13 +66,11 @@ const Space = ({ space: { index, count } }) => {
   return (
     <Section>
       Space:{" "}
-      {spaceArr.map((x) =>
-        x === index ? (
-          <HighlightedItem key={x}>{x}</HighlightedItem>
-        ) : (
-          <Item key={x}>{x}</Item>
-        )
-      )}
+      {spaceArr.map((x) => (
+        <Item key={x} highlight={x === index}>
+          {x}
+        </Item>
+      ))}
     </Section>
   );
 };
@@ -89,13 +83,11 @@ const Display = ({ display: { count, index } }) => {
   return (
     <Section>
       Display:{" "}
-      {displayArr.map((x) =>
-        x === index ? (
-          <HighlightedItem key={x}>{x}</HighlightedItem>
-        ) : (
-          <Item key={x}>{x}</Item>
-        )
-      )}
+      {displayArr.map((x) => (
+        <Item key={x} highlight={x === index}>
+          {x}
+        </Item>
+      ))}
     </Section>
   );
 };
@@ -104,10 +96,24 @@ const Window = ({ window }) => {
   if (!window) return null;
   const { split, zoom } = window;
 
+  const splitIcon = split === "horizontal" ? "↔" : "↕";
+  const zoomIcon = (() => {
+    switch (zoom) {
+      case "none":
+        return "🌘";
+      case "parent":
+        return "🌗";
+      case "fullscreen":
+        return "🌖";
+      default:
+        return "🌑";
+    }
+  })();
+
   return (
     <>
       <Section>
-        Window: <Item>{split}</Item> <Item>{zoom}</Item>
+        Window: <Item compact>{splitIcon}</Item> <Item compact>{zoomIcon}</Item>
       </Section>
     </>
   );
