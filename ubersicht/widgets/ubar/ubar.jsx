@@ -130,19 +130,19 @@ const Space = ({ space: { index, count } }) => {
   );
 };
 
-const Window = ({ data }) => {
-  if (!data) return null;
+const Window = ({ window }) => {
+  if (!window) return null;
 
-  const { split, zoom, floating, sticky } = data;
+  const { split, zoom, floating, sticky } = window;
 
   const splitIcon = split === "horizontal" ? "↔️" : "↕️";
   const zoomIcon = (() => {
     switch (zoom) {
       case "none":
         return "🌘";
-      case "parent":
+      case "zoom-parent":
         return "🌗";
-      case "fullscreen":
+      case "zoom-fullscreen":
         return "🌖";
       default:
         return "🌑";
