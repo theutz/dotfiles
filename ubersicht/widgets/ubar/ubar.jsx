@@ -24,7 +24,6 @@ const Grid = styled("div")`
   background-color: #000000;
   opacity: 0.9;
   padding: 0 1em;
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 `;
@@ -162,7 +161,7 @@ const Window = ({ window }) => {
 };
 
 export const render = ({ output, error }) => {
-  const { space, display, skhd, window, error: dataError } = parse(output);
+  const { space, display, skhd, window } = parse(output);
 
   if (Boolean(error)) {
     let message;
@@ -177,9 +176,6 @@ export const render = ({ output, error }) => {
 
     console.error(message);
     return <Error>{message}</Error>;
-  } else if (Boolean(dataError)) {
-    console.error("Data Error:", dataError);
-    return <Error>{dataError}</Error>;
   }
 
   return (

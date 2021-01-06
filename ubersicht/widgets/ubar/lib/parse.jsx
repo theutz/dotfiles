@@ -1,15 +1,18 @@
 function parse(data) {
   try {
-    const {
-      display = { count: null, index: null },
-      space = { count: null, index: null },
-      window = { split: "", zoom: "", floating: "", sticky: "" },
-      skhd = { mode: null },
-    } = JSON.parse(data);
+    const { display = {}, space = {}, window = {}, skhd = {} } = Boolean(data)
+      ? JSON.parse(data)
+      : {};
 
-    return { space, window, skhd, display };
+    return {
+      space: { count: 0, index: 0, ...space },
+      window: { split: "", zoom: "", floating: "", sticky: "", ...window },
+      skhd: { mode: "Default", ...skhd },
+      display: { count: 0, index: 0, ...display },
+    };
   } catch (error) {
-    return { error };
+    console.error(error, data);
+    return undefined;
   }
 }
 

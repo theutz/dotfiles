@@ -5,18 +5,44 @@ __query_windows() {
 
     if [[ "$?" -eq 0 ]]; then
         echo $result
+    else
+        echo "\{}"
     fi
 }
 
-SPACE_INDEX="$(yabai -m query --spaces --space | jq .index)"
-SPACE_COUNT="$(yabai -m query --spaces | jq '[ .[] | select(.display | contains(1)) ] | length')"
-DISPLAY_INDEX="$(yabai -m query --displays --display | jq .index)"
-DISPLAY_COUNT="$(yabai -m query --displays | jq length)"
+__query_spaces() {
+    local result="$(yabai -m query --spaces 2>/dev/null)"
+
+    if [[ "$?" -eq 0 ]]; then
+        echo $result
+    else
+        echo "\{}"
+    fi
+}
+
+__query_space() {
+    local result="$(yabai -m query --spaces --space 2>/dev/null)"
+
+    if [[ "$?" -eq 0 ]]; then
+        echo $result
+    else
+        echo "\{}"
+    fi
+}
+
+WINDOW="$(__query_windows)"
+SPACES="$(__query_spaces)"
+SPACE="$(__query_space)"
+
+SPACE_INDEX="$(__query_space | jq '.index?')"
+SPACE_COUNT="$(__query_spaces | jq '[ .[] | select(.display? | contains(1)) ] | length')"
+DISPLAY_INDEX="$(yabai -m query --displays --display | jq '.index?')"
+DISPLAY_COUNT="$(yabai -m query --displays | jq 'length // 1')"
 SKHD_MODE="$(cat $UBAR_MODE_FILE)"
-WINDOW_SPLIT="$(__query_windows | jq '.split? // null')"
-WINDOW_FLOATING="$(__query_windows | jq '.floating? // null')"
-WINDOW_STICKY="$(__query_windows | jq '.sticky? // null')"
-WINDOW_ZOOM="$(__query_windows | jq 'if .["zoom-parent"]? == 1 then "zoom-parent" elif .["zoom-fullscreen"]? == 1 then "zoom-fullscreen" else "none" end')"
+WINDOW_SPLIT="$(echo $WINDOW | jq '.split? // null')"
+WINDOW_FLOATING="$(echo $WINDOW | jq '.floating? // null')"
+WINDOW_STICKY="$(echo $WINDOW | jq '.sticky? // null')"
+WINDOW_ZOOM="$(echo $WINDOW | jq 'if .["zoom-parent"]? == 1 then "zoom-parent" elif .["zoom-fullscreen"]? == 1 then "zoom-fullscreen" else "none" end')"
 
 echo $(cat <<-EOF
 {
