@@ -161,7 +161,16 @@ const Window = ({ window }) => {
 };
 
 export const render = ({ output, error }) => {
-  const { space, display, skhd, window } = parse(output);
+  const data = parse(output);
+
+  if (typeof data === "undefined") {
+    return (
+      <Grid>
+        <Area side="left">⏳</Area>
+        <Area>Loading...</Area>
+      </Grid>
+    );
+  }
 
   if (Boolean(error)) {
     let message;
@@ -177,6 +186,8 @@ export const render = ({ output, error }) => {
     console.error(message);
     return <Error>{message}</Error>;
   }
+
+  const { space, display, skhd, window } = data;
 
   return (
     <Grid>

@@ -11,7 +11,7 @@ function parse(data) {
       display: { count: 0, index: 0, ...display },
     };
   } catch (error) {
-    console.error(error, data);
+    console.warn(error, data);
     return undefined;
   }
 }
