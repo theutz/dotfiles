@@ -18,6 +18,7 @@ bindkey "^?" backward-delete-char
 source $ZPLUG_HOME/init.zsh
 
 zplug "wfxr/forgit"
+zplug "ael-code/zsh-colored-man-pages", use:"*.plugin.zsh"
 
 if ! zplug check --verbose; then
 	printf "Install? [y/N]: "
