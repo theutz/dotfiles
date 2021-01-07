@@ -21,10 +21,10 @@ zplug "wfxr/forgit"
 zplug "ael-code/zsh-colored-man-pages", use:"*.plugin.zsh"
 
 if ! zplug check --verbose; then
-	printf "Install? [y/N]: "
-	if read -q; then
-		echo; zplug install
-	fi
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
 fi
 
 zplug load
@@ -65,7 +65,7 @@ fi
 
 # Ensure Doom Emacs is installed.
 if [[ ! -d ~/.emacs.d ]]; then
-	git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
+  git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
 fi
 # }}}
 
