@@ -34,8 +34,6 @@ WINDOW="$(__query_windows)"
 SPACES="$(__query_spaces)"
 SPACE="$(__query_space)"
 
-SPACE_INDEX="$(__query_space | jq '.index?')"
-SPACE_COUNT="$(__query_spaces | jq '[.[]] | length')"
 DISPLAY_INDEX="$(yabai -m query --displays --display | jq '.index?')"
 DISPLAY_COUNT="$(yabai -m query --displays | jq 'length // 1')"
 SKHD_MODE="$(cat $UBAR_MODE_FILE)"
@@ -52,10 +50,7 @@ echo $(cat <<-EOF
         "split": $WINDOW_SPLIT,
         "zoom": $WINDOW_ZOOM
     },
-    "space": {
-        "index": $SPACE_INDEX,
-        "count": $SPACE_COUNT
-    },
+    "space": $SPACE,
     "spaces": $SPACES,
     "display": {
         "index": $DISPLAY_INDEX,

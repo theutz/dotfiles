@@ -5,7 +5,7 @@ function parse(data) {
       space = {},
       window = {},
       skhd = {},
-      spaces,
+      spaces = [],
     } = Boolean(data) ? JSON.parse(data) : {};
 
     return {

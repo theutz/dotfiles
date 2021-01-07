@@ -112,17 +112,22 @@ const Display = ({ display: { count, index } }) => {
   );
 };
 
-const Space = ({ space: { index, count }, spaces }) => {
-  if (!count) return null;
+const Space = ({ space, spaces }) => {
+  if (!spaces || spaces.length === 0) return null;
+
+  const indexOfFirstNonPrimarySpace = spaces.findIndex((s) => s.display !== 1);
+  const { current: isFirstNonPrimarySpace } = React.useRef(
+    (i) => i === indexOfFirstNonPrimarySpace
+  );
 
   return (
     <Section>
       <Label>🪐</Label>
-      {spaces.map(({ index: i, display }) => (
-        <React.Fragment key={i}>
-          {display > 1 && <Item>􀥔</Item>}
-          <Item highlight={i === index} circle>
-            {i}
+      {spaces.map((s, i) => (
+        <React.Fragment key={s.index}>
+          {s.display > 1 && isFirstNonPrimarySpace(i) && <Item> 􀥔</Item>}
+          <Item highlight={i === space.index} circle>
+            {s.index}
           </Item>
         </React.Fragment>
       ))}
