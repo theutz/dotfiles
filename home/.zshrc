@@ -78,13 +78,18 @@ eval "$(fasd --init auto)"
 
 # Aliases
 #{{{
-alias lg="lazygit"
+alias cat="bat"
 alias e="${VISUAL:-EDITOR}"
 alias en="e --no-wait"
-
-# By sourcing ranger, we allow it to tell the shell to
-# `cd` to the last opened directory.
+alias gco="lazygit"
+alias gws="lazygit"
+alias la="ls -la"
+alias lg="lazygit"
+alias ll="ls -l"
+alias ls="lsd"
 alias rr="source ranger"
+alias tmuxn="tmux new"
+alias tmuxa="tmux attach"
 # }}}
 
 # vim: fdm=marker fdl=0
