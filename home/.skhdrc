@@ -14,12 +14,12 @@ ctrl + alt + cmd - u : osascript -e 'tell application id "tracesOf.Uebersicht" t
 default < cmd - escape ; yabai
 yabai < escape ; default
 
-yabai < h : yabai -m space --focus prev; yabai -m window --focus mouse
+yabai < h : yabai -m space --focus prev
 yabai < j : yabai -m window --focus next
 yabai < k : yabai -m window --focus prev
-yabai < l : yabai -m space --focus next; yabai -m window --focus mouse
+yabai < l : yabai -m space --focus next
 
-yabai < 0 : yabai -m space --focus first; yabai -m window --focus mouse
+yabai < 0 : yabai -m space --focus first
 yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
 
 yabai < shift - i : source ~/bin/yabai/default/prepend_in_new_space
