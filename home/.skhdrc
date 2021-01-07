@@ -69,15 +69,22 @@ t_ < b : yabai -m window --toggle border; \
 yabai < g ; g_
 g_ < escape ; yabai
 
-g_ < j : \
-        yabai -m window --focus south || \
-        skhd -k 'escape'; \
-        skhd -k 'j'
-g_ < k : \
-        yabai -m window --focus north || \
-        skhd -k 'escape'; \
-        skhd -k 'k'
+g_ < t : yabai -m window --display next; skhd -k escape
+g_ < shift - t : yabai -m window --display prev; skhd -k escape
 #}}}
+
+#
+# Yabai > Window Mode
+#
+:: cw_ @ : ubar --update --mode "Yabai > Window"
+yabai < ctrl - w; cw_
+cw_ < escape ; yabai
+
+cw_ < h : yabai -m display --focus prev
+cw_ < l : yabai -m display --focus next
+cw_ < shift - h : yabai -m window --display prev
+cw_ < shift - l : yabai -m window --display next
+#
 
 #
 # Yabai > Prev Mode
