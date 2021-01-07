@@ -138,7 +138,7 @@ next_ < s : ( \
 yabai < d ; d_
 d_ < escape ; yabai
 
-d_ < s : source ~/bin/yabai/delete/space
+d_ < s : source ~/bin/yabai/delete/space; skhd -k escape
 #}}}
 
 # vim: fdm=marker fdl=0
