@@ -35,7 +35,7 @@ SPACES="$(__query_spaces)"
 SPACE="$(__query_space)"
 
 SPACE_INDEX="$(__query_space | jq '.index?')"
-SPACE_COUNT="$(__query_spaces | jq '[ .[] | select(.display? | contains(1)) ] | length')"
+SPACE_COUNT="$(__query_spaces | jq '[.[]] | length')"
 DISPLAY_INDEX="$(yabai -m query --displays --display | jq '.index?')"
 DISPLAY_COUNT="$(yabai -m query --displays | jq 'length // 1')"
 SKHD_MODE="$(cat $UBAR_MODE_FILE)"
@@ -56,6 +56,7 @@ echo $(cat <<-EOF
         "index": $SPACE_INDEX,
         "count": $SPACE_COUNT
     },
+    "spaces": $SPACES,
     "display": {
         "index": $DISPLAY_INDEX,
         "count": $DISPLAY_COUNT

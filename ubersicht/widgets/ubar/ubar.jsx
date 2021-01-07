@@ -32,7 +32,7 @@ const Area = styled("div")`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: ${(props) => {
     return (() => {
       switch (props.side) {
@@ -112,18 +112,19 @@ const Display = ({ display: { count, index } }) => {
   );
 };
 
-const Space = ({ space: { index, count } }) => {
-  const spaceArr = range(count);
-
+const Space = ({ space: { index, count }, spaces }) => {
   if (!count) return null;
 
   return (
     <Section>
       <Label>🪐</Label>
-      {spaceArr.map((x) => (
-        <Item key={x} highlight={x === index} circle>
-          {x}
-        </Item>
+      {spaces.map(({ index: i, display }) => (
+        <React.Fragment key={i}>
+          {display > 1 && <Item>􀥔</Item>}
+          <Item highlight={i === index} circle>
+            {i}
+          </Item>
+        </React.Fragment>
       ))}
     </Section>
   );
@@ -166,8 +167,8 @@ export const render = ({ output, error }) => {
   if (typeof data === "undefined") {
     return (
       <Grid>
-        <Area side="left">⏳</Area>
-        <Area>Loading...</Area>
+        <Area side="left"></Area>
+        <Area>⏳</Area>
       </Grid>
     );
   }
@@ -187,7 +188,7 @@ export const render = ({ output, error }) => {
     return <Error>{message}</Error>;
   }
 
-  const { space, display, skhd, window } = data;
+  const { space, display, skhd, window, spaces } = data;
 
   return (
     <Grid>
@@ -196,7 +197,7 @@ export const render = ({ output, error }) => {
       </Area>
       <Area>
         <Display display={display} />
-        <Space space={space} />
+        <Space space={space} spaces={spaces} />
       </Area>
       <Area side="right">
         <Window window={window} />
