@@ -19,6 +19,8 @@ source $ZPLUG_HOME/init.zsh
 
 zplug "wfxr/forgit"
 zplug "ael-code/zsh-colored-man-pages", use:"*.plugin.zsh"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
