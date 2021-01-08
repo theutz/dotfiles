@@ -126,7 +126,7 @@ const Space = ({ space, spaces }) => {
       {spaces.map((s, i) => (
         <React.Fragment key={s.index}>
           {s.display > 1 && isFirstNonPrimarySpace(i) && <Item> 􀥔</Item>}
-          <Item highlight={i === space.index} circle>
+          <Item highlight={i + 1 === space.index} circle>
             {s.index}
           </Item>
         </React.Fragment>
