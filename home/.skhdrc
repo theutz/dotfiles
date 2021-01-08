@@ -41,6 +41,10 @@ yabai < shift - j : yabai -m window --swap next
 yabai < shift - k : yabai -m window --swap prev
 yabai < shift - l : yabai -m window --space next
 
+yabai < p : CURRENT_SPACE="$(yabai -m query --spaces --space | jq '.index')"; \
+      WINDOW_ID="$(pbpaste)"; \
+      yabai -m window $WINDOW_ID --space $CURRENT_SPACE
+
 yabai < ctrl - d : yabai -m space --move next
 yabai < ctrl - u : yabai -m space --move prev
 #}}}
@@ -147,6 +151,10 @@ yabai < d ; d_
 d_ < escape ; yabai
 
 d_ < s : source ~/bin/yabai/delete/space; skhd -k escape
+d_ < d : CURRENT_WINDOW_ID="$(yabai -m query --windows --window | jq '.id')"; \
+      echo $CURRENT_WINDOW_ID | pbcopy; \
+      noti -t "Window ID Copied" -m "$CURRENT_WINDOW_ID"; \
+      skhd -k escape
 #}}}
 
 # vim: fdm=marker fdl=0
