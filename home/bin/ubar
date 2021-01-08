@@ -7,7 +7,7 @@ while [[ "$#" -gt 0 ]]; do
             shift
             shift
             ;;
-        -r|--update)
+        -u|--update)
             osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "ubar-ubar-jsx"'
             shift
             ;;
