@@ -22,8 +22,9 @@ yabai < l : yabai -m space --focus next
 yabai < 0 : yabai -m space --focus first
 yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
 
-yabai < shift - i : source ~/bin/yabai/default/prepend_in_new_space
-yabai < a : source ~/bin/yabai/default/append_in_next_space
+yabai < shift - i : source ~/bin/yabai/default/move_to_new_first_space
+yabai < a : source ~/bin/yabai/default/move_to_new_next_space
+yabai < i : source ~/bin/yabai/default/move_to_new_prev_space
 yabai < shift - a : yabai -m space --create; yabai -m window --space last
 
 yabai < m : source ~/bin/yabai/default/cycle_maximize
@@ -33,8 +34,7 @@ yabai < r : yabai -m space --rotate 90
 yabai < shift - r : yabai -m space --rotate 270
 yabai < y : CURRENT_WINDOW_ID="$(yabai -m query --windows --window | jq '.id')"; \
       echo $CURRENT_WINDOW_ID | pbcopy; \
-      noti -t "Window ID Copied" -m "$CURRENT_WINDOW_ID"; \
-      skhd -k escape
+      noti -t "Window ID Copied" -m "$CURRENT_WINDOW_ID";
 yabai < b : yabai -m space --balance
 
 yabai < shift - h : yabai -m window --space prev
@@ -48,6 +48,9 @@ yabai < p : CURRENT_SPACE="$(yabai -m query --spaces --space | jq '.index')"; \
 
 yabai < ctrl - d : yabai -m space --move next
 yabai < ctrl - u : yabai -m space --move prev
+
+yabai < 0x1B : yabai -m window --ratio rel:0.1
+yabai < 0x18 : yabai -m window --ratio rel:-0.1
 #}}}
 
 #
@@ -157,11 +160,10 @@ next_ < s : ( \
 yabai < d ; d_
 d_ < escape ; yabai
 
-d_ < s : source ~/bin/yabai/delete/space; skhd -k escape
-d_ < d : CURRENT_WINDOW_ID="$(yabai -m query --windows --window | jq '.id')"; \
-      echo $CURRENT_WINDOW_ID | pbcopy; \
-      noti -t "Window ID Copied" -m "$CURRENT_WINDOW_ID"; \
-      skhd -k escape
+d_ < s : source ~/bin/yabai/delete/space; \
+   skhd -k escape
+d_ < w : source ~/bin/yabai/delete/window; \
+   skhd -k escape
 #}}}
 
 # vim: fdm=marker fdl=0
