@@ -45,6 +45,11 @@ kitty + complete setup zsh | source /dev/stdin
 eval "$(starship init zsh)"
 # }}}
 
+# nodenv
+#{{{
+eval "$(nodenv init -)"
+#}}}
+
 # FZF
 #{{{
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
