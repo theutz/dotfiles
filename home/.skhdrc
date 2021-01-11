@@ -31,10 +31,11 @@ yabai < shift - m : source ~/bin/yabai/default/cycle_maximize_reverse
 
 yabai < r : yabai -m space --rotate 90
 yabai < shift - r : yabai -m space --rotate 270
-yabai < x : yabai -m space --mirror x-axis
-yabai < y : yabai -m space --mirror y-axis
+yabai < y : CURRENT_WINDOW_ID="$(yabai -m query --windows --window | jq '.id')"; \
+      echo $CURRENT_WINDOW_ID | pbcopy; \
+      noti -t "Window ID Copied" -m "$CURRENT_WINDOW_ID"; \
+      skhd -k escape
 yabai < b : yabai -m space --balance
-yabai < s : yabai -m window --toggle split
 
 yabai < shift - h : yabai -m window --space prev
 yabai < shift - j : yabai -m window --swap next
@@ -63,6 +64,12 @@ t_ < f : yabai -m window --toggle float; \
 t_ < s : yabai -m window --toggle sticky; \
    skhd -k escape
 t_ < b : yabai -m window --toggle border; \
+   skhd -k escape
+t_ < x : yabai -m space --mirror x-axis; \
+   skhd -k escape
+t_ < y : yabai -m space --mirror y-axis; \
+   skhd -k escape
+t_ < v : yabai -m window --toggle split; \
    skhd -k escape
 #}}}
 
