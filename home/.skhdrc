@@ -5,6 +5,8 @@
 
 ctrl + alt + cmd - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 ctrl + alt + cmd - u : osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
+cmd - tab : echo "Command + Tab has been suspended"
+cmd + shift - tab : echo "Command + Tab has been suspended"
 # }}}
 
 #
