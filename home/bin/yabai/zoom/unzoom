@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+current_window="$(yabai -m query --windows --window)"
+is_zoom_parent="$(echo $current_window | jq '.["zoom-parent"]')"
+is_zoom_fullscreen="$(echo $current_window | jq '.["zoom-fullscreen"]')"
+
+if [[ $is_zoom_parent == 1 ]]; then
+    yabai -m window --toggle zoom-parent
+elif [[ $is_zoom_fullscreen == 1 ]]; then
+    yabai -m window --toggle zoom-fullscreen
+fi

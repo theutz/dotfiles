@@ -29,7 +29,6 @@ yabai < a : source ~/bin/yabai/default/move_to_new_next_space
 yabai < i : source ~/bin/yabai/default/move_to_new_prev_space
 yabai < shift - a : yabai -m space --create; yabai -m window --space last
 
-yabai < m : source ~/bin/yabai/default/cycle_maximize
 yabai < shift - m : source ~/bin/yabai/default/cycle_maximize_reverse
 
 yabai < r : yabai -m space --rotate 90
@@ -175,7 +174,16 @@ d_ < w : source ~/bin/yabai/delete/window; \
 yabai < z ; z_
 z_ < escape ; yabai
 
-z_ < a : yabai -m window --toggle zoom-parent
+z_ < a : yabai -m window --toggle zoom-parent; \
+   skhd -k escape
+z_ < o : source ~/bin/yabai/zoom/cycle_maximize; \
+   skhd -k escape
+z_ < shift - o : yabai -m window --toggle zoom-fullscreen; \
+   skhd -k escape
+z_ < c : source ~/bin/yabai/zoom/cycle_maximize_reverse; \
+   skhd -k escape
+z_ < shift - c : source ~/bin/yabai/zoom/unzoom; \
+   skhd -k escape
 #}}}
 
 # vim: fdm=marker fdl=0
