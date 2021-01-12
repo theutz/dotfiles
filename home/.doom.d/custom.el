@@ -7,6 +7,8 @@
    '("587938eeeaefd2b2f68a0970e02985246a28c02c1c140cb0943d2b6909c47261" "bf387180109d222aee6bb089db48ed38403a1e330c9ec69fe1f52460a8936b66" default))
  '(safe-local-variable-values
    '((eval add-to-list 'auto-mode-alist
+           '("\\.skhdrc\\'" . conf-mode))
+     (eval add-to-list 'auto-mode-alist
            ("\\.skhdrc\\'" . conf-mode))
      (eval let
            ((config-files-list
