@@ -7,11 +7,11 @@ ctrl + alt + cmd - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 ctrl + alt + cmd - u : osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
 cmd - tab : echo "Command + Tab has been suspended"
 cmd + shift - tab : echo "Command + Tab has been suspended"
-# }}}
+#}}}
 
 #
 # Yabai Mode
-# {{{
+#{{{
 :: yabai @ : ubar --update --mode "Yabai"
 default < cmd - escape ; yabai
 yabai < escape ; default
@@ -91,7 +91,7 @@ g_ < shift - t : yabai -m window --display prev; skhd -k escape
 
 #
 # Yabai > Window Mode
-#
+#{{{
 :: cw_ @ : ubar --update --mode "Yabai > Window"
 yabai < ctrl - w; cw_
 cw_ < escape ; yabai
@@ -101,7 +101,7 @@ cw_ < l : yabai -m display --focus next; skhd -k escape
 cw_ < shift - h : yabai -m window --display prev; skhd -k escape
 cw_ < shift - l : yabai -m window --display next; skhd -k escape
 cw_ < ctrl - w : (yabai -m space --display next || yabai -m space --display prev); skhd -k escape
-#
+#}}}
 
 #
 # Yabai > Prev Mode
