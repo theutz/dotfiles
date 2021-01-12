@@ -60,4 +60,10 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 export UBAR_MODE_FILE="${HOME}/.ubar/mode"
 #}}}
 
+#
+# GPG
+#{{{
+export GPG_TTY=$(tty)
+#}}}
+
 # vim: fdm=marker fdl=0
