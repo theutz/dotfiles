@@ -168,4 +168,14 @@ d_ < w : source ~/bin/yabai/delete/window; \
    skhd -k escape
 #}}}
 
+#
+# Yabai > Zoom Mode
+#{{{
+:: z_ @ : ubar --update --mode "Yabai > Zoom"
+yabai < z ; z_
+z_ < escape ; yabai
+
+z_ < a : yabai -m window --toggle zoom-parent
+#}}}
+
 # vim: fdm=marker fdl=0
