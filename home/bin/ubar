@@ -2,6 +2,10 @@
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
+        -l|--show-logs)
+            tail -f /usr/local/var/log/skhd/skhd.*.log
+            shift
+            ;;
         -m|--mode)
             mode="$2"
             shift
