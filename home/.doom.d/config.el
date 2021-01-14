@@ -61,19 +61,6 @@
 (load! "lisp/org")
 
 ;;
-;; Config ZSH Files
-;;
-;; (let ((config-files-list '("\\.?zshenv\\'"
-;;                            "\\.?zshrc\\'"
-;;                            "\\.?zprofile\\'"
-;;                            "\\.?zlogin\\'"
-;;                            "\\.?zlogout\\'"
-;;                            "\\.?zpreztorc\\'"
-;;                            "yabairc\\'")))
-;;   (dolist (elt config-files-list nil)
-;;     (add-to-list 'auto-mode-alist `(,elt . sh-mode))))
-
-;;
 ;; LSP Mode
 ;;
 (setq! +format-with-lsp nil)
