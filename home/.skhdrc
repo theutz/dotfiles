@@ -177,11 +177,11 @@ z_ < escape ; yabai
 
 z_ < a : yabai -m window --toggle zoom-parent; \
    skhd -k escape
-z_ < o : source ~/bin/yabai/zoom/cycle_maximize; \
+z_ < o : source ~/bin/yabai/zoom/increase; \
    skhd -k escape
 z_ < shift - o : yabai -m window --toggle zoom-fullscreen; \
    skhd -k escape
-z_ < c : source ~/bin/yabai/zoom/cycle_maximize_reverse; \
+z_ < c : source ~/bin/yabai/zoom/decrease; \
    skhd -k escape
 z_ < shift - c : source ~/bin/yabai/zoom/unzoom; \
    skhd -k escape
