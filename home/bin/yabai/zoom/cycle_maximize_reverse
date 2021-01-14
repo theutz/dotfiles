@@ -1,28 +1,49 @@
 #!/usr/bin/env zsh
 
 window_id="$1"
-window="$(yabai -m query --windows --window $window_id)"
+zoom_level="$(source ~/bin/yabai/util/get_window_zoom $window_id)"
 
-parent="$(echo $window | jq '.["zoom-parent"]')"
-fullscreen="$(echo $window | jq '.["zoom-fullscreen"]')"
-native="$(echo $window | jq '.["native-fullscreen"]')"
+case $zoom_level in
+    native)
+        yabai -m window --toggle native-fullscreen
+        yabai -m window --toggle zoom-fullscreen
+        ;;
+    fullscreen)
+        yabai -m window --toggle zoom-fullscreen
+        yabai -m window --toggle zoom-parent
+        ;;
+    parent)
+        yabai -m window --toggle zoom-parent
+        ;;
+    none)
+        noti -t "Yabai" -m "Minimum zoom reached"
+        ;;
+    *)
+        echo "Zoom level not found" >&2
+        exit 1
+esac
+# window="$(yabai -m query --windows --window $window_id)"
 
-if [[ $native == 1 ]]; then
-    echo 'xl -> l'
-    yabai -m window --toggle native-fullscreen
-    yabai -m window --toggle zoom-fullscreen
-    exit 0
-fi
+# parent="$(echo $window | jq '.["zoom-parent"]')"
+# fullscreen="$(echo $window | jq '.["zoom-fullscreen"]')"
+# native="$(echo $window | jq '.["native-fullscreen"]')"
 
-if [[ $fullscreen == 1 ]]; then
-    echo 'l -> m'
-    yabai -m window --toggle zoom-fullscreen
-    yabai -m window --toggle zoom-parent
-    exit 0
-fi
+# if [[ $native == 1 ]]; then
+#     echo 'xl -> l'
+#     yabai -m window --toggle native-fullscreen
+#     yabai -m window --toggle zoom-fullscreen
+#     exit 0
+# fi
 
-if [[ $parent == 1 ]]; then
-    echo 'm -> s'
-    yabai -m window --toggle zoom-parent
-    exit 0
-fi
+# if [[ $fullscreen == 1 ]]; then
+#     echo 'l -> m'
+#     yabai -m window --toggle zoom-fullscreen
+#     yabai -m window --toggle zoom-parent
+#     exit 0
+# fi
+
+# if [[ $parent == 1 ]]; then
+#     echo 'm -> s'
+#     yabai -m window --toggle zoom-parent
+#     exit 0
+# fi

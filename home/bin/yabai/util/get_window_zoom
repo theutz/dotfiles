@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+
+window="$(yabai -m query --windows --window $window_id)"
+
+parent="$(echo $window | jq -r '."zoom-parent"')"
+fullscreen="$(echo $window | jq -r '."zoom-fullscreen"')"
+native="$(echo $window | jq -r '."native-fullscreen"')"
+
+if [[ $native == 0 && $fullscreen == 0 && $parent == 0 ]]; then
+    echo "none"
+    exit 0
+fi
+
+if [[ $native == 1 ]]; then
+    echo "native";
+    exit 0
+fi
+
+if [[ $fullscreen == 1 ]]; then
+    echo "fullscreen"
+    exit 0
+fi
+
+if [[ $parent == 1 ]]; then
+    echo "parent"
+    exit 0
+fi
+
+echo "No zoom state found" >&2
+exit 1
