@@ -14,8 +14,8 @@ ctrl + alt + cmd - u : osascript -e 'tell application id "tracesOf.Uebersicht" t
 default < cmd - escape ; yabai
 yabai < escape ; default
 
-default, yabai < cmd - tab : (yabai -m space --focus next || yabai -m space --focus first); skhd -k "cmd - escape"
-default, yabai < cmd + shift - tab : (yabai -m space --focus prev || yabai -m space --focus last); skhd -k "cmd - escape"
+# default, yabai < cmd - tab : (yabai -m space --focus next || yabai -m space --focus first); skhd -k "cmd - escape"
+# default, yabai < cmd + shift - tab : (yabai -m space --focus prev || yabai -m space --focus last); skhd -k "cmd - escape"
 
 yabai < h : yabai -m space --focus prev
 yabai < j : yabai -m window --focus next
