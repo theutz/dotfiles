@@ -185,6 +185,16 @@ z_ < c : source ~/bin/yabai/zoom/decrease; \
    skhd -k escape
 z_ < shift - c : source ~/bin/yabai/zoom/unzoom; \
    skhd -k escape
+z_ < shift - r : \
+   for id in $(yabai -m query --windows --space | jq '.[].id'); do \
+       yabai -m window $id --toggle zoom-fullscreen; \
+   done; \
+   skhd -k escape
+z_ < shift - m : \
+   for id in $(yabai -m query --windows --space | jq '.[].id'); do \
+        source ~/bin/yabai/zoom/unzoom $id; \
+   done; \
+   skhd -k escape
 #}}}
 
 # vim: fdm=marker fdl=0
