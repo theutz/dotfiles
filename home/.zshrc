@@ -95,7 +95,7 @@ alias ll="ls -l"
 alias ls="lsd"
 alias rr="source ranger"
 alias tmuxn="tmux new"
-alias tmuxa="tmux attach"
+alias tmuxa="tmux attach -t"
 alias tmuxl="tmux ls"
 # }}}
 
