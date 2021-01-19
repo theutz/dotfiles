@@ -197,4 +197,39 @@ z_ < shift - m : \
    skhd -k escape
 #}}}
 
+#
+# VIMISH Mode
+#{{{
+:: normal @ : ubar --update --mode "VIMISH"
+cmd + ctrl + alt - space ; normal
+normal < escape ; default
+normal < i ; default
+
+normal < down -> :;
+normal < left -> :;
+normal < right -> :;
+normal < up -> :;
+normal < shift - down -> :;
+normal < shift - left -> :;
+normal < shift - right -> :;
+normal < shift - up -> :;
+normal < alt + shift - down -> :;
+normal < alt + shift - left -> :;
+normal < alt + shift - right -> :;
+normal < alt + shift - up -> :;
+
+normal < j : skhd -k down
+normal < k : skhd -k up
+normal < h : skhd -k left
+normal < l : skhd -k right
+normal < shift - j : skhd -k "shift - down"
+normal < shift - k : skhd -k "shift - up"
+normal < shift - h : skhd -k "shift - left"
+normal < shift - l : skhd -k "shift - right"
+normal < alt + shift - j : skhd -k "alt + shift - down"
+normal < alt + shift - k : skhd -k "alt + shift - up"
+normal < alt + shift - h : skhd -k "alt + shift - left"
+normal < alt + shift - l : skhd -k "alt + shift - right"
+#}}}
+
 # vim: fdm=marker fdl=0
