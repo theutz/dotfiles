@@ -199,6 +199,8 @@ z_ < shift - m : \
         source ~/bin/yabai/zoom/unzoom $id; \
    done; \
    skhd -k escape
+z_ < f : yabai -m window --toggle native-fullscreen; \
+   skdh -k escape 
 #}}}
 
 #
