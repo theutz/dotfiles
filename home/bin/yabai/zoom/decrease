@@ -10,7 +10,9 @@ case $zoom_level in
         ;;
     fullscreen)
         yabai -m window --toggle zoom-fullscreen
-        yabai -m window --toggle zoom-parent
+        if [[ "$(yabai -m query --windows --window | jq '.["zoom-parent"]')" -ne 0 ]]; then
+            yabai -m window --toggle zoom-parent
+        fi
         ;;
     parent)
         yabai -m window --toggle zoom-parent
@@ -22,28 +24,4 @@ case $zoom_level in
         echo "Zoom level not found" >&2
         exit 1
 esac
-# window="$(yabai -m query --windows --window $window_id)"
 
-# parent="$(echo $window | jq '.["zoom-parent"]')"
-# fullscreen="$(echo $window | jq '.["zoom-fullscreen"]')"
-# native="$(echo $window | jq '.["native-fullscreen"]')"
-
-# if [[ $native == 1 ]]; then
-#     echo 'xl -> l'
-#     yabai -m window --toggle native-fullscreen
-#     yabai -m window --toggle zoom-fullscreen
-#     exit 0
-# fi
-
-# if [[ $fullscreen == 1 ]]; then
-#     echo 'l -> m'
-#     yabai -m window --toggle zoom-fullscreen
-#     yabai -m window --toggle zoom-parent
-#     exit 0
-# fi
-
-# if [[ $parent == 1 ]]; then
-#     echo 'm -> s'
-#     yabai -m window --toggle zoom-parent
-#     exit 0
-# fi
