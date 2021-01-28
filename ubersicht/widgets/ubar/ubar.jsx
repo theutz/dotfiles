@@ -66,6 +66,7 @@ const Item = styled("span")`
   background-color: ${(props) => (props.highlight ? "#fff" : "transparent")};
   border-radius: ${(props) => (props.circle ? "50%" : "0")};
   color: ${(props) => (props.highlight ? "#000" : "inherit")};
+  opacity: ${(props) => (props.dim ? 0.5 : 1)};
 `;
 
 const UnstyledError = ({ children, className }) => (
@@ -123,14 +124,18 @@ const Space = ({ space, spaces }) => {
   return (
     <Section>
       <Label>🪐</Label>
-      {spaces.map((s, i) => (
-        <React.Fragment key={s.index}>
-          {s.display > 1 && isFirstNonPrimarySpace(i) && <Item> 􀥔</Item>}
-          <Item highlight={i + 1 === space.index} circle>
-            {s.index}
-          </Item>
-        </React.Fragment>
-      ))}
+      {spaces.map((s, i) => {
+        const isSecondary = s.display > 1 && isFirstNonPrimarySpace(i);
+        const hasWindows = s.windows.length >= 1;
+        return (
+          <React.Fragment key={s.index}>
+            {isSecondary && <Item> 􀥔</Item>}
+            <Item highlight={i + 1 === space.index} circle dim={!hasWindows}>
+              {s.index}
+            </Item>
+          </React.Fragment>
+        );
+      })}
     </Section>
   );
 };
