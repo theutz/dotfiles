@@ -30,7 +30,7 @@
 
 # Merge / Mergetool
 [merge]
-	tool = emerge
+	tool = vscode
 	ff = false
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
@@ -43,7 +43,7 @@
 
 # Diff
 [diff]
-	tool = ediff
+	tool = vscode
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "emacs"]

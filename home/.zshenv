@@ -1,8 +1,10 @@
 # Editors
 # {{{
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient --tty"
-export VISUAL="emacsclient --create-frame"
+#export EDITOR="emacsclient --tty"
+#export VISUAL="emacsclient --create-frame"
+export EDITOR="nvim"
+export VISUAL="code --wait"
 export PAGER="less"
 # }}}
 
