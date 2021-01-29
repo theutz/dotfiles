@@ -31,7 +31,9 @@
   yabai < shift - i : source ~/bin/yabai/default/move_to_new_first_space
   yabai < a : source ~/bin/yabai/default/move_to_new_next_space
   yabai < i : source ~/bin/yabai/default/move_to_new_prev_space
-  yabai < shift - a : yabai -m space --create; yabai -m window --space last
+  yabai < shift - a : yabai -m space --create; \
+    yabai -m window --space last; \
+    yabai -m space --focus last
 
   yabai < shift - m : source ~/bin/yabai/default/cycle_maximize_reverse
 
