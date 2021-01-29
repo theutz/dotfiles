@@ -1,7 +1,21 @@
 {
   "path-intellisense.absolutePathToWorkspace": false,
-  "Lua.diagnostics.globals": [
-    "hs",
-    "spoon"
-  ]
+  "Lua.diagnostics.globals": ["hs", "spoon"],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#d5caf7",
+    "activityBar.activeBorder": "#e2653d",
+    "activityBar.background": "#d5caf7",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#e2653d",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#b29df1",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#8f70eb",
+    "titleBar.activeBackground": "#b29df1",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#b29df199",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#b29df1"
 }
