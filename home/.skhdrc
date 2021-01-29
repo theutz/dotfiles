@@ -68,7 +68,7 @@
   yabai < 7 : yabai -m space --focus 7
   yabai < 8 : yabai -m space --focus 8
   yabai < 9 : yabai -m space --focus 9
-  yabai < 0x32 : yabai -m space --focus recent # ` (backtick)
+  yabai < ctrl - o : yabai -m space --focus recent
 
   yabai < space : yabai -m space --toggle mission-control && \
     sleep 0.3 && \
@@ -215,6 +215,32 @@
 #
 # Yabai > App
 #
+  :: mark_ @ : ubar --update --mode "Yabai > Go to app..."
+  yabai < 0x32 ; mark_
+  mark_ < escape ; yabai
+
+  mark_ < c : open -a "Visual Studio Code"; \
+    skhd -k escape
+  mark_ < a : open -a "Airmail"; \
+    skhd -k escape
+  mark_ < k : open -a "Kitty"; \
+    skhd -k escape
+  mark_ < m : open -a "Music"; \
+    skhd -k escape
+  mark_ < b : open -a "Brave Browser"; \
+    skhd -k escape
+  mark_ < g : open -a "Google Chrome"; \
+    skhd -k escape
+  mark_ < w : open -a "WhatsApp"; \
+    skhd -k escape
+  mark_ < n : open -a "Notion"; \
+    skhd -k escape
+  mark_ < 2 : open -a "2Do"; \
+    skhd -k escape
+  mark_ < f : open -a "Fantastical"; \
+    skhd -k escape
+  mark_ < s : open -a "Slack"; \
+    skhd -k escape
 
 #
 # VIMISH Mode
