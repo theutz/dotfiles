@@ -67,6 +67,7 @@ yabai < 6 : yabai -m space --focus 6
 yabai < 7 : yabai -m space --focus 7
 yabai < 8 : yabai -m space --focus 8
 yabai < 9 : yabai -m space --focus 9
+yabai < 0x32 : yabai -m space --focus recent # ` (backtick)
 
 yabai < space : yabai -m space --toggle mission-control && \
       sleep 0.3 && \
