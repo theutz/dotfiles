@@ -68,4 +68,12 @@ export UBAR_MODE_FILE="${HOME}/.ubar/mode"
 export GPG_TTY=$(tty)
 #}}}
 
+#
+# Docker Buildkit
+# {{{
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
+export BUILDKIT_INLINE_CACHE=1
+#}}}
+
 # vim: fdm=marker fdl=0
