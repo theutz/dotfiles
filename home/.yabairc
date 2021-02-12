@@ -27,10 +27,11 @@ yabai -m config bottom_padding $(( $pad * 5 ))
 yabai -m config window_gap $pad
 
 # Setup Exceptions
-yabai -m rule --add app="^Mate Translate$" manage=off
+yabai -m rule --add app="^Mate Translate" manage=off
 yabai -m rule --add app="^Bartender 4$" manage=off
 yabai -m rule --add app="^Fantastical Helper$" manage=off sticky=on grid=8:8:3:1:2:6
 yabai -m rule --add app="^System Preferences$" manage=off sticky=on grid=20:20:6:4:0:0
+yabai -m rule --add app="^Streaks" manage=off
 
 # Setup Signals
 update_ubar="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"ubar-ubar-jsx\"'"
