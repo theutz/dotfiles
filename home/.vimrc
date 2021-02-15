@@ -55,6 +55,7 @@ Plug 'tpope/vim-fugitive'
 
 " Syntax Highlighting
 Plug 'sheerun/vim-polyglot'
+Plug 'freitass/todo.txt-vim'
 
 " User Interface
 Plug 'vim-airline/vim-airline'
