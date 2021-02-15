@@ -4,7 +4,7 @@ export ALTERNATE_EDITOR=""
 #export EDITOR="emacsclient --tty"
 #export VISUAL="emacsclient --create-frame"
 export EDITOR="nvim"
-export VISUAL="code --wait"
+export VISUAL="nvim"
 export PAGER="less"
 # }}}
 
