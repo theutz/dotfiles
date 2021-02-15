@@ -97,6 +97,7 @@ alias rr="source ranger"
 alias tmuxn="tmux new"
 alias tmuxa="tmux attach -t"
 alias tmuxl="tmux ls"
+alias t="todo.sh"
 # }}}
 
 # vim: fdm=marker fdl=0
