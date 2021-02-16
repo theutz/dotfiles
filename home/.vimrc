@@ -1,5 +1,4 @@
-" Basic Settings
-"{{{
+" Basic Settings {{{
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -26,8 +25,7 @@ let maplocalleader = ","
 filetype indent on
 "}}}
 
-" Plugins
-"{{{
+" Plugins {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -69,8 +67,7 @@ Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 call plug#end()
 "}}}
 
-" Post-Plugin Settings
-"{{{
+" Post-Plugin Settings {{{
 
 " Color scheme
 if exists('+termguicolors')
@@ -96,8 +93,7 @@ call which_key#register('<Space>', 'g:which_key_map')
 let g:gitgutter_map_keys = 0
 "}}}
 
-" Functions
-"{{{
+" Functions {{{
 function! s:ToggleNumberStyle()
   if (&relativenumber == 1)
     set norelativenumber
@@ -108,12 +104,12 @@ function! s:ToggleNumberStyle()
 endfunction
 "}}}
 
-" Mappings
-"{{{
+" Mappings {{{
 
 " Setup Which Key{{{
 nnoremap <silent> <Leader> :<C-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <Leader> :<C-u>WhichKeyVisual '<Space>'<CR>
+"}}}
 
 " +files{{{
 let g:which_key_map.f = { 'name': '+Files' }
@@ -170,8 +166,7 @@ let g:which_key_map.q.r.r = 'Reload Configuration'
 "}}}
 "}}}
 
-" Autocommands
-"{{{
+" Autocommands {{{
 
 " Open help in a vertical split
 augroup vimrc_help
