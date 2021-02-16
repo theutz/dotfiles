@@ -13,3 +13,5 @@ home/.config/telepresence
 /home/.tmux/resurrect/
 home/.config/configstore
 /.log/
+
+home/.config/gh/state.yml
