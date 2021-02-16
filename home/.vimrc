@@ -64,7 +64,7 @@ Plug 'tpope/vim-obsession'
 Plug 'liuchengxu/vim-which-key'
 
 " Color Schemes
-Plug 'pineapplegiant/spaceduck'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 call plug#end()
 "}}}
