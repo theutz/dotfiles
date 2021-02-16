@@ -117,13 +117,18 @@ let g:which_key_map.f = { 'name': '+Files' }
 nnoremap <Leader>ff :FZF<CR>
 let g:which_key_map.f.f = 'FZF'
 
-nnoremap <Leader>fn :NERDTreeToggle<CR>
-let g:which_key_map.f.n = 'NERDTree'
+nnoremap <Leader>ft :NERDTreeToggle<CR>
+let g:which_key_map.f.t = 'NERDTree'
+nnoremap <Leader>fo :NERDTreeFind<CR>
+let g:which_key_map.f.o = 'NERDTreeFind'
 
 nnoremap <Leader>fr :RangerCurrentFile<CR>
 let g:which_key_map.f.r = 'Ranger (Current File)'
 nnoremap <Leader>fR :Ranger<CR>
 let g:which_key_map.f.R = 'Ranger (Current Working Directory)'
+
+nnoremap <Leader>fs :w<CR>
+let g:which_key_map.f.s = 'Write Files'
 "}}}
 
 " +git{{{
