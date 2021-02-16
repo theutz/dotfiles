@@ -14,4 +14,12 @@ home/.config/telepresence
 home/.config/configstore
 /.log/
 
+# github cli
 home/.config/gh/state.yml
+
+# coc.nvim
+home/.config/coc/*
+!home/.config/coc/extensions
+home/.config/coc/extensions/*
+!home/.config/coc/extensions/package.json
+!/home/.config/coc/extensions/yarn.lock
