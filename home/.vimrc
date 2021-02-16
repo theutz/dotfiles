@@ -91,6 +91,9 @@ let g:ranger_replace_netrw = 1
 " Which Key
 let g:which_key_map = {}
 call which_key#register('<Space>', 'g:which_key_map')
+"
+" GitGutter
+let g:gitgutter_map_keys = 0
 "}}}
 
 " Functions
@@ -132,6 +135,13 @@ let g:which_key_map.g = { 'name': '+Git' }
 
 nnoremap <Leader>gg :Gstatus<CR>
 let g:which_key_map.g.g = 'Git Status'
+
+" +stage{{{
+let g:which_key_map.g.s = { 'name': '+Stage' }
+
+nnoremap <Leader>gsh :<Plug>GitGutterStageHunk<CR>
+let g:which_key_map.g.s.h = 'Stage Hunk'
+"}}}
 "}}}
 
 " +toggles {{{
