@@ -47,6 +47,7 @@ Plug 'francoiscabrol/ranger.vim'
 if has("nvim")
   Plug 'rbgrouleff/bclose.vim'
 endif
+Plug 'christoomey/vim-tmux-navigator'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
