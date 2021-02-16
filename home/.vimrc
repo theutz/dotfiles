@@ -127,6 +127,13 @@ nnoremap <Leader>fR :Ranger<CR>
 let g:which_key_map.f.R = 'Ranger (Current Working Directory)'
 "}}}
 
+" +git{{{
+let g:which_key_map.g = { 'name': '+Git' }
+
+nnoremap <Leader>gg :Gstatus<CR>
+let g:which_key_map.g.g = 'Git Status'
+"}}}
+
 " +toggles {{{
 let g:which_key_map.t = { 'name': '+Toggles' }
 
