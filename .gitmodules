@@ -1,0 +1,3 @@
+[submodule "home/.todo.actions.d/due"]
+	path = home/.todo.actions.d/due
+	url = https://github.com/rebeccamorgan/due.git
