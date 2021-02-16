@@ -61,6 +61,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
 Plug 'liuchengxu/vim-which-key'
+Plug 'edkolev/tmuxline.vim'
 
 " Color Schemes
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
