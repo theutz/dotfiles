@@ -22,6 +22,10 @@ zplug "ael-code/zsh-colored-man-pages", use:"*.plugin.zsh"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "b4b4r07/enhancd"
+zplug "vasyharan/zsh-brew-services"
+zplug "zsh-users/zsh-completions"
+zplug "greymd/docker-zsh-completion"
+zplug "chitoku-k/fzf-zsh-completions"
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
