@@ -3,8 +3,8 @@
 export ALTERNATE_EDITOR=""
 #export EDITOR="emacsclient --tty"
 #export VISUAL="emacsclient --create-frame"
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="code --wait"
+export VISUAL="code --wait"
 export PAGER="less"
 # }}}
 
