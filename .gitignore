@@ -23,3 +23,6 @@ home/.config/coc/*
 home/.config/coc/extensions/*
 !home/.config/coc/extensions/package.json
 !/home/.config/coc/extensions/yarn.lock
+
+# Google Cloud
+home/.config/gcloud/
