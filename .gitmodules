@@ -1,3 +1,6 @@
 [submodule "home/.todo.actions.d/due"]
 	path = home/.todo.actions.d/due
 	url = https://github.com/rebeccamorgan/due.git
+[submodule "home/.zprezto"]
+	path = home/.zprezto
+	url = https://github.com/theutz/prezto.git
