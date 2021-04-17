@@ -1,1 +1,0 @@
-/Users/michaelutz/.dotfiles/home/.zprezto/runcoms/zlogout

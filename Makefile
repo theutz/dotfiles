@@ -4,6 +4,8 @@ SHELL := /bin/bash
 	clean \
 	stow-home \
 	unstow-home \
+	link-prezto-runcoms \
+	clean-prezto-runcoms \
 	link-org-files \
 	clean-org-files \
 	desktop-icons-off \
@@ -13,11 +15,13 @@ SHELL := /bin/bash
 
 install: stow-home \
 	desktop-icons-off \
-	link-org-files
+	link-org-files \
+	link-prezto-runcoms
 
 clean: unstow-home \
 	desktop-icons-on \
-	clean-org-files
+	clean-org-files \
+	clean-prezto-runcoms
 
 # Stow
 
@@ -68,3 +72,14 @@ clean-org-files:
 	@echo "Cleaning org files..."
 	@rm -rf $(ORG_DIRECTORY)
 	@echo "Done."
+
+link-prezto-runcoms:
+	clean-prezto-runcoms
+	@echo
+	@echo "Linking prezto runcoms..."
+	@install-prezto-runcoms
+
+clean-prezto-runcoms:
+	@echo
+	@echo "Cleaning prezto runcoms..."
+	@clean-prezto-runcoms
