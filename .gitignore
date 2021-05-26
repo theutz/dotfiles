@@ -4,6 +4,7 @@ home/.ssh
 
 # config dir
 home/.config
+!home/.config/gh/config.yml
 
 # logs
 *.log
