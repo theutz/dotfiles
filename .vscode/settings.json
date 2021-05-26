@@ -4,21 +4,11 @@
     "hs",
     "spoon"
   ],
+  "peacock.color": "#75e6b4",
   "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#a0eecb",
-    "activityBar.activeBorder": "#b578e7",
-    "activityBar.background": "#a0eecb",
-    "activityBar.foreground": "#15202b",
-    "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#b578e7",
-    "activityBarBadge.foreground": "#15202b",
-    "statusBar.background": "#75e6b4",
-    "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#4ade9d",
     "titleBar.activeBackground": "#75e6b4",
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#75e6b499",
     "titleBar.inactiveForeground": "#15202b99"
-  },
-  "peacock.color": "#75e6b4"
+  }
 }
