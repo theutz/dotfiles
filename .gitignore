@@ -2,28 +2,8 @@
 home/.ssh
 !home/.ssh/config
 
-# karabiner
-home/.config/karabiner/automatic_backups
+# config dir
+home/.config
 
-# config
-home/.config/configstore/update-notifier-npm.json
-home/.config/yarn
-home/.config/spotify-tui/
-home/.config/telepresence
-/home/.tmux/resurrect/
-home/.config/configstore
-home/.config/op/
-/.log/
-
-# github cli
-home/.config/gh/state.yml
-
-# coc.nvim
-home/.config/coc/*
-!home/.config/coc/extensions
-home/.config/coc/extensions/*
-!home/.config/coc/extensions/package.json
-!/home/.config/coc/extensions/yarn.lock
-
-# Google Cloud
-home/.config/gcloud/
+# logs
+*.log
