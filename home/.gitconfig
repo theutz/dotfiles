@@ -6,6 +6,7 @@
 [user]
 	name = Michael Utz
 	email = michael@theutz.com
+	signingkey = BD7D79C1
 [credential]
 	helper = osxkeychain
 [submodule]
@@ -27,6 +28,7 @@
 	autostash = true
 [commit]
 	verbose = true
+	gpgSign = true
 
 # Merge / Mergetool
 [merge]
@@ -58,3 +60,5 @@
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 [init]
 	defaultBranch = main
+[tag]
+	gpgSign = true
