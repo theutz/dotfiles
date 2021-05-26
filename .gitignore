@@ -3,7 +3,7 @@ home/.ssh
 !home/.ssh/config
 
 # config dir
-home/.config
+home/.config/*
 !home/.config/gh/config.yml
 
 # logs
