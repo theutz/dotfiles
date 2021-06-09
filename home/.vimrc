@@ -63,6 +63,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
 Plug 'liuchengxu/vim-which-key'
 Plug 'edkolev/tmuxline.vim'
+Plug 'sunaku/vim-shortcut'
 
 " Color Schemes
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
@@ -94,6 +95,10 @@ call which_key#register('<Space>', 'g:which_key_map')
 
 " GitGutter
 let g:gitgutter_map_keys = 0
+
+" Shortcuts
+" This must be run after `plug#end()` to make sure `Shortcut` works
+runtime plugged/vim-shortcut/plugin/shortcut.vim 
 
 " CoC.nvim {{{
 " TextEdit might fail if hidden is not set.
@@ -276,6 +281,13 @@ endfunction
 " Setup Which Key{{{
 nnoremap <silent> <Leader> :<C-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <Leader> :<C-u>WhichKeyVisual '<Space>'<CR>
+
+" Setup Shortcuts{{{
+Shortcut show shortcut menu and run chosen shortcut 
+      \ noremap <silent> <Leader><Leader> :Shortcuts<Return>
+
+Shortcut fallback to shortcut menu on partial entry 
+      \ noremap <silent> <Leader> :Shortcuts<Return>
 "}}}
 
 " +files{{{
