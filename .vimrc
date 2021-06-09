@@ -20,6 +20,8 @@ set foldnestmax=10
 set foldmethod=indent
 set splitright
 set splitbelow
+set undofile
+set undodir=~/.vim/undo
 
 let mapleader = "\<Space>"
 let maplocalleader = ","
@@ -41,6 +43,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+Plug 'tpope/vim-commentary'
 
 " Navigation
 set rtp+=/usr/local/opt/fzf
@@ -67,6 +70,8 @@ Plug 'tpope/vim-obsession'
 Plug 'liuchengxu/vim-which-key'
 Plug 'edkolev/tmuxline.vim'
 Plug 'sunaku/vim-shortcut'
+Plug 'junegunn/vim-peekaboo'
+Plug 'mbbill/undotree'
 
 " Color Schemes
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
@@ -283,8 +288,14 @@ endfunction
 
 nnoremap <Leader><Leader> :Maps<CR>
 nnoremap <Leader>fe :vsplit ~/.vimrc<CR>
-nnoremap <silent> <Leader>ff :FZF<CR>
-nnoremap <silent> <Leader>cc :Colors<CR>
+nnoremap <Leader>sp :Rg<CR>
+nnoremap <Leader>sl :Lines<CR>
+nnoremap <Leader>sb :BLines<CR>
+nnoremap <Leader>sf :Files<CR>
+nnoremap <Leader>sg :GFiles<CR>
+nnoremap <silent> <Leader>sc :Colors<CR>
+nnoremap <leader><leader><leader> :Commands<CR>
+nnoremap <leader>sm :Marks<CR>
 nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>fo :NERDTreeFind<CR>
 nnoremap <silent> <Leader>fr :RangerCurrentFile<CR>
@@ -296,6 +307,7 @@ nnoremap <Leader>tn :call <SID>ToggleNumberStyle()<CR>
 nnoremap <Leader>t<Space> :nohlsearch<CR>
 nnoremap <silent> <Leader>qri :source $MYVIMRC <Bar> PlugInstall<CR>
 nnoremap <silent> <Leader>qrr :source $MYVIMRC <Bar> echo $MYVIMRC . " reloaded!"<CR>
+nnoremap <Leader>su :UndotreeToggle<CR>
 "}}}
 
 " Autocommands {{{
