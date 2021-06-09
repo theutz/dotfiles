@@ -40,7 +40,7 @@ call plug#begin('~/.vim/plugged')
 " Editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 
 " Navigation
 set rtp+=/usr/local/opt/fzf
@@ -82,7 +82,7 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme Tomorrow-Night-Eighties
+colorscheme spaceduck
 
 " Airline
 let g:airline_theme = 'spaceduck'
