@@ -25,6 +25,11 @@ fi
 
 system_type=$(uname -s)
 
+if command -v vim >/dev/null 2>&1; then
+  echo "Bootstraping Vim"
+  vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
+
 if [ "$system_type" = "Darwin" ]; then
 
   # install homebrew if it's missing
@@ -40,7 +45,3 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
-if command -v vim >/dev/null 2>&1; then
-  echo "Bootstraping Vim"
-  vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
-fi
