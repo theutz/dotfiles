@@ -281,7 +281,7 @@ endfunction
 
 " Mappings {{{
 
-nnoremap <Leader><Leader> :Maps<CR> " Does this show up?
+nnoremap <Leader><Leader> :Maps<CR>
 nnoremap <Leader>fe :vsplit ~/.vimrc<CR>
 nnoremap <silent> <Leader>ff :FZF<CR>
 nnoremap <silent> <Leader>cc :Colors<CR>
