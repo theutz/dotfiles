@@ -30,6 +30,9 @@ if command -v vim >/dev/null 2>&1; then
   vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
 
+echo "Installing global npm packages"
+npm i -g zx
+
 if [ "$system_type" = "Darwin" ]; then
 
   # install homebrew if it's missing
