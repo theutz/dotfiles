@@ -64,7 +64,6 @@ brew "git-lfs"
 brew "git-quick-stats"
 brew "git-secrets"
 brew "gitleaks"
-brew "python@3.8"
 brew "global"
 brew "guile"
 brew "go"
@@ -76,6 +75,7 @@ brew "htop"
 brew "httpie"
 brew "hub"
 brew "libheif"
+brew "python@3.8"
 brew "imagemagick"
 brew "imlib2"
 brew "ispell"
@@ -84,6 +84,7 @@ brew "kubectx"
 brew "lazygit"
 brew "legit"
 brew "less"
+brew "libass"
 brew "libcaca"
 brew "libpq"
 brew "libvterm"
@@ -108,6 +109,7 @@ brew "pandoc"
 brew "png2ico"
 brew "poppler"
 brew "postgresql"
+brew "pstree"
 brew "ranger"
 brew "ruby-build"
 brew "rbenv"
@@ -117,6 +119,7 @@ brew "ripgrep-all"
 brew "rust"
 brew "shellcheck"
 brew "shpotify"
+brew "skaffold"
 brew "speedtest-cli"
 brew "starship"
 brew "stern"
@@ -148,7 +151,6 @@ brew "yq"
 brew "zplug"
 brew "zsh"
 brew "cloudflare/cloudflare/cloudflared"
-brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-modern-vscode-icon", "with-no-titlebar", "with-xwidgets"]
 brew "heroku/brew/heroku"
 brew "homebrew-ffmpeg/ffmpeg/ffmpeg"
 brew "jesseduffield/lazydocker/lazydocker"
@@ -191,6 +193,7 @@ cask "font-ubuntu-nerd-font"
 cask "github"
 cask "google-backup-and-sync"
 cask "gpg-suite"
+cask "hammerspoon"
 cask "image2icon"
 cask "iterm2"
 cask "kaleidoscope"
@@ -205,6 +208,7 @@ cask "omnidisksweeper"
 cask "osxfuse"
 cask "paletro"
 cask "pgadmin4"
+cask "pop"
 cask "raindropio"
 cask "raycast"
 cask "rectangle"
@@ -214,23 +218,26 @@ cask "the-unarchiver"
 cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
-cask "zoomus"
+cask "zoom"
 mas "2048 Game", id: 871033113
 mas "Amphetamine", id: 937984704
+mas "Aviary", id: 1522043420
 mas "Bear", id: 1091189122
 mas "Bumpr", id: 1166066070
 mas "Craft", id: 1487937127
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 290986013
 mas "Developer", id: 640199958
+mas "Dropover", id: 1355679052
 mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Endel", id: 1484348796
 mas "Entity Pro", id: 1503988785
+mas "Game Of Life", id: 1377718068
 mas "GarageBand", id: 682658836
 mas "Gifox", id: 1461845568
 mas "GIPHY CAPTURE", id: 668208984
 mas "GoodNotes", id: 1444383602
 mas "Grammarly for Safari", id: 1462114288
-mas "Grindstone", id: 1476307705
 mas "iMovie", id: 408981434
 mas "Instapaper", id: 288545208
 mas "Instapaper Save", id: 1481302432
@@ -245,8 +252,11 @@ mas "Microsoft Outlook", id: 985367838
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "MindNode", id: 1289197285
+mas "Momentum", id: 1564329434
+mas "MoneyCoach", id: 989642198
 mas "Notability", id: 736189492
 mas "Numbers", id: 409203825
+mas "Octotree", id: 1457450145
 mas "Pages", id: 409201541
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Pixelmator", id: 407963104
@@ -260,10 +270,11 @@ mas "Short Menu", id: 510109287
 mas "Slack", id: 803453959
 mas "Soulver 3", id: 1508732804
 mas "Streaks", id: 1493327990
-mas "SwiftoDo Desktop", id: 1143641091
 mas "Talon", id: 1492913323
 mas "The Pathless", id: 1441675155
+mas "TheOregonTrail", id: 1502228492
 mas "Twitter", id: 1482454543
+mas "URoom", id: 987489616
 mas "Vimari", id: 1480933944
 mas "Wallpaper Wizard", id: 1266674560
 mas "WhatsApp", id: 1147396723
