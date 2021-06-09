@@ -18,12 +18,14 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
+set splitright
+set splitbelow
 
 let mapleader = "\<Space>"
 let maplocalleader = ","
 
 filetype indent on
-"}}}
+"zc}}}
 
 " Plugins {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -56,6 +58,7 @@ Plug 'tpope/vim-fugitive'
 " Syntax Highlighting
 Plug 'sheerun/vim-polyglot'
 Plug 'freitass/todo.txt-vim'
+Plug 'flazz/vim-colorschemes'
 
 " User Interface
 Plug 'vim-airline/vim-airline'
@@ -79,7 +82,7 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme spaceduck
+colorscheme Tomorrow-Night-Eighties
 
 " Airline
 let g:airline_theme = 'spaceduck'
@@ -278,78 +281,21 @@ endfunction
 
 " Mappings {{{
 
-" Setup Which Key{{{
-nnoremap <silent> <Leader> :<C-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <Leader> :<C-u>WhichKeyVisual '<Space>'<CR>
-
-" Setup Shortcuts{{{
-Shortcut show shortcut menu and run chosen shortcut 
-      \ noremap <silent> <Leader><Leader> :Shortcuts<Return>
-
-Shortcut fallback to shortcut menu on partial entry 
-      \ noremap <silent> <Leader> :Shortcuts<Return>
-"}}}
-
-" +files{{{
-let g:which_key_map.f = { 'name': '+Files' }
-
-" TODO: Edit VIMRC shortcut
-
-nnoremap <Leader>ff :FZF<CR>
-let g:which_key_map.f.f = 'FZF'
-
-nnoremap <Leader>ft :NERDTreeToggle<CR>
-let g:which_key_map.f.t = 'NERDTree'
-nnoremap <Leader>fo :NERDTreeFind<CR>
-let g:which_key_map.f.o = 'NERDTreeFind'
-
-nnoremap <Leader>fr :RangerCurrentFile<CR>
-let g:which_key_map.f.r = 'Ranger (Current File)'
-nnoremap <Leader>fR :Ranger<CR>
-let g:which_key_map.f.R = 'Ranger (Current Working Directory)'
-
+nnoremap <Leader><Leader> :Maps<CR> " Does this show up?
+nnoremap <Leader>fe :vsplit ~/.vimrc<CR>
+nnoremap <silent> <Leader>ff :FZF<CR>
+nnoremap <silent> <Leader>cc :Colors<CR>
+nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>fo :NERDTreeFind<CR>
+nnoremap <silent> <Leader>fr :RangerCurrentFile<CR>
+nnoremap <silent> <Leader>fR :Ranger<CR>
 nnoremap <Leader>fs :w<CR>
-let g:which_key_map.f.s = 'Write Files'
-"}}}
-
-" +git{{{
-let g:which_key_map.g = { 'name': '+Git' }
-
 nnoremap <Leader>gg :Gstatus<CR>
-let g:which_key_map.g.g = 'Git Status'
-
-" +stage{{{
-let g:which_key_map.g.s = { 'name': '+Stage' }
-
 nnoremap <Leader>gsh :<Plug>GitGutterStageHunk<CR>
-let g:which_key_map.g.s.h = 'Stage Hunk'
-"}}}
-"}}}
-
-" +toggles {{{
-let g:which_key_map.t = { 'name': '+Toggles' }
-
 nnoremap <Leader>tn :call <SID>ToggleNumberStyle()<CR>
-let g:which_key_map.t.n = 'Number Style'
-
 nnoremap <Leader>t<Space> :nohlsearch<CR>
-let g:which_key_map.t['<Space>'] = 'Search Highlight'
-
-"}}}
-
-" +quit {{{
-let g:which_key_map.q = { 'name': '+Quit' }
-
-" +reload {{{
-let g:which_key_map.q.r = { 'name': '+Reload' }
-
 nnoremap <silent> <Leader>qri :source $MYVIMRC <Bar> PlugInstall<CR>
-let g:which_key_map.q.r.i = 'Install Plugins'
-
 nnoremap <silent> <Leader>qrr :source $MYVIMRC <Bar> echo $MYVIMRC . " reloaded!"<CR>
-let g:which_key_map.q.r.r = 'Reload Configuration'
-"}}}
-"}}}
 "}}}
 
 " Autocommands {{{
