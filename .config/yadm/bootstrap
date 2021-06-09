@@ -5,6 +5,7 @@ cd "$HOME"
 echo "Init submodules"
 yadm submodule update --recursive --init
 
+# Setup Prezto for ZSH
 echo "Link prezto runcoms"
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -14,3 +15,32 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     ln -s "$rcfile" "$target"
   fi
 done
+
+# Setup Tmux Plugins
+if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then
+    echo "Setup TPM for TMUX"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
+      && ~/.tmux/plugins/tpm/bin/install_plugins
+fi
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+  fi
+
+fi
+
+if command -v vim >/dev/null 2>&1; then
+  echo "Bootstraping Vim"
+  vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
