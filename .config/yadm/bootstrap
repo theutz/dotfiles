@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+cd "$HOME"
+
+echo "Init submodules"
+yadm submodule update --recursive --init
+
+echo "Link prezto runcoms"
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  target="${ZDOTDIR:-$HOME}/.${rcfile:t}"
+
+  if [[ ! -f $target ]]; then
+    ln -s "$rcfile" "$target"
+  fi
+done
