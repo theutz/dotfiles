@@ -42,7 +42,7 @@ call plug#begin('~/.vim/plugged')
 " Editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-commentary'
 
 " Navigation
