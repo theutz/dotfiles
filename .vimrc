@@ -84,7 +84,22 @@ let g:coc_global_extensions = [
       \ 'coc-git', 
       \ 'coc-tsserver',
       \ 'coc-yaml',
-      \ 'coc-prettier'
+      \ 'coc-prettier',
+      \ 'coc-css',
+      \ 'coc-eslint',
+      \ 'coc-gist',
+      \ 'coc-graphql',
+      \ 'coc-html',
+      \ 'coc-htmlhint',
+      \ 'coc-html-css-support',
+      \ 'coc-markdownlint',
+      \ 'coc-sh',
+      \ 'coc-stylelint',
+      \ 'coc-sql',
+      \ 'coc-svg',
+      \ 'coc-swagger',
+      \ 'coc-tailwindcss',
+      \ 'coc-vimlsp'
       \ ]
 "}}}
 

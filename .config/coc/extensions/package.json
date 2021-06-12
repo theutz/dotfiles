@@ -1,11 +1,26 @@
 {
   "dependencies": {
+    "coc-css": ">=1.2.6",
+    "coc-eslint": ">=1.4.5",
+    "coc-gist": ">=0.2.1",
     "coc-git": ">=2.3.3",
+    "coc-graphql": ">=0.0.1",
+    "coc-html": ">=1.4.1",
+    "coc-html-css-support": ">=0.2.2",
+    "coc-htmlhint": ">=0.2.1",
     "coc-json": ">=1.3.5",
+    "coc-markdownlint": ">=1.11.1",
     "coc-marketplace": ">=1.8.1",
     "coc-prettier": ">=1.1.23",
+    "coc-sh": ">=0.6.0",
+    "coc-sql": ">=0.6.0",
+    "coc-stylelint": ">=1.2.0",
+    "coc-svg": ">=0.0.13",
+    "coc-swagger": ">=0.0.2",
+    "coc-tailwindcss": ">=0.7.0",
     "coc-tsserver": ">=1.8.1",
     "coc-ultisnips": ">=1.2.3",
+    "coc-vimlsp": ">=0.12.2",
     "coc-yaml": ">=1.3.1"
   }
 }
