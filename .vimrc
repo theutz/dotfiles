@@ -77,6 +77,15 @@ Plug 'mbbill/undotree'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 call plug#end()
+
+" CoC extensions
+let g:coc_global_extensions = [
+      \ 'coc-json', 
+      \ 'coc-git', 
+      \ 'coc-tsserver',
+      \ 'coc-yaml',
+      \ 'coc-prettier'
+      \ ]
 "}}}
 
 " Post-Plugin Settings {{{
@@ -97,16 +106,8 @@ let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
 
-" Which Key
-let g:which_key_map = {}
-call which_key#register('<Space>', 'g:which_key_map')
-
 " GitGutter
 let g:gitgutter_map_keys = 0
-
-" Shortcuts
-" This must be run after `plug#end()` to make sure `Shortcut` works
-runtime plugged/vim-shortcut/plugin/shortcut.vim 
 
 " CoC.nvim {{{
 " TextEdit might fail if hidden is not set.
