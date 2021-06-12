@@ -32,7 +32,7 @@
 
 # Merge / Mergetool
 [merge]
-	tool = vscode
+	tool = Kaleidoscope
 	ff = false
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
@@ -42,10 +42,11 @@
 	cmd = emacsclient -c -a '' --eval $MERGED
 [mergetool]
 	keepBackup = false
+	prompt = false
 
 # Diff
 [diff]
-	tool = vscode
+	tool = Kaleidoscope
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "emacs"]
@@ -62,3 +63,10 @@
 	defaultBranch = main
 [tag]
 	gpgSign = true
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
