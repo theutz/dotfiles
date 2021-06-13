@@ -44,6 +44,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-textobj-delimited'
+Plug 'tpope/vim-eunuch'
 
 " Navigation
 set rtp+=/usr/local/opt/fzf
@@ -65,6 +67,7 @@ Plug 'flazz/vim-colorschemes'
 
 " User Interface
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
 Plug 'liuchengxu/vim-which-key'
@@ -72,9 +75,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'sunaku/vim-shortcut'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
-
-" Color Schemes
-Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 call plug#end()
 
@@ -112,10 +112,10 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme spaceduck
+colorscheme Atelier_SeasideLight
 
 " Airline
-let g:airline_theme = 'spaceduck'
+let g:airline_theme = 'base16_atelier_seaside'
 
 " Ranger
 let g:ranger_map_keys = 0
@@ -303,28 +303,48 @@ endfunction
 
 " Mappings {{{
 
-nnoremap <Leader><Leader> :Maps<CR>
-nnoremap <Leader>fe :vsplit ~/.vimrc<CR>
-nnoremap <Leader>sp :Rg<CR>
-nnoremap <Leader>sl :Lines<CR>
-nnoremap <Leader>sb :BLines<CR>
-nnoremap <Leader>sf :Files<CR>
-nnoremap <Leader>sg :GFiles<CR>
-nnoremap <silent> <Leader>sc :Colors<CR>
-nnoremap <leader><leader><leader> :Commands<CR>
-nnoremap <leader>sm :Marks<CR>
-nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>fo :NERDTreeFind<CR>
+" Search {{{
+nnoremap <silent> <leader><leader> :Maps<CR>
+nnoremap <silent> <Leader>ss :Rg<CR>
+nnoremap <silent> <Leader>sl :BLines<CR>
+nnoremap <silent> <Leader>sL :Lines<CR>
+nnoremap <silent> <Leader>sf :Files<CR>
+nnoremap <silent> <Leader>sF :GFiles<CR>
+nnoremap <silent> <Leader>sC :Colors<CR>
+nnoremap <silent> <Leader>sc :Commands<CR>
+nnoremap <silent> <leader>sm :Marks<CR>
+nnoremap <silent> <leader>ls :Buffers<CR>
+"}}}
+
+" File {{{
 nnoremap <silent> <Leader>fr :RangerCurrentFile<CR>
 nnoremap <silent> <Leader>fR :Ranger<CR>
-nnoremap <Leader>fs :w<CR>
-nnoremap <Leader>gg :Gstatus<CR>
-nnoremap <Leader>gsh :<Plug>GitGutterStageHunk<CR>
-nnoremap <Leader>tn :call <SID>ToggleNumberStyle()<CR>
-nnoremap <Leader>t<Space> :nohlsearch<CR>
+nnoremap <silent> <Leader>fs :w<CR>
+"}}}
+
+" Buffers {{{
+nnoremap <silent> <Leader>bn :bn<CR>
+nnoremap <silent> <Leader>bp :bp<CR>
+nnoremap <silent> <Leader>bd :bd<CR>
+" }}}
+
+" Git {{{
+nnoremap <silent> <Leader>gg :Gstatus<CR>
+nnoremap <silent> <Leader>gsh :<Plug>GitGutterStageHunk<CR>
+"}}}
+
+" Vim {{{
 nnoremap <silent> <Leader>qri :source $MYVIMRC <Bar> PlugInstall<CR>
 nnoremap <silent> <Leader>qrr :source $MYVIMRC <Bar> echo $MYVIMRC . " reloaded!"<CR>
-nnoremap <Leader>su :UndotreeToggle<CR>
+"}}}
+
+" toggles {{{
+nnoremap <silent> <Leader>tn :call <SID>ToggleNumberStyle()<CR>
+nnoremap <silent> <Leader>t<Space> :nohlsearch<CR>
+nnoremap <silent> <Leader>tu :UndotreeToggle<CR>
+nnoremap <silent> <Leader>tf :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>tF :NERDTreeFind<CR>
+" }}}
 "}}}
 
 " Autocommands {{{
