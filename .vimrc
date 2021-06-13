@@ -112,10 +112,10 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme Atelier_SulphurpoolLight
+colorscheme Atelier_SulphurpoolDark
 
 " Airline
-let g:airline_theme = 'base16_atelier_sulphurpool_light'
+let g:airline_theme = 'base16_atelier_sulphurpool'
 
 " Ranger
 let g:ranger_map_keys = 0
