@@ -1,4 +1,5 @@
 " Basic Settings {{{
+" Options{{{
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -22,12 +23,15 @@ set splitright
 set splitbelow
 set undofile
 set undodir=~/.vim/undo
-
+"}}}
+" Variables{{{
 let mapleader = "\<Space>"
 let maplocalleader = ","
-
+"}}}
+" Filetype{{{
 filetype indent on
-"zc}}}
+"}}}
+"}}}
 " Plugins {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
