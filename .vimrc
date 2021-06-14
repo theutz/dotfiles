@@ -28,7 +28,6 @@ let maplocalleader = ","
 
 filetype indent on
 "zc}}}
-
 " Plugins {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -42,10 +41,12 @@ call plug#begin('~/.vim/plugged')
 " Editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-textobj-delimited'
 Plug 'tpope/vim-eunuch'
+Plug 'justinmk/vim-sneak'
 
 " Navigation
 set rtp+=/usr/local/opt/fzf
@@ -100,31 +101,35 @@ let g:coc_global_extensions = [
       \ 'coc-svg',
       \ 'coc-swagger',
       \ 'coc-tailwindcss',
-      \ 'coc-vimlsp'
+      \ 'coc-vimlsp',
+      \ 'coc-terminal',
+      \ 'coc-pairs',
+      \ 'coc-jest',
+      \ 'coc-gitignore',
+      \ 'coc-emmet'
       \ ]
 "}}}
-
 " Post-Plugin Settings {{{
 
-" Color scheme
+" Color scheme{{{
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 colorscheme Atelier_SulphurpoolDark
-
-" Airline
+"}}}
+" Airline{{{
 let g:airline_theme = 'base16_atelier_sulphurpool'
-
-" Ranger
+"}}}
+" Ranger{{{
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
-
-" GitGutter
+"}}}
+" GitGutter{{{
 let g:gitgutter_map_keys = 0
-
+"}}}
 " CoC.nvim {{{
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -188,6 +193,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gh <Plug>(coc-diagnostic-info)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -289,7 +295,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "}}}
 "}}}
-
 " Functions {{{
 function! s:ToggleNumberStyle()
   if (&relativenumber == 1)
@@ -300,9 +305,12 @@ function! s:ToggleNumberStyle()
   endif
 endfunction
 "}}}
-
+" Commands {{{
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Terminal :CocCommand terminal.Toggle
+command! -nargs=0 REPL :CocCommand terminal.REPL
+" }}}
 " Mappings {{{
-
 " Search {{{
 nnoremap <silent> <leader><leader> :Maps<CR>
 nnoremap <silent> <Leader>ss :Rg<CR>
@@ -315,38 +323,36 @@ nnoremap <silent> <Leader>sc :Commands<CR>
 nnoremap <silent> <leader>sm :Marks<CR>
 nnoremap <silent> <leader>ls :Buffers<CR>
 "}}}
-
+" Motions {{{
+map <LocalLeader> <Plug>(easymotion-prefix)
+" }}}
 " File {{{
 nnoremap <silent> <Leader>fr :RangerCurrentFile<CR>
 nnoremap <silent> <Leader>fR :Ranger<CR>
 nnoremap <silent> <Leader>fs :w<CR>
 "}}}
-
 " Buffers {{{
 nnoremap <silent> <Leader>bn :bn<CR>
 nnoremap <silent> <Leader>bp :bp<CR>
 nnoremap <silent> <Leader>bd :bd<CR>
 " }}}
-
 " Git {{{
 nnoremap <silent> <Leader>gg :Gstatus<CR>
 nnoremap <silent> <Leader>gsh :<Plug>GitGutterStageHunk<CR>
 "}}}
-
-" Vim {{{
-nnoremap <silent> <Leader>qri :source $MYVIMRC <Bar> PlugInstall<CR>
-nnoremap <silent> <Leader>qrr :source $MYVIMRC <Bar> echo $MYVIMRC . " reloaded!"<CR>
+" Quit {{{
+nnoremap <silent> <Leader>qp :source $MYVIMRC <Bar> PlugInstall<CR>
+nnoremap <silent> <Leader>qr :source $MYVIMRC <Bar> echo $MYVIMRC . " reloaded!"<CR>
 "}}}
-
-" toggles {{{
+" Toggles {{{
 nnoremap <silent> <Leader>tn :call <SID>ToggleNumberStyle()<CR>
 nnoremap <silent> <Leader>t<Space> :nohlsearch<CR>
 nnoremap <silent> <Leader>tu :UndotreeToggle<CR>
 nnoremap <silent> <Leader>tf :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>tF :NERDTreeFind<CR>
+nmap <silent> <Leader>tt <Plug>(coc-terminal-toggle)<CR>
 " }}}
 "}}}
-
 " Autocommands {{{
 
 " Open help in a vertical split
@@ -360,6 +366,5 @@ augroup man_pages
   autocmd BufEnter *.txt if &filetype == 'man' | wincmd L | endif
 augroup END
 "}}}
-
 " vim: fdm=marker fdl=0
 

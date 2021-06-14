@@ -1,0 +1,17 @@
+{
+  /* "coc.preferences.formatOnSaveFiletypes": [ */
+  /*   "css", */
+  /*   "typescriptreact", */
+  /*   "typescript", */
+  /*   "javascriptreact", */
+  /*   "javascript", */
+  /*   "markdown", */
+  /*   "mdx", */
+  /*   "json", */
+  /*   "jsonc" */
+  /* ], */
+  "diagnostic.enableMessage": "jump",
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onType",
+  "eslint.format.enable": true
+}
