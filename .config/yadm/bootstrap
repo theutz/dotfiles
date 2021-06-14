@@ -5,6 +5,12 @@ cd "$HOME"
 echo "Init submodules"
 yadm submodule update --recursive --init
 
+if [[ ! -d "${HOME}"/.emacs.d ]]; then
+  echo "Installing doom emacs"
+  git clone https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
+  doom install
+fi
+
 # Setup Prezto for ZSH
 echo "Link prezto runcoms"
 setopt EXTENDED_GLOB
