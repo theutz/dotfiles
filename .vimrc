@@ -23,6 +23,7 @@ set splitright
 set splitbelow
 set undofile
 set undodir=~/.vim/undo
+set autoread
 "}}}
 " Variables{{{
 let mapleader = "\<Space>"
