@@ -2,9 +2,11 @@
 
 cd "$HOME"
 
+# Initialize submodules
 echo "Init submodules"
 yadm submodule update --recursive --init
 
+# Install Doom Emacs
 if [[ ! -d "${HOME}"/.emacs.d ]]; then
   echo "Installing doom emacs"
   git clone https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
@@ -29,6 +31,7 @@ if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then
       && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
 
+# Bootstrap Vim/Nvim
 system_type=$(uname -s)
 
 if command -v vim >/dev/null 2>&1; then
@@ -36,9 +39,18 @@ if command -v vim >/dev/null 2>&1; then
   vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
 
+# Setup VimAnywhere
+if [[ ! -d "${HOME}"/.vim-anywhere ]]; then
+  curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
+else
+  source "${HOME}"/.vim-anyhwere/update
+fi
+
+# Install global npm packages
 echo "Installing global npm packages"
 npm i -g zx
 
+# Install all programs with brew
 if [ "$system_type" = "Darwin" ]; then
 
   # install homebrew if it's missing
@@ -57,4 +69,3 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
   fi
 fi
-
