@@ -32,8 +32,9 @@
 
 # Merge / Mergetool
 [merge]
-	tool = Kaleidoscope
+	tool = vimdiff
 	ff = false
+	conflictstyle = diff3
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
 [mergetool "emacs"]
