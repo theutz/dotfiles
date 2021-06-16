@@ -327,6 +327,7 @@ nnoremap <silent> <Leader>sC :Colors<CR>
 nnoremap <silent> <Leader>sc :Commands<CR>
 nnoremap <silent> <leader>sm :Marks<CR>
 nnoremap <silent> <leader>ls :Buffers<CR>
+nnoremap <silent> <C-p> :Files<CR>
 "}}}
 " Motions {{{
 map <LocalLeader> <Plug>(easymotion-prefix)
