@@ -55,6 +55,11 @@
 
 ;;----------------------- My Config -------------------------------------------
 
+;; turn on packages
+(use-package! edit-server
+  :config
+  (edit-server-start))
+
 ;; Use magit for yadm
 (require 'tramp)
 (add-to-list 'tramp-methods
@@ -64,3 +69,17 @@
                (tramp-login-env (("SHELL") ("/bin/sh")))
                (tramp-remote-shell "/bin/sh")
                (tramp-remote-shell-args "-c")))
+
+;; Change appearance based on time-of-day
+(defun my/apply-theme (appearance)
+  "Load theme, taking current system APPEARANCE into consideration."
+  (mapc #'disable-theme custom-enabled-themes)
+  (pcase appearance
+    ('light (load-theme 'doom-dracula t))
+    ('dark (load-theme 'doom-one t))))
+
+(add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
+
+;; Set frame maximized at startup
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
