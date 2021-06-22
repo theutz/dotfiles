@@ -2,28 +2,28 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Start Yabai
+# @raycast.title Start SKHD
 # @raycast.mode fullOutput
 
 # Optional parameters:
 # @raycast.icon 🤖
-# @raycast.packageName Yabai
+# @raycast.packageName SKHD
 
 # Documentation:
-# @raycast.description Start / restart the yabai service
+# @raycast.description Start the SKHD server
 # @raycast.author Michael Utz
 # @raycast.authorURL https://github.com/theutz
 
 function _get_current_status {
-    brew services list | awk '/yabai/ {print $2}'
+    brew services list | awk '/skhd/ {print $2}'
 }
 
 function _handle_command {
-    if brew services $1 yabai; then
-        echo "Yabai ${_get_current_status}!"
+    if brew services $1 skhd; then
+        echo "SKHD $(_get_current_status)!"
         exit 0
     else
-        >&2 echo "Something went wrong."
+        echo "Something went wrong!"
         exit 1
     fi
 }
@@ -33,7 +33,7 @@ echo "Current status: ${current_status}"
 
 case $current_status in
     stopped)
-    ;&
+        ;&
     error)
         _handle_command start
         ;;
@@ -41,5 +41,7 @@ case $current_status in
         _handle_command restart
         ;;
     *)
-        >&2 echo "Unknown status: ${current_status}"
+        >&2 echo "Unknown current_status: ${current_status}"
+        exit 1
+        ;;
 esac
