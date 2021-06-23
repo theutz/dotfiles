@@ -1,7 +1,7 @@
 ctrl + alt + cmd - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 :: default : noti -t 'SKHD' -m 'Default Mode'
-:: yabai : noti -t 'SKHD' -m 'Yabai Mode'
+:: yabai @ : noti -t 'SKHD' -m 'Yabai Mode'
 
 default < cmd - escape ; yabai
 yabai < escape ; default
@@ -18,22 +18,29 @@ yabai < shift - j : yabai -m window --swap south
 yabai < h : yabai -m window --focus west
 yabai < shift - h : yabai -m window --swap west
 
+yabai < ctrl - n : yabai -m window --focus next
+yabai < ctrl - p : yabai -m window --focus prev
+
 # Zoom window to parent
 yabai < space : yabai -m window --toggle zoom-parent
+
 # Zoom window to screen
 yabai < return : yabai -m window --toggle zoom-fullscreen
 
-# Foucus next display
-yabai < n : yabai -m display --focus next
-# Move current window to next display
-yabai < shift - n : yabai -m window --display next && yabai -m display --focus next
-# Focus previous display
-yabai < p : yabai -m display --focus prev
+# '(' Focus previous display
+yabai < ctrl - u : yabai -m display --focus prev
+
 # Move current window to previous display
-yabai < shift - p : yabai -m window --display prev && yabai -m display --focus prev
+yabai < shift - 0x19 : yabai -m window --display prev && yabai -m display --focus prev
+
+# ')' Focus next display
+yabai < ctrl - d : yabai -m display --focus next
+
+# Move current window to next display
+yabai < shift - 0x1D : yabai -m window --display next && yabai -m display --focus next
 
 # Reset all zoomed windows Zoom
-yabai < r : for id in $(yabai -m query --windows\
+yabai < shift - z : for id in $(yabai -m query --windows\
                         | jq -r '.[] | select(."zoom-fullscreen" != 0) | .id');\
             do\
               yabai -m window $id --toggle zoom-fullscreen;\
@@ -43,4 +50,9 @@ yabai < r : for id in $(yabai -m query --windows\
             do\
               yabai -m window $id --toggle zoom-parent;\
             done;
-
+# Zoom all windows
+yabai < z : for id in $(yabai -m query --windows\
+                        | jq -r '.[] | select(."zoom-fullscreen" == 0) | .id');\
+            do\
+              yabai -m window $id --toggle zoom-fullscreen;\
+            done;
