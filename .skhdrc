@@ -1,277 +1,46 @@
-#
-# Default Mode
-#
-  :: default : ubar --update --mode "Default" # SHOULD BE A COMMENT
+ctrl + alt + cmd - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
-  ctrl + alt + cmd - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-  ctrl + alt + cmd - u : osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
+:: default : noti -t 'SKHD' -m 'Default Mode'
+:: yabai : noti -t 'SKHD' -m 'Yabai Mode'
 
-  # Shortcuts
-  ctrl + alt + cmd - h : yabai -m space --focus prev # SHOULD NOT COMMENT
-  ctrl + alt + cmd - j : yabai -m window --focus next
-  ctrl + alt + cmd - k : yabai -m window --focus prev
-  ctrl + alt + cmd - l : yabai -m space --focus next
-  ctrl + alt + cmd - d : source ~/bin/yabai/delete/space
+default < cmd - escape ; yabai
+yabai < escape ; default
 
-#
-# Yabai Mode
-#
-  :: yabai @ : ubar --update --mode "Yabai" # SHOULD NOT COMMENT
-  default < cmd - escape ; yabai
-  yabai < escape ; default
+yabai < l : yabai -m window --focus east
+yabai < shift - l : yabai -m window --swap east
 
-  yabai < h : yabai -m space --focus prev
-  yabai < j : yabai -m window --focus next
-  yabai < k : yabai -m window --focus prev
-  yabai < l : yabai -m space --focus next
+yabai < k : yabai -m window --focus north
+yabai < shift - k : yabai -m window --swap north
 
-  yabai < 0 : yabai -m space --focus first
-  yabai < shift - 4 : source ~/bin/yabai/default/goto_last_space
+yabai < j : yabai -m window --focus south
+yabai < shift - j : yabai -m window --swap south
 
-  yabai < shift - i : source ~/bin/yabai/default/move_to_new_first_space
-  yabai < a : source ~/bin/yabai/default/move_to_new_next_space
-  yabai < i : source ~/bin/yabai/default/move_to_new_prev_space
-  yabai < shift - a : yabai -m space --create; \
-    yabai -m window --space last; \
-    yabai -m space --focus last
+yabai < h : yabai -m window --focus west
+yabai < shift - h : yabai -m window --swap west
 
-  yabai < shift - m : source ~/bin/yabai/default/cycle_maximize_reverse
+# Zoom window to parent
+yabai < space : yabai -m window --toggle zoom-parent
+# Zoom window to screen
+yabai < return : yabai -m window --toggle zoom-fullscreen
 
-  yabai < r : yabai -m space --rotate 90
-  yabai < shift - r : yabai -m space --rotate 270
-  yabai < y : CURRENT_WINDOW_ID="$(yabai -m query --windows --window | jq '.id')"; \
-    echo $CURRENT_WINDOW_ID | pbcopy; \
-    noti -t "Window ID Copied" -m "$CURRENT_WINDOW_ID";
-  yabai < b : yabai -m space --balance
+# Foucus next display
+yabai < n : yabai -m display --focus next
+# Move current window to next display
+yabai < shift - n : yabai -m window --display next && yabai -m display --focus next
+# Focus previous display
+yabai < p : yabai -m display --focus prev
+# Move current window to previous display
+yabai < shift - p : yabai -m window --display prev && yabai -m display --focus prev
 
-  yabai < shift - h : yabai -m window --space prev
-  yabai < shift - j : yabai -m window --swap next
-  yabai < shift - k : yabai -m window --swap prev
-  yabai < shift - l : yabai -m window --space next
+# Reset all zoomed windows Zoom
+yabai < r : for id in $(yabai -m query --windows\
+                        | jq -r '.[] | select(."zoom-fullscreen" != 0) | .id');\
+            do\
+              yabai -m window $id --toggle zoom-fullscreen;\
+            done;\
+            for id in $(yabai -m query --windows\
+                        | jq -r '.[] | select(."zoom-parent" != 0) | .id');\
+            do\
+              yabai -m window $id --toggle zoom-parent;\
+            done;
 
-  yabai < p : CURRENT_SPACE="$(yabai -m query --spaces --space | jq '.index')"; \
-    WINDOW_ID="$(pbpaste)"; \
-    yabai -m window $WINDOW_ID --space $CURRENT_SPACE
-
-  yabai < ctrl - d : yabai -m space --move next
-  yabai < ctrl - u : yabai -m space --move prev
-
-  yabai < 0x1B : yabai -m window --ratio rel:0.1
-  yabai < 0x18 : yabai -m window --ratio rel:-0.1
-
-  yabai < 1 : yabai -m space --focus 1
-  yabai < 2 : yabai -m space --focus 2
-  yabai < 3 : yabai -m space --focus 3
-  yabai < 4 : yabai -m space --focus 4
-  yabai < 5 : yabai -m space --focus 5
-  yabai < 6 : yabai -m space --focus 6
-  yabai < 7 : yabai -m space --focus 7
-  yabai < 8 : yabai -m space --focus 8
-  yabai < 9 : yabai -m space --focus 9
-  yabai < ctrl - o : yabai -m space --focus recent
-
-  yabai < space : yabai -m space --toggle mission-control && \
-    sleep 0.3 && \
-    cliclick -r "m:0,0" "w:500"; \
-    skhd -k escape
-
-#
-# Yabai > Toggle Mode
-#
-  :: t_ @ : ubar --update --mode "Yabai > Toggle"
-  yabai < t ; t_
-  t_ < escape ; yabai
-
-  t_ < m : source ~/bin/yabai/toggle/focus_follows_mouse; \
-    skhd -k escape
-  t_ < f : yabai -m window --toggle float; \
-    skhd -k escape
-  t_ < s : yabai -m window --toggle sticky; \
-    skhd -k escape
-  t_ < b : yabai -m window --toggle border; \
-    skhd -k escape
-  t_ < x : yabai -m space --mirror x-axis; \
-    skhd -k escape
-  t_ < y : yabai -m space --mirror y-axis; \
-    skhd -k escape
-  t_ < v : yabai -m window --toggle split; \
-    skhd -k escape
-
-#
-# Yabai > Goto Mode
-#
-  :: g_ @ : ubar --update --mode "Yabai > Goto"
-  yabai < g ; g_
-  g_ < escape ; yabai
-
-  g_ < t : yabai -m window --display next; skhd -k escape
-  g_ < shift - t : yabai -m window --display prev; skhd -k escape
-
-#
-# Yabai > Window Mode
-#
-  :: cw_ @ : ubar --update --mode "Yabai > Window"
-  yabai < ctrl - w; cw_
-  cw_ < escape ; yabai
-
-  cw_ < h : yabai -m display --focus prev; skhd -k escape
-  cw_ < l : yabai -m display --focus next; skhd -k escape
-  cw_ < shift - h : yabai -m window --display prev; skhd -k escape
-  cw_ < shift - l : yabai -m window --display next; skhd -k escape
-  cw_ < ctrl - w : (yabai -m space --display next || yabai -m space --display prev); skhd -k escape
-
-#
-# Yabai > Prev Mode
-#
-  :: prev_ @ : ubar --update --mode "Yabai > Prev"
-  yabai < 0x21 ; prev_
-  prev_ < escape ; yabai
-
-  prev_ < w : ( \
-      yabai -m window --swap prev || \
-      yabai -m window --swap last \
-    ); \
-    skhd -k escape
-  prev_ < s : \
-    ( \
-      ( \
-        yabai -m window --space prev && \
-        yabai -m space --focus prev \
-      ) || ( \
-        yabai -m space --create && \
-        yabai -m window --space last && \
-        yabai -m space --focus last \
-      ) \
-    ); \
-    skhd -k escape
-
-#
-# Yabai > Next Mode
-#
-  :: next_ @ : ubar --update --mode "Yabai > Next"
-  yabai < 0x1E ; next_
-  next_ < escape ; yabai
-
-  next_ < w : ( \
-      yabai -m window --swap next || \
-      yabai -m window --swap first \
-    ); \
-    skhd -k escape
-  next_ < s : ( \
-        ( \
-            yabai -m window --space next && \
-            yabai -m space --focus next \
-        ) || \
-        ( \
-            yabai -m space --create && \
-            yabai -m window --space last && \
-            yabai -m space --focus last \
-        ) \
-    );  \
-    skhd -k escape
-
-#
-# Yabai > Delete Mode
-#
-  :: d_ @ : ubar --update --mode "Yabai > Delete"
-  yabai < d ; d_
-  d_ < escape ; yabai
-
-  d_ < s : source ~/bin/yabai/delete/space; \
-    skhd -k escape
-  d_ < w : source ~/bin/yabai/delete/window; \
-    skhd -k escape
-
-#
-# Yabai > Zoom Mode
-#
-  :: z_ @ : ubar --update --mode "Yabai > Zoom"
-  yabai < z ; z_
-  z_ < escape ; yabai
-
-  z_ < a : yabai -m window --toggle zoom-parent; \
-    skhd -k escape
-  z_ < o : source ~/bin/yabai/zoom/increase; \
-    skhd -k escape
-  z_ < shift - o : yabai -m window --toggle zoom-fullscreen; \
-    skhd -k escape
-  z_ < c : source ~/bin/yabai/zoom/decrease; \
-    skhd -k escape
-  z_ < shift - c : source ~/bin/yabai/zoom/unzoom; \
-    skhd -k escape
-  z_ < shift - r : \
-    for id in $(yabai -m query --windows --space | jq '.[].id'); do \
-        yabai -m window $id --toggle zoom-fullscreen; \
-    done; \
-    skhd -k escape
-  z_ < shift - m : \
-    for id in $(yabai -m query --windows --space | jq '.[].id'); do \
-        source ~/bin/yabai/zoom/unzoom $id; \
-    done; \
-    skhd -k escape
-  z_ < f : yabai -m window --toggle native-fullscreen; \
-    skdh -k escape
-
-#
-# Yabai > App
-#
-  :: mark_ @ : ubar --update --mode "Yabai > Go to app..."
-  yabai < 0x32 ; mark_
-  mark_ < escape ; yabai
-
-  mark_ < c : open -a "Visual Studio Code"; \
-    skhd -k escape
-  mark_ < a : open -a "Airmail"; \
-    skhd -k escape
-  mark_ < k : open -a "Kitty"; \
-    skhd -k escape
-  mark_ < m : open -a "Music"; \
-    skhd -k escape
-  mark_ < b : open -a "Brave Browser"; \
-    skhd -k escape
-  mark_ < g : open -a "Google Chrome"; \
-    skhd -k escape
-  mark_ < w : open -a "WhatsApp"; \
-    skhd -k escape
-  mark_ < n : open -a "Notion"; \
-    skhd -k escape
-  mark_ < 2 : open -a "2Do"; \
-    skhd -k escape
-  mark_ < f : open -a "Fantastical"; \
-    skhd -k escape
-  mark_ < s : open -a "Slack"; \
-    skhd -k escape
-
-#
-# VIMISH Mode
-#
-  :: normal @ : ubar --update --mode "VIMISH"
-  cmd + ctrl + alt - space ; normal
-  normal < escape ; default
-  normal < i ; default
-
-  normal < down -> :;
-  normal < left -> :;
-  normal < right -> :;
-  normal < up -> :;
-  normal < shift - down -> :;
-  normal < shift - left -> :;
-  normal < shift - right -> :;
-  normal < shift - up -> :;
-  normal < alt + shift - down -> :;
-  normal < alt + shift - left -> :;
-  normal < alt + shift - right -> :;
-  normal < alt + shift - up -> :;
-
-  normal < j : skhd -k down
-  normal < k : skhd -k up
-  normal < h : skhd -k left
-  normal < l : skhd -k right
-  normal < shift - j : skhd -k "shift - down"
-  normal < shift - k : skhd -k "shift - up"
-  normal < shift - h : skhd -k "shift - left"
-  normal < shift - l : skhd -k "shift - right"
-  normal < alt + shift - j : skhd -k "alt + shift - down"
-  normal < alt + shift - k : skhd -k "alt + shift - up"
-  normal < alt + shift - h : skhd -k "alt + shift - left"
-  normal < alt + shift - l : skhd -k "alt + shift - right"

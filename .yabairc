@@ -33,9 +33,3 @@ yabai -m rule --add app="^Fantastical Helper$" manage=off sticky=on grid=8:8:3:1
 yabai -m rule --add app="^System Preferences$" manage=off sticky=on grid=20:20:6:4:0:0
 yabai -m rule --add app="^Streaks" manage=off
 
-# Setup Signals
-update_ubar="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"ubar-ubar-jsx\"'"
-
-yabai -m signal --add event=space_changed action=$update_ubar
-yabai -m signal --add event=display_changed action=$update_ubar
-yabai -m signal --add event=window_changed action=$update_ubar
