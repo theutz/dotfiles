@@ -83,3 +83,11 @@
 ;; Set frame maximized at startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Setup centaur-tabs keyboard shortcuts
+(map! :leader :desc "Next Tab" :n "]" #'centaur-tabs-forward)
+(map! :leader :desc "Previous Tab" :n "[" #'centaur-tabs-backward)
+(map! :leader :desc "Next Tab Group" :n "}" #'centaur-tabs-forward-group)
+(map! :leader :desc "Previous Tab Group" :n "{" #'centaur-tabs-backward-group)
+(map! :leader :desc "Switch Tab Group" :n "T" #'centaur-tabs-counsel-switch-group)
+(setq centaur-tabs-set-icons t)

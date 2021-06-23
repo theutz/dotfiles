@@ -18,12 +18,12 @@ yabai -m config window_shadow float
 yabai -m config window_topmost on
 
 # Setup appearance
-pad=8
+pad=10
 
 yabai -m config top_padding $pad
 yabai -m config left_padding $pad
 yabai -m config right_padding $pad
-yabai -m config bottom_padding $(( $pad * 5 ))
+yabai -m config bottom_padding $pad
 yabai -m config window_gap $pad
 
 # Setup Exceptions

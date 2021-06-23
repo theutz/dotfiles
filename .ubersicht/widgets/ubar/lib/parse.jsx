@@ -13,7 +13,7 @@ function parse(data) {
       spaces,
       window: { split: "", zoom: "", floating: "", sticky: "", ...window },
       skhd: { mode: "Default", ...skhd },
-      display: { count: 0, index: 0, ...display },
+      display: { count: 0, index: 0, ...display }
     };
   } catch (error) {
     console.warn(error, data);
