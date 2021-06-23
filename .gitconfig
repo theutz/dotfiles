@@ -32,7 +32,7 @@
 
 # Merge / Mergetool
 [merge]
-	tool = vscode
+	tool = vimdiff
 	ff = false
 	conflictstyle = diff3
 [mergetool "vscode"]
@@ -47,7 +47,7 @@
 
 # Diff
 [diff]
-	tool = vscode
+	tool = vimdiff
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "emacs"]
