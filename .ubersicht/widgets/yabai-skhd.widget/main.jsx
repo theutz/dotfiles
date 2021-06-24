@@ -1,7 +1,8 @@
 import { styled, React } from "uebersicht";
 
 export const command = "yabai-skhd.widget/data.sh";
-export const refreshFrequency = 200;
+
+export const refreshFrequency = 100;
 
 export const className = `
   font-family: "Meslo LG S for Powerline", monospace;
@@ -9,51 +10,71 @@ export const className = `
   right: 0;
   left: 0;
   color: #898EA4;
-  opacity: 0.8;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-
-  & > * {
-    background-color: #202746;
-    padding: 10px 20px;
-  }
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 10px;
+  padding: 0 10px 10px; 
+  box-sizing: border-box;
 `;
 
-const Left = styled("div")`
-  border-radius: 0 10px 0 0;
-  justify-self: left;
-`;
-
-const Center = styled("div")`
-  border-radius: 10px 10px 0 0;
+const Item = styled("div")`
+  background-color: #202746cc;
+  padding: 3px 16px;
+  border-radius: 5px;
   justify-self: center;
+  box-shadow: 1px 1px 1px 2px #20274655;
+  border: 1px solid #202746;
 `;
 
-const Right = styled("div")`
-  border-radius: 10px 0 0 0;
-  justify-self: right;
+const First = styled(Item)`
+  grid-column-start: 5;
+`;
+
+const Error = styled(Item)`
+  grid-column: 1 / span 8;
+  font-size: 10px;
+  background-color: #fff;
+  color: #202746;
+`;
+
+const Mode = styled(First)`
+  ${({ children }) =>
+    children !== "Default Mode"
+      ? `
+    background-color: #fff;
+    color: #202746;
+  `
+      : null}
 `;
 
 export const render = ({ output, error }) => {
-  if (Boolean(error)) return <div>{String(error)}</div>;
-  if (!Boolean(output)) return <div>No output received...</div>;
+  if (Boolean(error)) return <Error>{String(error)}</Error>;
+  if (!Boolean(output)) return <Error>No output received...</Error>;
 
-  let mode, win, space, display;
+  let mode,
+    win = "____",
+    space = "0",
+    display = "0",
+    spaceCount = "0",
+    displayCount = "0";
 
   try {
-    ({ mode, win, space, display } = JSON.parse(output));
+    ({ mode, win, space, display, spaceCount, displayCount } =
+      JSON.parse(output));
   } catch (e) {
     return <div>{String(e?.message ?? e)}</div>;
   }
 
   return (
     <>
-      <Left>Michael Utz</Left>
-      <Center>
-        Window: {win}, Space: {space}, Display: {display}
-      </Center>
-      <Right>{mode}</Right>
+      <Mode>{mode}</Mode>
+      <Item>{win}</Item>
+      <Item>
+        Space: {space}/{spaceCount}
+      </Item>
+      <Item>
+        Display: {display}/{displayCount}
+      </Item>
     </>
   );
 };

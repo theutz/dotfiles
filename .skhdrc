@@ -11,15 +11,16 @@ ctrl + alt + cmd - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 :: nextmode @ : skhd_mode --set "Next"
 :: prevmode @ : skhd_mode --set "Prev"
 
+# Normal Mode
 default < cmd - escape ; normalmode
 normalmode < escape ; default
 
-# 0x21 = '['
-normalmode < 0x21 ; prevmode
-nextmode < escape ; normalmode
+# Previous Mode: 0x21 = '['
+normalmode, nextmode < 0x21 ; prevmode
+prevmode < escape ; normalmode
 
-# 1E = ']'
-normalmode < 0x1E ; nextmode
+# Next Mode: 1E = ']'
+normalmode, prevmode < 0x1E ; nextmode
 nextmode < escape ; normalmode
 
 #
@@ -92,6 +93,10 @@ prevmode < shift - w : yabai -m window --swap prev
 nextmode < s : yabai -m space --focus next
 prevmode < s : yabai -m space --focus prev
 
+# Move Window to Space
+nextmode < shift -s : yabai -m window --space next
+prevmode < shift -s : yabai -m window --space prev
+
 # Move Space
-nextmode < shift - s : yabai -m space --move next
-prevmode < shift - s : yabai -m space --move prev
+nextmode < ctrl - s : yabai -m space --move next
+prevmode < ctrl - s : yabai -m space --move prev
