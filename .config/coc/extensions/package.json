@@ -7,7 +7,6 @@
     "coc-gist": ">=0.2.1",
     "coc-git": ">=2.3.3",
     "coc-gitignore": ">=0.0.4",
-    "coc-graphql": ">=0.0.1",
     "coc-html": ">=1.4.1",
     "coc-html-css-support": ">=0.2.2",
     "coc-htmlhint": ">=0.2.2",

@@ -62,7 +62,7 @@ Plug 'francoiscabrol/ranger.vim'
 if has("nvim")
   Plug 'rbgrouleff/bclose.vim'
 endif
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
@@ -96,7 +96,6 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-eslint',
       \ 'coc-gist',
-      \ 'coc-graphql',
       \ 'coc-html',
       \ 'coc-htmlhint',
       \ 'coc-html-css-support',
