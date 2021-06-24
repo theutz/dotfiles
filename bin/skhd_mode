@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+MODE_FILE="${HOME}/.ubersicht/widgets/yabai-skhd.widget/mode.txt"
+
+case $1 in
+  --get)
+    out="$(cat $MODE_FILE)"
+    echo $out
+    ;;
+  --set)
+    echo "${2} Mode" >! $MODE_FILE
+    ;;
+  *)
+    echo "Unrecognized argument: ${1}"
+    exit 1
+esac
+
+
