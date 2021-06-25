@@ -31,7 +31,7 @@ const Error = styled(Item)`
 
 const Mode = styled(Item)`
   ${({ children }) =>
-    children !== "Default Mode"
+    !String(children).match(/[Dd]efault/)
       ? `
     background-color: #898EA4;
     color: #202746dd ;
@@ -60,15 +60,15 @@ export const render = ({ output, error }) => {
 
   return (
     <>
-      <Mode>{mode}</Mode>
-      <Item>{lastCmd}</Item>
+      <Mode>mode: {mode.toLowerCase()}</Mode>
+      <Item>cmd: {lastCmd.toLowerCase()}</Item>
       <Item>
-        Space: {space}/{spaceCount}
+        space: {space}/{spaceCount}
       </Item>
       <Item>
-        Display: {display}/{displayCount}
+        display: {display}/{displayCount}
       </Item>
-      <Item>Window: {win}</Item>
+      <Item>window: {win.toLowerCase()}</Item>
     </>
   );
 };
