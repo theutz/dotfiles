@@ -6,43 +6,35 @@ export const refreshFrequency = 100;
 
 export const className = `
   font-family: "Meslo LG S for Powerline", monospace;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  font-size: 14px;
+  bottom: 10px;
+  right: 10px;
+  left: 10px;
   color: #898EA4;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-gap: 10px;
-  padding: 0 10px 10px; 
-  box-sizing: border-box;
+  padding: 5px;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: #202746;
+  border-radius: 8px;
 `;
 
 const Item = styled("div")`
-  background-color: #202746cc;
-  padding: 3px 16px;
-  border-radius: 5px;
+  padding: 2px 10px;
   justify-self: center;
-  box-shadow: 1px 1px 1px 2px #20274655;
-  border: 1px solid #202746;
-`;
-
-const First = styled(Item)`
-  grid-column-start: 5;
 `;
 
 const Error = styled(Item)`
-  grid-column: 1 / span 8;
   font-size: 10px;
   background-color: #fff;
   color: #202746;
 `;
 
-const Mode = styled(First)`
+const Mode = styled(Item)`
   ${({ children }) =>
     children !== "Default Mode"
       ? `
-    background-color: #fff;
-    color: #202746;
+    background-color: #898EA4;
+    color: #202746dd ;
   `
       : null}
 `;
@@ -56,10 +48,11 @@ export const render = ({ output, error }) => {
     space = "0",
     display = "0",
     spaceCount = "0",
-    displayCount = "0";
+    displayCount = "0",
+    lastCmd = "";
 
   try {
-    ({ mode, win, space, display, spaceCount, displayCount } =
+    ({ mode, win, space, display, spaceCount, displayCount, lastCmd } =
       JSON.parse(output));
   } catch (e) {
     return <div>{String(e?.message ?? e)}</div>;
@@ -68,13 +61,14 @@ export const render = ({ output, error }) => {
   return (
     <>
       <Mode>{mode}</Mode>
-      <Item>{win}</Item>
+      <Item>{lastCmd}</Item>
       <Item>
         Space: {space}/{spaceCount}
       </Item>
       <Item>
         Display: {display}/{displayCount}
       </Item>
+      <Item>Window: {win}</Item>
     </>
   );
 };

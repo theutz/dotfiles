@@ -1,3 +1,89 @@
 #!/usr/bin/env zsh
 
-tail -f /usr/local/var/log/yabai/yabai.*.log
+# Documentation
+function usage() {
+  cat <<EOF
+usage: yabailogs [options] 
+
+OPTIONS:
+  -c, --clear
+    Clear the existing logs
+  
+  -e, --errors
+    Follow the error log
+
+  -f, --follow
+    Follow the logs
+
+  -h, --help
+    Show this help
+
+  -o, --output
+    Follow the output log
+EOF
+}
+
+# Parse Args
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $1 in
+    -c|--clear)
+      clear=1
+      shift
+      ;;
+    -e|--errors)
+      errors=1
+      shift
+      ;;
+    -f|--follow)
+      follow=1
+      shift
+      ;;
+    -h|--help)
+      help=1
+      shift
+      ;;
+    -o|--output)
+      output=1
+      shift
+      ;;
+    *)
+      echo >&2 "illegal option -- ${1}"
+      exit 1
+  esac
+done
+
+# Main Logic
+if [[ $help == 1 ]]; then
+  usage
+  exit 1
+fi
+
+base="/usr/local/var/log/yabai/yabai"
+ext="log"
+files=()
+
+if [[ $errors != 1 && $output != 1 ]]; then
+  errors=1
+  output=1
+fi
+
+if [[ $output == 1 ]]; then
+  files+="${base}.out.${ext}"
+fi
+
+if [[ $errors == 1 ]]; then
+  files+="${base}.err.${ext}"
+fi
+
+if [[ $clear == 1 ]]; then
+  rm -rf $files
+  touch $files
+fi
+
+if [[ $follow == 1 ]]; then
+  tail -f $files
+else
+  tail $files
+fi

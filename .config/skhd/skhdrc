@@ -1,0 +1,112 @@
+#
+# DEFAULT MODE
+#
+ctrl + alt + cmd - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+#
+# SETUP MODES
+#
+:: default : skhd_mode --set "Default"
+:: normalmode @ : skhd_mode --set "Normal"
+:: nextmode @ : skhd_mode --set "Next"
+:: prevmode @ : skhd_mode --set "Prev"
+
+# Normal Mode
+default < cmd - escape ; normalmode
+normalmode < escape ; default
+
+# Previous Mode: 0x21 = '['
+normalmode, nextmode < 0x21 ; prevmode
+prevmode < escape ; normalmode
+
+# Next Mode: 1E = ']'
+normalmode, prevmode < 0x1E ; nextmode
+nextmode < escape ; normalmode
+
+#
+# NORMAL MODE
+#
+
+# Focus
+normalmode < l : yabai -m window --focus east;\
+  skhd_cmd "Focus Window East"
+normalmode < k : yabai -m window --focus north;\
+  skhd_cmd "Focus Window North"
+normalmode < j : yabai -m window --focus south;\
+  skhd_cmd "Focus Window South"
+normalmode < h : yabai -m window --focus west;\
+  skhd_cmd "Focus Window West"
+
+# Swap
+normalmode < shift - l : yabai -m window --swap east;\
+  skhd_cmd "Swap Window East"
+normalmode < shift - k : yabai -m window --swap north;\
+  skhd_cmd "Swap Window North"
+normalmode < shift - j : yabai -m window --swap south;\
+  skhd_cmd "Swap Window South"
+normalmode < shift - h : yabai -m window --swap west;\
+  skhd_cmd "Swap Window West"
+
+# Zoom
+normalmode < space : yabai -m window --toggle zoom-parent\
+  && skhd_cmd "Toggle Zoom Parent"
+normalmode < return : yabai -m window --toggle zoom-fullscreen\
+  && skhd_cmd "Toggle Zoom Fullscreen"
+normalmode < z : for id in $(yabai -m query --windows | jq -r '.[] | select(."zoom-fullscreen" == 0) | .id'); do\
+              yabai -m window $id --toggle zoom-fullscreen;\
+            done;\
+            skhd_cmd "Zoom all windows"
+normalmode < shift - z : \
+  for id in $(\
+    yabai -m query --windows\
+    | jq -r '.[] | select(."zoom-fullscreen" != 0) | .id'\
+  ); do\
+    yabai -m window $id --toggle zoom-fullscreen;\
+  done;\
+  for id in $(\
+    yabai -m query --windows \
+    | jq -r '.[] | select(."zoom-parent" != 0) | .id'\
+  ); do\
+    yabai -m window $id --toggle zoom-parent;\
+  done;\
+  skhd_cmd "Unzoom all windows"
+
+# Spaces
+normalmode < shift - 0x2A : yabai -m space --create;\
+  skhd_cmd "Create a space"
+normalmode < x : yabai -m space --destroy;\
+  skhd_cmd "Destroy a space"
+
+#
+# NEXT/PREV MODE
+#
+
+# Focus Window
+nextmode < w : yabai -m window --focus next;\
+  skhd_cmd -e "Focus Next Window"
+prevmode < w : yabai -m window --focus prev;\
+  skhd_cmd -e "Focus Previous Window"
+
+# Swap Window
+nextmode < shift - w : yabai -m window --swap next;\
+  skhd_cmd -e "Swap with Next Window"
+prevmode < shift - w : yabai -m window --swap prev;\
+  skhd_cmd -e "Swap with Previous Window"
+
+# Focus Space
+nextmode < s : yabai -m space --focus next;\
+  skhd_cmd -e "Focus Next Space"
+prevmode < s : yabai -m space --focus prev;\
+  skhd_cmd -e "Focus Previous Space"
+
+# Move Window to Space
+nextmode < shift - s : yabai -m window --space next;\
+  skhd_cmd -e "Move Window to Next Space"
+prevmode < shift - s : yabai -m window --space prev;\
+  skhd_cmd -e "Move Window to Previous Space"
+
+# Move Space
+nextmode < ctrl - s : yabai -m space --move next;\
+  skhd_cmd -e "Swap Next Space"
+prevmode < ctrl - s : yabai -m space --move prev;\
+  skhd_cmd -e "Swap Previous Space"

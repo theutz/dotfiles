@@ -67,8 +67,8 @@ update: (o, dom) ->
 
 style: """
 	width 25%
-	bottom 1.5em
-	left 1%
+	top 10px
+	left 10px
 	font-family Avenir Next LT Pro, Futura
 	font-smooth always
 	color rgba(255,255,255,0.4)

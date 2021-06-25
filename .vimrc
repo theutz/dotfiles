@@ -59,10 +59,7 @@ set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'francoiscabrol/ranger.vim'
-if has("nvim")
-  Plug 'rbgrouleff/bclose.vim'
-endif
-"Plug 'christoomey/vim-tmux-navigator'
+Plug 'rbgrouleff/bclose.vim'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
