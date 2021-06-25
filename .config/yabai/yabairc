@@ -33,5 +33,29 @@ for app in "^Mate Translate" "^Bartender" "^Streaks", "^Paletro"
 do
   yabai -m rule --add app="$app" manage=off
 done
-yabai -m rule --add app="^System Preferences$" manage=off sticky=on grid=20:20:6:4:0:0
 
+yabai -m rule --add app="^System Preferences$"\
+  manage=off\
+  sticky=on\
+  grid=20:20:6:4:0:0
+
+yabai -m rule --add app="^kitty"\
+  manage=off\
+  layer=normal\
+  grid=1:1:1:1:1:1
+
+yabai -m rule --add app="^Reminders$"\
+  manage=off\
+  layer=normal\
+  grid=1:4:1:0:2:1\
+  opacity=1
+yabai -m rule --add app="^Calendar$"\
+  manage=off\
+  layer=normal\
+  grid=20:20:1:1:18:18\
+  opacity=1
+yabai -m rule --add app="^Music"\
+  manage=off\
+  layer=normal\
+  grid=1:1:1:1:1:1\
+  opacity=1

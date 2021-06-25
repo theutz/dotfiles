@@ -78,6 +78,14 @@ normalmode < x : yabai -m space --destroy;\
   skhd_cmd "Destroy a space"
 
 #
+# Window Properties
+#
+normalmode < o : yabai -m window --toggle split;\
+  skhd_cmd "Toggle Split"
+normalmode < f : yabai -m window --toggle float;\
+  skhd_cmd "Toggle float"
+
+#
 # NEXT/PREV MODE
 #
 
