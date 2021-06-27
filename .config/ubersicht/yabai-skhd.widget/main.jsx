@@ -1,8 +1,8 @@
 import { styled, React } from "uebersicht";
 
-export const command = "yabai-skhd.widget/data.sh";
+export const refreshFrequency = 5000;
 
-export const refreshFrequency = 100;
+export const command = "yabai-skhd.widget/data.sh";
 
 export const className = `
   font-family: "Meslo LG S for Powerline", monospace;

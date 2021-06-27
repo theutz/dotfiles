@@ -30,3 +30,5 @@ while [[ $# -gt 0 ]]; do
       exit 1
   esac
 done
+
+osascript -e 'tell application id "tracesOf.Uebersicht" to refresh widget id "yabai-skhd-widget-main-jsx"' 2>&1 > /dev/null
