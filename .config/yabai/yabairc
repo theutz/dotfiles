@@ -4,7 +4,7 @@ set -euo pipefail
 # Setup Options
 yabai -m config layout bsp
 yabai -m config window_placement first_child
-yabai -m config auto_balance on
+yabai -m config auto_balance off
 yabai -m config focus_follows_mouse off
 yabai -m config mouse_follows_focus on
 yabai -m config window_opacity on
@@ -16,13 +16,12 @@ yabai -m config window_topmost on
 # Setup appearance
 pad=10
 
-for dir in top left right
+for dir in top left right bottom
 do
   yabai -m config "${dir}_padding" $pad
 done
 
 yabai -m config window_gap $pad
-yabai -m config external_bar all:0:$(($pad * 5))
 
 # Setup Exceptions
 for app in "^Mate Translate" "^Bartender" "^Streaks", "^Paletro"
@@ -34,11 +33,6 @@ yabai -m rule --add app="^System Preferences$"\
   manage=off\
   sticky=on\
   grid=20:20:6:4:0:0
-
-yabai -m rule --add app="^kitty"\
-  manage=off\
-  layer=normal\
-  grid=1:1:1:1:1:1
 
 yabai -m rule --add app="^Reminders$"\
   manage=off\
