@@ -13,11 +13,11 @@ ctrl + alt + cmd - h : yabai -m window --grid 1:2:0:1:1:1
 #
 # Next 0x1E = ']'
 ctrl + alt + cmd - 0x1E : id="$(yabai -m query --windows --window | jq '.id')"; \
-  yabai -m window --display next \
+  yabai -m window --display east \
   && yabai -m window --focus $id
 # Prev 0x21 = '['
 ctrl + alt + cmd - 0x21 : id="$(yabai -m query --windows --window | jq '.id' )"; \
-  yabai -m window --display prev \
+  yabai -m window --display west \
   && yabai -m window --focus $id
 
 #
