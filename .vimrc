@@ -387,6 +387,8 @@ augroup END
 augroup man_pages
   autocmd BufEnter *.txt if &filetype == 'man' | wincmd L | endif
 augroup END
+
+autocmd VimResized * exe "normal \<C-W>="
 "}}}
 " vim: fdm=marker fdl=0
 
