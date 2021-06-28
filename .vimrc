@@ -384,19 +384,31 @@ nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+  autocmd FileType help nnoremap <buffer> <CR> <C-]>
+  autocmd FileType help nnoremap <buffer> <BS> <C-T>
+  autocmd FileType help nnoremap <buffer> o /'\l\{2,\}'<CR>
+  autocmd FileType help nnoremap <buffer> O ?'\l\{2,\}'<CR>
+  autocmd FileType help nnoremap <buffer> t /\|\zs\S\+\ze\|<CR>
+  autocmd FileType help nnoremap <buffer> T ?\|\zs\S\+\ze\|<CR>
 augroup END
 
 " Open man pages in a vertical split
 augroup man_pages
+  autocmd!
   autocmd BufEnter *.txt if &filetype == 'man' | wincmd L | endif
 augroup END
 
 " Redraw screen on resize
-autocmd VimResized * exe "normal \<C-W>="
+augroup resizing
+  autocmd!
+  autocmd VimResized * exe "normal \<C-W>="
+augroup END
 
 " Use limelight with goyo
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+augroup goyo
+  autocmd!
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
+augroup END
 "}}}
-" vim: fdm=marker fdl=0
-
+" vim: fdm=marker fdl=0 ts=2 sw=2 et ai si
