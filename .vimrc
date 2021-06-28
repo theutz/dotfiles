@@ -82,6 +82,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'sunaku/vim-shortcut'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
 
@@ -370,6 +372,7 @@ nnoremap <silent> <Leader>tu :UndotreeToggle<CR>
 nnoremap <silent> <Leader>tf :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>tF :NERDTreeFind<CR>
 nmap <silent> <Leader>tt <Plug>(coc-terminal-toggle)<CR>
+nmap <silent> <Leader>tg :Goyo<CR>
 " }}}
 " Actions {{{
 nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
@@ -388,7 +391,12 @@ augroup man_pages
   autocmd BufEnter *.txt if &filetype == 'man' | wincmd L | endif
 augroup END
 
+" Redraw screen on resize
 autocmd VimResized * exe "normal \<C-W>="
+
+" Use limelight with goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 "}}}
 " vim: fdm=marker fdl=0
 
