@@ -53,6 +53,9 @@ Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-textobj-delimited'
 Plug 'tpope/vim-eunuch'
 Plug 'justinmk/vim-sneak'
+Plug 'vimwiki/vimwiki'
+Plug 'Alok/notational-fzf-vim'
+Plug 'ferrine/md-img-paste.vim'
 
 " Navigation
 set rtp+=/usr/local/opt/fzf
@@ -296,6 +299,18 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "}}}
+" notational-fzf-vim{{{
+let g:nv_search_paths = ['~/Dropbox/notes']
+" }}}
+" VimWiki {{{
+let g:vimwiki_list = [{'path': '~/Dropbox/notes',
+                  \ 'syntax': 'markdown', 'ext': '.md',
+                  \ 'index': 'Wiki'}]
+let g:vimwiki_global_ext = 0
+" }}}
+" MD Img Paste {{{
+let g:mdip_imgdir = 'img'
+" }}}
 "}}}
 " Functions {{{
 function! s:ToggleNumberStyle()
@@ -325,6 +340,7 @@ nnoremap <silent> <Leader>sc :Commands<CR>
 nnoremap <silent> <leader>sm :Marks<CR>
 nnoremap <silent> <leader>ls :Buffers<CR>
 nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <leader>sn :NV<CR>
 "}}}
 " Motions {{{
 map <LocalLeader> <Plug>(easymotion-prefix)
@@ -354,6 +370,9 @@ nnoremap <silent> <Leader>tu :UndotreeToggle<CR>
 nnoremap <silent> <Leader>tf :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>tF :NERDTreeFind<CR>
 nmap <silent> <Leader>tt <Plug>(coc-terminal-toggle)<CR>
+" }}}
+" Actions {{{
+nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 " }}}
 "}}}
 " Autocommands {{{

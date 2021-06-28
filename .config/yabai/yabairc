@@ -4,14 +4,15 @@ set -euo pipefail
 # Setup Options
 yabai -m config layout bsp
 yabai -m config window_placement first_child
-yabai -m config auto_balance off
-yabai -m config focus_follows_mouse off
-yabai -m config mouse_follows_focus on
+# yabai -m config auto_balance off
+# yabai -m config focus_follows_mouse off
+# yabai -m config mouse_follows_focus on
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.85
-yabai -m config window_shadow off 
-yabai -m config window_topmost on
+yabai -m config normal_window_opacity 0.9
+yabai -m config window_opacity_duration 0
+# yabai -m config window_shadow off 
+# yabai -m config window_topmost on
 
 # Setup appearance
 pad=10
