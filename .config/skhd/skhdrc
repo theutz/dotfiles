@@ -20,6 +20,10 @@ ctrl + alt + cmd - 0x21 : id="$(yabai -m query --windows --window | jq '.id' )";
   yabai -m window --display west \
   && yabai -m window --focus $id
 
+# Space
+ctrl + alt + cmd - n : yabai -m space --focus next
+ctrl + alt + cmd - p : yabai -m space --focus prev
+
 #
 # Layouts
 #

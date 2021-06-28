@@ -46,10 +46,11 @@ for app in "^kitty" "^Airmail"; do
   yabai -m signal --add event="application_activated" \
     app="$app"\
     action="$(cat << EOF
-    yabai -m query --windows \
-    | jq --arg processId "\${YABAI_PROCESS_ID}" \
-        'map(select(.pid == (\$processId | tonumber) and .focused == 1))[0].id' \
-    | xargs -I _ yabai -m window _ --grid 1:1:1:1:1:1
+      yabai -m query --windows \
+      | jq --arg processId "\${YABAI_PROCESS_ID}" \
+          'map(select(.pid == (\$processId | tonumber) and .focused == 1))[0].id' \
+      | xargs -I _ yabai -m window _ --grid 1:1:1:1:1:1
 EOF
   )"
 done
+
