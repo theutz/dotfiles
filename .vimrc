@@ -305,9 +305,13 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:nv_search_paths = ['~/Dropbox/notes']
 " }}}
 " VimWiki {{{
-let g:vimwiki_list = [{'path': '~/Dropbox/notes',
-                  \ 'syntax': 'markdown', 'ext': '.md',
-                  \ 'index': 'Wiki'}]
+let g:vimwiki_list = [{
+      \ 'path': '~/Dropbox/notes',
+      \ 'syntax': 'markdown', 
+      \ 'ext': '.md',
+      \ 'index': 'Wiki',
+      \ 'auto_toc': 1 
+      \ }]
 let g:vimwiki_global_ext = 0
 " }}}
 " MD Img Paste {{{
