@@ -11,5 +11,5 @@
 	path = .doom-emacs
 	url = https://github.com/hlissner/doom-emacs.git
 [submodule ".emacs.d"]
-	path = .emacs.d
+	path = .config/emacs
 	url = https://github.com/plexus/chemacs2.git
