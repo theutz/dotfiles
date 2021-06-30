@@ -8,5 +8,5 @@
 	path = .config/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes.git
 [submodule "/Users/michaelutz/.emacs.d"]
-	path = .emacs.d
+	path = .doom-emacs
 	url = https://github.com/hlissner/doom-emacs.git
