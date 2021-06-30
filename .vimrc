@@ -48,7 +48,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-textobj-delimited'
 Plug 'tpope/vim-eunuch'
@@ -56,6 +55,9 @@ Plug 'justinmk/vim-sneak'
 Plug 'vimwiki/vimwiki'
 Plug 'Alok/notational-fzf-vim'
 Plug 'ferrine/md-img-paste.vim'
+if has('nvim')
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+endif
 
 " Navigation
 set rtp+=/usr/local/opt/fzf
@@ -63,6 +65,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
@@ -77,7 +80,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-obsession'
-Plug 'liuchengxu/vim-which-key'
 Plug 'edkolev/tmuxline.vim'
 Plug 'sunaku/vim-shortcut'
 Plug 'junegunn/vim-peekaboo'
@@ -310,9 +312,15 @@ let g:vimwiki_list = [{
       \ 'syntax': 'markdown', 
       \ 'ext': '.md',
       \ 'index': 'Wiki',
-      \ 'auto_toc': 1 
+      \ 'auto_toc': 1,
+      \ 'auto_tags': 1,
+      \ 'auto_generate_links': 1,
+      \ 'auto_diary_index': 1,
+      \ 'auto_generate_tags': 1
       \ }]
 let g:vimwiki_global_ext = 0
+let g:vimwiki_toc_header_level = 2
+let g:vimwiki_auto_chdir = 1
 " }}}
 " MD Img Paste {{{
 let g:mdip_imgdir = 'img'

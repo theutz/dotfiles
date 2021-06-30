@@ -3,14 +3,14 @@
 
 # Setup Options
 yabai -m config layout float
-yabai -m config window_placement first_child
-yabai -m config auto_balance off
+# yabai -m config window_placement first_child
+# yabai -m config auto_balance off
 # yabai -m config focus_follows_mouse off
 # yabai -m config mouse_follows_focus on
-yabai -m config window_opacity on
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.9
-yabai -m config window_shadow off
+# yabai -m config window_opacity on
+# yabai -m config active_window_opacity 1.0
+# yabai -m config normal_window_opacity 1.0
+# yabai -m config window_shadow on
 yabai -m config window_topmost on
 
 # Setup Gaps
@@ -29,28 +29,25 @@ grids=(
   [fullscreen]="1:1:1:1:1:1"
 )
 
-yabai -m rule --add app="^System Preferences$" \
-  sticky=on \
-  grid=20:20:6:4:0:0
-yabai -m rule --add app="^Reminders$" \
-  grid=1:4:1:0:2:1
-yabai -m rule --add app="^Calendar$" \
-  grid="${grids[fullscreen]}"
-yabai -m rule --add app="^Music" \
-  grid="${grids[fullscreen]}"
-yabai -m rule --add app="^kitty" \
-  grid=1:1:1:1:1:1
-
-# Automatcially maximize
-for app in "^kitty" "^Airmail"; do
+# Automatically make some apps fullscreen
+for app in \
+  "^Finder$"\
+  "^Alfred"
+do
+  yabai -m rule --add app!="${app}" \
+    grid="${grids[fullscreen]}"
   yabai -m signal --add event="application_activated" \
-    app="$app"\
+    app!="$app"\
     action="$(cat << EOF
       yabai -m query --windows \
       | jq --arg processId "\${YABAI_PROCESS_ID}" \
           'map(select(.pid == (\$processId | tonumber) and .focused == 1))[0].id' \
-      | xargs -I _ yabai -m window _ --grid 1:1:1:1:1:1
+      | xargs -I _ yabai -m window _ --grid ${grids[fullscreen]}
 EOF
   )"
 done
 
+# Resize some apps differently
+yabai -m rule --add app="^System Preferences$" \
+  sticky=on \
+  grid=20:20:6:4:0:0
