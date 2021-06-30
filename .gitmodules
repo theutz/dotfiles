@@ -13,6 +13,3 @@
 [submodule ".emacs.d"]
 	path = .config/emacs
 	url = https://github.com/plexus/chemacs2.git
-[submodule ".emacs.default"]
-	path = .emacs.default
-	url = https://github.com/theutz/.emacs.default.git
