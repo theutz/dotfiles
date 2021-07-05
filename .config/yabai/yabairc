@@ -31,13 +31,18 @@ grids=(
 
 # Automatically make some apps fullscreen
 for app in \
-  "^Finder$"\
-  "^Alfred"
+  "^Calendar"\
+  "^Music"\
+  "^Airmail"\
+  "^Notes"\
+  "^Reminders"\
+  "^Safari"
+  "^Google Chrome"
 do
-  yabai -m rule --add app!="${app}" \
+  yabai -m rule --add app="${app}" \
     grid="${grids[fullscreen]}"
   yabai -m signal --add event="application_activated" \
-    app!="$app"\
+    app="$app"\
     action="$(cat << EOF
       yabai -m query --windows \
       | jq --arg processId "\${YABAI_PROCESS_ID}" \

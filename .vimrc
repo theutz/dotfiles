@@ -86,6 +86,9 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+if has('nvim')
+  Plug 'folke/which-key.nvim'
+endif
 
 call plug#end()
 
@@ -325,6 +328,15 @@ let g:vimwiki_auto_chdir = 1
 " MD Img Paste {{{
 let g:mdip_imgdir = 'img'
 " }}}
+" Which Key {{{
+lua << EOF
+  require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+"}}}
 "}}}
 " Functions {{{
 function! s:ToggleNumberStyle()
