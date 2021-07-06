@@ -56,9 +56,6 @@
 ;;----------------------- My Config -------------------------------------------
 
 ;; turn on packages
-(use-package! edit-server
-  :config
-  (edit-server-start))
 
 ;; Use magit for yadm
 (require 'tramp)
@@ -91,3 +88,6 @@
 (map! :leader :desc "Previous Tab Group" :n "{" #'centaur-tabs-backward-group)
 (map! :leader :desc "Switch Tab Group" :n "T" #'centaur-tabs-counsel-switch-group)
 (setq centaur-tabs-set-icons t)
+
+;; Setup evil-snipe
+(setq evil-snipe-spillover-scope 'buffer)
