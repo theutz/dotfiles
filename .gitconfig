@@ -32,28 +32,35 @@
 
 # Merge / Mergetool
 [merge]
-	tool = vimdiff
+	tool = emacsclient
 	ff = false
 	conflictstyle = diff3
+[mergetool]
+	keepBackup = false
+	prompt = false
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
 [mergetool "emacs"]
 	cmd = emacs --eval $MERGED
 [mergetool "emacsclient"]
 	cmd = emacsclient -c -a '' --eval $MERGED
-[mergetool]
-	keepBackup = false
-	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
 
 # Diff
 [diff]
-	tool = vimdiff
+	tool = emacsclient
+[difftool]
+	prompt = false
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "emacs"]
 	cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [difftool "emacsclient"]
 	cmd = emacsclient -c -a '' --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 # Aliases
 [alias]
@@ -64,10 +71,3 @@
 	defaultBranch = main
 [tag]
 	gpgSign = true
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-	prompt = false
