@@ -1,96 +1,11 @@
-" Basic Settings {{{
-" Options{{{
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set relativenumber
-set showcmd
-set cursorline
-set wildmenu
-set lazyredraw
-set showmatch
-set timeout " default, but necessary for vim-which-key
-set timeoutlen=500
-set incsearch
-set hlsearch
-set modeline
-set foldenable
-set foldlevelstart=10
-set foldnestmax=10
-set foldmethod=indent
-set splitright
-set splitbelow
-set undofile
-set undodir=~/.vim/undo
-set autoread
-set nowrap
-"}}}
-" Variables{{{
-let mapleader = "\<Space>"
-let maplocalleader = ","
-"}}}
-" Filetype{{{
-filetype indent on
-"}}}
-"}}}
-" Plugins {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" Basic Settings
+lua require("options")
+lua require("variables")
 
+filetype plugin indent on
 
-call plug#begin('~/.vim/plugged')
-
-" Editing
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'machakann/vim-textobj-delimited'
-Plug 'tpope/vim-eunuch'
-Plug 'justinmk/vim-sneak'
-Plug 'vimwiki/vimwiki'
-Plug 'Alok/notational-fzf-vim'
-Plug 'ferrine/md-img-paste.vim'
-if has('nvim')
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-endif
-
-" Navigation
-set rtp+=/usr/local/opt/fzf
-Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'christoomey/vim-tmux-navigator'
-
-" Version Control
-Plug 'tpope/vim-fugitive'
-
-" Syntax Highlighting
-Plug 'sheerun/vim-polyglot'
-Plug 'freitass/todo.txt-vim'
-Plug 'flazz/vim-colorschemes'
-
-" User Interface
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-obsession'
-Plug 'edkolev/tmuxline.vim'
-Plug 'sunaku/vim-shortcut'
-Plug 'junegunn/vim-peekaboo'
-Plug 'mbbill/undotree'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-if has('nvim')
-  Plug 'folke/which-key.nvim'
-endif
-
-call plug#end()
+" Plugins
+exec 'source '.stdpath('config').'/vim-plug.vim'
 
 " CoC extensions
 let g:coc_global_extensions = [
@@ -120,7 +35,7 @@ let g:coc_global_extensions = [
       \ 'coc-gitignore',
       \ 'coc-emmet'
       \ ]
-"}}}
+"
 " Post-Plugin Settings {{{
 
 " Color scheme{{{
@@ -329,13 +244,6 @@ let g:vimwiki_auto_chdir = 1
 let g:mdip_imgdir = 'img'
 " }}}
 " Which Key {{{
-lua << EOF
-  require("which-key").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
 "}}}
 "}}}
 " Functions {{{
@@ -355,6 +263,7 @@ command! -nargs=0 REPL :CocCommand terminal.REPL
 " }}}
 " Mappings {{{
 " Search {{{
+lua require("mappings")
 nnoremap <silent> <leader><leader> :Maps<CR>
 nnoremap <silent> <Leader>ss :Rg<CR>
 nnoremap <silent> <Leader>sl :BLines<CR>
