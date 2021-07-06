@@ -7,6 +7,10 @@ filetype plugin indent on
 " Plugins
 exec 'source '.stdpath('config').'/vim-plug.vim'
 
+lua << EOF
+  require('which-key').setup{}
+EOF
+
 " CoC extensions
 let g:coc_global_extensions = [
       \ 'coc-json', 
@@ -263,7 +267,6 @@ command! -nargs=0 REPL :CocCommand terminal.REPL
 " }}}
 " Mappings {{{
 " Search {{{
-lua require("mappings")
 nnoremap <silent> <leader><leader> :Maps<CR>
 nnoremap <silent> <Leader>ss :Rg<CR>
 nnoremap <silent> <Leader>sl :BLines<CR>
