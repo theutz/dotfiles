@@ -50,3 +50,7 @@
 ;(unpin! t)
 
 (package! edit-server)
+(package! keychain-environment)
+(package! forge)
+(package! eslintd-fix)
+(package! add-node-modules-path)

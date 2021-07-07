@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "IBM Plex Mono" :size 14)
-      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14))
+(setq doom-font (font-spec :family "IBM Plex Mono" :size 12)
+      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 12))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -79,19 +79,10 @@
                (tramp-remote-shell "/bin/sh")
                (tramp-remote-shell-args "-c")))
 
-;; Change appearance based on time-of-day
-(defun my/apply-theme (appearance)
-  "Load theme, taking current system APPEARANCE into consideration."
-  (mapc #'disable-theme custom-enabled-themes)
-  (pcase appearance
-    ('light (load-theme 'doom-tomorrow-day t))
-    ('dark (load-theme 'doom-tomorrow-night t))))
-
-(add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-
 ;; Set frame maximized at startup
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(dolist (l '(initial-frame-alist
+             default-frame-alist))
+  (add-to-list l '(fullscreen . maximized)))
 
 ;; Setup centaur-tabs keyboard shortcuts
 (map! :leader :desc "Next Tab" :n "]" #'centaur-tabs-forward)
@@ -103,3 +94,32 @@
 
 ;; Setup evil-snipe
 (setq evil-snipe-spillover-scope 'buffer)
+
+;; Magit keys
+(defun utz/yadm-magit-status ()
+  (interactive)
+  (magit-status "/yadm::"))
+
+(map! :leader :desc "YADM Status" :n "gd" #'utz/yadm-magit-status)
+
+;; Always revert files to what they are on disk to avoid having emacs ask for it
+;; when changing files via git
+(global-auto-revert-mode)
+
+;; Keychain Environment
+(require 'keychain-environment)
+(use-package! keychain-environment
+  :config
+  (keychain-refresh-environment))
+
+;; Forge
+(use-package forge
+  :after magit)
+
+;; Add node_modules to exec path
+(use-package! add-node-modules-path
+  :hook ((js2-mode typescript-mode)) . #'add-node-modules-path)
+
+;; Eslint for faaster formatting
+(use-package! eslintd-fix
+  :hook ((js2-mode typescript-mode) . #'eslintd-fix-mode))

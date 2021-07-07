@@ -14,7 +14,7 @@ yabai -m config layout float
 yabai -m config window_topmost on
 
 # Setup Gaps
-pad=10
+pad=0
 
 for dir in top left right bottom
 do
@@ -24,35 +24,35 @@ done
 yabai -m config window_gap $pad
 
 # Rules
-declare -A grids
-grids=(
-  [fullscreen]="1:1:1:1:1:1"
-)
+# declare -A grids
+# grids=(
+#   [fullscreen]="1:1:1:1:1:1"
+# )
 
 # Automatically make some apps fullscreen
-for app in \
-  "^Calendar"\
-  "^Music"\
-  "^Airmail"\
-  "^Notes"\
-  "^Reminders"\
-  "^Safari"
-  "^Google Chrome"
-do
-  yabai -m rule --add app="${app}" \
-    grid="${grids[fullscreen]}"
-  yabai -m signal --add event="application_activated" \
-    app="$app"\
-    action="$(cat << EOF
-      yabai -m query --windows \
-      | jq --arg processId "\${YABAI_PROCESS_ID}" \
-          'map(select(.pid == (\$processId | tonumber) and .focused == 1))[0].id' \
-      | xargs -I _ yabai -m window _ --grid ${grids[fullscreen]}
-EOF
-  )"
-done
+# for app in \
+#   "^Calendar"\
+#   "^Music"\
+#   "^Airmail"\
+#   "^Notes"\
+#   "^Reminders"\
+#   "^Safari"
+#   "^Google Chrome"
+# do
+#   yabai -m rule --add app="${app}" \
+#     grid="${grids[fullscreen]}"
+#   yabai -m signal --add event="application_activated" \
+#     app="$app"\
+#     action="$(cat << EOF
+#       yabai -m query --windows \
+#       | jq --arg processId "\${YABAI_PROCESS_ID}" \
+#           'map(select(.pid == (\$processId | tonumber) and .focused == 1))[0].id' \
+#       | xargs -I _ yabai -m window _ --grid ${grids[fullscreen]}
+# EOF
+#   )"
+# done
 
 # Resize some apps differently
-yabai -m rule --add app="^System Preferences$" \
-  sticky=on \
-  grid=20:20:6:4:0:0
+# yabai -m rule --add app="^System Preferences$" \
+#   sticky=on \
+#   grid=20:20:6:4:0:0
