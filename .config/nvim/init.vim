@@ -1,15 +1,71 @@
 " Basic Settings
 lua require("options")
-lua require("variables")
+
+" Variables{{{
+let mapleader = "\<Space>"
+let maplocalleader = ","
+"}}}
 
 filetype plugin indent on
 
-" Plugins
-exec 'source '.stdpath('config').'/vim-plug.vim'
+" Plugins {{{
+" Auto-load Vim Plug if it's not installed{{{
+let data_dir = stdpath('data') . '/site'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-lua << EOF
-  require('which-key').setup{}
-EOF
+call plug#begin(stdpath('data') . '/plugged')
+"}}}
+
+" Editing
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'vimwiki/vimwiki'
+Plug 'Alok/notational-fzf-vim'
+Plug 'ferrine/md-img-paste.vim'
+
+if has('nvim')
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+endif
+
+" Navigation
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
+Plug 'junegunn/fzf.vim'
+
+" Version Control
+Plug 'tpope/vim-fugitive'
+
+" Syntax Highlighting
+Plug 'sheerun/vim-polyglot'
+Plug 'freitass/todo.txt-vim'
+Plug 'flazz/vim-colorschemes'
+
+" User Interface
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-obsession'
+Plug 'edkolev/tmuxline.vim'
+Plug 'sunaku/vim-shortcut'
+Plug 'junegunn/vim-peekaboo'
+Plug 'mbbill/undotree'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+if has('nvim')
+  Plug 'folke/which-key.nvim'
+endif
+
+"{{{
+call plug#end()
+"}}}
+" }}}
 
 " CoC extensions
 let g:coc_global_extensions = [

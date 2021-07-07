@@ -32,7 +32,7 @@
 
 # Merge / Mergetool
 [merge]
-	tool = emacsclient
+	tool = vimdiff
 	ff = false
 	conflictstyle = diff3
 [mergetool]
@@ -50,7 +50,7 @@
 
 # Diff
 [diff]
-	tool = emacsclient
+	tool = vimdiff
 [difftool]
 	prompt = false
 [difftool "vscode"]
