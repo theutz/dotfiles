@@ -442,6 +442,12 @@ augroup buffers_to_close_with_q
   autocmd FileType help nmap <buffer> q <C-w>q
 augroup END
 
+augroup my_fugitive
+  au!
+  autocmd FileType fugitive nmap <buffer> Pu :Git push<CR>
+  autocmd FileType fugitive nmap <buffer> Fu :Git pull<CR>
+augroup END
+
 augroup reload_my_vimrc
   au!
   au BufWritePost .vimrc mkview
