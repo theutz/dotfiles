@@ -1,5 +1,5 @@
-" Basic Settings {{{
-" Options
+" Vim Settings {{{
+" Options{{{
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -25,17 +25,19 @@ set undofile
 set undodir=~/.vim/undo
 set autoread
 set nowrap
-
+"}}}
+" Filetype{{{
 filetype plugin indent on
-
-" Variables
-
+"}}}
+" Variables{{{
 let mapleader = "\<Space>"
 let maplocalleader = ","
 let g:netrw_localrmdir="rm -r"
 "}}}
+"}}}
 " Plugins {{{
-" Auto-load Vim Plug if it's not installed{{{
+" {{{
+" Auto-load Vim Plug if it's not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -43,8 +45,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 "}}}
-" Editing
+" Editing{{{
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -53,8 +56,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'Alok/notational-fzf-vim'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'junegunn/vim-easy-align'
-
-" Text Objects
+"}}}
+" Text Objects{{{
 Plug 'kana/vim-textobj-user'
 Plug 'thinca/vim-textobj-between'
 Plug 'fvictorio/vim-textobj-backticks'
@@ -63,23 +66,26 @@ Plug 'kana/vim-textobj-indent'
 if has('nvim')
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 endif
-
-" Navigation
+"}}}
+" Navigation{{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 Plug 'rbgrouleff/bclose.vim'
-
-" Version Control
+Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-dirvish'
+Plug 'francoiscabrol/ranger.vim'
+"}}}
+" Version Control{{{
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/git-messenger.vim'
-
-" Syntax Highlighting
+"}}}
+" Syntax Highlighting{{{
 Plug 'sheerun/vim-polyglot'
 Plug 'freitass/todo.txt-vim'
 Plug 'flazz/vim-colorschemes'
-
-" User Interface
+"}}}
+" User Interface{{{
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
@@ -90,13 +96,13 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-
+Plug 'blueyed/vim-diminactive'
+"}}}
 "{{{
 call plug#end()
 "}}}
 " }}}
-" Post-Plugin Settings {{{
-
+" Plugin Settings {{{
 " Color scheme{{{
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -330,8 +336,9 @@ let g:vimwiki_auto_chdir = 1
 " MD Img Paste {{{
 let g:mdip_imgdir = 'img'
 " }}}
-" netrw
+" netrw{{{
 let g:netrw_localrmdir='rm -r'
+"}}}
 "}}}
 " Functions {{{
 function! s:ToggleNumberStyle()
@@ -344,11 +351,31 @@ function! s:ToggleNumberStyle()
 endfunction
 "}}}
 " Commands {{{
+" Prettier{{{
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"}}}
+" Terminal{{{
 command! -nargs=0 Terminal :CocCommand terminal.Toggle
 command! -nargs=0 REPL :CocCommand terminal.REPL
+"}}}
+" Dirvish{{{
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
+"}}}
 " }}}
 " Mappings {{{
+" Without Leader{{{
+" FZF{{{
+nnoremap <silent> <C-p> :GFiles<CR>
+"}}}
+" Easy Align{{{
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+"}}}
+"}}}
+" Leader {{{
 " Search {{{
 nnoremap <silent> <leader><leader> :Maps<CR>
 nnoremap <silent> <Leader>ss :Rg<CR>
@@ -361,12 +388,9 @@ nnoremap <silent> <Leader>sc :Commands<CR>
 nnoremap <silent> <leader>sm :Marks<CR>
 nnoremap <silent> <leader>ls :Buffers<CR>
 nnoremap <silent> <leader>sb :Buffers<CR>
-nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <leader>sh :History<CR>
 nnoremap <silent> <leader>sn :NV<CR>
 "}}}
-" Motions {{{
-map <LocalLeader> <Plug>(easymotion-prefix)
-" }}}
 " File {{{
 nnoremap <silent> <Leader>fr :RangerCurrentFile<CR>
 nnoremap <silent> <Leader>fR :Ranger<CR>
@@ -395,17 +419,17 @@ nmap <silent> <Leader>tt <Plug>(coc-terminal-toggle)<CR>
 nmap <silent> <Leader>tg :Goyo<CR>
 " }}}
 " Actions {{{
-" Markdown Clipboard Image
+" Markdown Clipboard Image{{{
 nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
-
-" Easy Align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-" }}}
 "}}}
+"}}}
+"}}}
+" Local Leader {{{
+map <LocalLeader> <Plug>(easymotion-prefix)
+" }}}
+" }}}
 " Autocommands {{{
-
-" Open help in a vertical split
+" Open help in a vertical split{{{
 augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
@@ -416,38 +440,41 @@ augroup vimrc_help
   autocmd FileType help nnoremap <buffer> t /\|\zs\S\+\ze\|<CR>
   autocmd FileType help nnoremap <buffer> T ?\|\zs\S\+\ze\|<CR>
 augroup END
-
-" Open man pages in a vertical split
+"}}}
+" Open man pages in a vertical split{{{
 augroup man_pages
   autocmd!
   autocmd BufEnter *.txt if &filetype == 'man' | wincmd L | endif
 augroup END
-
-" Redraw screen on resize
+"}}}
+" Redraw screen on resize{{{
 augroup resizing
   autocmd!
   autocmd VimResized * exe "normal \<C-W>="
 augroup END
-
-" Use limelight with goyo
+"}}}
+" Use limelight with goyo{{{
 augroup goyo_and_limelight
   autocmd!
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
 augroup END
-
+"}}}
+" Close some buffers with just `q`{{{
 augroup buffers_to_close_with_q
   autocmd!
   autocmd FileType fugitive nmap <buffer> q <C-w>q
   autocmd FileType help nmap <buffer> q <C-w>q
 augroup END
-
+"}}}
+" Fugitive autocommands{{{
 augroup my_fugitive
   au!
   autocmd FileType fugitive nmap <buffer> Pu :Git push<CR>
   autocmd FileType fugitive nmap <buffer> Fu :Git pull<CR>
 augroup END
-
+"}}}
+" Reload vimrc automatically{{{
 augroup reload_my_vimrc
   au!
   au BufWritePost .vimrc mkview
@@ -456,5 +483,12 @@ augroup reload_my_vimrc
         \ | loadview
         \ | echo $MYVIMRC . ' reloaded!'
 augroup END
+"}}}
+" Reload tmux after .tmux.conf write{{{
+augroup tmux_reload
+  au!
+  au BufWritePost .tmux.conf !tmux source-file ~/.tmux.conf\; display-message '~/.tmux.conf reloaded\!'
+augroup END
+"}}}
 "}}}
 " vim: fdm=marker fdl=0 ts=2 sw=2 et ai si
