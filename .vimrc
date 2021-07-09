@@ -55,7 +55,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'vimwiki/vimwiki'
 Plug 'Alok/notational-fzf-vim'
 Plug 'ferrine/md-img-paste.vim'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-eas-align'
 "}}}
 " Text Objects{{{
 Plug 'kana/vim-textobj-user'
@@ -102,7 +102,8 @@ Plug 'blueyed/vim-diminactive'
 call plug#end()
 "}}}
 " }}}
-" Plugin Settings {{{
+"
+"Plugin Settings {{{
 " Color scheme{{{
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -341,6 +342,20 @@ let g:netrw_localrmdir='rm -r'
 "}}}
 "}}}
 " Functions {{{
+function! s:OpenPluginReadme()
+  let l:line = getline(".")
+
+  if (match(l:line, "^ *Plug ") > -1)
+    let l:segment = matchstr(l:line, '\(\w\|[.-]\)*/\(\w\|[.-]\)*')
+    let l:url = "https://github.com/".l:segment
+    echo "Opening '".l:url."' in browser..."
+    silent exec "!open '".l:url."'"
+  else
+    echo "No `Plug` found in line."
+    norm j
+  endif
+endfunction
+
 function! s:ToggleNumberStyle()
   if (&relativenumber == 1)
     set norelativenumber
@@ -429,6 +444,12 @@ map <LocalLeader> <Plug>(easymotion-prefix)
 " }}}
 " }}}
 " Autocommands {{{
+" Open plugin readmes{{{
+augroup open_plugin_readmes
+  au!
+  autocmd FileType vim nmap <buffer> <CR> :call <SID>OpenPluginReadme()<CR>
+augroup END
+"}}}
 " Open help in a vertical split{{{
 augroup vimrc_help
   autocmd!
