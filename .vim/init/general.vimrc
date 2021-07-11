@@ -36,4 +36,4 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme srcery
+colorscheme spaceduck
