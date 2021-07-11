@@ -5,6 +5,9 @@ nnoremap <silent> <C-p> :GFiles<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" Window
+nmap <Leader>w <C-w>
+
 " Search 
 nnoremap <silent> <leader><leader> :Maps<CR>
 nnoremap <silent> <Leader>ss :Rg<CR>
@@ -24,6 +27,7 @@ nnoremap <silent> <leader>sn :NV<CR>
 nnoremap <silent> <Leader>fr :RangerCurrentFile<CR>
 nnoremap <silent> <Leader>fR :Ranger<CR>
 nnoremap <silent> <Leader>fs :w<CR>
+nnoremap <Leader>fcd :lcd %:p:h <Bar> pwd<CR>
 
 " Buffers 
 nnoremap <silent> <Leader>bn :bn<CR>
@@ -39,7 +43,7 @@ nnoremap <silent> <Leader>qp :so $MYVIMRC <Bar> PlugInstall<CR>
 nnoremap <silent> <Leader>qr :source $MYVIMRC <Bar> echom $MYVIMRC . " reloaded!"<CR>
 
 " Toggles 
-nnoremap <silent> <Leader>tn :call <SID>ToggleNumberStyle()<CR>
+nmap <silent> <Leader>tn <Plug>(toggle-number-style)
 nnoremap <silent> <Leader>t<Space> :nohlsearch<CR>
 nnoremap <silent> <Leader>tu :UndotreeToggle<CR>
 nnoremap <silent> <Leader>tf :NERDTreeToggle<CR>
@@ -52,3 +56,4 @@ nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
 " Local Leader 
 map <LocalLeader> <Plug>(easymotion-prefix)
+

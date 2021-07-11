@@ -36,4 +36,4 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme Atelier_SulphurpoolDark
+colorscheme srcery

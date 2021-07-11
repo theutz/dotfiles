@@ -5,10 +5,13 @@ endif
 
 call plug#begin('~/.vim/plugged')
 "}}}
+
 Plug 'airblade/vim-gitgutter'
 Plug 'Alok/notational-fzf-vim'
 Plug 'blueyed/vim-diminactive'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'sheerun/vim-polyglot'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'flazz/vim-colorschemes'
@@ -42,6 +45,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
+Plug 'srcery-colors/srcery-vim'
+Plug '~/.vim/theutz/toggle-number-style'
 
 if has('nvim')
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
