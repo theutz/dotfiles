@@ -4,9 +4,6 @@
 [submodule "home/.zprezto"]
 	path = .zprezto
 	url = https://github.com/theutz/prezto.git
-[submodule "home/.config/kitty/kitty-themes"]
-	path = .config/kitty/kitty-themes
-	url = https://github.com/dexpota/kitty-themes.git
 [submodule "/Users/michaelutz/.emacs.d"]
 	path = .doom-emacs
 	url = https://github.com/hlissner/doom-emacs.git
