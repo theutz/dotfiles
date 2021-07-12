@@ -1,4 +1,10 @@
-"source $HOME/.vim/init/plug.vimrc " plugin loader
+if &compatible | set nocompatible | endif
+
+filetype plugin indent on
+
+" Remove all autocmmands
+autocmd!
+
 source $HOME/.config/nvim/init/general.vimrc " vim settings
 source $HOME/.config/nvim/init/functions.vimrc " custom functions
 source $HOME/.config/nvim/init/commands.vimrc " custom commands
