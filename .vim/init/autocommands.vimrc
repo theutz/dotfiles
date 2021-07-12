@@ -1,17 +1,11 @@
-" Open help in a vertical split
-augroup vimrc_help
+augroup help_pages_stuff
   autocmd!
-  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
-augroup END
-
-" Open man pages in a vertical split
-augroup man_pages
-  autocmd!
-  autocmd BufEnter *.txt if &filetype == 'man' | wincmd L | endif
+  autocmd BufEnter *.txt if (&buftype == 'help' || &filetype == 'man') | wincmd L | endif
+  autocmd FileType help nmap <buffer> q <C-w>q
 augroup END
 
 " Redraw screen on resize
-augroup resizing
+augroup resize_on_redraw
   autocmd!
   autocmd VimResized * exe "normal \<C-W>="
 augroup END
@@ -23,16 +17,10 @@ augroup goyo_and_limelight
   autocmd! User GoyoLeave Limelight!
 augroup END
 
-" Close some buffers with just `q`
-augroup buffers_to_close_with_q
-  autocmd!
-  autocmd FileType fugitive nmap <buffer> q <C-w>q
-  autocmd FileType help nmap <buffer> q <C-w>q
-augroup END
-
 " Fugitive autocommands
-augroup my_fugitive
+augroup fugitive_buffer_maps
   au!
+  autocmd FileType fugitive nmap <buffer> q <C-w>q
   autocmd FileType fugitive nmap <buffer> Pu :Git push<CR>
   autocmd FileType fugitive nmap <buffer> Fu :Git pull<CR>
 augroup END
