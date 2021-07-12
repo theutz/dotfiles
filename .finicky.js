@@ -25,6 +25,7 @@ module.exports = {
         finicky.matchDomains(/(docs|meet)\.google.com/),
         finicky.matchDomains(/.*\.bugsnag.com/),
         finicky.matchDomains(/.*\.greenhouse.io/),
+        finicky.matchDomains(/.*\.intercom(cdn)?.com/),
         ({ url }) =>
           url.host === "github.com" && url.pathname.includes("smartlyio"),
       ],
