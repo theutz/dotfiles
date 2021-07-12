@@ -12,7 +12,7 @@ Plug 'blueyed/vim-diminactive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'francoiscabrol/ranger.vim'
@@ -46,7 +46,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'srcery-colors/srcery-vim'
-Plug '~/.vim/theutz/toggle-number-style'
+Plug 'theutz/toggle-number-style.vim', { 'branch': 'main' }
 
 if has('nvim')
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
