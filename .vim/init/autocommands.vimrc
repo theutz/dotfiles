@@ -2,12 +2,6 @@
 augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
-  autocmd FileType help nnoremap <buffer> <CR> <C-]>
-  autocmd FileType help nnoremap <buffer> <BS> <C-T>
-  autocmd FileType help nnoremap <buffer> o /'\l\{2,\}'<CR>
-  autocmd FileType help nnoremap <buffer> O ?'\l\{2,\}'<CR>
-  autocmd FileType help nnoremap <buffer> t /\|\zs\S\+\ze\|<CR>
-  autocmd FileType help nnoremap <buffer> T ?\|\zs\S\+\ze\|<CR>
 augroup END
 
 " Open man pages in a vertical split
