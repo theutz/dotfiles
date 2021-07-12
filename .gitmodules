@@ -10,9 +10,6 @@
 [submodule ".emacs.d"]
 	path = .config/emacs
 	url = https://github.com/plexus/chemacs2.git
-[submodule ".config/the-joy-of-emacs"]
-	path = .config/the-joy-of-emacs
-	url = https://github.com/theutz/the-joy-of-emacs.git
 [submodule ".config/nvim/pack/github/start/vim-surround"]
 	path = .config/nvim/pack/github/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
