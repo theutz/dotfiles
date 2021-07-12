@@ -40,9 +40,6 @@
 [submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/ferrine/md-img-paste.vim"]
 	path = /Users/michaelutz/.config/nvim/pack/theutz/start/ferrine/md-img-paste.vim
 	url = https://github.com/ferrine/md-img-paste.vim.git
-[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/flazz/vim-colorschemes"]
-	path = /Users/michaelutz/.config/nvim/pack/theutz/start/flazz/vim-colorschemes
-	url = https://github.com/flazz/vim-colorschemes.git
 [submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/francoiscabrol/ranger.vim"]
 	path = /Users/michaelutz/.config/nvim/pack/theutz/start/francoiscabrol/ranger.vim
 	url = https://github.com/francoiscabrol/ranger.vim.git
