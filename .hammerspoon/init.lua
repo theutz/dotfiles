@@ -44,6 +44,9 @@ Install:andUse('WinWin', {
 
 -- Other Hotkeys to bind
 
+hs.hotkey.bindSpec({hyper, "t"}, nil, function()
+    hs.execute('date "+The time is %H:%M" | say')
+end)
 hs.hotkey.bindSpec({'', 'f20'}, function() hs.hints.windowHints() end)
 
 -- Report Success!!
