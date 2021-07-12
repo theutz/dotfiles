@@ -13,3 +13,243 @@
 [submodule ".config/the-joy-of-emacs"]
 	path = .config/the-joy-of-emacs
 	url = https://github.com/theutz/the-joy-of-emacs.git
+[submodule ".config/nvim/pack/theutz/start/vim-surround"]
+	path = .config/nvim/pack/theutz/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/airblade/vim-gitgutter"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/airblade/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/Alok/notational-fzf-vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/Alok/notational-fzf-vim
+	url = https://github.com/Alok/notational-fzf-vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/blueyed/vim-diminactive"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/blueyed/vim-diminactive
+	url = https://github.com/blueyed/vim-diminactive.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/christoomey/vim-tmux-navigator"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/christoomey/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/sheerun/vim-polyglot"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/sheerun/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/pineapplegiant/spaceduck"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/pineapplegiant/spaceduck
+	url = https://github.com/pineapplegiant/spaceduck.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/edkolev/tmuxline.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/edkolev/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/ferrine/md-img-paste.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/ferrine/md-img-paste.vim
+	url = https://github.com/ferrine/md-img-paste.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/flazz/vim-colorschemes"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/flazz/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/francoiscabrol/ranger.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/francoiscabrol/ranger.vim
+	url = https://github.com/francoiscabrol/ranger.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/freitass/todo.txt-vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/freitass/todo.txt-vim
+	url = https://github.com/freitass/todo.txt-vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/fvictorio/vim-textobj-backticks"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/fvictorio/vim-textobj-backticks
+	url = https://github.com/fvictorio/vim-textobj-backticks.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/fzf"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/fzf.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/goyo.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/limelight.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/limelight.vim
+	url = https://github.com/junegunn/limelight.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/vim-easy-align"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/vim-peekaboo"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/junegunn/vim-peekaboo
+	url = https://github.com/junegunn/vim-peekaboo.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/justinmk/vim-dirvish"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/justinmk/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/kana/vim-textobj-indent"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/kana/vim-textobj-indent
+	url = https://github.com/kana/vim-textobj-indent.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/kana/vim-textobj-user"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/kana/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/mbbill/undotree"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/mbbill/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/rbgrouleff/bclose.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/rbgrouleff/bclose.vim
+	url = https://github.com/rbgrouleff/bclose.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/rhysd/git-messenger.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/rhysd/git-messenger.vim
+	url = https://github.com/rhysd/git-messenger.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/sunaku/vim-shortcut"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/sunaku/vim-shortcut
+	url = https://github.com/sunaku/vim-shortcut.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/thinca/vim-textobj-between"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/thinca/vim-textobj-between
+	url = https://github.com/thinca/vim-textobj-between.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-abolish"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-commentary"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-eunuch"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-fugitive"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-obsession"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-obsession
+	url = https://github.com/tpope/vim-obsession.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-repeat"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-surround"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-unimpaired"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-vinegar"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tpope/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-airline/vim-airline"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-airline/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-airline/vim-airline-themes"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-airline/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vimwiki/vimwiki"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vimwiki/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/srcery-colors/srcery-vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/srcery-colors/srcery-vim
+	url = https://github.com/srcery-colors/srcery-vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/theutz/toggle-number-style.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/theutz/toggle-number-style.vim
+	url = https://github.com/theutz/toggle-number-style.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-gitgutter"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/notational-fzf-vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/notational-fzf-vim
+	url = https://github.com/Alok/notational-fzf-vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-diminactive"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-diminactive
+	url = https://github.com/blueyed/vim-diminactive.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-tmux-navigator"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-polyglot"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/spaceduck"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/spaceduck
+	url = https://github.com/pineapplegiant/spaceduck.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/tmuxline.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/md-img-paste.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/md-img-paste.vim
+	url = https://github.com/ferrine/md-img-paste.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-colorschemes"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/ranger.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/ranger.vim
+	url = https://github.com/francoiscabrol/ranger.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/todo.txt-vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/todo.txt-vim
+	url = https://github.com/freitass/todo.txt-vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-backticks"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-backticks
+	url = https://github.com/fvictorio/vim-textobj-backticks.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/fzf"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/fzf.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/goyo.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/limelight.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/limelight.vim
+	url = https://github.com/junegunn/limelight.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-easy-align"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-peekaboo"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-peekaboo
+	url = https://github.com/junegunn/vim-peekaboo.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-dirvish"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-indent"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-indent
+	url = https://github.com/kana/vim-textobj-indent.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-user"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/undotree"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/bclose.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/bclose.vim
+	url = https://github.com/rbgrouleff/bclose.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/git-messenger.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/git-messenger.vim
+	url = https://github.com/rhysd/git-messenger.vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-shortcut"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-shortcut
+	url = https://github.com/sunaku/vim-shortcut.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-between"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-textobj-between
+	url = https://github.com/thinca/vim-textobj-between.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-abolish"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-commentary"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-eunuch"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-fugitive"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-obsession"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-obsession
+	url = https://github.com/tpope/vim-obsession.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-repeat"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-unimpaired"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-vinegar"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/vim-airline-themes"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/srcery-vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/srcery-vim
+	url = https://github.com/srcery-colors/srcery-vim.git
+[submodule "/Users/michaelutz/.config/nvim/pack/theutz/start/toggle-number-style.vim"]
+	path = /Users/michaelutz/.config/nvim/pack/theutz/start/toggle-number-style.vim
+	url = https://github.com/theutz/toggle-number-style.vim.git
+[submodule ".config/nvim/pack/theutz/start/coc.nvim"]
+	path = .config/nvim/pack/theutz/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
+[submodule ".config/nvim/pack/theutz/start/vim-airline"]
+	path = .config/nvim/pack/theutz/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
