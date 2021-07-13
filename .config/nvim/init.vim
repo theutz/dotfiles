@@ -5,12 +5,13 @@ filetype plugin indent on
 " Remove all autocmmands
 autocmd!
 
-source $HOME/.config/nvim/init/general.vimrc " vim settings
-source $HOME/.config/nvim/init/functions.vimrc " custom functions
-source $HOME/.config/nvim/init/commands.vimrc " custom commands
-source $HOME/.config/nvim/init/mappings.vimrc " custom mappings
-source $HOME/.config/nvim/init/autocommands.vimrc " custom autocommands
-source $HOME/.config/nvim/init/plugins.vimrc " plugin-specific settings
+runtime! config/plug.vim " minpac setup
+runtime! config/general.vim " vim settings
+runtime! config/functions.vim " custom functions
+runtime! config/commands.vim " custom commands
+runtime! config/mappings.vim " custom mappings
+runtime! config/autocommands.vim " custom autocommands
+runtime! config/plugins.vim " plugin-specific settings
 
 "function! s:ToggleEditableHelp()
 "  if (&filetype == 'text')
