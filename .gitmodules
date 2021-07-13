@@ -1,15 +1,3 @@
-[submodule "home/.todo.actions.d/due"]
-	path = .todo.actions.d/due
-	url = https://github.com/rebeccamorgan/due.git
 [submodule "home/.zprezto"]
 	path = .zprezto
 	url = https://github.com/theutz/prezto.git
-[submodule ".emacs.d"]
-	path = .doom-emacs
-	url = https://github.com/hlissner/doom-emacs.git
-[submodule ".emacs.d"]
-	path = .config/emacs
-	url = https://github.com/plexus/chemacs2.git
-[submodule ".config/nvim"]
-	path = .config/nvim
-	url = https://github.com/theutz/nvim.git
