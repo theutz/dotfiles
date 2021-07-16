@@ -27,6 +27,10 @@ module.exports = {
         finicky.matchDomains(/.*\.greenhouse.io/),
         finicky.matchDomains(/.*\.intercom(cdn)?.com/),
         ({ url }) =>
+          url.host === "localhost" &&
+          url.port === 9000 &&
+          url.pathname.includes("editor"),
+        ({ url }) =>
           url.host === "github.com" && url.pathname.includes("smartlyio"),
       ],
       browser: "Google Chrome",
