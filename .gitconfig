@@ -38,6 +38,12 @@
 [mergetool]
 	keepBackup = false
 	prompt = false
+[mergetool "nvimdiff4"]
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+	trustExitCode = true
+[mergetool "nfugitive"]
+	cmd = nvim -f -c "Gdiff" "$MERGED"
+	trustExitCode = true
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
 [mergetool "emacs"]
@@ -50,9 +56,13 @@
 
 # Diff
 [diff]
-	tool = vimdiff
+	tool = nvimdiff2
 [difftool]
 	prompt = false
+	trustExitCode = true
+[difftool "nvimdiff2"]
+	cmd = nvim -d $LOCAL $REMOTE
+	trustExitCode = true
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "emacs"]
