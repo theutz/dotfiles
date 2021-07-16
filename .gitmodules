@@ -10,3 +10,6 @@
 [submodule ".config/ranger"]
 	path = .config/ranger
 	url = https://github.com/theutz/ranger.git
+[submodule "bin"]
+	path = bin
+	url = https://github.com/theutz/bin.git
