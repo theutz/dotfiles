@@ -7,3 +7,6 @@
 [submodule ".hammerspoon"]
 	path = .hammerspoon
 	url = https://github.com/theutz/.hammerspoon.git
+[submodule ".config/ranger"]
+	path = .config/ranger
+	url = https://github.com/theutz/ranger.git
