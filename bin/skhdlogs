@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-tail -f /usr/local/var/log/skhd/skhd.*.log
