@@ -1,0 +1,6 @@
+#
+# .zshrc
+#
+
+# Setup zinit plugin manager.
+source /opt/homebrew/opt/zinit/zinit.zsh
