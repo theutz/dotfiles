@@ -33,7 +33,6 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'editor' \
-  'history' \
   'directory' \
   'homebrew' \
   'tmux' \
@@ -41,6 +40,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'docker' \
   'abbr' \
+  'atuin' \
   'python' \
   'gpg' \
   'command-not-found' \
@@ -49,7 +49,6 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'syntax-highlighting' \
-  'history-substring-search' \
   'autosuggestions' \
   'prompt'
 

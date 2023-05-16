@@ -1,5 +1,7 @@
 abbr "chezmoi a"="chezmoi add"
 abbr "chezmoi ap"="chezmoi -v apply"
-abbr "chezmoi re"="chezmoi re-add"
+abbr "chezmoi d"="chezmoi diff"
+abbr "chezmoi r"="chezmoi re-add"
+abbr "chezmoi s"="chezmoi status"
 abbr "cm"="chezmoi"
 abbr "g"="git"
