@@ -41,6 +41,9 @@ zstyle ':prezto:load' pmodule \
   'docker' \
   'abbr' \
   'atuin' \
+  'zoxide' \
+  'asdf' \
+  'broot' \
   'python' \
   'gpg' \
   'command-not-found' \
@@ -49,7 +52,8 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'syntax-highlighting' \
-  'autosuggestions'
+  'autosuggestions' \
+  'starship'
 
 #
 # Autosuggestions
