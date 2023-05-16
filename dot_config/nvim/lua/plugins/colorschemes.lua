@@ -37,6 +37,7 @@ return {
   },
   {
     "cormacrelf/dark-notify",
+    enabled = false,
     config = function()
       require("dark_notify").run({
         schemes = {
