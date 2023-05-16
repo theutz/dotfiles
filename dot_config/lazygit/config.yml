@@ -1,0 +1,11 @@
+gui:
+  expandFocusedSidePanel: true
+  showRandomTip: false
+  showCommandLog: true
+  showBottomLine: false
+  showIcons: true
+git:
+  parseEmoji: true
+notARepository: 'skip'
+promptToReturnFromSubprocess: false
+disableStartupPopups: true
