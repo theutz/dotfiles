@@ -2,45 +2,6 @@
 # .zshrc
 #
 
-# Setup zinit plugin manager.
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-# starship
-zi ice as"command" from"gh-r" \
-  atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-  atpull"%atclone" src"init.zsh"
-zi light starship/starship
-
-# zsh syntax highlighting
-zinit ice wait lucid atinit="ZPLGM[COMPINIT_OPTS]=-C; zcompinit; zpcdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-# prezto modules
-zi ice svn lucid
-zi snippet PZTM::environment
-  # PZTM::terminal \
-  # PZTM::editor \
-  # PZTM::history \
-  # PZTM::directory \
-  # PZTM::homebrew \
-  # PZTM::tmux \
-  # PZTM::git \
-  # PZTM::osx \
-  # PZTM::docker \
-  # PZTM::python \
-  # PZTM::gpg \
-  # PZTM::command-not-found \
-  # PZTM::ssh \
-  # PZTM::spectrum \
-  # PZTM::utility \
-  # PZTM::completion \
-  # PZTM::syntax-highlighting \
-  # PZTM::history-substring-search \
-  # PZTM::autosuggestions
-
 # aliases
 alias cm="chezmoi"
 alias cma="chezmoi -nv apply"
