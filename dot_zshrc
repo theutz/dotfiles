@@ -28,9 +28,6 @@ function a() {
 # variables
 export KEYTIMEOUT=1
 
-# aliases
-alias c=composer
-
 # Zoxide
 eval "$(zoxide init zsh)"
 
