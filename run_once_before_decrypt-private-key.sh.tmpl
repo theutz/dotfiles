@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -f "$HOME/.key.txt" ]; then
-  age --decrypt --output "$HOME/.key.txt" "{{ .chezmoi.sourceDir }}/.key.txt.age"
-  chmod 600 "$HOME/.key.txt"
+if [ ! -f "$XDG_CONFIG_HOME/chezmoi/key.txt" ]; then
+  age --decrypt --output "$XDG_CONFIG_HOME/chezmoi/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
+  chmod 600 "$XDG_CONFIG_HOME/chezmoi/key.txt"
 fi
