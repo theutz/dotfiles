@@ -1,9 +1,61 @@
 #
-# .zshrc
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+
+# functions
+function rgd() {
+  rg --json "$argv" | delta
+}
+
+function a() {
+  if [ -f please ]; then
+    php please $argv
+  elif [ -f artisan ]; then
+    php artisan $argv
+  fi
+}
+
+# variables
+export KEYTIMEOUT=1
+
 # aliases
-alias cm="chezmoi"
-alias cma="chezmoi -nv apply"
-alias cmA="chezmoi -v apply"
-alias cmaz="chezmoi -v apply && exec zsh"
+alias c=composer
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Zoxide
+eval "$(zoxide init zsh)"
+
+# nostromo [section begin]
+autoload -U compinit; compinit
+source <(nostromo completion zsh)
+# nostromo [section end]
+
+# edit command line with editor
+autoload -Uz edit-command-line
+bindkey -M vicmd e edit-command-line
+
+# Neovim as manpager
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+
+# broot
+source /Users/michael/Library/Application\ Support/org.dystroy.broot/launcher/bash/br
+
+# starship
+eval "$(starship init zsh)"
+
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
