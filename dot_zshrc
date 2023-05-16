@@ -14,3 +14,7 @@ zi ice as"command" from"gh-r" \
   atpull"%atclone" src"init.zsh"
 zi light starship/starship
 
+# aliases
+alias cm="chezmoi"
+alias cma="chezmoi -nv apply"
+alias cmA="chezmoi -v apply"
