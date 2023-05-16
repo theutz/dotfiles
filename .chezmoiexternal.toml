@@ -1,6 +1,6 @@
-[".zprezto"]
+[".config/zsh/zprezto"]
   type = "git-repo"
   url = "https://github.com/sorin-ionescu/prezto"
   refreshPeriod = "168h"
-  [".zprezto".clone]
+  [".config/zsh/zprezto".clone]
     args = ["--recursive"]
