@@ -1,0 +1,6 @@
+Session.vim*
+.scratch.vim
+.DS_Store
+tinkeray.php
+.idea/
+.dir-locals.el
