@@ -7,3 +7,7 @@ encryption = "age"
 [git]
   autoCommit = true
   autoPush = false
+
+[merge]
+  command = "nvim"
+  args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
