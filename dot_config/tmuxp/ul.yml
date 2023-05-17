@@ -1,0 +1,18 @@
+session_name: ultimatelinings_com
+start_directory: $HOME/Sites/ultimatelinings.com/
+windows:
+  - focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    panes:
+      - pane
+      - focus: true
+        shell_command: nvim
+    window_name: main
+  - layout: main-vertical
+    panes:
+      - shell_command:
+          - overmind k
+          - bin/dev
+    window_name: server
