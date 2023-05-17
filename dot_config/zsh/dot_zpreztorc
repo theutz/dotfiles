@@ -22,7 +22,7 @@ zstyle ':prezto:load' pmodule-dirs $ZDOTDIR/contrib
 # zstyle ':prezto:load' pmodule-allow-overrides 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
-zstyle ':prezto:load' zmodule 'attr' 'stat'
+zstyle ':prezto:load' zmodule 'attr' 'stat' 'datetime'
 
 # Set the Zsh functions to load (man zshcontrib).
 zstyle ':prezto:load' zfunction 'zargs' 'zmv'
@@ -39,7 +39,6 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'osx' \
   'docker' \
-  'abbr' \
   'atuin' \
   'ranger' \
   'composer' \
@@ -54,9 +53,11 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'doppler' \
+  'chezmoi' \
   'syntax-highlighting' \
   'autosuggestions' \
-  'starship'
+  'starship' \
+  'abbr'
 
 #
 # Autosuggestions
@@ -208,9 +209,9 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 
 # Set syntax highlighting styles.
 zstyle ':prezto:module:syntax-highlighting' styles \
-  'builtin' 'bg=blue' \
-  'command' 'bg=blue' \
-  'function' 'bg=blue'
+  'builtin' 'bg=blue,fg=black' \
+  'command' 'bg=blue,fg=black' \
+  'function' 'bg=blue,fg=black'
 
 # Set syntax pattern styles.
 zstyle ':prezto:module:syntax-highlighting' pattern \
@@ -221,16 +222,16 @@ zstyle ':prezto:module:syntax-highlighting' pattern \
 #
 
 # Auto set the tab and window titles.
-zstyle ':prezto:module:terminal' auto-title 'yes'
+# zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
-zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+# zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Set the tab title format.
-zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+# zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Set the terminal multiplexer title format.
-zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
+# zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 
 #
 # Tmux
@@ -246,7 +247,7 @@ zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
-zstyle ':prezto:module:tmux:session' name 'home'
+# zstyle ':prezto:module:tmux:session' name 'home'
 
 #
 # Utility

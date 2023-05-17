@@ -21,8 +21,8 @@
 if [[ -o INTERACTIVE && -t 2 ]]; then
 
   # Print a random, hopefully interesting, adage.
-  if (( $+commands[fortune] )); then
-    fortune -s
+  if (($+commands[fortune])) && (($+commands[cowsay])) && (($+commands[lolcat])); then
+    fortune | cowsay | lolcat
     print
   fi
 
