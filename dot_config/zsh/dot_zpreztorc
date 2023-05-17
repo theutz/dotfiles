@@ -41,6 +41,7 @@ zstyle ':prezto:load' pmodule \
   'docker' \
   'abbr' \
   'atuin' \
+  'ranger' \
   'zoxide' \
   'asdf' \
   'broot' \
