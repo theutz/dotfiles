@@ -1,0 +1,15 @@
+[directory]
+truncate_to_repo = false
+
+[git_metrics]
+disabled = false
+
+[shlvl]
+disabled = false
+threshold = 3
+
+[status]
+disabled = false
+
+[sudo]
+disabled = false
