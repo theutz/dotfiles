@@ -1,0 +1,20 @@
+session_name: lp_yourtextcare_com
+start_directory: $HOME/Sites/lp.yourtextcare.com/
+windows:
+  - focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    panes:
+      - pane
+      - focus: true
+        shell_command: nvim
+    window_name: main
+  - layout: main-vertical
+    panes:
+      - shell_command:
+          - bin/dev
+    window_name: server
+  - panes:
+      - mosh tc
+    window_name: mosh
