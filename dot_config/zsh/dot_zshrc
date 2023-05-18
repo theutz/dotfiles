@@ -25,6 +25,14 @@ function a() {
   fi
 }
 
+function lg() {
+  if [ "$TERM_PROGRAM" = tmux ]; then
+    tmux display-popup -w 90% -h 80% -E lazygit
+  else
+    lazygit
+  fi
+}
+
 # variables
 export KEYTIMEOUT=1
 
