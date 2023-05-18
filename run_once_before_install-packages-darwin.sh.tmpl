@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --no-upgrade --no-lock --file=/dev/stdin <<EOF
 tap "dopplerhq/cli"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -58,6 +58,7 @@ brew "lolcat"
 brew "lsd"
 brew "mailhog", restart_service: true
 brew "mas"
+brew "monolith"
 brew "mosh"
 brew "mycli"
 brew "mysql", restart_service: true
@@ -86,6 +87,7 @@ brew "zsh-abbr"
 
 cask "1password-cli"
 cask "chromedriver"
+cask "chromium"
 cask "dash"
 cask "discord"
 cask "docker"
