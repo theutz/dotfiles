@@ -5,6 +5,10 @@
 local Util = require("lazyvim.util")
 local wk = require("which-key")
 
+-- ?
+
+-- <C-?>
+
 -- <M-?>
 vim.keymap.del({ "n", "i", "v" }, "<M-j>")
 vim.keymap.del({ "n", "i", "v" }, "<M-k>")
