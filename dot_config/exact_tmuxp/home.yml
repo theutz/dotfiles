@@ -42,3 +42,12 @@ windows:
         shell_command: nvim
     start_directory: nvim
     window_name: neovim
+  - layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    panes:
+      - pane
+      - focus: true
+        shell_command: nvim
+    start_directory: $XDG_DATA_HOME/chezmoi
+    window_name: chezmoi
