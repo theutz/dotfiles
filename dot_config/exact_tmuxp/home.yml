@@ -12,36 +12,7 @@ windows:
     panes:
       - pane
       - focus: true
-        shell_command: nvim
-    start_directory: zsh
-    window_name: zsh
-  - layout: main-vertical
-    options:
-      main-pane-width: '40%'
-    panes:
-      - pane
-      - focus: true
-        shell_command: nvim
-    start_directory: tmux
-    window_name: tmux
-  - layout: main-vertical
-    options:
-      main-pane-width: '40%'
-    panes:
-      - pane
-      - focus: true
-        shell_command: nvim
-    start_directory: tmuxp
-    window_name: tmuxp
-  - layout: main-vertical
-    options:
-      main-pane-width: '40%'
-    panes:
-      - pane
-      - focus: true
-        shell_command: nvim
-    start_directory: nvim
-    window_name: neovim
+    window_name: config
   - layout: main-vertical
     options:
       main-pane-width: '40%'
