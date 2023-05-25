@@ -2,6 +2,7 @@
 #!/bin/bash
 
 brew bundle --no-upgrade --no-lock --file=/dev/stdin <<EOF
+tap "charmbracelet/tap"
 tap "dopplerhq/cli"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
@@ -58,6 +59,7 @@ brew "lolcat"
 brew "lsd"
 brew "mailhog", restart_service: true
 brew "mas"
+brew "mods"
 brew "monolith"
 brew "mosh"
 brew "mycli"
