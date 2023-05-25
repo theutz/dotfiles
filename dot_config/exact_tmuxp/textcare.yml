@@ -18,3 +18,7 @@ windows:
   - panes:
       - mosh tc
     window_name: mosh
+  - panes:
+      - nvim
+    start_directory: vendor/statamic/cms
+    window_name: statamic/cms
