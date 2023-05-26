@@ -4,17 +4,14 @@ windows:
   - focus: true
     layout: main-vertical
     options:
-      main-pane-width: '40%'
+      main-pane-width: '60%'
     panes:
-      - pane
       - focus: true
-        shell_command: nvim
-    window_name: main
-  - layout: main-vertical
-    panes:
+        shell_command:
+          - nvim
       - shell_command:
           - bin/dev
-    window_name: server
+    window_name: main
   - panes:
       - mosh tc
     window_name: mosh
