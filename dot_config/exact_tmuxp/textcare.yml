@@ -6,12 +6,11 @@ windows:
     options:
       main-pane-width: '60%'
     panes:
-      - focus: true
-        shell_command:
-          - nvim
-      - shell_command:
-          - bin/dev
+      - nvim
     window_name: main
+  - panes:
+      - bin/dev
+    window_name: server
   - panes:
       - mosh tc
     window_name: mosh
