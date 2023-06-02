@@ -28,6 +28,7 @@ unset contrib{,s}
 #
 # Functions
 #
+
 function rgd() {
   rg --json "$argv" | delta
 }
@@ -47,6 +48,7 @@ function lg() {
     lazygit
   fi
 }
+zle -N lg # create a zle widget so it can be bound to a key
 
 #
 # Variables
@@ -60,6 +62,7 @@ export KEYTIMEOUT=1
 
 bindkey -M vicmd v edit-command-line
 bindkey '^ ' autosuggest-accept
+bindkey '^g' lg
 
 #
 # Aliases
@@ -117,13 +120,13 @@ function _load_chezmoi {
 zsh-defer _load_chezmoi
 
 #
-# Composer
+# composer
 #
 
 export COMPOSER_HOME="${XDG_CONFIG_HOME:=$HOME}/composer"
 
 #
-# Broot
+# broot
 #
 
 function _load_broot {
@@ -131,3 +134,12 @@ function _load_broot {
 	broot --set-install-state installed
 }
 zsh-defer _load_broot
+
+#
+# atuin
+#
+
+function _load_atuin {
+	eval "$(atuin init zsh)"
+}
+zsh-defer _load_atuin
