@@ -115,3 +115,9 @@ function _load_chezmoi {
 	source <(chezmoi completion zsh)
 }
 zsh-defer _load_chezmoi
+
+#
+# Composer
+#
+
+export COMPOSER_HOME="${XDG_CONFIG_HOME:=$HOME}/composer"
