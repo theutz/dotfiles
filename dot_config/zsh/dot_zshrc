@@ -101,7 +101,17 @@ zsh-defer _load_doppler
 #
 # asdf
 #
+
 function _load_asdf {
 	. "$(brew--prefix)"/opt/asdf/libexec/asdf.sh
 }
 zsh-defer _load_asdf
+
+#
+# chezmoi
+#
+
+function _load_chezmoi {
+	source <(chezmoi completion zsh)
+}
+zsh-defer _load_chezmoi
