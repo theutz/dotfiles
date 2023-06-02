@@ -16,7 +16,7 @@ zstyle ':prezto:*:*' case-sensitive 'yes'
 zstyle ':prezto:*:*' color 'yes'
 
 # Add additional directories to load prezto modules from
-zstyle ':prezto:load' pmodule-dirs $ZDOTDIR/contrib
+# zstyle ':prezto:load' pmodule-dirs $ZDOTDIR/contrib
 
 # Allow module overrides when pmodule-dirs causes module name collisions
 # zstyle ':prezto:load' pmodule-allow-overrides 'yes'
@@ -29,44 +29,26 @@ zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-#zstyle ':prezto:load' pmodule \
-#  'environment' \
-#  'terminal' \
-#  'editor' \
-#  'directory' \
-#  'homebrew' \
-#  'tmux' \
-#  'git' \
-#  'osx' \
-#  'docker' \
-#  'atuin' \
-#  'composer' \
-#  'zoxide' \
-#  'asdf' \
-#  'broot' \
-#  'python' \
-#  'gpg' \
-#  'command-not-found' \
-#  'ssh' \
-#  'spectrum' \
-#  'utility' \
-#  'completion' \
-#  'doppler' \
-#  'chezmoi' \
-#  'syntax-highlighting' \
-#  'autosuggestions' \
-#  'prompt'
-
 zstyle ':prezto:load' pmodule \
   'zsh-defer' \
   'environment' \
   'terminal' \
   'editor' \
-  'history' \
   'directory' \
+  'homebrew' \
+  'tmux' \
+  'git' \
+  'osx' \
+  'docker' \
+  'python' \
+  'gpg' \
+  'command-not-found' \
+  'ssh' \
   'spectrum' \
   'utility' \
   'completion' \
+  'syntax-highlighting' \
+  'autosuggestions' \
   'history-substring-search' \
   'prompt'
 

@@ -69,6 +69,8 @@ bindkey '^g' lg
 #
 
 alias cm="chezmoi"
+alias ranger="source ranger"
+alias r="ranger"
 
 #
 # Man
