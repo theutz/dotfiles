@@ -54,6 +54,7 @@ path=(
   $HOME/.config/composer/vendor/bin
   $HOME/.docker/bin
   /opt/homebrew/opt/libpq/bin # must be first for funding-tool to work (ruby-on-rails)
+  /opt/homebrew/opt/gnu-sed/libexec/gnubin
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
