@@ -12,7 +12,22 @@ fi
 
 # Customize to your needs...
 
-# functions
+#
+# Contribs
+#
+contribs=(
+	romkatv/zsh-defer
+)
+for contrib in $contribs; do
+	if [[ ! -d $ZPREZTODIR/contrib/${contrib:t} ]]; then
+		git clone https://github.com/${contrib} $ZPREZTODIR/contrib/${contrib:t}
+	fi
+done
+unset contrib{,s}
+
+#
+# Functions
+#
 function rgd() {
   rg --json "$argv" | delta
 }
@@ -33,16 +48,60 @@ function lg() {
   fi
 }
 
-# variables
+#
+# Variables
+#
+
 export KEYTIMEOUT=1
 
-# edit command line with editor
-autoload -Uz edit-command-line
-bindkey -M vicmd v edit-command-line
+#
+# Bindings
+#
 
-# accept and execute suggestion with c-space
+bindkey -M vicmd v edit-command-line
 bindkey '^ ' autosuggest-accept
 
-# Neovim as manpager
+#
+# Aliases
+#
+
+alias cm="chezmoi"
+
+#
+# Man
+#
+
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+
+#
+# Ranger
+#
+
+export RANGER_LOAD_DEFAULT_RC=false
+
+#
+# Zoxide
+#
+
+function _load_zoxide {
+	eval "$(zoxide init zsh)"
+}
+zsh-defer _load_zoxide
+
+#
+# Doppler
+#
+
+function _load_doppler {
+	source <(doppler completion 2>/dev/null)
+}
+zsh-defer _load_doppler
+
+#
+# asdf
+#
+function _load_asdf {
+	. "$(brew--prefix)"/opt/asdf/libexec/asdf.sh
+}
+zsh-defer _load_asdf

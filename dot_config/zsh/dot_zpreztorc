@@ -29,33 +29,45 @@ zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
+#zstyle ':prezto:load' pmodule \
+#  'environment' \
+#  'terminal' \
+#  'editor' \
+#  'directory' \
+#  'homebrew' \
+#  'tmux' \
+#  'git' \
+#  'osx' \
+#  'docker' \
+#  'atuin' \
+#  'composer' \
+#  'zoxide' \
+#  'asdf' \
+#  'broot' \
+#  'python' \
+#  'gpg' \
+#  'command-not-found' \
+#  'ssh' \
+#  'spectrum' \
+#  'utility' \
+#  'completion' \
+#  'doppler' \
+#  'chezmoi' \
+#  'syntax-highlighting' \
+#  'autosuggestions' \
+#  'prompt'
+
 zstyle ':prezto:load' pmodule \
+  'zsh-defer' \
   'environment' \
   'terminal' \
   'editor' \
+  'history' \
   'directory' \
-  'homebrew' \
-  'tmux' \
-  'git' \
-  'osx' \
-  'docker' \
-  'atuin' \
-  'ranger' \
-  'composer' \
-  'zoxide' \
-  'asdf' \
-  'broot' \
-  'python' \
-  'gpg' \
-  'command-not-found' \
-  'ssh' \
   'spectrum' \
   'utility' \
   'completion' \
-  'doppler' \
-  'chezmoi' \
-  'syntax-highlighting' \
-  'autosuggestions' \
+  'history-substring-search' \
   'prompt'
 
 #
