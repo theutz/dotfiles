@@ -15,4 +15,4 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:=$HOME/.cache}"
 export ZDOTDIR="${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}"
 source "$ZDOTDIR/.zshenv"
 
-# vim: ft=sh
+# vim: ft=zsh
