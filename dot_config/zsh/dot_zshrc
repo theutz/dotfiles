@@ -121,3 +121,13 @@ zsh-defer _load_chezmoi
 #
 
 export COMPOSER_HOME="${XDG_CONFIG_HOME:=$HOME}/composer"
+
+#
+# Broot
+#
+
+function _load_broot {
+	source <(broot --print-shell-function zsh)
+	broot --set-install-state installed
+}
+zsh-defer _load_broot
