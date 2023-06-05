@@ -8,14 +8,11 @@ windows:
     panes:
       - focus: true
         shell_command:
-          - nvim
+          - pane
     window_name: main
-  - focus: false
-    layout: main-vertical
-    options:
-      main-pane-width: '60%'
-    panes:
-      - focus: true
-        shell_command:
-          - bin/dev
+  - panes:
+      - bin/dev
     window_name: server
+  - panes:
+      - bin/logs
+    window_name: logs
