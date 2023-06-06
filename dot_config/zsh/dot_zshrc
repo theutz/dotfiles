@@ -78,23 +78,23 @@ alias cm="chezmoi"
 alias cmcd="chezmoi cd"
 alias cmma="chezmoi merge-all"
 alias cma="chezmoi add"
-alias cmA="chezmoi apply"
+alias cmA="chezmoi apply -v"
 alias ranger="source ranger"
 alias r="ranger"
 alias v="${(z)VISUAL:-${(z)EDITOR}}"
 alias e="${(z)EDITOR:-nvim}"
-alias ezshrc="pope $ZDOTDIR/.zshrc"
-alias ezpreztorc="pope $ZDOTDIR/.zpreztorc"
-alias ezshenv="pope $ZDOTDIR/.zshenv"
-alias ezprofile="pope $ZDOTDIR/.zprofile"
+alias zshrc="pope $ZDOTDIR/.zshrc"
+alias zpreztorc="pope $ZDOTDIR/.zpreztorc"
+alias zshenv="pope $ZDOTDIR/.zshenv"
+alias zprofile="pope $ZDOTDIR/.zprofile"
 alias etmux="pope $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias envim="pope $XDG_CONFIG_HOME/nvim"
 alias etmuxp="pope $XDG_CONFIG_HOME/tmuxp"
 
-alias -s z{preztorc,shrc,profile,shenv,login,logout}="$EDITOR"
-alias -s md="glow"
-
-alias -g xdgconfig="$XDG_CONFIG_HOME"
+#
+# Suffix Aliases
+#
+alias -s {md,markdown,mkdwn}="glow -p"
 
 #
 # Man
