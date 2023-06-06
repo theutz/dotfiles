@@ -69,9 +69,18 @@ bindkey '^g' lg
 #
 
 alias cm="chezmoi"
+alias cmcd="chezmoi cd"
+alias cmma="chezmoi merge-all"
+alias cma="chezmoi add"
+alias cmA="chezmoi apply"
 alias ranger="source ranger"
 alias r="ranger"
-alias v="${VISUAL:-EDITOR}"
+alias v="${(z)VISUAL:-${(z)EDITOR}}"
+alias e="${(z)EDITOR:-nvim}"
+alias ezshrc="e $ZDOTDIR/.zshrc"
+alias ezpreztorc="e $ZDOTDIR/.zpreztorc"
+alias ezshenv="e $ZDOTDIR/.zshenv"
+alias ezprofile="e $ZDOTDIR/.zprofile"
 
 #
 # Man
@@ -147,6 +156,7 @@ function _load_atuin {
 }
 zsh-defer _load_atuin
 
+#
 # fzf
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
