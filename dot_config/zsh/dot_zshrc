@@ -17,6 +17,7 @@ fi
 #
 contribs=(
 	romkatv/zsh-defer
+  lincheney/fzf-tab-completion
 )
 for contrib in $contribs; do
 	if [[ ! -d $ZPREZTODIR/contrib/${contrib:t} ]]; then
@@ -174,3 +175,4 @@ zsh-defer _load_atuin
 #
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source "$ZPREZTODIR/contrib/fzf-tab-completion/zsh/fzf-zsh-completion.sh"
