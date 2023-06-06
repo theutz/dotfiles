@@ -50,6 +50,11 @@ function lg() {
 }
 zle -N lg # create a zle widget so it can be bound to a key
 
+function pope()
+{
+  tmux display-popup -E -h '90%' -w '70%' "nvim $argv"
+}
+
 #
 # Variables
 #
@@ -77,10 +82,18 @@ alias ranger="source ranger"
 alias r="ranger"
 alias v="${(z)VISUAL:-${(z)EDITOR}}"
 alias e="${(z)EDITOR:-nvim}"
-alias ezshrc="e $ZDOTDIR/.zshrc"
-alias ezpreztorc="e $ZDOTDIR/.zpreztorc"
-alias ezshenv="e $ZDOTDIR/.zshenv"
-alias ezprofile="e $ZDOTDIR/.zprofile"
+alias ezshrc="pope $ZDOTDIR/.zshrc"
+alias ezpreztorc="pope $ZDOTDIR/.zpreztorc"
+alias ezshenv="pope $ZDOTDIR/.zshenv"
+alias ezprofile="pope $ZDOTDIR/.zprofile"
+alias etmux="pope $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias envim="pope $XDG_CONFIG_HOME/nvim"
+alias etmuxp="pope $XDG_CONFIG_HOME/tmuxp"
+
+alias -s z{preztorc,shrc,profile,shenv,login,logout}="$EDITOR"
+alias -s md="glow"
+
+alias -g xdgconfig="$XDG_CONFIG_HOME"
 
 #
 # Man
@@ -158,5 +171,6 @@ zsh-defer _load_atuin
 
 #
 # fzf
+#
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
