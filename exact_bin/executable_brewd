@@ -2,9 +2,12 @@
 
 set -euo pipefail
 
-trap 'rm -f "$new"' EXIT
+trap 'rm -f "$new" "$old"' EXIT
+old="$(mktemp)"
 new="$(mktemp)"
 
-brew bundle --file="$new" dump --describe --force --no-upgrade
-nvim -d "$new" "$HOME/.Brewfile" "$HOME/.Brewfile" -c 'wincmd l' -c 'norm gg]c'
+cp -f $brewfile $old
+
+brew bundle --file="$new" dump --force --no-upgrade --no-restart
+nvim -d "$new" "$brewfile" "$old" -c 'wincmd l' -c 'norm gg]c'
 brew bundle --global --zap --cleanup --no-upgrade

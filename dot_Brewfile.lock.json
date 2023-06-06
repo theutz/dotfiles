@@ -2266,9 +2266,6 @@
               "sha256": "3f471902687bec2d0e8ed417300938568118d9c86a5f0535f837bbb6e67b30ca"
             }
           }
-        },
-        "options": {
-          "restart_service": true
         }
       },
       "lolcat": {
@@ -2416,9 +2413,6 @@
               "sha256": "1b66c1a2cbd67663bd1046ec584e8a9fd8518b7b68a3907ded7b6225d55774da"
             }
           }
-        },
-        "options": {
-          "restart_service": true
         }
       },
       "mas": {
@@ -2737,9 +2731,6 @@
               "sha256": "3c548b7e0e6ad61fac3a35b8eb9a853226065557e7c462f079f6a17827d267a1"
             }
           }
-        },
-        "options": {
-          "restart_service": true
         }
       },
       "ripgrep": {
@@ -3434,9 +3425,6 @@
               "sha256": "a54eeb6cfe5062a0ed47568b59b9fe2bcb23b3328389b7d72e8f2fefb960c7d5"
             }
           }
-        },
-        "options": {
-          "restart_service": true
         }
       },
       "starship": {
