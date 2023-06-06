@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+trap 'rm -f "$new"' EXIT
+new="$(mktemp)"
+
+brew bundle --file="$new" dump --describe --force --no-upgrade
+nvim -d "$new" "$HOME/.Brewfile" "$HOME/.Brewfile" -c 'wincmd l' -c 'norm gg]c'
+brew bundle --global --zap --cleanup --no-upgrade
