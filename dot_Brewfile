@@ -11,132 +11,206 @@ tap "olets/tap"
 tap "pokanop/pokanop"
 tap "pythops/tenere"
 tap "shivammathur/php"
+# Simple, modern, secure file encryption
 brew "age"
 brew "automake"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
 brew "libyaml"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Improved shell history for zsh and bash
 brew "atuin"
 brew "awk"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 brew "bat"
+# Bash Automated Testing System
 brew "bats-core"
 brew "boxes"
+# New way to see and navigate directory trees
 brew "broot"
 brew "btop"
+# Create and view interactive cheat sheets for *nix commands
 brew "cheat"
 brew "chezmoi"
+# C library implementing the SSH2 protocol
+brew "libssh2"
+# Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Postgres C API library
 brew "libpq"
 brew "php"
+# Dependency Manager for PHP
 brew "composer"
 brew "cowsay"
+# Lightweight DNS forwarder and DHCP server
 brew "dnsmasq"
 brew "duf"
+# Platform built on V8 to build network applications
+brew "node"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# LLVM bytecode to JavaScript compiler
 brew "emscripten"
 brew "exercism"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
 brew "figlet"
+# Infamous electronic fortune-cookie generator
 brew "fortune"
 brew "fzf"
+# GNU awk utility
 brew "gawk"
 brew "gh"
+# Distributed revision control system
 brew "git"
 brew "git-delta"
+# Git extension for versioning large files
 brew "git-lfs"
 brew "glow"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Tool for glamorous shell scripts
 brew "gum"
 brew "htop"
+# Interactive command-line HTTP client with autocomplete and syntax highlighting
 brew "http-prompt"
 brew "httpie"
+# Website copier/offline browser
 brew "httrack"
 brew "imagemagick"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
 brew "lazydocker"
+# Simple terminal UI for git commands
 brew "lazygit"
 brew "lefthook"
+# CLI for the Linode API
 brew "linode-cli"
 brew "lnav"
+# Rotates, compresses, and mails system logs
 brew "logrotate", restart_service: true
 brew "lolcat"
+# Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 brew "mailhog", restart_service: true
+# Mac App Store command-line interface
 brew "mas"
 brew "mods"
+# CLI tool for saving complete web pages as a single HTML file
 brew "monolith"
 brew "mosh"
+# Powerful paging program
 brew "most"
 brew "mycli"
+# Open source relational database management system
 brew "mysql", restart_service: true
 brew "ripgrep"
+# Command-line and local web note‑taking, bookmarking, and archiving
 brew "nb"
 brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 brew "nginx"
+# Tiny, lightning fast, feature-packed file manager
 brew "nnn"
 brew "noti"
+# Terminal multiplexer
 brew "tmux"
 brew "overmind"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
 brew "pass"
+# General-purpose scripting language
 brew "php@8.0"
 brew "php@8.1"
+# Execute binaries from Python packages in isolated environments
 brew "pipx"
 brew "ranger"
+# Persistent key-value database, with built-in net interface
 brew "redis", restart_service: true
 brew "starship"
+# Version control system designed to be a better CVS
 brew "subversion"
 brew "tldr"
+# Tmux session manager. Built on libtmux
 brew "tmuxp"
 brew "trash"
+# Watch files and take action when they change
 brew "watchman"
 brew "yarn"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
 brew "zsh-lovers"
+# The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler"
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+# Feature rich terminal pager
 brew "noborus/tap/ov"
 brew "pythops/tenere/tenere"
+# Command-line helper for the 1Password password manager
 cask "1password-cli"
 cask "chromedriver"
+# Free and open-source web browser
 cask "chromium"
 cask "dash"
+# Voice and text chat software
 cask "discord"
 cask "docker"
+# Client for the Dropbox cloud storage service
 cask "dropbox"
 cask "element"
+# Collaborative team software
 cask "figma"
 cask "font-blex-mono-nerd-font"
+# Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
 cask "font-ibm-plex-mono"
+# Web browser
 cask "google-chrome"
 cask "google-drive"
+# Tools to protect your emails and files
 cask "gpg-suite"
 cask "helo"
+# Testing client for REST, GraphQL, and HTTP APIs
 cask "httpie"
 cask "insomnia"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 cask "kaleidoscope"
+# Keyboard customizer
 cask "karabiner-elements"
 cask "keybase"
+# Interface for reading and syncing eBooks
 cask "kindle"
 cask "loom"
+# Neovim Client
 cask "neovide"
 cask "ngrok"
+# VPN client for secure internet access and private browsing
 cask "nordvpn"
 cask "openvpn-connect"
+# Desktop virtualization software
 cask "parallels"
 cask "ray"
+# Website downloader tool
 cask "sitesucker-pro"
 cask "slack"
+# Music streaming service
 cask "spotify"
 cask "surfshark"
+# Messaging app with a focus on speed and security
 cask "telegram"
 cask "tinkerwell"
+# File transfer application
 cask "transmit"
 cask "visual-studio-code"
+# Desktop client for WhatsApp
 cask "whatsapp"
 cask "zoom"
 mas "2048 Game", id: 871033113

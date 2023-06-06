@@ -9,6 +9,7 @@
 [merge]
 	autoStash = true
 	conflictStyle = diff3
+  tool = vimdiff
 [rebase]
 	autoStash = true
 [commit]
@@ -26,3 +27,8 @@
 	light = false
 [diff]
 	colorMoved = default
+[mergetool]
+  keepBackup = false
+  prompt = false
+[mergetool "vimdiff"]
+  cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c 'wincmd l' -c 'norm ]c'
