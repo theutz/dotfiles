@@ -39,6 +39,8 @@ function a() {
     php please $argv
   elif [ -f artisan ]; then
     php artisan $argv
+  elif [ -f vendor/bin/wp ]; then
+    vendor/bin/wp $argv
   fi
 }
 
@@ -79,17 +81,27 @@ alias cmcd="chezmoi cd"
 alias cmma="chezmoi merge-all"
 alias cma="chezmoi add"
 alias cmA="chezmoi apply -v"
+
 alias ranger="source ranger"
 alias r="ranger"
+
 alias v="${(z)VISUAL:-${(z)EDITOR}}"
 alias e="${(z)EDITOR:-nvim}"
+
 alias zshrc="pope $ZDOTDIR/.zshrc"
 alias zpreztorc="pope $ZDOTDIR/.zpreztorc"
 alias zshenv="pope $ZDOTDIR/.zshenv"
 alias zprofile="pope $ZDOTDIR/.zprofile"
-alias etmux="pope $XDG_CONFIG_HOME/tmux/tmux.conf"
-alias envim="pope $XDG_CONFIG_HOME/nvim"
-alias etmuxp="pope $XDG_CONFIG_HOME/tmuxp"
+
+alias t="tmux"
+alias tmuxe="pope $XDG_CONFIG_HOME/tmux/tmux.conf"
+
+alias tmuxpe="pope $XDG_CONFIG_HOME/tmuxp"
+alias tp="tmuxp"
+alias tpl="tmuxp load"
+alias tpe="tmuxpe"
+
+alias nvime="pope $XDG_CONFIG_HOME/nvim"
 
 #
 # Suffix Aliases
@@ -131,10 +143,7 @@ zsh-defer _load_doppler
 # asdf
 #
 
-function _load_asdf {
-	. "$(brew--prefix)"/opt/asdf/libexec/asdf.sh
-}
-zsh-defer _load_asdf
+. "$(brew --prefix asdf)"/libexec/asdf.sh
 
 #
 # chezmoi

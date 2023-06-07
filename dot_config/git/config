@@ -32,3 +32,5 @@
   prompt = false
 [mergetool "vimdiff"]
   cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c 'wincmd l' -c 'norm ]c'
+[init]
+	defaultBranch = main

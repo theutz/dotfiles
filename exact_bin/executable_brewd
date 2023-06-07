@@ -5,6 +5,7 @@ set -euo pipefail
 trap 'rm -f "$new" "$old"' EXIT
 old="$(mktemp)"
 new="$(mktemp)"
+brewfile="$HOME/.Brewfile"
 
 cp -f $brewfile $old
 
