@@ -225,7 +225,3 @@ zsh-defer _load_atuin
 #
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source "$ZPREZTODIR/contrib/fzf-tab-completion/zsh/fzf-zsh-completion.sh"
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
