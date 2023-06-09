@@ -12,7 +12,7 @@ windows:
       - bin/dev
     window_name: server
   - panes:
-      - mosh tc
+      - mosh textcare
     window_name: mosh
   - panes:
       - nvim

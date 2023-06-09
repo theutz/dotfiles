@@ -14,5 +14,5 @@ windows:
       - lnav storage/logs
     window_name: logs
   - panes:
-      - mosh dg-prd
-    window_name: dg-prd
+      - mosh delegator
+    window_name: mosh

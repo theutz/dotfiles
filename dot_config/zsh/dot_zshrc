@@ -19,7 +19,6 @@ fi
 #
 contribs=(
 	romkatv/zsh-defer
-  lincheney/fzf-tab-completion
 )
 for contrib in $contribs; do
 	if [[ ! -d $ZPREZTODIR/contrib/${contrib:t} ]]; then
@@ -122,7 +121,8 @@ alias tmuxe="pope $XDG_CONFIG_HOME/tmux/tmux.conf"
 
 alias tmuxpe="pope $XDG_CONFIG_HOME/tmuxp"
 alias tp="tmuxp"
-alias tpl="tmuxp load"
+alias tpl="tmuxp load -d"
+alias tpL="tmuxp load"
 alias tpe="tmuxpe"
 
 alias nvime="pope $XDG_CONFIG_HOME/nvim"
