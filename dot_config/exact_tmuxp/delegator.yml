@@ -1,22 +1,18 @@
-session_name: delegator_com
+session_name: delegator
 start_directory: $HOME/Sites/delegator.com/
 windows:
   - focus: true
     layout: main-vertical
-    options:
-      main-pane-width: '40%'
     panes:
       - pane
-      - focus: true
-        shell_command: nvim
     window_name: main
   - layout: main-vertical
     panes:
       - bin/dev
     window_name: server
   - panes:
-      - mosh dg-stg
-    window_name: dg-stg
+      - lnav storage/logs
+    window_name: logs
   - panes:
       - mosh dg-prd
     window_name: dg-prd

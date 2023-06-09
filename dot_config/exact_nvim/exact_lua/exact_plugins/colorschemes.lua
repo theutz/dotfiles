@@ -3,9 +3,9 @@ return {
     "sainnhe/everforest",
     config = function()
       vim.g.everforest_transparent_background = 2
-      require("notify").setup({
-        background_colour = "#000000",
-      })
+      -- require("notify").setup({
+      --   background_colour = "#000000",
+      -- })
     end,
   },
   {
@@ -18,9 +18,9 @@ return {
     },
     init = function()
       vim.g.tokyonight_transparent = vim.g.transparent_enabled
-      require("notify").setup({
-        background_colour = "#000000",
-      })
+      -- require("notify").setup({
+      --   background_colour = "#000000",
+      -- })
     end,
   },
   {

@@ -1,4 +1,4 @@
-session_name: lp_yourtextcare_com
+session_name: textcare
 start_directory: $HOME/Sites/lp.yourtextcare.com/
 windows:
   - focus: true

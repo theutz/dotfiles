@@ -1,4 +1,4 @@
-session_name: ultimatelinings_com
+session_name: ultimate
 start_directory: $HOME/Sites/ultimatelinings.com/
 windows:
   - focus: true

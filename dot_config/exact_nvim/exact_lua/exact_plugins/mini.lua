@@ -6,4 +6,8 @@ return {
       require("mini.splitjoin").setup()
     end,
   },
+  {
+    "echasnovski/mini.surround",
+    enabled = false,
+  },
 }
