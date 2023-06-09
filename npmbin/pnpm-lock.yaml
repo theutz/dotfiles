@@ -1,0 +1,17 @@
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  '@antfu/ni':
+    specifier: ^0.21.4
+    version: 0.21.4
+
+packages:
+
+  /@antfu/ni@0.21.4:
+    resolution: {integrity: sha512-O0Uv9LbLDSoEg26fnMDdDRiPwFJnQSoD4WnrflDwKCJm8Cx/0mV4cGxwBLXan5mGIrpK4Dd7vizf4rQm0QCEAA==}
+    hasBin: true
+    dev: false
