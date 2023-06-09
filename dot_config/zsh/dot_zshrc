@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 #
 # Executes commands at the start of an interactive session.
 #
@@ -55,7 +57,27 @@ zle -N lg # create a zle widget so it can be bound to a key
 
 function pope()
 {
-  tmux display-popup -E -h '90%' -w '70%' "nvim $argv"
+  if [[ -d $argv[1] ]]; then
+    dir="$(dirname $argv[1])/$(basename $argv[1])"
+    target="$dir"
+  elif {[ -f $argv[1] ]}; then
+    dir="$(dirname $argv[1])"
+    target="$argv[1]"
+  fi
+  tmux display-popup -E -d $dir -h '90%' -w '70%' "nvim $target"
+}
+
+function commit() {
+  commitMessage="$*"
+
+  git add .
+
+  if [ "$commitMessage" = "" ]; then
+    aicommits
+    return
+  fi
+
+  eval "git commit -a -m '${commitMessage}'"
 }
 
 #
@@ -94,6 +116,8 @@ alias zshenv="pope $ZDOTDIR/.zshenv"
 alias zprofile="pope $ZDOTDIR/.zprofile"
 
 alias t="tmux"
+alias ta="tmux new-session -A"
+alias tl="tmux list-sessions"
 alias tmuxe="pope $XDG_CONFIG_HOME/tmux/tmux.conf"
 
 alias tmuxpe="pope $XDG_CONFIG_HOME/tmuxp"
@@ -102,6 +126,17 @@ alias tpl="tmuxp load"
 alias tpe="tmuxpe"
 
 alias nvime="pope $XDG_CONFIG_HOME/nvim"
+
+alias brewp="brew services"
+alias brewps="brew services start"
+alias brewpr="brew services restart"
+alias brewpx="brew services stop"
+
+alias ls="lsd"
+
+alias cat="bat"
+
+alias ez="exec zsh"
 
 #
 # Suffix Aliases
@@ -185,3 +220,6 @@ zsh-defer _load_atuin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source "$ZPREZTODIR/contrib/fzf-tab-completion/zsh/fzf-zsh-completion.sh"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
