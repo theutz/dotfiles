@@ -79,6 +79,12 @@ function commit() {
   eval "git commit -a -m '${commitMessage}'"
 }
 
+function pnpmg() {
+  cd $HOME/npmbin
+  yarn add $@
+  cd -
+}
+
 #
 # Variables
 #
