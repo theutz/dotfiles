@@ -88,6 +88,7 @@ function pnpmg() {
 #
 
 export KEYTIMEOUT=1
+export TERM="screen-256color"
 
 #
 # Bindings

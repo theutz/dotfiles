@@ -1,5 +1,11 @@
 return {
   {
+    "relastle/bluewery.vim",
+  },
+  {
+    "cocopon/iceberg.vim",
+  },
+  {
     "sainnhe/everforest",
     config = function()
       vim.g.everforest_transparent_background = 2
