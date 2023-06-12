@@ -36,7 +36,6 @@ zstyle ':prezto:load' pmodule \
   'editor' \
   'directory' \
   'homebrew' \
-  'tmux' \
   'git' \
   'osx' \
   'docker' \
