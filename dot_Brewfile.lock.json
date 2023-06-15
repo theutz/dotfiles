@@ -4388,7 +4388,7 @@
         }
       },
       "nordvpn": {
-        "version": "8.4.1",
+        "version": "8.5.0",
         "options": {
           "full_name": "nordvpn"
         }
@@ -4460,7 +4460,7 @@
         }
       },
       "whatsapp": {
-        "version": "2.2323.4",
+        "version": "2.2325.3",
         "options": {
           "full_name": "whatsapp"
         }
