@@ -6,6 +6,11 @@ return {
     "cocopon/iceberg.vim",
   },
   {
+    "dasupradyumna/midnight.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "sainnhe/everforest",
     config = function()
       vim.g.everforest_transparent_background = 2
