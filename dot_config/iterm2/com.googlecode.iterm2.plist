@@ -82206,10 +82206,8 @@
 				<key>Red Component</key>
 				<real>0.12156862765550613</real>
 			</dict>
-			<key>Background Image Location</key>
-			<string>/private/var/folders/rb/3dlc977d1xd_5m1fz4sg3q2r0000gn/T/com.apple.Photos.NSItemProvider/version=1&amp;uuid=BC768C9F-A314-4B78-BE19-E2C87A5735F3&amp;mode=compatible&amp;noloc=0.jpeg/02c658ec-8189-40e6-8410-9817c0b15f36.jpeg</string>
 			<key>Background Image Mode</key>
-			<integer>2</integer>
+			<integer>1</integer>
 			<key>Badge Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -82224,13 +82222,13 @@
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.20449643342391313</real>
+			<real>0.050000000000000003</real>
 			<key>Blinking Cursor</key>
 			<true/>
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>8.5905418882978726</real>
+			<real>23.836186835106378</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -82258,6 +82256,8 @@
 			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.57647061347961426</real>
 				<key>Color Space</key>
@@ -82326,6 +82326,8 @@
 			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
+			<key>Initial Use Transparency</key>
+			<true/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -82711,7 +82713,7 @@
 			<key>Thin Strokes</key>
 			<integer>4</integer>
 			<key>Transparency</key>
-			<real>0.19842087765957447</real>
+			<real>0.15164561170212765</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
