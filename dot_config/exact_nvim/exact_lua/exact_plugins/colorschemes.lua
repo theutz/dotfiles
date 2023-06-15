@@ -1,17 +1,21 @@
 return {
   {
     "relastle/bluewery.vim",
+    enabled = false,
   },
   {
     "cocopon/iceberg.vim",
+    enabled = false,
   },
   {
     "dasupradyumna/midnight.nvim",
-    lazy = false,
+    enabled = false,
+    lazy = true,
     priority = 1000,
   },
   {
     "sainnhe/everforest",
+    enabled = false,
     config = function()
       vim.g.everforest_transparent_background = 2
       -- require("notify").setup({
@@ -21,9 +25,11 @@ return {
   },
   {
     "foxbunny/vim-amber",
+    enabled = false,
   },
   {
     "folke/tokyonight.nvim",
+    enabled = false,
     opts = {
       style = "moon",
     },
@@ -36,6 +42,7 @@ return {
   },
   {
     "bluz71/vim-nightfly-colors",
+    enabled = false,
     name = "nightfly",
     priority = 1000,
   },
@@ -66,6 +73,8 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
       require("kanagawa").setup({
         theme = "wave", -- wave, dragon, lotus
