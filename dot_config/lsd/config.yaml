@@ -1,3 +1,9 @@
 hyperlink: auto
-header: false
+header: true
 indicators: true
+dereference: false
+total-size: false
+permission: rwx
+size: default
+color:
+  when: always
