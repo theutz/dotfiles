@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -8,10 +8,18 @@ dependencies:
   '@antfu/ni':
     specifier: ^0.21.4
     version: 0.21.4
+  gitignore:
+    specifier: ^0.7.0
+    version: 0.7.0
 
 packages:
 
   /@antfu/ni@0.21.4:
     resolution: {integrity: sha512-O0Uv9LbLDSoEg26fnMDdDRiPwFJnQSoD4WnrflDwKCJm8Cx/0mV4cGxwBLXan5mGIrpK4Dd7vizf4rQm0QCEAA==}
+    hasBin: true
+    dev: false
+
+  /gitignore@0.7.0:
+    resolution: {integrity: sha512-6iE891OyeYQYVvdoWI/hcxDWJ0sOngSpIRadxLoYbsnZdqWIUsEfx+IrOpW3d/zWBA/eKYvs6ZZx6ogz2wEGoQ==}
     hasBin: true
     dev: false

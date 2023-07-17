@@ -108,3 +108,8 @@ zsh-defer _load_atuin
 #
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#
+# keychain
+#
+eval `keychain --eval --agents ssh --inherit any id_rsa id_ed25519`

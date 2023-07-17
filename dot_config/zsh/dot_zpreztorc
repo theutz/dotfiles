@@ -40,9 +40,9 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'docker' \
   'python' \
-  'gpg' \
   'command-not-found' \
   'ssh' \
+  'gpg' \
   'spectrum' \
   'utility' \
   'completion' \

@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@antfu/ni": "^0.21.4"
+    "@antfu/ni": "^0.21.4",
+    "gitignore": "^0.7.0"
   }
 }
