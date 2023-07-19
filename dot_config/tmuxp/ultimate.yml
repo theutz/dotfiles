@@ -16,3 +16,6 @@ windows:
   - panes:
       - bin/logs
     window_name: logs
+  - panes:
+      - mosh staging@ultimate
+    window_name: staging
