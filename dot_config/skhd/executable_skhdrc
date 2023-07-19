@@ -1,31 +1,44 @@
 # modes
-:: default : noti -t skhd -m default
-:: normal @ : noti -t skhd -m normal
-f18 ; normal
-normal < escape ; default
-normal < f18 ; default
+:: default
+:: yabai @ : noti -t skhd -m "Yabai Mode"
+f18 ; yabai
+yabai < escape ; default
+yabai < f18 ; default
+
+# return
+ctrl + alt + cmd - return : yabai -m window --toggle zoom-fullscreen
+yabai < return : yabai -m window --toggle zoom-fullscreen
+
+# space
+ctrl + alt + cmd - space : yabai -m window --toggle zoom-parent
+yabai < space : yabai -m window --toggle zoom-parent
+
+# c
+yabai < c : yabai -m space --create && sketchybar --update
+
+# d
+yabai < d : yabai -m space --destroy && sketchybar --update
 
 # h
 ctrl + alt + cmd - h : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_space.sh
-normal < h : $XDG_CONFIG_HOME/skhd/yabai/move_to_prev_space.sh
-ctrl + alt + cmd - m : echo "Meh"
+yabai < h : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_space.sh
+yabai < shift - h : $XDG_CONFIG_HOME/skhd/yabai/move_to_prev_space.sh
 
 # j
-ctrl + alt + cmd - j : yabai -m window --focus next || yabai -m window --focus first
-normal < j : yabai -m window --swap next || yabai -m window --swap first
+ctrl + alt + cmd - j : $XDG_CONFIG_HOME/skhd/yabai/focus_next_window.sh
+yabai < j : $XDG_CONFIG_HOME/skhd/yabai/focus_next_window.sh
+yabai < shift - j : yabai -m window --swap next || yabai -m window --swap first
 
 # k
-ctrl + alt + cmd - k : yabai -m window --focus prev || yabai -m window --focus last
-normal < k : yabai -m window --swap prev || yabai -m window --swap last
+ctrl + alt + cmd - k : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_window.sh
+yabai < k : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_window.sh
+yabai < shift - k : yabai -m window --swap prev || yabai -m window --swap last
 
 # l
-ctrl + alt + cmd - l : yabai -m space --focus next || yabai -m space --focus first
-normal < l : (yabai -m window --space next && yabai -m space --focus next) \
+ctrl + alt + cmd - l : $XDG_CONFIG_HOME/skhd/yabai/focus_next_space.sh
+yabai < l : $XDG_CONFIG_HOME/skhd/yabai/focus_next_space.sh
+yabai < shift - l : (yabai -m window --space next && yabai -m space --focus next) \
   || (yabai -m window --space first && yabai -m space --focus first)
-
-# r
-ctrl + alt + cmd + shift - r : yabai --restart-service
-ctrl + alt + cmd - r : yabai -m space --balance
 
 # n
 ctrl + alt + cmd + shift - n : $XDG_CONFIG_HOME/skhd/yabai/cycle_clockwise.sh
@@ -33,7 +46,12 @@ ctrl + alt + cmd + shift - n : $XDG_CONFIG_HOME/skhd/yabai/cycle_clockwise.sh
 # p
 ctrl + alt + cmd + shift - p : $XDG_CONFIG_HOME/skhd/yabai/cycle_counterclockwise.sh
 
-# o
-ctrl + alt + cmd - o : (yabai -m window --display next && yabai -m display --focus next) \
-  || (yabai -m window --display first && yabai -m display --focus first)
+# r
+ctrl + alt + cmd + shift - r : yabai --restart-service
+ctrl + alt + cmd - r : yabai -m space --balance
 
+# t
+ctrl + alt + cmd - t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
+yabai < t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
+
+# vim: ft=bash
