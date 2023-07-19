@@ -1,3 +1,0 @@
-yabai -m rule --add app="^Superkey$" manage=off
-
-# vim: ft=bash
