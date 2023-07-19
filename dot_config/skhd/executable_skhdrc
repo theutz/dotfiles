@@ -37,8 +37,7 @@ yabai < shift - k : yabai -m window --swap prev || yabai -m window --swap last
 # l
 ctrl + alt + cmd - l : $XDG_CONFIG_HOME/skhd/yabai/focus_next_space.sh
 yabai < l : $XDG_CONFIG_HOME/skhd/yabai/focus_next_space.sh
-yabai < shift - l : (yabai -m window --space next && yabai -m space --focus next) \
-  || (yabai -m window --space first && yabai -m space --focus first)
+yabai < shift - l : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_space.sh
 
 # n
 ctrl + alt + cmd + shift - n : $XDG_CONFIG_HOME/skhd/yabai/cycle_clockwise.sh
