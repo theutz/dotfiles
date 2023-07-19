@@ -2,7 +2,7 @@ session_name: home
 start_directory: $HOME
 windows:
   - panes:
-      - pane
+      - focus: true
     window_name: home
   - panes:
       - nvim .
