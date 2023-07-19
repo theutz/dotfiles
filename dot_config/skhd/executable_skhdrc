@@ -1,9 +1,13 @@
 # modes
-:: default
-:: yabai @ : noti -t skhd -m "Yabai Mode"
+:: default : sketchybar --bar color=0x15ffffff
+:: yabai @ : sketchybar --bar color=0x88ff3333
 f18 ; yabai
 yabai < escape ; default
 yabai < f18 ; default
+
+# =
+ctrl + alt + cmd - 0x18 : yabai -m space --balance
+yabai < 0x18 : yabai -m space --balance
 
 # return
 ctrl + alt + cmd - return : yabai -m window --toggle zoom-fullscreen
@@ -34,6 +38,7 @@ yabai < d : yabai -m space --destroy && sketchybar --update
 ctrl + alt + cmd - h : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_space.sh
 yabai < h : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_space.sh
 yabai < shift - h : $XDG_CONFIG_HOME/skhd/yabai/move_to_prev_space.sh
+yabai < cmd - h -> : echo "Hiding window"
 
 # j
 ctrl + alt + cmd - j : $XDG_CONFIG_HOME/skhd/yabai/focus_next_window.sh
@@ -51,17 +56,31 @@ yabai < l : $XDG_CONFIG_HOME/skhd/yabai/focus_next_space.sh
 yabai < shift - l : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_space.sh
 
 # n
-ctrl + alt + cmd + shift - n : $XDG_CONFIG_HOME/skhd/yabai/cycle_clockwise.sh
+ctrl + alt + cmd - n : $XDG_CONFIG_HOME/skhd/yabai/cycle_clockwise.sh
+yabai < n : $XDG_CONFIG_HOME/skhd/yabai/cycle_clockwise.sh
 
 # p
-ctrl + alt + cmd + shift - p : $XDG_CONFIG_HOME/skhd/yabai/cycle_counterclockwise.sh
+ctrl + alt + cmd - p : $XDG_CONFIG_HOME/skhd/yabai/cycle_counterclockwise.sh
+yabai < p : $XDG_CONFIG_HOME/skhd/yabai/cycle_counterclockwise.sh
+
+# q
+yabai < q : skhd -k "cmd - w"
 
 # r
+ctrl + alt + cmd - r : yabai -m space --rotate 90
 ctrl + alt + cmd + shift - r : yabai --restart-service
-ctrl + alt + cmd - r : yabai -m space --balance
+yabai < r : yabai -m space --rotate 90
+yabai < shift - r : yabai -m space --rotate 270
 
 # t
 ctrl + alt + cmd - t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 yabai < t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
+
+# v
+yabai < v : yabai -m window --toggle split
+
+# w
+yabai < w : skhd -k "cmd - h"
+yabai < cmd - w -> : echo "Closing window"
 
 # vim: ft=bash
