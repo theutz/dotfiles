@@ -2,12 +2,8 @@
 
 win="$(yabai -m query --windows --window | jq '.id')"
 
-if [[ "$(yabai -m query --spaces --display | jq '. | length')" == "1" ]]; then
-  yabai -m space --create
-fi
-
 if ! yabai -m window --space next; then
-  yabai -m window --space first
+  yabai -m space --create && yabai -m window --space next
 fi
 
 yabai -m window --focus $win
