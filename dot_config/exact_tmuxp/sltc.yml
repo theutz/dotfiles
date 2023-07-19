@@ -1,0 +1,20 @@
+session_name: sltc
+start_directory: $HOME/Sites/lineworker.com/
+windows:
+  - focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: '60%'
+    panes:
+      - nvim
+    window_name: main
+  - panes:
+      - bin/dev
+    window_name: server
+  - panes:
+      - mosh sltc
+    window_name: mosh
+  - panes:
+      - nvim
+    start_directory: vendor/statamic/cms
+    window_name: statamic/cms
