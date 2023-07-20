@@ -116,7 +116,7 @@
                         "product_id": 0,
                         "vendor_id": 0
                     },
-                    "ignore": true,
+                    "ignore": false,
                     "manipulate_caps_lock_led": false,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
@@ -130,7 +130,7 @@
                         "product_id": 45091,
                         "vendor_id": 1133
                     },
-                    "ignore": true,
+                    "ignore": false,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
@@ -150,7 +150,7 @@
                     "treat_as_built_in_keyboard": false
                 },
                 {
-                    "disable_built_in_keyboard_if_exists": true,
+                    "disable_built_in_keyboard_if_exists": false,
                     "fn_function_keys": [],
                     "identifiers": {
                         "is_keyboard": true,
@@ -159,7 +159,7 @@
                         "vendor_id": 1133
                     },
                     "ignore": false,
-                    "manipulate_caps_lock_led": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": [
                         {
                             "from": {
