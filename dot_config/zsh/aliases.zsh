@@ -1,0 +1,57 @@
+#
+# Aliases
+#
+
+alias aic="aicommits"
+alias aliases="pope $ZDOTDIR/aliases.zsh"
+alias brewp="brew services"
+alias brewpr="brew services restart"
+alias brewps="brew services start"
+alias brewpx="brew services stop"
+alias cat="bat"
+alias cm="chezmoi"
+alias cma="chezmoi add"
+alias cmA="chezmoi apply -v"
+alias cmcd="chezmoi cd"
+alias cmm="chezmoi merge"
+alias cmM="chezmoi merge-all"
+alias cmls="chezmoi managed"
+alias cmlS="chezmoi unmanaged"
+alias ez="exec zsh"
+alias funcs="pope $ZDOTDIR/funcs.zsh"
+alias giaa="git add -A"
+alias gpgagentconf="pope $HOME/.gnupg/gpg-agent.conf"
+alias gpgconf="pope $HOME/.gnupg/gpg.conf"
+alias hosts="sudo nvim /etc/hosts && dscacheutil -flushcache"
+alias ls="lsd"
+alias nvime="pope $XDG_CONFIG_HOME/nvim"
+alias r="ranger"
+alias ranger="source ranger"
+alias sa='print -z $(alias | fzf | awk -F '"'"'='"'"' '"'"'{ print $1 }'"'"') '
+alias sshconfig="pope $HOME/.ssh/config"
+alias t="task"
+alias tx="tmux"
+alias txa="tmux new-session -AD"
+alias txe="pope $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias txl="tmux list-sessions"
+alias txp="tmuxp"
+alias txpe="pope $XDG_CONFIG_HOME/tmuxp"
+alias txpe="tmuxpe"
+alias txpl="tmuxp load -d"
+alias txpL="tmuxp load"
+alias txs="tmux switch-client -t"
+alias tw="timew"
+alias tws="timew start"
+alias twS="timew continue"
+alias twx="timew stop"
+alias twl="timew summary :ids"
+alias zpreztorc="pope $ZDOTDIR/.zpreztorc"
+alias zprofile="pope $ZDOTDIR/.zprofile"
+alias zshenv="pope $ZDOTDIR/.zshenv"
+alias zshrc="pope $ZDOTDIR/.zshrc"
+
+#
+# Suffix Aliases
+#
+alias -s {md,markdown,mkdwn}="glow -p"
+
