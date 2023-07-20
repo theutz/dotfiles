@@ -96,7 +96,12 @@ sketchybar --add item wifi right                               \
            --add item battery right                            \
            --set battery script="$PLUGIN_DIR/battery.sh"       \
                          update_freq=120                       \
-           --subscribe battery system_woke power_source_change
+           --subscribe battery system_woke power_source_change \
+                                                               \
+           --add item timew right                              \
+           --set timew script="$PLUGIN_DIR/timew.sh"           \
+                       icon=⏱︎                                  \
+                       update_freq=1                          
 
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
