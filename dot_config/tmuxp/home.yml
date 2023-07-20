@@ -29,3 +29,9 @@ windows:
           - nvim .
     start_directory: $XDG_CONFIG_HOME/sketchybar
     window_name: sketchybar
+  - panes:
+      - focus: true
+        shell_command:
+          - nvim .
+    start_directory: $XDG_CONFIG_HOME/nvim/
+    window_name: nvim

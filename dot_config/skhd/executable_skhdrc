@@ -5,9 +5,22 @@ f18 ; yabai
 yabai < escape ; default
 yabai < f18 ; default
 
+:: goto @ : sketchybar --bar color=0x8833ff33
+yabai < g ; goto
+
+:: win @ : sketchybar --bar color=0x8833ff33
+yabai < ctrl - w ; win
+
+goto,win < escape ; yabai
+goto,win < f18 ; yabai
+
 # =
 ctrl + alt + cmd - 0x18 : yabai -m space --balance
 yabai < 0x18 : yabai -m space --balance
+
+# tab
+yabai < tab : skhd -k "cmd - tab"
+yabai < cmd - tab -> : 
 
 # return
 ctrl + alt + cmd - return : yabai -m window --toggle zoom-fullscreen
@@ -16,6 +29,10 @@ yabai < return : yabai -m window --toggle zoom-fullscreen
 # space
 ctrl + alt + cmd - space : yabai -m window --toggle zoom-parent
 yabai < space : yabai -m window --toggle zoom-parent
+
+# 0x21 [
+
+# 0x1E ]
 
 # numbers
 yabai < 1 : yabai -m space --focus 1
@@ -33,6 +50,10 @@ yabai < c : yabai -m space --create && sketchybar --update
 
 # d
 yabai < d : yabai -m space --destroy && sketchybar --update
+
+# g
+goto < g : yabai -m window --focus first
+goto < shift - g : yabai -m window --focus last
 
 # h
 ctrl + alt + cmd - h : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_space.sh
@@ -77,7 +98,7 @@ ctrl + alt + cmd - t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 yabai < t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 
 # v
-yabai < v : yabai -m window --toggle split
+win < v : yabai -m window --toggle split
 
 # w
 yabai < w : skhd -k "cmd - h"
