@@ -8,7 +8,7 @@ return {
 			{ "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Find in files" },
 			{ "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
 			{ "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
-			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find files (hidden)" },
 			{ "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in current buffer" },
 			{ "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Search commands" },
 			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Search help tags" },
