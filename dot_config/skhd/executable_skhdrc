@@ -17,17 +17,11 @@ yabai < 0x1E ; prevp
 :: nextp @ : sketchybar --bar color=0x8833ff33
 yabai < 0x21 ; nextp
 
-gotop, winp, nextp, prevp < escape ; yabai
-gotop, winp, nextp, prevp < f18 ; default
+:: app @ : sketchybar --bar color=0x8833ff33
+yabai < space ; app
 
-# hyper
-ctrl + alt + cmd + shift - b : open -a "Arc"
-ctrl + alt + cmd + shift - e : open -a "Canary Mail"
-ctrl + alt + cmd + shift - m : open -a "Messages"
-ctrl + alt + cmd + shift - s : open -a "Slack"
-ctrl + alt + cmd + shift - t : open -a "iTerm"
-ctrl + alt + cmd + shift - z : open -a "zoom.us"
-ctrl + alt + cmd + shift - 1 : open -a "1password"
+gotop, winp, nextp, prevp, app < escape ; yabai
+gotop, winp, nextp, prevp, app < f18 ; default
 
 # =
 ctrl + alt + cmd - 0x18 : yabai -m space --balance
@@ -51,22 +45,49 @@ ctrl + alt + cmd - 0x21 : $XDG_CONFIG_HOME/skhd/yabai/move_to_prev_display.sh
 # 0x1E ]
 ctrl + alt + cmd - 0x1E : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 
-# numbers
+# 1
 yabai < 1 : yabai -m space --focus 1
+app < 1 : open -a "1password"; skhd -k escape
+
+# 2
 yabai < 2 : yabai -m space --focus 2
+
+# 3
 yabai < 3 : yabai -m space --focus 3
+
+# 4
 yabai < 4 : yabai -m space --focus 4
+
+# 5
 yabai < 5 : yabai -m space --focus 5
+
+# 6
 yabai < 6 : yabai -m space --focus 6
+
+# 7
 yabai < 7 : yabai -m space --focus 7
+
+# 8
 yabai < 8 : yabai -m space --focus 8
+
+# 9
 yabai < 9 : yabai -m space --focus 9
+
+# b
+app < b : open -a "Arc"; skhd -k escape
 
 # c
 yabai < c : yabai -m space --create && sketchybar --update
 
 # d
 yabai < d : yabai -m space --destroy && sketchybar --update
+prevp < d : yabai -m display --focus prev; skhd -k escape
+prevp < shift - d : $XDG_CONFIG_HOME/skhd/yabai/move_to_prev_display.sh; skhd -k f18
+nextp < d : yabai -m display --focus next; skhd -k escape
+nextp < shift - d : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh; skhd -k f18
+
+# e
+app < e : open -a "Canary Mail"; skhd -k escape
 
 # g
 gotop < g : yabai -m window --focus first
@@ -87,6 +108,9 @@ yabai < shift - j : yabai -m window --swap next || yabai -m window --swap first
 ctrl + alt + cmd - k : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_window.sh
 yabai < k : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_window.sh
 yabai < shift - k : yabai -m window --swap prev || yabai -m window --swap last
+
+# m
+app < m : open -a "Messages"; skhd -k escape
 
 # l
 ctrl + alt + cmd - l : $XDG_CONFIG_HOME/skhd/yabai/focus_next_space.sh
@@ -109,9 +133,13 @@ ctrl + alt + cmd - r : yabai -m space --rotate 90
 yabai < r : yabai -m space --rotate 90
 yabai < shift - r : yabai -m space --rotate 270
 
+# s
+app < s : open -a "Slack"; skhd -k escape
+
 # t
 ctrl + alt + cmd - t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 yabai < t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
+app < t : open -a "iTerm"; skhd -k escape
 
 # v
 winp < v : yabai -m window --toggle split
@@ -120,4 +148,5 @@ winp < v : yabai -m window --toggle split
 yabai < w : skhd -k "cmd - h"
 yabai < cmd - w -> : echo "Closing window"
 
-# vim: ft=bash
+# z
+app < z : open -a "zoom.us"; skhd -k escape
