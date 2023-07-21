@@ -14,6 +14,14 @@ yabai < ctrl - w ; win
 goto,win < escape ; yabai
 goto,win < f18 ; yabai
 
+# hyper
+ctrl + alt + cmd + shift - b : open -a "Arc"
+ctrl + alt + cmd + shift - e : open -a "Canary Mail"
+ctrl + alt + cmd + shift - m : open -a "Messages"
+ctrl + alt + cmd + shift - t : open -a "iTerm"
+ctrl + alt + cmd + shift - z : open -a "zoom.us"
+ctrl + alt + cmd + shift - 1 : open -a "1password"
+
 # =
 ctrl + alt + cmd - 0x18 : yabai -m space --balance
 yabai < 0x18 : yabai -m space --balance
@@ -89,7 +97,6 @@ yabai < q : skhd -k "cmd - w"
 
 # r
 ctrl + alt + cmd - r : yabai -m space --rotate 90
-ctrl + alt + cmd + shift - r : yabai --restart-service
 yabai < r : yabai -m space --rotate 90
 yabai < shift - r : yabai -m space --rotate 270
 
