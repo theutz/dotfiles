@@ -5,19 +5,26 @@ f18 ; yabai
 yabai < escape ; default
 yabai < f18 ; default
 
-:: goto @ : sketchybar --bar color=0x8833ff33
-yabai < g ; goto
+:: gotop @ : sketchybar --bar color=0x8833ff33
+yabai < g ; gotop
 
-:: win @ : sketchybar --bar color=0x8833ff33
-yabai < ctrl - w ; win
+:: winp @ : sketchybar --bar color=0x8833ff33
+yabai < ctrl - w ; winp
 
-goto,win < escape ; yabai
-goto,win < f18 ; yabai
+:: prevp @ : sketchybar --bar color=0x8833ff33
+yabai < 0x1E ; prevp
+
+:: nextp @ : sketchybar --bar color=0x8833ff33
+yabai < 0x21 ; nextp
+
+gotop, winp, nextp, prevp < escape ; yabai
+gotop, winp, nextp, prevp < f18 ; default
 
 # hyper
 ctrl + alt + cmd + shift - b : open -a "Arc"
 ctrl + alt + cmd + shift - e : open -a "Canary Mail"
 ctrl + alt + cmd + shift - m : open -a "Messages"
+ctrl + alt + cmd + shift - s : open -a "Slack"
 ctrl + alt + cmd + shift - t : open -a "iTerm"
 ctrl + alt + cmd + shift - z : open -a "zoom.us"
 ctrl + alt + cmd + shift - 1 : open -a "1password"
@@ -39,8 +46,10 @@ ctrl + alt + cmd - space : yabai -m window --toggle zoom-parent
 yabai < space : yabai -m window --toggle zoom-parent
 
 # 0x21 [
+ctrl + alt + cmd - 0x21 : $XDG_CONFIG_HOME/skhd/yabai/move_to_prev_display.sh
 
 # 0x1E ]
+ctrl + alt + cmd - 0x1E : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 
 # numbers
 yabai < 1 : yabai -m space --focus 1
@@ -60,8 +69,8 @@ yabai < c : yabai -m space --create && sketchybar --update
 yabai < d : yabai -m space --destroy && sketchybar --update
 
 # g
-goto < g : yabai -m window --focus first
-goto < shift - g : yabai -m window --focus last
+gotop < g : yabai -m window --focus first
+gotop < shift - g : yabai -m window --focus last
 
 # h
 ctrl + alt + cmd - h : $XDG_CONFIG_HOME/skhd/yabai/focus_prev_space.sh
@@ -105,7 +114,7 @@ ctrl + alt + cmd - t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 yabai < t : $XDG_CONFIG_HOME/skhd/yabai/move_to_next_display.sh
 
 # v
-win < v : yabai -m window --toggle split
+winp < v : yabai -m window --toggle split
 
 # w
 yabai < w : skhd -k "cmd - h"
