@@ -53,3 +53,9 @@ function pnpmg() {
   cd -
 }
 
+function kagi() {
+  local q=$(jq -R -r @uri <<<"$argv")
+  local url="https://kagi.com/search?q=$q"
+  echo "$url"
+  open $url
+}
