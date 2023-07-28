@@ -2,5 +2,53 @@ session_name: home
 start_directory: $HOME
 windows:
   - panes:
-      - focus: true
+      - blank
     window_name: home
+  - panes:
+      - blank
+      - nvim
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    start_directory: $XDG_CONFIG_HOME/zsh
+    window_name: zsh-cfg
+  - panes:
+      - blank
+      - nvim
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    start_directory: $XDG_CONFIG_HOME/nvim
+    window_name: nvim-cfg
+  - panes:
+      - blank
+      - nvim
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    start_directory: $XDG_CONFIG_HOME/tmux
+    window_name: tmux-cfg
+  - panes:
+      - blank
+      - nvim
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    start_directory: $XDG_CONFIG_HOME/tmuxp
+    window_name: tmuxp-cfg
+  - panes:
+      - blank
+      - nvim
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    start_directory: .gnupg
+    window_name: gpg-cfg
+  - panes:
+      - blank
+      - nvim
+    layout: main-vertical
+    options:
+      main-pane-width: '40%'
+    start_directory: .ssh
+    window_name: ssh-cfg
