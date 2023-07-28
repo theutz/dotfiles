@@ -2,6 +2,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    enabled = vim.g.started_by_firenvim,
     opts = function ()
       return {
         options = {

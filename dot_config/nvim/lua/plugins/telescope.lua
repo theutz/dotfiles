@@ -4,6 +4,19 @@ return {
 		tag = '0.1.2',
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		event = "VeryLazy",
+    opts = {
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case"
+        }
+      }
+    },
+    config = function()
+      require('telescope').load_extension('fzf')
+    end,
 		keys = {
 			{ "<leader>,", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
 			{ "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Find in files" },
@@ -19,5 +32,9 @@ return {
 			{ "<leader>st", "<cmd>Telescope<cr>", desc = "Search Telescope builtins" },
       { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find files (hidden)" },
 		}
-	}
+	},
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make"
+  }
 }
