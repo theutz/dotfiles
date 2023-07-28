@@ -5,50 +5,38 @@ windows:
       - blank
     window_name: home
   - panes:
+      - focus: true
+        shell_command: nvim
       - blank
-      - nvim
-    layout: main-vertical
-    options:
-      main-pane-width: '40%'
     start_directory: $XDG_CONFIG_HOME/zsh
     window_name: zsh-cfg
   - panes:
+      - focus: true
+        shell_command: nvim
       - blank
-      - nvim
-    layout: main-vertical
-    options:
-      main-pane-width: '40%'
     start_directory: $XDG_CONFIG_HOME/nvim
     window_name: nvim-cfg
   - panes:
+      - focus: true
+        shell_command: nvim
       - blank
-      - nvim
-    layout: main-vertical
-    options:
-      main-pane-width: '40%'
     start_directory: $XDG_CONFIG_HOME/tmux
     window_name: tmux-cfg
   - panes:
+      - focus: true
+        shell_command: nvim
       - blank
-      - nvim
-    layout: main-vertical
-    options:
-      main-pane-width: '40%'
     start_directory: $XDG_CONFIG_HOME/tmuxp
     window_name: tmuxp-cfg
   - panes:
+      - focus: true
+        shell_command: nvim
       - blank
-      - nvim
-    layout: main-vertical
-    options:
-      main-pane-width: '40%'
     start_directory: .gnupg
     window_name: gpg-cfg
   - panes:
+      - focus: true
+        shell_command: nvim
       - blank
-      - nvim
-    layout: main-vertical
-    options:
-      main-pane-width: '40%'
     start_directory: .ssh
     window_name: ssh-cfg
