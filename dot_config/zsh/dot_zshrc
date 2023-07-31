@@ -61,15 +61,6 @@ function _load_zoxide {
 zsh-defer _load_zoxide
 
 #
-# Doppler
-#
-
-function _load_doppler {
-	source <(doppler completion 2>/dev/null)
-}
-zsh-defer _load_doppler
-
-#
 # asdf
 #
 

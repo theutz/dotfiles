@@ -40,6 +40,7 @@ alias txp="tmuxp"
 alias txpe="tmux switch-client -t home:tmuxp-cfg.2"
 alias txpl="tmuxp load -d"
 alias txpL="tmuxp load"
+alias v="valet"
 alias zshe="tmux switch-client -t home:zsh-cfg.2"
 
 #
