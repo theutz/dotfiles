@@ -1,0 +1,9 @@
+session_name: playcore
+start_directory: $HOME/Sites/playcore.com
+windows:
+  - panes:
+      - blank
+    window_name: main
+  - panes:
+      - mosh
+    window_name: mosh

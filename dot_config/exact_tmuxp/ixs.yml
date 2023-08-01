@@ -1,0 +1,16 @@
+session_name: ixs
+start_directory: $HOME/Sites/ixscoatings.com/
+windows:
+  - focus: true
+    layout: main-vertical
+    panes:
+      - focus: true
+        shell_command:
+          - pane
+    window_name: main
+  - panes:
+      - bin/dev
+    window_name: dev
+  - panes:
+      - pane
+    window_name: logs

@@ -1,0 +1,9 @@
+session_name: theutz
+start_directory: $HOME/Sites/theutz
+windows:
+  - panes:
+      - nvim
+    window_name: main
+  - panes:
+      - blank
+    window_name: server
