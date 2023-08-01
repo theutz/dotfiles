@@ -13,6 +13,8 @@ function a() {
     php artisan $argv
   elif [ -f vendor/bin/wp ]; then
     vendor/bin/wp $argv
+  elif [ -f craft ]; then
+    valet php craft $argv
   fi
 }
 

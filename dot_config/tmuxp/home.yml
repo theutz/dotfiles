@@ -5,38 +5,26 @@ windows:
       - blank
     window_name: home
   - panes:
-      - focus: true
-        shell_command: nvim
-      - blank
+      - nvim .zshrc .zpreztorc .zshenv .zprofile
     start_directory: $XDG_CONFIG_HOME/zsh
     window_name: zsh-cfg
   - panes:
-      - focus: true
-        shell_command: nvim
-      - blank
+      - nvim lua
     start_directory: $XDG_CONFIG_HOME/nvim
     window_name: nvim-cfg
   - panes:
-      - focus: true
-        shell_command: nvim
-      - blank
+      - nvim tmux.conf
     start_directory: $XDG_CONFIG_HOME/tmux
     window_name: tmux-cfg
   - panes:
-      - focus: true
-        shell_command: nvim
-      - blank
+      - nvim home.yml
     start_directory: $XDG_CONFIG_HOME/tmuxp
     window_name: tmuxp-cfg
   - panes:
-      - focus: true
-        shell_command: nvim
-      - blank
+      - nvim gpg-agent.conf gpg.conf
     start_directory: .gnupg
     window_name: gpg-cfg
   - panes:
-      - focus: true
-        shell_command: nvim
-      - blank
+      - nvim config known_hosts
     start_directory: .ssh
     window_name: ssh-cfg
