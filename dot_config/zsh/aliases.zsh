@@ -3,6 +3,7 @@
 #
 
 alias aic="aicommits"
+alias b="buku"
 alias brewk="brew info"
 alias brewp="brew services"
 alias brewpr="brew services restart"
