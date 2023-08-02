@@ -10,8 +10,7 @@ encryption = "age"
 
 [merge]
   command = "nvim"
-  args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+  args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
 
 [diff]
-  command = "delta"
-  args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+  pager = "diff-so-fancy"
