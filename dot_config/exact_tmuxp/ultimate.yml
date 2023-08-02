@@ -9,16 +9,5 @@ windows:
       - focus: true
         shell_command:
           - pane
-    window_name: main
-  - panes:
       - bin/dev
-    window_name: dev
-  - panes:
-      - bin/logs
-    window_name: logs
-  - panes:
-      - mosh staging@ultimate
-    window_name: staging
-  - panes:
-      - mosh ultimate
-    window_name: prod
+    window_name: main
