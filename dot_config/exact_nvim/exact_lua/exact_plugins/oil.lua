@@ -2,7 +2,11 @@ return {
   {
     "stevearc/oil.nvim",
     lazy = false,
-    opts = {},
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
     keys = {
       {
         "<leader>.",

@@ -18,6 +18,11 @@ function a() {
   fi
 }
 
+
+function readme() {
+  glow -p "$(brew --prefix $argv)/README.md"
+}
+
 function lg() {
   if [ "$TERM_PROGRAM" = tmux ]; then
     tmux display-popup -d "$PWD" -w 90% -h 80% -E lazygit
