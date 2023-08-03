@@ -39,7 +39,6 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'osx' \
   'docker' \
-  'tmux' \
   'python' \
   'command-not-found' \
   'ssh' \
@@ -50,7 +49,8 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'autosuggestions' \
   'history-substring-search' \
-  'prompt'
+  'prompt' \
+  'tmux'
 
 #
 # Autosuggestions
@@ -215,7 +215,7 @@ zstyle ':prezto:module:syntax-highlighting' pattern \
 #
 
 # Auto set the tab and window titles.
-zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'no'
 
 # Set the window title format.
 zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
@@ -231,10 +231,10 @@ zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' local 'no'
 
 # Auto start a session when Zsh is launched in a SSH connection.
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
 # Integrate with iTerm2.
 zstyle ':prezto:module:tmux:iterm' integrate 'no'
