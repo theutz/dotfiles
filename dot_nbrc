@@ -1,3 +1,3 @@
-
+# vim: ft=sh
 
 export NB_COLOR_THEME="${NB_COLOR_THEME:-blacklight}" # Set by `nb` • Thu Aug  3 01:22:59 +03 2023

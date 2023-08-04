@@ -9,8 +9,8 @@
 # Browser
 #
 
-if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
+if [[ -z "$BROWSER" ]]; then
+  export BROWSER='w3m'
 fi
 
 #
@@ -71,7 +71,7 @@ path=(
 )
 
 fpath=(
-  /opt/homebrew/share/zsh/site-functions
+  $(brew --prefix)/share/zsh/site-functions
   $fpath
 )
 
