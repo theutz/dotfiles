@@ -1,9 +1,9 @@
 session_name: theutz
-start_directory: $HOME/Sites/theutz
+start_directory: $HOME/Sites/theutz.com
 windows:
   - panes:
       - nvim
     window_name: main
   - panes:
-      - blank
+      - npm run watch
     window_name: server

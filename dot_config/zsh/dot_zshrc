@@ -103,4 +103,4 @@ zsh-defer _load_atuin
 #
 # keychain
 #
-eval `keychain --eval --agents ssh --inherit any id_rsa id_ed25519`
+eval `keychain --eval --agents ssh --inherit any id_ed25519`
