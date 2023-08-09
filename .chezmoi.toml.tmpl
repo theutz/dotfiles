@@ -7,10 +7,3 @@ encryption = "age"
 [git]
   autoCommit = false
   autoPush = false
-
-[merge]
-  command = "nvim"
-  args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
-
-[diff]
-  pager = "diff-so-fancy"
