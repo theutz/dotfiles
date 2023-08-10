@@ -82327,7 +82327,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string>tmuxp load home</string>
+			<string>tmux attach -t home || tmuxp load home</string>
 			<key>Initial Use Transparency</key>
 			<true/>
 			<key>Jobs to Ignore</key>
@@ -83450,7 +83450,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string>tmuxp load hotkey</string>
+			<string>tmux attach -t hotkey || tmuxp load hotkey</string>
 			<key>Initial Use Transparency</key>
 			<true/>
 			<key>Jobs to Ignore</key>
