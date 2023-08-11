@@ -33,7 +33,6 @@ zstyle ':prezto:load' pmodule \
   'zsh-defer' \
   'environment' \
   'terminal' \
-  
   'editor' \
   'directory' \
   'homebrew' \
