@@ -10,7 +10,16 @@ augroup end
 
 augroup chezmoiadd
   au!
-  autocmd BufWritePost `chezmoi managed --include files --exclude encryted --path-style absolute | tr '\n' ',' | sed 's/,$//'` ! chezmoi add "%"
+  autocmd BufWritePost 
+    \~/.config/tmux/tmux.conf,
+    \~/.config/nvim/*,
+    \~/.config/zsh/.zprofile,
+    \~/.config/zsh/.zshenv,
+    \~/.config/zsh/.zshrc,
+    \~/.config/zsh/.zlogin,
+    \~/.config/zsh/.zlogout,
+    \~/.config/zsh/.zpreztorc
+    \ ! chezmoi add "%"
 augroup end
 
 augroup tmuxsource
@@ -18,11 +27,3 @@ augroup tmuxsource
   autocmd BufWritePost ~/.config/tmux/tmux.conf ! tmux source "%"
 augroup end
 ]])
--- \ ~/.config/tmux/tmux.conf,
--- \~/.config/nvim/*,
--- \~/.config/zsh/.zprofile,
--- \~/.config/zsh/.zshenv,
--- \~/.config/zsh/.zshrc,
--- \~/.config/zsh/.zlogin,
--- \~/.config/zsh/.zlogout,
--- \~/.config/zsh/.zpreztorc
