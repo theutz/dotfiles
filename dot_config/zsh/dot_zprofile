@@ -57,10 +57,10 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $HOME/{,s}bin(N)
   $HOME/.cargo/bin
   $HOME/Code/track/builds
   $HOME/npmbin/node_modules/.bin
-  $HOME/{,s}bin(N)
   $HOME/.config/phpmon/bin
   $HOME/.config/composer/vendor/bin
   $HOME/.docker/bin
