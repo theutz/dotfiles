@@ -63,8 +63,7 @@ zsh-defer _load_zoxide
 #
 # asdf
 #
-
-. "$(brew --prefix asdf)"/libexec/asdf.sh
+. "$HOME/.asdf/asdf.sh"
 
 #
 # chezmoi

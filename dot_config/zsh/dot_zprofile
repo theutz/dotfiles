@@ -73,6 +73,7 @@ path=(
 )
 
 fpath=(
+  ${ASDF_DIR}/completions
   $(brew --prefix)/share/zsh/site-functions
   $fpath
 )
