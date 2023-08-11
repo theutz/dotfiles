@@ -10,7 +10,17 @@ augroup end
 
 augroup chezmoiadd
   au!
-  autocmd BufWritePost ~/.config/tmux/tmux.conf,~/.config/nvim/* ! chezmoi add "%"
+  autocmd
+    \BufWritePost 
+    \~/.config/tmux/tmux.conf,
+    \~/.config/nvim/*,
+    \~/.config/zsh/.zprofile,
+    \~/.config/zsh/.zshenv,
+    \~/.config/zsh/.zshrc,
+    \~/.config/zsh/.zlogin,
+    \~/.config/zsh/.zlogout,
+    \~/.config/zsh/.zpreztorc,
+    \! chezmoi add "%"
 augroup end
 
 augroup tmuxsource
