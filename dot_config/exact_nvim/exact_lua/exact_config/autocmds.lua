@@ -7,16 +7,12 @@ augroup chezmoiapply
   au!
   autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
 augroup end
-]])
 
-vim.cmd([[
 augroup chezmoiadd
   au!
   autocmd BufWritePost ~/.config/tmux/tmux.conf,~/.config/nvim/* ! chezmoi add "%"
 augroup end
-]])
 
-vim.cmd([[
 augroup tmuxsource
   au!
   autocmd BufWritePost ~/.config/tmux/tmux.conf ! tmux source "%"
