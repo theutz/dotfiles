@@ -1,0 +1,15 @@
+session_name: funding-tool
+start_directory: $HOME/Sites/funding-tool
+windows:
+  - focus: true
+    layout: main-vertical
+    panes:
+      - pane
+    window_name: main
+  - layout: main-vertical
+    panes:
+      - bin/dev
+    window_name: frontend
+  - layout: main-vertical
+    panes:
+      - docker compose up
