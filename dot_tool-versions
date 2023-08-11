@@ -2,4 +2,4 @@ nodejs 20.4.0
 ruby 3.2.1
 pnpm 8.6.8
 yarn 1.22.19
-asdf-plugin-manager 1.0.0
+neovim stable
