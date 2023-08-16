@@ -3,6 +3,11 @@
 #
 
 alias aic="aicommits"
+alias aliases="e ~/.config/zsh/aliases.zsh"
+alias ans="ansible"
+alias ansb="ansible-playbook"
+alias ansi="ansible-inventory"
+alias ansv="ansible-vault"
 alias brewk="brew info"
 alias brewp="brew services"
 alias brewpr="brew services restart"
