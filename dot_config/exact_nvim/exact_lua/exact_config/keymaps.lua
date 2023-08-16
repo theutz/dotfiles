@@ -3,3 +3,7 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
+vim.keymap.del({ "n", "x" }, "<C-h>")
+vim.keymap.del({ "n", "x" }, "<C-j>")
+vim.keymap.del({ "n", "x" }, "<C-k>")
+vim.keymap.del({ "n", "x" }, "<C-l>")
