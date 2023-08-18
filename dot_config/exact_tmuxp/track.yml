@@ -1,6 +1,0 @@
-session_name: track
-start_directory: $HOME/Code/track
-windows:
-  - panes:
-      - focus: true
-    window_name: main
