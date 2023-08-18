@@ -114,4 +114,9 @@ eval $(keychain --eval --agents ssh --inherit any id_ed25519)
 #
 source <(bob complete zsh)
 
+#
+# starship
+#
+eval "$(starship init zsh)"
+
 # vim: ft=sh
