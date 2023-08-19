@@ -2,6 +2,8 @@ return {
   {
     "aserowy/tmux.nvim",
     lazy = false,
-    config = true,
+    config = function()
+      require("tmux").setup()
+    end,
   },
 }
