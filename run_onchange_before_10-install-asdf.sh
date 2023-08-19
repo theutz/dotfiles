@@ -3,13 +3,6 @@
 set -euo pipefail
 
 echo "== asdf =="
-if [ ! -d ~/.asdf ]; then
-	echo "Installing asdf..."
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
-fi
-
-echo "asdf installed!"
-
 echo "Ensuring asdf command exists..."
 if command -v asdf &>/dev/null; then
 	echo "Command exists!"
