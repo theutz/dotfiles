@@ -3,11 +3,12 @@ type = "git-repo"
 url = "https://github.com/asdf-vm/asdf.git"
 refreshPeriod = "24h"
 clone.args = ["--branch", "v0.12.0"]
+pull.args = ["origin", "v0.12.0"]
 
 [".config/zsh/zprezto"]
 type = "git-repo"
 url = "https://github.com/sorin-ionescu/prezto"
-refreshPeriod = "24h"
+refreshPeriod = "168h"
 
 [".config/zsh/zprezto".clone]
 args = ["--recursive"]
