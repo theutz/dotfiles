@@ -18,4 +18,4 @@ do
   fi
 done
 
-asdf install
+asdf install &>/dev/null
