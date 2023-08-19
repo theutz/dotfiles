@@ -8,7 +8,7 @@ if command -v asdf &>/dev/null; then
 	echo "Command exists!"
 else
 	echo "Loading asdf..."
-	. "$HOME/asdf/asdf.sh"
+	. "$HOME/.asdf/asdf.sh"
 fi
 
 echo "Adding asdf plugins..."
