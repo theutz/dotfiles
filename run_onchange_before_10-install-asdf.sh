@@ -21,11 +21,9 @@ fi
 echo "Adding asdf plugins..."
 
 plugins=(
-	neovim
 	nodejs
 	ruby
 	python
-	tmux
 )
 
 for plugin in $plugins; do
