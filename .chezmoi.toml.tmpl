@@ -9,8 +9,9 @@ encryption = "age"
   autoPush = true
 
 [diff]
-  command = "nvim"
-  args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+  pager = "delta"
+  args = ["{{ "{{" }} .Destination {{ "}}"}}", "{{ "{{" }} .Target {{ "}}"}}"]
+  exclude = ["scripts"]
 
 [merge]
   command = "nvim"
