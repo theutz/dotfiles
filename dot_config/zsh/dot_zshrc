@@ -13,19 +13,6 @@ fi
 # Customize to your needs...
 
 #
-# Contribs
-#
-contribs=(
-	romkatv/zsh-defer
-)
-for contrib in $contribs; do
-	if [[ ! -d $ZPREZTODIR/contrib/${contrib:t} ]]; then
-		git clone https://github.com/${contrib} $ZPREZTODIR/contrib/${contrib:t}
-	fi
-done
-unset contrib{,s}
-
-#
 # Variables
 #
 

@@ -12,6 +12,11 @@ refreshPeriod = "24h"
 [".config/zsh/zprezto".clone]
 args = ["--recursive"]
 
+[".config/zsh/zprezto/contrib/zsh-defer"]
+type = "git-repo"
+url = "https://github.com/romkatv/zsh-defer"
+refreshPeriod = "24h"
+
 [".config/kitty/themes/kanagawa.conf"]
 type = "file"
 url = "https://raw.githubusercontent.com/rebelot/kanagawa.nvim/master/extras/kanagawa.conf"
