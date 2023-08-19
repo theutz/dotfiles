@@ -1,10 +1,7 @@
 return {
   {
     "folke/flash.nvim",
-    keys = {
-      { "s", false },
-      { "S", false },
-    },
+    keys = {},
     opts = {
       modes = {
         search = {
