@@ -10,7 +10,11 @@
 #
 
 if [[ -z "$BROWSER" ]]; then
-  export BROWSER='w3m'
+  {{ if eq .chezmoi.os darwin }}
+    export BROWSER='open'
+  {{ else }}
+    export BROWSER='w3m'
+  {{ fi }}
 fi
 
 #
@@ -20,9 +24,11 @@ fi
 if [[ -z "$EDITOR" ]]; then
   export EDITOR='nvim'
 fi
+
 if [[ -z "$VISUAL" ]]; then
   export VISUAL='nvim'
 fi
+
 if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
