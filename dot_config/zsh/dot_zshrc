@@ -47,7 +47,9 @@ function _load_zoxide {
 }
 zsh-defer _load_zoxide
 
-# asdf
+# ------------
+# --  asdf  --
+# ------------
 
 . "$HOME/.asdf/asdf.sh"
 
