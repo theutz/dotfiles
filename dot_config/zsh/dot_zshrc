@@ -38,7 +38,7 @@ source "$ZDOTDIR/aliases.zsh"
 #
 source "$ZDOTDIR/bindings.zsh"
 
-# Zoxide
+# zoxide
 
 function _load_zoxide {
 	eval "$(zoxide init zsh)"
