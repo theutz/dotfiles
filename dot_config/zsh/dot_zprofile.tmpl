@@ -12,7 +12,7 @@
 if [[ -z "$BROWSER" ]]; then
   {{- if eq .chezmoi.os "darwin" }}
     export BROWSER='open'
-  {{ else }}
+  {{- else }}
     export BROWSER='w3m'
   {{- end }}
 fi
