@@ -118,4 +118,6 @@ eval "$(starship init zsh)"
 # --  direnv  --
 # --------------
 
+eval "$(direnv hook zsh)"
+
 # vim: ft=sh
