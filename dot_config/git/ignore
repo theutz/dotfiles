@@ -4,3 +4,4 @@ Session.vim*
 tinkeray.php
 .idea/
 .dir-locals.el
+.direnv
