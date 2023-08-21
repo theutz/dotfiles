@@ -6,6 +6,7 @@ plugins=(
 	python
   yarn
   pnpm
+  pipx
 )
 
 installed=("${(@f)$(asdf plugin list)}")
