@@ -33,9 +33,8 @@ source "$ZDOTDIR/funcs.zsh"
 #
 source "$ZDOTDIR/aliases.zsh"
 
-#
 # Bindings
-#
+
 source "$ZDOTDIR/bindings.zsh"
 
 # --------------
