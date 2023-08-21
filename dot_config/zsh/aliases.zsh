@@ -16,6 +16,7 @@ alias brewpx="brew services stop"
 alias cm="chezmoi"
 alias caskk="brew info --cask"
 alias hosts="sudo nvim /etc/hosts && dscacheutil -flushcache"
+alias lll="linode-cli linodes ls"
 alias r="ranger"
 alias ranger="source ranger"
 
