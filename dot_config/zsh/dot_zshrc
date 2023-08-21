@@ -12,9 +12,9 @@ fi
 
 # Customize to your needs...
 
-#
-# Variables
-#
+# -----------------
+# --  Variables  --
+# -----------------
 
 export COMPOSER_HOME="${XDG_CONFIG_HOME:=$HOME}/composer"
 export KEYTIMEOUT=1
@@ -23,17 +23,21 @@ export MANWIDTH=999
 export RANGER_LOAD_DEFAULT_RC=false
 export TERM="screen-256color"
 
-#
-# Functions
-#
+# -----------------
+# --  Functions  --
+# -----------------
+
 source "$ZDOTDIR/funcs.zsh"
 
-#
-# Aliases
-#
+# ---------------
+# --  Aliases  --
+# ---------------
+
 source "$ZDOTDIR/aliases.zsh"
 
-# Bindings
+# ----------------
+# --  Bindings  --
+# ----------------
 
 source "$ZDOTDIR/bindings.zsh"
 
