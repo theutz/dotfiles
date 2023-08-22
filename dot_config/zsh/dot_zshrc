@@ -23,6 +23,11 @@ export MANWIDTH=999
 export RANGER_LOAD_DEFAULT_RC=false
 export TERM="screen-256color"
 
+if [[ "$OSTYPE" == darwin* ]]; then
+	export CPATH=/opt/homebrew/include
+	export LIBRARY_PATH=/opt/homebrew/lib
+fi
+
 # -----------------
 # --  Functions  --
 # -----------------
