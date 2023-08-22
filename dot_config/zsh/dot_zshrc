@@ -102,7 +102,7 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 # --  keychain  --
 # ----------------
 
-eval $(keychain --eval --agents gpg,ssh id_ed25519 6AEFB22E 1CE613BD)
+eval $(keychain --eval --agents gpg,ssh id_ed25519 6AEFB22E)
 
 # ------------
 # --  rust  --
