@@ -99,3 +99,18 @@ function _navi_widget() {
    zle redisplay
 }
 
+function cat {
+  if [[ -d "$@" ]]; then
+    if command -v lsd &>/dev/null; then
+      lsd -la "$@"
+    else
+      ls -la "$@"
+    fi
+  elif [[ -f "$@" ]]; then
+    if command -v bat &>/dev/null; then
+      bat "$@"
+    else
+      \cat "$@"
+    fi
+  fi
+}
