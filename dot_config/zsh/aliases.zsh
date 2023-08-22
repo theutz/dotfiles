@@ -21,6 +21,10 @@ alias lll="linode-cli linodes ls"
 alias r="ranger"
 alias ranger="source ranger"
 
+for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
+  alias $rc="chezmoi edit -a $rc"
+done
+
 #
 # Suffix Aliases
 #
