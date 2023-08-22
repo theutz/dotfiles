@@ -14,7 +14,13 @@ alias brewpr="brew services restart"
 alias brewps="brew services start"
 alias brewpx="brew services stop"
 alias cm="chezmoi"
+alias cme="chezmoi edit"
 alias cmea="chezmoi edit -a"
+alias cmm="chezmoi merge"
+alias cmma="chezmoi merge-all"
+alias cms="chezmoi status"
+alias cmf="chezmoi forget"
+alias cmrm="chezmoi "
 alias caskk="brew info --cask"
 alias funcs="chezmoi edit -a ~/.config/zsh/funcs.zsh"
 alias hosts="sudo nvim /etc/hosts && dscacheutil -flushcache"
@@ -30,4 +36,5 @@ done
 # Suffix Aliases
 #
 alias -s {md,markdown,mkdwn}="glow -p"
+alias -g P="| p"
 
