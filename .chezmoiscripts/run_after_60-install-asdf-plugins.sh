@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+if ! command -v asdf &>/dev/null; then
+  exec zsh
+fi
+
 plugins=(
 	nodejs
 	ruby
@@ -9,14 +13,8 @@ plugins=(
   pipx
 )
 
-installed=("${(@f)$(asdf plugin list)}")
-
-foreach plugin in $plugins
-do
-  if [[ -z $installed[(r)$plugin] ]]
-  then
-    asdf plugin add $plugin
-  fi
+foreach plugin in $plugins; do
+  asdf plugin add $plugin || continue
 done
 
-asdf install &>/dev/null
+asdf install
