@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+set -euo pipefail
+
 if ! command -v asdf &>/dev/null; then
   exec zsh
 fi
