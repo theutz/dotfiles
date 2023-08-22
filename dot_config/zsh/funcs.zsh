@@ -110,7 +110,7 @@ function cat {
     if command -v bat &>/dev/null; then
       bat "$@"
     else
-      \cat "$@"
+      "$(which cat)" "$@"
     fi
   fi
 }
