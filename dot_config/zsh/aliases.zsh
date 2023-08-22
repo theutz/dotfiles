@@ -22,7 +22,7 @@ alias r="ranger"
 alias ranger="source ranger"
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
-  alias $rc="chezmoi edit -a $rc"
+  alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
 done
 
 #
