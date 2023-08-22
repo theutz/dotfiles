@@ -37,6 +37,8 @@ alias hosts="sudo nvim /etc/hosts && dscacheutil -flushcache"
 alias lll="linode-cli linodes ls"
 alias r="ranger"
 alias ranger="source ranger"
+alias tp="tmuxp"
+alias tx="tmux"
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
