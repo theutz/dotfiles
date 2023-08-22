@@ -3,7 +3,7 @@
 #
 
 alias aic="aicommits"
-alias aliases="chezmoi edit ~/.config/zsh/aliases.zsh"
+alias aliases="chezmoi edit -a ~/.config/zsh/aliases.zsh"
 alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
@@ -15,7 +15,7 @@ alias brewps="brew services start"
 alias brewpx="brew services stop"
 alias cm="chezmoi"
 alias caskk="brew info --cask"
-alias funcs="chezmoi edit ~/.config/zsh/functions.zsh"
+alias funcs="chezmoi edit -a ~/.config/zsh/funcs.zsh"
 alias hosts="sudo nvim /etc/hosts && dscacheutil -flushcache"
 alias lll="linode-cli linodes ls"
 alias r="ranger"
