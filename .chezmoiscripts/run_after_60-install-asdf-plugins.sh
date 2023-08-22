@@ -14,6 +14,7 @@ plugins=(
   yarn
   pnpm
   pipx
+  tmux
 )
 
 foreach plugin in $plugins; do
