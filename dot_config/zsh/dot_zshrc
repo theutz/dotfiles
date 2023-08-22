@@ -22,6 +22,7 @@ export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export RANGER_LOAD_DEFAULT_RC=false
 export TERM="screen-256color"
+export GPG_TTY="$(tty)"
 
 # -----------------
 # --  Functions  --
@@ -94,7 +95,7 @@ zsh-defer _load_atuin
 # --  keychain  --
 # ----------------
 
-eval $(keychain --eval --inherit any id_ed25519 6AEFB22E 1CE613BD)
+eval $(keychain --eval --agents gpg,ssh id_ed25519 6AEFB22E 1CE613BD)
 
 # ------------
 # --  rust  --
