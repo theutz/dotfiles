@@ -1,7 +1,0 @@
-session_name: playbooks
-start_directory: $HOME/code/delegator/playbooks
-windows:
-  - panes:
-      - pane
-    window_name: control
-    start_directory: control
