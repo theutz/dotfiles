@@ -99,7 +99,7 @@ function _navi_widget() {
    zle redisplay
 }
 
-function cat {
+function catt {
   if [[ -d "$@" ]]; then
     if command -v lsd &>/dev/null; then
       lsd -la "$@"
