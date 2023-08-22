@@ -14,5 +14,6 @@ fi
 # Rust
 #
 
-# vim: ft=sh
 . "$HOME/.cargo/env"
+
+# vim: ft=sh
