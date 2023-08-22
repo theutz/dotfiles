@@ -7,6 +7,7 @@ if ! command -v asdf &>/dev/null; then
 fi
 
 plugins=(
+  direnv
 	nodejs
 	ruby
 	python
