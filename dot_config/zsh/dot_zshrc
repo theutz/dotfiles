@@ -94,7 +94,7 @@ zsh-defer _load_atuin
 # --  keychain  --
 # ----------------
 
-eval $(keychain --eval --agents ssh --inherit any id_ed25519)
+eval $(keychain --eval --inherit any id_ed25519)
 
 # ------------
 # --  rust  --
