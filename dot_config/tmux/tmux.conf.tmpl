@@ -24,6 +24,11 @@ set -g visual-activity on
 # Status Formats & Styles
 #
 
+set -g @utz-color-1 "blue"
+set -g @utx-color-2 "black"
+set -g @utz-color-3 "red"
+set -g @utz-color-4 "magenta"
+set -g @utz-color-5 "orange"
 set -g @cap-start ""
 set -g @cap-end ""
 set -g @cap-start-half ""
@@ -33,10 +38,10 @@ set -g @separator-right ""
 set -g @window-flags "#[bright]#{?window_marked_flag, ,}#{?window_zoomed_flag,󱉶 ,}#{?window_bell_flag,󰵙 ,}#{?window_last_flag,󱞱 ,}#{?window_activity_flag,󰛄 ,}#{?window_silence_flag,󰪓 ,}#[nobright]"
 set -g @window-status-format "#I #{E:@window-flags}#{@separator-left} #W "
 
-set -g message-command-style "bg=default fg=red"
+set -g message-command-style "bg=default fg=#{@utz-color-3}"
 set -g message-style "bg=default fg=orange"
-set -g pane-active-border-style "fg=red bg=default"
-set -g pane-border-format " #{?pane_active,#{@cap-start}#[bg=red fg=black],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
+set -g pane-active-border-style "fg=#{@utz-color-3} bg=default"
+set -g pane-border-format " #{?pane_active,#{@cap-start}#[bg=#{@utz-color-3} fg=black],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
@@ -52,10 +57,10 @@ set -g status-right "#{@cap-start}#[reverse] 󰀄 #{user} #{@separator-right} #(
 set -g status-right-length 80
 set -g status-style "fg=blue bg=default"
 set -g window-status-activity-style "bold"
-set -g window-status-bell-style "fg=red"
+set -g window-status-bell-style "fg=#{@utz-color-3}"
 set -g window-status-last-style "fg=orange nodim"
-set -g window-status-current-format "#{@cap-start}#[bg=red fg=black] #{E:@window-status-format}#[default]#{@cap-end}"
-set -g window-status-current-style "fg=red"
+set -g window-status-current-format "#{@cap-start}#[bg=#{@utz-color-3} fg=black] #{E:@window-status-format}#[default]#{@cap-end}"
+set -g window-status-current-style "fg=#{@utz-color-3}"
 set -g window-status-format "#{@cap-start-half} #{E:@window-status-format}#{@cap-end-half}"
 set -g window-status-separator " "
 set -g window-status-style "fg=magenta dim"
@@ -94,3 +99,5 @@ bind-key -N "tmux" -T popup t display-popup -w 80% -h 80% -E nvim ~/.config/tmux
 # Key Mode
 set -g status-keys vi
 set -g mode-keys vi
+
+# vim: ft=tmux
