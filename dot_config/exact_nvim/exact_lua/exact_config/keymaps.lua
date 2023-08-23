@@ -8,3 +8,6 @@ vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
 -- vim.keymap.del({ "n", "x" }, "<C-j>")
 -- vim.keymap.del({ "n", "x" }, "<C-k>")
 -- vim.keymap.del({ "n", "x" }, "<C-l>")
+
+vim.keymap.del({ "i" }, "<M-j>")
+vim.keymap.del({ "i" }, "<M-k>")
