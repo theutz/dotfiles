@@ -34,6 +34,7 @@ set -g @color-window "yellow"
 set -g @color-pane "yellow"
 {{- end }}
 set -g @color-text "black"
+set -g @color-inactive "white"
 set -g @color-success "green"
 set -g @color-warning "orange"
 set -g @color-danger "red"
@@ -48,8 +49,8 @@ set -g @window-status-format "#I #{E:@window-flags}#{@separator-left} #W "
 
 set -g message-command-style "bg=default fg=#{@color-danger}"
 set -g message-style "bg=default fg=#{@color-warning}"
-set -g pane-active-border-style "fg=#{@color-window} bg=default"
-set -g pane-border-format "#[dim] #{?pane_active,#{@cap-start}#[bg=#{@color-window} fg=#{@color-text}],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
+set -g pane-active-border-style "fg=#{@color-pane} bg=default"
+set -g pane-border-format "#{?pane_active,#{@cap-start}#[bg=#{@color-window} fg=#{@color-text}],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}}"
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
