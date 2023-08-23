@@ -114,3 +114,7 @@ function catt {
     fi
   fi
 }
+
+function take {
+  mkdir -p "$@" && cd "$@"
+}
