@@ -1,6 +1,0 @@
-session_name: ctrl
-start_directory: $HOME/code/delegator/playbooks/ctrl
-windows:
-  - panes:
-      - pane
-    window_name: main
