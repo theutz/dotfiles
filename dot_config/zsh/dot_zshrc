@@ -5,6 +5,12 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# ------------
+# --  asdf  --
+# ------------
+
+. "$HOME/.asdf/asdf.sh"
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/zprezto/init.zsh" ]]; then
 	source "${ZDOTDIR:-$HOME}/zprezto/init.zsh"
@@ -54,12 +60,6 @@ function _load_zoxide {
 	eval "$(zoxide init zsh)"
 }
 zsh-defer _load_zoxide
-
-# ------------
-# --  asdf  --
-# ------------
-
-. "$HOME/.asdf/asdf.sh"
 
 # ---------------
 # --  chezmoi  --
