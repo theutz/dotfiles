@@ -38,6 +38,9 @@ zstyle ':prezto:load' pmodule \
   'homebrew' \
   'git' \
   'osx' \
+  'ssh' \
+  'gpg' \
+  'tmux' \
   'docker' \
   'python' \
   'command-not-found' \
@@ -46,8 +49,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'syntax-highlighting' \
   'autosuggestions' \
-  'history-substring-search' \
-  'tmux'
+  'history-substring-search'
 
 #
 # Autosuggestions
