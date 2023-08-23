@@ -54,7 +54,7 @@ set -g pane-border-format "#{?pane_active,#{@cap-start}#[reverse],#{@cap-start-h
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
-set -g pane-border-style "fg=#{@color-pane}"
+set -g pane-border-style "fg=#{@color-inactive}"
 set -g status 2
 set -g status-format[1] ""
 set -g status-interval 5
@@ -72,7 +72,7 @@ set -g window-status-current-format "#{@cap-start}#[bg=#{@color-window} fg=#{@co
 set -g window-status-current-style "fg=#{@color-window}"
 set -g window-status-format "#[dim]#{@cap-start-half} #{E:@window-status-format}#{@cap-end-half}"
 set -g window-status-separator " "
-set -g window-status-style "fg=#{@color-pane}"
+set -g window-status-style "fg=#{@color-inactive}"
 
 #
 # Plugins
