@@ -41,11 +41,11 @@ set -g @window-status-format "#I #{E:@window-flags}#{@separator-left} #W "
 set -g message-command-style "bg=default fg=#{@utz-color-3}"
 set -g message-style "bg=default fg=#{@utz-color-5}"
 set -g pane-active-border-style "fg=#{@utz-color-3} bg=default"
-set -g pane-border-format " #{?pane_active,#{@cap-start}#[bg=#{@utz-color-3} fg=black],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
+set -g pane-border-format " #{?pane_active,#{@cap-start}#[bg=#{@utz-color-3} fg=#{@utz-color-2}],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
-set -g pane-border-style "fg=magenta dim"
+set -g pane-border-style "fg=#{@utz-color-4} dim"
 set -g status 2
 set -g status-format[1] ""
 set -g status-interval 5
@@ -59,11 +59,11 @@ set -g status-style "fg=#{@utz-color-1} bg=default"
 set -g window-status-activity-style "bold"
 set -g window-status-bell-style "fg=#{@utz-color-3}"
 set -g window-status-last-style "fg=#{@utz-color-5} nodim"
-set -g window-status-current-format "#{@cap-start}#[bg=#{@utz-color-3} fg=black] #{E:@window-status-format}#[default]#{@cap-end}"
+set -g window-status-current-format "#{@cap-start}#[bg=#{@utz-color-3} fg=#{@utz-color-2}] #{E:@window-status-format}#[default]#{@cap-end}"
 set -g window-status-current-style "fg=#{@utz-color-3}"
 set -g window-status-format "#{@cap-start-half} #{E:@window-status-format}#{@cap-end-half}"
 set -g window-status-separator " "
-set -g window-status-style "fg=magenta dim"
+set -g window-status-style "fg=#{@utz-color-4} dim"
 
 #
 # Plugins
