@@ -116,7 +116,7 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 # ----------------
 
 keychain_timeout=$((24 * 60 * 60))
-eval $(keychain --eval --agents gpg,ssh --inherit any --timeout $keychain_timeout id_ed25519 6AEFB22E))
+eval $(keychain --eval --agents gpg,ssh --inherit any --timeout $keychain_timeout id_ed25519 6AEFB22E)
 
 # ------------
 # --  rust  --
