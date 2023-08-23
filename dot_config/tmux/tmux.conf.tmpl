@@ -54,7 +54,7 @@ set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 set -g message-command-style "bg=default fg=#{@color-danger}"
 set -g message-style "bg=default fg=#{@color-warning}"
 set -g pane-active-border-style "fg=#{@color-pane} bg=default"
-set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@cap-round-soft-start}} 󰉋 #{pane_current_path} #{@divider-soft-left} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@cap-round-soft-end}#[default]} "
+set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@divider-soft-left} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
