@@ -1,0 +1,11 @@
+session_name: ansible
+start_directory: $HOME/code/delegator
+windows:
+  - panes:
+      - pane
+    window_name: ctrl
+    start_directory: playbooks-ctrl
+  - panes:
+      - pane
+    window_name: playcore.com
+    start_directory: playbooks-playcore.com
