@@ -45,6 +45,8 @@ set -g @cap-round-soft-start ""
 set -g @cap-round-soft-end ""
 set -g @divider-soft-left ""
 set -g @divider-soft-right ""
+set -g @divider-hard-left ""
+set -g @divider-hard-right ""
 
 set -g @window-flags "#[bright]#{?window_marked_flag, ,}#{?window_zoomed_flag,󱉶 ,}#{?window_bell_flag,󰵙 ,}#{?window_last_flag,󱞱 ,}#{?window_activity_flag,󰛄 ,}#{?window_silence_flag,󰪓 ,}#[nobright]"
 set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
@@ -52,7 +54,7 @@ set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 set -g message-command-style "bg=default fg=#{@color-danger}"
 set -g message-style "bg=default fg=#{@color-warning}"
 set -g pane-active-border-style "fg=#{@color-pane} bg=default"
-set -g pane-border-format " #{?pane_active,#{@cap-round-hard-start}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@cap-round-soft-start}} 󰉋 #{pane_current_path} #{@divider-soft-left} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@cap-round-hard-end},#{@cap-round-soft-end}#[default]} "
+set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@cap-round-soft-start}} 󰉋 #{pane_current_path} #{@divider-soft-left} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@cap-round-soft-end}#[default]} "
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
