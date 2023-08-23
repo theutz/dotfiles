@@ -60,10 +60,7 @@ set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
 set -g pane-border-style "fg=#{@color-inactive}"
-set -g status 3
-set -g status-format[1] "#{status-format[0]}"
-set -g status-format[0] ""
-set -g status-format[2] ""
+set -g status 1
 set -g status-interval 5
 set -g status-justify absolute-centre
 set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@divider-soft-left} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
