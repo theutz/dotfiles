@@ -25,18 +25,18 @@ set -g visual-activity on
 #
 
 {{- if eq .chezmoi.os "darwin" }}
-set -g @utz-color-1 "blue"
-set -g @utz-color-2 "black"
-set -g @utz-color-3 "green"
-set -g @utz-color-4 "magenta"
+set -g @color-session "blue"
+set -g @color-window "green"
+set -g @color-pane "magenta"
 {{- else }}
-set -g @utz-color-1 "yellow"
-set -g @utz-color-2 "black"
-set -g @utz-color-3 "yellow"
-set -g @utz-color-4 "yellow"
+set -g @color-session "yellow"
+set -g @color-window "yellow"
+set -g @color-pane "yellow"
 {{- end }}
-set -g @utz-color-5 "orange"
-set -g @utz-color-6 "red"
+set -g @color-text "black"
+set -g @color-success "green"
+set -g @color-warning "orange"
+set -g @color-danger "red"
 set -g @cap-start ""
 set -g @cap-end ""
 set -g @cap-start-half ""
@@ -46,14 +46,14 @@ set -g @separator-right ""
 set -g @window-flags "#[bright]#{?window_marked_flag, ,}#{?window_zoomed_flag,󱉶 ,}#{?window_bell_flag,󰵙 ,}#{?window_last_flag,󱞱 ,}#{?window_activity_flag,󰛄 ,}#{?window_silence_flag,󰪓 ,}#[nobright]"
 set -g @window-status-format "#I #{E:@window-flags}#{@separator-left} #W "
 
-set -g message-command-style "bg=default fg=#{@utz-color-6}"
-set -g message-style "bg=default fg=#{@utz-color-5}"
-set -g pane-active-border-style "fg=#{@utz-color-3} bg=default"
-set -g pane-border-format "#[dim] #{?pane_active,#{@cap-start}#[bg=#{@utz-color-3} fg=#{@utz-color-2}],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
+set -g message-command-style "bg=default fg=#{@color-danger}"
+set -g message-style "bg=default fg=#{@color-warning}"
+set -g pane-active-border-style "fg=#{@color-window} bg=default"
+set -g pane-border-format "#[dim] #{?pane_active,#{@cap-start}#[bg=#{@color-window} fg=#{@color-text}],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
 set -g pane-border-status top
-set -g pane-border-style "fg=#{@utz-color-4}"
+set -g pane-border-style "fg=#{@color-pane}"
 set -g status 2
 set -g status-format[1] ""
 set -g status-interval 5
@@ -63,15 +63,15 @@ set -g status-left-length 80
 set -g status-position top
 set -g status-right "#{@cap-start}#[reverse] 󰀄 #{user} #{@separator-right} #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo "󰍹" || echo "󰖪")  #H #[default]#{@cap-end}"
 set -g status-right-length 80
-set -g status-style "fg=#{@utz-color-1} bg=default"
+set -g status-style "fg=#{@color-session} bg=default"
 set -g window-status-activity-style "bold"
-set -g window-status-bell-style "fg=#{@utz-color-3}"
-set -g window-status-last-style "fg=#{@utz-color-3} nodim"
-set -g window-status-current-format "#{@cap-start}#[bg=#{@utz-color-3} fg=#{@utz-color-2}] #{E:@window-status-format}#[default]#{@cap-end}"
-set -g window-status-current-style "fg=#{@utz-color-3}"
+set -g window-status-bell-style "fg=#{@color-window}"
+set -g window-status-last-style "fg=#{@color-window} nodim"
+set -g window-status-current-format "#{@cap-start}#[bg=#{@color-window} fg=#{@color-text}] #{E:@window-status-format}#[default]#{@cap-end}"
+set -g window-status-current-style "fg=#{@color-window}"
 set -g window-status-format "#[dim]#{@cap-start-half} #{E:@window-status-format}#{@cap-end-half}"
 set -g window-status-separator " "
-set -g window-status-style "fg=#{@utz-color-4}"
+set -g window-status-style "fg=#{@color-pane}"
 
 #
 # Plugins
