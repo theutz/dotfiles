@@ -1,7 +1,7 @@
 [user]
 	name = Michael Utz
 	email = michael@theutz.com
-	signingkey = 6AEFB22E
+	signingkey = 48B95546
 [pull]
 	rebase = true
 [rerere]
