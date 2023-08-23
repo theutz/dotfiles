@@ -39,9 +39,11 @@ alias r="ranger"
 alias ranger="source ranger"
 alias tx="tmux"
 alias txa="tmux attach"
-alias txl="tmuxp load -d"
 alias txls="tmux ls"
 alias txp="tmuxp"
+alias txpe="tmuxp edit"
+alias txpl="tmuxp load -d"
+alias txpL="tmuxp load"
 alias txpls="tmuxp ls"
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
