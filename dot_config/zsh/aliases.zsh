@@ -8,12 +8,6 @@ alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
 alias ansv="ansible-vault"
-alias brewk="brew info"
-alias brewp="brew services"
-alias brewpr="brew services restart"
-alias brewps="brew services start"
-alias brewpx="brew services stop"
-alias caskk="brew info --cask"
 alias cm="chezmoi"
 alias cma="chezmoi add"
 alias cmA="chezmoi apply"
@@ -46,6 +40,15 @@ alias txpe="tmuxp edit"
 alias txpl="tmuxp load -d"
 alias txpL="tmuxp load"
 alias txpls="tmuxp ls"
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias brewk="brew info"
+  alias brewp="brew services"
+  alias brewpr="brew services restart"
+  alias brewps="brew services start"
+  alias brewpx="brew services stop"
+  alias caskk="brew info --cask"
+fi
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
