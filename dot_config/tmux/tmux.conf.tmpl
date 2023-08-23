@@ -39,7 +39,7 @@ set -g @window-flags "#[bright]#{?window_marked_flag, ,}#{?window_zoomed_flag
 set -g @window-status-format "#I #{E:@window-flags}#{@separator-left} #W "
 
 set -g message-command-style "bg=default fg=#{@utz-color-3}"
-set -g message-style "bg=default fg=orange"
+set -g message-style "bg=default fg=#{@utz-color-5}"
 set -g pane-active-border-style "fg=#{@utz-color-3} bg=default"
 set -g pane-border-format " #{?pane_active,#{@cap-start}#[bg=#{@utz-color-3} fg=black],#{@cap-start-half}} 󰉋 #{pane_current_path} #{@separator-left} 󰆍 #{pane_current_command} #[default]#{?pane_active,#{@cap-end},#{@cap-end-half}} "
 set -g pane-border-indicators off
@@ -55,10 +55,10 @@ set -g status-left-length 80
 set -g status-position top
 set -g status-right "#{@cap-start}#[reverse] 󰀄 #{user} #{@separator-right} #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo "󰍹" || echo "󰖪")  #H #[default]#{@cap-end}"
 set -g status-right-length 80
-set -g status-style "fg=blue bg=default"
+set -g status-style "fg=#{@utz-color-1} bg=default"
 set -g window-status-activity-style "bold"
 set -g window-status-bell-style "fg=#{@utz-color-3}"
-set -g window-status-last-style "fg=orange nodim"
+set -g window-status-last-style "fg=#{@utz-color-5} nodim"
 set -g window-status-current-format "#{@cap-start}#[bg=#{@utz-color-3} fg=black] #{E:@window-status-format}#[default]#{@cap-end}"
 set -g window-status-current-style "fg=#{@utz-color-3}"
 set -g window-status-format "#{@cap-start-half} #{E:@window-status-format}#{@cap-end-half}"
