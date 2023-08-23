@@ -58,13 +58,13 @@ set -g pane-active-border-style "fg=#{@color-pane} bg=default"
 set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
-set -g pane-border-status bottom
+set -g pane-border-status top
 set -g pane-border-style "fg=#{@color-inactive}"
 set -g status-interval 5
 set -g status-justify absolute-centre
 set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@divider-soft-left} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
 set -g status-left-length 80
-set -g status-position top
+set -g status-position bottom
 set -g status-right "#{@cap-round-hard-start}#[reverse] 󰀄 #{user} #{@divider-soft-right} #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo "󰍹" || echo "󰖪")  #H #[default]#{@cap-round-hard-end}"
 set -g status-right-length 80
 set -g status-style "fg=#{@color-session} bg=default"
