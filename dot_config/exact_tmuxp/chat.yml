@@ -1,0 +1,7 @@
+session_name: chat
+start_directory: $HOME/sites/chatacademy.com.tr
+
+windows:
+  - title: main
+    panes:
+      - blank
