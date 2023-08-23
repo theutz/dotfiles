@@ -27,16 +27,16 @@ set -g visual-activity on
 {{- if eq .chezmoi.os "darwin" }}
 set -g @utz-color-1 "blue"
 set -g @utz-color-2 "black"
-set -g @utz-color-3 "red"
+set -g @utz-color-3 "green"
 set -g @utz-color-4 "magenta"
-set -g @utz-color-5 "orange"
 {{- else }}
 set -g @utz-color-1 "yellow"
 set -g @utz-color-2 "black"
 set -g @utz-color-3 "yellow"
 set -g @utz-color-4 "yellow"
-set -g @utz-color-5 "yellow"
 {{- end }}
+set -g @utz-color-5 "orange"
+set -g @utz-color-6 "red"
 set -g @cap-start ""
 set -g @cap-end ""
 set -g @cap-start-half ""
