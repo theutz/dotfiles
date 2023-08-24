@@ -16,13 +16,14 @@ alias cme="chezmoi edit"
 alias cmea="chezmoi edit -a"
 alias cmf="chezmoi forget"
 alias cmg="chezmoi git"
+alias cmgs="chezmoi git status"
 alias cmi="chezmoi init"
 alias cmls="chezmoi managed ."
 alias cmm="chezmoi merge"
 alias cmma="chezmoi merge-all"
 alias cmra="chezmoi re-add"
 alias cmrm="chezmoi remove"
-alias cms="chezmoi status; echo; chezmoi git status -- --short"
+alias cms="chezmoi status"
 alias cmu="chezmoi update"
 alias cmur="chezmoi update --refresh-externals"
 alias ez="exec zsh"
@@ -52,7 +53,6 @@ fi
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
-  alias -s "$rc"="$EDITOR"
 done
 
 #
