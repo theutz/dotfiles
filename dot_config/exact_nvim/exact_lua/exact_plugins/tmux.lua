@@ -1,9 +1,15 @@
 return {
   {
     "aserowy/tmux.nvim",
-    config = function()
-      require("tmux").setup()
-    end,
+    module = "tmux",
+    -- config = function()
+    --   require("tmux").setup()
+    -- end,
+    opts = {
+      copy_sync = {
+        enable = false,
+      },
+    },
     keys = {
       {
         "<C-h>",
