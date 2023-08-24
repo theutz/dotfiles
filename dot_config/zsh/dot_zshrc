@@ -56,7 +56,7 @@ source "$ZDOTDIR/bindings.zsh"
 # -- keychain --
 # --------------
 
-eval $(keychain --eval --agents ssh,gpg id_ed25519 6AEFB22E)
+eval $(keychain --eval --agents ssh,gpg id_ed25519 6AEFB22E FD235DFD 48B95546)
 
 # --------------
 # --  zoxide  --
