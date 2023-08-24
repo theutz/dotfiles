@@ -53,6 +53,12 @@ source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/bindings.zsh"
 
 # --------------
+# -- keychain --
+# --------------
+
+eval $(keychain --eval id_ed25519 651A36416AEFB22E)
+
+# --------------
 # --  zoxide  --
 # --------------
 
