@@ -1,13 +1,10 @@
 session_name: ultimate
 start_directory: $HOME/Sites/ultimatelinings.com/
 windows:
-  - focus: true
-    layout: main-vertical
-    options:
-      main-pane-width: '60%'
+  - window_name: main
+    focus: true
     panes:
-      - focus: true
-        shell_command:
-          - pane
+      - pane
+  - window_name: server
+    panes:
       - bin/dev
-    window_name: main
