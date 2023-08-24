@@ -37,11 +37,9 @@ alias tx="tmux"
 alias txa="tmux attach"
 alias txe="chezmoi edit -a ~/.config/tmux/tmux.conf"
 alias txls="tmux ls"
-alias txp="tmuxp"
-alias txpe="tmuxp edit"
-alias txpl='tmuxp ls | gum filter | xargs tmuxp load -d'
-alias txpL="tmuxp load"
-alias txpls="tmuxp ls"
+alias txpe="tmxup ls | gum filter | xargs tmuxp edit"
+alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
+alias txpL="tmuxp ls | gum filter | xargs tmuxp load"
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias brewk="brew info"
@@ -54,6 +52,7 @@ fi
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
+  alias -s $rc="$EDITOR"
 done
 
 #
