@@ -39,7 +39,7 @@ alias txe="chezmoi edit -a ~/.config/tmux/tmux.conf"
 alias txls="tmux ls"
 alias txp="tmuxp"
 alias txpe="tmuxp edit"
-alias txpl="tmuxp load -d"
+alias txpl='gum choose $(tmuxp ls) | xargs tmuxp load -d'
 alias txpL="tmuxp load"
 alias txpls="tmuxp ls"
 
