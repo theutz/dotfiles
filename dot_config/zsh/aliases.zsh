@@ -52,7 +52,7 @@ fi
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
-  alias -s ".$rc"="$EDITOR"
+  alias -s "*.$rc"="$EDITOR"
 done
 
 #
