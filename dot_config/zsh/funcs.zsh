@@ -114,7 +114,7 @@ function txa {
     session="$(tmuxp ls | gum filter)"
   fi
 
-  if ! tmux has-session $session; then
+  if ! tmux has-session -t "$session"; then
     tmuxp load -d "$session"
   fi
 
