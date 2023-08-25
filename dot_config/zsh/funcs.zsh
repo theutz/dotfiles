@@ -95,6 +95,16 @@ function take {
   mkdir -p "$@" && cd "$@"
 }
 
+function txpe {
+  if [[ -z "$@" ]]; then
+    session="$(tmuxp ls | gum filter)"
+  else
+    session="$@"
+  fi
+
+  tmuxp edit "$session"
+}
+
 alias ls &>/dev/null && unalias ls
 function ls {
   command -v lsd &>/dev/null && lsd "$@" || command ls "$@"
