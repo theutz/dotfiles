@@ -105,6 +105,18 @@ function txpe {
   tmuxp edit "$session"
 }
 
+function txa {
+  if [[ -n "$argv" && -n "$argv[1]" ]]; then
+    session="$argv[1]"
+  elif sessions="$(tmux ls 2>/dev/null | cut -d ':' -f1)"; then
+    session="$(echo $sessions | gum filter)"
+  else
+    session="$(tmuxp ls | gum filter)"
+    tmuxp load -d "$session"
+  fi
+  tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
+}
+
 alias ls &>/dev/null && unalias ls
 function ls {
   command -v lsd &>/dev/null && lsd "$@" || command ls "$@"
