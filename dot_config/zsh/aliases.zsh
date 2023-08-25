@@ -33,7 +33,6 @@ alias funcs="chezmoi edit -a ~/.config/zsh/funcs.zsh; exec zsh"
 alias hosts="sudo nvim /etc/hosts && dscacheutil -flushcache"
 alias lg="lazygit"
 alias linlls="linode-cli linodes ls"
-alias ls="command -v lsd >/dev/null && lsd || ls -G"
 alias md="mkdir -p"
 alias nve="chezmoi edit -a ~/.config/nvim"
 alias r="ranger"
@@ -44,7 +43,6 @@ alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmu
 alias txls="tmux list-sessions"
 alias txpe="tmxup ls | gum filter | xargs tmuxp edit"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
-alias txpL="tmuxp ls | gum filter | xargs tmuxp load"
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias brewk="brew info"
