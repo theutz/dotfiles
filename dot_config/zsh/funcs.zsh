@@ -118,7 +118,7 @@ function txa {
   fi
 
   if ! tmux has-session -t "$session" &>/dev/null; then
-    tmuxp load -d "$session"
+    tmuxp load -d "$session" &>/dev/null
   fi
 
   tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
