@@ -108,7 +108,8 @@ function txpe {
 }
 
 function txa {
-  set -o pipefail
+  setopt pipe_fail
+  setopt err_return
 
   if [[ -n "$@" ]]; then
     session="$@"
