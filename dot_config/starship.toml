@@ -6,7 +6,7 @@ add_newline = true
 disabled = false
 
 [shell]
-disabled = false
+disabled = true
 
 [status]
 disabled = false
