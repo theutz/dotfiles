@@ -114,7 +114,8 @@ function take {
 function txa {
   sessions="$(tmux ls | cut -d ':' -f1)"
   if [[ $? -eq 0 ]]; then
-    echo $sessions | gum filter | xargs tmux attach-session -t
+    session="$(echo $sessions | gum filter)"
+    tmux attach-session -t $session
   else
     tmuxp ls | gum filter | xargs tmuxp load
   fi
