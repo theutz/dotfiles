@@ -96,5 +96,6 @@ function take {
 }
 
 function ls {
+  unalias ls
   command -v lsd &>/dev/null && lsd "$@" || command \ls "$@"
 }
