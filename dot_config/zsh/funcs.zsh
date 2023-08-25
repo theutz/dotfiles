@@ -106,8 +106,8 @@ function txpe {
 }
 
 function txa {
-  if [[ -n "$argv" && -n "$argv[1]" ]]; then
-    session="$argv[1]"
+  if [[ -n "$@" ]]; then
+    session="$@"
   elif sessions="$(tmux ls 2>/dev/null | cut -d ':' -f1)"; then
     session="$(echo $sessions | gum filter)"
   else
