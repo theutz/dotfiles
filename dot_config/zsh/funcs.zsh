@@ -112,8 +112,12 @@ function txa {
     session="$(echo $sessions | gum filter)"
   else
     session="$(tmuxp ls | gum filter)"
+  fi
+
+  if ! tmux has-session $session; then
     tmuxp load -d "$session"
   fi
+
   tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
 }
 
