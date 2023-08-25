@@ -110,3 +110,14 @@ function catt {
 function take {
   mkdir -p "$@" && cd "$@"
 }
+
+function txa {
+  set -euo pipefail
+
+  sessions="$(tmux ls)"
+  if [[ $? -eq 0 ]]; then
+    echo $sessions | gum filter | xargs tmux attach -t
+  else
+    tmuxp ls | gum filter | xargs tmuxp load
+  fi
+}
