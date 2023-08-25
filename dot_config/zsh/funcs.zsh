@@ -113,11 +113,11 @@ function take {
 
 function txa {
   sessions="$(tmux ls 2>/dev/null | cut -d ':' -f1)"
-  if [[ $? -eq 0 ]]; then
+  if [[ "$?" -eq 0 ]]; then
+    echo "Meh"
     session="$(echo $sessions | gum filter)"
     tmux attach-session -t $session
   else
-    echo "Meh"
     session="$(tmuxp ls | gum filter)"
     tmuxp load $session
   fi
