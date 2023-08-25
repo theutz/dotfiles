@@ -91,22 +91,10 @@ function _navi_widget() {
    zle redisplay
 }
 
-function catt {
-  if [[ -d "$@" ]]; then
-    if command -v lsd &>/dev/null; then
-      lsd -la "$@"
-    else
-      ls -la "$@"
-    fi
-  elif [[ -f "$@" ]]; then
-    if command -v bat &>/dev/null; then
-      bat "$@"
-    else
-      "$(which cat)" "$@"
-    fi
-  fi
-}
-
 function take {
   mkdir -p "$@" && cd "$@"
+}
+
+function ls {
+  command -v lsd &>/dev/null && lsd "$@" || ls -G "$@"
 }
