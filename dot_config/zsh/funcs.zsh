@@ -96,5 +96,5 @@ function take {
 }
 
 function ls {
-  command -v lsd &>/dev/null && lsd "$@" || command ls "$@"
+  command -v lsd &>/dev/null && lsd "$@" || command \ls "$@"
 }
