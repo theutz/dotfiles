@@ -40,7 +40,6 @@ alias tx="tmux"
 alias txe="chezmoi edit -a ~/.config/tmux/tmux.conf"
 alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
 alias txls="tmux list-sessions"
-alias txpe="tmuxp ls | gum filter | xargs tmuxp edit"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
 
 if [[ "$OSTYPE" == darwin* ]]; then
