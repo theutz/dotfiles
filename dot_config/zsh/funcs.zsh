@@ -118,7 +118,7 @@ function txa {
   fi
 
   tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
-  set +o pipefail
+  set -o local_options
 }
 
 alias ls &>/dev/null && unalias ls
