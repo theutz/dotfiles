@@ -2,6 +2,7 @@
 # Aliases
 #
 
+unalias ls
 alias aic="aicommits"
 alias aliases="chezmoi edit -a ~/.config/zsh/aliases.zsh; exec zsh"
 alias ans="ansible"
