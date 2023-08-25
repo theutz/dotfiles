@@ -2,6 +2,8 @@
 # Functions
 #
 
+setopt LOCAL_OPTIONS
+
 function rgd() {
   rg --json "$argv" | delta
 }
@@ -107,6 +109,7 @@ function txpe {
 
 function txa {
   set -eo pipefail
+
   if [[ -n "$@" ]]; then
     session="$@"
   else
@@ -118,7 +121,6 @@ function txa {
   fi
 
   tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
-  set -o local_options
 }
 
 alias ls &>/dev/null && unalias ls
@@ -130,3 +132,5 @@ alias cat &>/dev/null && unalias cat
 function cat {
   command -v bat &>/dev/null && bat "$@" || command cat "$@"
 }
+
+unsetopt LOCAL_OPTIONS
