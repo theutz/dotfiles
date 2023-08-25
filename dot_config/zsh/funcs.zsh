@@ -112,8 +112,6 @@ function take {
 }
 
 function txa {
-  set -euo pipefail
-
   sessions="$(tmux ls)"
   if [[ $? -eq 0 ]]; then
     echo $sessions | gum filter | xargs tmux attach -t
