@@ -106,9 +106,10 @@ function txpe {
 }
 
 function txa {
+  set -o pipefail
   if [[ -n "$@" ]]; then
     session="$@"
-  elif sessions="$(set -o pipefail && tmux ls 2>/dev/null | cut -d ':' -f1)"; then
+  elif sessions="$(tmux ls 2>/dev/null | cut -d ':' -f1)"; then
     session="$(echo $sessions | gum filter)"
   else
     session="$(tmuxp ls | gum filter)"
@@ -119,6 +120,7 @@ function txa {
   fi
 
   tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
+  set +o pipefail
 }
 
 alias ls &>/dev/null && unalias ls
