@@ -107,10 +107,8 @@ function txpe {
 
 function txa {
   if [[ -n "$@" ]]; then
-    echo "meh1"
     session="$@"
-  elif sessions="$(tmux ls 2>/dev/null | cut -d ':' -f1)"; then
-    echo "meh2"
+  elif sessions="$(set -o pipefail && tmux ls 2>/dev/null | cut -d ':' -f1)"; then
     session="$(echo $sessions | gum filter)"
   else
     echo "meh3"
