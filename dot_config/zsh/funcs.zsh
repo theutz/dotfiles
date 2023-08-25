@@ -111,7 +111,6 @@ function txa {
   elif sessions="$(set -o pipefail && tmux ls 2>/dev/null | cut -d ':' -f1)"; then
     session="$(echo $sessions | gum filter)"
   else
-    echo "meh3"
     session="$(tmuxp ls | gum filter)"
     tmuxp load -d "$session"
   fi
