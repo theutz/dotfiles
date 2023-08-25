@@ -95,7 +95,11 @@ function take {
   mkdir -p "$@" && cd "$@"
 }
 
-alias ls &>/dev/null && unalias ls
+# alias ls &>/dev/null && unalias ls
 function ls {
-  command -v lsd &>/dev/null && lsd "$@" || command \ls "$@"
+  command -v lsd &>/dev/null && lsd "$@" || command ls "$@"
+}
+
+function cat {
+  command -v bat &>/dev/null && bat "$@" || command 
 }
