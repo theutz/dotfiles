@@ -117,6 +117,7 @@ function txa {
     session="$(echo $sessions | gum filter)"
     tmux attach-session -t $session
   else
+    echo "Meh"
     session="$(tmuxp ls | gum filter)"
     tmuxp load $session
   fi
