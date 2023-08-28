@@ -5,5 +5,8 @@ windows:
       - blank
     window_name: main
   - panes:
-      - mosh
-    window_name: mosh
+      - blank
+      - nvim
+    window_name: playbook
+    start_directory: $HOME/code/delegator/playbooks-playcore.com
+    layout: main-vertical
