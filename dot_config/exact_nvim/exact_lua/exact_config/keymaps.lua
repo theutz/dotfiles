@@ -12,4 +12,4 @@ vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
 vim.keymap.del({ "i" }, "<M-j>")
 vim.keymap.del({ "i" }, "<M-k>")
 
-vim.keymap.set("n", "<leader>#a", ":.!boxes -d ada-box | boxes -d pound-cmd<cr>", { desc = "Ada Box -> Pound Cmd" })
+vim.keymap.set("n", "<leader>#a", ":.!boxes -d ada-box | boxes -d pound-cmt<cr>", { desc = "Ada Box -> Pound Cmd" })
