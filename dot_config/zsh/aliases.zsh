@@ -1,4 +1,4 @@
-#Aliases
+Aliases
 
 alias aic="aicommits"
 alias aliases="chezmoi edit -a ~/.config/zsh/aliases.zsh; exec zsh"
