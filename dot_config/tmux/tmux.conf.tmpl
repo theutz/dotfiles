@@ -52,7 +52,7 @@ set -g @separator "󰇙"
 set -g @window-flags "#[bright]#{?window_marked_flag, ,}#{?window_zoomed_flag,󱉶 ,}#{?window_bell_flag,󰵙 ,}#{?window_last_flag,󱞱 ,}#{?window_activity_flag,󰛄 ,}#{?window_silence_flag,󰪓 ,}#[nobright]"
 set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 
-set -g message-command-style "bg=#{@color-session} fg=#{@color-text}"
+set -g message-command-style "bg=#{@color-inactive} fg=#{@color-text}"
 set -g message-style "bg=#{@color-pane} fg=#{@color-text}"
 set -g pane-active-border-style "fg=#{@color-pane}"
 set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
