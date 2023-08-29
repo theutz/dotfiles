@@ -60,5 +60,9 @@ done
 # Suffix Aliases
 #
 alias -s {md,markdown,mkdwn}="glow -p"
+
+#
+# Global Aliases
+#
 alias -g P="| p"
 
