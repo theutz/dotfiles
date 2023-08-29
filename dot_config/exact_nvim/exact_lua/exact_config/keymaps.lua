@@ -7,4 +7,8 @@ vim.keymap.set("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
 vim.keymap.del({ "i" }, "<M-j>")
 vim.keymap.del({ "i" }, "<M-k>")
 
+local wk = require("which-key")
+wk.register({
+	["<leader>#"] = "Fancy Comments",
+})
 vim.keymap.set("n", "<leader>#a", "<cmd>!boxes -d ada-box | boxes -d pound-cmd<cr>", { desc = "Ada Box -> Pound Cmd" })
