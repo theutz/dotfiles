@@ -27,7 +27,7 @@ set -g visual-activity on
 {{- if eq .chezmoi.os "darwin" }}
 set -g @color-session "blue"
 set -g @color-window "cyan"
-set -g @color-pane "green"
+set -g @color-pane "orange"
 {{- else }}
 set -g @color-session "magenta"
 set -g @color-window "pink"
@@ -54,7 +54,7 @@ set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 
 set -g message-command-style "bg=#{@color-session} fg=#{@color-text}"
 set -g message-style "bg=#{@color-success} fg=#{@color-text}"
-set -g pane-active-border-style "fg=#{@color-pane} bg=default"
+set -g pane-active-border-style "fg=#{@color-pane}"
 set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
 set -g pane-border-indicators off
 set -g pane-border-lines heavy
