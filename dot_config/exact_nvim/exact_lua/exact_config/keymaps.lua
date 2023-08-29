@@ -11,4 +11,4 @@ local wk = require("which-key")
 wk.register({
 	["<leader>#"] = { name = "Fancy Comments" },
 })
-vim.keymap.set("n", "<leader>#a", "<cmd>!boxes -d ada-box | boxes -d pound-cmd<cr>", { desc = "Ada Box -> Pound Cmd" })
+vim.keymap.set("n", "<leader>#a", "<cmd>.!boxes -d ada-box | boxes -d pound-cmd<cr>", { desc = "Ada Box -> Pound Cmd" })
