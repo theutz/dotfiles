@@ -21,6 +21,7 @@ return {
         ["~"] = "actions.tcd",
         ["g."] = "actions.toggle_hidden",
       },
+      use_default_keymaps = false,
     },
     keys = {
       {
