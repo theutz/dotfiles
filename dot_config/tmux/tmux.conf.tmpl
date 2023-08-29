@@ -103,9 +103,10 @@ bind-key -N "Clear screen" C-l send-keys 'C-l'
 bind-key -N "List all keys" / list-keys
 
 # Popuup key table
-bind-key -N "Switch to popup keys table" g switch-client -Tpopup
-bind-key -N "lazygit" -T popup g popit lazygit
-bind-key -N "nb" -T popup n popit nb shell
+bind-key -N "Switch to popup keys table" g switch-client -Tpopit
+bind-key -N "lazygit" -T popit g popit lazygit
+bind-key -N "nb" -T popit n popit nb shell
+bind-key -N "btop" -T popit b popit btop
 
 # Key Mode
 set -g status-keys vi
