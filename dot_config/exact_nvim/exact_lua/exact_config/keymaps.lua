@@ -9,6 +9,6 @@ vim.keymap.del({ "i" }, "<M-k>")
 
 local wk = require("which-key")
 wk.register({
-	["<leader>#"] = "Fancy Comments",
+	["<leader>#"] = { name = "Fancy Comments" },
 })
 vim.keymap.set("n", "<leader>#a", "<cmd>!boxes -d ada-box | boxes -d pound-cmd<cr>", { desc = "Ada Box -> Pound Cmd" })
