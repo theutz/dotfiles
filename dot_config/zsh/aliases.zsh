@@ -1,4 +1,6 @@
-boxes: unknown box design -- pound-cmd
+# -------------
+# -- Aliases --
+# -------------
 
 alias aic="aicommits"
 alias aliases="chezmoi edit -a ~/.config/zsh/aliases.zsh; exec zsh"
@@ -57,13 +59,16 @@ for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
 done
 
-#
-# Suffix Aliases
-#
+# --------------------
+# -- Suffix Aliases --
+# --------------------
+
 alias -s {md,markdown,mkdwn}="glow -p"
 
-#
-# Global Aliases
-#
-alias -g P="| p"
+# --------------------
+# -- Global Aliases --
+# --------------------
 
+alias -g P="| p"
+alias -g @noerr="2> /dev/null"
+alias -g @noout="&> /dev/null"
