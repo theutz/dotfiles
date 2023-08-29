@@ -95,6 +95,8 @@ if "test ! -d ~/.config/tmux/plugins/tpm" \
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.config/tmux/plugins/tpm/tpm'
 
+set -ga command-alias popit='display-popup -w 80% -h 80% -E'
+
 # Key binding overrides
 bind-key -N "Reload tmux config" r source ~/.config/tmux/tmux.conf \; display-message "Tmux config reloaded!"
 bind-key -N "Clear screen" C-l send-keys 'C-l'
