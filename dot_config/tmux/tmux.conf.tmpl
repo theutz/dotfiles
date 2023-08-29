@@ -104,8 +104,6 @@ bind-key -N "List all keys" / list-keys
 bind-key -N "Switch to popup keys table" g switch-client -Tpopup
 bind-key -N "lazygit" -T popup g display-popup -w 80% -h 80% -E lazygit
 bind-key -N "nb" -T popup n display-popup -w 80% -h 80% -E nb shell
-bind-key -N "zdotdir" -T popup z display-popup -w 80% -h 80% -E nvim $ZDOTDIR
-bind-key -N "tmux" -T popup t display-popup -w 80% -h 80% -E nvim ~/.config/tmux/tmux.conf
 
 # Key Mode
 set -g status-keys vi
