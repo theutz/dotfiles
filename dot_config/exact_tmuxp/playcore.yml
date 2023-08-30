@@ -10,3 +10,5 @@ windows:
     window_name: playbook
     start_directory: $HOME/code/delegator/playbooks-playcore.com
     layout: main-vertical
+    options:
+      main-pane-width: 100

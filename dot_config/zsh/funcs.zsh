@@ -104,7 +104,8 @@ function txpe {
     session="$@"
   fi
 
-  tmuxp edit "$session"
+  (cd ~/.config/tmuxp && e "$session.yml")
+  # tmuxp edit "$session"
 }
 
 function txa {
