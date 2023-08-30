@@ -134,4 +134,22 @@ function cat {
   command -v bat &>/dev/null && bat "$@" || command cat "$@"
 }
 
+function cma {
+  setopt pipe_fail
+  setopt err_return
+
+  cd ~
+
+  if [[ -n "$@" ]]; then
+    chezmoi add $@
+  else
+    chezmoi status \
+      | awk '/^ D/ { print $2 }' \
+      | gum filter --no-limit \
+      | xargs chezmoi add
+  fi
+
+  cd -
+}
+
 unsetopt LOCAL_OPTIONS
