@@ -19,11 +19,11 @@
 
 # Execute code only if STDERR is bound to a TTY.
 if [[ -o INTERACTIVE && -t 2 ]]; then
- if command -v neofetch >/dev/null; then
-   if command -v lolcat >/dev/null; then
-     neofetch | lolcat
-   else
-     neofetch
-   fi
- fi
+  if command -v neofetch >/dev/null; then
+    if command -v lolcat >/dev/null; then
+      neofetch | lolcat
+    else
+      neofetch
+    fi
+  fi
 fi >&2

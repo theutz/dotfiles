@@ -3,8 +3,15 @@ start_directory: $HOME/Sites/ultimatelinings.com/
 windows:
   - window_name: main
     focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: 80
     panes:
       - pane
+      - nvim
   - window_name: server
     panes:
       - bin/dev
+  - window_name: remote
+    panes:
+      - mosh ultimate

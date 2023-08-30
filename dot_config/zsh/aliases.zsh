@@ -3,12 +3,11 @@
 # -------------
 
 alias aic="aicommits"
-alias aliases="e ~/.config/zsh/aliases.zsh; exec zsh"
+alias aliases="(cd ~/.config/zsh && e aliases.zsh); ez"
 alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
 alias ansv="ansible-vault"
-alias autocmds="e ~/.config/nvim/lua/config/autocmds.lua"
 alias cm="chezmoi"
 alias cma="chezmoi add"
 alias cmA="chezmoi apply"
@@ -31,18 +30,16 @@ alias cmu="chezmoi update"
 alias cmur="chezmoi update --refresh-externals"
 alias e="${(z)EDITOR:-nvim}"
 alias ez="exec zsh"
-alias funcs="chezmoi edit -a ~/.config/zsh/funcs.zsh; exec zsh"
-alias hosts="sudo nvim /etc/hosts && dscacheutil -flushcache"
+alias funcs="(cd ~/.config/zsh && e funcs.zsh); ez"
+alias hosts="sudo e /etc/hosts && dscacheutil -flushcache"
 alias lg="lazygit"
 alias linls="linode-cli linodes ls"
-alias keymaps="chezmoi edit -a ~/.config/nvim/lua/config/keymaps.lua"
-alias md="mkdir -p"
-alias nve="chezmoi edit -a ~/.config/nvim"
-alias plugins="chezmoi edit -a ~/.config/nvim/lua/plugins"
+alias mkdir="mkdir -p"
+alias vimrc='(cd ~/.config/nvim && e)'
 alias r="ranger"
 alias ranger="source ranger"
 alias tx="tmux"
-alias txe="chezmoi edit -a ~/.config/tmux/tmux.conf; tmux source-file ~/.config/tmux/tmux.conf"
+alias tmux.conf="(cd ~/.config/tmux && e)"
 alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
 alias txls="tmux list-sessions"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
@@ -57,7 +54,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
-  alias $rc="chezmoi edit -a $ZDOTDIR/.$rc"
+  alias $rc="(cd $ZDOTDIR && e .$rc); ez"
 done
 
 # --------------------
