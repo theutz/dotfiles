@@ -71,16 +71,20 @@ path=(
   $HOME/.config/phpmon/bin
   $HOME/.config/composer/vendor/bin
   $HOME/.docker/bin
+  {{- if eq .chezmoi.os "darwin" }}
   /opt/homebrew/opt/libpq/bin # must be first for funding-tool to work (ruby-on-rails)
   /opt/homebrew/opt/gnu-sed/libexec/gnubin
   /opt/{homebrew,local}/{,s}bin(N)
+  {{- end }}
   /usr/local/{,s}bin(N)
   $path
 )
 
 fpath=(
   ${ASDF_DIR}/completions
+  {{- if eq .chezmoi.os "darwin" }}
   /opt/homebrew/share/zsh/site-functions
+  {{- end }}
   $fpath
 )
 
