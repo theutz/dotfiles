@@ -115,11 +115,11 @@ function txa {
   if [[ -n "$@" ]]; then
     session="$@"
   else
-    session="$(tmuxp ls | gum filter)"
+    session="$(tmuxp ls | gum filter --fuzzy)"
   fi
 
   if ! tmux has-session -t "$session" &>/dev/null; then
-    gum spin -- tmuxp load -d "$session"
+    gum spin --spinner=meter -- tmuxp load -d "$session"
   fi
 
   tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
