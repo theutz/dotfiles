@@ -6,6 +6,12 @@ return {
       view_options = {
         show_hidden = true,
       },
+      columns = {
+        "icon",
+        "permissions",
+        -- "size",
+        -- "mtime",
+      },
       keymaps = {
         ["?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
@@ -27,7 +33,7 @@ return {
       {
         "<leader>.",
         function()
-          require("oil").open()
+          require("oil").open_float()
         end,
         desc = "Open parent directory",
       },
