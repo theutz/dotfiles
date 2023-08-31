@@ -1,6 +1,6 @@
-#
-# Global
-#
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                          Global                          │
+#  ╰──────────────────────────────────────────────────────────╯
 
 set -g mouse on
 set -g default-terminal "xterm-256color"
@@ -21,11 +21,18 @@ set -g window-status-separator ""
 set -g visual-activity on
 set -g remain-on-exit on
 
-#
-# Status Formats & Styles
-#
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                 Status Formats & Styles                  │
+#  ╰──────────────────────────────────────────────────────────╯
 
-{{- if eq .chezmoi.os "darwin" }}
+#  ╭──────────────────────╮
+#  │ User-defined options │
+#  ╰──────────────────────╯
+
+#  ╓
+#  ║ Colors
+#  ╙
+
 set -g @color-session "blue"
 set -g @color-window "cyan"
 set -g @color-pane "brightblue"
@@ -42,6 +49,10 @@ set -g @color-success "green"
 set -g @color-warning "yellow"
 set -g @color-danger "red"
 
+#  ╓
+#  ║ Icons
+#  ╙
+
 set -g @cap-round-hard-start ""
 set -g @cap-round-hard-end ""
 set -g @cap-round-soft-start ""
@@ -52,13 +63,34 @@ set -g @divider-hard-left ""
 set -g @divider-hard-right ""
 set -g @separator "󰇙"
 
-set -g @window-flags "#[bright]#{?window_marked_flag, ,}#{?window_zoomed_flag,󱉶 ,}#{?window_bell_flag,󰵙 ,}#{?window_last_flag,󱞱 ,}#{?window_activity_flag,󰛄 ,}#{?window_silence_flag,󰪓 ,}#[nobright]"
+#  ╓
+#  ║ Reused styles
+#  ╙
+
+set -g @window-flags "\
+#[bright]\
+#{?window_marked_flag, ,}\
+#{?window_zoomed_flag,󱉶 ,}\
+#{?window_bell_flag,󰵙 ,}\
+#{?window_last_flag,󱞱 ,}\
+#{?window_activity_flag,󰛄 ,}\
+#{?window_silence_flag,󰪓 ,}\
+#[nobright]"
 set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
+
+#  ╭─────────╮
+#  │ Options │
+#  ╰─────────╯
 
 set -g message-command-style "bg=#{@color-danger} fg=#{@color-text}"
 set -g message-style "bg=#{@color-warning} fg=#{@color-text}"
 set -g pane-active-border-style "fg=#{@color-pane} bg=#{@color-active-bg}"
-set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#[italics]#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
+set -g pane-border-format "\
+ #{?pane_active,#{@divider-hard-right}#[reverse],#[italics]#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}}\
+ 󰉋 #{pane_current_path}\
+ #{@separator}\
+ #󰆍 #{pane_current_command}\
+ #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]}"
 set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g pane-border-status top
@@ -72,13 +104,24 @@ set -g status-justify absolute-centre
 set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@divider-soft-left} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
 set -g status-left-length 80
 set -g status-position bottom
-set -g status-right "#{@cap-round-hard-start}#[reverse] 󰀄 #{user} #{@divider-soft-right} #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo "󰍹" || echo "󰖪")  #H #[default]#{@cap-round-hard-end}"
+set -g status-right "\
+#{@cap-round-hard-start}#[reverse]\
+ 󰀄 #{user}\
+ #{@separator}\
+ #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo "󰍹" || echo "󰖪")\
+ #H\
+ #[default]#{@cap-round-hard-end}"
 set -g status-right-length 80
 set -g status-style "fg=#{@color-session} bg=terminal"
 set -g window-status-activity-style "bold"
 set -g window-status-bell-style "fg=#{@color-window}"
 set -g window-status-last-style "fg=#{@color-window} nodim"
-set -g window-status-current-format "#{@cap-round-hard-start}#[bg=#{@color-window} fg=#{@color-text}] #{E:@window-status-format}#[default]#{@cap-round-hard-end}"
+set -g window-status-current-format "\
+#{@cap-round-hard-start}\
+#[bg=#{@color-window} fg=#{@color-text}]\
+ #{E:@window-status-format}\
+#[default]\
+#{@cap-round-hard-end}"
 set -g window-status-current-style "fg=#{@color-window}"
 set -g window-status-format "#[dim]#{@cap-round-soft-start} #{E:@window-status-format}#{@cap-round-soft-end}"
 set -gF window-status-separator " #[fg=#{@color-inactive}]⋅#[default] "
@@ -86,32 +129,45 @@ set -g window-status-style "fg=#{@color-inactive} italics"
 set -g window-active-style "bg=#{@color-active-bg}"
 set -g window-style "bg=#{@color-inactive-bg}"
 
-#
-# Plugins
-#
+#  ╭─────────╮
+#  │ Plugins │
+#  ╰─────────╯
+
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-sessionist'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'laktak/extrakto'
-set -g @plugin 'aserowy/tmux.nvim'
+# set -g @plugin 'aserowy/tmux.nvim'
 
+#  ────────────────────────────────────────────────────────────
 # Install tpm & plugins if they don't exist
 if "test ! -d ~/.config/tmux/plugins/tpm" \
    "run 'git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm && ~/.config/tmux/plugins/tpm/bin/install_plugins'"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.config/tmux/plugins/tpm/tpm'
+#  ────────────────────────────────────────────────────────────
+
+#  ╭──────────────────────────────────────────────────────────╮
+#  │ Command aliases                                          │
+#  ╰──────────────────────────────────────────────────────────╯
 
 set -ga command-alias popit='display-popup -w 80% -h 80% -E'
 
-# Key binding overrides
+#  ╭──────────────────────────────────────────────────────────╮
+#  │ Key binding overrides                                    │
+#  ╰──────────────────────────────────────────────────────────╯
+
 bind-key -N "Clear screen" C-l send-keys 'C-l'
 bind-key -N "List all keys" / list-keys
 bind-key -N "Respawn pane" r "respawn-pane"
 
-# Popuup key table
+#  ╭──────────────────╮
+#  │ Popuup key table │
+#  ╰──────────────────╯
+
 bind-key -N "Switch to popup keys table" g switch-client -T popit
 bind-key -T popit -N "lazygit" g popit -T " lazygit " lazygit
 bind-key -T popit -N "nb" n popit -T " nb " nb shell
@@ -120,7 +176,10 @@ bind-key -T popit -N "chezmoi" c popit -T " chezmoi " "cd $(chezmoi source-path)
 bind-key -T popit -N "boxes" B popit -T " boxes " "boxes -l | less"
 bind-key -T popit -N "figlet" f popit -T " figlet " "showfigfonts | less"
 
-# Key Mode
+#  ╭──────────╮
+#  │ Key Mode │
+#  ╰──────────╯
+
 set -g status-keys vi
 set -g mode-keys vi
 
