@@ -86382,6 +86382,8 @@
 			<string>3B265606-647E-4CCD-BF47-927FB9668FE8</string>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
+			<key>Icon</key>
+			<integer>0</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
@@ -87198,6 +87200,13 @@
 	<integer>1</integer>
 	<key>TabViewType</key>
 	<integer>1</integer>
+	<key>URLHandlersByGuid</key>
+	<dict>
+		<key>ssh</key>
+		<string>3B265606-647E-4CCD-BF47-927FB9668FE8</string>
+		<key>whois</key>
+		<string>3B265606-647E-4CCD-BF47-927FB9668FE8</string>
+	</dict>
 	<key>UseBorder</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
