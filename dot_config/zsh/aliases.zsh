@@ -38,6 +38,7 @@ alias mkdir="mkdir -p"
 alias vimrc='(cd ~/.config/nvim && e)'
 alias r="ranger"
 alias ranger="source ranger"
+alias skhdrc="e ~/.config/skhd/skhdrc"
 alias tx="tmux"
 alias tmux.conf="(cd ~/.config/tmux && e)"
 alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
