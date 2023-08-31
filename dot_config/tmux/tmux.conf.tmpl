@@ -25,14 +25,10 @@ set -g remain-on-exit on
 #  │                 Status Formats & Styles                  │
 #  ╰──────────────────────────────────────────────────────────╯
 
-#  ╭──────────────────────╮
-#  │ User-defined options │
-#  ╰──────────────────────╯
+#  Colors
+#  ────────────────────────────────────────────────────────────
 
-#  ╓
-#  ║ Colors
-#  ╙
-
+{{- if eq .chezmoi.os "darwin" -}}
 set -g @color-session "blue"
 set -g @color-window "cyan"
 set -g @color-pane "brightblue"
@@ -43,15 +39,15 @@ set -g @color-pane "purple"
 {{- end }}
 set -g @color-text "black"
 set -g @color-inactive "#54546D"
-set -gF @color-inactive-bg "#363646"
+set -g @color-inactive-bg "#363646"
 set -g @color-active-bg "terminal"
 set -g @color-success "green"
 set -g @color-warning "yellow"
 set -g @color-danger "red"
 
-#  ╓
-#  ║ Icons
-#  ╙
+
+#  Icons
+#  ────────────────────────────────────────────────────────────
 
 set -g @cap-round-hard-start ""
 set -g @cap-round-hard-end ""
@@ -63,9 +59,9 @@ set -g @divider-hard-left ""
 set -g @divider-hard-right ""
 set -g @separator "󰇙"
 
-#  ╓
-#  ║ Reused styles
-#  ╙
+
+#  Reused styles
+#  ────────────────────────────────────────────────────────────
 
 set -g @window-flags "\
 #[bright]\
@@ -78,9 +74,9 @@ set -g @window-flags "\
 #[nobright]"
 set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 
-#  ╭─────────╮
-#  │ Options │
-#  ╰─────────╯
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                         Options                          │
+#  ╰──────────────────────────────────────────────────────────╯
 
 set -g message-command-style "bg=#{@color-danger} fg=#{@color-text}"
 set -g message-style "bg=#{@color-warning} fg=#{@color-text}"
@@ -129,9 +125,9 @@ set -g window-status-style "fg=#{@color-inactive} italics"
 set -g window-active-style "bg=#{@color-active-bg}"
 set -g window-style "bg=#{@color-inactive-bg}"
 
-#  ╭─────────╮
-#  │ Plugins │
-#  ╰─────────╯
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                         Plugins                          │
+#  ╰──────────────────────────────────────────────────────────╯
 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
@@ -141,32 +137,36 @@ set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'laktak/extrakto'
 # set -g @plugin 'aserowy/tmux.nvim'
 
-#  ────────────────────────────────────────────────────────────
-# Install tpm & plugins if they don't exist
+#                                  ┌                                           ┐
+#                                  │ Install tpm & plugins if they don't exist │
+#                                  └                                           ┘
 if "test ! -d ~/.config/tmux/plugins/tpm" \
    "run 'git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm && ~/.config/tmux/plugins/tpm/bin/install_plugins'"
 
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+#                           ┌                                                  ┐
+#                           │                   Initialize TMUX plugin manager │
+#                           │ (keep this line at the very bottom of tmux.conf) │
+#                           └                                                  ┘
 run '~/.config/tmux/plugins/tpm/tpm'
-#  ────────────────────────────────────────────────────────────
 
 #  ╭──────────────────────────────────────────────────────────╮
-#  │ Command aliases                                          │
+#  │                     Plugin overrides                     │
 #  ╰──────────────────────────────────────────────────────────╯
+
+#  Command aliases
+#  ────────────────────────────────────────────────────────────
 
 set -ga command-alias popit='display-popup -w 80% -h 80% -E'
 
-#  ╭──────────────────────────────────────────────────────────╮
-#  │ Key binding overrides                                    │
-#  ╰──────────────────────────────────────────────────────────╯
+#  Key binding overrides
+#  ────────────────────────────────────────────────────────────
 
 bind-key -N "Clear screen" C-l send-keys 'C-l'
 bind-key -N "List all keys" / list-keys
 bind-key -N "Respawn pane" r "respawn-pane"
 
-#  ╭──────────────────╮
-#  │ Popuup key table │
-#  ╰──────────────────╯
+#  Popup key table
+#  ────────────────────────────────────────────────────────────
 
 bind-key -N "Switch to popup keys table" g switch-client -T popit
 bind-key -T popit -N "lazygit" g popit -T " lazygit " lazygit
@@ -176,9 +176,8 @@ bind-key -T popit -N "chezmoi" c popit -T " chezmoi " "cd $(chezmoi source-path)
 bind-key -T popit -N "boxes" B popit -T " boxes " "boxes -l | less"
 bind-key -T popit -N "figlet" f popit -T " figlet " "showfigfonts | less"
 
-#  ╭──────────╮
-#  │ Key Mode │
-#  ╰──────────╯
+#  Key mode
+#  ────────────────────────────────────────────────────────────
 
 set -g status-keys vi
 set -g mode-keys vi
