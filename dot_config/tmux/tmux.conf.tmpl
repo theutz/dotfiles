@@ -4,7 +4,7 @@
 
 set -g mouse on
 set -g default-terminal "xterm-256color"
-set -ga terminal-overrides ",xterm-256color:Tc"
+set -ga terminal-overrides ",xterm*:Tc"
 set -g destroy-unattached off
 set -g detach-on-destroy off
 set -g aggressive-resize on
@@ -57,7 +57,7 @@ set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 set -g message-command-style "bg=#{@color-inactive} fg=#{@color-text}"
 set -g message-style "bg=#{@color-pane} fg=#{@color-text}"
 set -g pane-active-border-style "fg=#{@color-pane} bg=#{@color-active-bg}"
-set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
+set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#[italics]#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
 set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g pane-border-status top
@@ -76,8 +76,8 @@ set -g window-status-last-style "fg=#{@color-window} nodim"
 set -g window-status-current-format "#{@cap-round-hard-start}#[bg=#{@color-window} fg=#{@color-text}] #{E:@window-status-format}#[default]#{@cap-round-hard-end}"
 set -g window-status-current-style "fg=#{@color-window}"
 set -g window-status-format "#[dim]#{@cap-round-soft-start} #{E:@window-status-format}#{@cap-round-soft-end}"
-set -g window-status-separator " "
-set -g window-status-style "fg=#{@color-inactive}"
+set -g window-status-separator " ⋅ "
+set -g window-status-style "fg=#{@color-inactive} italics"
 set -g window-active-style "bg=#{@color-active-bg}"
 set -g window-style "bg=#{@color-inactive-bg}"
 
