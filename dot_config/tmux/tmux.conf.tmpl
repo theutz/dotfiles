@@ -34,8 +34,8 @@ set -g @color-window "pink"
 set -g @color-pane "purple"
 {{- end }}
 set -g @color-text "black"
-set -g @color-inactive "brightblack"
-set -gF @color-inactive-bg "#16161D"
+set -g @color-inactive "#54546D"
+set -gF @color-inactive-bg "#363646"
 set -g @color-active-bg "terminal"
 set -g @color-success "green"
 set -g @color-warning "yellow"
@@ -56,12 +56,12 @@ set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 
 set -g message-command-style "bg=#{@color-inactive} fg=#{@color-text}"
 set -g message-style "bg=#{@color-pane} fg=#{@color-text}"
-set -g pane-active-border-style "fg=#{@color-pane} bg=default"
+set -g pane-active-border-style "fg=#{@color-pane} bg=#{@color-active-bg}"
 set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
-set -g pane-border-indicators off
+set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g pane-border-status top
-set -g pane-border-style "fg=#{@color-inactiveg} bg=#{@color-inactive-bg}"
+set -g pane-border-style "fg=#{@color-inactive} bg=#{@color-inactive-bg}"
 set -g status-interval 5
 set -g status-justify absolute-centre
 set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@divider-soft-left} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
