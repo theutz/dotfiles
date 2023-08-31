@@ -63,6 +63,9 @@ set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g pane-border-status top
 set -gF pane-border-style "fg=#{@color-danger} bg=#{@color-inactive-bg}"
+set -g popup-border-lines "rounded"
+set -gF popup-border-style "bg=#{@color-inactive-bg}"
+set -gF popup-style ""
 set -g remain-on-exit-format "#[fill=#{@color-danger} bg=#{@color-danger}] 󰱮  PANE IS DEAD  󰱮 #[default]"
 set -g status-interval 5
 set -g status-justify absolute-centre
@@ -110,9 +113,12 @@ bind-key -N "Respawn pane" r "respawn-pane"
 
 # Popuup key table
 bind-key -N "Switch to popup keys table" g switch-client -T popit
-bind-key -T popit -N "lazygit" g popit lazygit
-bind-key -T popit -N "nb" n popit nb shell
-bind-key -T popit -N "btop" b popit btop
+bind-key -T popit -N "lazygit" g popit -T " lazygit " lazygit
+bind-key -T popit -N "nb" n popit -T " nb " nb shell
+bind-key -T popit -N "btop" b popit -T " btop " btop
+bind-key -T popit -N "chezmoi" c popit -T " chezmoi " "cd $(chezmoi source-path) && nvim"
+bind-key -T popit -N "boxes" B popit -T " boxes " "boxes -l | less"
+bind-key -T popit -N "figlet" f popit -T " figlet " "showfigfonts | less"
 
 # Key Mode
 set -g status-keys vi
