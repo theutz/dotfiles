@@ -1,7 +1,7 @@
 return {
   "LazyVim/LazyVim",
   opts = {
-    colorscheme = "tokyonight-storm",
+    colorscheme = "kanagawa",
   },
   keys = {
     { "<C-h>", false },

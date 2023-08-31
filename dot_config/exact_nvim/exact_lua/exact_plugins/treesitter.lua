@@ -3,7 +3,7 @@ return {
   opts = {
     indent = {
       enable = true,
-      disable = { "yaml" },
+      disable = { "yaml", "php" },
     },
   },
 }
