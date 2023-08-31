@@ -19,6 +19,7 @@ set -g pane-border-lines heavy
 set -g window-status-separator ""
 # set -g monitor-activity on
 set -g visual-activity on
+set -g remain-on-exit on
 
 #
 # Status Formats & Styles
@@ -54,14 +55,15 @@ set -g @separator "󰇙"
 set -g @window-flags "#[bright]#{?window_marked_flag, ,}#{?window_zoomed_flag,󱉶 ,}#{?window_bell_flag,󰵙 ,}#{?window_last_flag,󱞱 ,}#{?window_activity_flag,󰛄 ,}#{?window_silence_flag,󰪓 ,}#[nobright]"
 set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 
-set -g message-command-style "bg=#{@color-inactive} fg=#{@color-text}"
-set -g message-style "bg=#{@color-pane} fg=#{@color-text}"
+set -g message-command-style "bg=#{@color-danger} fg=#{@color-text}"
+set -g message-style "bg=#{@color-warning} fg=#{@color-text}"
 set -g pane-active-border-style "fg=#{@color-pane} bg=#{@color-active-bg}"
 set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#[italics]#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
 set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g pane-border-status top
-set -g pane-border-style "fg=#{@color-inactive} bg=#{@color-inactive-bg}"
+set -gF pane-border-style "fg=#{@color-danger} bg=#{@color-inactive-bg}"
+set -g remain-on-exit-format "#[fill=#{@color-danger} bg=#{@color-danger}] 󰱮  PANE IS DEAD  󰱮 #[default]"
 set -g status-interval 5
 set -g status-justify absolute-centre
 set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@divider-soft-left} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
@@ -102,15 +104,15 @@ run '~/.config/tmux/plugins/tpm/tpm'
 set -ga command-alias popit='display-popup -w 80% -h 80% -E'
 
 # Key binding overrides
-bind-key -N "Reload tmux config" r source ~/.config/tmux/tmux.conf \; display-message "Tmux config reloaded!"
 bind-key -N "Clear screen" C-l send-keys 'C-l'
 bind-key -N "List all keys" / list-keys
+bind-key -N "Respawn pane" r "respawn-pane"
 
 # Popuup key table
-bind-key -N "Switch to popup keys table" g switch-client -Tpopit
-bind-key -N "lazygit" -T popit g popit lazygit
-bind-key -N "nb" -T popit n popit nb shell
-bind-key -N "btop" -T popit b popit btop
+bind-key -N "Switch to popup keys table" g switch-client -T popit
+bind-key -T popit -N "lazygit" g popit lazygit
+bind-key -T popit -N "nb" n popit nb shell
+bind-key -T popit -N "btop" b popit btop
 
 # Key Mode
 set -g status-keys vi
