@@ -27,14 +27,14 @@ set -g visual-activity on
 {{- if eq .chezmoi.os "darwin" }}
 set -g @color-session "blue"
 set -g @color-window "cyan"
-set -g @color-pane "orange"
+set -g @color-pane "brightblue"
 {{- else }}
 set -g @color-session "magenta"
 set -g @color-window "pink"
 set -g @color-pane "purple"
 {{- end }}
 set -g @color-text "black"
-set -g @color-inactive "white"
+set -g @color-inactive "brightblack"
 set -g @color-success "green"
 set -g @color-warning "yellow"
 set -g @color-danger "red"
@@ -54,12 +54,12 @@ set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 
 set -g message-command-style "bg=#{@color-inactive} fg=#{@color-text}"
 set -g message-style "bg=#{@color-pane} fg=#{@color-text}"
-set -g pane-active-border-style "fg=#{@color-pane}"
+set -g pane-active-border-style "fg=#{@color-pane} bg=default"
 set -g pane-border-format " #{?pane_active,#{@divider-hard-right}#[reverse],#{?pane_last,#[fg=#{@color-pane}],}#{@divider-soft-right}} 󰉋 #{pane_current_path} #{@separator} 󰆍 #{pane_current_command} #{?pane_active,#[default]#{@divider-hard-left},#{@divider-soft-left}#[default]} "
 set -g pane-border-indicators off
-set -g pane-border-lines single
+set -g pane-border-lines heavy
 set -g pane-border-status top
-set -g pane-border-style "fg=#{@color-inactive} bg=brightblack"
+set -g pane-border-style "fg=#{@color-inactiveg} bg=#{@color-inactive-bg}"
 set -g status-interval 5
 set -g status-justify absolute-centre
 set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@divider-soft-left} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
@@ -67,7 +67,7 @@ set -g status-left-length 80
 set -g status-position bottom
 set -g status-right "#{@cap-round-hard-start}#[reverse] 󰀄 #{user} #{@divider-soft-right} #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo "󰍹" || echo "󰖪")  #H #[default]#{@cap-round-hard-end}"
 set -g status-right-length 80
-set -g status-style "fg=#{@color-session} bg=default"
+set -g status-style "fg=#{@color-session} bg=terminal"
 set -g window-status-activity-style "bold"
 set -g window-status-bell-style "fg=#{@color-window}"
 set -g window-status-last-style "fg=#{@color-window} nodim"
@@ -76,8 +76,8 @@ set -g window-status-current-style "fg=#{@color-window}"
 set -g window-status-format "#[dim]#{@cap-round-soft-start} #{E:@window-status-format}#{@cap-round-soft-end}"
 set -g window-status-separator " "
 set -g window-status-style "fg=#{@color-inactive}"
-set -g window-active-style "bg=black fg=default"
-set -g window-style "bg=brightblack fg=white"
+set -g window-active-style "bg=#{@color-active-bg}"
+set -g window-style "bg=#{@color-inactive-bg}"
 
 #
 # Plugins
