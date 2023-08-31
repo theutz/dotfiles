@@ -1,9 +1,7 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      { "<leader>fe", false },
-    },
+    enabled = false,
     opts = {
       filesystem = {
         hijack_netrw_behavior = "disabled",
