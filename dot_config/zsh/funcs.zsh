@@ -127,7 +127,7 @@ function txa {
 
 alias ls &>/dev/null && unalias ls
 function ls {
-  command -v lsd &>/dev/null && lsd "$@" || command ls "$@"
+  command -v lsd &>/dev/null && lsd $@ || command ls $@
 }
 
 alias cat &>/dev/null && unalias cat
