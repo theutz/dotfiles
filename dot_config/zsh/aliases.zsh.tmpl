@@ -3,7 +3,6 @@
 # -------------
 
 alias aic="aicommits"
-alias aliases="chezmoi edit --watch ~/.config/zsh/aliases.zsh; ez"
 alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
@@ -19,44 +18,23 @@ alias caskk="brew info --cask"
 alias caskh="brew home --cask"
 {{- end }}
 alias cat &> /dev/null && unalias cat
-alias cm="chezmoi"
-alias cma="cm add --interactive"
-alias cmA="cm apply --interactive"
-alias cmcd="cm cd"
-alias cmch="cm chattr"
-alias cmd="cm diff"
-alias cme="cm edit --watch"
-alias cmf="cm managed --path-style source-relative | gum filter | xargs chezmoi forget"
-alias cmg="cm git"
-alias cmi="cm init"
-alias cmls="cm managed"
-alias cmma="cm merge-all"
-alias cmpp="chezmoi git pull && chezmoi git push"
-alias cmra="cm re-add --interactive"
-alias cmrm="cm remove"
-alias cms="(cm status && echo && cm git status)"
-alias cmu="cm update"
-alias cmur="cm update --refresh-externals"
+alias c="chezmoi"
 alias e="${(z)EDITOR:-nvim}"
 alias ez="exec zsh"
-alias funcs="chezmoi edit --watch ~/.config/zsh/funcs.zsh; ez"
 alias hosts="sudo e /etc/hosts && dscacheutil -flushcache"
 alias ls &> /dev/null && unalias ls
 alias lg="lazygit"
 alias linls="linode-cli linodes ls"
 alias mkdir="mkdir -p"
-alias vimrc="chezmoi edit --watch ~/.config/nvim"
 alias r="ranger"
 alias ranger="source ranger"
-alias skhdrc="chezmoi edit --watch ~/.config/skhd/skhdrc"
 alias tx="tmux"
-alias tmux.conf="chezmoi edit --watch ~/.config/tmux/tmux.conf"
 alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
 alias txls="tmux list-sessions"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
-  alias $rc="(cd $ZDOTDIR && e .$rc); ez"
+  alias $rc="(cd $ZDOTDIR && chezmoi edit --apply .$rc); ez"
 done
 
 # --------------------
