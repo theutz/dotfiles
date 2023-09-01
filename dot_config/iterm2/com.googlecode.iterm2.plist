@@ -86281,12 +86281,14 @@
 			</dict>
 			<key>Blend</key>
 			<real>0.050000000000000003</real>
+			<key>Blink Allowed</key>
+			<true/>
 			<key>Blinking Cursor</key>
 			<true/>
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>24.898354388297868</real>
+			<real>24.871800199468083</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -86710,7 +86712,7 @@
 			<key>Normal Font</key>
 			<string>Lilex-Regular 17</string>
 			<key>Only The Default BG Color Uses Transparency</key>
-			<false/>
+			<true/>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -86756,6 +86758,8 @@
 			<key>Show Status Bar</key>
 			<false/>
 			<key>Silence Bell</key>
+			<false/>
+			<key>Smart Cursor Color</key>
 			<false/>
 			<key>Status Bar Layout</key>
 			<dict>
@@ -87122,7 +87126,7 @@
 			<key>Thin Strokes</key>
 			<integer>4</integer>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.25400598404255315</real>
 			<key>Unicode Normalization</key>
 			<integer>0</integer>
 			<key>Unicode Version</key>
@@ -87138,6 +87142,8 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
+			<false/>
+			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
