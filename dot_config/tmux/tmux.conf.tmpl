@@ -28,7 +28,7 @@ set -g remain-on-exit on
 #  ────────────────────────────────────────────────────────────
 
 {{ if eq .chezmoi.os "darwin" -}}
-set -g @color-session "magenta"
+set -g @color-session "blue"
 set -g @color-window "cyan"
 set -g @color-pane "brightblue"
 {{- else }}
@@ -38,7 +38,7 @@ set -g @color-pane "purple"
 {{- end }}
 set -g @color-text "black"
 set -g @color-inactive "#54546D"
-set -g @color-inactive-bg "#363646"
+set -g @color-inactive-bg "terminal"
 set -g @color-active-bg "terminal"
 set -g @color-success "green"
 set -g @color-warning "yellow"
