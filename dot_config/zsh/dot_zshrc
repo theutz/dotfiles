@@ -187,11 +187,17 @@ function cat {
 
 # }}}
 
+#{{{ Aliases
+
 # ---------------
 # --  Aliases  --
 # ---------------
 
 source "$ZDOTDIR/aliases.zsh"
+
+#}}}
+
+#{{{ Bindings
 
 # ----------------
 # --  Bindings  --
@@ -199,11 +205,27 @@ source "$ZDOTDIR/aliases.zsh"
 
 source "$ZDOTDIR/bindings.zsh"
 
-# --------------
-# --------------
-# -- keychain --
+#}}}
+
+#{{{ Application Settings
+
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                                                          │
+#  │                   Application Settings                   │
+#  │                                                          │
+#  ╰──────────────────────────────────────────────────────────╯
+
+#{{{ keychain
+
+#  ╭──────────╮
+#  │ keychain │
+#  ╰──────────╯
 
 eval $(keychain --eval --quiet --agents ssh,gpg id_ed25519 6AEFB22E FD235DFD 48B95546)
+
+#}}}
+
+# {{{ zoxide
 
 # --------------
 # --  zoxide  --
@@ -213,6 +235,8 @@ function _load_zoxide {
 	eval "$(zoxide init zsh)"
 }
 zsh-defer _load_zoxide
+
+# }}}
 
 # ---------------
 # --  chezmoi  --
@@ -281,5 +305,7 @@ if is-darwin; then
 else
 	. "$HOME/.asdf/asdf.sh"
 fi
+
+#}}}
 
 # vim: ft=sh fdm=marker fdc=2
