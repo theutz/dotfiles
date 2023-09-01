@@ -17,7 +17,6 @@ set -g set-titles on
 set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g window-status-separator ""
-set -g monitor-activity on
 set -g visual-activity off
 set -g remain-on-exit on
 
@@ -208,6 +207,6 @@ set -g mode-keys vi
 #  │               Display a message on reload                │
 #  ╰──────────────────────────────────────────────────────────╯
 
-display-message -d 4000 "#[align=left bg=black fg=green fill=green italics] 🔃 Config file reloaded! #[default]"
+display-message -d 4000 "#[fill=green fg=default bg=green reverse]#{@cap-round-hard-start}#[align=centre italics noreverse bg=brightgreen]    🔃 Config file reloaded!    #[align=right bg=green fg=default reverse]#{@cap-round-hard-end}#[default]"
 
 # vim: ft=tmux
