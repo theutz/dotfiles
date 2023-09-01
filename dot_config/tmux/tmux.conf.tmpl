@@ -17,8 +17,8 @@ set -g set-titles on
 set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g window-status-separator ""
-# set -g monitor-activity on
-set -g visual-activity on
+set -g monitor-activity on
+set -g visual-activity off
 set -g remain-on-exit on
 
 #  ╭──────────────────────────────────────────────────────────╮
@@ -169,23 +169,34 @@ run '~/.config/tmux/plugins/tpm/tpm'
 
 set -ga command-alias popit='display-popup -w 80% -h 80% -E'
 
-#  Key binding overrides
+#  Key bindings
 #  ────────────────────────────────────────────────────────────
 
 bind-key -N "Clear screen" C-l send-keys 'C-l'
 bind-key -N "List all keys" / list-keys
-bind-key -N "Respawn pane" r "respawn-pane"
+bind-key -N "Respawn pane" r confirm-before -p "Respawn pane? (y/n)" "respawn-pane -k"
+bind-key -N "Customize mode" O customize-mode -Z
+
+bind-key -N "Select pane above" h select-pane -LZ
+bind-key -N "Select pane above" j select-pane -DZ
+bind-key -N "Select pane above" k select-pane -UZ
+bind-key -N "Select pane above" l select-pane -RZ
+bind-key -N "Select pane above" C-h select-pane -LZ
+bind-key -N "Select pane above" C-j select-pane -DZ
+bind-key -N "Select pane above" C-k select-pane -UZ
+bind-key -N "Select pane above" C-l select-pane -RZ
+bind-key -N "Zoom the active pane" C-z resize-pane -Z
 
 #  Popup key table
 #  ────────────────────────────────────────────────────────────
 
 bind-key -N "Switch to popup keys table" g switch-client -T popit
-bind-key -T popit -N "lazygit" g popit -T " lazygit " lazygit
-bind-key -T popit -N "nb" n popit -T " nb " nb shell
-bind-key -T popit -N "btop" b popit -T " btop " btop
-bind-key -T popit -N "chezmoi" c popit -T " chezmoi " "cd $(chezmoi source-path) && nvim"
-bind-key -T popit -N "boxes" B popit -T " boxes " "boxes -l | less"
-bind-key -T popit -N "figlet" f popit -T " figlet " "showfigfonts | less"
+bind-key -Tpopit -N "boxes" B popit "boxes -l | less"
+bind-key -Tpopit -N "btop" b popit "btop"
+bind-key -Tpopit -N "chezmoi" c popit "cd $(chezmoi source-path) && nvim"
+bind-key -Tpopit -N "figlet" f popit "showfigfonts | less"
+bind-key -Tpopit -N "lazygit" g popit "lazygit"
+bind-key -Tpopit -N "nb" n popit "nb shell"
 
 #  Key mode
 #  ────────────────────────────────────────────────────────────

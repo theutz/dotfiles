@@ -81,9 +81,10 @@ path=(
 )
 
 fpath=(
-  ${ASDF_DIR}/completions
   {{- if eq .chezmoi.os "darwin" }}
   /opt/homebrew/share/zsh/site-functions
+  {{- else }}
+  ${ASDF_DIR}/completions
   {{- end }}
   $fpath
 )
