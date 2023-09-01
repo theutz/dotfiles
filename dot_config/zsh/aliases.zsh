@@ -8,6 +8,7 @@ alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
 alias ansv="ansible-vault"
+alias cat &> /dev/null && unalias cat
 alias cm="chezmoi"
 alias cma="cm add --interactive"
 alias cmA="cm apply --interactive"
@@ -32,6 +33,7 @@ alias e="${(z)EDITOR:-nvim}"
 alias ez="exec zsh"
 alias funcs="(cd ~/.config/zsh && e funcs.zsh); ez"
 alias hosts="sudo e /etc/hosts && dscacheutil -flushcache"
+alias ls &> /dev/null && unalias ls
 alias lg="lazygit"
 alias linls="linode-cli linodes ls"
 alias mkdir="mkdir -p"
@@ -45,13 +47,15 @@ alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmu
 alias txls="tmux list-sessions"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
 
-if [[ "$OSTYPE" == darwin* ]]; then
+if [[ "$OSTYPE" = "darwin*" ]]; then
   alias brewk="brew info"
+  alias brewh="brew home"
   alias brewp="brew services"
   alias brewpr="brew services restart"
   alias brewps="brew services start"
   alias brewpx="brew services stop"
   alias caskk="brew info --cask"
+  alias caskh="brew home --cask"
 fi
 
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do

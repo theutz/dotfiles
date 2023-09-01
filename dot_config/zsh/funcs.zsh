@@ -1,8 +1,10 @@
-#
-# Functions
-#
+#  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#  ┃                        Functions                         ┃
+#  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-setopt LOCAL_OPTIONS
+function has {
+  command -v "$1" &> /dev/null
+}
 
 function rgd() {
   rg --json "$argv" | delta
@@ -19,7 +21,6 @@ function a() {
     valet php craft $argv
   fi
 }
-
 
 function readme() {
   glow -p "$(brew --prefix $argv)/README.md"
@@ -94,7 +95,12 @@ function _navi_widget() {
 }
 
 function take {
-  mkdir -p "$@" && cd "$@"
+  command mkdir -p "$@" && cd "$@"
+}
+
+function move {
+  setopt LOCAL_OPTIONS NO_UNSET ERR_RETURN
+  command mv "$1" "$2" && cd "$2"
 }
 
 function txpe {
@@ -105,12 +111,10 @@ function txpe {
   fi
 
   (cd ~/.config/tmuxp && e "$session.yml")
-  # tmuxp edit "$session"
 }
 
 function txa {
-  setopt pipe_fail
-  setopt err_return
+  setopt PIPE_FAIL ERR_RETURN
 
   if [[ -n "$@" ]]; then
     session="$@"
@@ -125,14 +129,16 @@ function txa {
   tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
 }
 
-alias ls &>/dev/null && unalias ls
 function ls {
-  command -v lsd &>/dev/null && lsd $@ || command ls $@
+  has lsd \
+    && lsd $@ \
+    || command ls $@
 }
 
-alias cat &>/dev/null && unalias cat
 function cat {
-  command -v bat &>/dev/null && bat "$@" || command cat "$@"
+  has bat \
+    && bat $@ \
+    || command cat $@
 }
 
 unsetopt LOCAL_OPTIONS

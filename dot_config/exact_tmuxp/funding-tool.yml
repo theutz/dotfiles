@@ -1,5 +1,5 @@
 session_name: funding-tool
-start_directory: $HOME/Sites/funding-tool
+start_directory: $HOME/code/delegator/funding-tool
 windows:
   - focus: true
     layout: main-vertical

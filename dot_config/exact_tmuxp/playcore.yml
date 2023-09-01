@@ -1,12 +1,16 @@
-session_name: playcore
-start_directory: $HOME/Sites/playcore.com
+session_name: playcore-com
+start_directory: $HOME/code/delegator/playcore.com
 windows:
   - panes:
       - blank
+      - focus: true
+        shell_command: nvim
     window_name: main
+    layout: main-vertical
   - panes:
       - blank
-      - nvim
+      - focus: true
+        shell_command: nvim
     window_name: playbook
     start_directory: $HOME/code/delegator/playbooks-playcore.com
     layout: main-vertical

@@ -22,7 +22,7 @@ export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export RANGER_LOAD_DEFAULT_RC=false
 
-if [[ "$OSTYPE" == darwin* ]]; then
+if is-darwin; then
 	export CPATH=/opt/homebrew/include
 	export LIBRARY_PATH=/opt/homebrew/lib
 fi
@@ -122,6 +122,10 @@ eval "$(direnv hook zsh)"
 # --  asdf  --
 # ------------
 
-. "$HOME/.asdf/asdf.sh"
+if is-darwin; then
+	. "$(brew --prefix asdf)/libexec/asdf.sh"
+else
+	. "$HOME/.asdf/asdf.sh"
+fi
 
 # vim: ft=sh
