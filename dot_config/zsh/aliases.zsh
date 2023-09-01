@@ -47,7 +47,7 @@ alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmu
 alias txls="tmux list-sessions"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
 
-if [[ "$OSTYPE" = "darwin*" ]]; then
+if is-darwin; then
   alias brewk="brew info"
   alias brewh="brew home"
   alias brewp="brew services"

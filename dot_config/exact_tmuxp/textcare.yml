@@ -1,5 +1,5 @@
 session_name: textcare
-start_directory: $HOME/Sites/lp.yourtextcare.com/
+start_directory: $HOME/code/delegator/lp.yourtextcare.com/
 windows:
   - focus: true
     layout: main-vertical

@@ -1,5 +1,5 @@
 session_name: ixs
-start_directory: $HOME/Sites/ixscoatings.com/
+start_directory: $HOME/code/delegator/ixscoatings.com/
 windows:
   - focus: true
     layout: main-horizontal

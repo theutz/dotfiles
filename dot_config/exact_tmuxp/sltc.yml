@@ -1,5 +1,5 @@
 session_name: sltc
-start_directory: $HOME/Sites/lineworker
+start_directory: $HOME/code/delegator/lineworker
 windows:
   - focus: true
     layout: main-vertical

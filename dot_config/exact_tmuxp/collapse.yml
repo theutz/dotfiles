@@ -8,7 +8,7 @@ windows:
   - panes:
       - nvim
     window_name: test
-    start_directory: "$HOME/sites/test"
+    start_directory: "$HOME/code/delegator/statamic"
   - panes:
       - nvim
     window_name: statamic

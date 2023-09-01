@@ -1,5 +1,5 @@
 session_name: chat-academy
-start_directory: $HOME/sites/chatacademy.com.tr
+start_directory: $HOME/code/theutz/chatacademy.com.tr
 
 windows:
   - title: main
