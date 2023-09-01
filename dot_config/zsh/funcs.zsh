@@ -4,6 +4,7 @@
 
 function has {
   command -v "$1" &> /dev/null
+  echo "boo"
 }
 
 function rgd() {
