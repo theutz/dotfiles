@@ -189,9 +189,9 @@ function cat {
 
 #{{{ Aliases
 
-# ---------------
-# --  Aliases  --
-# ---------------
+#  ╭─────────╮
+#  │ Aliases │
+#  ╰─────────╯
 
 source "$ZDOTDIR/aliases.zsh"
 
@@ -199,15 +199,15 @@ source "$ZDOTDIR/aliases.zsh"
 
 #{{{ Bindings
 
-# ----------------
-# --  Bindings  --
-# ----------------
+#  ╭──────────╮
+#  │ Bindings │
+#  ╰──────────╯
 
 source "$ZDOTDIR/bindings.zsh"
 
 #}}}
 
-# Application Settings
+#{{{ Application Settings
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
@@ -278,11 +278,17 @@ zsh-defer _load_atuin
 
 # }}}
 
+# {{{ fzf
+
 #  ╭─────╮
 #  │ fzf │
 #  ╰─────╯
 
 [ -f ~/.fzf.zsh ] && . $HOME/.fzf.zsh
+
+# }}}
+
+# {{{ rust
 
 #  ╭──────╮
 #  │ rust │
@@ -290,11 +296,19 @@ zsh-defer _load_atuin
 
 [ -f ~/.cargo/env ] && source "$HOME"/.cargo/env
 
+# }}}
+
+# {{{ bob
+
 #  ╭─────╮
 #  │ bob │
 #  ╰─────╯
 
 source <(bob complete zsh)
+
+# }}}
+
+# {{{ starship
 
 #  ╭──────────╮
 #  │ starship │
@@ -302,11 +316,19 @@ source <(bob complete zsh)
 
 eval "$(starship init zsh)"
 
+# }}}
+
+# {{{ direnv
+
 #  ╭────────╮
 #  │ direnv │
 #  ╰────────╯
 
 eval "$(direnv hook zsh)"
+
+# }}}
+
+# {{{ asdf
 
 #  ╭──────╮
 #  │ asdf │
@@ -317,6 +339,8 @@ if is-darwin; then
 else
 	. "$HOME/.asdf/asdf.sh"
 fi
+
+# }}}
 
 #}}}
 
