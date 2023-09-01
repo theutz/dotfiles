@@ -207,7 +207,7 @@ source "$ZDOTDIR/bindings.zsh"
 
 #}}}
 
-#{{{ Application Settings
+# Application Settings
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
@@ -227,9 +227,9 @@ eval $(keychain --eval --quiet --agents ssh,gpg id_ed25519 6AEFB22E FD235DFD 48B
 
 # {{{ zoxide
 
-# --------------
-# --  zoxide  --
-# --------------
+#  ╭────────╮
+#  │ zoxide │
+#  ╰────────╯
 
 function _load_zoxide {
 	eval "$(zoxide init zsh)"
@@ -238,18 +238,24 @@ zsh-defer _load_zoxide
 
 # }}}
 
-# ---------------
-# --  chezmoi  --
-# ---------------
+# {{{ chezmoi
+
+#  ╭─────────╮
+#  │ chezmoi │
+#  ╰─────────╯
 
 function _load_chezmoi {
 	source <(chezmoi completion zsh)
 }
 zsh-defer _load_chezmoi
 
-# -------------
-# --  broot  --
-# -------------
+# }}}
+
+# {{{ broot
+
+#  ╭───────╮
+#  │ broot │
+#  ╰───────╯
 
 function _load_broot {
 	source <(broot --print-shell-function zsh)
@@ -257,48 +263,54 @@ function _load_broot {
 }
 zsh-defer _load_broot
 
-# -------------
-# --  atuin  --
-# -------------
+# }}}
+
+# {{{ atuin
+
+#  ╭───────╮
+#  │ atuin │
+#  ╰───────╯
 
 function _load_atuin {
 	eval "$(atuin init zsh)"
 }
 zsh-defer _load_atuin
 
-# -----------
-# --  fzf  --
-# -----------
+# }}}
+
+#  ╭─────╮
+#  │ fzf │
+#  ╰─────╯
 
 [ -f ~/.fzf.zsh ] && . $HOME/.fzf.zsh
 
-# ------------
-# --  rust  --
-# ------------
+#  ╭──────╮
+#  │ rust │
+#  ╰──────╯
 
 [ -f ~/.cargo/env ] && source "$HOME"/.cargo/env
 
-# -----------
-# --  bob  --
-# -----------
+#  ╭─────╮
+#  │ bob │
+#  ╰─────╯
 
 source <(bob complete zsh)
 
-# ----------------
-# --  starship  --
-# ----------------
+#  ╭──────────╮
+#  │ starship │
+#  ╰──────────╯
 
 eval "$(starship init zsh)"
 
-# --------------
-# --  direnv  --
-# --------------
+#  ╭────────╮
+#  │ direnv │
+#  ╰────────╯
 
 eval "$(direnv hook zsh)"
 
-# ------------
-# --  asdf  --
-# ------------
+#  ╭──────╮
+#  │ asdf │
+#  ╰──────╯
 
 if is-darwin; then
 	. "$(brew --prefix asdf)/libexec/asdf.sh"
