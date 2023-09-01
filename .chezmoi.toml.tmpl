@@ -6,7 +6,7 @@ encryption = "age"
 
 [git]
   autoCommit = true
-  autoPush = true
+  autoPush = false
 
 [diff]
   pager = "delta"
@@ -16,3 +16,5 @@ encryption = "age"
 [merge]
   command = "nvim"
   args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+
+# vim: ft=tmpl.toml
