@@ -8,6 +8,16 @@ alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
 alias ansv="ansible-vault"
+{{- if eq .chezmoi.os "darwin" }}
+alias brewk="brew info"
+alias brewh="brew home"
+alias brewp="brew services"
+alias brewpr="brew services restart"
+alias brewps="brew services start"
+alias brewpx="brew services stop"
+alias caskk="brew info --cask"
+alias caskh="brew home --cask"
+{{- end }}
 alias cat &> /dev/null && unalias cat
 alias cm="chezmoi"
 alias cma="cm add --interactive"
@@ -47,17 +57,6 @@ alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmu
 alias txls="tmux list-sessions"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
 
-if is-darwin; then
-  alias brewk="brew info"
-  alias brewh="brew home"
-  alias brewp="brew services"
-  alias brewpr="brew services restart"
-  alias brewps="brew services start"
-  alias brewpx="brew services stop"
-  alias caskk="brew info --cask"
-  alias caskh="brew home --cask"
-fi
-
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="(cd $ZDOTDIR && e .$rc); ez"
 done
@@ -75,3 +74,5 @@ alias -s {md,markdown,mkdwn}="glow -p"
 alias -g P="| p"
 alias -g @noerr="2> /dev/null"
 alias -g @noout="&> /dev/null"
+
+# vim: ft=tmpl.bash
