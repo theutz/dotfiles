@@ -267,7 +267,7 @@ alias ranger="source ranger"
 #  === t
 #  ────────────────────────────────────────────────────────────
 
-alias tmux.conf="(cd {{ .chezmoi.homeDir }}/.config/tmux && nvim tmux.conf)"
+alias tmux.conf="(cd {{ .chezmoi.homeDir }}/.config/tmux && chezmoi edit --watch tmux.conf)"
 alias tx="tmux"
 alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
 alias txls="tmux list-sessions"
