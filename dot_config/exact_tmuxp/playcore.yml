@@ -1,5 +1,5 @@
 session_name: playcore-com
-start_directory: $HOME/code/delegator/playcore.com
+start_directory: $HOME/code/delegator/playcore
 windows:
   - panes:
       - blank
