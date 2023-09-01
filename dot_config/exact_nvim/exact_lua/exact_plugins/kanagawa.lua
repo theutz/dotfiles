@@ -4,7 +4,7 @@ return {
     config = true,
     opts = {
       transparent = true,
-      dimInactive = true,
+      dimInactive = false,
     },
   },
 }
