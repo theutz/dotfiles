@@ -6,7 +6,7 @@ return {
     config = true,
     opts = {
       tint = 60,
-      saturation = 0.2,
+      saturation = 0.8,
     },
   },
 }
