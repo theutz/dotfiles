@@ -1,4 +1,4 @@
-# {{{ Intro
+# === Intro
 
 #
 # Executes commands at the start of an interactive session.
@@ -14,9 +14,9 @@ fi
 
 # Customize to your needs...
 
-# }}}
+# ---
 
-# {{{ Variables
+# === Variables
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
@@ -35,9 +35,9 @@ if is-darwin; then
   export LIBRARY_PATH=/opt/homebrew/lib
 fi
 
-# }}}
+# ---
 
-# {{{ Functions
+# === Functions
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
@@ -185,9 +185,9 @@ function cat {
     command cat $@
 }
 
-# }}}
+# ---
 
-#{{{ Aliases
+#=== Aliases
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
@@ -265,7 +265,7 @@ for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="(cd $ZDOTDIR && chezmoi edit --apply .$rc); ez"
 done
 
-# {{{ Suffix aliases
+# === Suffix aliases
 
 #  ╭────────────────╮
 #  │ Suffix aliases │
@@ -273,9 +273,9 @@ done
 
 alias -s {md,markdown,mkdwn}="glow -p"
 
-# }}}
+# ---
 
-# {{{ Global aliases
+# === Global aliases
 
 #  ╭────────────────╮
 #  │ Global Aliases │
@@ -285,11 +285,11 @@ alias -g P="| p"
 alias -g @noerr="2> /dev/null"
 alias -g @noout="&> /dev/null"
 
-# }}}
+# ---
 
-#}}}
+#---
 
-#{{{ Bindings
+#=== Bindings
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
@@ -306,9 +306,9 @@ bindkey '^ ' autosuggest-accept
 zle -N _navi_widget
 bindkey '^n' _navi_widget
 
-#}}}
+#---
 
-#{{{ Application Settings
+#=== Application Settings
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
@@ -316,7 +316,7 @@ bindkey '^n' _navi_widget
 #  │                                                          │
 #  ╰──────────────────────────────────────────────────────────╯
 
-#{{{ keychain
+#=== keychain
 
 #  ╭──────────╮
 #  │ keychain │
@@ -324,9 +324,9 @@ bindkey '^n' _navi_widget
 
 eval $(keychain --eval --quiet --agents ssh,gpg id_ed25519 6AEFB22E FD235DFD 48B95546)
 
-#}}}
+#---
 
-# {{{ zoxide
+# === zoxide
 
 #  ╭────────╮
 #  │ zoxide │
@@ -337,9 +337,9 @@ function _load_zoxide {
 }
 zsh-defer _load_zoxide
 
-# }}}
+# ---
 
-# {{{ chezmoi
+# === chezmoi
 
 #  ╭─────────╮
 #  │ chezmoi │
@@ -350,9 +350,9 @@ function _load_chezmoi {
 }
 zsh-defer _load_chezmoi
 
-# }}}
+# ---
 
-# {{{ broot
+# === broot
 
 #  ╭───────╮
 #  │ broot │
@@ -364,9 +364,9 @@ function _load_broot {
 }
 zsh-defer _load_broot
 
-# }}}
+# ---
 
-# {{{ atuin
+# === atuin
 
 #  ╭───────╮
 #  │ atuin │
@@ -377,9 +377,9 @@ function _load_atuin {
 }
 zsh-defer _load_atuin
 
-# }}}
+# ---
 
-# {{{ fzf
+# === fzf
 
 #  ╭─────╮
 #  │ fzf │
@@ -387,9 +387,9 @@ zsh-defer _load_atuin
 
 [ -f ~/.fzf.zsh ] && . $HOME/.fzf.zsh
 
-# }}}
+# ---
 
-# {{{ rust
+# === rust
 
 #  ╭──────╮
 #  │ rust │
@@ -397,9 +397,9 @@ zsh-defer _load_atuin
 
 [ -f ~/.cargo/env ] && source "$HOME"/.cargo/env
 
-# }}}
+# ---
 
-# {{{ bob
+# === bob
 
 #  ╭─────╮
 #  │ bob │
@@ -407,9 +407,9 @@ zsh-defer _load_atuin
 
 source <(bob complete zsh)
 
-# }}}
+# ---
 
-# {{{ starship
+# === starship
 
 #  ╭──────────╮
 #  │ starship │
@@ -417,9 +417,9 @@ source <(bob complete zsh)
 
 eval "$(starship init zsh)"
 
-# }}}
+# ---
 
-# {{{ direnv
+# === direnv
 
 #  ╭────────╮
 #  │ direnv │
@@ -427,9 +427,9 @@ eval "$(starship init zsh)"
 
 eval "$(direnv hook zsh)"
 
-# }}}
+# ---
 
-# {{{ asdf
+# === asdf
 
 #  ╭──────╮
 #  │ asdf │
@@ -441,8 +441,8 @@ else
   . "$HOME/.asdf/asdf.sh"
 fi
 
-# }}}
+# ---
 
-#}}}
+#---
 
-# vim: ft=zsh fdm=marker fdc=2
+# vim: ft=tmpl.zsh fdm=marker fdc=2 fmr====,---
