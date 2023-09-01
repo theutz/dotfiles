@@ -189,21 +189,122 @@ function cat {
 
 #{{{ Aliases
 
-#  ╭─────────╮
-#  │ Aliases │
-#  ╰─────────╯
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                                                          │
+#  │                         Aliases                          │
+#  │                                                          │
+#  ╰──────────────────────────────────────────────────────────╯
 
-source "$ZDOTDIR/aliases.zsh"
+#  a
+#  ────────────────────────────────────────────────────────────
+
+alias aic="aicommits"
+alias ans="ansible"
+alias ansb="ansible-playbook"
+alias ansi="ansible-inventory"
+alias ansv="ansible-vault"
+
+#  b
+#  ────────────────────────────────────────────────────────────
+
+alias brewh="brew home"
+alias brewk="brew info"
+alias brewp="brew services"
+alias brewpr="brew services restart"
+alias brewps="brew services start"
+alias brewpx="brew services stop"
+
+#  c
+#  ────────────────────────────────────────────────────────────
+
+alias c="chezmoi"
+alias caskh="brew home --cask"
+alias caskk="brew info --cask"
+alias cat &> /dev/null && unalias cat
+
+#  e
+#  ────────────────────────────────────────────────────────────
+
+alias e="${(z)EDITOR:-nvim}"
+alias ez="exec zsh"
+
+#  h
+#  ────────────────────────────────────────────────────────────
+
+alias hosts="sudo e /etc/hosts && dscacheutil -flushcache"
+
+#  l
+#  ────────────────────────────────────────────────────────────
+
+alias lg="lazygit"
+alias lll="linode-cli linodes ls"
+alias ls &> /dev/null && unalias ls
+
+#  m
+#  ────────────────────────────────────────────────────────────
+
+alias mkdir="mkdir -p"
+
+#  r
+#  ────────────────────────────────────────────────────────────
+
+alias r="ranger"
+alias ranger="source ranger"
+
+#  t
+#  ────────────────────────────────────────────────────────────
+
+alias tx="tmux"
+alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
+alias txls="tmux list-sessions"
+alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
+
+#  z
+#  ────────────────────────────────────────────────────────────
+for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
+  alias $rc="(cd $ZDOTDIR && chezmoi edit --apply .$rc); ez"
+done
+
+# {{{ Suffix aliases
+
+#  ╭────────────────╮
+#  │ Suffix aliases │
+#  ╰────────────────╯
+
+alias -s {md,markdown,mkdwn}="glow -p"
+
+# }}}
+
+# {{{ Global aliases
+
+#  ╭────────────────╮
+#  │ Global Aliases │
+#  ╰────────────────╯
+
+alias -g P="| p"
+alias -g @noerr="2> /dev/null"
+alias -g @noout="&> /dev/null"
+
+# }}}
 
 #}}}
 
 #{{{ Bindings
 
-#  ╭──────────╮
-#  │ Bindings │
-#  ╰──────────╯
+#  ╭──────────────────────────────────────────────────────────╮
+#  │                                                          │
+#  │                         Bindings                         │
+#  │                                                          │
+#  ╰──────────────────────────────────────────────────────────╯
 
-source "$ZDOTDIR/bindings.zsh"
+zle -N lg # create a zle widget so it can be bound to a key
+bindkey '^g' lg
+
+bindkey -M vicmd v edit-command-line
+bindkey '^ ' autosuggest-accept
+
+zle -N _navi_widget
+bindkey '^n' _navi_widget
 
 #}}}
 
