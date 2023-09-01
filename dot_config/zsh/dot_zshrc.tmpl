@@ -207,20 +207,24 @@ alias ansv="ansible-vault"
 #  b
 #  ────────────────────────────────────────────────────────────
 
+{{- if eq .chezmoi.os "darwin" -}}
 alias brewh="brew home"
 alias brewk="brew info"
 alias brewp="brew services"
 alias brewpr="brew services restart"
 alias brewps="brew services start"
 alias brewpx="brew services stop"
+{{- end }}
 
 #  c
 #  ────────────────────────────────────────────────────────────
 
-alias c="chezmoi"
+{{- if eq .chezmoi.os "darwin" -}}
 alias caskh="brew home --cask"
 alias caskk="brew info --cask"
+{{ end -}}
 alias cat &> /dev/null && unalias cat
+alias cm="chezmoi"
 
 #  e
 #  ────────────────────────────────────────────────────────────
@@ -254,10 +258,16 @@ alias ranger="source ranger"
 #  t
 #  ────────────────────────────────────────────────────────────
 
+alias tmux.conf="(cd {{ .chezmoi.homeDir }}/.config/tmux && nvim tmux.conf)"
 alias tx="tmux"
 alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
 alias txls="tmux list-sessions"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
+
+#  v
+#  ────────────────────────────────────────────────────────────
+
+alias vimrc="(cd {{ .chezmoi.homeDir }}/.config/nvim && nvim .)"
 
 #  z
 #  ────────────────────────────────────────────────────────────
