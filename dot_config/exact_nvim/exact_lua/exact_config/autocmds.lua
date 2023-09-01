@@ -7,4 +7,9 @@ augroup tmuxsource
   au!
   autocmd BufWritePost ~/.config/tmux/tmux.conf ! tmux source "%"
 augroup end
+
+augroup chezmoi
+  au!
+  autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+augroup end
 ]])
