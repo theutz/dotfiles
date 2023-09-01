@@ -19,6 +19,6 @@ encryption = "age"
 
 [hooks.apply.post]
   command = "tmux"
-  args = ["source-file", "$HOME/.config/tmux/tmux.conf"]
+  args = ["source-file", "{{ .chezmoi.homeDir }}/.config/tmux/tmux.conf"]
 
 # vim: ft=tmpl.toml
