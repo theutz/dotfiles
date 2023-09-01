@@ -195,19 +195,19 @@ function cat {
 #  │                                                          │
 #  ╰──────────────────────────────────────────────────────────╯
 
-#  a
+#  === a
 #  ────────────────────────────────────────────────────────────
-
 alias aic="aicommits"
 alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
 alias ansv="ansible-vault"
+# ---
 
 #  b
 #  ────────────────────────────────────────────────────────────
 
-{{- if eq .chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.os "darwin" -}}
 alias brewh="brew home"
 alias brewk="brew info"
 alias brewp="brew services"
