@@ -344,4 +344,4 @@ fi
 
 #}}}
 
-# vim: ft=sh fdm=marker fdc=2
+# vim: ft=zsh fdm=marker fdc=2
