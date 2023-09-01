@@ -17,8 +17,4 @@ encryption = "age"
   command = "nvim"
   args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 
-[hooks.apply.post]
-  command = "tmux"
-  args = ["source-file", "{{ .chezmoi.homeDir }}/.config/tmux/tmux.conf"]
-
 # vim: ft=tmpl.toml
