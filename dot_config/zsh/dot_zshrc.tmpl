@@ -19,6 +19,7 @@ fi
 #  │                        Variables                         │
 #  │                                                          │
 #  ╰──────────────────────────────────────────────────────────╯
+
 export COMPOSER_HOME="${XDG_CONFIG_HOME:=$HOME}/composer"
 export KEYTIMEOUT=1
 export MANPAGER='nvim +Man!'
@@ -28,9 +29,9 @@ export RANGER_LOAD_DEFAULT_RC=false
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
 {{- end }}
+
 #  ---
 #  === Functions
-
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
 #  │                        Functions                         │
@@ -179,7 +180,6 @@ function cat {
 
 #  ---
 #=== Aliases
-
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                                                          │
 #  │                         Aliases                          │
@@ -187,16 +187,20 @@ function cat {
 #  ╰──────────────────────────────────────────────────────────╯
 
 #  === Normal aliases
+
 #  === a
 #  ────────────────────────────────────────────────────────────
+
 alias aic="aicommits"
 alias ans="ansible"
 alias ansb="ansible-playbook"
 alias ansi="ansible-inventory"
 alias ansv="ansible-vault"
+
 #  ---
 #  === b
 #  ────────────────────────────────────────────────────────────
+
 {{ if eq .chezmoi.os "darwin" -}}
 alias brewh="brew home"
 alias brewk="brew info"
@@ -204,75 +208,102 @@ alias brewp="brew services"
 alias brewpr="brew services restart"
 alias brewps="brew services start"
 alias brewpx="brew services stop"
-{{ end }}
+{{- end }}
+
 #  ---
 #  === c
 #  ────────────────────────────────────────────────────────────
-{{- if eq .chezmoi.os "darwin" -}}
+
+{{ if eq .chezmoi.os "darwin" -}}
 alias caskh="brew home --cask"
 alias caskk="brew info --cask"
-{{ end -}}
+{{- end }}
+
 alias cat &> /dev/null && unalias cat
 alias cm="chezmoi"
 alias cmg="chezmoi git"
 alias cmgs="chezmoi git status"
+alias cmra="chezmoi re-add --interactive"
 alias cms="chezmoi status"
+alias cma="chezmoi add --prompt"
+
 #  ---
 #  === e
 #  ────────────────────────────────────────────────────────────
+
 alias e="${(z)EDITOR:-nvim}"
 alias ez="exec zsh"
+
 #  ---
 #  === h
 #  ────────────────────────────────────────────────────────────
+
 alias hosts="sudo e /etc/hosts && dscacheutil -flushcache"
+
 #  ---
 #  === l
 #  ────────────────────────────────────────────────────────────
+
 alias lg="lazygit"
 alias lll="linode-cli linodes ls"
 alias ls &> /dev/null && unalias ls
+
 #  ---
 #  === m
 #  ────────────────────────────────────────────────────────────
+
 alias mkdir="mkdir -p"
+
 #  ---
 #  === r
 #  ────────────────────────────────────────────────────────────
+
 alias r="ranger"
 alias ranger="source ranger"
+
 #  ---
 #  === t
 #  ────────────────────────────────────────────────────────────
+
 alias tmux.conf="(cd {{ .chezmoi.homeDir }}/.config/tmux && nvim tmux.conf)"
 alias tx="tmux"
 alias txks="tmux list-sessions -F '#S' 2>/dev/null | gum filter | xargs -I _ tmux kill-session -t _"
 alias txls="tmux list-sessions"
 alias txpl="tmuxp ls | gum filter | xargs tmuxp load -d"
+
 #  ---
 #  === v
 #  ────────────────────────────────────────────────────────────
+
 alias vimrc="(cd {{ .chezmoi.homeDir }}/.config/nvim && nvim .)"
+
 #  ---
-#  z
+#  === z
 #  ────────────────────────────────────────────────────────────
+
 for rc in zshrc zpreztorc zshenv zlogin zlogout zprofile; do
   alias $rc="(cd $ZDOTDIR && chezmoi edit --apply .$rc); ez"
 done
+
+#  ---
 #  ---
 #  === Suffix aliases
 #  ╭────────────────╮
 #  │ Suffix aliases │
 #  ╰────────────────╯
+
 alias -s {md,markdown,mkdwn}="glow -p"
+
 #  ---
 #  === Global aliases
 #  ╭────────────────╮
 #  │ Global Aliases │
 #  ╰────────────────╯
+
 alias -g P="| p"
 alias -g @noerr="2> /dev/null"
 alias -g @noout="&> /dev/null"
+
 #  ---
 #  ---
 #  === Bindings
@@ -298,7 +329,8 @@ bindkey '^n' _navi_widget
 #  │                   Application Settings                   │
 #  │                                                          │
 #  ╰──────────────────────────────────────────────────────────╯
-#=== keychain
+
+#   === keychain
 
 #  ╭──────────╮
 #  │ keychain │
@@ -397,11 +429,12 @@ eval "$(direnv hook zsh)"
 #  │ asdf │
 #  ╰──────╯
 
-if is-darwin; then
-  . "$(brew --prefix asdf)/libexec/asdf.sh"
-else
-  . "$HOME/.asdf/asdf.sh"
-fi
+{{ if eq .chezmoi.os "darwin" }}
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+{{ else }}
+. "$HOME/.asdf/asdf.sh"
+{{- end }}
+
 #  ---
 #  ---
 # vim: filetype=tmpl.zsh foldmethod=marker foldcolumn=2 foldmarker====,---
