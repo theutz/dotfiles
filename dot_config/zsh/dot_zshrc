@@ -9,7 +9,7 @@
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/zprezto/init.zsh" ]]; then
-	source "${ZDOTDIR:-$HOME}/zprezto/init.zsh"
+  source "${ZDOTDIR:-$HOME}/zprezto/init.zsh"
 fi
 
 # Customize to your needs...
@@ -31,8 +31,8 @@ export MANWIDTH=999
 export RANGER_LOAD_DEFAULT_RC=false
 
 if is-darwin; then
-	export CPATH=/opt/homebrew/include
-	export LIBRARY_PATH=/opt/homebrew/lib
+  export CPATH=/opt/homebrew/include
+  export LIBRARY_PATH=/opt/homebrew/lib
 fi
 
 # }}}
@@ -46,143 +46,143 @@ fi
 #  ╰──────────────────────────────────────────────────────────╯
 
 function has {
-	command -v "$1" &>/dev/null
+  command -v "$1" &>/dev/null
 }
 
 function rgd() {
-	rg --json "$argv" | delta
+  rg --json "$argv" | delta
 }
 
 function a() {
-	if [ -f please ]; then
-		php please $argv
-	elif [ -f artisan ]; then
-		php artisan $argv
-	elif [ -f vendor/bin/wp ]; then
-		vendor/bin/wp $argv
-	elif [ -f craft ]; then
-		valet php craft $argv
-	fi
+  if [ -f please ]; then
+    php please $argv
+  elif [ -f artisan ]; then
+    php artisan $argv
+  elif [ -f vendor/bin/wp ]; then
+    vendor/bin/wp $argv
+  elif [ -f craft ]; then
+    valet php craft $argv
+  fi
 }
 
 function readme() {
-	glow -p "$(brew --prefix $argv)/README.md"
+  glow -p "$(brew --prefix $argv)/README.md"
 }
 
 function pope() {
-	if [[ -d $argv[1] ]]; then
-		dir="$(dirname $argv[1])/$(basename $argv[1])"
-		target="$dir"
-	elif {[ -f $argv[1] ]}; then
-		dir="$(dirname $argv[1])"
-		target="$argv[1]"
-	fi
-	tmux display-popup -E -d $dir -h '90%' -w '70%' "nvim $target"
+  if [[ -d $argv[1] ]]; then
+    dir="$(dirname $argv[1])/$(basename $argv[1])"
+    target="$dir"
+  elif {[ -f $argv[1] ]}; then
+    dir="$(dirname $argv[1])"
+    target="$argv[1]"
+  fi
+  tmux display-popup -E -d $dir -h '90%' -w '70%' "nvim $target"
 }
 
 function commit() {
-	commitMessage="$*"
+  commitMessage="$*"
 
-	if [ "$commitMessage" = "" ]; then
-		aicommits
-		return
-	fi
+  if [ "$commitMessage" = "" ]; then
+    aicommits
+    return
+  fi
 
-	eval "git commit -a -m '${commitMessage}'"
+  eval "git commit -a -m '${commitMessage}'"
 }
 
 function pnpmg() {
-	cd $HOME/npmbin
-	yarn add $@
-	cd -
+  cd $HOME/npmbin
+  yarn add $@
+  cd -
 }
 
 function kagi() {
-	local q=$(jq -R -r @uri <<<"$argv")
-	local url="https://kagi.com/search?q=$q"
-	echo "$url"
-	open $url
+  local q=$(jq -R -r @uri <<<"$argv")
+  local url="https://kagi.com/search?q=$q"
+  echo "$url"
+  open $url
 }
 
 function _navi_call() {
-	local result="$(navi "$@" </dev/tty)"
-	printf "%s" "$result"
+  local result="$(navi "$@" </dev/tty)"
+  printf "%s" "$result"
 }
 
 function _navi_widget() {
-	local -r input="${LBUFFER}"
-	local -r last_command="$(echo "${input}" | navi fn widget::last_command)"
-	local replacement="$last_command"
+  local -r input="${LBUFFER}"
+  local -r last_command="$(echo "${input}" | navi fn widget::last_command)"
+  local replacement="$last_command"
 
-	if [ -z "$last_command" ]; then
-		replacement="$(_navi_call --print)"
-	elif [ "$LASTWIDGET" = "_navi_widget" ] && [ "$input" = "$previous_output" ]; then
-		replacement="$(_navi_call --print --query "$last_command")"
-	else
-		replacement="$(_navi_call --print --best-match --query "$last_command")"
-	fi
+  if [ -z "$last_command" ]; then
+    replacement="$(_navi_call --print)"
+  elif [ "$LASTWIDGET" = "_navi_widget" ] && [ "$input" = "$previous_output" ]; then
+    replacement="$(_navi_call --print --query "$last_command")"
+  else
+    replacement="$(_navi_call --print --best-match --query "$last_command")"
+  fi
 
-	if [ -n "$replacement" ]; then
-		local -r find="${last_command}_NAVIEND"
-		previous_output="${input}_NAVIEND"
-		previous_output="${previous_output//$find/$replacement}"
-	else
-		previous_output="$input"
-	fi
+  if [ -n "$replacement" ]; then
+    local -r find="${last_command}_NAVIEND"
+    previous_output="${input}_NAVIEND"
+    previous_output="${previous_output//$find/$replacement}"
+  else
+    previous_output="$input"
+  fi
 
-	zle kill-whole-line
-	LBUFFER="${previous_output}"
-	region_highlight=("P0 100 bold")
-	zle redisplay
+  zle kill-whole-line
+  LBUFFER="${previous_output}"
+  region_highlight=("P0 100 bold")
+  zle redisplay
 }
 
 function take {
-	command mkdir -p "$@" && cd "$@"
+  command mkdir -p "$@" && cd "$@"
 }
 
 function move {
-	setopt LOCAL_OPTIONS NO_UNSET ERR_RETURN
-	command mv "$1" "$2" && cd "$2"
+  setopt LOCAL_OPTIONS NO_UNSET ERR_RETURN
+  command mv "$1" "$2" && cd "$2"
 }
 
 function txpe {
-	if [[ -z "$@" ]]; then
-		session="$(tmuxp ls | gum filter)"
-	else
-		session="$@"
-	fi
+  if [[ -z "$@" ]]; then
+    session="$(tmuxp ls | gum filter)"
+  else
+    session="$@"
+  fi
 
-	(cd ~/.config/tmuxp && e "$session.yml")
+  (cd ~/.config/tmuxp && e "$session.yml")
 }
 
 function txa {
-	setopt PIPE_FAIL ERR_RETURN
+  setopt PIPE_FAIL ERR_RETURN
 
-	if [[ -n "$@" ]]; then
-		session="$@"
-	else
-		session="$(tmuxp ls | gum filter --fuzzy)"
-	fi
+  if [[ -n "$@" ]]; then
+    session="$@"
+  else
+    session="$(tmuxp ls | gum filter --fuzzy)"
+  fi
 
-	if ! tmux has-session -t "$session" &>/dev/null; then
-		gum spin --spinner=meter -- tmuxp load -d "$session"
-	fi
+  if ! tmux has-session -t "$session" &>/dev/null; then
+    gum spin --spinner=meter -- tmuxp load -d "$session"
+  fi
 
-	tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
+  tmux attach-session -t "$session" &>/dev/null || tmux switch-client -t "$session" &>/dev/null
 }
 
 function ls {
-	if has lsd; then
-		lsd "$@"
-	else
-		command ls "$@"
-	fi
+  if has lsd; then
+    lsd "$@"
+  else
+    command ls "$@"
+  fi
 }
 
 function cat {
-	has bat &&
-		bat $@ ||
-		command cat $@
+  has bat &&
+    bat $@ ||
+    command cat $@
 }
 
 # }}}
@@ -232,7 +232,7 @@ eval $(keychain --eval --quiet --agents ssh,gpg id_ed25519 6AEFB22E FD235DFD 48B
 #  ╰────────╯
 
 function _load_zoxide {
-	eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh)"
 }
 zsh-defer _load_zoxide
 
@@ -245,7 +245,7 @@ zsh-defer _load_zoxide
 #  ╰─────────╯
 
 function _load_chezmoi {
-	source <(chezmoi completion zsh)
+  source <(chezmoi completion zsh)
 }
 zsh-defer _load_chezmoi
 
@@ -258,8 +258,8 @@ zsh-defer _load_chezmoi
 #  ╰───────╯
 
 function _load_broot {
-	source <(broot --print-shell-function zsh)
-	broot --set-install-state installed
+  source <(broot --print-shell-function zsh)
+  broot --set-install-state installed
 }
 zsh-defer _load_broot
 
@@ -272,7 +272,7 @@ zsh-defer _load_broot
 #  ╰───────╯
 
 function _load_atuin {
-	eval "$(atuin init zsh)"
+  eval "$(atuin init zsh)"
 }
 zsh-defer _load_atuin
 
@@ -335,9 +335,9 @@ eval "$(direnv hook zsh)"
 #  ╰──────╯
 
 if is-darwin; then
-	. "$(brew --prefix asdf)/libexec/asdf.sh"
+  . "$(brew --prefix asdf)/libexec/asdf.sh"
 else
-	. "$HOME/.asdf/asdf.sh"
+  . "$HOME/.asdf/asdf.sh"
 fi
 
 # }}}
