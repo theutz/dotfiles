@@ -217,7 +217,7 @@ alias brewpx="brew services stop"
 {{ if eq .chezmoi.os "darwin" -}}
 alias caskh="brew home --cask"
 alias caskk="brew info --cask"
-{{- end }}
+{{- end -}}
 
 alias cat &> /dev/null && unalias cat
 alias cm="chezmoi"
