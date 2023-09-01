@@ -37,9 +37,10 @@ set -g @color-window "pink"
 set -g @color-pane "purple"
 {{- end }}
 set -g @color-text "black"
-set -g @color-inactive "#54546D"
+set -g @color-inactive "#717C7C"
 set -g @color-inactive-bg "terminal"
 set -g @color-active-bg "terminal"
+set -g @color-selection "orange"
 set -g @color-success "green"
 set -g @color-warning "yellow"
 set -g @color-danger "red"
@@ -69,7 +70,7 @@ set -g @window-flags "\
 #{?window_activity_flag,󰛄 ,}\
 #{?window_silence_flag,󰪓 ,}\
 #[nobright]"
-set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
+set -g @window-status-format "#I #{E:@window-flags}#{@cap-round-soft-end} #W "
 
 #  ╭──────────────────────────────────────────────────────────╮
 #  │                         Options                          │
@@ -77,8 +78,8 @@ set -g @window-status-format "#I #{E:@window-flags}#{@divider-soft-left} #W "
 
 set -g message-command-style "bg=#{@color-danger} fg=#{@color-text}"
 set -g message-style "bg=#{@color-warning} fg=#{@color-text}"
-set -g pane-active-border-style "fg=#{@color-pane} bg=#{@color-active-bg}"
-set -g pane-border-format "\
+set -g pane-active-border-style "fg=#{@color-selection} bg=#{@color-active-bg}"
+set -g pane-border-format "#[align=right]\
 #{?pane_dead,#[fg=red],#{?pane_last,#[fg=#{@color-pane}],}}\
  #{?pane_active,#{@divider-hard-right}#[reverse],#[italics]#{@divider-soft-right}}\
  #P #{@divider-soft-left}\
@@ -101,7 +102,7 @@ set -g remain-on-exit-format "#[align=centre fill=#{@color-danger} bg=#{@color-d
 set -g status-interval 5
 set -g status-justify absolute-centre
 
-set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@divider-soft-left} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
+set -g status-left "#{@cap-round-hard-start}#[reverse] 󰀥  #S #{@cap-round-soft-end} 󱞞 #{session_path} #[default]#{@cap-round-hard-end}"
 set -g status-left-length 80
 
 set -g status-position bottom
@@ -110,7 +111,7 @@ set -g status-right "\
 #{?#(ping -c 1 -t 2 google.com; echo $?),#[bg=#{@color-active-bg} fg=#{@color-danger}]#[push-default],}\
 #{@cap-round-hard-start}#[reverse]\
  󰀄 #{user}\
- #{@separator}\
+ #{@cap-round-soft-start}\
  #(ping -c 1 -t 2 google.com 2>&1 > /dev/null && echo "󰍹" || echo "󰖪")\
  #H\
  #[default]#{@cap-round-hard-end}#[pop-default]"
@@ -118,9 +119,9 @@ set -g status-right-length 80
 
 set -g status-style "fg=#{@color-session} bg=terminal"
 
-set -g window-status-activity-style "bold"
-set -g window-status-bell-style "fg=#{@color-window}"
-set -g window-status-last-style "fg=#{@color-window} nodim"
+set -g window-status-activity-style "bg=#{color-warning} fg=#{@color-text}"
+set -g window-status-bell-style "fg=#{@color-danger} fg=#{@color-text}"
+set -g window-status-last-style "fg=#{@color-success}"
 set -g window-status-current-format "\
 #{@cap-round-hard-start}\
 #[bg=#{@color-window} fg=#{@color-text}]\
@@ -128,9 +129,9 @@ set -g window-status-current-format "\
 #[default]\
 #{@cap-round-hard-end}"
 set -g window-status-current-style "fg=#{@color-window}"
-set -g window-status-format "#[dim]#{@cap-round-soft-start} #{E:@window-status-format}#{@cap-round-soft-end}"
+set -g window-status-format "#{@cap-round-soft-start} #{E:@window-status-format}#{@cap-round-soft-end}"
 set -gF window-status-separator " #[fg=#{@color-inactive}]⋅#[default] "
-set -g window-status-style "fg=#{@color-inactive} italics"
+set -g window-status-style "bg=#{@color-inactive-bg} italics"
 
 set -g window-active-style "bg=#{@color-active-bg}"
 set -g window-style "bg=#{@color-inactive-bg}"
