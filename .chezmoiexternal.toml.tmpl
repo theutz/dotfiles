@@ -1,3 +1,5 @@
+{{- if ne .chezmoi.os "darwin" -}}
+
 [".asdf"]
 type = "git-repo"
 url = "https://github.com/asdf-vm/asdf.git"
@@ -5,18 +7,20 @@ refreshPeriod = "24h"
 clone.args = ["--branch", "v0.12.0"]
 pull.args = ["origin", "v0.12.0"]
 
-[".config/zsh/zprezto"]
-type = "git-repo"
-url = "https://github.com/sorin-ionescu/prezto"
-refreshPeriod = "168h"
+{{- end -}}
 
-[".config/zsh/zprezto".clone]
+[".zprezto"]
+type = "git-repo"
+url = "https://github.com/theutz/prezto"
+refreshPeriod = "1h"
+
+[".zprezto".clone]
 args = ["--recursive"]
 
-[".config/zsh/zprezto/contrib/zsh-defer"]
+[".zprezto-contrib"]
 type = "git-repo"
-url = "https://github.com/romkatv/zsh-defer"
-refreshPeriod = "24h"
+url = "https://github.com/theutz/prezto-contrib"
+refreshPeriod = "1h"
 
 [".config/kitty/themes/kanagawa.conf"]
 type = "file"
@@ -40,3 +44,5 @@ exact = true
 stripComponents = 1
 refreshPeriod = "168h"
 include = ["*/themes/**", "*.yaml"]
+
+# vim: ft=tmpl.toml
