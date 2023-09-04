@@ -242,7 +242,7 @@ alias ez="exec zsh"
 #  === h
 #  ────────────────────────────────────────────────────────────
 
-alias hosts="sudo e /etc/hosts && dscacheutil -flushcache"
+alias hosts="sudo ${(z)EDITOR:-nvim} /etc/hosts && dscacheutil -flushcache"
 
 #  ---
 #  === l
