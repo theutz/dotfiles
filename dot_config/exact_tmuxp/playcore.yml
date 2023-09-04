@@ -7,12 +7,3 @@ windows:
         shell_command: nvim
     window_name: main
     layout: main-vertical
-  - panes:
-      - blank
-      - focus: true
-        shell_command: nvim
-    window_name: playbook
-    start_directory: $HOME/code/delegator/playbooks-playcore.com
-    layout: main-vertical
-    options:
-      main-pane-width: 100
