@@ -7,3 +7,7 @@ windows:
         shell_command: nvim
     window_name: main
     layout: main-vertical
+  - panes:
+      - exit
+    options:
+      remain-on-exit: off
