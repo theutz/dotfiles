@@ -441,7 +441,7 @@ eval "$(direnv hook zsh)"
 #  │ 1password │
 #  ╰───────────╯
 
-has op && (eval "$(op completion zsh)"; compdef _op op)
+has op && { eval "$(op completion zsh)"; compdef _op op }
 
 #  ---
 #  ---
