@@ -1,6 +1,8 @@
 key.txt.age
-
-{{ if ne .chezmoi.os "darwin*" }}
+# .config/zsh/contrib/zsh-defer
+{{ if ne .chezmoi.os "darwin*" -}}
 bin/brewd
 Library/
-{{ end }}
+{{- end }}
+
+# vim: ft=tmpl.gitignore
