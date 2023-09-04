@@ -29,25 +29,29 @@ zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-zstyle ':prezto:load' pmodule \
-  'zsh-defer' \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'directory' \
-  'homebrew' \
-  'git' \
-  'osx' \
-  'docker' \
-  'tmux' \
-  'python' \
-  'command-not-found' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'syntax-highlighting' \
-  'autosuggestions' \
-  'history-substring-search'
+prezto_modules=(
+  zsh-defer
+  environment
+  terminal
+  editor
+  directory
+  homebrew
+  git
+  osx
+  docker
+  tmux
+  asdf
+  python
+  command-not-found
+  spectrum
+  utility
+  completion
+  syntax-highlighting
+  autosuggestions
+  history-substring-search
+)
+zstyle ':prezto:load' pmodule "${prezto_modules[@]}"
+unset prezto_modules
 
 #
 # Autosuggestions
