@@ -1,0 +1,4 @@
+alias dnsflush="sudo dscacheutil -flushcache"
+alias e="${(z)EDITOR:-nvim}"
+alias ez="exec zsh"
+alias lll="linode-cli linodes ls"
