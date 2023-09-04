@@ -436,5 +436,13 @@ eval "$(direnv hook zsh)"
 . "$HOME/.asdf/asdf.sh"
 
 #  ---
+#  === op (1password)
+#  ╭───────────╮
+#  │ 1password │
+#  ╰───────────╯
+
+has op && (eval "$(op completion zsh)"; compdef _op op)
+
+#  ---
 #  ---
 # vim: filetype=tmpl.zsh foldmethod=marker foldcolumn=2 foldmarker====,---
