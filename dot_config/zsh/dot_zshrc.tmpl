@@ -232,6 +232,14 @@ alias cmra="chezmoi re-add --interactive"
 alias cms="chezmoi status"
 
 #  ---
+#  === c
+#  ────────────────────────────────────────────────────────────
+
+{{ if eq .chezmoi.os "darwin" -}}
+alias dnsflush="sudo dscacheutil -flushcache"
+{{- end }}
+
+#  ---
 #  === e
 #  ────────────────────────────────────────────────────────────
 
@@ -451,3 +459,4 @@ has op && { eval "$(op completion zsh)"; compdef _op op }
 #  ---
 #  ---
 # vim: filetype=tmpl.zsh foldmethod=marker foldcolumn=2 foldmarker====,---
+#
