@@ -3,9 +3,22 @@ gui:
   showRandomTip: false
   showCommandLog: true
   showBottomLine: false
-  showIcons: true
+  nerdFontsVersion: "3"
+  border: 'rounded'
 git:
   parseEmoji: true
+  commit:
+    signOff: true
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
 notARepository: 'skip'
 promptToReturnFromSubprocess: false
 disableStartupPopups: true
+customCommands:
+  - key: "b"
+    context: "files"
+    command: "aicommits"
+    description: "aicommits"
+    subprocess: true
+    showOutput: true
