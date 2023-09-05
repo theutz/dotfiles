@@ -1,6 +1,12 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "asdf@latest": {
+      "last_modified": "2023-08-30T00:25:28Z",
+      "resolved": "github:NixOS/nixpkgs/a63a64b593dcf2fe05f7c5d666eb395950f36bc9#asdf",
+      "source": "devbox-search",
+      "version": "3.3.4"
+    },
     "keychain@latest": {
       "last_modified": "2023-08-30T00:25:28Z",
       "resolved": "github:NixOS/nixpkgs/a63a64b593dcf2fe05f7c5d666eb395950f36bc9#keychain",
