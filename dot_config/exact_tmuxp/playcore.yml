@@ -2,7 +2,7 @@ session_name: playcore-com
 start_directory: $HOME/code/delegator/playcore
 windows:
   - panes:
-      - blank
+      - sleep 0.1; clear
       - focus: true
         shell_command: nvim
     window_name: main
