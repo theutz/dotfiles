@@ -2,8 +2,9 @@ session_name: home
 start_directory: $HOME
 windows:
   - panes:
-      - sleep 0.1 && clear
+      - clear
     window_name: main
+    layout: even-horizontal
   - panes:
       - exit
     options:
