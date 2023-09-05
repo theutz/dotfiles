@@ -1,6 +1,7 @@
 {
   "packages": [
-    "keychain@latest"
+    "keychain@latest",
+    "asdf@latest"
   ],
   "shell": {
     "init_hook": [
