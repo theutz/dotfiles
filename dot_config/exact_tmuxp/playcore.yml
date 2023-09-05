@@ -8,6 +8,14 @@ windows:
     window_name: main
     layout: main-vertical
   - panes:
-      - exit
-    options:
-      remain-on-exit: off
+      - sleep 0.1; clear
+      - shell_command: ssh staging.playcore.com
+        focus: true
+    layout: main-vertical
+    window_name: ssh-stg
+  - panes:
+      - sleep 0.1; clear
+      - shell_command: ssh playcore
+        focus: true
+    layout: main-vertical
+    window_name: ssh-prd
