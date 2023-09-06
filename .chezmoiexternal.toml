@@ -2,14 +2,13 @@
 type = "git-repo"
 url = "https://github.com/theutz/prezto"
 refreshPeriod = "1h"
-
-[".zprezto".clone]
-args = ["--recursive"]
+clone.args = ["--recursive"]
 
 [".zprezto-contrib"]
 type = "git-repo"
 url = "https://github.com/theutz/prezto-contrib"
 refreshPeriod = "1h"
+clone.args = ["--recursive"]
 
 [".config/nvim"]
 type = "git-repo"
