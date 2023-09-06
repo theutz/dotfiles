@@ -1,4 +1,7 @@
-encryption = "age"
+encryption = "gpg"
+
+[gpg]
+recipient = "FD235DFD"
 
 [age]
 identity = "~/.config/chezmoi/key.txt"
