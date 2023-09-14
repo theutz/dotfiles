@@ -1,5 +1,5 @@
 key.txt.age
-# .config/zsh/contrib/zsh-defer
+bin/chezmoi
 {{ if ne .chezmoi.os "darwin*" -}}
 bin/brewd
 Library/

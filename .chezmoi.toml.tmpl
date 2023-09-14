@@ -1,0 +1,29 @@
+encryption = "age"
+
+[gpg]
+recipient = "FD235DFD"
+
+[age]
+identity = "~/.config/chezmoi/key.txt"
+recipient = "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa"
+
+[git]
+autoCommit = false
+autoPush = false
+
+{{ $hasDelta := promptBool "Is delta installed?" true -}}
+{{ if $hasDelta -}}
+[diff]
+pager = "delta"
+args = ["{{ .Destination }}", "{{ .Target }}"]
+exclude = ["scripts"]
+{{- end }}
+
+{{ $hasNvim := promptBool "Is neovim installed?" true -}}
+{{ if $hasNvim }}
+[merge]
+command = "nvim"
+args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+{{ end }}
+
+# vim: ft=tmpl.toml
