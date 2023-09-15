@@ -1,0 +1,79 @@
+tap "homebrew/bundle"
+tap "homebrew/services"
+tap "oven-sh/bun"
+# Platform built on V8 to build network applications
+brew "node"
+# Writes your git commit messages for you with AI
+brew "aicommits"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Lightweight DNS forwarder and DHCP server
+brew "dnsmasq"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# User-friendly front-end to ssh-agent(1)
+brew "keychain"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Secure hashing function
+brew "libb2"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Command-line and local web note‑taking, bookmarking, and archiving
+brew "nb"
+# Fast, highly customisable system info script
+brew "neofetch"
+# HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
+brew "nginx"
+# General-purpose scripting language
+brew "php"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# OpenBSD and Darwin versions of pgrep, pkill, and pfind
+brew "proctools"
+# File browser
+brew "ranger"
+# Intuitive find & replace CLI
+brew "sd"
+# Terminal file explorer
+brew "tere"
+# Terminal multiplexer
+brew "tmux"
+# Tmux session manager. Built on libtmux
+brew "tmuxp"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# JavaScript package manager
+brew "yarn"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
+# Command-line interface for 1Password
+cask "1password-cli"
