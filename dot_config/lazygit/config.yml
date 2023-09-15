@@ -18,7 +18,7 @@ disableStartupPopups: true
 customCommands:
   - key: "b"
     context: "files"
-    command: "aicommits"
+    command: "FORCE_COLOR=true op run -- aicommits"
     description: "aicommits"
     subprocess: true
     showOutput: true
