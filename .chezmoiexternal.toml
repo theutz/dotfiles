@@ -4,10 +4,10 @@ url = "https://github.com/theutz/prezto"
 refreshPeriod = "1h"
 clone.args = ["--recursive"]
 
-[".zprezto-contrib"]
+[".zprezto/contrib/zsh-defer"]
 type = "git-repo"
-url = "https://github.com/theutz/prezto-contrib"
-refreshPeriod = "1h"
+url = "https://github.com/romkatv/zsh-defer"
+refreshPeriod = "168h"
 clone.args = ["--recursive"]
 
 [".config/nvim"]
