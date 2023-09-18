@@ -8,14 +8,15 @@ identity = "~/.config/chezmoi/key.txt"
 recipient = "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa"
 
 [git]
-autoCommit = false
-autoPush = false
+autoAdd = true
+autoCommit = true
+autoPush = true
 
 {{ $hasDelta := promptBool "Is delta installed?" true -}}
 {{ if $hasDelta -}}
 [diff]
 pager = "delta"
-args = ["{{ .Destination }}", "{{ .Target }}"]
+args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 exclude = ["scripts"]
 {{- end }}
 
@@ -23,7 +24,7 @@ exclude = ["scripts"]
 {{ if $hasNvim }}
 [merge]
 command = "nvim"
-args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 {{ end }}
 
 # vim: ft=tmpl.toml
