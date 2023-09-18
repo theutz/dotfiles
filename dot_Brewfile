@@ -11,6 +11,8 @@ brew "asdf"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# New way to see and navigate directory trees
+brew "broot"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -29,6 +31,8 @@ brew "git-delta"
 brew "gnupg"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Tool for glamorous shell scripts
+brew "gum"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # User-friendly front-end to ssh-agent(1)
@@ -39,6 +43,8 @@ brew "lazygit"
 brew "libb2"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Package manager for the Lua programming language
+brew "luarocks"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Command-line and local web note‑taking, bookmarking, and archiving
@@ -47,6 +53,10 @@ brew "nb"
 brew "neofetch"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
+# Terminal multiplexer
+brew "tmux"
+# Process manager for Procfile-based applications and tmux
+brew "overmind"
 # General-purpose scripting language
 brew "php"
 # Fast, disk space efficient package manager
@@ -55,16 +65,18 @@ brew "pnpm"
 brew "proctools"
 # File browser
 brew "ranger"
+# Safe, concurrent, practical language
+brew "rust"
 # Intuitive find & replace CLI
 brew "sd"
 # Terminal file explorer
 brew "tere"
-# Terminal multiplexer
-brew "tmux"
 # Tmux session manager. Built on libtmux
 brew "tmuxp"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Internet file retriever
+brew "wget"
 # JavaScript package manager
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
