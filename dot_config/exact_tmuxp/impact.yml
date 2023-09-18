@@ -1,5 +1,5 @@
 session_name: impact
-start_directory: $HOME/code/delegator/impactelectronics.com/
+start_directory: $HOME/code/delegator/impactelectronics/
 windows:
   - focus: true
     layout: main-vertical

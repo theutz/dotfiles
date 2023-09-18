@@ -3,18 +3,9 @@ start_directory: $HOME/code/delegator/lineworker
 windows:
   - focus: true
     layout: main-vertical
-    options:
-      main-pane-width: '60%'
     panes:
+      - sleep 0.1 && clear
       - nvim
     window_name: main
   - panes:
-      - bin/dev
-    window_name: server
-  - panes:
-      - mosh sltc
-    window_name: mosh
-  - panes:
-      - nvim
-    start_directory: vendor/statamic/cms
-    window_name: statamic/cms
+      - sleep 0.1 && exit
