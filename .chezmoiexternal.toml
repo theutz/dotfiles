@@ -1,10 +1,10 @@
-[".config/zsh/prezto"]
+[".config/zsh/.zprezto"]
 type = "git-repo"
 url = "https://github.com/theutz/prezto"
 refreshPeriod = "1h"
 clone.args = ["--recursive"]
 
-[".config/zsh/prezto/contrib/zsh-defer"]
+[".config/zsh/.zprezto/contrib/zsh-defer"]
 type = "git-repo"
 url = "https://github.com/romkatv/zsh-defer"
 refreshPeriod = "168h"
