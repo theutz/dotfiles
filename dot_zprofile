@@ -115,11 +115,6 @@ if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
 fi
 
 #
-# Ranger
-#
-export RANGER_LOAD_DEFAULT_RC=false
-
-#
 # Rust
 #
 [ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
