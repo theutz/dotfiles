@@ -1,10 +1,10 @@
-[".zprezto"]
+[".config/zsh/prezto"]
 type = "git-repo"
 url = "https://github.com/theutz/prezto"
 refreshPeriod = "1h"
 clone.args = ["--recursive"]
 
-[".zprezto/contrib/zsh-defer"]
+[".config/zsh/prezto/contrib/zsh-defer"]
 type = "git-repo"
 url = "https://github.com/romkatv/zsh-defer"
 refreshPeriod = "168h"
@@ -14,5 +14,3 @@ clone.args = ["--recursive"]
 type = "git-repo"
 url = "https://github.com/theutz/nvim"
 refreshPeriod = "1h"
-
-# vim: ft=tmpl.toml

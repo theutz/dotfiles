@@ -12,16 +12,14 @@ autoAdd = true
 autoCommit = true
 autoPush = true
 
-{{ $hasDelta := promptBool "Is delta installed?" true -}}
-{{ if $hasDelta -}}
+{{ if lookPath "delta" -}}
 [diff]
 pager = "delta"
 args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 exclude = ["scripts"]
 {{- end }}
 
-{{ $hasNvim := promptBool "Is neovim installed?" true -}}
-{{ if $hasNvim }}
+{{ if lookPath "nvim" }}
 [merge]
 command = "nvim"
 args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
