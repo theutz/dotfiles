@@ -24,6 +24,8 @@ brew "libpq"
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Lightweight DNS forwarder and DHCP server
 brew "dnsmasq"
 # Pack, ship and run any application as a lightweight container
@@ -92,6 +94,8 @@ brew "rust"
 brew "sd"
 # Terminal file explorer
 brew "tere"
+# Simplified and community-driven man pages
+brew "tldr"
 # Tmux session manager. Built on libtmux
 brew "tmuxp"
 # Display directories as trees (with optional color/HTML output)
