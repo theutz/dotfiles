@@ -8,4 +8,5 @@ windows:
       - nvim
     window_name: main
   - panes:
-      - sleep 0.1 && exit
+      - bin/dev
+    window_name: bin/dev
