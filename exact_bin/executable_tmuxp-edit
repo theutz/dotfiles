@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ -z "$@" ]]; then
-  session="$(tmuxp ls | gum filter --fuzzy)"
-else
-  session="$@"
-fi
-
-(cd ~/.config/tmuxp && $EDITOR "$session.yml")
