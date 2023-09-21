@@ -1,6 +1,7 @@
 tap "dopplerhq/cli"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "noahgorstein/tap"
 tap "oven-sh/bun"
 # Platform built on V8 to build network applications
 brew "node"
@@ -116,6 +117,8 @@ brew "zoxide"
 brew "zsh"
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler"
+# a TUI playground to experiment and play with jq
+brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Command-line interface for 1Password
