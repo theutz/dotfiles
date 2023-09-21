@@ -19,26 +19,22 @@
 
 # Execute code only if STDERR is bound to a TTY.
 if [[ -o INTERACTIVE && -t 2 ]]; then
-  if (( $+commands[neofetch] )); then
-    neofetch
-  fi
+  function {
+    show_splash=true
 
-  if (( $+commands[chezmoi] )); then
-    if [[ "$(chezmoi status --exclude scripts | wc -c)" -gt 1 ]]; then
-      tput bold; tput setaf 1
-      printf "Chezmoi has unapplied changes...\n\n"
-      tput sgr0; tput op
-      chezmoi status --exclude scripts
-      print
+    if (( $+commands[chezmoi] )); then
+      if [[ "$(chezmoi status --exclude scripts | wc -c)" -gt 1 ]]; then
+        show_splash=false
+        tput bold; tput setaf 1
+        printf "Chezmoi has unapplied changes...\n\n"
+        tput sgr0; tput op
+        chezmoi status --exclude scripts
+        print
+      fi
     fi
-  fi
 
-  if [[ -n "$(git -C $ZPREZTODIR status --porcelain)" ]]; then
-    tput bold; tput setaf 1
-    printf "Prezto has uncommitted changes...\n\n"
-    tput sgr0; tput op
-    git -C $ZPREZTODIR status --short
-    print
-  fi
-
+    if (( $+commands[neofetch] )) && $show_splash; then
+      neofetch
+    fi
+  }
 fi >&2
