@@ -1,5 +1,6 @@
 key.txt.age
 bin/chezmoi
+.config/tmux/plugins
 {{ if ne .chezmoi.os "darwin*" -}}
 bin/brewd
 Library/
