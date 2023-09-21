@@ -18,12 +18,6 @@ brew "broot"
 brew "btop"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Postgres C API library
-brew "libpq"
-# General-purpose scripting language
-brew "php"
-# Dependency Manager for PHP
-brew "composer"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Lightweight DNS forwarder and DHCP server
