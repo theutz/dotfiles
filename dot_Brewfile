@@ -73,6 +73,8 @@ brew "lsd"
 brew "luarocks"
 # Web and API based SMTP testing tool
 brew "mailhog", restart_service: true
+# GPT-4 on the command-line
+brew "mods"
 # Open source relational database management system
 brew "mysql", restart_service: true
 # Search tool like grep and The Silver Searcher
