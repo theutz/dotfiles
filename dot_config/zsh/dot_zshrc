@@ -12,7 +12,6 @@ fi
 
 # Customize to your needs...
 
-echo word
 # aliases
 source "${ZDOTDIR:-$HOME}/.zsh_aliases"
 
