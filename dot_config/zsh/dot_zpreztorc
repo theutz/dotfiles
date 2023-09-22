@@ -54,7 +54,7 @@ prezto_modules=(
   yum
   python
   archive
-  tmux
+  # tmux
 
 # post-completion
   completion
