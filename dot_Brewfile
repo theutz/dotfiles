@@ -53,6 +53,8 @@ brew "gum"
 brew "hunspell"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
 # Simple terminal UI for git commands
