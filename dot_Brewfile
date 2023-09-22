@@ -97,6 +97,8 @@ brew "php"
 brew "pipx"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Send emails from your terminal
+brew "pop"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Persistent key-value database, with built-in net interface
