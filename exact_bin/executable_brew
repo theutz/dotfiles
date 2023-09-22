@@ -3,7 +3,8 @@
 cmd="$(where brew | grep homebrew)"
 
 function update-global-brewfile() {
-  $cmd bundle dump --global --desc --force --cleanup
+  $cmd bundle dump --global --desc --force --cleanup \
+    && chezmoi add "$(chezmoi target-path)/.Brewfile"
 }
 
 case "$1" in
