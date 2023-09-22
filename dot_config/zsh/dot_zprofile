@@ -74,7 +74,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/{,s}bin(N)
-  /opt/homebrew/opt/libq/bin # must be first for funding-tool to work
+  /opt/homebrew/opt/{libq,ncurses}/bin # must be first for funding-tool to work
   /opt/homebrew/opt/gnu-sed/libexec/gnubin
   $COMPOSER_HOME/vendor/bin
   $HOME/.local/share/bob/nvim-bin
@@ -93,9 +93,9 @@ fpath=(
 
 export CPATH="/opt/homebrew/include"
 export LIBRARY_PATH="/opt/homebrew/lib"
-export LD_FLAGS="/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/libqp/pkgconfig"
+# export LD_FLAGS="/opt/homebrew/opt/libpq/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/libqp/pkgconfig"
 
 #
 # Less
