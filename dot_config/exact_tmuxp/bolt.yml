@@ -1,5 +1,5 @@
 session_name: bolt
-start_directory: $HOME/go/delegator/bolt
+start_directory: $HOME/code/delegator/bolt
 windows:
   - panes:
       - clear
@@ -7,4 +7,8 @@ windows:
     window_name: main
     layout: main-vertical
   - panes:
-      - sleep 0.1 && exit
+      - clear
+      - nvim
+    window_name: lineworker
+    start_directory: $HOME/code/delegator/lineworker
+    layout: main-vertical
