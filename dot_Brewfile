@@ -129,5 +129,7 @@ cask "1password-cli"
 cask "chromedriver"
 # Web browser
 cask "firefox"
+# GPU-based terminal emulator
+cask "kitty"
 # Web browser
 cask "microsoft-edge"
