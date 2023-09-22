@@ -115,6 +115,8 @@ brew "tldr"
 brew "tmuxp"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Execute commands when watched files change
+brew "watchexec"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
