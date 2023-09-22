@@ -76,6 +76,7 @@ path=(
   $HOME/{,s}bin(N)
   /opt/homebrew/opt/{libq,ncurses}/bin # must be first for funding-tool to work
   /opt/homebrew/opt/gnu-sed/libexec/gnubin
+  $HOME/go/bin
   $COMPOSER_HOME/vendor/bin
   $HOME/.local/share/bob/nvim-bin
   $HOME/.cargo/bin
