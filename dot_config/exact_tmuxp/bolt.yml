@@ -1,0 +1,10 @@
+session_name: bolt
+start_directory: $HOME/go/delegator/bolt
+windows:
+  - panes:
+      - clear
+      - nvim
+    window_name: main
+    layout: main-vertical
+  - panes:
+      - sleep 0.1 && exit
