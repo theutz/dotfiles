@@ -145,5 +145,3 @@ cask "firefox"
 cask "kitty"
 # Web browser
 cask "microsoft-edge"
-# Adaptive brightness for displays
-cask "vivid"
