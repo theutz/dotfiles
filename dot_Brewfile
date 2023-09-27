@@ -77,6 +77,8 @@ brew "luarocks"
 brew "mailhog", restart_service: true
 # AI on the command-line
 brew "mods"
+# Remote terminal application
+brew "mosh"
 # Open source relational database management system
 brew "mysql", restart_service: true
 # Search tool like grep and The Silver Searcher
