@@ -83,3 +83,6 @@ export POP_SIGNATURE="Michael Utz\nmichael@theutz.com"
 
 # go
 export GOPATH="$HOME/go"
+
+# marvin
+eval "$(marvin --show-completion zsh)"
