@@ -2,10 +2,11 @@ session_name: home
 start_directory: $HOME
 windows:
   - panes:
-      - clear
+      - blank
     window_name: main
-    layout: even-horizontal
+    layout: main-vertical
   - panes:
-      - exit
-    options:
-      remain-on-exit: off
+      - blank
+    window_name: chezmoi
+    start_directory: $HOME/.local/share/chezmoi
+    layout: main-vertical
