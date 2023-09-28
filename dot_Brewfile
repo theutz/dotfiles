@@ -130,6 +130,8 @@ brew "tmuxp"
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Vi 'workalike' with many additional features
+brew "vim"
 # Execute commands when watched files change
 brew "watchexec"
 # Internet file retriever
