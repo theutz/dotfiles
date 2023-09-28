@@ -33,6 +33,10 @@ brew "dnsmasq"
 brew "docker"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Secure hashing function
+brew "libb2"
+# Create thumbnails for your video files
+brew "ffmpegthumbnailer"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # Command-line fuzzy finder written in Go
@@ -67,8 +71,6 @@ brew "keychain"
 brew "lazygit"
 # Terminal file manager
 brew "lf"
-# Secure hashing function
-brew "libb2"
 # Postgres C API library
 brew "libpq"
 # Rotates, compresses, and mails system logs
@@ -107,6 +109,8 @@ brew "pipx"
 brew "pnpm"
 # Send emails from your terminal
 brew "pop"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Persistent key-value database, with built-in net interface
@@ -123,12 +127,16 @@ brew "tldr"
 brew "tmuxp"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Command-line unarchiving tools supporting multiple formats
+brew "unar"
 # Execute commands when watched files change
 brew "watchexec"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
 brew "yarn"
+# ️Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Shell extension to navigate your filesystem faster
