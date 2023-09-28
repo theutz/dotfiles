@@ -76,6 +76,8 @@ brew "lazygit"
 brew "lf"
 # Postgres C API library
 brew "libpq"
+# CLI for the Linode API
+brew "linode-cli"
 # Rotates, compresses, and mails system logs
 brew "logrotate"
 # Clone of ls with colorful output, file type icons, and more
