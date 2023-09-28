@@ -60,6 +60,8 @@ brew "go"
 brew "grep"
 # Tool for glamorous shell scripts
 brew "gum"
+# Post-modern modal text editor
+brew "helix"
 # Spell checker and morphological analyzer
 brew "hunspell"
 # Lightweight and flexible command-line JSON processor
