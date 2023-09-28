@@ -9,3 +9,8 @@ type = "git-repo"
 url = "https://github.com/romkatv/zsh-defer"
 refreshPeriod = "168h"
 clone.args = ["--recursive"]
+
+[".config/nvim"]
+type = "git-repo"
+url = "https://github.com/theutz/nvim"
+refreshPeriod = "168h"
