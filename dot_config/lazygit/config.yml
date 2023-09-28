@@ -22,3 +22,9 @@ customCommands:
     description: "aicommits"
     subprocess: true
     showOutput: true
+  - key: "z"
+    command: "git cz c"
+    description: commit with commitizen
+    context: files
+    loadingText: "opening commitizen commit tool"
+    subprocess: true
