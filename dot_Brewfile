@@ -17,6 +17,8 @@ brew "bat"
 brew "broot"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Create and view interactive cheat sheets for *nix commands
+brew "cheat"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Load/unload environment variables based on $PWD
