@@ -1,5 +1,6 @@
 tap "dopplerhq/cli"
 tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "noahgorstein/tap"
 tap "oven-sh/bun"
@@ -155,6 +156,8 @@ cask "1password-cli"
 cask "chromedriver"
 # Web browser
 cask "firefox"
+# Developer targeted fonts with a high number of glyphs
+cask "font-symbols-only-nerd-font"
 # GPU-based terminal emulator
 cask "kitty"
 # Web browser
