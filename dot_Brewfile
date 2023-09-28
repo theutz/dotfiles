@@ -21,6 +21,10 @@ brew "btop"
 brew "cheat"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
+# Defines a standard way of committing rules and communicating it
+brew "commitizen"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Lightweight DNS forwarder and DHCP server
@@ -67,8 +71,6 @@ brew "lf"
 brew "libb2"
 # Postgres C API library
 brew "libpq"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Rotates, compresses, and mails system logs
 brew "logrotate"
 # Clone of ls with colorful output, file type icons, and more
