@@ -1,9 +1,15 @@
 tap "dopplerhq/cli"
+tap "homebrew/aliases"
+tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/command-not-found"
 tap "homebrew/services"
+tap "homebrew/test-bot"
 tap "noahgorstein/tap"
 tap "oven-sh/bun"
+# Simple, modern, secure file encryption
+brew "age"
 # Platform built on V8 to build network applications
 brew "node"
 # Writes your git commit messages for you with AI
