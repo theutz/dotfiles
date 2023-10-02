@@ -32,6 +32,12 @@ brew "chezmoi"
 brew "python@3.11"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
+# Postgres C API library
+brew "libpq"
+# General-purpose scripting language
+brew "php"
+# Dependency Manager for PHP
+brew "composer"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Lightweight DNS forwarder and DHCP server
@@ -68,6 +74,8 @@ brew "grep"
 brew "gum"
 # Post-modern modal text editor
 brew "helix"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Spell checker and morphological analyzer
 brew "hunspell"
 # Lightweight and flexible command-line JSON processor
@@ -80,10 +88,10 @@ brew "keychain"
 brew "lazygit"
 # Terminal file manager
 brew "lf"
-# Postgres C API library
-brew "libpq"
 # CLI for the Linode API
 brew "linode-cli"
+# Curses-based tool for viewing and analyzing log files
+brew "lnav"
 # Rotates, compresses, and mails system logs
 brew "logrotate"
 # Clone of ls with colorful output, file type icons, and more
@@ -112,8 +120,6 @@ brew "noti"
 brew "tmux"
 # Process manager for Procfile-based applications and tmux
 brew "overmind"
-# General-purpose scripting language
-brew "php"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Fast, disk space efficient package manager
