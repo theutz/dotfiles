@@ -1,5 +1,0 @@
-session_name: hotkey
-windows:
-  - panes:
-      - pane
-    window_name: main
