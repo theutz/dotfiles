@@ -1,5 +1,5 @@
 session_name: delegator
-start_directory: $HOME/code/delegator/delegator.com/
+start_directory: $HOME/code/delegator/delegator/
 windows:
   - focus: true
     layout: main-vertical
@@ -12,7 +12,6 @@ windows:
     window_name: server
   - panes:
       - lnav storage/logs
+      - lnav delegator:www.delegator.com/storage/logs
+    layout: even-vertical
     window_name: logs
-  - panes:
-      - mosh delegator
-    window_name: mosh
