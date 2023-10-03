@@ -178,3 +178,5 @@ cask "font-symbols-only-nerd-font"
 cask "kitty"
 # Web browser
 cask "microsoft-edge"
+# Web browser with built-in email client focusing on customization and control
+cask "vivaldi"
