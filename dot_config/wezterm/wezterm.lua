@@ -14,4 +14,12 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 
+config.window_background_opacity = 0.9
+config.window_decorations = "RESIZE"
+
+config.font = wezterm.font("Lexsa")
+config.font_size = 16
+config.line_height = 1.2
+config.cell_width = 1.0
+
 return config
