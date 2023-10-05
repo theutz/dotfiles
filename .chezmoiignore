@@ -1,9 +1,10 @@
 key.txt.age
 bin/chezmoi
 .config/tmux/plugins
-{{ if ne .chezmoi.os "darwin*" -}}
-bin/brewd
-Library/
-{{- end }}
+{{ if ne .chezmoi.os "darwin*" }}
+  bin/brewd
+  Library/
+  .Brewfile
+{{ end }}
 
 # vim: ft=tmpl.gitignore
