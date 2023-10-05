@@ -2,14 +2,20 @@ session_name: playcore-com
 start_directory: $HOME/code/delegator/playcore
 windows:
   - panes:
-      - sleep 0.1; clear
+      - clear
       - focus: true
         shell_command: nvim
     window_name: main
     layout: main-vertical
   - panes:
-      - sleep 0.1; clear
-      - shell_command: ssh playcore
+      - clear
+      - shell_command: ssh staging.playcore.com
         focus: true
     layout: main-vertical
-    window_name: ssh-prd
+    window_name: ssh
+  - panes:
+      - clear
+      - shell_command: ssh playcore.com
+        focus: true
+    layout: main-vertical
+    window_name: ssh-old

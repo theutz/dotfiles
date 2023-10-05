@@ -9,9 +9,13 @@ windows:
   - layout: main-vertical
     panes:
       - bin/dev
-    window_name: server
+    window_name: bin/dev
   - panes:
       - lnav storage/logs
-      - lnav delegator:www.delegator.com/storage/logs
+      - lnav delegator.com:www.delegator.com/storage/logs
     layout: even-vertical
     window_name: logs
+  - panes:
+      - ssh delegator.com
+    layout: main-vertical
+    window_name: ssh
