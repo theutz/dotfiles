@@ -2,7 +2,7 @@
 type = "git-repo"
 url = "https://github.com/theutz/prezto"
 refreshPeriod = "1h"
-clone.args = ["--recursive"]
+clone.args = ["--recursive", "--jobs=4"]
 
 [".config/zsh/.zprezto/contrib/zsh-defer"]
 type = "git-repo"
