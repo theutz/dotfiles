@@ -14,3 +14,8 @@ clone.args = ["--recursive"]
 type = "git-repo"
 url = "https://github.com/theutz/nvim"
 refreshPeriod = "1h"
+
+[".config/tmuxp/plugins/tpm"]
+type = "git-repo"
+url = "https://github.com/tmux-plugins/tpm"
+refreshPeriod = "168h"
