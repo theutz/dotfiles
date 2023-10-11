@@ -4,7 +4,7 @@ windows:
   - focus: true
     layout: main-vertical
     panes:
-      - pane
+      - nvim
     window_name: main
   - layout: main-vertical
     panes:
@@ -12,10 +12,11 @@ windows:
     window_name: bin/dev
   - panes:
       - lnav storage/logs
-      - lnav delegator.com:www.delegator.com/storage/logs
-    layout: even-vertical
-    window_name: logs
+    window_name: log-dev
   - panes:
-      - ssh delegator.com
-    layout: main-vertical
-    window_name: ssh
+      - lnav delegator.com:www.delegator.com/storage/logs
+    window_name: log-prd
+  # - panes:
+  #     - ssh delegator.com
+  #   layout: main-vertical
+  #   window_name: ssh
