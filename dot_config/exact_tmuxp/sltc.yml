@@ -4,7 +4,6 @@ windows:
   - focus: true
     layout: main-vertical
     panes:
-      - sleep 0.1 && clear
       - nvim
     window_name: main
   - panes:
