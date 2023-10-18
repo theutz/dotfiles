@@ -2,7 +2,6 @@ session_name: bolt
 start_directory: $HOME/code/delegator/bolt
 windows:
   - panes:
-      - clear
       - nvim
     window_name: main
     layout: main-vertical
