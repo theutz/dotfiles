@@ -4,7 +4,7 @@ gui:
   showCommandLog: true
   showBottomLine: false
   nerdFontsVersion: "3"
-  border: 'rounded'
+  border: "rounded"
 git:
   parseEmoji: true
   commit:
@@ -12,7 +12,7 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-notARepository: 'skip'
+notARepository: prompt
 promptToReturnFromSubprocess: false
 disableStartupPopups: true
 customCommands:
@@ -28,8 +28,13 @@ customCommands:
     context: files
     loadingText: "opening commitizen commit tool"
     subprocess: true
-  - key: 'E'
-    description: 'Add empty commit'
-    context: 'commits'
+  - key: "E"
+    description: "Add empty commit"
+    context: "commits"
     command: 'git commit --allow-empty -m "chore: empty commit"'
-    loadingText: 'Committing empty commit...'
+    loadingText: "Committing empty commit..."
+  - key: "p"
+    description: "Prune"
+    context: "remotes"
+    command: "git fetch {{.SelectedRemote}} --prune"
+    loadingText: "pruning..."
