@@ -4,10 +4,14 @@ tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
+tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
 tap "noahgorstein/tap"
 tap "oven-sh/bun"
+tap "shivammathur/php"
+# Run your GitHub Actions locally
+brew "act"
 # Simple, modern, secure file encryption
 brew "age"
 # Platform built on V8 to build network applications
@@ -20,16 +24,20 @@ brew "asdf"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Version manager for neovim
+brew "bob"
+# Draw boxes around text
+brew "boxes"
 # New way to see and navigate directory trees
 brew "broot"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Powerful, enterprise-ready, open source web server with automatic HTTPS
+brew "caddy"
 # Create and view interactive cheat sheets for *nix commands
 brew "cheat"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # Postgres C API library
@@ -44,12 +52,18 @@ brew "direnv"
 brew "dnsmasq"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
+# Command-line tool to interact with exercism.io
+brew "exercism"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Secure hashing function
 brew "libb2"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
+# Banner-like program prints strings as ASCII art
+brew "figlet"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # Command-line fuzzy finder written in Go
@@ -74,8 +88,8 @@ brew "grep"
 brew "gum"
 # Post-modern modal text editor
 brew "helix"
-# User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
+# Improved top (interactive process viewer)
+brew "htop"
 # Spell checker and morphological analyzer
 brew "hunspell"
 # Lightweight and flexible command-line JSON processor
@@ -88,8 +102,8 @@ brew "keychain"
 brew "lazygit"
 # Terminal file manager
 brew "lf"
-# CLI for the Linode API
-brew "linode-cli"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Rotates, compresses, and mails system logs
@@ -98,6 +112,8 @@ brew "logrotate"
 brew "lsd"
 # Package manager for the Lua programming language
 brew "luarocks"
+# Move files and folders to the trash
+brew "macos-trash"
 # Web and API based SMTP testing tool
 brew "mailhog", restart_service: true
 # AI on the command-line
@@ -108,7 +124,7 @@ brew "mosh"
 brew "mysql", restart_service: true
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Command-line and local web note‑taking, bookmarking, and archiving
+# Command-line and local web note-taking, bookmarking, and archiving
 brew "nb"
 # Fast, highly customisable system info script
 brew "neofetch"
@@ -116,10 +132,14 @@ brew "neofetch"
 brew "nginx"
 # Trigger notifications when a process completes
 brew "noti"
+# Tool to manage your Oh Dear sites
+brew "ohdear-cli"
 # Terminal multiplexer
 brew "tmux"
 # Process manager for Procfile-based applications and tmux
 brew "overmind"
+# Tool for creating identical machine images for multiple platforms
+brew "packer"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Fast, disk space efficient package manager
@@ -130,12 +150,20 @@ brew "pop"
 brew "poppler"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
+# Emulator for x86 and PowerPC
+brew "qemu"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: true
 # Intuitive find & replace CLI
 brew "sd"
+# Command-line interface for https://speedtest.net bandwidth tests
+brew "speedtest-cli"
+# Command driven spotify player
+brew "spotify_player"
 # Terminal file explorer
 brew "tere"
+# Tool to build, change, and version infrastructure
+brew "terraform"
 # Simplified and community-driven man pages
 brew "tldr"
 # Tmux session manager. Built on libtmux
@@ -150,24 +178,36 @@ brew "vim"
 brew "watchexec"
 # Internet file retriever
 brew "wget"
+# Check your $HOME for unwanted files and directories
+brew "xdg-ninja"
 # JavaScript package manager
 brew "yarn"
-# ️Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Tips, tricks, and examples for zsh
+brew "zsh-lovers"
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler"
 # a TUI playground to experiment and play with jq
 brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
+# General-purpose scripting language
+brew "shivammathur/php/php@7.2"
+# General-purpose scripting language
+brew "shivammathur/php/php@7.3"
+# General-purpose scripting language
+brew "shivammathur/php/php@7.4"
 # Command-line interface for 1Password
 cask "1password-cli"
+# Chromium based browser
+cask "arc"
+# Opensource IDE for exploring and testing api's
+cask "bruno"
 # Automated testing of webapps for Google Chrome
 cask "chromedriver"
 # Web browser
@@ -176,7 +216,19 @@ cask "firefox"
 cask "font-symbols-only-nerd-font"
 # GPU-based terminal emulator
 cask "kitty"
+# Native desktop app for Messenger (formerly Facebook Messenger)
+cask "messenger"
 # Web browser
 cask "microsoft-edge"
+# App to write, plan, collaborate, and get organized
+cask "notion"
+# WebKit based web browser
+cask "orion"
+# All-in-one bookmark manager
+cask "raindropio"
+# Tool to simulate responsive designs on multiple devices
+cask "sizzy"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
