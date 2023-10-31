@@ -228,6 +228,8 @@ cask "notion"
 cask "orion"
 # All-in-one bookmark manager
 cask "raindropio"
+# Web browser
+cask "sigmaos"
 # Tool to simulate responsive designs on multiple devices
 cask "sizzy"
 # Web browser with built-in email client focusing on customization and control
