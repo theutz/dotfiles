@@ -1,0 +1,9 @@
+session_name: exercism
+start_directory: $HOME/code/exercism
+windows:
+  - panes:
+      - sleep 0.3 && clear
+      - shell_command: nvim
+        focus: true
+    window_name: main
+    layout: main-vertical

@@ -216,6 +216,8 @@ cask "chromedriver"
 cask "firefox"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
+# Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
+cask "forklift"
 # GPU-based terminal emulator
 cask "kitty"
 # Native desktop app for Messenger (formerly Facebook Messenger)
@@ -224,6 +226,9 @@ cask "messenger"
 cask "microsoft-edge"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Web browser
+cask "opera"
+cask "opera-neon"
 # WebKit based web browser
 cask "orion"
 # All-in-one bookmark manager
