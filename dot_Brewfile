@@ -220,6 +220,8 @@ cask "font-symbols-only-nerd-font"
 cask "forklift"
 # GPU-based terminal emulator
 cask "kitty"
+# Privacy-first, open-source platform for knowledge sharing and management
+cask "logseq"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
 # Web browser
