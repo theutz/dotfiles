@@ -261,6 +261,8 @@ cask "visual-studio-code"
 cask "vivaldi"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+# Collect, organize, cite, and share research sources
+cask "zotero"
 mas "1Password for Safari", id: 1569813296
 mas "2048 Game", id: 871033113
 mas "AngryBirdsReloaded", id: 1539172625
