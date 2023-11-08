@@ -56,8 +56,6 @@ brew "dnsmasq"
 brew "docker"
 # Command-line tool to interact with exercism.io
 brew "exercism"
-# Program that can automate interactive applications
-brew "expect"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Secure hashing function
