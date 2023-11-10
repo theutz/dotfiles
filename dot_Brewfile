@@ -229,6 +229,8 @@ cask "firefox"
 cask "font-geist"
 # Monospaced typeface designed to be used where code is represented
 cask "font-geist-mono"
+# Superfamily of fonts for code
+cask "font-monaspace"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
