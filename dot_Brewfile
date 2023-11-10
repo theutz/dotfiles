@@ -1,4 +1,5 @@
 tap "dopplerhq/cli"
+tap "gitguardian/tap"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
@@ -202,6 +203,8 @@ brew "zsh"
 brew "zsh-lovers"
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler"
+# Detect secrets in source code, scan your repos and docker images for leaks
+brew "gitguardian/tap/ggshield"
 # a TUI playground to experiment and play with jq
 brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
