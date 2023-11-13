@@ -1,0 +1,14 @@
+session_name: impactelectronics-com
+start_directory: $HOME/code/delegator/impactelectronics/
+windows:
+  - focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: "60%"
+    panes:
+      - nvim
+      - sleep 0.3 && exit
+    window_name: main
+  - panes:
+      - bin/dev
+    window_name: server

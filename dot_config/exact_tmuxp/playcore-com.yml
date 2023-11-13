@@ -1,0 +1,13 @@
+session_name: playcore-com
+start_directory: $HOME/code/delegator/playcore
+windows:
+  - panes:
+      - focus: true
+        shell_command: nvim
+    window_name: main
+    layout: main-vertical
+  - panes:
+      - shell_command: ssh staging.playcore.com
+        focus: true
+    layout: main-vertical
+    window_name: ssh
