@@ -1,9 +1,0 @@
-session_name: theutz
-start_directory: $HOME/code/theutz/theutz.com
-windows:
-  - panes:
-      - nvim
-    window_name: main
-  - panes:
-      - npm run watch
-    window_name: server
