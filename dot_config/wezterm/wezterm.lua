@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 -- Color Scheme
-config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "Everforest Dark (Gogh)"
 
 -- Tab Bar
 config.hide_tab_bar_if_only_one_tab = true
@@ -26,9 +26,9 @@ config.initial_rows = 1000
 config.command_palette_font_size = 16
 
 -- Fonts
-config.font = wezterm.font("Lexsa")
+config.font = wezterm.font("Monaspace Radon")
 config.font_size = 16
-config.line_height = 1.0
-config.cell_width = 1.0
+config.line_height = 1.2
+config.cell_width = 0.9
 
 return config
