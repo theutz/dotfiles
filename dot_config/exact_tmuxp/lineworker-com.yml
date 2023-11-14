@@ -1,4 +1,4 @@
-session_name: lineworker.com
+session_name: lineworker-com
 start_directory: $HOME/code/delegator/lineworker
 windows:
   - focus: true
@@ -11,6 +11,6 @@ windows:
     window_name: bin/dev
   - panes:
       - lnav storage/logs/*.log
-      - lnav "staging.lineworker.com:lineworker.com/storage/logs/*.log"
+      - lnav "lineworker.com:lineworker.com/storage/logs/*.log"
     layout: even-horizontal
     window_name: logs
