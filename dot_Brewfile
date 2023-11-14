@@ -109,6 +109,8 @@ brew "lazygit"
 brew "lf"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Rotates, compresses, and mails system logs
@@ -127,6 +129,8 @@ brew "mas"
 brew "mods"
 # Remote terminal application
 brew "mosh"
+# CLI for MySQL with auto-completion and syntax highlighting
+brew "mycli"
 # Open source relational database management system
 brew "mysql", restart_service: true
 # Search tool like grep and The Silver Searcher
