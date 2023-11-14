@@ -112,7 +112,7 @@ brew "python@3.11"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Rotates, compresses, and mails system logs
-brew "logrotate"
+brew "logrotate", restart_service: true
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Package manager for the Lua programming language
@@ -189,6 +189,8 @@ brew "vim"
 brew "watchexec"
 # Internet file retriever
 brew "wget"
+# HTTP benchmarking tool
+brew "wrk"
 # Check your $HOME for unwanted files and directories
 brew "xdg-ninja"
 # JavaScript package manager
@@ -305,6 +307,7 @@ mas "OneAuth", id: 1142928979
 mas "Pages", id: 409201541
 mas "Patty Pursuit", id: 1485030412
 mas "Pixelmator Pro", id: 1289583905
+mas "Reeder", id: 1529448980
 mas "Save to Reader", id: 1640236961
 mas "Speed Demons", id: 1476339985
 mas "Talon", id: 1492913323
