@@ -6,7 +6,5 @@ windows:
     window_name: main
     layout: main-vertical
   - panes:
-      - blank
-    window_name: chezmoi
-    start_directory: $HOME/.local/share/chezmoi
-    layout: main-vertical
+      - spotify_player
+    window_name: spotify
