@@ -43,10 +43,8 @@ brew "cheat"
 brew "chezmoi"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
-# Postgres C API library
-brew "libpq"
 # General-purpose scripting language
-brew "php"
+brew "php", link: false
 # Dependency Manager for PHP
 brew "composer"
 # Load/unload environment variables based on $PWD
@@ -151,6 +149,8 @@ brew "tmux"
 brew "overmind"
 # Tool for creating identical machine images for multiple platforms
 brew "packer"
+# General-purpose scripting language
+brew "php@8.2", link: true
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Fast, disk space efficient package manager
@@ -238,6 +238,8 @@ cask "font-geist-mono"
 # Superfamily of fonts for code
 cask "font-monaspace"
 # Developer targeted fonts with a high number of glyphs
+cask "font-monaspace-nerd-font"
+# Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
 cask "forklift"
@@ -280,51 +282,16 @@ cask "wezterm"
 cask "whatsapp"
 # Collect, organize, cite, and share research sources
 cask "zotero"
-mas "1Password for Safari", id: 1569813296
-mas "2048 Game", id: 871033113
-mas "AngryBirdsReloaded", id: 1539172625
-mas "Bear", id: 1091189122
-mas "BugHerd", id: 1545845981
-mas "Builder's Journey", id: 1466965366
-mas "Consent-O-Matic", id: 1606897889
-mas "CookingMama Cuisine", id: 1563901930
-mas "Developer", id: 640199958
-mas "Fantastical", id: 975937182
-mas "Farm It!", id: 1538476446
-mas "Ground News", id: 1324203419
-mas "Hogwash", id: 1476082027
-mas "Hyperspace Desktop", id: 1454139710
-mas "iMovie", id: 408981434
-mas "Instapaper", id: 288545208
-mas "Instapaper Save", id: 1481302432
-mas "Ivory", id: 6444602274
-mas "Kagi Inc.", id: 1622835804
-mas "Keynote", id: 409183694
-mas "Kindle", id: 302584613
-mas "Mercury", id: 1621800675
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft Word", id: 462054704
-mas "Momentum", id: 1564329434
-mas "Numbers", id: 409203825
-mas "Octotree", id: 1457450145
-mas "OneAuth", id: 1142928979
-mas "Pages", id: 409201541
-mas "Patty Pursuit", id: 1485030412
-mas "Pixelmator Pro", id: 1289583905
-mas "Reeder", id: 1529448980
-mas "Save to Reader", id: 1640236961
-mas "Speed Demons", id: 1476339985
-mas "Talon", id: 1492913323
-mas "Tureng", id: 854063979
-mas "Vimari", id: 1480933944
 vscode "13xforever.language-x86-64-assembly"
+vscode "aaron-bond.better-comments"
 vscode "alefragnani.project-manager"
 vscode "amiralizadeh9480.laravel-extra-intellisense"
+vscode "arcticicestudio.nord-visual-studio-code"
 vscode "basdp.language-gas-x86"
 vscode "bbenoist.Nix"
+vscode "beauallison.brew-services"
 vscode "bierner.lit-html"
 vscode "bmewburn.vscode-intelephense-client"
-vscode "bobmagicii.dashyeah"
 vscode "boyswan.glsl-literal"
 vscode "BRBoer.vsc-conceal"
 vscode "codezombiech.gitignore"
@@ -340,6 +307,7 @@ vscode "ecmel.vscode-html-css"
 vscode "EditorConfig.EditorConfig"
 vscode "Endormi.2077-theme"
 vscode "esbenp.prettier-vscode"
+vscode "ExodiusStudios.comment-anchors"
 vscode "foxundermoon.shell-format"
 vscode "GeForceLegend.vscode-glsl"
 vscode "Gimly81.fortran"
@@ -348,8 +316,8 @@ vscode "GitHub.copilot-chat"
 vscode "GitHub.vscode-pull-request-github"
 vscode "glitchbl.laravel-create-view"
 vscode "golang.go"
-vscode "grantbachman.challenger-deep-theme"
 vscode "guyskk.language-cython"
+vscode "hashicorp.terraform"
 vscode "idleberg.applescript"
 vscode "IHunte.laravel-blade-wrapper"
 vscode "jakebathman.mysql-syntax"
@@ -365,9 +333,7 @@ vscode "jeff-hykin.better-shellscript-syntax"
 vscode "jeff-hykin.better-syntax"
 vscode "jep-a.lua-plus"
 vscode "jonwolfe.language-polymer"
-vscode "jussiemion.darcula-solid"
 vscode "justusadam.language-haskell"
-vscode "kahole.magit"
 vscode "kaleidoscope-app.vscode-ksdiff"
 vscode "karunamurti.haml"
 vscode "kennethceyer.io"
@@ -379,26 +345,36 @@ vscode "mechatroner.rainbow-csv"
 vscode "mikestead.dotenv"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.remote-ssh-edit"
+vscode "ms-vscode.remote-explorer"
+vscode "mycelo.embrace"
 vscode "naoray.laravel-goto-components"
 vscode "onecentlin.laravel-blade"
 vscode "onecentlin.laravel-extension-pack"
 vscode "onecentlin.laravel5-snippets"
 vscode "oscarcs.dart-syntax-highlighting-only"
+vscode "patbenatar.advanced-new-file"
 vscode "pgl.laravel-jump-controller"
 vscode "radium-v.better-less"
 vscode "rebornix.prolog"
+vscode "redhat.ansible"
+vscode "redhat.vscode-yaml"
 vscode "ryannaddy.laravel-artisan"
 vscode "sainnhe.everforest"
 vscode "scala-lang.scala"
 vscode "Shopify.ruby-lsp"
 vscode "shufo.vscode-blade-formatter"
+vscode "shyykoserhiy.vscode-spotify"
 vscode "sidneys1.gitconfig"
+vscode "skellock.just"
+vscode "sleistner.vscode-fileutils"
 vscode "slevesque.shader"
 vscode "stillat-llc.vscode-antlers"
 vscode "syler.sass-indented"
 vscode "tamasfe.even-better-toml"
 vscode "timonwong.shellcheck"
-vscode "toasty-technologies.octave"
 vscode "vscodevim.vim"
 vscode "whatwedo.twig"
+vscode "yatki.vscode-surround"
 vscode "yuce.erlang-otp"
