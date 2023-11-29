@@ -166,6 +166,8 @@ brew "qemu"
 brew "redis", restart_service: true
 # Intuitive find & replace CLI
 brew "sd"
+# Fuzzy Finder in rust!
+brew "sk"
 # Command-line interface for https://speedtest.net bandwidth tests
 brew "speedtest-cli"
 # Command driven spotify player
