@@ -1,5 +1,6 @@
 tap "dopplerhq/cli"
 tap "gitguardian/tap"
+tap "hashicorp/tap"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
@@ -147,8 +148,6 @@ brew "ohdear-cli"
 brew "tmux"
 # Process manager for Procfile-based applications and tmux
 brew "overmind"
-# Tool for creating identical machine images for multiple platforms
-brew "packer"
 # General-purpose scripting language
 brew "php@8.2", link: true
 # Execute binaries from Python packages in isolated environments
