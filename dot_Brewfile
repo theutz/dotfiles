@@ -212,6 +212,8 @@ brew "zsh-lovers"
 brew "dopplerhq/cli/doppler"
 # Detect secrets in source code, scan your repos and docker images for leaks
 brew "gitguardian/tap/ggshield"
+# Packer
+brew "hashicorp/tap/packer"
 # a TUI playground to experiment and play with jq
 brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
