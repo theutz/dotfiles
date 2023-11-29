@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 -- Color Scheme
-config.color_scheme = "Everforest Dark (Gogh)"
+config.color_scheme = "Nancy (terminal.sexy)"
 
 -- Tab Bar
 config.hide_tab_bar_if_only_one_tab = true
