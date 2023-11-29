@@ -16,19 +16,19 @@ config.use_fancy_tab_bar = false
 
 -- Window
 config.quit_when_all_windows_are_closed = false
-config.window_background_opacity = 0.92
+config.window_background_opacity = 0.8
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
 config.initial_cols = 1000
 config.initial_rows = 1000
 
 -- Command Palette
-config.command_palette_font_size = 16
+config.command_palette_font_size = 12
 
 -- Fonts
-config.font = wezterm.font("Monaspace Radon")
-config.font_size = 16
-config.line_height = 1.2
-config.cell_width = 0.9
+config.font = wezterm.font("MonaspiceRn Nerd Font")
+config.font_size = 12
+config.line_height = 1
+config.cell_width = 1.0
 
 return config
