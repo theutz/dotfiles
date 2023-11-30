@@ -18,9 +18,9 @@ layout {
     tab name="home" focus=true {
         pane split_direction="vertical" {
             pane name="home"
-            pane split_direction="horizontal" size=80 {
+            pane split_direction="horizontal" size=82 {
                 pane command="neofetch" size=24
-                pane command="btop" borderless=true
+                pane command="btop"
             }
         }
     }
