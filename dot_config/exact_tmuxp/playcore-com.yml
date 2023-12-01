@@ -6,8 +6,15 @@ windows:
         shell_command: nvim
     window_name: main
     layout: main-vertical
+
   - panes:
       - shell_command: ssh staging.playcore.com
         focus: true
     layout: main-vertical
     window_name: ssh
+
+  - panes:
+      - focus: true
+        shell_command: nvim
+    window_name: infra
+    start_directory: $HOME/code/delegator/playcore-infra
