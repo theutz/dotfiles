@@ -175,6 +175,8 @@ brew "sk"
 brew "speedtest-cli"
 # Command driven spotify player
 brew "spotify_player"
+# Add a public key to a remote machine's authorized_keys file
+brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Log file highlighter
