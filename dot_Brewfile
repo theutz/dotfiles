@@ -185,6 +185,8 @@ brew "tailspin"
 brew "tere"
 # Tool to build, change, and version infrastructure
 brew "terraform"
+# Thin wrapper for Terraform e.g. for locking state
+brew "terragrunt"
 # Simplified and community-driven man pages
 brew "tldr"
 # Tmux session manager. Built on libtmux
