@@ -89,6 +89,8 @@ brew "gnupg"
 brew "go"
 # Library access to GnuPG
 brew "gpgme"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # GNU grep, egrep and fgrep
 brew "grep"
 # Tool for glamorous shell scripts
