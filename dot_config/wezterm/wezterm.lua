@@ -24,12 +24,12 @@ config.initial_cols = 1000
 config.initial_rows = 1000
 
 -- Command Palette
-config.command_palette_font_size = 12
+config.command_palette_font_size = 14
 
 -- Fonts
 config.font = wezterm.font("MonaspiceRn Nerd Font")
-config.font_size = 14
-config.line_height = 1.4
+config.font_size = 16
+config.line_height = config.font_size * 0.1
 config.cell_width = 1.0
 
 return config
