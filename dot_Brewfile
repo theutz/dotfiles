@@ -103,6 +103,8 @@ brew "gum"
 brew "helix"
 # Improved top (interactive process viewer)
 brew "htop"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Spell checker and morphological analyzer
 brew "hunspell"
 # Lightweight and flexible command-line JSON processor
@@ -205,6 +207,8 @@ brew "tldr"
 brew "tmuxp"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Network diagnostic tool, inspired by mtr
+brew "trippy"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Vi 'workalike' with many additional features
