@@ -46,7 +46,7 @@ brew "chezmoi"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # General-purpose scripting language
-brew "php", link: false
+brew "php"
 # Dependency Manager for PHP
 brew "composer"
 # Load/unload environment variables based on $PWD
@@ -65,6 +65,8 @@ brew "fd"
 brew "libb2"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # Banner-like program prints strings as ASCII art
@@ -79,6 +81,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# AVH edition of git-flow
+brew "git-flow-avh"
 # Render markdown on the CLI
 brew "glow"
 # GNU implementation of the famous stream editor
@@ -147,6 +151,8 @@ brew "neofetch"
 brew "nginx"
 # Trigger notifications when a process completes
 brew "noti"
+# Modern shell for the GitHub era
+brew "nushell"
 # Tool to manage your Oh Dear sites
 brew "ohdear-cli"
 # Terminal multiplexer
@@ -154,7 +160,9 @@ brew "tmux"
 # Process manager for Procfile-based applications and tmux
 brew "overmind"
 # General-purpose scripting language
-brew "php@8.2", link: true
+brew "php@8.2"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Fast, disk space efficient package manager
@@ -203,12 +211,16 @@ brew "unar"
 brew "vim"
 # Execute commands when watched files change
 brew "watchexec"
+# Lightweight, configurable incoming webhook server
+brew "webhook"
 # Internet file retriever
 brew "wget"
 # HTTP benchmarking tool
 brew "wrk"
 # Check your $HOME for unwanted files and directories
 brew "xdg-ninja"
+# Friendly and fast tool for sending HTTP requests
+brew "xh"
 # JavaScript package manager
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -309,11 +321,9 @@ mas "2048 Game", id: 871033113
 mas "AngryBirdsReloaded", id: 1539172625
 mas "Bear", id: 1091189122
 mas "BugHerd", id: 1545845981
-mas "Builder's Journey", id: 1466965366
 mas "Consent-O-Matic", id: 1606897889
 mas "CookingMama Cuisine", id: 1563901930
 mas "Developer", id: 640199958
-mas "Fantastical", id: 975937182
 mas "Farm It!", id: 1538476446
 mas "Ground News", id: 1324203419
 mas "Hogwash", id: 1476082027
@@ -337,7 +347,6 @@ mas "Reeder", id: 1529448980
 mas "Save to Reader", id: 1640236961
 mas "Speed Demons", id: 1476339985
 mas "Talon", id: 1492913323
-mas "Tureng", id: 854063979
 mas "Vimari", id: 1480933944
 vscode "13xforever.language-x86-64-assembly"
 vscode "aaron-bond.better-comments"
