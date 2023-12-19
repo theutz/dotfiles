@@ -8,13 +8,11 @@ windows:
     layout: main-vertical
 
   - panes:
-      - shell_command: ssh staging.playcore.com
-        focus: true
+      - shell_command: ssh playcore-com-stg-blue || exit
     layout: main-vertical
-    window_name: ssh
+    window_name: blue
 
   - panes:
-      - focus: true
-        shell_command: nvim
-    window_name: infra
-    start_directory: $HOME/code/delegator/playcore-infra
+      - shell_command: ssh playcore-com-stg-green || exit
+    layout: main-vertical
+    window_name: green

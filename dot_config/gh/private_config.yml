@@ -9,7 +9,9 @@ aliases:
     co: pr checkout
     squash: pr merge --squash --delete-branch
     cw: pr checks -i 3 --watch
-    prme: pr create --assignee @me
+    rebase: pr merge --rebase --delete-branch
+    pr@me: pr create --assignee @me
+    pr-stg@me: pr create --assignee @me --base staging
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket: # What web browser gh should use when opening URLs. If blank, will refer to environment.
 browser:
