@@ -177,7 +177,7 @@ brew "pop"
 brew "poppler"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
-# Emulator for x86 and PowerPC
+# Generic machine emulator and virtualizer
 brew "qemu"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: true
