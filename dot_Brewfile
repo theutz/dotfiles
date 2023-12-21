@@ -197,8 +197,6 @@ brew "starship"
 brew "tailspin"
 # Terminal file explorer
 brew "tere"
-# Tool to build, change, and version infrastructure
-brew "terraform"
 # Thin wrapper for Terraform e.g. for locking state
 brew "terragrunt"
 # Programmatically correct mistyped console commands
