@@ -55,8 +55,6 @@ brew "direnv"
 brew "dnsmasq"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
-# Platform keystore credential helper for Docker
-brew "docker-credential-helper"
 # Modern replacement for 'ls'
 brew "exa"
 # Command-line tool to interact with exercism.io
