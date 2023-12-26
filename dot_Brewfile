@@ -243,6 +243,8 @@ brew "dopplerhq/cli/doppler", link: false
 brew "gitguardian/tap/ggshield"
 # Packer
 brew "hashicorp/tap/packer"
+# Terraform
+brew "hashicorp/tap/terraform"
 # a TUI playground to experiment and play with jq
 brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
@@ -291,8 +293,6 @@ cask "messenger"
 cask "microsoft-edge"
 # Neovim Client
 cask "neovide"
-# App to write, plan, collaborate, and get organized
-cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Web browser
@@ -329,6 +329,7 @@ mas "Consent-O-Matic", id: 1606897889
 mas "CookingMama Cuisine", id: 1563901930
 mas "Developer", id: 640199958
 mas "Farm It!", id: 1538476446
+mas "Farmside", id: 1600555574
 mas "Ground News", id: 1324203419
 mas "Hogwash", id: 1476082027
 mas "Hyperspace Desktop", id: 1454139710
@@ -349,6 +350,7 @@ mas "Patty Pursuit", id: 1485030412
 mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
 mas "Save to Reader", id: 1640236961
+mas "Snake.io+", id: 6443553808
 mas "Speed Demons", id: 1476339985
 mas "Talon", id: 1492913323
 mas "Vimari", id: 1480933944
