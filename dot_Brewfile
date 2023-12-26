@@ -302,6 +302,8 @@ cask "opera"
 cask "opera-neon"
 # WebKit based web browser
 cask "orion"
+# Browser for ambitious developers
+cask "polypane"
 # All-in-one bookmark manager
 cask "raindropio"
 # Import highlights from Apple Books to Readwise
