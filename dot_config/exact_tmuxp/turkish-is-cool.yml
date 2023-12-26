@@ -6,7 +6,7 @@ windows:
     window_name: main
   - panes:
       - focus: true
-        shell_command: hs watch . src
+        shell_command: just watch
     window_name: watch
   - panes:
       - blank
