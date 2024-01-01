@@ -304,6 +304,8 @@ cask "opera-neon"
 cask "orion"
 # Browser for ambitious developers
 cask "polypane"
+# Collaboration platform for API development
+cask "postman"
 # All-in-one bookmark manager
 cask "raindropio"
 # Import highlights from Apple Books to Readwise
@@ -329,6 +331,7 @@ mas "2048 Game", id: 871033113
 mas "AngryBirdsReloaded", id: 1539172625
 mas "Bear", id: 1091189122
 mas "BugHerd", id: 1545845981
+mas "com.kagimacOS.Kagi-Search", id: 1622835804
 mas "Consent-O-Matic", id: 1606897889
 mas "CookingMama Cuisine", id: 1563901930
 mas "Developer", id: 640199958
@@ -339,7 +342,6 @@ mas "Hogwash", id: 1476082027
 mas "Hyperspace Desktop", id: 1454139710
 mas "iMovie", id: 408981434
 mas "Ivory", id: 6444602274
-mas "Kagi Search for Safari", id: 1622835804
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Mercury", id: 1621800675
