@@ -85,6 +85,8 @@ brew "git"
 brew "git-delta"
 # AVH edition of git-flow
 brew "git-flow-avh"
+# Blazing fast terminal-ui for git written in rust
+brew "gitui"
 # Render markdown on the CLI
 brew "glow"
 # GNU implementation of the famous stream editor
