@@ -49,6 +49,8 @@ brew "commitizen"
 brew "php", restart_service: true
 # Dependency Manager for PHP
 brew "composer"
+# Command-line csv viewer
+brew "csvlens"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Lightweight DNS forwarder and DHCP server
