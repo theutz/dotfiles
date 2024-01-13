@@ -187,6 +187,8 @@ brew "proctools"
 brew "qemu"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: true
+# Utility that provides fast incremental file transfer
+brew "rsync"
 # Intuitive find & replace CLI
 brew "sd"
 # Fuzzy Finder in rust!
