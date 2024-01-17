@@ -2,10 +2,9 @@ session_name: poligon-com
 start_directory: $HOME/code/delegator/poligon.com
 windows:
   - focus: true
+    layout: main-vertical
     panes:
       - blank
-    window_name: main
-  - panes:
       - blank
-    start_directory: $HOME/code/delegator/hubspot-tutorial
-    window_name: tutorial
+      - just dev
+    window_name: main

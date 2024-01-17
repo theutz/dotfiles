@@ -10,13 +10,3 @@ windows:
     panes:
       - bin/dev
     window_name: bin/dev
-  - panes:
-      - lnav storage/logs
-    window_name: log-dev
-  - panes:
-      - lnav delegator.com:www.delegator.com/storage/logs
-    window_name: log-prd
-  # - panes:
-  #     - ssh delegator.com
-  #   layout: main-vertical
-  #   window_name: ssh

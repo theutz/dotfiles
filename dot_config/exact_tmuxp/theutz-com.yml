@@ -6,3 +6,8 @@ windows:
     window_name: main
   - panes:
       - just watch
+    window_name: server
+  - panes:
+      - blank
+    start_directory: $HOME/code/gohugoio/hugodocs
+    window_name: hugo-docs

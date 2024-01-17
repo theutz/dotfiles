@@ -1,14 +1,10 @@
 session_name: turkish-is-cool
-start_directory: $HOME/code/delegator/turkish-is-cool
+start_directory: $HOME/code/delegator/hubspot/turkish-is-cool
 windows:
   - panes:
       - focus: true
     window_name: main
   - panes:
-      - focus: true
-        shell_command: just watch
-    window_name: watch
-  - panes:
       - blank
     window_name: tutorial
-    start_directory: $HOME/code/delegator/hubspot-tutorial
+    start_directory: $HOME/code/delegator/hubspot/tutorial

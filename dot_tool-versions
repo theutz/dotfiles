@@ -1,8 +1,10 @@
 nodejs 20.4.0
 ruby 3.2.2
-pnpm 8.13.0
+pnpm 8.14.1
 yarn 1.22.19
 python 3.11.4
 pipx 1.2.0
 direnv 2.32.3
 golang 1.21.0
+just 1.23.0
+hugo extended_0.121.2

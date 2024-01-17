@@ -9,8 +9,3 @@ windows:
   - panes:
       - bin/dev
     window_name: bin/dev
-  - panes:
-      - lnav storage/logs/*.log
-      - lnav "lineworker.com:lineworker.com/storage/logs/*.log"
-    layout: even-horizontal
-    window_name: logs
