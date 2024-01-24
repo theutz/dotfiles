@@ -293,6 +293,8 @@ cask "forklift"
 cask "gitkraken"
 # CLI for GitKraken
 cask "gitkraken-cli"
+# Laravel and PHP development environment manager
+cask "herd"
 # GPU-based terminal emulator
 cask "kitty"
 # Privacy-first, open-source platform for knowledge sharing and management
