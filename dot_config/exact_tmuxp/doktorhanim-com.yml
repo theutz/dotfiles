@@ -1,0 +1,6 @@
+session_name: doktorhanim-com
+start_directory: $HOME/code/doktorhanim/doktorhanim.com
+windows:
+  - panes:
+      - blank
+    window_name: main
