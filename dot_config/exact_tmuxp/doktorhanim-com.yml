@@ -4,3 +4,6 @@ windows:
   - panes:
       - blank
     window_name: main
+  - panes:
+      - just dev
+    window_name: dev
