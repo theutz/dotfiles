@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 -- Color Scheme
-config.color_scheme = "ChallengerDeep"
+config.color_scheme = "Monokai Remastered"
 
 -- Tab Bar
 config.hide_tab_bar_if_only_one_tab = true
@@ -17,7 +17,7 @@ config.use_fancy_tab_bar = false
 -- Window
 config.quit_when_all_windows_are_closed = false
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 0.90
+config.window_background_opacity = 1.0
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
 config.initial_cols = 1000
