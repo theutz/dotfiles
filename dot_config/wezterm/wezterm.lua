@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 -- Color Scheme
-config.color_scheme = "Monokai Remastered"
+config.color_scheme = "Earthsong"
 
 -- Tab Bar
 config.hide_tab_bar_if_only_one_tab = true
