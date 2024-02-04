@@ -293,8 +293,6 @@ cask "forklift"
 cask "gitkraken"
 # CLI for GitKraken
 cask "gitkraken-cli"
-# GPU-based terminal emulator
-cask "kitty"
 # Privacy-first, open-source platform for knowledge sharing and management
 cask "logseq"
 # Native desktop app for Messenger (formerly Facebook Messenger)
