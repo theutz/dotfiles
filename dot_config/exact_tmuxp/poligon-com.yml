@@ -4,7 +4,7 @@ windows:
   - focus: true
     layout: 1fd5,473x73,0,0{80x73,0,0[80x36,0,0,15,80x36,0,37,16],392x73,81,0,18}
     panes:
-      - just test-watch
+      - just vitest-watch
       - just ts-watch
       - focus: true
         shell_command: nvim
