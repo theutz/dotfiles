@@ -305,6 +305,8 @@ cask "microsoft-edge"
 cask "neovide"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Calendar for professionals and teams
+cask "notion-calendar"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Web browser
