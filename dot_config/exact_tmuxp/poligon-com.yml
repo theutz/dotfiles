@@ -13,3 +13,6 @@ windows:
   - panes:
       - just dev
     window_name: dev
+  - panes:
+      - lnav storage/logs/hubba.log
+    window_name: logs

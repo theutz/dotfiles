@@ -10,4 +10,4 @@ windows:
       - nvim
   - window_name: server
     panes:
-      - bin/dev
+      - just dev
