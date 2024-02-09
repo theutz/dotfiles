@@ -116,6 +116,8 @@ brew "httpie"
 brew "hugo"
 # Spell checker and morphological analyzer
 brew "hunspell"
+# Run and Test HTTP Requests with plain text and curl
+brew "hurl"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Handy way to save and run project-specific commands
