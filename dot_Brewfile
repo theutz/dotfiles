@@ -9,6 +9,7 @@ tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
+tap "knqyf263/pet"
 tap "noahgorstein/tap"
 tap "oven-sh/bun"
 tap "railwaycat/emacsmacport"
@@ -257,6 +258,8 @@ brew "gitguardian/tap/ggshield"
 brew "hashicorp/tap/packer"
 # Terraform
 brew "hashicorp/tap/terraform"
+# Simple command-line snippet manager
+brew "knqyf263/pet/pet"
 # a TUI playground to experiment and play with jq
 brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
