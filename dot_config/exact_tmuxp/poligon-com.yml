@@ -2,17 +2,13 @@ session_name: poligon-com
 start_directory: $HOME/code/delegator/poligon.com
 windows:
   - focus: true
-    layout: 1fd5,473x73,0,0{80x73,0,0[80x36,0,0,15,80x36,0,37,16],392x73,81,0,18}
+    layout: main-vertical
     panes:
-      - just vitest-watch
-      - just ts-watch
+      - just dev
       - focus: true
         shell_command: nvim
         enter: false
     window_name: main
   - panes:
-      - just dev
-    window_name: dev
-  - panes:
-      - lnav storage/logs/hubba.log
-    window_name: logs
+      - shell_command: exit
+        sleep_before: 1
