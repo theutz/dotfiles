@@ -1,0 +1,4 @@
+[[snippets]]
+  description = "Update global Brewfile"
+  command = "brew bundle --global dump --all --describe --force"
+  output = ""
