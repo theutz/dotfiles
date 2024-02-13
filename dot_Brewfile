@@ -300,6 +300,8 @@ cask "forklift"
 cask "gitkraken"
 # CLI for GitKraken
 cask "gitkraken-cli"
+# Desktop automation application
+cask "hammerspoon"
 # GPU-based terminal emulator
 cask "kitty"
 # Privacy-first, open-source platform for knowledge sharing and management
