@@ -20,12 +20,12 @@ config.window_close_confirmation = "NeverPrompt"
 config.window_background_opacity = 1.0
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
-config.initial_cols = 1000
-config.initial_rows = 1000
+config.initial_cols = 80
+config.initial_rows = 80
 config.window_close_confirmation = "NeverPrompt"
 
 -- Command Palette
-config.command_palette_font_size = 14
+config.command_palette_font_size = 18
 
 -- Fonts
 config.font = wezterm.font("Recursive")
@@ -33,4 +33,20 @@ config.font_size = 16
 config.line_height = config.font_size * 0.1
 config.cell_width = 1.0
 
+-- Keybindings
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
+config.keys = {
+	{
+		key = "v",
+		mods = "LEADER",
+		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "s",
+		mods = "LEADER",
+		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+}
+
+-- Done!
 return config

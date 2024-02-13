@@ -2,7 +2,8 @@ session_name: doktorhanim-com
 start_directory: $HOME/code/doktorhanim/doktorhanim.com
 windows:
   - panes:
-      - blank
+      - shell_command: nvim
+        enter: false
     window_name: main
   - panes:
       - just dev
