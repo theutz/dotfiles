@@ -24,3 +24,8 @@ refreshPeriod = "1h"
 type = "git-repo"
 url = "https://github.com/theutz/hammerspoon"
 refreshPeriod = "1h"
+
+# [".config/wezterm"]
+# type = "git-repo"
+# url = "https://github.com/theutz/wezterm"
+# refreshPeriod = "1h"
