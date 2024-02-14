@@ -7,7 +7,7 @@ clone.args = ["--recursive", "--jobs=4"]
 [".config/zsh/.zprezto/contrib/zsh-defer"]
 type = "git-repo"
 url = "https://github.com/romkatv/zsh-defer"
-refreshPeriod = "168h"
+refreshPeriod = "1h"
 clone.args = ["--recursive"]
 
 [".config/nvim"]
@@ -18,4 +18,9 @@ refreshPeriod = "1h"
 [".config/tmux/plugins/tpm"]
 type = "git-repo"
 url = "https://github.com/tmux-plugins/tpm"
-refreshPeriod = "168h"
+refreshPeriod = "1h"
+
+[".hammerspoon"]
+type = "git-repo"
+url = "https://github.com/theutz/hammerspoon"
+refreshPeriod = "1h"
