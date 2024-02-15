@@ -206,6 +206,8 @@ brew "spotify_player"
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Opinionated Lua code formatter
+brew "stylua"
 # Log file highlighter
 brew "tailspin"
 # Terminal file explorer
@@ -312,7 +314,7 @@ cask "messenger"
 cask "microsoft-edge"
 # Neovim Client
 cask "neovide"
-# App to write, plan, collaborate, and get organized
+# App to write, plan, collaborate, and get organised
 cask "notion"
 # Calendar for professionals and teams
 cask "notion-calendar"
@@ -347,7 +349,7 @@ cask "whatsapp"
 cask "wireshark"
 # Multiplayer code editor
 cask "zed"
-# Collect, organize, cite, and share research sources
+# Collect, organise, cite, and share research sources
 cask "zotero"
 mas "1Password for Safari", id: 1569813296
 mas "2048 Game", id: 871033113
