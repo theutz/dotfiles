@@ -195,6 +195,8 @@ brew "qemu"
 brew "redis", restart_service: true
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# CLI search and replace | Space Age seD
+brew "sad"
 # Intuitive find & replace CLI
 brew "sd"
 # Fuzzy Finder in rust!
@@ -352,6 +354,8 @@ cask "wezterm"
 cask "whatsapp"
 # Network protocol analyzer
 cask "wireshark"
+# Multiplayer code editor
+cask "zed"
 # Collect, organise, cite, and share research sources
 cask "zotero"
 mas "1Password for Safari", id: 1569813296
