@@ -309,6 +309,8 @@ cask "gitkraken-cli"
 cask "hammerspoon"
 # GPU-based terminal emulator
 cask "kitty"
+# Open source code editor written in Rust
+cask "lapce"
 # Privacy-first, open-source platform for knowledge sharing and management
 cask "logseq"
 # Native desktop app for Messenger (formerly Facebook Messenger)
@@ -350,14 +352,11 @@ cask "wezterm"
 cask "whatsapp"
 # Network protocol analyzer
 cask "wireshark"
-# Multiplayer code editor
-cask "zed"
 # Collect, organise, cite, and share research sources
 cask "zotero"
 mas "1Password for Safari", id: 1569813296
 mas "2048 Game", id: 871033113
 mas "Bear", id: 1091189122
-mas "BugHerd", id: 1545845981
 mas "com.kagimacOS.Kagi-Search", id: 1622835804
 mas "Consent-O-Matic", id: 1606897889
 mas "Developer", id: 640199958
