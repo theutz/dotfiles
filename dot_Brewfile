@@ -4,7 +4,6 @@ tap "hashicorp/tap"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
@@ -65,6 +64,8 @@ brew "exa"
 brew "exercism"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Lua Lisp Language
+brew "fennel"
 # Secure hashing function
 brew "libb2"
 # OCR (Optical Character Recognition) engine
