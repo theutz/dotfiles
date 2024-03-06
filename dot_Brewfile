@@ -328,6 +328,8 @@ cask "notion"
 cask "notion-calendar"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Web browser
+cask "opera"
 cask "opera-neon"
 # WebKit based web browser
 cask "orion"
