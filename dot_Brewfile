@@ -332,6 +332,7 @@ cask "obsidian"
 cask "opera"
 # Alternate version of the Opera web browser to complement gaming
 cask "opera-gx"
+cask "opera-neon"
 # WebKit based web browser
 cask "orion"
 # Browser for ambitious developers
