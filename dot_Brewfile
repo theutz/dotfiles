@@ -330,8 +330,6 @@ cask "notion-calendar"
 cask "obsidian"
 # Web browser
 cask "opera"
-# Alternate version of the Opera web browser to complement gaming
-cask "opera-gx"
 # WebKit based web browser
 cask "orion"
 # Browser for ambitious developers
