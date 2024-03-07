@@ -344,8 +344,6 @@ cask "sigmaos"
 cask "sizzy"
 # Open-source code editor
 cask "visual-studio-code"
-# Web browser with built-in email client focusing on customization and control
-cask "vivaldi"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
 # Native desktop client for WhatsApp
