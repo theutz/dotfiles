@@ -1,1 +1,7 @@
-frame = "buttonless"
+frame = "transparent"
+maximized = false
+title-hidden = false
+
+[font]
+normal = "Macon"
+size = 16
