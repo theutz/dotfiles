@@ -3,5 +3,6 @@ maximized = false
 title-hidden = false
 
 [font]
-normal = "Macon"
+normal = { family = "Haskplex Nerd", style = "Regular" }
+bold = { family = "Haskplex Nerd", style = "Bold" }
 size = 16
