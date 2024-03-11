@@ -274,6 +274,8 @@ brew "zsh-lovers"
 brew "dopplerhq/cli/doppler", link: false
 # Detect secrets in source code, scan your repos and docker images for leaks
 brew "gitguardian/tap/ggshield"
+# GPTScript CLI
+brew "gptscript-ai/tap/gptscript"
 # Packer
 brew "hashicorp/tap/packer"
 # Terraform
