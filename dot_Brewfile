@@ -320,6 +320,8 @@ cask "forklift"
 cask "gitkraken"
 # CLI for GitKraken
 cask "gitkraken-cli"
+# Web browser
+cask "google-chrome"
 # Desktop automation application
 cask "hammerspoon"
 # GPU-based terminal emulator
