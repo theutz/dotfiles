@@ -350,6 +350,8 @@ cask "orion"
 cask "polypane"
 # Collaboration platform for API development
 cask "postman"
+# Keyboard-driven, vim-like browser based on PyQt5
+cask "qutebrowser"
 # All-in-one bookmark manager
 cask "raindropio"
 # Import highlights from Apple Books to Readwise
