@@ -298,6 +298,8 @@ cask "1password-cli"
 cask "bruno"
 # Automated testing of webapps for Google Chrome
 cask "chromedriver"
+# Trains AIs to understand and translate texts
+cask "deepl"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 cask "emacs-mac"
 # Collaborative team software
