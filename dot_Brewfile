@@ -224,6 +224,8 @@ brew "starship"
 brew "stylua"
 # Log file highlighter
 brew "tailspin"
+# Feature-rich console based todo list manager
+brew "task"
 # Terminal file explorer
 brew "tere"
 # Thin wrapper for Terraform e.g. for locking state
