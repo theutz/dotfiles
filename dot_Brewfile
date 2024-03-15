@@ -62,8 +62,6 @@ brew "csvlens"
 brew "direnv"
 # Lightweight DNS forwarder and DHCP server
 brew "dnsmasq"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Modern replacement for 'ls'
 brew "exa"
 # Command-line tool to interact with exercism.io
