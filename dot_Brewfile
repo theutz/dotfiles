@@ -298,6 +298,8 @@ cask "bruno"
 cask "chromedriver"
 # Trains AIs to understand and translate texts
 cask "deepl"
+# App to build and share containerised applications and microservices
+cask "docker"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 cask "emacs-mac"
 # Collaborative team software
