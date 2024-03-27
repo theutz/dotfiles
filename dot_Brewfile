@@ -65,6 +65,8 @@ brew "difftastic"
 brew "direnv"
 # Lightweight DNS forwarder and DHCP server
 brew "dnsmasq", restart_service: true
+# Embeddable SQL OLAP Database Management System
+brew "duckdb"
 # Modern replacement for 'ls'
 brew "exa"
 # Command-line tool to interact with exercism.io
