@@ -133,6 +133,8 @@ brew "hugo"
 brew "hunspell"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
+# Interactive JSON filter using jq
+brew "jnv"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Handy way to save and run project-specific commands
