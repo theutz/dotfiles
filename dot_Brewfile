@@ -59,6 +59,8 @@ brew "php"
 brew "composer"
 # Command-line csv viewer
 brew "csvlens"
+# Diff that understands syntax
+brew "difftastic"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Lightweight DNS forwarder and DHCP server
