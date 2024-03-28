@@ -110,6 +110,10 @@ brew "glow"
 brew "gnu-sed"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Spell checker and morphological analyzer
+brew "hunspell"
+# Command-driven, interactive function plotting
+brew "gnuplot"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Library access to GnuPG
@@ -132,8 +136,6 @@ brew "htop"
 brew "httpie"
 # Configurable static site generator
 brew "hugo"
-# Spell checker and morphological analyzer
-brew "hunspell"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
 # Interactive JSON filter using jq
