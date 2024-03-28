@@ -374,6 +374,8 @@ cask "readwise-ibooks"
 cask "sigmaos"
 # Tool to simulate responsive designs on multiple devices
 cask "sizzy"
+# Daily planner and calendar
+cask "sunsama"
 # VPN client for secure internet access and private browsing
 cask "surfshark"
 # Open-source code editor
