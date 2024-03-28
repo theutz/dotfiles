@@ -347,6 +347,8 @@ cask "kitty"
 cask "lapce"
 # Privacy-first, open-source platform for knowledge sharing and management
 cask "logseq"
+# Full TeX Live distribution with GUI applications
+cask "mactex"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
 # Web browser
