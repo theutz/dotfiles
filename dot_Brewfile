@@ -348,6 +348,8 @@ cask "logseq"
 cask "messenger"
 # Web browser
 cask "microsoft-edge"
+# All-in-one calendars, tasks and scheduler
+cask "morgen"
 # Neovim Client
 cask "neovide"
 # App to write, plan, collaborate, and get organised
