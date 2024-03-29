@@ -224,6 +224,8 @@ brew "rsync"
 brew "sad"
 # Intuitive find & replace CLI
 brew "sd"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Fuzzy Finder in rust!
 brew "sk"
 # Command-line interface for https://speedtest.net bandwidth tests
