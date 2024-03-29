@@ -292,8 +292,6 @@ brew "zoxide"
 brew "zsh"
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
-# GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-imagemagick", "with-modern-black-variant-icon", "with-xwidgets"]
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler", link: false
 brew "f1bonacc1/tap/process-compose"
