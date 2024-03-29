@@ -120,6 +120,8 @@ brew "go"
 brew "gomodifytags"
 # Language server for the Go language
 brew "gopls"
+# Automatically generate Go test boilerplate from your source code
+brew "gotests"
 # Library access to GnuPG
 brew "gpgme"
 # Ping, but with a graph
