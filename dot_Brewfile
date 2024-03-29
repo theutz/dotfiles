@@ -42,6 +42,8 @@ brew "bob"
 brew "boxes"
 # New way to see and navigate directory trees
 brew "broot"
+# GNU compiler collection
+brew "gcc"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Powerful, enterprise-ready, open source web server with automatic HTTPS
@@ -158,6 +160,8 @@ brew "lazydocker"
 brew "lazygit"
 # Terminal file manager
 brew "lf"
+# JIT library for the GNU compiler collection
+brew "libgccjit"
 # GNOME XML library
 brew "libxml2"
 # Next-gen compiler infrastructure
@@ -292,6 +296,8 @@ brew "zoxide"
 brew "zsh"
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
+# GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-dbus", "with-debug", "with-imagemagick", "with-mailutils", "with-modern-black-variant-icon", "with-native-comp", "with-xwidgets"]
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler", link: false
 brew "f1bonacc1/tap/process-compose"
