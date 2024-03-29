@@ -116,6 +116,8 @@ brew "hunspell"
 brew "gnuplot"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Language server for the Go language
+brew "gopls"
 # Library access to GnuPG
 brew "gpgme"
 # Ping, but with a graph
