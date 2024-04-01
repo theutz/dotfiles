@@ -186,6 +186,8 @@ brew "mas"
 brew "miller"
 # AI on the command-line
 brew "mods"
+# CLI tool for saving complete web pages as a single HTML file
+brew "monolith"
 # Remote terminal application
 brew "mosh"
 # CLI for MySQL with auto-completion and syntax highlighting
