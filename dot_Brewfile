@@ -359,6 +359,8 @@ cask "google-chrome"
 cask "hammerspoon"
 # Vector graphics editor
 cask "inkscape"
+# GPU-based terminal emulator
+cask "kitty"
 # Open source code editor written in Rust
 cask "lapce"
 # Privacy-first, open-source platform for knowledge sharing and management
