@@ -385,8 +385,6 @@ cask "obsidian"
 cask "opera"
 # WebKit based web browser
 cask "orion"
-# Browser for ambitious developers
-cask "polypane"
 # Collaboration platform for API development
 cask "postman"
 # Keyboard-driven, vim-like browser based on PyQt5
