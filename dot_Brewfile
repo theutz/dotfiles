@@ -337,6 +337,7 @@ cask "docker"
 cask "figma"
 # Web browser
 cask "firefox"
+cask "font-awesome-terminal-fonts"
 # Sans-serif typeface
 cask "font-geist"
 # Monospaced typeface designed to be used where code is represented
