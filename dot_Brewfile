@@ -315,6 +315,8 @@ brew "knqyf263/pet/pet"
 brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
+# YAMAMOTO Mitsuharu's Mac port of GNU Emacs
+brew "railwaycat/emacsmacport/emacs-mac", args: ["with-imagemagick", "with-sjrmanning-icon", "with-xwidgets"]
 # General-purpose scripting language
 brew "shivammathur/php/php@7.2"
 # General-purpose scripting language
