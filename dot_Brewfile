@@ -54,6 +54,8 @@ brew "caddy"
 brew "cheat"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Cross-platform make
+brew "cmake"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
 # Library for encoding and decoding .avif files
