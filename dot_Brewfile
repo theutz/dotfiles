@@ -115,6 +115,8 @@ brew "gnu-sed"
 brew "gnupg"
 # Spell checker and morphological analyzer
 brew "hunspell"
+# Cross-platform application and UI framework
+brew "qt"
 # Command-driven, interactive function plotting
 brew "gnuplot"
 # Open source programming language to build simple/reliable/efficient software
