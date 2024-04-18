@@ -242,6 +242,8 @@ brew "shellcheck"
 brew "sk"
 # Command-line interface for https://speedtest.net bandwidth tests
 brew "speedtest-cli"
+# Command driven spotify player
+brew "spotify_player"
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
