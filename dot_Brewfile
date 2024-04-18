@@ -193,8 +193,6 @@ brew "mods"
 brew "monolith"
 # Remote terminal application
 brew "mosh"
-# Media player based on MPlayer and mplayer2
-brew "mpv"
 # CLI for MySQL with auto-completion and syntax highlighting
 brew "mycli"
 # Open source relational database management system
