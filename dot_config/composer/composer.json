@@ -4,6 +4,7 @@
         "laravel/forge-cli": "^1.8",
         "laravel/laravel": "^10.2",
         "statamic/cli": "^2.6",
-        "beyondcode/expose": "^2.6"
+        "beyondcode/expose": "^2.6",
+        "ohdearapp/ohdear-cli": "*"
     }
 }

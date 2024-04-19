@@ -50,3 +50,14 @@
 ;; (unpin! t)
 
 (package! gptel)
+(package! autothemer)
+(package! rose-pine-emacs
+  :recipe (:host github
+           :repo "thongpv87/rose-pine-emacs"
+           :branch "master"))
+(package! just-mode)
+(package! justl)
+(package! kdl-mode
+  :recipe (:host github
+           :repo "bobuk/kdl-mode"
+           :branch "main"))

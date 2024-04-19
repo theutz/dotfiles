@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f64e059257c09e2a08af43b30c0f8886",
+    "content-hash": "4b00c5317bf74e7003178068126b9ee3",
     "packages": [
         {
             "name": "beyondcode/expose",
@@ -2709,6 +2709,73 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "ohdearapp/ohdear-cli",
+            "version": "v4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ohdearapp/ohdear-cli.git",
+                "reference": "d09f755aceba47e5f560ccdce4d9ec790c37c5b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ohdearapp/ohdear-cli/zipball/d09f755aceba47e5f560ccdce4d9ec790c37c5b4",
+                "reference": "d09f755aceba47e5f560ccdce4d9ec790c37c5b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "illuminate/view": "^10.28",
+                "laravel-zero/framework": "^10.2",
+                "nunomaduro/termwind": "^1.15",
+                "ohdearapp/ohdear-php-sdk": "^3.7"
+            },
+            "bin": [
+                "builds/ohdear"
+            ],
+            "type": "project",
+            "autoload": {
+                "files": [
+                    "app/helpers.php"
+                ],
+                "psr-4": {
+                    "App\\": "app/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "An Oh Dear CLI tool written in PHP with Laravel Zero.",
+            "keywords": [
+                "cli",
+                "console",
+                "framework",
+                "laravel",
+                "oh dear",
+                "ohdear",
+                "zero"
+            ],
+            "support": {
+                "issues": "https://github.com/nunomaduro/ohdear-cli/issues",
+                "source": "https://github.com/nunomaduro/ohdear-cli"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/owenvoke",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-10-12T09:57:49+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",

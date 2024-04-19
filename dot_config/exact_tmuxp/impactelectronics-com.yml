@@ -6,9 +6,13 @@ windows:
     options:
       main-pane-width: "60%"
     panes:
-      - nvim
+      - focus: true
+        shell_command: nvim
+        enter: false
       - sleep 0.3 && exit
     window_name: main
-  - panes:
-      - bin/dev
+  - layout: even-vertical
+    panes:
+      - just dev
+      - lazydocker
     window_name: server

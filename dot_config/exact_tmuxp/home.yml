@@ -8,3 +8,6 @@ windows:
   - panes:
       - spotify_player
     window_name: spotify
+  - panes:
+      - emacs --fg-daemon
+    window_name: emacs
