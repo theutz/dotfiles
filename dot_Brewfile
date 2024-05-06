@@ -153,6 +153,8 @@ brew "httpie"
 brew "hugo"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Interactive JSON filter using jq
 brew "jnv"
 # Lightweight and flexible command-line JSON processor
@@ -198,7 +200,7 @@ brew "mycli"
 # Open source relational database management system
 brew "mysql", restart_service: true
 # Search tool like grep and The Silver Searcher
-brew "ripgrep", link: false
+brew "ripgrep"
 # Command-line and local web note-taking, bookmarking, and archiving
 brew "nb"
 # Fast, highly customisable system info script
