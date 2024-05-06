@@ -874,4 +874,4 @@ source ~/.local/share/atuin/init.nu
 $env.EDITOR = "nvim"
 $env.VISUAL = "neovide --no-fork"
 
-def cm [] { ^chezmoi }
+def cm [...x] { ^chezmoi ($x | str join) }
