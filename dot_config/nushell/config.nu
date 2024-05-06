@@ -871,4 +871,4 @@ source ~/.cache/carapace/init.nu
 # Atuin history
 source ~/.local/share/atuin/init.nu
 
-source aliases.nu
+source chezmoi.nu
