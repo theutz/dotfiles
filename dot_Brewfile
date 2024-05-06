@@ -75,8 +75,6 @@ brew "difftastic"
 brew "dnsmasq", restart_service: true
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
-# Modern replacement for 'ls'
-brew "exa"
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Simple, fast and user-friendly alternative to find
@@ -295,6 +293,8 @@ brew "xdg-ninja"
 brew "xh"
 # JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
