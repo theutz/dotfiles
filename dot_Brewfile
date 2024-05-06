@@ -2,6 +2,7 @@ tap "d12frosted/emacs-plus"
 tap "dopplerhq/cli"
 tap "dzfrias/formulae"
 tap "f1bonacc1/tap"
+tap "felixkratz/formulae"
 tap "gitguardian/tap"
 tap "gptscript-ai/tap"
 tap "hashicorp/tap"
@@ -314,6 +315,8 @@ brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-ctags", "with-dbus", "w
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler", link: false
 brew "f1bonacc1/tap/process-compose"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
 # Detect secrets in source code, scan your repos and docker images for leaks
 brew "gitguardian/tap/ggshield"
 # GPTScript CLI
