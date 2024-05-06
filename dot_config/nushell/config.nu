@@ -871,7 +871,4 @@ source ~/.cache/carapace/init.nu
 # Atuin history
 source ~/.local/share/atuin/init.nu
 
-$env.EDITOR = "nvim"
-$env.VISUAL = "neovide --no-fork"
-
-def cm [...x] { ^chezmoi ($x | str join) }
+source aliases.nu
