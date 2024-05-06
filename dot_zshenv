@@ -12,5 +12,5 @@ export XDG_RUNTIME_DIR="$TMPDIR"
 #
 # ZDOTDIR
 #
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-source "$ZDOTDIR"/.zshenv
+#export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+#source "$ZDOTDIR"/.zshenv
