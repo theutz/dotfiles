@@ -871,4 +871,9 @@ source ~/.cache/carapace/init.nu
 # Atuin history
 source ~/.local/share/atuin/init.nu
 
+# Zoxide improved cd
+source ~/.local/share/zoxide/init.nu
+
+# Source Other Scripts
 source chezmoi.nu
+source aliases.nu
