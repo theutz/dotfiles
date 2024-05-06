@@ -1,0 +1,2144 @@
+yazi
+which yazi
+yazi
+which j
+j
+git status
+git commit -am 'feat: better shell management'
+git status
+ya
+j
+git status
+darwin-rebuild list
+darwin-rebuild
+darwin-
+darwin
+darwin-rebuild
+nu
+cat ~/.config/nushell/env.nu
+cat ~/.config/nushell/config.nu
+which darwin-rebuild
+command -v darwin-rebuild
+ll
+ls
+la
+\ls
+ls
+ll
+ls
+ll
+ls
+ls -la
+ya
+ya
+j
+vim justfile
+j
+vim justfile
+j
+which darwin-rebuild
+command
+command -h
+command -v darwin-rebuild
+darwin-rebuild
+nix search nixpkgs gum | table
+nix search nixpkgs gum
+nix search nixpkgs gum | pager
+nix search nixpkgs gum | less
+kagi "charm bracelent gum"
+and
+nix fmt && git add -A
+(nix fmt) and (git add -A)
+j
+darwin-rebuild
+gum
+gum confirm
+gum confirm --help
+gum confirm "You sure, dowg?"
+j
+nix fmt --help
+nix fmt --arg "--quite"
+nix fmt --arg "--quiet"
+nix fmt --arg "quiet"
+nix fmt --arg "quiet" ""
+nix fmt --help
+nix develop
+darwin-rebuild --list-generations
+darwin-rebuild --list-generations | table
+darwin-rebuild --list-generations | find "current"
+darwin-rebuild --list-generations | find "current" | split
+darwin-rebuild --list-generations | find "current" | split column
+darwin-rebuild --list-generations | find "current" | split column -c -
+darwin-rebuild --list-generations | find "current" | split column -
+darwin-rebuild --list-generations | find "current" | split column -r "\s*"
+darwin-rebuild --list-generations | find "current" | split column -r '\s*'
+darwin-rebuild --list-generations | find "current" | split column -r '\s+'
+darwin-rebuild --list-generations | find "current" | split column -r '\s+' -c
+to
+from
+darwin-rebuild --list-generations | from tsv
+darwin-rebuild --list-generations | from tsv -h
+darwin-rebuild --list-generations | from tsv -t
+darwin-rebuild --list-generations | from tsv -t " "
+darwin-rebuild --list-generations | from tsv -t all
+darwin-rebuild --list-generations | from tsv -t fields
+darwin-rebuild --list-generations | from tsv
+darwin-rebuild --list-generations | from -h
+darwin-rebuild --list-generations | from ssv
+darwin-rebuild --list-generations | find "current" | from ssv
+darwin-rebuild --list-generations | find "current"
+darwin-rebuild --list-generations | find "current" | first
+darwin-rebuild --list-generations | from ssv -h
+darwin-rebuild --list-generations | from ssv -h -n
+darwin-rebuild --list-generations | from ssv -h
+darwin-rebuild --list-generations
+darwin-rebuild --list-generations | from ssv
+darwin-rebuild --list-generations | from ssv -n
+darwin-rebuild --list-generations | from ssv -n | where column3 == "(current)"
+darwin-rebuild --list-generations | from ssv -n | where "column3" == "(current)"
+darwin-rebuild --list-generations | from ssv -n | where $it.column3 == "(current)"
+darwin-rebuild --list-generations | from ssv -n | where 3 == "(current)"
+darwin-rebuild --list-generations | from ssv -n | where $it.3 == "(current)"
+darwin-rebuild --list-generations | from ssv -n | where $it[3] == "(current)"
+darwin-rebuild --list-generations | from ssv -n | where $it[3] =~ "current"
+darwin-rebuild --list-generations | from ssv -n
+darwin-rebuild --list-generations | from ssv -n -h
+darwin-rebuild --list-generations | from ssv -n --help
+darwin-rebuild --list-generations | from ssv --help
+from ssv --help
+darwin-rebuild --list-generations | from ssv -n
+darwin-rebuild --list-generations | from ssv -n 
+darwin-rebuild --list-generations | from ssv -n | table
+darwin-rebuild --list-generations | from ssv -n | get column3
+darwin-rebuild --list-generations | from ssv -n | get column1
+darwin-rebuild --list-generations | from ssv -n | get column2
+darwin-rebuild --list-generations | from ssv -n | get column3
+darwin-rebuild --list-generations | from ssv -n | where ($it.column3)
+darwin-rebuild --list-generations | from ssv -n
+help compact
+darwin-rebuild --list-generations | from ssv -n | compact
+darwin-rebuild --list-generations | from ssv -n | compact --empty
+help compact
+help default
+darwin-rebuild --list-generations | from ssv -n | default 'column3' ''
+darwin-rebuild --list-generations | from ssv -n | default 'column3' 'm'
+darwin-rebuild --list-generations | from ssv -n | default column3 'm'
+darwin-rebuild --list-generations | from ssv -n | default '' column3
+darwin-rebuild --list-generations | from ssv -n | default '' column3 | where column3 =~ 'current'
+darwin-rebuild --list-generations | from ssv -n | default '' column3 | where column3 =~ 'current' | get column1
+darwin-rebuild --list-generations | from ssv -n | default '' column3 | where column3 =~ 'current' | get column1 -he
+darwin-rebuild --list-generations | from ssv -n | default '' column3 | where column3 =~ 'current' | get column1 -h
+darwin-rebuild --list-generations | from ssv -n | default '' column3 | where column3 =~ 'current' | get 0
+darwin-rebuild --list-generations | from ssv -n | default '' column3 | where column3 =~ 'current' | get 0.column1
+darwin-rebuild --list-generations | from ssv -n | where column3? =~ 'current' | get 0.column1
+darwin-rebuild --list-generations | from ssv -n | where column3? == 'current' | get 0.column1
+darwin-rebuild --list-generations | from ssv -n | where column3? == '(current)' | get 0.column1
+statix
+statix fix --help
+deadnix
+deadnix --help
+alejandra --help
+deadnix --help
+nix fmt
+git status
+j
+git status
+statix fix -h
+echo $EDITOR
+$env.EDITOR
+nix fmt
+git status
+cat .pre-commit-config.yaml
+nix fmt
+git status
+nix fmt
+deadnix --help
+nix fmt
+git status
+nix fmt
+gum
+gum style
+"hello" | gum format
+"# hello" | gum 
+"# hello" | gum format
+nix fmt
+gum format "# something"
+j
+nix fmt
+j
+nix fmt
+gum format --help
+nix fmt
+gum
+gum format "# alejandra\n\n"
+gum format "# alejandra\n"
+gum format '# alejandra\n'
+gum format "# alejandra\r\r"
+gum format "# alejandra\r\rs"
+gum format "# alejandra\n\ns"
+gum format "# alejandra\n\n "
+gum format "# alejandra\n\n---"
+gum format "# alejandra\n---"
+nix fmt
+deadnix --help
+nix fmt
+nix status
+nix fmt
+deadnix --help
+statix --help
+statix fix --help
+j
+statix fix
+git status
+statix
+statix explain
+statix check
+deadnix 
+deadnix --help
+deadnix --fail
+statix check
+j
+nix fmt
+j
+git status
+zj
+git status
+gws
+ls -la
+lla
+ll
+which ll
+ls -la
+la
+which help
+gws
+git status
+vim
+j
+ij
+j
+darwin-rebuild --help
+darwin-rebuild switch --show-trace --flake .
+rg home
+ij
+j
+nix
+nix flake update
+nix flake check
+j
+nix repl -f .
+nix repl --flake .
+nix repl
+j
+rm -rf ~/.config/nvim
+j
+git status
+nvim
+which nvim
+brewx neovim
+brew uninstall neovim
+brew uninstall --ignore-dependencies neovim
+which nvim
+nvim
+which nvim
+ij
+j
+ya
+j
+rg home-manager
+j
+which nvmi
+which nvim
+nvim
+j
+nvim 
+j
+nvim
+echo $SHELL
+j
+nvim modules/home/neovim/default.nix
+nvim
+echo $EDITOR
+echo $env.EDITOR
+which home-manager
+gws
+git status
+git diff
+git checkout .
+lg
+j
+home-manager
+j
+ya
+nvim
+echo $env.EDITOR
+..
+cd ..
+nvim modules/home/shells/default.nix
+git status
+git rm modules/darwin/home-manager/default.nix
+git rm -f modules/darwin/home-manager/default.nix
+git status
+j
+home-manager
+echo $env.EDITOR
+nu
+$env.EDITOR
+j
+$env.EDITOR
+ya
+ya
+home-manager
+j
+hoem-manager
+home-manager
+home-manager generations
+home-manager switch --help
+home-manager --flake .
+home-manager switch --flake .
+git diff
+darwin-rebuild --help
+home-manager switch --flake .
+nix log /nix/store/04xs0vnvp0ag7ky6c8hxrg7r20i6wy9y-home-manager-path.drv
+nix run github:nix-community/nix-melt
+j
+j darwin
+home-manager
+which home-manager
+which man
+j
+j darwin
+git status
+or darwin-rebuild switch --flake noti
+or (darwin-rebuild switch --flake) noti
+and (darwin-rebuild switch --flake) noti
+{or (darwin-rebuild switch --flake) noti}
+do {or (darwin-rebuild switch --flake) noti}
+help do
+j
+j darwin
+gws
+darwin-rebuild --help
+darwin-rebuild check
+darwin-rebuild check --flake .
+gws
+git status
+j
+j darwin
+gws
+git status
+j darwin
+k
+j darwin
+git status
+git reset --soft HEAD~
+git status
+lazygit
+false | complete
+^false | complete
+^false | complete | get exit_code
+tutor
+tutor begin
+ls | select name
+tutor tables
+ls | select 2
+ls | select name
+ls | get name
+tutor cells
+ls | select 4 | get name
+(ls).4.name
+tutor expressions
+tutor shorthands
+tutor echo
+echo 1..10
+tutor each
+echo 1 2 3 | each { |it| $it + 10}
+tutor blocks
+ls | each {|x| $x.name}
+if true { echo "it's true" } else { echo "it's not true" }
+tutor list
+gstat
+gstat -h
+gstat --help
+gstat .
+g
+shells
+enter
+shells
+enter ~
+shells
+g 0
+g1
+g
+g 1
+help dexit
+drop
+dexit
+help aliases
+help commands
+help commands -h
+help externs
+help modules
+help modules -h
+help commands | find "tap"
+help commands | find "if"
+help commands | find "pass"
+help inspect
+ls | inspect
+ls | inspect | get name
+ls | inspect | get name | inspect
+git status
+j darwin
+git status
+help try
+j
+j darwin
+git status
+k
+j darwin
+help exit
+j darwin
+noti --help
+j darwin
+noti --help
+k
+noti --message "some\nthing"
+j darwin
+noti --message "some\nthing"
+j darwin
+input
+input list -h
+help input
+input --n 1
+input -n1
+input -n 1
+input -n 1 | if $in == "y" then { echo "love it" } else { echo "boo" }
+input -n 1 | if $in == "y" { echo "love it" } else { echo "boo" }
+input -n 1 "wanna hug?"
+home-manager
+j
+j darwin
+j
+j darwin
+nix flake show
+darwin-rebuild --help
+j darwin
+j
+git status
+alejandra --help
+alejandra
+alejandra --help
+git diff
+git diff --cached
+e packages/nvim/default.nix
+k
+j nvim
+nix path-info --help
+cd ~/code/theutz/nixos-config/
+ls
+ls modules
+ls modules/home-manager/
+ls modules/home-manager/emacs/
+ls modules/home-manager/emacs | get 0
+ls modules/home-manager/emacs | get 0.name
+ls modules/home-manager/emacs | get 0.name | $env.EDITOR $in
+ls modules/home-manager/emacs | get 0.name | edit
+ls modules/home-manager/emacs | get 0.name | start
+ls modules/home-manager/emacs | get 0.name | start $in
+ls modules/home-manager/emacs | get 0.name | ($env.EDITOR) $it
+$env.EDITOR
+ls modules/home-manager/emacs | get 0.name | ($env.EDITOR) $in
+ls modules/home-manager/emacs | get 0.name | do {|x| $env.EDITOR $x}
+ls modules/home-manager/emacs | get 0.name | nvim $in
+ls modules/home-manager/emacs | get 0.name | start $in
+ls modules/home-manager/emacs | get 0.name | inspect | start $in
+commandline edit
+ls modules/home-manager/emacs | get 0.name | run-external $env.EDITOR $in
+ls modules/home-manager/emacs | get 0.name
+ls modules/home-manager/emacs | run-external $env.EDITOR $in
+ls modules/home-manager/emacs | run-external $env.EDITOR ...$in
+emacsclient --create-frame
+code/theutz/nixos-config/
+git status
+ls
+cat home.nix
+ls
+ls hosts
+ls hosts/kocaeli
+ls hosts/kocaeli | run-external $env.EDITOR $in.0.name
+rg doom
+..
+ls
+ryan4yin-nix-config/
+rg emacs
+rg doom
+nvim packages/nvim/default.nix
+j nvim .
+j nvim
+sk
+sk | run-external $env.EDITOR
+sk --help
+sk --help | grep wait
+sk --help | find wait
+sk | complete 
+sk | complete | nvim $in.stdout
+nvim lib/nixvim/default.nix
+nu
+nvim lib/nixvim/default.nix
+j nvim
+nvim .
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+nvim
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+nvim lib/nixvim/default.nix
+j nvim
+man nixvim
+nvim lib/nixvim/default.nix
+j nvim
+j nivm
+j nvim
+nvim lib/nixvim/default.nix
+j darwin
+git status
+git show
+git log -1
+git log -1 --oneline
+git log -1 --oneline --format "%s"
+git log -1 --oneline --format '%h'
+git log -1 --oneline --format='%h'
+git log -1 --oneline --format='%s'
+help if
+input
+j commit
+git status
+j commit
+j b
+darwin-rebuild --help
+home-manager --help
+home-manager generations
+home-manager generations | to ssv
+home-manager generations | from ssv
+home-manager generations | from ssv -h
+home-manager generations | from ssv -m 0
+home-manager generations | from ssv -m 0 -n
+home-manager generations | from ssv -m 0 -n | first
+home-manager generations | from ssv -m 0 -n | get 0.column5
+j commit
+git status
+git log
+lazygit
+j b
+git status
+j nvim
+j test
+nix build .#nvim
+nix run .#nvim
+j --list
+j c
+j t
+j --list
+j
+gws
+git status
+j c
+git log
+j nvim
+..
+gws
+git status
+git add .
+j nvim
+nvim justfile
+ya
+j nvim
+nvim .
+pwd
+which nvim
+j build
+ya
+j nvim
+j f
+ya
+j nvim
+rg lib/nixvim
+rg nixvim
+..
+rg nixvim
+j build
+gws
+git status
+j build
+j nvim
+nix run .
+lg
+j nvim
+rg "lib/nixvim"
+j nvim
+ls -la
+lg
+vim flake
+nix run . --show-trace
+nix run . 
+vim flake.nix
+j nvim
+ya
+nvim .
+j nvim
+gws
+git status
+j nvim
+git status
+lazygit
+j nvim
+gws
+ls
+j nvim
+nvim packages/nvim/default.nix
+nix fmt
+lazygit
+j build
+gws
+git status
+ls
+alias
+aliases
+alias -h
+help
+help commands | find alias
+help aliases
+ls -la
+nvim .
+which nvim
+vim modules/home/neovim/default.nix
+j build
+which nvim
+j nvim
+j build
+git status
+nvim
+ya
+which pueue
+ya
+ls
+log
+nvim
+j build
+which vi
+which vim
+brew unlink vim
+which vim
+nu
+zj -h
+zj ac -h
+zj ac rename-tab main
+zj ac rename-tab -h
+zj ac rename-tab "home"
+zj action rename-tab -h
+zj action rename-tab
+zj action rename-tab main
+zj action -h
+zj ac rename-tab "home"
+cd nix-config/
+ls -la
+nvim
+which nvim
+which vim
+j b
+$env.PATH
+rg path
+rg PATH
+rg zsh
+cat ~/.profile
+rg bash
+nvim modules/darwin/shells/default.nix
+vi modules/darwin/shells/default.nix
+j build
+ls
+j build
+nix fmt
+j run
+j nvim
+j build
+nix log /nix/store/lkikgaxvrmm7dvva1hkvz6903l1mcfzb-neovim-.drv
+git status
+lazygit
+vim modules/home/neovim/default.nix
+ya
+which vim
+vim default.nix
+j build
+which nvim
+ya
+vim default.nix
+j 
+j b
+j commit
+j f && j c
+j f
+nvim default.nix
+vim default.nix
+j f
+j c
+which nvim
+j b
+nu
+which nvim
+nu
+ya
+j build
+zj ac -h
+zj ac new-tab -h
+zj ac new-tab -c nixos-config -n nix
+zj ac new-tab -c nixos-config -n nix -l default
+cd nix-config/
+ls
+ls -la
+man wezterm
+j build
+darwin-rebuild --help
+darwin-rebuild switch --help
+darwin-rebuild switch --refresh
+darwin-rebuild edit
+darwin-rebuild switch --flake . --refresh
+man darwin-rebuild
+man darwin
+home-manager
+home-manager switch --flake .
+git status
+home-manager generations | from ssv -m 0 -n | get 0.column5
+git status
+j h
+git status
+git status -s
+git add justfile
+git status -s
+git status -s --help
+git status --column
+git status --column -s
+git diff --cached
+git diff
+git diff HEAD
+git status
+j h
+nix --version
+nix --help
+home-manager --help
+home-manager --help | find offline
+home-manager --help | find flake
+home-manager switch --help
+home-manager switch --no-substitute
+home-manager switch --flake .
+j h
+git status
+j h
+j  h
+pueue --help
+j f
+gws
+lazygit
+j d
+pueue status
+htop
+sudo pueue
+pueue
+pueue status
+sudo -u root pueue
+git status
+j d
+pueue
+pueue status
+htop
+pueue status
+pueue -h
+pueue add j h
+pueue status
+pueue add just home
+pueue status
+git status
+pueue add -h
+pueue add -w $env.PWD darwin-rebuild switch --flake .
+pueue status
+pueue
+pueue -h
+pueue log
+pueue
+pueue log 2
+pueue status
+pueue -h
+pueue follow
+pueue
+pueue wait
+pueue
+j dp
+pueue
+pueue wait
+pueue follow
+pueue status
+pueue -h
+git status
+j hb
+j hbg
+pueue
+pueue follow
+gws
+git status
+git status
+man home-configuration
+j h
+gws
+git status
+which p
+help aliases
+p
+n
+which q
+man nixvim
+j h
+env
+$env.MANPAGER
+env
+$env.MANPAGER
+nu
+$env
+$env | find MAN
+$env | find editor
+$env | find EDITOR
+nix profile
+nix profile list
+j d
+$env | find EDITOR
+$env | find MANPAGER
+$env | explore
+ya
+$env
+cd nix-config/
+sk
+nvim
+j h
+wd
+echo $SHELL
+$env.SHELL
+cd nix-config/
+ls
+git diff
+git status
+nvim --help
+git status
+nvim
+cat ~/.config/wezterm/wezterm.lua
+nvim
+j b
+j d
+cat ~/.config/nushell/env.nu
+$env.MANPAGER = 'nvim +Man!'
+man home-configuration
+nvim
+j d
+nu
+which wezterm
+brew unlink wezterm
+which wezterm
+brew uninstall --cask wezterm
+which wezterm
+wezterm
+ls /Applications | explore
+j b
+j d
+cd nix-config/
+j d
+ls /Applications | explore
+ls `/Applications/Nix Apps/`
+nvim
+nix repl
+nvim
+j h
+jb
+j b
+j d
+pueue
+git status
+lg
+j dbg
+pueue follow
+open ~/.nix-profile/Applications/WezTerm.app/
+wezterm
+which wezterm
+wezterm
+which wezterm
+ls -la
+which wezterm
+wezterm --help
+ls -la
+ls
+git status
+j f
+nix fimt
+j f
+nvim
+git status
+j d
+rg import
+bat modules/home/git/default.nix
+nvim modules/home/git/default.nix
+j d
+ya
+..
+nix run github:Mic92/nix-fast-build -- .
+nix run github:Mic92/nix-fast-build -f .#nvim
+nix run github:Mic92/nix-fast-build -f '#nivm'
+nix run github:Mic92/nix-fast-build -f '.#nvim'
+nix run github:Mic92/nix-fast-build '.#nvim'
+nix run github:Mic92/nix-fast-build -- --flake .#nvim --systems aarch64-darwin
+nix run github:Mic92/nix-fast-build -- --flake . --systems aarch64-darwin
+nix run github:Mic92/nix-fast-build -- --flake .#nvim#aarch64-darwin --systems aarch64-darwin
+nix run github:Mic92/nix-fast-build -- --flake .#aarch64-darwin.nvim --systems aarch64-darwin
+nix repl
+nix run github:Mic92/nix-fast-build -- --flake .#packages.aarch64-darwin.nvim --systems aarch64-darwin
+nix run github:Mic92/nix-fast-build -- --flake .#packages.aarch64-darwin.nvim --systems aarch64-darwin --no-nom
+nix run .
+nix run nix-fast-build -- --flake .#packages.aarch64-darwin.nvim
+nix run github:Mic92/nix-fast-build -- --flake .#packages.aarch64-darwin.nvim
+home-manager
+which home-manager
+nix run --help
+darwin-rebuild switch --flake . --max-jobs 12
+PAGER=less nix run --help
+nix run .
+nix run --no-use-registries .
+time nix run --no-use-registries .
+rg daemon
+prgrep nix
+pgrep nix
+ps | find nix
+ps | find nix | explore
+htop
+killall nix-eval-jobs
+htop
+git status
+lg
+rg home-manager
+j d
+rg useGlobalPkgs
+nvim
+j bd
+j d
+rg useGlobaPkgs | nvim $in.0.name
+rg useGlobaPkgs | $in
+nvim homes/aarch64-darwin/michael@kocaeli/default.nix
+j d
+nvim
+j d
+nvim
+j d
+man configuration.nix
+man home-configuration
+man home-manager
+man 5 configuration
+man home-configuration.nix
+nvim
+which nvim
+nu
+which nvim
+echo $SHELL
+j d
+ls -la
+$env.XDG_CONFIG_HOME
+/bin/bash
+bash -c 'env' | find xdg
+ls -la
+$nu
+let msg = if true == true { "true enough" } { "wrongo!" }
+let msg = (if true == true { "true enough" } { "wrongo!" })
+let msg = (if true == true { echo "true enough" } { "wrongo!" })
+let msg = (if true = true { "true enough" } { "wrongo!" })
+let msg = (if true > true { "true enough" } { "wrongo!" })
+help if
+let msg = (if true == true { echo "true enough" } else { "wrongo!" })
+echo $msg
+ls
+gws
+ls -la
+ls
+ls -la
+ya
+cd -
+zj ls
+zj da
+zj a -h
+zj ac rename-tab "home"
+zj -h
+zj ac -h | find rename
+zj ac rename-session -h
+zj ac rename-session main
+zj ac rename-tab -h
+zj ac rename-tab main
+zj ac rename-tab
+cd nix-config/
+ls
+git stats
+git status
+git diff
+~/code/ryan4yin/nix-config/
+rg PROMPT
+config nu
+config env
+j h
+j d
+not -t meh -m ya
+which not
+help commands
+help commands | explore
+help commands | where name =~ env
+help export-env
+j h
+j d
+j d; nu
+nu
+nu 
+gws
+ls -la
+starship prompt --help
+starsnip --help
+starsnip prompt --right
+man home-configuration.nix
+j d
+gws
+pueue add -w $env.PWD just d
+pueue status
+pueue follow
+config nu
+cat ~/.config/nushell/config.nu
+echo $PROMPT_INDICATOR
+$env.PROMPT_INDICATOR
+$env
+config env
+j d
+j d; nu
+{<\n>some<\n>}
+ls -la
+git status
+let year = (<\n>"01/22/2021" |<\n>parse "{month}/{day}/{year}" |<\n>get year<\n>)
+j n
+zj action move-focus-or-tab left
+/nix/store/1pz87v8nbgnhzbyhqgd37lb07w1yy4my-zellij-0.40.0/bin/zellij action move-focus-or-tab left
+j d
+ya
+which nvim
+nvim
+j h
+pueue add just d
+pueue status
+man nixvim
+which p
+which pu
+rg pue
+j dbg
+pueue status
+rg pue
+which e
+nvim
+j n
+j b
+j d
+nvim
+j d
+nvim
+j d
+j n
+j n
+nvim packages/nvim/default.nix
+j b
+j d
+git status
+git log -1 | wc -l
+git log -1 | count
+git log -1 | length
+git log
+git log --oneline
+git log --oneline | length
+git status
+MANPAGER="nvim +Man!" man 5 home-configuration.nix
+gws
+ls
+git status
+nvim
+j b
+pueue add just d
+pueue status
+pueue -h
+pueue follow
+pueue status
+pueue log
+pueue follow
+pueue wait
+pueue wait; nvim
+ls -la
+git status
+j b
+which j
+just b
+brew uninstall --cask qutebrowser
+which brew
+$env.PATH
+which brew
+just b
+nvim
+j b; nvim
+just b
+just b; nvim
+config env
+config nu
+nu
+j b
+just b
+nvim
+config nu
+nu
+j b
+nu
+j d; nu
+lg
+config nu
+nu
+zj a -c home
+nvim
+zj a
+zj ls
+zj a main
+ls -la
+man launchd.plist
+man nix.conf
+nix store
+nix store optimize
+nix store optimise
+zj ls
+time j b
+htop
+btop
+time just b
+ls /nix/store/li49icaarj06p61l80w8wbzpx4h1wjzl-source/
+nix store optimise
+nix store optimize --help
+nix store optimise --help
+nvim
+darwin-rebuild switch --flake .
+nix flake check
+nix flake check nvim
+nix flake check '.#checks.nvim'
+nix flake check --help
+nix flake check '.#checks.aarch64-darwin.nvim'
+nix flake check
+nix run .
+nix build .
+btop
+htop
+nix
+nix --help
+nix flake --help
+nix eval --help
+nix repl
+nix flake check
+git status
+lg
+rg emacsPackagesFor
+ls -la
+~/code/ryan4yin/nix-config/
+just b
+ls -la ~/.config/doom.bak/
+cd ~/.config/doom.bak/
+ls | where name ends-with '.bak'
+ls | where $it.name ends-with '.bak'
+ls
+ls -la
+..
+ls
+cp doom.bak/ ~/nix-config/modules/home/emacs/doom
+cp -r doom.bak/ ~/nix-config/modules/home/emacs/doom
+lg
+nix-config/modules/home/emacs/
+ls
+ls -la
+cd dir
+ls -la doom
+lazygit
+cd doom/
+ls
+rm -rf .git
+lg
+git status
+just b
+lg
+just b
+rg bashrcExtra -C
+rg bashrcExtra -C1
+rg bashrcExtra | find emacs
+rg bashrcExtra | find emacs | from ssv -n
+rg bashrcExtra | find emacs | get 0
+rg bashrcExtra | find emacs | get 0 | from ssv -n
+nix repl
+darwin-rebuild --help
+darwin-rebuild switch --flake . --show-trace --verbose
+j b
+git status
+statix list
+nix flake check
+nix log /nix/store/9lk02qgk31mzh11cl33l3iaifgq8kbhb-pre-commit-run.drv
+statix list
+statix dump > statix.toml
+statix dump | save statix.toml
+statix dump | save statix.toml -f
+ls -la
+j b
+git status
+emacs
+which doom
+rg doom
+rg PATH
+$env.PATH
+nix develop
+$env.PATH
+which doom
+just build
+just b
+rg hm
+just b
+rg dag
+just b
+nix repl
+just b
+git status
+which doom
+man home-configuration.nix
+just b
+which doom
+man home-configuration.nix
+man nu
+help 
+help --find env
+help export
+statix
+statix check 
+statix check  .
+statix check
+statix check -h
+deadnix
+deadnix -h
+deadnix --help
+deadnix .
+alejandra
+alejandra --help
+lint
+j lint
+rm statix.toml
+j lint
+alejandra --help
+j lint
+alejandra --check --quiet .
+j lint
+j format
+nix fm
+nix fmt
+time nix fmt
+j format
+time j format
+time just format
+deadnix --help
+statix --help
+statix fix --help
+time just lint
+time just format
+git status
+j b
+pueue status
+pueue follow
+pueue status
+pueue
+pueue follow
+pueue kill 102
+pueue
+pueue stop
+pueue --help
+pueue status
+pueue shutdown
+pueue status
+pueue start
+pueue status
+j b
+pueue follow
+pueue follow --help
+pueue add --help
+pueue follow
+j b
+pueue follow
+pu follow
+j b
+sleep -h
+pu
+pu kill
+pu
+j b
+nix search nixpkgs vim-just
+just n
+just n
+nix run .
+time just t
+j t
+nvim
+j b
+pu
+pu --help
+pu status --help
+pu --help
+pu
+pu clean
+pu
+j t
+pu parallel -h
+pu parallel 2
+pu
+j b
+pu
+pu clean
+pu
+pu waith --help
+pu wait --help
+pu 
+pu -h
+pu status -h
+pu status -h --json
+pu status --json
+pu status --json |  explore
+pu status --json | from json | explore
+pu
+pu clean
+pu
+nu
+which doom
+nu
+nix develop
+which doom
+doom
+doom sync
+pu add 'emacs --fg-daemon'
+pgrep emacs
+lsof -p 79100 | find unix
+emacsclient --create-frame
+emacsclient --create-frame --socket-name=$HOME/emacs/server
+emacsclient --create-frame --socket-name=$env.HOME/emacs/server
+$env.HOME
+lsof -p 79100 | from ssv
+lsof -p 79100 | from ssv | explore
+lsof -p 79100 | from ssv -m1 | explore
+lsof -p 79100 | from ssv -m 1 | explore
+lsof -p 79100 | from ssv -m 1 | where fd == "unix"
+lsof -p 79100 | from ssv -m 1 | where FD == "unix"
+lsof -p 79100 | from ssv -m 1 | FD
+lsof -p 79100 | from ssv -m 1 | head
+lsof -p 79100 | from ssv -m 1 | tail
+lsof -p 79100 | from ssv -m 1 | where TYPE == "unix"
+lsof -p 79100 | from ssv -m 1 | where TYPE == "unix" | get NODE
+lsof -p 79100 | from ssv -m 1 | where TYPE == "unix" | get NODE.0
+help get
+lsof -p 79100 | from ssv -m 1 | where TYPE == "unix" | get NODE.0
+ps | find emacs
+ps | find emacs | get pid | lsof -p $in
+ps | find emacs | get pid.0 | lsof -p $in
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix"
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix" | get NODE.0
+emacsclient --create-frame --socket-name=(ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix" | get NODE.0)
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix" | get NODE.0
+emacsclient --create-frame --socket-name="(ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix" | get NODE.0)"
+emacsclient --create-frame --socket-name=/Users/michael/emacs/server
+e
+e --socket-name $env.HOME/emacs/server
+e --socket-name ($env.HOME)/emacs/server
+e --socket-name "($env.HOME)/emacs/server"
+$env.HOME
+help string
+help
+help --find interpolation
+help --find interpolate
+emacsclient
+emacsclient --create-frame
+emacsclient --create-frame --socket-name=$"($env.HOME)/emacs/server"
+$"(env.HOME)"
+$"($env.HOME)"
+emacsclient --create-frame --socket-name $"($env.HOME)/emacs/server"
+man emacsclient
+nvim home/base/tui/editors/emacs/default.nix
+lg
+pu
+pu kill
+pu
+ps | find emacs
+help find
+ls
+rg "something"
+rg "nix"
+rg "nix" | find doom
+rg nix --json
+rg nix --json | from json
+rg nix --json | from json --help
+rg nix --json | from json --objects
+rg nix --json | from json --objects | get match
+rg nix --json | from json --objects | values
+man home-configuration.nix
+rg launchd
+nvim
+j b
+just b
+j b
+man home-configuration.nix
+j b
+just _darwin-rebuild
+git status
+pu
+j b
+pu
+pu wait
+pu log
+pu log -h
+pu log -f
+e
+pgrep emacs
+j b
+ps | find emacs
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix" | get NODE.0
+e
+e --socket-name "$($env.HOME)/emacs/server"
+e --socket-name $"($env.HOME)/emacs/server"
+ls -la
+pgrep emacs
+ls -la
+e
+ps | find emacs
+e --socket-name $"($env.HOME)/emacs/server"
+ps | find emacs
+ps | find emacs | kill $in.pid.0
+ps | find emacs
+nix develop
+j b
+ps | find emacs
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix" | get NODE.0
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix"
+e --socket-name $"($env.HOME)/emacs/server"
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix"
+emacsclient --create-frame --alternate-editor="emacs --bg-daemon"
+ps | find emacs
+ps --help
+ps | where name == "emacs"
+ps | where name == "emacs" | get pid
+ps | where name == "emacs" | get pid.0
+ps | where name == "emacs" | get pid.0 | kill
+ps | where name == "emacs" | get pid.0 | kill -h
+ps | where name == "emacs" | get pid.0 | kill -
+ps | where name == "emacs" | get pid.0 | kill $in
+ls -la
+emacsclient --create-frame --alternate-editor="" --no-wait
+emacsclient --reuse-frame
+emacsclient --reuse-frame --socket-name $"($env.HOME)/emacs/server"
+emacsclient --reuse-frame --socket-name $"($env.HOME)/emacs/server" --no-wait
+emacsclient --socket-name $"($env.HOME)/emacs/server" --no-wait
+emacsclient --socket-name $"($env.HOME)/emacs/server" --no-wait .
+emacsclient --socket-name $"($env.HOME)/emacs/server" --no-wait ..
+man emacsclient
+e
+nvim
+ls ~/.config/emacs
+ls -la ~/.config
+ls -la ~/.config | find emacs
+j b
+git status
+j b
+gws
+git status
+e
+ef
+e
+e .
+ps | where name == "emacs"
+ps | where name == "emacs" | get pid.0 | lsof -p $in
+ps | where name == "emacs" | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix"
+$env.EMACS_SOCKET_NAME
+man emacsclient
+e -s $env.HOME/nix-config/emacs/server
+e -s $"($env.HOME)/nix-config/emacs/server"
+e -s $"($env.HOME)/nix-config/emacs/server" .
+e -s $"($env.HOME)/nix-config/emacs/server" --create-frame
+ps | find emacs
+ps | find emacs | get pid.0 | kill $in
+ps | find emacs
+e
+e --create-frame
+ps | find emacs
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix"
+ls ~ | find emacs
+mv ~/emacs/ ~/emacs.bak
+man nixvim
+j b
+ps | find emacs | get pid.0 | lsof -p $in | from ssv -m 1 | where TYPE == "unix"
+j b
+pu log
+j _darwin-rebuild
+spotify_player
+j _darwin-rebuild
+nix repl
+lazygit
+j b
+nix repl
+nix repl --impure
+rg config.lib
+nix repl
+j b
+ls -la ~/.config
+ls -la ~/.config | find doom
+j b
+ls ~/.config | where name == "doom"
+ls ~/.config | find doom
+ls -l ~/.config | find doom
+rm -rf ~/.config/doom/
+j b
+ls -la ~/.config | find doom
+git status
+nix repl
+rg config
+rg config.lib
+nix repl
+nu
+lg
+j b
+nix repl
+j b
+nix repl
+j b
+ls -la ~/.config | find doom
+ls -la ~/.config
+ls -la ~/.config/doom
+rm -rf ~/.config/doom
+j b
+ls -la ~/.config | find doom
+j b
+ls -la ~/.config/doom
+ls -la ~/.config
+ls -la ~/.config | find doom
+cd ~/.config/doom
+git status
+ls -la modules/home/emacs/
+ls -la modules/home/emacs/doom
+j b
+ls -la ~/.config | find doom
+e
+e .
+j b
+which mount
+mount --help
+man mount
+j b
+e .
+j b
+ls -la ~/.config | find doom
+ls -la /nix/store/7sbyn87bw4py7j4g9502cxjq81a2ybcz-home-manager-files/.config | find doom
+ls -la /nix/store/1p01gis2q0k4abgy36sz6866hjc5dgg1-hm_doom/
+git log
+git diff
+git diff HEAD
+git diff HEAD~
+cd ~/.config/doom
+ls
+pwd
+pwd -h
+..
+cd ~/nix-config/
+ls -la
+e .
+e ~/.config/doom
+ls -la
+git status
+ls
+ls -la emacs
+rm -rf emacs
+ls
+nix repl
+j b
+e -nca "" ~/.config/doom
+e .
+ps | find emacs
+killall emacs
+ps | find emacs
+j b
+pu
+pu kill 36
+pu
+pu follow
+nix repl
+j b
+ls -la ~/.config | find doom
+cd ~/.config/doom
+ls -la /nix/store/liddvxj7a85ym8hrwf7ckad275livizh-home-manager-files/
+ls -la /nix/store/liddvxj7a85ym8hrwf7ckad275livizh-home-manager-files/.config/doom
+ls -la /nix/store/iqwmwj01zcqv70finnn7s0qang78cc0n-hm_doom
+nix repl
+j b
+ls -la ~/.config
+ls -la ~/.config | find doom
+cd ~/.config/doom
+nix --help
+nix path-info --help
+nix store --help
+nix store ls
+nix store ls --help
+nix path-info --help
+ls -la ~/.config/doom
+ls -la ~/.config/doom | ls -la $in.target.0
+ls -la ~/.config/doom | ls -la $in.target.0 | ls -la $in.target.0
+nix repl
+nix repl --help
+ls -la ~/.config/doom | ls -la $in.target.0 | ls -la $in.target.0
+ls -la /nix/store/qxhygcvxf1zbydqhiw7pdr0yg0frvwl1-source/
+nix repl
+just b
+cd ~/.config/doom
+ls -la ~/.config/doom | ls -la $in.target.0 | ls -la $in.target.0
+ls -la ~/.config/doom
+ls -la ~/.config/doom | ls -la $in.target.0
+ls -la ~/.config/doom | ls -la $in.target.0 | ls -la $in.target.0
+ls -la ~/.config/doom | ls -la $in.target.0 
+ls -la ~/.config/doom | ls -la $in.target.0 | get target.0
+nix print
+nix --help
+nix print-dev-env
+nix realisation --help
+nix realisation info --help
+nix realisation info .#homeConfigurations."michael@kocaeli"
+nix realisation info .#homeConfigurations
+nix realisation info .#outputs.homeConfigurations
+nix realisation info .#homeConfigurations."michael@kocaeli"
+nix realisation info .#homeConfigurations."michael@kocaeli".config
+nix realisation info .#homeConfigurations."michael@kocaeli".lib
+nix repl
+j b
+pu kill
+pu
+j b
+cd ~/.config/doom
+ls -la ~/.config/doom
+ls -la ~/.config/doom | ls -la $in.target.o
+ls -la ~/.config/doom | ls -la $in.target.0
+ls -la /nix/store/v8nw2dv7378mnrfkz3lm47mawlf0hhh1-hm_michael/
+ls -la ~/.config/doom | ls -la $in.target.0
+ls -la /nix/store/snjnalir5jr7ip4c8dmzf5awwgzqlh6f-0hfh9cj930fimybsvgv3v4n4c11pnjlr-source/
+ls -la /nix/store/xaj05my41vggzrp8js1qsc8zxryjjbv9-doom/
+j b
+nix repl
+j b
+nix repl
+git status
+j b
+which home-manager
+home-manager switch --flake .
+zj a main
+ls -la
+cd nix-config/
+ls
+home-manager switch --flake .\
+home-manager switch --flake .
+doom
+doom run
+doom run --help
+j b
+doom run --repl
+home-manager switch --flake nix-config
+home-manager switch --flake .nix-config
+home-manager switch --flake ./nix-config
+which doom
+zj ls
+zj da
+zj ls
+ls -la
+cd nix-config/
+nvim
+just build
+vim modules/home/emacs/default.nix
+just build
+ls -la ~/.config/doom
+ls -la ~/.config/doom | ls -la $in.target.0
+ls -la ~/.config/doom | ls -la $in.target.0 | ls -la $in.target.0
+ls -la
+nvim
+just build
+doom sync
+nvim
+ls -la
+nix repl
+just build
+ls -la ~/.config
+ls -la ~/.config/doom
+cd ~/.config/doom
+ls -la ~/.config/doom | ls -la $in.target.0 | ls -la $in.target.0
+ls -la ~/.config/doom | ls -la $in.target.0
+just build
+cd ~/.config/doom
+ls -la ~/.config/doom
+ls -la ~/.config/doom | ls -la $in.target.0
+ls -la ~/.config/doom | ls -la $in.target.0 | ls -la $in.target.0
+ls -la ~/.config/doom | ls -la $in.target.0 
+cd /nix/store/v8nw2dv7378mnrfkz3lm47mawlf0hhh1-hm_michael/
+pwd
+cd -
+just build
+nix repl
+just build
+nix repl
+just build
+cd ~/.config/doom
+ls -la
+j f
+j l
+..
+j l
+j b
+cd ~/.config/doom
+cd -
+j b
+cd ~/.config/doom
+cd -
+e .
+e -n .
+cd ~/code/delegator/ceasplus.com/
+ls -la
+git status
+git pull
+git status
+just
+just dev
+cd ~/nix-config/
+ls
+ls -la
+nvim
+man nixpkg
+man nixpkgs
+info nix
+info nixpkgs
+man darwin-rebuild
+man nix
+man nix.conf
+man
+man man
+man -k nix
+man -k nixpkgs
+man man
+apropos nix
+apropos nix.conf
+apropos
+man apropos
+which apropos
+nix fmt
+just build
+which nvim
+git status
+sudo nvram boot-args=-arm64e_preview_abi
+csrutil status
+ya
+just build
+ps | find yabai
+http get google.com
+https get
+http get https://google.com
+http get https://google.com -h
+http get https://google.com -H
+http get -H https://google.com
+help http
+http head https://google.com
+http head https://google.com -h
+http head https://google.com -R f
+http get https://google.com
+http get https://www.google.com
+qutebrowser
+http get https://www.google.com
+http head https://www.google.com
+http head https://www.google.com -R
+http head https://www.google.com -R f
+http head https://www.google.com
+http head https://lineworker.com
+http head https://www.lineworker.com
+http head https://www.lineworker.com -R
+http head https://www.lineworker.com -h
+http head https://www.lineworker.com -R e
+http head https://lineworker.com -R e
+http head https://lineworker.com -R m
+help http
+http options https://google.com
+http head https://www.google.com
+open https://g.co/p3phelp
+help open
+^open https://g.co/p3phelp
+ls -la ~/.config/yazi/
+just build
+pu kill
+just _darwin-rebuild
+csrutil status
+sudo darwin-rebuild --flake .
+which darwin-rebuild
+sudo darwin-rebuild switch --flake .
+darwin-rebuild switch --flake . --show-trace --verbose
+darwin-rebuild switch --flake . --show-trace --verbose --impure
+ls -la /private/etc/sudoers.d
+ls -la /private/etc/ | find sudo
+bat /private/etc/sudoers
+cat /private/etc/sudoers
+sudo cat /private/etc/sudoers
+sudo cat /private/etc/yabai
+sudo cat /private/etc/sudoers.d/yabai
+..
+darwin-rebuild switch --flake . --show-trace --verbose --impure
+sudo rm -rf /etc/sudoers.d/yabai
+nvim justfile
+j _darwin-rebuild
+darwin-rebuild switch --flake . --show-trace --verbose --impure
+git status
+ls -la
+git log
+j b
+git log -1 --oneline --format='%s'
+let gen = (darwin-rebuild --list-generations | from ssv -n | where column3? == '(current)' | get column1.0);
+gen
+$gen
+just build
+just
+just -h
+just --summary
+just --dry-run _darwin-rebuild
+just build
+noti --help
+noti -e
+help do
+help try
+help catch
+j b
+pu log
+j b
+not --help
+noti --help
+just b
+man configuration.nix
+skhd -h
+just build
+ls -la
+git status
+ps | find skhd
+skhd
+which skhd
+ls -la ~/.config
+ls -la ~/.config/skhd
+ls -la ~/.config/yabai
+which skhd
+j b
+zsh
+which skhd
+j b
+skhd -h
+which skhd
+skhd --help
+skhd -o
+skhd -r
+skhd -k "alt - space"
+skhd -o
+which yabai
+yabai -h
+just build
+skhd -h
+skhd --log
+man skhd
+info skhd
+rg skhd
+rg -C1- skhd
+rg -C 10 skhd
+pu log
+rg --files /var/log
+rg --files /var/log | find skhd
+find -h
+ls -lar
+ls -h
+rg --files / | find skhd
+nvim
+git status
+ls -la
+pu
+pu -h
+pu status -h
+pu
+htop
+pu
+pu -h
+noti -h
+noti -g
+man noti
+ps | find nix
+ps | find -r nix
+ps 
+sudo ps
+ps
+ps -h
+ps -l
+ps -l | find nix
+pu follow
+pu kill
+htop
+skhd --help
+skhd -r
+git status
+j _darwin-rebuild
+just build
+skhd -r
+just build
+which skhd
+skhd -r
+yabai -m query --spaces
+yabai -m query --spaces --space
+yabai -m query --displays --display
+yabai -m query --windows --window
+yabai -m query --windows --window | from json
+yabai -m query --displays --display
+yabai -m query --spaces --space | from json | explore
+yabai -m query --displays --display | from json | explore
+yabai -m query --displays --display | from json | frames
+yabai -m query --displays --display | from json | get frames
+yabai -m query --displays --display | from json
+yabai -m query --windows --window | from json | explore
+yabai -m query --windows --window | from json
+yabai -m query --windows | from json
+yabai -m query --windows | from json | explore -h
+yabai -m query --windows | from json | explore
+yabai -m query --windows | from json
+yabai -m query --windows | from json | where display == 1
+ps
+ps | sort cpy
+ps | sort cpu
+ps | sort -h
+help
+help commands
+help commands | find sort
+ps | sort-by cpu
+ps | sort-by cpu --reverse
+ps | sort-by cpu
+ps | sort-by cpu | tail
+ps | sort-by cpu | tail -h
+ps | sort-by cpu | lst
+ps | sort-by cpu | last
+ps | sort-by cpu | last -h
+ps | sort-by cpu | last 5
+ps | sort-by cpu --reverse | first 5
+ps | sort-by cpu --reverse | first 10
+htop
+help
+help help
+help operators
+help
+help -h
+help escapes
+help -h
+help externs
+help externshelp modules
+help modules
+help modules | keys
+help commands -h
+help commands keys
+help commands -f keys
+help commands -f key
+help commands
+ls
+man home-configuration.nix
+just build
+cd nix-config/
+just build
+htop
+spotify_player
+doom sync
+yabai --restart-service
+yabai --load-sa
+sudo yabai --load-sa
+which skhd
+which yabai
+just build
+pueue 
+htop
+pu
+pu log
+just build
+j b
+which doom
+j b
+man home-configuration.nix
+just build
+doom sync --help
+just build
+git status
+just build
+man yabai
+just buil
+just build
+just fmt
+just f
+just build
+nix flake update
+nix flake
+nix flake update
+just build
+ls
+just build
+nix profile remove
+nix profile
+nix profile --help
+nix profile list
+nix profile --help
+nix profile history
+nix profile --help
+nix profile remove --help
+nix profile remove --debug
+nix profile remove --force
+nix profile remove --all
+nix env
+nix --help
+nix show-config
+nix doctor
+sudo -i nix-env -q
+nix --version
+sudo nix --version
+nix profile
+nix profile --help
+nix profile remove --help
+nix profile remove
+nix profile list
+nix profile list --help
+nix-env --help
+ls -la ~/.nix-profile/
+cat ~/.nix-profile/manifest.json
+rm -rf ~/.nix-profile/manifest.json
+sudo vim ~/.nix-profile/manifest.json
+ls -la ~/.nix-profile
+sudo chmod u+rw ~/.nix-profile/manifest.json && sudo vim ~/.nix-profile/manifest.json
+sudo chmod u+rw ~/.nix-profile/manifest.json; sudo vim ~/.nix-profile/manifest.json
+ls -la ~/.nix-profile
+sudo nano ~/.nix-profile
+sudo vim ~/.nix-profile/manifest.json
+TERM=builtin_xterm sudo vim ~/.nix-profile/manifest.json
+sudo chmod u-w ~/.nix-profile/manifest.json
+ls -la ~/.nix-profile
+just build
+rm -rf ~/Library/LaunchAgents/org.nix-community.home.pueue.plist
+just build
+home-manager --help
+home-manager --flake . packages
+home-manager --flake packages --flake .
+home-manager --flake packages --flake .#homeConfigurations
+home-manager generations
+just build
+nix profile list
+nix profile list --help
+nix profile
+nix profile --help
+nix profile list --help
+nix profile list .#homeConfigurations
+nix profile list --profile
+nix profile list --profile .#homeConfigurations
+ls -la ~/.nix-profile/
+cat ~/.nix-profile/manifest.json
+git status
+man home-configuration.nix
+qutebrowser
+config edit
+config
+config nu
+ls -la
+which emacs
+pueue add -g qute qutebrowser
+echo $EDITOR
+$env.EDITOR
+man yabai
+man skhd
+skhd --help
+skhd -h
+skhd -o
+which skhd
+skhd --start-service
+skhd -r
+skhd -h
+skhd
+skhd -r
+which emacs
+qutebrowser
+pueue add -g qute qutebrowser
+pueue
+chezmoi
+which cm
+alias -h
+config nu
+$env.EDITOR
+queue
+pueueu
+pueue
+pueue reset
+pueue
+pueue group
+pueue group remove qute
+pueue
+zj status
+which zj
+yazi
+pueue group add q
+pueue add -g q -- qutebrowser
+$env.EDITOR
+$env.VISUAL
+config nu
+alias
+aliases
+help
+help commands
+help alias
+open https://www.nushell.sh/book/thinking_in_nu.html
+help open
+scope aliases
+help scope
+scope variables
+scope variables 
+scope variables | explore
+z lineworke
+yabai -m query --windows --window | from json
+yabai -m query --windows | from json
+yabai -m query --windows | from json | explore
+yabai -m query --spaces
+yabai -m query --spaces 
+yabai -m query --spaces | from json
+yabai -m query --spaces --space | from json
+yabie
+yabaie
+config yabai
+help confg
+scope config
+help config
+config nu
+nvime
+p
+n
+help commands | explore
+help p
+help prev
+cd ~/.config/nvim
+ls -la
+nvim .
+config nu
+nvim .
