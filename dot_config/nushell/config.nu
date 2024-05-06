@@ -864,3 +864,9 @@ $env.config = {
         }
     ]
 }
+
+# Carapace completions
+source ~/.cache/carapace/init.nu
+
+# Atuin history
+source ~/.local/share/atuin/init.nu

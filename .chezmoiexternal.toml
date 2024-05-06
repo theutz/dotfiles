@@ -1,31 +1,4 @@
-[".config/zsh/.zprezto"]
-type = "git-repo"
-url = "https://github.com/theutz/prezto"
-refreshPeriod = "1h"
-clone.args = ["--recursive", "--jobs=4"]
-
-[".config/zsh/.zprezto/contrib/zsh-defer"]
-type = "git-repo"
-url = "https://github.com/romkatv/zsh-defer"
-refreshPeriod = "1h"
-clone.args = ["--recursive"]
-
-[".config/nvim"]
-type = "git-repo"
-url = "https://github.com/theutz/nvim"
-refreshPeriod = "1h"
-
 [".config/tmux/plugins/tpm"]
 type = "git-repo"
 url = "https://github.com/tmux-plugins/tpm"
-refreshPeriod = "1h"
-
-[".hammerspoon"]
-type = "git-repo"
-url = "https://github.com/theutz/hammerspoon"
-refreshPeriod = "1h"
-
-[".config/wezterm"]
-type = "git-repo"
-url = "https://github.com/theutz/wezterm"
 refreshPeriod = "1h"
