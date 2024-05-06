@@ -3,12 +3,17 @@ yabai -m config menubar_opacity 0.5
 yabai -m config display_arrangement_order horizontal # default | vertical | horizontal
 yabai -m config window_origin_display focused # default | focused | cursor
 yabai -m config window_placement first_child # first_child | second_child
-yabai -m config window_zoom_persist true
+yabai -m config window_zoom_persist on # on | off
 yabai -m config window_shadow float # true | false | float
-yabai -m config window_opacity on
-yabai -m config window_opacity_duration 0.8
+yabai -m config window_opacity on # on | off
+yabai -m config window_opacity_duration 0.1
 yabai -m config active_window_opacity 0.95
-yabai -m config normal_window_opacity 0.85
+yabai -m config normal_window_opacity 0.80
+yabai -m config insert_feedback_color 0x88FF0000
+yabai -m config split_ratio 0.5
+yabai -m config split_type auto # vertical | horizontal | auto
+yabai -m config mouse_modifier ctrl # cmd | alt | shift | ctrl | fn
+yabai -m config mouse_drop_action stack # swap | stack
 
 # Space Settings
 yabai -m config layout bsp # bsp | stack | float
@@ -18,3 +23,7 @@ yabai -m config bottom_padding $padding
 yabai -m config left_padding $padding
 yabai -m config right_padding $padding
 yabai -m config window_gap $padding
+
+# Rules
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app-'^ClearVPN$' manage=off
