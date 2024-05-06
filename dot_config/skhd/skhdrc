@@ -1,13 +1,39 @@
+# Setup modes
+:: default : yabai -m config active_window_border_color 0xff775759
+:: yabai : yabai -m config active_window_border_color 0xff24ccaa
+alt - m ; yabai
+yabai < escape ; default
+default, yabai < cmd - return : wezterm
+
+# Focusing
+alt - d : (yabai -m window --display next && yabai -m display --focus next) || (yabai -m window --display first && yabai -m display --focus first)
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
-alt - t : wezterm
-alt - o : yabai -m window --toggle zoom-fullscreen
-alt - m : yabai -m window --ratio abs:0.6
-shift + alt - m : yabai -m window --ratio abs:0.5
+alt - n : yabai -m window --focus stack.next
+alt - p : yabai -m window --focus stack.prev
 
+# Swapping
 shift + alt - h : yabai -m window --swap west
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east
+shift + alt - n : yabai -m window --stack next
+shift + alt - p : yabai -m window --stack prev
+
+# Warping
+ctrl + alt - h : yabai -m window --warp west
+ctrl + alt - j : yabai -m window --warp south
+ctrl + alt - k : yabai -m window --warp north
+ctrl + alt - l : yabai -m window --warp east
+ctrl + alt - n : yabai -m window --warp next
+ctrl + alt - p : yabai -m window --warp prev
+
+# Launching
+alt - return : wezterm
+
+# Resizing
+alt - o : yabai -m window --toggle zoom-fullscreen
+alt - m : yabai -m window --ratio rel:+0.1
+shift + alt - m : yabai -m window --ratio rel:-0.1

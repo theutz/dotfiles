@@ -1,5 +1,7 @@
 # Global Settings
 yabai -m config menubar_opacity 0.5
+yabai -m config mouse_follows_focus on # on | off
+yabai -m config focus_follows_mouse autoraise # autofocus | autoraise | off
 yabai -m config display_arrangement_order horizontal # default | vertical | horizontal
 yabai -m config window_origin_display focused # default | focused | cursor
 yabai -m config window_placement first_child # first_child | second_child
@@ -17,7 +19,7 @@ yabai -m config mouse_drop_action stack # swap | stack
 
 # Space Settings
 yabai -m config layout bsp # bsp | stack | float
-padding=8
+padding=16
 yabai -m config top_padding $padding
 yabai -m config bottom_padding $padding
 yabai -m config left_padding $padding
@@ -27,3 +29,6 @@ yabai -m config window_gap $padding
 # Rules
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app-'^ClearVPN$' manage=off
+
+# Borders
+borders active_color=0xfff6c177 inactive_color=0xff6e6a86 width=8.0 &
