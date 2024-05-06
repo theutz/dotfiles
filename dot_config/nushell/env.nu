@@ -106,4 +106,4 @@ carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 
 # Setup atuin for history
 mkdir ~/.local/share/atuin/
-atuin init nu | save ~/.local/share/atuin/init.nu
+atuin init nu | save -f ~/.local/share/atuin/init.nu
