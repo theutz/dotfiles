@@ -1,5 +1,5 @@
 # Setup modes
-:: default : yabai -m config active_window_border_color 0xff775759
+:: default : borders active_color 0xff775759
 :: yabai : yabai -m config active_window_border_color 0xff24ccaa
 alt - m ; yabai
 yabai < escape ; default
