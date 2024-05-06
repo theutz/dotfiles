@@ -1,5 +1,10 @@
+# Setup shared history
 eval "$(atuin init zsh)"
+
+# Setup shared completion
 export CARAPACE_BRIDGES='zsh,bash'
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
+# Setup keychain
+eval "$(keychain --eval --quiet --agents 'ssh,gpg' "$KEYCHAIN_KEYS[@]")"
