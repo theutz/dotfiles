@@ -53,6 +53,7 @@ path=(
   $HOME/bin
   $HOME/.config/phpmon/bin
   $HOME/.config/emacs/bin
+  $HOME/.local/share/bob/nvim-bin
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
