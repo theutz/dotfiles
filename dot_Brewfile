@@ -197,7 +197,7 @@ brew "mycli"
 # Open source relational database management system
 brew "mysql", restart_service: true
 # Search tool like grep and The Silver Searcher
-brew "ripgrep"
+brew "ripgrep", link: false
 # Command-line and local web note-taking, bookmarking, and archiving
 brew "nb"
 # Fast, highly customisable system info script
@@ -228,6 +228,8 @@ brew "pop"
 brew "poppler"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
+# Command-line tool for managing long-running shell commands
+brew "pueue"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Generic machine emulator and virtualizer
@@ -303,7 +305,7 @@ brew "zsh"
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
 # GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-dbus", "with-elrumo2-icon", "with-imagemagick", "with-mailutils", "with-native-comp", "with-poll", "with-xwidgets"]
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-dbus", "with-elrumo2-icon", "with-imagemagick", "with-mailutils", "with-native-comp", "with-poll", "with-xwidgets"], link: false
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler", link: false
 brew "f1bonacc1/tap/process-compose"
