@@ -1,44 +1,81 @@
 # Setup modes
 :: default : borders active_color=0xfff6c177 inactive_color=0xff6e6a86
-:: yabai @ : borders active_color=0xffeb6f92 inactive_color=0xffc4a7e7
-ctrl - m : yabai
-yabai < escape : default
-
-.load "yabai_mode"
 
 # TODO: Use yabai mode for spaces, use flat mode for in-space activities
 
+#:: yabai @ : borders active_color=0xffeb6f92 inactive_color=0xffc4a7e7
+#ctrl - m : yabai
+#yabai < escape : default
+#.load "yabai_mode"
+
+
+#
 # Focusing
+#
+
+# directional
 alt - h : yabai -m window --focus west || yabai -m display --focus prev
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east || yabai -m display --focus next
-alt - n : yabai -m window --focus stack.next || yabai -m window --focus stack.first
-alt - p : yabai -m window --focus stack.prev ||  yabai -m window --focus stack.last
-alt - i : yabai -m window --focus next || yabai -m display --focus next
-alt - o : yabai -m window --focus prev || yabai -m display --focus prev
-alt - return : yabai -m window --toggle zoom-fullscreen && yabai -m window --raise
 
+# ordinal
+alt - n : yabai -m window --focus next || yabai -m display --focus next
+alt - p : yabai -m window --focus prev || yabai -m display --focus prev
+
+# stacks
+alt - i : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+alt - o : yabai -m window --focus stack.prev ||  yabai -m window --focus stack.last
+
+# toggles
+alt - return : yabai -m window --toggle zoom-fullscreen && yabai -m window --raise
+alt - space : yabai -m window --toggle zoom-parent && yabai -m window --raise
+
+#
 # Swapping
+#
+
+# directional
 shift + alt - h : yabai -m window --swap west || (yabai -m window --display prev && yabai -m display --focus prev)
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
-shift + alt - n : yabai -m window --swap stack.next || yabai -m window --swap stack.first
-shift + alt - p : yabai -m window --swap stack.prev || yabai -m window --swap stack.last
-shift + alt - i : yabai -m window --swap next || (yabai -m window --display next && yabai -m display --focus next)
-shift + alt - o : yabai -m window --swap prev || (yabai -m window --display prev && yabai -m display --focus prev)
 
+# ordinal
+shift + alt - n : yabai -m window --swap next || (yabai -m window --display next && yabai -m display --focus next)
+shift + alt - p : yabai -m window --swap prev || (yabai -m window --display prev && yabai -m display --focus prev)
+
+# stacks
+shift + alt - i : yabai -m window --swap stack.next || yabai -m window --swap stack.first
+shift + alt - o : yabai -m window --swap stack.prev || yabai -m window --swap stack.last
+
+#
 # Warping
+#
+
+# directional
 ctrl + alt - h : yabai -m window --warp west || (yabai -m window --display prev && yabai -m display --focus prev)
 ctrl + alt - j : yabai -m window --warp south
 ctrl + alt - k : yabai -m window --warp north
 ctrl + alt - l : yabai -m window --warp east || (yabai -m window --display next && yabai -m display --focus next)
-ctrl + alt - n : yabai -m window --stack next
-ctrl + alt - p : yabai -m window --stack prev
-ctrl + alt - i : yabai -m window --warp next || (yabai -m window --display next && yabai -m display --focus next)
-ctrl + alt - o : yabai -m window --warp prev || (yabai -m window --display prev && yabai -m display --focus prev)
 
+# ordinal
+ctrl + alt - n : yabai -m window --warp next || (yabai -m window --display next && yabai -m display --focus next)
+ctrl + alt - p : yabai -m window --warp prev || (yabai -m window --display prev && yabai -m display --focus prev)
+
+# stacks
+ctrl + alt - i : yabai -m window --stack next
+ctrl + alt - o : yabai -m window --stack prev
+
+# mutations
+ctrl + alt - b : yabai -m space --balance
+ctrl + alt - e : yabai -m space --equalize
+ctrl + alt - x : yabai -m space --mirror x-axis
+ctrl + alt - y : yabai -m space --mirror y-axis
+
+#
 # Launching
-default, yabai < ctrl - return : wezterm
-default < alt - return : wezterm
+#
+
+cmd - return : wezterm
+alt - return : wezterm
