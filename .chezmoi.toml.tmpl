@@ -19,6 +19,7 @@ command = "nu"
 
 [edit]
 command = "nvim"
+args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
 watch = true
 apply = true
 
