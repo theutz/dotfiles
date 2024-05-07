@@ -877,3 +877,4 @@ source ~/.local/share/zoxide/init.nu
 # Source Other Scripts
 source chezmoi.nu
 source aliases.nu
+source yazi.nu
