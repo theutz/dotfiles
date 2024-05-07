@@ -4,6 +4,8 @@
 ctrl - m ; yabai
 yabai < escape ; default
 
+# TODO: Use yabai mode for spaces, use flat mode for in-space activities
+
 # Focusing
 alt - h : yabai -m window --focus west || yabai -m display --focus prev
 alt - j : yabai -m window --focus south
@@ -22,9 +24,13 @@ yabai < alt - p : yabai -m window --focus stack.prev
 yabai < p : yabai -m window --focus prev || yabai -m display --focus prev
 
 # Swapping
+shift + alt - h : yabai -m window --swap west || (yabai -m window --display prev && yabai -m display --focus prev)
 yabai < shift - h : yabai -m window --swap west || (yabai -m window --display prev && yabai -m display --focus prev)
+shift + alt - j : yabai -m window --swap south
 yabai < shift - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
 yabai < shift - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
 yabai < shift - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
 yabai < shift - n : yabai -m window --swap stack.next
 yabai < shift - p : yabai -m window --swap stack.prev
