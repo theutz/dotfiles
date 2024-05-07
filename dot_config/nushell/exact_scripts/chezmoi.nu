@@ -1,11 +1,11 @@
 alias cm = ^chezmoi
 alias cma = cm add
-alias cmap = cm apply
+alias cmap = cm apply --interactive
 alias cmd = cm diff
 alias cme = cm edit
 alias cmm = cm merge
 alias cmma = cm merge-all
-alias cmra = cm re-add
+alias cmra = cm re-add --interactive
 alias cmrm = cm remove
 alias cms = cm status
 alias cmx = cm forget
