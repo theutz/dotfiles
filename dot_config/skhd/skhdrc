@@ -16,36 +16,39 @@ yabai < h : yabai -m window --focus west || yabai -m display --focus prev
 yabai < j : yabai -m window --focus south
 yabai < k : yabai -m window --focus north
 yabai < l : yabai -m window --focus east || yabai -m display --focus next
-yabai < n : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m display --focus next
-yabai < p : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m display --focus prev
+yabai < alt - n : yabai -m window --focus stack.next
+yabai < n : yabai -m window --focus next || yabai -m display --focus next
+yabai < alt - p : yabai -m window --focus stack.prev
+yabai < p : yabai -m window --focus prev || yabai -m display --focus prev
 
 # Swapping
-yabai < shift - h : yabai -m window --swap west
+yabai < shift - h : yabai -m window --swap west || (yabai -m window --display prev && yabai -m display --focus prev)
 yabai < shift - j : yabai -m window --swap south
 yabai < shift - k : yabai -m window --swap north
-yabai < shift - l : yabai -m window --swap east
+yabai < shift - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
 yabai < shift - n : yabai -m window --swap stack.next
 yabai < shift - p : yabai -m window --swap stack.prev
 yabai < shift - d : yabai -m window --display next || yabai -m window --display prev
 
 # Warping
-yabai < ctrl - h : yabai -m window --warp west
+yabai < ctrl - h : yabai -m window --warp west || (yabai -m window --display prev && yabai -m display --focus prev)
 yabai < ctrl - j : yabai -m window --warp south
 yabai < ctrl - k : yabai -m window --warp north
-yabai < ctrl - l : yabai -m window --warp east
+yabai < ctrl - l : yabai -m window --warp east || (yabai -m window --display next && yabai -m display --focus next)
 yabai < ctrl - n : yabai -m window --warp next
 yabai < ctrl - p : yabai -m window --warp prev
 
 # Stacking
-yabai < ctrl + shift - h : yabai -m window --stack west
-yabai < ctrl + shift - j : yabai -m window --stack south
-yabai < ctrl + shift - k : yabai -m window --stack north
-yabai < ctrl + shift - l : yabai -m window --stack east
-yabai < ctrl + shift - n : yabai -m window --stack next
-yabai < ctrl + shift - p : yabai -m window --stack prev
+yabai < ctrl + shift - h : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window west --stack $win
+yabai < ctrl + shift - j : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window south --stack $win
+yabai < ctrl + shift - k : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window north --stack $win
+yabai < ctrl + shift - l : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window east --stack $win
+yabai < ctrl + shift - n : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window next --stack $win
+yabai < ctrl + shift - p : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window prev --stack $win
+yabai < u : yabai -m window --toggle float; yabai -m window --toggle float
 
 # Size & rotation
-yabai < o : yabai -m window --toggle zoom-fullscreen
+yabai < space : yabai -m window --toggle zoom-fullscreen || yabai -m window --raise
 yabai < m : yabai -m window --ratio rel:+0.1
 yabai < shift - m : yabai -m window --ratio rel:-0.1
 yabai < r : yabai -m space --rotate 90
@@ -57,4 +60,4 @@ yabai < b : yabai -m space --balance
 
 # Launching
 default, yabai < ctrl - return : wezterm
-
+default < alt - return : wezterm
