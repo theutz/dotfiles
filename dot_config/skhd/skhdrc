@@ -1,8 +1,10 @@
 # Setup modes
 :: default : borders active_color=0xfff6c177 inactive_color=0xff6e6a86
 :: yabai @ : borders active_color=0xffeb6f92 inactive_color=0xffc4a7e7
-ctrl - m ; yabai
-yabai < escape ; default
+ctrl - m
+yabai
+yabai <escape
+default
 
 .load "yabai_mode"
 
@@ -18,47 +20,10 @@ alt - p : yabai -m window --focus stack.prev || yabai -m window --focus prev || 
 
 # Swapping
 shift + alt - h : yabai -m window --swap west || (yabai -m window --display prev && yabai -m display --focus prev)
-yabai < shift - h : yabai -m window --swap west || (yabai -m window --display prev && yabai -m display --focus prev)
 shift + alt - j : yabai -m window --swap south
-yabai < shift - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
-yabai < shift - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
-yabai < shift - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
-yabai < shift - n : yabai -m window --swap stack.next
-yabai < shift - p : yabai -m window --swap stack.prev
-yabai < shift - d : yabai -m window --display next || yabai -m window --display prev
-
-# Warping
-yabai < ctrl - h : yabai -m window --warp west || (yabai -m window --display prev && yabai -m display --focus prev)
-yabai < ctrl - j : yabai -m window --warp south
-yabai < ctrl - k : yabai -m window --warp north
-yabai < ctrl - l : yabai -m window --warp east || (yabai -m window --display next && yabai -m display --focus next)
-yabai < ctrl - n : yabai -m window --warp next
-yabai < ctrl - p : yabai -m window --warp prev
-
-# Stacking
-yabai < ctrl + shift - h : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window west --stack $win
-yabai < ctrl + shift - j : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window south --stack $win
-yabai < ctrl + shift - k : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window north --stack $win
-yabai < ctrl + shift - l : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window east --stack $win
-yabai < ctrl + shift - n : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window next --stack $win
-yabai < ctrl + shift - p : win="$(yabai -m query --windows --window | jq -r .id)"; yabai -m window prev --stack $win
-yabai < u : yabai -m window --toggle float; yabai -m window --toggle float
-
-# Size & rotation
-yabai < space : yabai -m window --toggle zoom-fullscreen || yabai -m window --raise
-yabai < m : yabai -m window --ratio rel:+0.1
-yabai < shift - m : yabai -m window --ratio rel:-0.1
-yabai < r : yabai -m space --rotate 90
-yabai < shift - r : yabai -m space --rotate 270
-yabai < x : yabai -m space --mirror x-axis
-yabai < y : yabai -m space --mirror y-axis
-yabai < e : yabai -m space --equalize
-yabai < b : yabai -m space --balance
 
 # Launching
-default, yabai < ctrl - return : wezterm
+default, yabai - return : wezterm <ctrl
 default < alt - return : wezterm
-
-# vim: ft=sh

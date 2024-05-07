@@ -4,9 +4,36 @@ yabai < h : yabai -m window --focus west || yabai -m display --focus prev
 yabai < j : yabai -m window --focus south
 yabai < k : yabai -m window --focus north
 yabai < l : yabai -m window --focus east || yabai -m display --focus next
-yabai < alt - n : yabai -m window --focus stack.next
 yabai < n : yabai -m window --focus next || yabai -m display --focus next
-yabai < alt - p : yabai -m window --focus stack.prev
 yabai < p : yabai -m window --focus prev || yabai -m display --focus prev
+yabai < alt - n : yabai -m window --focus stack.next
+yabai < alt - p : yabai -m window --focus stack.prev
 
-# vim: ft=sh
+# Swapping
+yabai < shift - h : yabai -m window --swap west || (yabai -m window --display prev && yabai -m display --focus prev)
+yabai < shift - j : yabai -m window --swap south
+yabai < shift - k : yabai -m window --swap north
+yabai < shift - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
+yabai < shift - n : yabai -m window --swap stack.next
+yabai < shift - p : yabai -m window --swap stack.prev
+yabai < shift - d : yabai -m window --display next || yabai -m window --display prev
+
+# Warping
+yabai < ctrl - h : yabai -m window --warp west || (yabai -m window --display prev && yabai -m display --focus prev)
+yabai < ctrl - j : yabai -m window --warp south
+yabai < ctrl - k : yabai -m window --warp north
+yabai < ctrl - l : yabai -m window --warp east || (yabai -m window --display next && yabai -m display --focus next)
+yabai < ctrl - n : yabai -m window --warp next
+yabai < ctrl - p : yabai -m window --warp prev
+
+# Size & rotation
+yabai < space : yabai -m window --toggle zoom-fullscreen || yabai -m window --raise
+yabai < m : yabai -m window --ratio rel:+0.1
+yabai < shift - m : yabai -m window --ratio rel:-0.1
+yabai < r : yabai -m space --rotate 90
+yabai < shift - r : yabai -m space --rotate 270
+yabai < x : yabai -m space --mirror x-axis
+yabai < y : yabai -m space --mirror y-axis
+yabai < e : yabai -m space --equalize
+yabai < b : yabai -m space --balance
+
