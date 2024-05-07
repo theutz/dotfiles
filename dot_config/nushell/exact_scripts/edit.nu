@@ -1,15 +1,19 @@
 # Edit skhd config
-export def "edit skhd" [] { _main .config/skhd }
+export def "edit skhd" [] { edit .config/skhd }
 
 # Edit yabai config
-export def "edit yabai" [] { _main .config/yabai/yabairc }
+export def "edit yabai" [] { edit .config/yabai/yabairc }
 
 # Edit aliases
-export def "edit aliases" [] { _main .config/nushell/scripts/aliases.nu }
+export def "edit aliases" [] { edit .config/nushell/scripts/aliases.nu }
 
 # Edit this edit command
-export def "edit edit" [] { _main .config/nushell/scripts/edit.nu }
+export def "edit edit" [] { edit .config/nushell/scripts/edit.nu }
 
-def _main [file: string] {
-  with-env { VISUAL: nvim } { ^chezmoi edit --watch ([$env.HOME $file] | str join "/") }
+# Edit dotfiles
+export def edit [
+  file?: string # Paths relative to $env.HOME
+] {
+  let target = if $file == $env.HOME { "" } else { $env.HOME | str join (char esep) }
+  ^chezmoi edit $target
 }
