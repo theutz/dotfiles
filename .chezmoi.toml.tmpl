@@ -7,11 +7,6 @@ recipient = "FD235DFD"
 identity = "~/.config/chezmoi/key.txt"
 recipient = "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa"
 
-[git]
-autoAdd = true
-autoCommit = true
-autoPush = true
-
 {{ if lookPath "delta" -}}
 [diff]
 pager = "delta"
@@ -19,13 +14,23 @@ args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 exclude = ["scripts"]
 {{- end }}
 
+[cd]
+command = "nu"
+
+[edit]
+command = "nvim"
+watch = true
+apply = true
+
+[git]
+autoAdd = true
+autoCommit = true
+autoPush = true
+
 {{ if lookPath "nvim" }}
 [merge]
 command = "nvim"
 args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 {{ end }}
-
-[cd]
-command = "nu"
 
 # vim: ft=tmpl.toml
