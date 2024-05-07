@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# tmux.conf hash: {{ include "dot_config/tmux/tmux.conf" | sha256sum }}
+
 printf "\nInstalling tmux plugins...\n\n"
 
 ~/.config/tmux/plugins/tpm/bin/install_plugins

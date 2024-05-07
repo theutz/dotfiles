@@ -21,6 +21,7 @@ tap "kojix2/brew"
 tap "noahgorstein/tap"
 tap "oven-sh/bun"
 tap "railwaycat/emacsmacport"
+tap "rsteube/tap"
 tap "shivammathur/php"
 # Run your GitHub Actions locally
 brew "act"
@@ -34,6 +35,8 @@ brew "aicommits"
 brew "jpeg-xl"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -337,6 +340,8 @@ brew "kojix2/brew/deepl-cli"
 brew "noahgorstein/tap/jqp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
+# multi-shell multi-command argument completer
+brew "rsteube/tap/carapace"
 # General-purpose scripting language
 brew "shivammathur/php/php@7.2"
 # General-purpose scripting language

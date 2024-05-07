@@ -4,10 +4,11 @@
 
 vim.o.foldcolumn = "2"
 
--- Stop annoying delyas with escape key
+-- Stop annoying delays with escape key
 vim.o.timeoutlen = 1000
 vim.o.ttimeoutlen = 0
 
 if vim.g.neovide then require "config.neovide" end
 
 vim.o.exrc = true
+vim.o.shell = "nu"
