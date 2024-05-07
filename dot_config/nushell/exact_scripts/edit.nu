@@ -12,7 +12,7 @@ export def "edit edit" [] { edit .config/nushell/scripts/edit.nu }
 
 # Edit dotfiles
 export def edit [
-  file?: string # Paths relative to $env.HOME
+  ...files: string # Paths relative to $env.HOME
 ] {
   let target = if ($file == null) {
     ""
