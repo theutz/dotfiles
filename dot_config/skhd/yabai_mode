@@ -1,3 +1,4 @@
+# Focusing
 yabai < d : (yabai -m window --display next && yabai -m display --focus next) || (yabai -m window --display first && yabai -m display --focus first)
 yabai < h : yabai -m window --focus west || yabai -m display --focus prev
 yabai < j : yabai -m window --focus south
@@ -7,3 +8,5 @@ yabai < alt - n : yabai -m window --focus stack.next
 yabai < n : yabai -m window --focus next || yabai -m display --focus next
 yabai < alt - p : yabai -m window --focus stack.prev
 yabai < p : yabai -m window --focus prev || yabai -m display --focus prev
+
+# vim: ft=sh

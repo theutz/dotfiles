@@ -60,3 +60,5 @@ yabai < b : yabai -m space --balance
 # Launching
 default, yabai < ctrl - return : wezterm
 default < alt - return : wezterm
+
+# vim: ft=sh
