@@ -1,39 +1,52 @@
 # Setup modes
-:: default : borders active_color 0xff775759
-:: yabai : yabai -m config active_window_border_color 0xff24ccaa
-alt - m ; yabai
+:: default : borders active_color=0xfff6c177 inactive_color=0xff6e6a86
+:: yabai @ : borders active_color=0xffeb6f92 inactive_color=0xffc4a7e7
+ctrl - m ; yabai
 yabai < escape ; default
-default, yabai < cmd - return : wezterm
 
 # Focusing
-alt - d : (yabai -m window --display next && yabai -m display --focus next) || (yabai -m window --display first && yabai -m display --focus first)
-alt - h : yabai -m window --focus west
+alt - h : yabai -m window --focus west || yabai -m display --focus prev
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
-alt - n : yabai -m window --focus stack.next
-alt - p : yabai -m window --focus stack.prev
+alt - l : yabai -m window --focus east || yabai -m display --focus next
+alt - n : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m display --focus next
+alt - p : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m display --focus prev
+yabai < d : (yabai -m window --display next && yabai -m display --focus next) || (yabai -m window --display first && yabai -m display --focus first)
+yabai < h : yabai -m window --focus west || yabai -m display --focus prev
+yabai < j : yabai -m window --focus south
+yabai < k : yabai -m window --focus north
+yabai < l : yabai -m window --focus east || yabai -m display --focus next
+yabai < n : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m display --focus next
+yabai < p : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m display --focus prev
 
 # Swapping
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
-shift + alt - n : yabai -m window --stack next
-shift + alt - p : yabai -m window --stack prev
+yabai < shift - h : yabai -m window --swap west
+yabai < shift - j : yabai -m window --swap south
+yabai < shift - k : yabai -m window --swap north
+yabai < shift - l : yabai -m window --swap east
+yabai < shift - n : yabai -m window --stack next
+yabai < shift - p : yabai -m window --stack prev
+yabai < shift - d : yabai -m window --display next || yabai -m window --display prev
 
 # Warping
-ctrl + alt - h : yabai -m window --warp west
-ctrl + alt - j : yabai -m window --warp south
-ctrl + alt - k : yabai -m window --warp north
-ctrl + alt - l : yabai -m window --warp east
-ctrl + alt - n : yabai -m window --warp next
-ctrl + alt - p : yabai -m window --warp prev
+yabai < ctrl - h : yabai -m window --warp west
+yabai < ctrl - j : yabai -m window --warp south
+yabai < ctrl - k : yabai -m window --warp north
+yabai < ctrl - l : yabai -m window --warp east
+yabai < ctrl - n : yabai -m window --warp next
+yabai < ctrl - p : yabai -m window --warp prev
+
+# Size & rotation
+yabai < o : yabai -m window --toggle zoom-fullscreen
+yabai < m : yabai -m window --ratio rel:+0.1
+yabai < shift - m : yabai -m window --ratio rel:-0.1
+yabai < r : yabai -m space --rotate 90
+yabai < shift - r : yabai -m space --rotate 270
+yabai < x : yabai -m space --mirror x-axis
+yabai < y : yabai -m space --mirror y-axis
+yabai < e : yabai -m space --equalize
+yabai < b : yabai -m space --balance
 
 # Launching
-alt - return : wezterm
+default, yabai < ctrl - return : wezterm
 
-# Resizing
-alt - o : yabai -m window --toggle zoom-fullscreen
-alt - m : yabai -m window --ratio rel:+0.1
-shift + alt - m : yabai -m window --ratio rel:-0.1
