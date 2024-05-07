@@ -114,3 +114,7 @@ atuin init nu | save -f ~/.local/share/atuin/init.nu
 # Setup zoxide for cd history
 mkdir ~/.local/share/zoxide
 zoxide init nushell | save -f ~/.local/share/zoxide/init.nu
+
+# Setup starship
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu

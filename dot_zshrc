@@ -8,3 +8,8 @@ source <(carapace _carapace)
 
 # Setup keychain
 eval "$(keychain --eval --quiet --agents 'ssh,gpg' "$KEYCHAIN_KEYS[@]")"
+
+# Setup starship
+eval "$(starship init zsh)"
+
+# vim: ft=sh
