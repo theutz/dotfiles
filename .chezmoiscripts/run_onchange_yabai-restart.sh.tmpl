@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
 
 # yabairc hash: {{ include "dot_config/yabai/yabairc" | sha256sum }}
+# skhd hash: {{ include "dot_config/skhd/skhdrc" | sha256sum }}
+# skhd/yabai hash: {{ include "dot_config/skhd/yabai_mode" | sha256sum }}
 sudo yabai --load-sa && yabai --restart-service
