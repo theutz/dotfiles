@@ -14,6 +14,10 @@ export def "edit edit" [] { edit .config/nushell/scripts/edit.nu }
 export def edit [
   file?: string # Paths relative to $env.HOME
 ] {
-  let target = if $file == null { $env.HOME } else { [$env.HOME $file] | str join (char psep) }
+  let target = if ($file == null) {
+    ""
+  } else {
+    [$env.HOME $file] | str join (char psep)
+  }
   ^chezmoi edit $target
 }
