@@ -879,4 +879,3 @@ source chezmoi.nu
 source aliases.nu
 source yazi.nu
 source brew.nu
-source edit.nu
