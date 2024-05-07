@@ -72,8 +72,10 @@ ctrl + alt - b : yabai -m space --balance
 ctrl + alt - e : yabai -m space --equalize
 ctrl + alt - x : yabai -m space --mirror x-axis
 ctrl + alt - y : yabai -m space --mirror y-axis
-ctrl + alt - 0x1B : is_first="$(yabai -m query --windows --window | jq -r '."split-child" == "first_child"')"; op="$($is_first && "-" || "+")"; && yabai -m window --ratio "rel:$op0.05"
-ctrl + alt - 0x18 : yabai -m window --ratio rel:+0.05
+ctrl + alt - 9 : yabai -m space --rotate 270
+ctrl + alt - 0 : yabai -m space --rotate 90
+ctrl + alt - 0x1B : if yabai -m query --windows --window | jq -re '."split-child" == "first_child"'; then yabai -m window --ratio rel:-0.05; else yabai -m window --ratio rel:+0.05; fi
+ctrl + alt - 0x18 : if yabai -m query --windows --window | jq -re '."split-child" == "first_child"'; then yabai -m window --ratio rel:+0.05; else yabai -m window --ratio rel:-0.05; fi
 
 #
 # Launching
