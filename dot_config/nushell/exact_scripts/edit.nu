@@ -19,5 +19,5 @@ export def edit [
   } else {
     [$env.HOME $file] | str join (char psep)
   }
-  ^chezmoi edit $target
+  ^chezmoi edit ...$target
 }
