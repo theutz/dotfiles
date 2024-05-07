@@ -24,8 +24,8 @@ yabai < shift - h : yabai -m window --swap west
 yabai < shift - j : yabai -m window --swap south
 yabai < shift - k : yabai -m window --swap north
 yabai < shift - l : yabai -m window --swap east
-yabai < shift - n : yabai -m window --stack next
-yabai < shift - p : yabai -m window --stack prev
+yabai < shift - n : yabai -m window --swap stack.next
+yabai < shift - p : yabai -m window --swap stack.prev
 yabai < shift - d : yabai -m window --display next || yabai -m window --display prev
 
 # Warping
@@ -35,6 +35,14 @@ yabai < ctrl - k : yabai -m window --warp north
 yabai < ctrl - l : yabai -m window --warp east
 yabai < ctrl - n : yabai -m window --warp next
 yabai < ctrl - p : yabai -m window --warp prev
+
+# Stacking
+yabai < ctrl + shift + h : yabai -m window --stack west
+yabai < ctrl + shift + j : yabai -m window --stack south
+yabai < ctrl + shift + k : yabai -m window --stack north
+yabai < ctrl + shift + l : yabai -m window --stack east
+yabai < ctrl + shift + n : yabai -m window --stack next
+yabai < ctrl + shift + p : yabai -m window --stack prev
 
 # Size & rotation
 yabai < o : yabai -m window --toggle zoom-fullscreen
