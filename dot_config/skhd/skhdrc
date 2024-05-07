@@ -23,5 +23,5 @@ shift + alt - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east || (yabai -m window --display next && yabai -m display --focus next)
 
 # Launching
-default, yabai - return : wezterm <ctrl
+default, yabai < ctrl - return : wezterm
 default < alt - return : wezterm
