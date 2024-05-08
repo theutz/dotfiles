@@ -874,8 +874,8 @@ source ~/.local/share/atuin/init.nu
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
 
-# Setup starship
-use ~/.cache/starship/init.nu
+# # Setup starship
+# use ~/.cache/starship/init.nu
 
 # Source Other Scripts
 source chezmoi.nu
