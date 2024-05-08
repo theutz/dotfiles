@@ -33,6 +33,10 @@ if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
 
+if [[ -z "$MANPAGER" ]]; then
+  export MANPAGER='nvim +Man!'
+fi
+
 #
 # Language
 #
