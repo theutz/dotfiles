@@ -883,5 +883,5 @@ source aliases.nu
 source yazi.nu
 source brew.nu
 source follow.nu
-use txp.nu *
+source txp.nu
 source cfg.nu
