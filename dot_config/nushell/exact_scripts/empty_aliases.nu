@@ -1,5 +1,9 @@
+def aliases [] {
+  chezmoi edit ([$env.NU_LIB_DIRS.0 aliases.nu] | str join (char psep))
+}
+
 alias lg = lazygit
-alias aliases = chezmoi edit ~/.config/nushell/scripts/aliases.nu
+alias gf = git fetch
 alias gfm = git pull
 alias gws = git status --short
 alias gwS = git status
