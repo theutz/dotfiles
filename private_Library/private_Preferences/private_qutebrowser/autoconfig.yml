@@ -19,3 +19,6 @@ settings:
     https://www.instagram.com: true
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
+  url.searchengines:
+    global:
+      DEFAULT: https://kagi.com/search?q={}
