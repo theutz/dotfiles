@@ -1,8 +1,10 @@
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
 
 -- Setup config builder
 local c = {}
-if wezterm.config_builder then c = wezterm.config_builder() end
+if wezterm.config_builder then
+	c = wezterm.config_builder()
+end
 c:set_strict_mode(true)
 
 -- Load all modules defined in spec
@@ -28,11 +30,12 @@ c.window_close_confirmation = "NeverPrompt"
 c.quit_when_all_windows_are_closed = true
 c.window_decorations = "RESIZE"
 c.adjust_window_size_when_changing_font_size = false
+local padding = "18px"
 c.window_padding = {
-	top = "16px",
+	top = padding,
 	bottom = "0",
-	left = "16px",
-	right = "16px",
+	left = padding,
+	right = padding,
 }
 c.hide_tab_bar_if_only_one_tab = true
 c.tab_bar_at_bottom = true
