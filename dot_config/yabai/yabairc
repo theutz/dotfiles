@@ -34,6 +34,7 @@ yabai -m config window_gap $padding
 yabai -m rule --add app='^System Settings$' manage=off
 yabai -m rule --add app='^ClearVPN$' manage=off
 yabai -m rule --add app='^CleanMyMac X$' manage=off
+yabai -m rule --add app='^Telegram$' manage=off grid=8:8:1:1:6:6
 
 # Signals
 yabai -m signal --add event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
