@@ -35,3 +35,4 @@ export alias tpls = tmuxp ls
 export alias tp = ^tmuxp
 export alias tx = ^tmux
 export alias txa = ^tmux attach
+export alias txl = ^tmux ls
