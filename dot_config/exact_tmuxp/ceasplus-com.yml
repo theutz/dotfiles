@@ -1,0 +1,14 @@
+session_name: ceasplus-com
+start_directory: $HOME/code/delegator/ceasplus.com
+windows:
+  - focus: true
+    layout: main-vertical
+    panes:
+      - just dev
+      - focus: true
+        shell_command: nvim
+        enter: false
+    window_name: main
+  - panes:
+      - shell_command: exit
+        sleep_before: 1
