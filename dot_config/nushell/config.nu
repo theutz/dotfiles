@@ -878,8 +878,10 @@ source ~/.local/share/zoxide/init.nu
 use ~/.cache/starship/init.nu
 
 # Source Other Scripts
-source chezmoi.nu
-source aliases.nu
-source yazi.nu
-source brew.nu
-source follow.nu
+const extra_files = glob $"($nu.default-config-dir)/config.d"
+$extra_files | each {|x| source $x }
+# source chezmoi.nu
+# source aliases.nu
+# source yazi.nu
+# source brew.nu
+# source follow.nu

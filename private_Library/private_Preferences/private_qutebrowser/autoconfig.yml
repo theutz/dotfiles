@@ -19,6 +19,10 @@ settings:
     https://www.instagram.com: true
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
+  fonts.default_size:
+    global: 16pt
+  statusbar.position:
+    global: top
   url.searchengines:
     global:
       DEFAULT: https://kagi.com/search?q={}
