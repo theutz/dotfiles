@@ -277,7 +277,7 @@ settings:
       right: 3
       top: 0
   hints.radius:
-    global: 8
+    global: 4
   hints.uppercase:
     global: true
   input.forward_unbound_keys:
@@ -291,7 +291,7 @@ settings:
   keyhint.delay:
     global: 0
   keyhint.radius:
-    global: 4
+    global: 8
   new_instance_open_target:
     global: tab-bg
   scrolling.bar:
