@@ -109,9 +109,9 @@ $env.NU_PLUGIN_DIRS = [
 # mkdir ~/.cache/carapace
 # carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 
-# # Setup atuin for history
-# mkdir ~/.local/share/atuin/
-# atuin init nu | save -f ~/.local/share/atuin/init.nu
+# Setup atuin for history
+mkdir ~/.local/share/atuin/
+atuin init nu | save -f ~/.local/share/atuin/init.nu
 
 # Setup zoxide for cd history
 mkdir ~/.local/share/zoxide

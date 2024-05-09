@@ -868,8 +868,8 @@ $env.config = {
 # # Carapace completions
 # source ~/.cache/carapace/init.nu
 
-# # Atuin history
-# source ~/.local/share/atuin/init.nu
+# Atuin history
+source ~/.local/share/atuin/init.nu
 
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
