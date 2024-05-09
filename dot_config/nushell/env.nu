@@ -110,6 +110,7 @@ $env.NU_PLUGIN_DIRS = [
 # carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 
 # Setup atuin for history
+$env.ATUIN_NOBIND = true
 mkdir ~/.local/share/atuin/
 atuin init nu | save -f ~/.local/share/atuin/init.nu
 

@@ -870,6 +870,10 @@ $env.config = {
 
 # Atuin history
 source ~/.local/share/atuin/init.nu
+$env.config.keybindings = (
+  $env.config.keybindings |
+  filter {|x| not ($x.keycode == up and $x.name == atuin)}
+)
 
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
