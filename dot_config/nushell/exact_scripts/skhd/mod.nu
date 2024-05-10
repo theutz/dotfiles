@@ -1,11 +1,13 @@
+use xdg ["xdg config"]
+
 export def "config skhd" [
   --nushell-config (-n) # configure nushell module
 ] {
-  let path = if $nushell_config { [$env.XDG_CONFIG_HOME] }
-  let files = [
-    [$env.XDG_CONFIG_HOME skhd skhdrc]
+  let path = if $nushell_config {
     [$nu.default-config-dir scripts yabai mod.nu]
-  ] | each { path join }
+  } else {
+    [(xdg config) skhd skhdrc]
+  } | path join
 
-  run-external $env.EDITOR ...$files
+  run-external $env.EDITOR $path
 }
