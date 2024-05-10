@@ -4,12 +4,10 @@ windows:
   - focus: true
     layout: main-vertical
     panes:
-      - focus: true
-        shell_command: nvim
-        enter: false
+      - shell_command: nvim
     window_name: main
   - panes:
-      - cmd: just dev
+      - shell_command: just dev
         enter: true
         focus: true
     window_name: dev server
