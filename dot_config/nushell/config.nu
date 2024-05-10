@@ -882,7 +882,7 @@ source ~/.local/share/zoxide/init.nu
 use ~/.cache/starship/init.nu
 
 # Source Other Scripts
-source chezmoi.nu
+use chezmoi *
 source aliases.nu
 source yazi.nu
 source brew.nu

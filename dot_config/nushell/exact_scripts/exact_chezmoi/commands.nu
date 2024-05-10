@@ -18,6 +18,6 @@ export def "chezmoi add-deleted" [] {
     | if ($in | length) <= 0 { print "No files to add."; return } else { $in }
     | each {|x| $env.HOME | path join $x.path }
     | inspect
-    | chezmoi add ...$in
+    | ^chezmoi add ...$in
   )
 }
