@@ -4,7 +4,7 @@ export def "config chezmoi" [] {
 }
 
 # Get the status of files managed by chezmoi
-export def "chezmoi status" [] {
+export def "chezmoi status+" [] {
   ^chezmoi status
   | from ssv -m 1 -n
   | rename status path

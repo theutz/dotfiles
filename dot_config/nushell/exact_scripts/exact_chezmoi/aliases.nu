@@ -10,5 +10,5 @@ export alias cmm  = ^chezmoi merge
 export alias cmma = ^chezmoi merge-all
 export alias cmra = ^chezmoi re-add --interactive
 export alias cmrm = ^chezmoi remove
-export alias cms  = chezmoi status
+export alias cms  = chezmoi status+
 export alias cmS  = chezmoi sync
