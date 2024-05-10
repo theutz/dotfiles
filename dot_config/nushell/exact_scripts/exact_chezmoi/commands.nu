@@ -20,7 +20,7 @@ export def "chezmoi add-exact" [] {
     chezmoi status | where status == D
     | if ($in | is-empty) { print -e "No files to add."; return } else { $in }
     | paths-from-home
-    | ^chezmoi add ...$in
+    | ^chezmoi add --interactive ...$in
   )
 }
 
@@ -30,6 +30,13 @@ export def "chezmoi forget-deleted" [] {
     chezmoi status | where status == DA
     | if ($in | is-empty) { print -e "No files to delete."; return } else { $in }
     | paths-from-home
-    | ^chezmoi forget ...$in
+    | ^chezmoi forget --interactive ...$in
   )
+}
+
+# Re-add files, add exact files, and forget deleted files
+export def "chezmoi sync" [] {
+  ^chezmoi re-add --interactive
+  chezmoi add-exact
+  chezmoi forget-deleted
 }
