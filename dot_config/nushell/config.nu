@@ -879,9 +879,12 @@ source ~/.local/share/zoxide/init.nu
 use ~/.cache/starship/init.nu
 
 # Source Other Scripts
+use xdg *
 use chezmoi *
 source aliases.nu
 source yazi.nu
 use brew *
 source follow.nu
-source tmux.nu
+use tmux *
+use yabai *
+use skhd *

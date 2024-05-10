@@ -19,7 +19,7 @@ c:set_strict_mode(true)
 -- 	end
 -- end
 
-c.default_prog = { "/opt/homebrew/bin/nu" }
+c.default_prog = { "zsh", "-c", "/opt/homebrew/bin/nu" }
 c.color_scheme = "rose-pine"
 c.macos_window_background_blur = 20
 c.font = wezterm.font("BlexMono Nerd Font Mono", { weight = 500 })
