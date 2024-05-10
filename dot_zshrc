@@ -1,3 +1,11 @@
+# Setup keychain
+eval "$(keychain --eval --quiet --agents 'ssh,gpg' "$KEYCHAIN_KEYS[@]")"
+
+eval "$(chezmoi completion zsh)"
+
+# Setup starship
+eval "$(starship init zsh)"
+
 # Setup shared history
 eval "$(atuin init zsh)"
 
@@ -5,11 +13,5 @@ eval "$(atuin init zsh)"
 export CARAPACE_BRIDGES='zsh,bash'
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
-
-# Setup keychain
-eval "$(keychain --eval --quiet --agents 'ssh,gpg' "$KEYCHAIN_KEYS[@]")"
-
-# Setup starship
-eval "$(starship init zsh)"
 
 # vim: ft=sh
