@@ -40,3 +40,8 @@ export def "chezmoi sync" [] {
   chezmoi add-exact
   chezmoi forget-deleted
 }
+
+# List managed files using nushell goodies
+export def "chezmoi managed+" [...args] {
+  ^chezmoi managed ...$args | from ssv -n | rename path
+}

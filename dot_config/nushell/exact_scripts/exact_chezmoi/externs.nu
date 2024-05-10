@@ -118,3 +118,40 @@ export extern "chezmoi status" [
   --verbose(-v)                              # Make output more verbose
   --working-tree(-W): string                 # Set working tree directory
 ]
+
+# List all managed entries in the destination directory under all paths in
+# alphabetical order. When no paths are supplied, list all managed entries in
+# the destination directory in alphabetical order.
+export extern "chezmoi managed" [
+  ...files:           string                 # the path from which to list files
+  --exclude(-x):     string@"types"         # Exclude entry types (default none)
+  --help(-h)                                # help for managed
+  --include(-i):     string@"types"         # Include entry types (default all)
+  --path-style(-p):  string@"path-style"    # Path style (default relative)
+  --tree(-t)                                # Print paths as a tree
+  --cache:            string                 # Set cache directory (default /Users/michael/.cache/chezmoi)
+  --color:            string@"bool-or-auto"  # Colorize output (default auto)
+  --config(-c):       string                 # Set config file
+  --config-format:    string@"config-format" # Set config file format
+  --debug                                    # Include debug information in output
+  --destination(-D):  string                 # Set destination directory (default /Users/michael)
+  --dry-run(-n)                              # Do not make any modifications to the destination directory
+  --force                                    # Make all changes without prompting
+  --interactive                              # Prompt for all changes
+  --keep-going(-k)                           # Keep going as far as possible after an error
+  --mode:             string@"mode"          # Mode (default file)
+  --no-pager                                 # Do not use the pager
+  --no-tty                                   # Do not attempt to get a TTY for prompts
+  --output(-o):       string                 # Write output to path instead of stdout
+  --persistent-state: string                 # Set persistent state file
+  --progress:         string@"bool-or-auto"  # Display progress bars (default auto)
+  --source-path                              # Specify targets by source path
+  --use-builtin-age:  string@"bool-or-auto"  # Use builtin age (default auto)
+  --use-builtin-diff                         # Use builtin diff
+  --use-builtin-git:  string@"bool-or-auto"  # Use builtin git (default auto)
+  --verbose(-v)                              # Make output more verbose
+  --working-tree(-W): string                 # Set working tree directory
+]
+
+export alias "chezmoi list" = chezmoi managed
+
