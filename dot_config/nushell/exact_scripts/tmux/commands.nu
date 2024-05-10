@@ -46,10 +46,30 @@ export def "tmux ls+" [] {
   tmux ls | from ssv -n -m 1 | get column1 | each { str replace ":" "" }
 }
 
-# # Kill session interactively
-# export def "tmux kill-session+" [] {
-#   (
-#     let session = (tmux ls+ | input list --fuzzy 'Pick a session')
-#     tmux kill-session -t $in | complete | if $in.exit_code == 0 { $"Killed session: ($session)" }
-#   )
-# }
+# Kill session interactively
+export def "tmux kill-session+" [] {
+  let session = (tmux ls+ | input list --fuzzy 'Pick a session')
+  tmux kill-session -t $session | complete | if $in.exit_code == 0 {
+    $"Killed session: ($session)"
+  }
+}
+
+# Configure tmux
+export def "config tmux" [
+  --nushell-config (-n) # configure nushell tmux module
+] {
+  let path = if $nushell_config {
+    $nu.default-config-dir | path join scripts tmux
+  } else {
+    xdg config tmux
+  }
+  run-external $env.EDITOR $path
+}
+
+# Configure tmuxp
+export def "config tmuxp" [
+  --nushell-config (-n) # configure nushell tmux module
+] {
+  if $nushell_config { return }
+  run-external $env.EDITOR (xdg config tmuxp)
+}

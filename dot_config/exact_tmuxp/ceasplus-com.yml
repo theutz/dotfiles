@@ -4,11 +4,12 @@ windows:
   - focus: true
     layout: main-vertical
     panes:
-      - just dev
       - focus: true
         shell_command: nvim
         enter: false
     window_name: main
   - panes:
-      - shell_command: exit
-        sleep_before: 1
+      - cmd: just dev
+        enter: true
+        focus: true
+    window_name: dev server

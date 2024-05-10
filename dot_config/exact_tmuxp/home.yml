@@ -6,5 +6,6 @@ windows:
     window_name: main
     layout: main-vertical
   - panes:
-      - spotify_player
+      - cmd: spotify_player
+        enter: true
     window_name: spotify
