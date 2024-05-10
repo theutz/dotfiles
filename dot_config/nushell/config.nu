@@ -888,4 +888,3 @@ source yazi.nu
 source brew.nu
 source follow.nu
 source tmux.nu
-source cfg.nu
