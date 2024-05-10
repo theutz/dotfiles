@@ -17,7 +17,7 @@ def paths-from-home [] {
 # Add all files marked for deletion
 export def "chezmoi add-exact" [] {
   (
-    chezmoi status | where status == D
+    chezmoi status+ | where status == D
     | if ($in | is-empty) { print -e "No files to add."; return } else { $in }
     | paths-from-home
     | ^chezmoi add --interactive ...$in
@@ -27,7 +27,7 @@ export def "chezmoi add-exact" [] {
 # Forget any files that have been deleted
 export def "chezmoi forget-deleted" [] {
   (
-    chezmoi status | where status == DA
+    chezmoi status+ | where status == DA
     | if ($in | is-empty) { print -e "No files to delete."; return } else { $in }
     | paths-from-home
     | ^chezmoi forget --interactive ...$in
