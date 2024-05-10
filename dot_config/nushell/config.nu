@@ -885,6 +885,6 @@ use ~/.cache/starship/init.nu
 use chezmoi *
 source aliases.nu
 source yazi.nu
-source brew.nu
+use brew *
 source follow.nu
 source tmux.nu
