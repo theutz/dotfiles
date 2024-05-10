@@ -10,14 +10,26 @@ export def "chezmoi status" [] {
   | rename status path
 }
 
+def paths-from-home [] {
+  each {|it| $env.HOME | path join $it.path }
+}
+
 # Add all files marked for deletion
-export def "chezmoi add-deleted" [] {
+export def "chezmoi add-exact" [] {
   (
-    chezmoi status
-    | where status == D
-    | if ($in | length) <= 0 { print "No files to add."; return } else { $in }
-    | each {|x| $env.HOME | path join $x.path }
-    | inspect
+    chezmoi status | where status == D
+    | if ($in | is-empty) { print -e "No files to add."; return } else { $in }
+    | paths-from-home
     | ^chezmoi add ...$in
+  )
+}
+
+# Forget any files that have been deleted
+export def "chezmoi forget-deleted" [] {
+  (
+    chezmoi status | where status == DA
+    | if ($in | is-empty) { print -e "No files to delete."; return } else { $in }
+    | paths-from-home
+    | ^chezmoi forget ...$in
   )
 }
