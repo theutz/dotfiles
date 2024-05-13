@@ -1,9 +1,9 @@
 [".config/tmux/plugins/tpm"]
 type = "git-repo"
-url = "https://github.com/tmux-plugins/tpm"
+url = "git@github.com:tmux-plugins/tpm"
 refreshPeriod = "1h"
 
 [".local/share/nu_scripts"]
 type = "git-repo"
-url = "https://github.com/theutz/nu_scripts"
+url = "git@github.com:theutz/nu_scripts"
 refreshPeriod = "1h"

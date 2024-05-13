@@ -1,6 +1,13 @@
 # Open chezmoi module config in EDITOR
-export def "config chezmoi" [] {
-  run-external $env.EDITOR ($nu.default-config-dir | path join scripts chezmoi)
+export def "config chezmoi" [
+  --nu-module(-n) # Configure this nushell module
+] {
+  let file = if $nu_module {
+    ($nu.default-config-dir | path join scripts chezmoi)
+  } else {
+    ($env.XDG_DATA_HOME | path join chezmoi)
+  }
+  run-external $env.EDITOR $file
 }
 
 # Get the status of files managed by chezmoi
