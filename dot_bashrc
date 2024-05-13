@@ -3,7 +3,3 @@ export HISTFILE="${XDG_STATE_HOME}"/bash/history
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 . "$HOME/.cargo/env"
-
-# Setup carapace for completions
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
-source <(carapace _carapace)
