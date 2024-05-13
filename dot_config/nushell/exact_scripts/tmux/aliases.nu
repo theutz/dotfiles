@@ -1,3 +1,5 @@
+export alias tmuxa = tmux attach-session
+export alias tmuxl = tmux ls+
 export alias tx    = tmux
 export alias txa   = tmux attach
 export alias txls  = tmux ls+

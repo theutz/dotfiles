@@ -2,10 +2,12 @@ session_name: home
 start_directory: $HOME
 windows:
   - panes:
-      - blank
+      - shell_command:
+        sleep_before: 1
     window_name: main
     layout: main-vertical
   - panes:
-      - cmd: spotify_player
+      - shell_command: spotify_player
+        sleep_before: 1
         enter: true
     window_name: spotify

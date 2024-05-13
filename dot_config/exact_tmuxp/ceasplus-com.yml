@@ -5,9 +5,9 @@ windows:
     layout: main-vertical
     panes:
       - shell_command: nvim
+        sleep_before: 1
     window_name: main
   - panes:
       - shell_command: just dev
-        enter: true
-        focus: true
+        sleep_before: 1
     window_name: dev server
