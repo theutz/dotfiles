@@ -865,9 +865,29 @@ $env.config = {
     ]
 }
 
+#
+# nushell scripts
+#
+
 # Setup nushell theme
-use ~/.local/share/nu_scripts/themes/nu-themes/rose-pine.nu
+use themes/nu-themes/rose-pine.nu
 $env.config = ($env.config | merge {color_config: (rose-pine)})
+
+# Setup custom completions
+use custom-completions/bat/bat-completions.nu *
+use custom-completions/composer/composer-completions.nu *
+use custom-completions/curl/curl-completions.nu *
+use custom-completions/gh/gh-completions.nu *
+use custom-completions/git/git-completions.nu *
+use custom-completions/glow/glow-completions.nu *
+use custom-completions/just/just-completions.nu *
+use custom-completions/less/less-completions.nu *
+use custom-completions/less/less-completions.nu *
+
+
+#
+# 3rd party
+#
 
 # Atuin history
 source ~/.local/share/atuin/init.nu
@@ -882,7 +902,9 @@ source ~/.local/share/zoxide/init.nu
 # Setup starship
 use ~/.cache/starship/init.nu
 
-# Source Other Scripts
+#
+# Other custom scripts
+#
 use xdg *
 use chezmoi *
 source aliases.nu
