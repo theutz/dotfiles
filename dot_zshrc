@@ -1,6 +1,12 @@
 # Setup keychain
 eval "$(keychain --eval --quiet --agents 'ssh,gpg' "$KEYCHAIN_KEYS[@]")"
 
+# Init completions
+autoload -Uz compinit
+compinit
+
+eval "$(spotify_player generate zsh)"
+
 # Setup completion
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
