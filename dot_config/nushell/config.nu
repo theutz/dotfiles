@@ -865,6 +865,10 @@ $env.config = {
     ]
 }
 
+# Setup nushell theme
+use ~/.local/share/nu_scripts/themes/nu-themes/rose-pine.nu
+$env.config = ($env.config | merge {color_config: (rose-pine)})
+
 # Atuin history
 source ~/.local/share/atuin/init.nu
 $env.config.keybindings = (
