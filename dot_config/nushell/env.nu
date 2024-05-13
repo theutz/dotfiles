@@ -16,7 +16,10 @@ def create_left_prompt [] {
     let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
     let path_segment = $"($path_color)($dir)"
 
-    $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+    let path = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+    let overlay = overlay list | last | if $in != zero { $" (ansi yellow)\(($in)\)" } else { "" }
+
+    $"($path)($overlay)"
 }
 
 def create_right_prompt [] {
@@ -45,10 +48,8 @@ $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
 $env.PROMPT_INDICATOR = {|| "> " }
-# $env.PROMPT_INDICATOR_VI_INSERT = {|| "> " }
-# $env.PROMPT_INDICATOR_VI_NORMAL = {|| ": " }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| "" }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| "" }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| "> " }
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| ": " }
 $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 
 # If you want previously entered commands to have a different prompt from the usual one,
@@ -114,6 +115,6 @@ atuin init nu | save -f ~/.local/share/atuin/init.nu
 mkdir ~/.local/share/zoxide
 zoxide init nushell | save -f ~/.local/share/zoxide/init.nu
 
-# Setup starship
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
+# # Setup starship
+# mkdir ~/.cache/starship
+# starship init nu | save -f ~/.cache/starship/init.nu

@@ -870,8 +870,8 @@ $env.config = {
 #
 
 # Setup nushell theme
-use themes/nu-themes/rose-pine.nu
-$env.config = ($env.config | merge {color_config: (rose-pine)})
+# use themes/nu-themes/rose-pine.nu
+# $env.config = ($env.config | merge {color_config: (rose-pine)})
 
 # Setup custom completions
 use custom-completions/bat/bat-completions.nu *
@@ -899,8 +899,8 @@ $env.config.keybindings = (
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
 
-# Setup starship
-use ~/.cache/starship/init.nu
+# # Setup starship
+# use ~/.cache/starship/init.nu
 
 #
 # Other custom scripts
