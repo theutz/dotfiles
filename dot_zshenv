@@ -81,6 +81,9 @@ fi
 
 export LESSHISTFILE="XDG_CONFIG_HOME"/less/history
 
+#
+# Secrets
+#
 if [[ -f "$HOME/.zsecrets" ]]; then
   source "$HOME/.zsecrets"
 fi
