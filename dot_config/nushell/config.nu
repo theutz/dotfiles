@@ -875,6 +875,9 @@ $env.config.keybindings = (
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
 
+# Setup carapace for completions
+source ~/.cache/carapace/init.nu
+
 # Setup starship
 use ~/.cache/starship/init.nu
 
