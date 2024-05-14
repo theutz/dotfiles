@@ -12,6 +12,8 @@
     <dict>
         <key>PATH</key>
         <string>/Users/michael/bin:/Users/michael/.local/bin:/Users/michael/.config/phpmon/bin:/Users/michael/.config/emacs/bin:/Users/michael/.local/share/bob/nvim-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>SHELL</key>
+        <string>/opt/homebrew/bin/nu</string>
     </dict>
     <key>RunAtLoad</key>
     <true/>
