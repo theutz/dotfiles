@@ -899,12 +899,8 @@ $env.config.keybindings = (
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
 
-# # Setup starship
-# use ~/.cache/starship/init.nu
-
-#
-# Other custom scripts
-#
+# Setup Starship
+use starship.nu *
 use xdg *
 use chezmoi *
 source aliases.nu

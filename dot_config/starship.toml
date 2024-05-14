@@ -4,3 +4,8 @@ add_newline = true
 
 [shell]
 disabled = false
+
+[env_var.NU_OVERLAYS]
+symbol = '📌 '
+format = 'with [$symbol($env_value )]($style)'
+style = 'red'
