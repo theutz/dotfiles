@@ -885,9 +885,10 @@ use custom-completions/less/less-completions.nu *
 use custom-completions/less/less-completions.nu *
 
 
-#
-# 3rd party
-#
+# Follow the log files for various services
+def "follow" [] {
+  "Follow the log files for various services"
+}
 
 # Atuin history
 source ~/.local/share/atuin/init.nu
@@ -899,14 +900,12 @@ $env.config.keybindings = (
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
 
-# Setup Starship
 use starship.nu *
 use xdg *
 use chezmoi *
 source aliases.nu
 source yazi.nu
 use brew *
-source follow.nu
 use tmux *
 use yabai *
 use skhd *

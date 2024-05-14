@@ -9,3 +9,4 @@ disabled = false
 symbol = '📌 '
 format = 'with [$symbol($env_value )]($style)'
 style = 'red'
+
