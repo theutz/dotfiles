@@ -1,11 +1,18 @@
-export def mode [] {
+export def "nu-complete config chezmoi targets" [] {
+  [ [value description];
+    [rc-files ($env.XDG_DATA_HOME | path join chezmoi)]
+    [nu-module ($nu.default-config-dir | path join scripts chezmoi)]
+  ]
+}
+
+export def "nu-complete chezmoi mode" [] {
   [
     file
     symlink
   ]
 }
 
-export def config-format [] {
+export def "nu-complete chezmoi config-format" [] {
   [
     json
     toml
@@ -13,7 +20,7 @@ export def config-format [] {
   ]
 }
 
-export def bool-or-auto [] {
+export def "nu-complete chezmoi bool-or-auto" [] {
   [
     on
     off
@@ -21,7 +28,7 @@ export def bool-or-auto [] {
   ]
 }
 
-export def secrets [] {
+export def "nu-complete chezmoi secrets" [] {
   [
     [value   description];
     [ignore  ""]
@@ -30,7 +37,7 @@ export def secrets [] {
   ]
 }
 
-export def types [] {
+export def "nu-complete chezmoi types" [] {
   const positive = [
     [value       description];
     ["all"       "All entries"]
@@ -56,7 +63,7 @@ export def types [] {
   $positive | append $negative
 }
 
-export def path-style [] {
+export def "nu-complete chezmoi path-style" [] {
   [
     absolute
     relative

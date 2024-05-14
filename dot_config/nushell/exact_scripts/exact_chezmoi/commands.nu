@@ -1,12 +1,13 @@
+use completions.nu * 
+
 # Open chezmoi module config in EDITOR
 export def "config chezmoi" [
-  --nu-module(-n) # Configure this nushell module
+  target?: string@"nu-complete config chezmoi targets"
 ] {
-  let file = if $nu_module {
-    ($nu.default-config-dir | path join scripts chezmoi)
-  } else {
-    ($env.XDG_DATA_HOME | path join chezmoi)
-  }
+  let file = (nu-complete config chezmoi targets
+  | where value == ($target | default "rc-files")
+  | get description.0)
+
   run-external $env.EDITOR $file
 }
 
