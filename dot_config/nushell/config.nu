@@ -665,6 +665,13 @@ $env.config = {
             event: { send: enter }
         }
         {
+            name: newline_or_run_command
+            modifier: shift
+            keycode: char_o
+            mode: vi_normal
+            event: { edit: insertnewline }
+        }
+        {
             name: move_left
             modifier: control
             keycode: char_b
@@ -909,3 +916,4 @@ use brew *
 use tmux *
 use yabai *
 use skhd *
+use pueue *
