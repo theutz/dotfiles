@@ -47,6 +47,7 @@ export def "chezmoi sync" [] {
   ^chezmoi re-add --interactive
   chezmoi add-exact
   chezmoi forget-deleted
+  chezmoi apply --refresh-externals
 }
 
 # List managed files using nushell goodies
