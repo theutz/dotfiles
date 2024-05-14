@@ -52,7 +52,7 @@ export extern "pueue switch" [
 # Stashed tasks won't be automatically started. You have to enqueue them or start them by hand
 export extern "pueue stash" [
   ...task_id: string@"nu-complete pueue tasks" # Stash these specific tasks
-  --help(-h)         # Print help
+  --help(-h)                                   # Print help
 ]
 
 # Enqueue stashed tasks. They'll be handled normally afterwards
@@ -79,7 +79,7 @@ export extern "pueue stash" [
 export extern "pueue enqueue" [
   ...task_ids: int@"nu-complete pueue tasks" # The tasks to enque
   --delay(-d): string                        # Delay enqueuing these tasks until <delay> elapses. See DELAY FORMAT below
-  --help(-h):  string                        # Print help
+  --help(-h)                                 # Print help
 ]
 
 # Resume operation of specific tasks or groups of tasks.
@@ -134,10 +134,24 @@ export extern "pueue kill" [
   --help(-h)                                     # Print help
 ]
 
-# TODO: send           Send something to a task. Useful for sending confirmations such as 'y\n'
-# TODO: edit           Edit the command, path, label, or priority of a stashed or queued task.
-#                     By default only the command is edited.
-#                     Multiple properties can be added in one go.
+# Send something to a task. Useful for sending confirmations such as 'y\n'
+export extern "pueue send" [
+  task_id: int@"nu-complete pueue tasks", # The task id
+  input:   string                         # The command to send to the task
+  --help(-h)                              # Print help
+]
+
+# Edit the command, path, label, or priority of a stashed or queued task.
+# By default only the command is edited.
+# Multiple properties can be added in one go.
+export extern "pueue edit" [
+  task_id: int@"nu-complete pueue tasks" # The task's id
+  --command(-c)                          # Edit the task's command
+  --path(-p)                             # Edit the task's path
+  --label(-l)                            # Edit the task's label
+  --priority(-o)                         # Edit the task's priority
+  --help(-h)                             # Print help
+]
 
 # Use this to add or remove groups.
 # By default, this will simply display all known groups.
@@ -159,7 +173,55 @@ export extern "pueue group remove" [
   --help(-h)                              # Print help
 ]
 
-# TODO: status         Display the current status of all tasks
+
+# Display the current status of all tasks
+#   
+# Query
+#   Users can specify a custom query to filter for specific values, order by a column
+#   or limit the amount of tasks listed.
+#   
+#   Syntax:
+#      [column_selection]? [filter]* [order_by]? [limit]?
+#   
+#   where:
+#     - column_selection := `columns=[column]([column],)*`
+#     - column := `id | status | command | label | path | enqueue_at | dependencies | start | end`
+#     - filter := `[filter_column] [filter_op] [filter_value]`
+#       (note: not all columns support all operators, see "Filter columns" below.)
+#     - filter_column := `start | end | enqueue_at | status | label`
+#     - filter_op := `= | != | < | > | %=`
+#       (`%=` means 'contains', as in the test value is a substring of the column value)
+#     - order_by := `order_by [column] [order_direction]`
+#     - order_direction := `asc | desc`
+#     - limit := `[limit_type]? [limit_count]`
+#     - limit_type := `first | last`
+#     - limit_count := a positive integer
+#   
+#   Filter columns:
+#     - `start`, `end`, `enqueue_at` contain a datetime
+#       which support the operators `=`, `!=`, `<`, `>`
+#       against test values that are:
+#         - date like `YYYY-MM-DD`
+#         - time like `HH:mm:ss` or `HH:mm`
+#         - datetime like `YYYY-MM-DDHH:mm:ss`
+#           (note there is currently no separator between the date and the time)
+#   
+#   Examples:
+#     - `status=running`
+#     - `columns=id,status,command status=running start > 2023-05-2112:03:17 order_by command first 5`
+#   
+#   The formal syntax is defined here:
+#   https://github.com/Nukesor/pueue/blob/main/pueue/src/client/query/syntax.pest
+#   
+#   More documentation is on the query syntax PR:
+#   https://github.com/Nukesor/pueue/issues/350#issue-1359083118
+export extern "pueue status" [
+  query?:      string                            # The query
+  --json(-j)                                     # Print the current state as json to stdout. This does not include the output of tasks. Use `log -j` if you want everything
+  --group(-g): string@"nu-complete pueue groups" # Only show tasks of a specific group
+  --help(-h)                                     # Print help (see a summary with '-h')
+]
+
 # TODO: format-status  Accept a list or map of JSON pueue tasks via stdin and display it just like "pueue status".
 #                     A simple example might look like this:
 #                     pueue status --json | jq -c '.tasks' | pueue format-status
@@ -195,12 +257,43 @@ export extern "pueue wait" [
   --help(-h)                                         # Print help
 ]
 
-# TODO: clean          Remove all finished tasks from the list
-# TODO: reset          Kill all tasks, clean up afterwards and reset EVERYTHING!
-# TODO: shutdown       Remotely shut down the daemon. Should only be used if the daemon isn't started by a service manager
-# TODO: parallel       Set the amount of allowed parallel tasks
-#                     By default, adjusts the amount of the default group.
-#                     No tasks will be stopped, if this is lowered.
-#                     This limit is only considered when tasks are scheduled.
-# TODO: completions    Generates shell completion files. This can be ignored during normal operations
-# TODO: help           Print this message or the help of the given subcommand(s)
+# Remove all finished tasks from the list
+export extern "pueue clean" [
+  --successful-only(-s)                             # Only clean tasks that finished successfully
+  --group(-g): string@"nu-complete pueue groups"    # Only clean tasks of a specific group
+  --help(-h)                                        # Print help
+]
+
+# Kill all tasks, clean up afterwards and reset EVERYTHING!
+export extern "pueue reset" [
+  --children(-c)  # Deprecated: this switch no longer has any effect
+  --force(-f)     # Don't ask for any confirmation
+  --help(-h)      # Print help
+]
+
+# Remotely shut down the daemon. Should only be used if the daemon isn't started by a service manager
+export extern "pueue shutdown" [
+  --help(-h)  # Print help
+]
+
+# Set the amount of allowed parallel tasks
+# By default, adjusts the amount of the default group.
+# No tasks will be stopped, if this is lowered.
+# This limit is only considered when tasks are scheduled.
+export extern "pueue parallel" [
+  parallel_tasks: int                                # The amount of allowed parallel tasks. Setting this to 0 means an unlimited amount of parallel tasks
+  --group(-g):    string@"nu-complete pueue groups"  # Set the amount for a specific group
+  --help(-h)                                         # Print help
+]
+
+# Generates shell completion files. This can be ignored during normal operations
+export extern "pueue completions" [
+  shell: string@"nu-complete pueue shells" # The target shell
+  output_directory?: string
+  --help(-h)  # Print help
+]
+
+# Print this message or the help of the given subcommand(s)
+export extern "pueue help" [
+  command?: string # The command to get help for
+]

@@ -26,3 +26,7 @@ export def "nu-complete pueue tasks" [] {
 export def "nu-complete pueue statuses" [] {
   [running paused stashed queued failed success]
 }
+
+export def "nu-complete pueue shells" [] {
+  [bash elvish fish power-shell zsh]
+}
