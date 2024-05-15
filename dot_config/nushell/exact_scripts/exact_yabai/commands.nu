@@ -1,6 +1,5 @@
 use completions.nu *
 use xdg ["xdg config"]
-source commands.nu
 
 # Follow logs for the yabai window manager
 export def "follow yabai" [] {

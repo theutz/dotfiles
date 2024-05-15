@@ -1,7 +1,7 @@
 use completions.nu *
 
 # Control the yabai window manager
-export extern main [
+export extern yabai [
   --load-sa                                          # Install and load the scripting-addition.
   --uninstall-sa                                     # Uninstall the scripting-addition.
   --install-service                                  # Write launchd service file to disk.
