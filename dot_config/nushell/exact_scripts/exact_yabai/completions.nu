@@ -123,7 +123,9 @@ export def "nu-complete yabai message" [] {
 
 export def handle-query [query] {
   let q = $query | parse --regex '^\s*-{1,2}(?P<cmd>displays|spaces|windows)(?:\s*)(?P<prop>[^-][[:alnum:],]*)?(?:\s*)(?:--(?P<arg>(?:display|space|window)))?(?:\s*)(?P<selector>\w*)?$'
-  $q
+  match $q.cmd {
+    _ => ([displays spaces windows] | each {$"--($in)"})
+  }
 }
 
 export def "nu-complete yabai" [context: string] {
