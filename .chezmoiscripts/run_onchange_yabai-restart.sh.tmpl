@@ -1,4 +1,9 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env nu
 
 # yabairc hash: {{ include "dot_config/exact_yabai/yabairc" | sha256sum }}
-sudo yabai --load-sa && yabai --restart-service
+# yabai.nu hash: {{ include "dot_config/exact_yabai/yabai.nu" | sha256sum }}
+pueue kill -g yabai
+sleep 1sec
+pueue restart -g yabai
+pueue clean -g yabai
+sudo yabai --load-sa
