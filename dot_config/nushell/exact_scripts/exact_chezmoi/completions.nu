@@ -71,3 +71,10 @@ export def "nu-complete chezmoi path-style" [] {
     source-relative
   ]
 }
+
+export def "nu-complete chezmoi chattr attributes" [] {
+  let attrs = [after before empty encrypted exact executable external once private readonly remove template]
+  let types = [create modify script symlink]
+  let negative_types = $types | each {|x| $"no($x)"}
+  $attrs ++ $types ++ $negative_types
+}
