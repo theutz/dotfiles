@@ -30,3 +30,11 @@ export def "nu-complete pueue statuses" [] {
 export def "nu-complete pueue shells" [] {
   [bash elvish fish power-shell zsh]
 }
+
+export def "nu-complete config pueue target" [] {
+    [
+      [value description];
+      [nu-config ($nu.default-config-dir | path join scripts pueue)]
+    ]
+  }
+

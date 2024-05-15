@@ -8,12 +8,13 @@ def "nu-complete config skhd targets" [] {
   ]
 }
 
+# Configure simple hotkey daemon settings
 export def "config skhd" [
-  target?: string@"nu-complete config skhd targets"
+  target: string@"nu-complete config skhd targets"
 ] {
   let path = (
     nu-complete config skhd targets
-    | where value == ($target | default "rc-file")
+    | where value == $target
     | get description.0
   )
   

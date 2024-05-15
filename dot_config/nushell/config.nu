@@ -907,13 +907,13 @@ $env.config.keybindings = (
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
 
-use starship.nu *
 use xdg *
+use starship.nu *
 use chezmoi *
-source aliases.nu
-source yazi.nu
 use brew *
 use tmux *
 use yabai *
 use skhd *
 use pueue *
+source commands.nu
+source aliases.nu

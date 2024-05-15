@@ -1,10 +1,9 @@
-def aliases [] {
-  chezmoi edit ([$env.NU_LIB_DIRS.0 aliases.nu] | str join (char psep))
-}
+use commands.nu *
 
-alias lg = lazygit
-alias gf = git fetch
-alias gfm = git pull
-alias gws = git status --short
-alias gwS = git status
-alias j = just --highlight
+export alias lg = lazygit
+export alias gf = git fetch
+export alias gfm = git pull
+export alias gws = git status --short
+export alias gwS = git status
+export alias j = just --highlight
+export alias e = editor
