@@ -26,6 +26,7 @@ export def "yabai restart" [] {
   pueue kill $id
 }
 
+# Report the status of the yabai daemon
 export def "yabai status" [] {
   pueue status -g (get-group)
 }
@@ -41,6 +42,7 @@ export def "yabai edit config" [] {
   run-external $env.EDITOR (xdg config yabai)
 }
 
+# Print the logs for the yabai daemon
 export def "yabai log" [
   --follow(-f) # Follow the logs
 ] {
