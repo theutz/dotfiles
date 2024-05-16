@@ -323,7 +323,7 @@ settings:
       right: 5
       top: 4
   tabs.position:
-    global: left
+    global: top
   tabs.select_on_remove:
     global: next
   tabs.show:

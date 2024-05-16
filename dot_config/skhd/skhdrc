@@ -1,10 +1,32 @@
 # Setup modes
-.load "default_mode"
-.load "yabai_mode"
+# .load "yabai_mode"
 
-:: default : "Entering default mode..."; borders active_color=0xfff6c177 inactive_color=0xff6e6a86
-:: yabai @ : "Entering yabai mode..."; borders active_color=0xffeb6f92 inactive_color=0xffc4a7e7
-:: yabaispace @ : "Entering yabai space mode..."
+:: default : wm mode default
+:: yabai @ : wm mode yabai
+:: yabaispace @ : wm mode yabaispace
 ctrl - return ; yabai
 yabai < escape ; default
 yabai < ctrl - return ; default
+
+# Default Mode
+alt - h : wm focus window west
+alt - j : wm focus window south
+alt - k : wm focus window north
+alt - l : wm focus window east
+alt - n : wm focus window next
+alt - p : wm focus window prev
+alt - f : wm focus window stack next
+alt - b : wm focus window stack prev
+
+# Yabai Mode
+yabai < r : wm reload
+yabai < h : wm focus window west
+yabai < j : wm focus window south
+yabai < k : wm focus window north
+yabai < l : wm focus window east
+yabai < n : wm focus window next
+yabai < p : wm focus window prev
+yabai < f : wm focus window stack next
+yabai < b : wm focus window stack prev
+yabai < z : wm zoom increase
+yabai < shift - z : wm zoom decrease
