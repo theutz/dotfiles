@@ -1,21 +1,32 @@
+use rose-pine
+
 export def default [] {
-  print "Entering default mode."
-  borders style=round
-  borders width=8
-  borders active_color=0xfff6c177
-  borders inactive_color=0xaa6e6a86
-  borders blur_radius=20.0
+  print "DEFAULT mode"
+  (
+    borders
+    $"active_color=(rose-pine dark gold)"
+    $"inactive_color=(rose-pine dark base argb 88)"
+    style=round
+    width=8
+  )
 }
 
-export def yabai [] {
-  print "Entering yabai mode."
-  borders style=square
-  borders width=14
-  borders active_color=0xffeb6f92
-  borders inactive_color=0xaac4a7e7
-  borders blur_radius=0
+export def win [] {
+  print "WIN mode"
+  (
+    borders
+    width=12
+    $"active_color=(rose-pine dawn gold)"
+    $"inactive_color=(rose-pine dark subtle)"
+  )
 }
 
-export def yabaispace [] {
-  print "Entering yabaispace mode."
+export def spc [] {
+  print "SPC mode"
+  (
+    borders
+    width=12
+    $"active_color=(rose-pine dark love)"
+    $"inactive_color=(rose-pine dark muted)"
+  )
 }

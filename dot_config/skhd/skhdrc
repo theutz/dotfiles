@@ -1,14 +1,14 @@
 # Setup modes
-# .load "yabai_mode"
-
 :: default : wm mode default
-:: yabai @ : wm mode yabai
-:: yabaispace @ : wm mode yabaispace
-ctrl - return ; yabai
-yabai < escape ; default
-yabai < ctrl - return ; default
+:: win @ : wm mode win
+ctrl - return ; win
+win < escape ; default
+:: spc @ : wm mode spc
+win < s ; spc
+spc < escape ; win
+spc < shift - escape ; default
 
-# Default Mode
+# DEFAULT Mode
 alt - h : wm window focus west
 alt - j : wm window focus south
 alt - k : wm window focus north
@@ -17,25 +17,45 @@ alt - n : wm window focus next
 alt - p : wm window focus prev
 alt - f : wm window focus stack next
 alt - b : wm window focus stack prev
+alt - 0x21 : wm space focus prev
+alt - 0x1E : wm space focus next
 
-yabai < ctrl + shift - r : wm reload
+win < ctrl + shift - r : wm reload
 
-# Yabai Mode
-yabai < h : wm window focus west
-yabai < j : wm window focus south
-yabai < k : wm window focus north
-yabai < l : wm window focus east
-yabai < n : wm window focus next
-yabai < p : wm window focus prev
-yabai < f : wm window focus stack next
-yabai < b : wm window focus stack prev
-yabai < z : wm window zoom increase
-yabai < r : wm space rotate cw
-yabai < shift - z : wm window zoom decrease
-yabai < shift - h : wm window swap west
-yabai < shift - j : wm window swap south
-yabai < shift - k : wm window swap north
-yabai < shift - l : wm window swap east
-yabai < shift - n : wm window swap next
-yabai < shift - p : wm window swap prev
-yabai < shift - r : wm space rotate ccw
+# WIN Mode
+win < h : wm window focus west
+win < j : wm window focus south
+win < k : wm window focus north
+win < l : wm window focus east
+win < n : wm window focus next
+win < p : wm window focus prev
+win < f : wm window focus stack next
+win < b : wm window focus stack prev
+win < z : wm window zoom increase
+win < 0x21 : wm space focus prev
+win < 0x1E : wm space focus next
+win < 0x1B : wm window size ratio decrease
+win < 0x18 : wm window size ratio increase
+
+win < shift - z : wm window zoom decrease
+win < shift - h : wm window swap west
+win < shift - j : wm window swap south
+win < shift - k : wm window swap north
+win < shift - l : wm window swap east
+win < shift - n : wm window swap next
+win < shift - p : wm window swap prev
+win < shift - 0x21 : wm window space prev
+win < shift - 0x1E : wm window space next
+
+win < ctrl - h : wm window warp west
+win < ctrl - j : wm window warp south
+win < ctrl - k : wm window warp north
+win < ctrl - l : wm window warp east
+
+# SPC mode
+spc < 0x18 : wm space create
+spc < 0x1B : wm space destroy
+spc < e : wm space equalize
+spc < shift - e : wm space balance
+spc < r : wm space rotate cw
+spc < shift - r : wm space rotate ccw
