@@ -914,7 +914,7 @@ use chezmoi *
 use brew *
 use tmux *
 use yabai *
-use skhd *
+use skhd
 use pueue *
 use wm
 source commands.nu
