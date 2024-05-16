@@ -3,7 +3,6 @@ let padding = 16
 
 # Load the scripting addition
 sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # Global Settings
 yabai -m config menubar_opacity 1.0                  # 0-1
@@ -40,7 +39,8 @@ yabai -m rule --add label=clearvpn app='^ClearVPN$' manage=off
 yabai -m rule --add label=cleanmymac app='^CleanMyMac X$' manage=off
 
 # Signals
-yabai -m signal --add event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
+yabai -m signal --add label=reloadsa event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add label=focuswez event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
 
 # Borders
 pueue kill -g borders

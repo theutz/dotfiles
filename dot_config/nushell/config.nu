@@ -915,5 +915,6 @@ use tmux *
 use yabai *
 use skhd *
 use pueue *
+use wm
 source commands.nu
 source aliases.nu

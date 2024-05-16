@@ -2,7 +2,9 @@
 .load "default_mode"
 .load "yabai_mode"
 
-:: default : borders active_color=0xfff6c177 inactive_color=0xff6e6a86
-:: yabai @ : borders active_color=0xffeb6f92 inactive_color=0xffc4a7e7
+:: default : "Entering default mode..."; borders active_color=0xfff6c177 inactive_color=0xff6e6a86
+:: yabai @ : "Entering yabai mode..."; borders active_color=0xffeb6f92 inactive_color=0xffc4a7e7
+:: yabaispace @ : "Entering yabai space mode..."
 ctrl - return ; yabai
 yabai < escape ; default
+yabai < ctrl - return ; default

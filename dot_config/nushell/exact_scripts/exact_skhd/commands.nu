@@ -4,8 +4,7 @@ use xdg *
 export def "skhd start" [] {
   let groups = (pueue status --json | from json | get groups | transpose group | get group)
   if ("skhd" not-in $groups) { pueue group add skhd }
-  pueue add -g skhd -- skhd
-  pueue status -g skhd
+  SHELL=nu pueue add -g skhd -- skhd
 }
 
 # Restart the skhd daemon
@@ -14,8 +13,10 @@ export def "skhd restart" [] {
   let id = (pueue status -g skhd --json | from json
     | get tasks | transpose | flatten
     | where status == Running
-    | get id.0)
-  pueue kill $id
+    | get -i  id.0)
+  if ($id | is-not-empty) {
+    pueue kill $id
+  }
 }
 
 # Get the queue status for the skhd daemon
