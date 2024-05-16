@@ -339,7 +339,7 @@ settings:
   tabs.width:
     global: 15%
   tabs.wrap:
-    global: false
+    global: true
   url.auto_search:
     global: naive
   url.default_page:
