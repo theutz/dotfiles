@@ -305,7 +305,7 @@ settings:
       right: 4
       top: 4
   statusbar.position:
-    global: bottom
+    global: top
   statusbar.show:
     global: always
   tabs.close_mouse_button:
@@ -323,7 +323,7 @@ settings:
       right: 5
       top: 4
   tabs.position:
-    global: top
+    global: left
   tabs.select_on_remove:
     global: next
   tabs.show:

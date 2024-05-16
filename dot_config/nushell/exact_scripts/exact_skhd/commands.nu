@@ -4,7 +4,7 @@ use xdg *
 export def "skhd start" [] {
   let groups = (pueue status --json | from json | get groups | transpose group | get group)
   if ("skhd" not-in $groups) { pueue group add skhd }
-  SHELL=nu pueue add -g skhd -- skhd
+  SHELL="nu-login" pueue add -g skhd -- skhd
 }
 
 # Restart the skhd daemon
