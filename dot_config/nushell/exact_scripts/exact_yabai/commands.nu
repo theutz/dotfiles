@@ -38,7 +38,7 @@ export def "yabai edit nu" [] {
 }
 
 # Edit the yabai configuration files
-export def "yabai edit config" [] {
+export def "yabai edit" [] {
   run-external $env.EDITOR (xdg config yabai)
 }
 
@@ -49,6 +49,10 @@ export def "yabai log" [
   let id = running-task
   pueue log $id
   if $follow { pueue follow $id}
+}
+
+export def "yabai follow" [] {
+  yabai log -f
 }
 
 def running-task [] {
