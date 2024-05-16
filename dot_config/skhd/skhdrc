@@ -18,8 +18,9 @@ alt - p : wm window focus prev
 alt - f : wm window focus stack next
 alt - b : wm window focus stack prev
 
+yabai < ctrl + shift - r : wm reload
+
 # Yabai Mode
-yabai < r : wm reload
 yabai < h : wm window focus west
 yabai < j : wm window focus south
 yabai < k : wm window focus north
@@ -29,6 +30,7 @@ yabai < p : wm window focus prev
 yabai < f : wm window focus stack next
 yabai < b : wm window focus stack prev
 yabai < z : wm window zoom increase
+yabai < r : wm space rotate cw
 yabai < shift - z : wm window zoom decrease
 yabai < shift - h : wm window swap west
 yabai < shift - j : wm window swap south
@@ -36,4 +38,4 @@ yabai < shift - k : wm window swap north
 yabai < shift - l : wm window swap east
 yabai < shift - n : wm window swap next
 yabai < shift - p : wm window swap prev
-yabai < shift - r : wm space rotate
+yabai < shift - r : wm space rotate ccw

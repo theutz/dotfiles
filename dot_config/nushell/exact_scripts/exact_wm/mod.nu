@@ -1,6 +1,7 @@
 export use edit.nu
 export use mode.nu
 export use window
+export use space
 use yabai
 
 export def reload [] {
