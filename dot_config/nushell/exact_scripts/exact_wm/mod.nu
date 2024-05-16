@@ -1,7 +1,6 @@
 export use edit.nu
-export use focus
 export use mode.nu
-export use zoom.nu
+export use window
 use yabai
 
 export def reload [] {
