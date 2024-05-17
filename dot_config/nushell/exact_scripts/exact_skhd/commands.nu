@@ -42,17 +42,3 @@ export def log [
 export def follow [] {
   log -f
 }
-
-# Edit the skhd configuration files
-export def edit [] {
-  enter (xdg config skhd)
-  try { run-external $env.EDITOR skhdrc }
-  n
-}
-
-# Edit the skhd nu module
-export def "edit nu" [] {
-  enter ($nu.default-config-dir | path join scripts skhd)
-  try { run-external $env.EDITOR . }
-  n
-}

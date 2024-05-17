@@ -1,4 +1,3 @@
-export use edit.nu
 export use mode.nu
 export use window
 export use space

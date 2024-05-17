@@ -5,6 +5,7 @@ use xdg *
 export def start [] {
   let group = get-group
   pueue add -g $group -- yabai
+  pueue start -g $group
   sudo yabai --load-sa
 }
 
@@ -19,21 +20,17 @@ export def status [] {
   pueue status -g (get-group)
 }
 
-# Edit the yabai nushell module
-export def "edit nu" [] {
-  enter ($nu.default-config-dir | path join scripts yabai)
-  try { run-external $env.EDITOR . }
-  n
-}
-
-# Edit the yabai configuration files
-export def edit [] {
-  enter (xdg config yabai)
-  try {
-    run-external $env.EDITOR yabairc
-    restart
+# Kill the pueue group
+export def kill [
+  --clean (-c) # Clean up logs
+] {
+  pueue kill -g yabai
+  if ($clean) {
+    pueue clean -g yabai
+    (pueue status -g yabai --json | from json
+      | get tasks | values | get id
+      | each {|x| pueue remove $x})
   }
-  n
 }
 
 # Print the logs for the yabai daemon

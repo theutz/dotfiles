@@ -1,16 +1,5 @@
 use completions.nu * 
 
-# Open chezmoi module config in EDITOR
-export def "config chezmoi" [
-  target?: string@"nu-complete config chezmoi targets"
-] {
-  let file = (nu-complete config chezmoi targets
-  | where value == ($target | default "rc-files")
-  | get description.0)
-
-  run-external $env.EDITOR $file
-}
-
 # Get the status of files managed by chezmoi
 export def "chezmoi status+" [] {
   ^chezmoi status

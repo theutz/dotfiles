@@ -219,6 +219,7 @@ settings:
     https://calendar.google.com: true
     https://web.telegram.org: true
     https://web.whatsapp.com: true
+    https://www.facebook.com: false
     https://www.instagram.com: true
   content.pdfjs:
     global: true
