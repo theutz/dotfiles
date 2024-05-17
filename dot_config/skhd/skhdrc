@@ -10,25 +10,28 @@
 # spc < shift - escape ; default
 
 # DEFAULT Mode
+alt - 0x1E : wm space focus next
+alt - 0x21 : wm space focus prev
+alt - e : wm space balance
 alt - h : wm window focus west
+alt - i : wm window focus stack next
 alt - j : wm window focus south
 alt - k : wm window focus north
 alt - l : wm window focus east
 alt - n : wm window focus next
-alt - p : wm window focus prev
-alt - i : wm window focus stack next
 alt - o : wm window focus stack prev
-alt - u : wm window stack pop
-alt - z : wm window zoom cycle
-alt - e : wm space balance
-alt - s : wm space create
-alt - y : wm space flip-y
-alt - 0x21 : wm space focus prev
-alt - 0x1E : wm space focus next
+alt - p : wm window focus prev
 alt - r : wm window toggle split
+alt - s : wm space create
+alt - u : wm window stack pop
 alt - x : wm space flip-x
+alt - y : wm space flip-y
+alt - space : wm window zoom cycle
 
-alt + shift - s : wm space destroy
+alt + shift - 0x18 : wm window size ratio increase
+alt + shift - 0x1B : wm window size ratio decrease
+alt + shift - 0x1E : wm window space next
+alt + shift - 0x21 : wm window space prev
 alt + shift - e : wm space equalize
 alt + shift - h : wm window swap west
 alt + shift - j : wm window swap south
@@ -36,18 +39,15 @@ alt + shift - k : wm window swap north
 alt + shift - l : wm window swap east
 alt + shift - n : wm window swap next
 alt + shift - p : wm window swap prev
-alt + shift - i : wm window stack next
-alt + shift - o : wm window stack prev
-alt + shift - u : wm window stack pop
 alt + shift - r : wm space rotate cw; wm mode go-back
-alt + shift - 0x1B : wm window size ratio decrease
-alt + shift - 0x18 : wm window size ratio increase
-alt + shift - 0x21 : wm window space prev
-alt + shift - 0x1E : wm window space next
+alt + shift - s : wm space destroy
 
 ctrl + alt - h : wm window warp west
+ctrl + alt - i : wm window stack next
 ctrl + alt - j : wm window warp south
 ctrl + alt - k : wm window warp north
 ctrl + alt - l : wm window warp east
+ctrl + alt - o : wm window stack prev
+ctrl + alt - u : wm window stack pop
 
 cmd + alt + ctrl - r : wm reload

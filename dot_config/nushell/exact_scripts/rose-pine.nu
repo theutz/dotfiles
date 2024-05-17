@@ -1,10 +1,5 @@
-export def main [
-  variant: string = dark,
-  role: string = base,
-  format: string = argb,
-  opacity: string = ff
-] {
-  ([
+def themes [] {
+  [
     [role    dark   moon   dawn ];
     [base    191724 232136 faf4ed]
     [surface 1f1d2e 2a273f fffaf3]
@@ -22,7 +17,27 @@ export def main [
     [hi-med  403d52 44415a dfdad9]
     [hi-high 524f67 56526e cecacd]
   ]
-    | where role == $role
+}
+
+def variants [] {
+  themes | columns | drop nth 0
+}
+
+def role [] {
+  themes | get role
+}
+
+def format [] {
+  [argb]
+}
+
+export def main [
+  variant: string@variants,
+  role: string@role,
+  format: string@format = argb,
+  opacity: string = ff
+] {
+  (themes | where role == $role
     | (get $variant).0
     | match ($format) {
         argb => { $"0x($opacity)($in)" }

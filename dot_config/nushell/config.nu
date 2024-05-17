@@ -907,8 +907,10 @@ $env.config.keybindings = (
 # Zoxide improved cd
 source ~/.local/share/zoxide/init.nu
 
-use rose-pine.nu *
-use xdg *
+
+
+use rose-pine.nu
+use xdg.nu
 use starship.nu *
 use chezmoi *
 use brew *
@@ -917,5 +919,6 @@ use yabai
 use skhd
 use pueue *
 use wm
+use sketchybar.nu
 source commands.nu
 source aliases.nu
