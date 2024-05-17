@@ -14,5 +14,20 @@ export def create [] {
 }
 
 export def destroy [] {
-  yabai -m space --destroy last
+  let id = (yabai -m query --displays --display | from json
+    | get spaces | last)
+  yabai -m space --destroy $id
+}
+
+export def flip-x [] {
+  yabai -m space --mirror x-axis
+}
+
+export def flip-y [] {
+  yabai -m space --mirror y-axis
+}
+
+export def flip-xy [] {
+  flip-x
+  flip-y
 }

@@ -293,6 +293,9 @@ settings:
     global: 8
   new_instance_open_target:
     global: tab-bg
+  qt.environ:
+    global:
+      PATH: /opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
   scrolling.bar:
     global: overlay
   scrolling.smooth:
