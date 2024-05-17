@@ -913,7 +913,7 @@ use starship.nu *
 use chezmoi *
 use brew *
 use tmux *
-use yabai *
+use yabai
 use skhd
 use pueue *
 use wm

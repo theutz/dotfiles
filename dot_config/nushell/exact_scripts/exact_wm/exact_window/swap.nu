@@ -1,5 +1,12 @@
 export def west [] {
-  yabai -m window --swap west
+  try {
+    yabai -m window --swap west
+  } catch {
+    let id = (yabai -m query --windows --window | from json
+      | get id)
+    yabai -m window --display west
+    yabai -m window --focus $id
+  }
 }
 
 export def south [] {
@@ -11,7 +18,14 @@ export def north [] {
 }
 
 export def east [] {
-  yabai -m window --swap east
+  try {
+    yabai -m window --swap east
+  } catch {
+    let id = (yabai -m query --windows --window | from json
+      | get id)
+    yabai -m window --display east
+    yabai -m window --focus $id
+  }
 }
 
 export def next [] {

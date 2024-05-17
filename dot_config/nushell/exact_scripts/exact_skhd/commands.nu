@@ -40,7 +40,7 @@ export def log [
 
 # Edit the skhd configuration files
 export def edit [] {
-  run-external $env.EDITOR (xdg config skhd)
+  run-external $env.EDITOR (xdg config skhd skhdrc)
 }
 
 # Edit the skhd nu module

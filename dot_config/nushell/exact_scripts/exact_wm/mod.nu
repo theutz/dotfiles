@@ -12,3 +12,8 @@ export def reload [] {
 export def main [] {
   help wm
 }
+
+# Edit nu commands related to the window manager
+export def edit [] {
+  run-external $env.EDITOR ($nu.default-config-dir | path join scripts wm)
+}

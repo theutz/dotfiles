@@ -43,6 +43,14 @@ export def decrease [] {
   match (get-zoom-state) {
     fullscreen => zoom-to-parent,
     parent => unzoom,
-    none => { print "Minimum zoom reached" }
+    none => { print "Minimum zoom reached." }
+  }
+}
+
+export def cycle [] {
+  match (get-zoom-state) {
+    fullscreen => unzoom,
+    parent => zoom-to-fullscreen,
+    none => zoom-to-parent
   }
 }

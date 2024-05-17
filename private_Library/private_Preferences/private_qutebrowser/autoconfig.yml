@@ -208,6 +208,7 @@ settings:
     global:
     - https://click.redditmail.com/*
     - https://*.bugherd.com/*
+    - sentry.io
   content.fullscreen.window:
     global: true
   content.javascript.clipboard:
@@ -305,7 +306,7 @@ settings:
       right: 4
       top: 4
   statusbar.position:
-    global: top
+    global: bottom
   statusbar.show:
     global: always
   tabs.close_mouse_button:

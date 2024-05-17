@@ -1,64 +1,53 @@
 use completions.nu *
 use xdg *
 
-# Follow logs for the yabai window manager
-export def "follow yabai" [] {
-  let id = (pueue status -g yabai --json
-    | from json
-    | get tasks
-    | values
-    | where status == Running
-    | get id.0)
-  pueue follow $id
-}
-
 # Start the yabai window manager daemon
-export def "yabai start" [] {
+export def start [] {
   let group = get-group
   pueue add -g $group -- yabai
   sudo yabai --load-sa
 }
 
 # Restart the yabai window manager daemon
-export def "yabai restart" [] {
-  yabai start
-  let id = running-task
-  pueue kill $id
+export def restart [] {
+  start
+  running-task | if ($in | is-not-empty) { pueue kill $in }
 }
 
 # Report the status of the yabai daemon
-export def "yabai status" [] {
+export def status [] {
   pueue status -g (get-group)
 }
 
 # Edit the yabai nushell module
-export def "yabai edit nu" [] {
+export def "edit nu" [] {
   run-external $env.EDITOR ($nu.default-config-dir
     | path join scripts yabai)
 }
 
 # Edit the yabai configuration files
-export def "yabai edit" [] {
-  run-external $env.EDITOR (xdg config yabai)
+export def edit [] {
+  run-external $env.EDITOR (xdg config yabai yabairc)
+  restart
 }
 
 # Print the logs for the yabai daemon
-export def "yabai log" [
+export def log [
   --follow(-f) # Follow the logs
 ] {
   let id = running-task
   pueue log $id
-  if $follow { pueue follow $id}
+  if $follow { pueue follow $id }
 }
 
-export def "yabai follow" [] {
-  yabai log -f
+export def follow [] {
+  log -f
 }
 
 def running-task [] {
   (pueue status -g yabai --json | from json
     | get tasks | transpose | flatten 
-    | where status == Running | get id.0)
+    | where status == Running | get -i id.0)
 }
 
 def get-group [] {
