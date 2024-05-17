@@ -5,3 +5,4 @@ export use space.nu
 export use size.nu
 export use warp.nu
 export use toggle.nu
+export use stack.nu

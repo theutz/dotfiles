@@ -17,8 +17,9 @@ alt - k : wm window focus north
 alt - l : wm window focus east
 alt - n : wm window focus next
 alt - p : wm window focus prev
-alt - f : wm window focus stack next
+alt - i : wm window focus stack next
 alt - b : wm window focus stack prev
+alt - u : wm window stack pop
 alt - z : wm window zoom cycle
 alt - 0x21 : wm space focus prev
 alt - 0x1E : wm space focus next
@@ -29,6 +30,11 @@ alt + shift - k : wm window swap north
 alt + shift - l : wm window swap east
 alt + shift - n : wm window swap next
 alt + shift - p : wm window swap prev
+alt + shift - i : wm window stack next
+alt + shift - o : wm window stack prev
+alt + shift - u : wm window stack pop
+alt + shift - 0x1B : wm window size ratio decrease
+alt + shift - 0x18 : wm window size ratio increase
 cmd + alt + ctrl - r : wm reload
 
 # WIN Mode
@@ -38,8 +44,8 @@ win < k : wm window focus north
 win < l : wm window focus east
 win < n : wm window focus next
 win < p : wm window focus prev
-win < f : wm window focus stack next
-win < b : wm window focus stack prev
+win < i : wm window focus stack next
+win < o : wm window focus stack prev
 win < z : wm window zoom increase
 win < r : wm window toggle split
 win < 0x21 : wm space focus prev
@@ -54,6 +60,9 @@ win < shift - k : wm window swap north
 win < shift - l : wm window swap east
 win < shift - n : wm window swap next
 win < shift - p : wm window swap prev
+win < shift - i : wm window stack next
+win < shift - o : wm window stack prev
+win < shift - u : wm window stack pop
 win < shift - 0x21 : wm window space prev
 win < shift - 0x1E : wm window space next
 

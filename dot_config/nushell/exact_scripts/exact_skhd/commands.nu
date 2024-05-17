@@ -24,7 +24,7 @@ export def status [] {
   pueue status -g skhd
 }
 
-# Follow logs for the skhd hotkey daemon
+# Print (or follow) logs for the skhd hotkey daemon
 export def log [
   --follow(-f) # Follow the log
 ] {
@@ -38,13 +38,21 @@ export def log [
   if $follow { pueue follow $id }
 }
 
+# Follow the skhd logs
+export def follow [] {
+  log -f
+}
+
 # Edit the skhd configuration files
 export def edit [] {
-  run-external $env.EDITOR (xdg config skhd skhdrc)
+  enter (xdg config skhd)
+  try { run-external $env.EDITOR skhdrc }
+  n
 }
 
 # Edit the skhd nu module
 export def "edit nu" [] {
-  run-external $env.EDITOR ($nu.default-config-dir
-    | path join scripts skhd)
+  enter ($nu.default-config-dir | path join scripts skhd)
+  try { run-external $env.EDITOR . }
+  n
 }

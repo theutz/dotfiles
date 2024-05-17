@@ -49,9 +49,11 @@ export def prev [] {
 }
 
 export def "stack next" [] {
-  yabai -m window --focus stack.next
+  (try { yabai -m window --focus stack.next }
+    catch { yabai -m window --focus stack.first })
 }
 
 export def "stack prev" [] {
-  yabai -m window --focus stack.prev
+  (try { yabai -m window --focus stack.prev }
+    catch { yabai -m window --focus stack.last })
 }

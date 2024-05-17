@@ -21,14 +21,19 @@ export def status [] {
 
 # Edit the yabai nushell module
 export def "edit nu" [] {
-  run-external $env.EDITOR ($nu.default-config-dir
-    | path join scripts yabai)
+  enter ($nu.default-config-dir | path join scripts yabai)
+  try { run-external $env.EDITOR . }
+  n
 }
 
 # Edit the yabai configuration files
 export def edit [] {
-  run-external $env.EDITOR (xdg config yabai yabairc)
-  restart
+  enter (xdg config yabai)
+  try {
+    run-external $env.EDITOR yabairc
+    restart
+  }
+  n
 }
 
 # Print the logs for the yabai daemon
