@@ -40,10 +40,12 @@ yabai -m config external_bar all:32:0
 yabai -m rule --add label=settings app='^System Settings$' manage=off
 yabai -m rule --add label=clearvpn app='^ClearVPN$' manage=off
 yabai -m rule --add label=cleanmymac app='^CleanMyMac X$' manage=off
+yabai -m rule --add label=spotify app='^Spotify$' manage=off grid=12:12:1:1:10:10
 
 # Signals
 yabai -m signal --add label=reloadsa event=dock_did_restart action="sudo yabai --load-sa"
 yabai -m signal --add label=focuswez event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
+yabai -m signal --add label=spotify event=window_focused app="^Spotify$" action='yabai -m window --grid 12:12:1:1:10:10'
 
 # Borders
 pueue kill -g borders
