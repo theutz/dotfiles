@@ -1,115 +1,120 @@
 use xdg.nu
 
+def editor [...args: any] {
+  run-external $env.EDITOR ...$args
+}
+
 def scripts-path [
   ...paths: string
 ] {
   ($nu.default-config-dir | path join scripts ...$paths)
 }
 
-def edit-in-shell [
+def enter-edit [
   ...paths: string
-  --file (-f): string
 ] {
-  enter ($paths | str join)
-  try {
-    run-external $env.EDITOR (if ($file | is-not-empty) { $file } else { '.' })
-  } 
+  $paths | path join
+    | match ($in | path type) {
+        dir => { enter ($in) },
+        _ => { enter ($in | path dirname); ($in | path basename) }
+      }
+    | if ($in | is-not-empty) { editor $in } else { editor }
   dexit
 }
 
 # Edit the edit modules
 export def main [] {
-  edit-in-shell (scripts-path) -f edit.nu
+  enter-edit (scripts-path edit.nu)
 }
 
 # Edit the skhd configuration files
 export def skhd [] {
-  edit-in-shell (xdg config skhd) -f skhdrc
+  enter-edit (xdg config skhd skhdrc)
 }
 
 # Edit the skhd nu module
 export def "skhd nu" [] {
-  edit-in-shell (scripts-path skhd)
+  enter-edit (scripts-path skhd)
 }
 
 # Edit the chezmoi repository
 export def chezmoi [] {
-  edit-in-shell (^chezmoi source-path)
+  enter-edit (^chezmoi source-path)
 }
 
 # Edit the brew nu module
 export def "brew nu" [] {
-  edit-in-shell (scripts-path brew)
+  enter-edit (scripts-path brew)
 }
 
 # Edit the tmuxp session files
 export def tmuxp [] {
-  edit-in-shell (xdg config tmuxp)
+  enter-edit (xdg config tmuxp)
 }
 
 # Edit the tmux config
 export def tmux [] {
-  edit-in-shell (xdg config tmux)
+  enter-edit (xdg config tmux)
 }
 
 # Edit the tmux nushell module
 export def "tmux nu" [] {
-  edit-in-shell (scripts-path tmux)
+  enter-edit (scripts-path tmux)
 }
 
 # Edit the window manager module
 export def wm [] {
-  edit-in-shell (scripts-path wm)
+  enter-edit (scripts-path wm)
 }
 
 # Edit the yabai config
 export def yabai [] {
-  edit-in-shell (xdg config yabai) -f yabairc
+  enter-edit (xdg config yabai yabairc)
 }
 
 # Edit the yabai nushell module
 export def "yabai nu" [] {
-  edit-in-shell (scripts-path yabai)
+  enter-edit (scripts-path yabai)
 }
 
 # Edit aliases
 export def aliases [] {
-  edit-in-shell (scripts-path) -f aliases.nu
+  enter-edit (scripts-path aliases.nu)
 }
 
 # Edit commands
 export def commands [] {
-  edit-in-shell (scripts-path) -f commands.nu
+  enter-edit (scripts-path commands.nu)
 }
 
 # Edit nu config
 export def nu [] {
-  edit-in-shell $nu.default-config-dir -f config.nu
+  enter-edit $nu.default-config-dir config.nu
 }
 
 # Edit nu env
 export def env [] {
-  edit-in-shell $nu.default-config-dir -f env.nu
+  enter-edit $nu.default-config-dir env.nu
 }
 
 # Edit borders
 export def borders [] {
   use borders.nu
-  edit-in-shell (xdg config borders) -f bordersrc
+  enter-edit (xdg config borders bordersrc)
   borders restart
 }
 
 # Edit borders nushell module
 export def "borders nu" [] {
-  edit-in-shell (scripts-path) -f borders.nu
+  enter-edit (scripts-path borders.nu)
 }
 
 # Edit the follow nushell module
 export def follow [] {
-  edit-in-shell (scripts-path) -f follow.nu
+  enter-edit (scripts-path follow.nu)
 }
 
 # Edit the rose-pine nushell module
 export def rose-pine [] {
-  edit-in-shell (scripts-path) -f rose-pine.nu
+  enter-edit (scripts-path rose-pine.nu)
 }
