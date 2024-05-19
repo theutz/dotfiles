@@ -1,11 +1,21 @@
+def get-curr-win [] {
+  yabai -m query --windows --window | from json | get id
+}
+
+def with-focus [action: closure] {
+  let win = (get-curr-win)
+  do $action
+  yabai -m window --focus $win
+}
+
 export def next [] {
-  let win = (yabai -m query --windows --window | from json)
-  yabai -m window --space next
-  yabai -m window --focus $win.id
+  with-focus { yabai -m window --space next }
 }
 
 export def prev [] {
-  let win = (yabai -m query --windows --window | from json)
-  yabai -m window --space prev
-  yabai -m window --focus $win.id
+  with-focus { yabai -m window --space prev }
+}
+
+export def main [selector: string] {
+  with-focus { yabai -m window --space $selector }
 }

@@ -9,3 +9,7 @@ export def prev [] {
   sleep 0.2sec
   yabai -m window --focus first
 }
+
+export def main [selector: string] {
+  yabai -m space --focus $selector
+}
