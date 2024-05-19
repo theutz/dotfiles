@@ -7,41 +7,41 @@ export def get-zoom-state [] {
     | first)
 }
 
-def zoom-to-fullscreen [] {
+def fullscreen [] {
   (yabai -m query --windows --window | from json |
     | if ($in.has-fullscreen-zoom) { return } else {
-        yabai -m window --toggle zoom-fullscreen
+        toggle-fullscreen
       })
 }
 
-def zoom-to-parent [] {
+def parent [] {
   (yabai -m query --windows --window | from json
     | if $in.has-parent-zoom {
         if $in.has-fullscreen-zoom {
-          yabai -m window --toggle zoom-fullscreen
+          toggle-fullscreen
         }
       } else {
-        yabai -m window --toggle zoom-parent
+        toggle-parent
       })
 }
 
 def unzoom [] {
   (yabai -m query --windows --window | from json
-    | if ($in.has-parent-zoom) { yabai -m window --toggle zoom-parent } else
-      if ($in.has-fullscreen-zoom) { yabai -m window --toggle zoom-fullscreen })
+    | if ($in.has-parent-zoom) { toggle-parent } else
+      if ($in.has-fullscreen-zoom) { toggle-fullscreen })
 }
 
 export def increase [] {
   match (get-zoom-state) {
     fullscreen => { print "Maximum zoom reached." },
-    parent => zoom-to-fullscreen,
-    none => zoom-to-parent
+    parent => fullscreen,
+    none => parent
   }
 }
 
 export def decrease [] {
   match (get-zoom-state) {
-    fullscreen => zoom-to-parent,
+    fullscreen => parent,
     parent => unzoom,
     none => { print "Minimum zoom reached." }
   }
@@ -50,7 +50,15 @@ export def decrease [] {
 export def cycle [] {
   match (get-zoom-state) {
     fullscreen => unzoom,
-    parent => zoom-to-fullscreen,
-    none => zoom-to-parent
+    parent => fullscreen,
+    none => parent
   }
+}
+
+export def toggle-fullscreen [] {
+  yabai -m window --toggle zoom-fullscreen
+}
+
+export def toggle-parent [] {
+  yabai -m window --toggle zoom-parent
 }

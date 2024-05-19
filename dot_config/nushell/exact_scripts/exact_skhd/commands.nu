@@ -23,22 +23,3 @@ export def restart [] {
 export def status [] {
   pueue status -g skhd
 }
-
-# Print (or follow) logs for the skhd hotkey daemon
-export def log [
-  --follow(-f) # Follow the log
-] {
-  let id = (pueue status -g skhd --json
-  | from json
-  | get tasks
-  | values
-  | where status == Running
-  | get id.0)
-  pueue log $id
-  if $follow { pueue follow $id }
-}
-
-# Follow the skhd logs
-export def follow [] {
-  log -f
-}

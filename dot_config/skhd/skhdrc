@@ -26,7 +26,8 @@ alt - s : wm space create
 alt - u : wm window stack pop
 alt - x : wm space flip-x
 alt - y : wm space flip-y
-alt - space : wm window zoom cycle
+alt - space : wm window zoom toggle-parent
+alt - return : wm window zoom toggle-fullscreen
 
 alt + shift - 0x18 : wm window size ratio increase
 alt + shift - 0x1B : wm window size ratio decrease

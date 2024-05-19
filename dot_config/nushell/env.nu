@@ -4,6 +4,7 @@
 
 $env.EDITOR = "nvim"
 $env.VISUAL = "wezterm -e nvim"
+$env.HOMEBREW_EDITOR = $env.EDITOR
 
 def create_left_prompt [] {
     let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {

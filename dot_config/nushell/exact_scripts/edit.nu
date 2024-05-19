@@ -17,6 +17,11 @@ def edit-in-shell [
   dexit
 }
 
+# Edit the edit modules
+export def main [] {
+  edit-in-shell (scripts-path) -f edit.nu
+}
+
 # Edit the skhd configuration files
 export def skhd [] {
   edit-in-shell (xdg config skhd) -f skhdrc
@@ -59,7 +64,7 @@ export def wm [] {
 
 # Edit the yabai config
 export def yabai [] {
-  edit-in-shell (xdg config yabai)
+  edit-in-shell (xdg config yabai yabairc)
 }
 
 # Edit the yabai nushell module
@@ -85,4 +90,26 @@ export def nu [] {
 # Edit nu env
 export def env [] {
   edit-in-shell $nu.default-config-dir -f env.nu
+}
+
+# Edit borders
+export def borders [] {
+  use borders.nu
+  edit-in-shell (xdg config borders) -f bordersrc
+  borders restart
+}
+
+# Edit borders nushell module
+export def "borders nu" [] {
+  edit-in-shell (scripts-path) -f borders.nu
+}
+
+# Edit the follow nushell module
+export def follow [] {
+  edit-in-shell (scripts-path) -f follow.nu
+}
+
+# Edit the rose-pine nushell module
+export def rose-pine [] {
+  edit-in-shell (scripts-path) -f rose-pine.nu
 }

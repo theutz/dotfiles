@@ -33,19 +33,6 @@ export def kill [
   }
 }
 
-# Print the logs for the yabai daemon
-export def log [
-  --follow(-f) # Follow the logs
-] {
-  let id = running-task
-  pueue log $id
-  if $follow { pueue follow $id }
-}
-
-export def follow [] {
-  log -f
-}
-
 def running-task [] {
   (pueue status -g yabai --json | from json
     | get tasks | transpose | flatten 

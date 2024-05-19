@@ -918,6 +918,8 @@ use yabai
 use skhd
 use pueue *
 use wm
+use borders.nu
 use sketchybar.nu
+use follow.nu
 source commands.nu
 source aliases.nu
