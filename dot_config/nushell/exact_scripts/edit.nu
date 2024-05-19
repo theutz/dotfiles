@@ -64,7 +64,7 @@ export def wm [] {
 
 # Edit the yabai config
 export def yabai [] {
-  edit-in-shell (xdg config yabai yabairc)
+  edit-in-shell (xdg config yabai) -f yabairc
 }
 
 # Edit the yabai nushell module
