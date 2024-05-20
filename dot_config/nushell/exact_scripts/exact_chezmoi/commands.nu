@@ -14,7 +14,7 @@ def paths-from-home [] {
 # Add all files marked for deletion
 export def add-exact [] {
   (
-    chezmoi status+ | where status == D
+    status+ | where status == D
     | if ($in | is-empty) { print -e "No files to add."; return } else { $in }
     | paths-from-home
     | ^chezmoi add --interactive ...$in
