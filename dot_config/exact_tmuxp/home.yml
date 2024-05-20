@@ -7,7 +7,7 @@ windows:
     window_name: main
     layout: main-vertical
   - panes:
-      - shell_command: spotify_player
+      - shell_command: exit
         sleep_before: 1
         enter: true
     window_name: spotify

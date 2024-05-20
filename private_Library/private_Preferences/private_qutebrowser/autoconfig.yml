@@ -6,6 +6,14 @@
 
 config_version: 2
 settings:
+  aliases:
+    global:
+      o: session-load
+      q: close
+      qa: quit
+      w: session-save
+      wq: quit --save
+      wqa: quit --save
   auto_save.interval:
     global: 60
   auto_save.session:
@@ -209,6 +217,7 @@ settings:
     - https://click.redditmail.com/*
     - https://*.bugherd.com/*
     - sentry.io
+    - p.typekit.net
   content.fullscreen.window:
     global: true
   content.javascript.clipboard:
@@ -283,7 +292,7 @@ settings:
   input.forward_unbound_keys:
     global: none
   input.insert_mode.auto_load:
-    global: true
+    global: false
   input.spatial_navigation:
     global: false
   keyhint.blacklist:

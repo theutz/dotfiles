@@ -1,7 +1,7 @@
 use completions.nu * 
 
 # Get the status of files managed by chezmoi
-export def "chezmoi status+" [] {
+export def "status+" [] {
   ^chezmoi status
   | from ssv -m 1 -n
   | rename status path
@@ -12,7 +12,7 @@ def paths-from-home [] {
 }
 
 # Add all files marked for deletion
-export def "chezmoi add-exact" [] {
+export def add-exact [] {
   (
     chezmoi status+ | where status == D
     | if ($in | is-empty) { print -e "No files to add."; return } else { $in }
@@ -22,7 +22,7 @@ export def "chezmoi add-exact" [] {
 }
 
 # Forget any files that have been deleted
-export def "chezmoi forget-deleted" [] {
+export def forget-deleted [] {
   (
     chezmoi status+ | where status == DA
     | if ($in | is-empty) { print -e "No files to delete."; return } else { $in }
@@ -32,7 +32,7 @@ export def "chezmoi forget-deleted" [] {
 }
 
 # Re-add files, add exact files, and forget deleted files
-export def "chezmoi sync" [] {
+export def sync [] {
   ^chezmoi re-add --interactive
   chezmoi add-exact
   chezmoi forget-deleted
@@ -40,6 +40,6 @@ export def "chezmoi sync" [] {
 }
 
 # List managed files using nushell goodies
-export def "chezmoi managed+" [...args] {
+export def "managed+" [...args] {
   ^chezmoi managed ...$args | from ssv -n | rename path
 }

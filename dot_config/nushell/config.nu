@@ -882,7 +882,7 @@ $env.config = {
 
 # Setup custom completions
 use custom-completions/bat/bat-completions.nu *
-use custom-completions/composer/composer-completions.nu *
+#use custom-completions/composer/composer-completions.nu *
 use custom-completions/curl/curl-completions.nu *
 use custom-completions/gh/gh-completions.nu *
 use custom-completions/git/git-completions.nu *
@@ -911,9 +911,9 @@ use edit.nu
 use rose-pine.nu
 use xdg.nu
 use starship.nu *
-use chezmoi *
-use brew *
-use tmux *
+use chezmoi
+use brew.nu
+use tmux.nu
 use yabai
 use skhd
 use pueue *
@@ -921,5 +921,4 @@ use wm
 use borders.nu
 use sketchybar.nu
 use follow.nu
-source commands.nu
-source aliases.nu
+use aliases.nu *

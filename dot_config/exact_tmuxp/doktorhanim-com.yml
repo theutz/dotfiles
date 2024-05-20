@@ -6,5 +6,7 @@ windows:
         enter: false
     window_name: main
   - panes:
-      - just dev
+      - shell_command: just dev
+      - shell_command: lnav storage/logs/*.log
+        focus: true
     window_name: dev
