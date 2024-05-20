@@ -24,7 +24,7 @@ export def add-exact [] {
 # Forget any files that have been deleted
 export def forget-deleted [] {
   (
-    chezmoi status+ | where status == DA
+    status+ | where status == DA
     | if ($in | is-empty) { print -e "No files to delete."; return } else { $in }
     | paths-from-home
     | ^chezmoi forget --interactive ...$in
@@ -34,9 +34,9 @@ export def forget-deleted [] {
 # Re-add files, add exact files, and forget deleted files
 export def sync [] {
   ^chezmoi re-add --interactive
-  chezmoi add-exact
-  chezmoi forget-deleted
-  chezmoi apply --refresh-externals
+  add-exact
+  forget-deleted
+  ^chezmoi apply --refresh-externals
 }
 
 # List managed files using nushell goodies
