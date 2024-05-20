@@ -124,4 +124,8 @@ export module nu {
   export def yabai [] {
     enter-edit (scripts-path yabai)
   }
+
+  export def chezmoi [] {
+    enter-edit (scripts-path chezmoi)
+  }
 }
