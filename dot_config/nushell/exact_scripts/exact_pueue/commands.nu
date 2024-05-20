@@ -14,8 +14,12 @@ export module service {
   }
 
   # Stop the service
-  export def stop [name: string] {
+  export def stop [
+    name: string,
+    --clean (-c): string # Clean up failed commands
+  ] {
     pueue kill -g $name
+    if ($clean) { pueue clean -g $name }
   }
 
   # Restart the service
