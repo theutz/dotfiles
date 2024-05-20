@@ -102,7 +102,7 @@ export module nu {
   }
 
   export def sketchybar [] {
-    enter-edit (scripts-dir sketchybar.nu)
+    enter-edit (scripts-path sketchybar.nu)
   }
 
   export def borders [] {
@@ -127,5 +127,9 @@ export module nu {
 
   export def chezmoi [] {
     enter-edit (scripts-path chezmoi)
+  }
+
+  export def pueue [] {
+    enter-edit (scripts-path pueue)
   }
 }

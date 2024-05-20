@@ -1,16 +1,21 @@
-use xdg.nu
+use pueue
 
-export def edit [] {
-  enter (xdg config sketchybar)
-  try {
-    ^$env.EDITOR sketchybarrc
-    brew services restart sketchybar
-  }
-  n
+# Start background service
+export def start [] {
+  pueue service start sketchybar sketchybar
 }
 
-export def "edit nu" [] {
-  enter ($nu.default-config-dir | path join scripts)
-  ^$env.EDITOR sketchybar.nu
-  n
+# Stop background service
+export def stop [] {
+  pueue service stop sketchybar
+}
+
+# Restart background service
+export def restart [] {
+  pueue service restart sketchybar
+}
+
+# Get the background service status
+export def status [] {
+  pueue service status sketchybar
 }
