@@ -912,8 +912,6 @@ use rose-pine.nu
 use xdg.nu
 use starship.nu *
 use chezmoi
-use brew.nu
-use tmux.nu
 use yabai
 use skhd
 use pueue *

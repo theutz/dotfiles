@@ -1,7 +1,7 @@
 use completions.nu * 
 
 # Get the status of files managed by chezmoi
-export def "status+" [] {
+export def status+ [] {
   ^chezmoi status
   | from ssv -m 1 -n
   | rename status path

@@ -1,4 +1,3 @@
-use tmux.nu
 use chezmoi
 
 export alias artisan = php artisan
