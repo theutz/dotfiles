@@ -232,6 +232,7 @@ settings:
     https://web.whatsapp.com: true
     https://www.facebook.com: false
     https://www.instagram.com: true
+    https://www.sozcu.com.tr: false
   content.pdfjs:
     global: true
   content.register_protocol_handler:

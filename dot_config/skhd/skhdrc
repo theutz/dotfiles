@@ -10,8 +10,17 @@
 # spc < shift - escape ; default
 
 # DEFAULT Mode
-alt - 0x1E : wm space focus next
-alt - 0x21 : wm space focus prev
+alt - 0x1E : wm space focus next # ]
+alt - 0x21 : wm space focus prev # [
+alt - 1 : wm space focus 1
+alt - 2 : wm space focus 2
+alt - 3 : wm space focus 3
+alt - 4 : wm space focus 4
+alt - 5 : wm space focus 5
+alt - 6 : wm space focus 6
+alt - 7 : wm space focus 7
+alt - 8 : wm space focus 8
+alt - 9 : wm space focus 9
 alt - e : wm space balance
 alt - h : wm window focus west
 alt - i : wm window focus stack next
@@ -22,35 +31,17 @@ alt - n : wm window focus next
 alt - o : wm window focus stack prev
 alt - p : wm window focus prev
 alt - r : wm window toggle split
+alt - return : wm window zoom toggle-fullscreen
 alt - s : wm space create
+alt - space : wm window zoom toggle-parent
 alt - u : wm window stack pop
 alt - x : wm space flip-x
 alt - y : wm space flip-y
-alt - space : wm window zoom toggle-parent
-alt - return : wm window zoom toggle-fullscreen
-alt - 1 : wm space focus 1
-alt - 2 : wm space focus 2
-alt - 3 : wm space focus 3
-alt - 4 : wm space focus 4
-alt - 5 : wm space focus 5
-alt - 6 : wm space focus 6
-alt - 7 : wm space focus 7
-alt - 8 : wm space focus 8
-alt - 9 : wm space focus 9
 
-alt + shift - 0x18 : wm window size ratio increase
-alt + shift - 0x1B : wm window size ratio decrease
-alt + shift - 0x1E : wm window space next
-alt + shift - 0x21 : wm window space prev
-alt + shift - e : wm space equalize
-alt + shift - h : wm window swap west
-alt + shift - j : wm window swap south
-alt + shift - k : wm window swap north
-alt + shift - l : wm window swap east
-alt + shift - n : wm window swap next
-alt + shift - p : wm window swap prev
-alt + shift - r : wm space rotate cw; wm mode go-back
-alt + shift - s : wm space destroy
+alt + shift - 0x18 : wm window size ratio increase # =
+alt + shift - 0x1B : wm window size ratio decrease # -
+alt + shift - 0x1E : wm window space next # ]
+alt + shift - 0x21 : wm window space prev # [
 alt + shift - 1 : wm window space 1
 alt + shift - 2 : wm window space 2
 alt + shift - 3 : wm window space 3
@@ -60,6 +51,15 @@ alt + shift - 6 : wm window space 6
 alt + shift - 7 : wm window space 7
 alt + shift - 8 : wm window space 8
 alt + shift - 9 : wm window space 9
+alt + shift - e : wm space equalize
+alt + shift - h : wm window swap west
+alt + shift - j : wm window swap south
+alt + shift - k : wm window swap north
+alt + shift - l : wm window swap east
+alt + shift - n : wm window swap next
+alt + shift - p : wm window swap prev
+alt + shift - r : wm space rotate cw; wm mode go-back
+alt + shift - s : wm space destroy
 
 ctrl + alt - h : wm window warp west
 ctrl + alt - i : wm window stack next

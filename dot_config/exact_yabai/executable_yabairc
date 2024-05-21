@@ -37,27 +37,35 @@ yabai -m config external_bar all:32:0
 #
 # Labeled Spaces
 #
-yabai -m space 1 --label main
-yabai -m space 4 --label messages
-yabai -m space 7 --label media
-yabai -m space 8 --label system
+[
+  primary
+  secondary
+  notes
+  messages
+  media
+  system
+] | enumerate | each {|x|
+  yabai -m space ($x.index + 1) --label $x.item
+}
 
 #
 # Rules
 #
-yabai -m rule --add label=settings app='^System Settings$' space=system
-yabai -m rule --add label=clearvpn app='^ClearVPN$' space=system
-yabai -m rule --add label=cleanmymac app='^CleanMyMac X$' space=system
-yabai -m rule --add label=spotify app='^Spotify$' space=media
-yabai -m rule --add label=messages app='^Messages$' space=messages
-yabai -m rule --add label=whatsapp app='WhatsApp' space=messages
-yabai -m rule --add label=telegram app='^Telegram$' space=messages
+[ [label app space];
+  [settings '^System Settings$' system]
+  [whatsapp WhatsApp messages]
+  [messages Messages messages]
+  [telegram Telegram messages]
+  [spotify Spotify media]
+  [clearvpn ClearVPN system]
+  [cleanmymac 'CleanMyMac X' system]
+] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
 
 # Signals
 yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai --load-sa"
 yabai -m signal --add label=focus-wez event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
 yabai -m signal --add label=spotify event=window_focused app="^Spotify$" action='yabai -m rule --apply spotify'
-yabai -m signal --add label=whatsapp event=window_Focused app='^WhatsApp$' action='yabai -m rule --apply whatsapp'
+yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' action='yabai -m rule --apply whatsapp'
 
 yabai -m rule --apply
 

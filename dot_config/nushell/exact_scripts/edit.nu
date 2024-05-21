@@ -137,10 +137,6 @@ module scripts {
     enter-edit (scripts-path brew)
   }
 
-  export def tmux [] {
-    enter-edit (scripts-path tmux.nu)
-  }
-
   export def yabai [] {
     enter-edit (scripts-path yabai)
   }
