@@ -23,87 +23,59 @@ export def enter-edit [
   exec nu
 }
 
-# Edit config files
 export def main [
 ] {
   help modules edit
 }
 
-# Edit the skhd configuration files
 export def skhd [] {
   enter-edit (xdg config skhd skhdrc)
 }
 
-# Edit the chezmoi repository
 export def chezmoi [] {
   enter-edit (^chezmoi source-path)
 }
 
-# Edit the tmuxp session files
 export def tmuxp [] {
   enter-edit (xdg config tmuxp)
 }
 
-# Edit the tmux config
 export def tmux [] {
   enter-edit (xdg config tmux)
 }
 
-# Edit my tmux theme
 export def tmux-theme [] {
   enter-edit ($env.HOME | path join code theutz stunning-theme)
 }
 
-# Edit the window manager module
-export def wm [] {
-  enter-edit (scripts-path wm)
-}
-
-# Edit the yabai config
 export def yabai [] {
   enter-edit (xdg config yabai yabairc)
 }
 
-# Edit aliases
 export def aliases [] {
   enter (scripts-path)
   ^$env.EDITOR ...(glob (scripts-path "**" aliases.nu))
   dexit
 }
 
-# Edit commands
 export def commands [] {
   enter-edit (scripts-path commands.nu)
 }
 
-# Edit borders
 export def borders [] {
   use borders.nu
   enter-edit (xdg config borders bordersrc)
   borders restart
 }
 
-# Edit the follow nushell module
-export def follow [] {
-  enter-edit (scripts-path follow.nu)
-}
-
-# Edit the rose-pine nushell module
-export def rose-pine [] {
-  enter-edit (scripts-path rose-pine.nu)
-}
-
-# Edit the sketchybar config
 export def sketchybar [] {
   enter-edit (xdg config sketchybar sketchybarrc)
 }
 
-# Edit neovim config
 export def nvim [] {
   enter-edit (xdg config nvim)
 }
 
-# Edit wezterm config
 export def wezterm [] {
   enter-edit (xdg config wezterm)
 }
@@ -147,6 +119,18 @@ module scripts {
 
   export def pueue [] {
     enter-edit (scripts-path pueue)
+  }
+
+  export def wm [] {
+    enter-edit (scripts-path wm)
+  }
+
+  export def follow [] {
+    enter-edit (scripts-path follow.nu)
+  }
+
+  export def rose-pine [] {
+    enter-edit (scripts-path rose-pine.nu)
   }
 }
 

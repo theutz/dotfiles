@@ -16,7 +16,7 @@ export module service {
   # Stop the service
   export def stop [
     name: string,
-    --clean (-c): string # Clean up failed commands
+    --clean (-c) # Clean up failed commands
   ] {
     pueue kill -g $name
     if ($clean) { pueue clean -g $name }
@@ -28,6 +28,7 @@ export module service {
     sleep 0.2sec
     pueue restart -g $name
     pueue clean -g $name
+    pueue start -g $name
   }
 
   # Get service status

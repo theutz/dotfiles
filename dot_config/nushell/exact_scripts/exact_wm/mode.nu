@@ -4,8 +4,8 @@ export def default [] {
   print "DEFAULT mode"
   (
     borders
-    $"active_color=(rose-pine dark foam)"
-    $"inactive_color=(rose-pine dark base argb 88)"
+    $"active_color=0xff(rose-pine dark foam)"
+    $"inactive_color=0x88(rose-pine dark base)"
     style=round
     width=8
   )
@@ -17,8 +17,8 @@ export def win [] {
     borders
     width=12
     style=round
-    $"active_color=(rose-pine dark gold)"
-    $"inactive_color=(rose-pine dark base argb 44)"
+    $"active_color=0xff(rose-pine dark gold)"
+    $"inactive_color=0x44(rose-pine dark base)"
   )
 }
 
@@ -28,8 +28,8 @@ export def spc [] {
     borders
     width=16
     style=square
-    $"active_color=(rose-pine dark love)"
-    $"inactive_color=(rose-pine dark rose argb 88)"
+    $"active_color=0xff(rose-pine dark love)"
+    $"inactive_color=0x88(rose-pine dark rose)"
   )
 }
 

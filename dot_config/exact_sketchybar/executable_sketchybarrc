@@ -1,5 +1,7 @@
 #!/usr/bin/env nu
 
+use rose-pine.nu
+
 # This is a demo config to show some of the most important commands more easily.
 # This is meant to be changed and configured, as it is intentionally kept sparse.
 # For a more advanced configuration example see my dotfiles:
@@ -15,13 +17,13 @@ let plugin_dir = [$env.HOME .config sketchybar plugins] | path join
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 sketchybar --bar ...[
-  height=32
-  blur_radius=30
+  height=40
+  blur_radius=5
   position=top
   sticky=off
   padding_left=10
   padding_right=10
-  color=0x66000000
+  $"color=0x99(rose-pine dark base)"
 ]
 
 ##### Changing Defaults #####
@@ -30,15 +32,15 @@ sketchybar --bar ...[
 # https://felixkratz.github.io/SketchyBar/config/items
 
 sketchybar --default ...[
-  $"icon.font=BlexMono Nerd Font:Bold:17.0"
-  icon.color=0xffffffff
-  $"label.font=BlexMono Nerd Font:Bold:14.0"
-  label.color=0xffffffff
-  padding_left=5
-  padding_right=5
+  $"icon.font=BlexMono Nerd Font:Bold:16.0"
+  $"icon.color=0xff(rose-pine dark gold)"
+  $"label.font=BlexMono Nerd Font:Bold:12.0"
+  $"label.color=0xff(rose-pine dark text)"
+  padding_left=8
+  padding_right=8
   label.padding_left=4
-  label.padding_right=4
-  icon.padding_left=4
+  label.padding_right=12
+  icon.padding_left=12
   icon.padding_right=4
 ]
 
@@ -47,20 +49,26 @@ sketchybar --default ...[
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces
 
-let space_icons = seq 1 20
+let space_icons = yabai -m query --spaces | from json
+  | get label | enumerate
+  | each { upsert index {|x| $x.index + 1} }
+  | each { upsert item {|x|
+      if ($x.item | is-empty) { $x.index | into string } else { $x.item } }
+    }
 
 $space_icons | each {|x| 
   sketchybar ...[
-    --add space $"space.($x)" left
-    --set $"space.($x)" $"associated_space=($x)"
-    $"icon=($x)"
-    background.color=0x44ffffff
+    --add space $"space.($x.index)" left
+    --set $"space.($x.index)" $"associated_space=($x.index)"
+    $"icon=($x.index)"
+    $"background.color=0xaa(rose-pine dark pine)"
     background.corner_radius=5
     background.height=20
     background.drawing=off
-    label.drawing=off
+    label.drawing=on
+    $"label=($x.item)"
     $"script=($plugin_dir)/space.sh"
-    $"click_script=yabai -m space --focus ($x)"
+    $"click_script=yabai -m space --focus ($x.index)"
   ]
 }
 

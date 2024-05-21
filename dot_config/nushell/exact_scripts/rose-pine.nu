@@ -28,19 +28,14 @@ def role [] {
 }
 
 def format [] {
-  [argb]
+  [argb rgb]
 }
 
 export def main [
   variant: string@variants,
   role: string@role,
-  format: string@format = argb,
-  opacity: string = ff
 ] {
-  (themes | where role == $role
+  themes | where role == $role
     | (get $variant).0
-    | match ($format) {
-        argb => { $"0x($opacity)($in)" }
-      })
 }
 
