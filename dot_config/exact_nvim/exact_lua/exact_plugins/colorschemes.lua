@@ -2,6 +2,7 @@
 local colors = {
   {
     "ribru17/bamboo.nvim",
+    enabled = false,
     opts = {
       style = "multiplex",
       transparent = true,
@@ -13,9 +14,11 @@ local colors = {
   },
   {
     "RRethy/base16-nvim",
+    enabled = false,
   },
   {
     "catppuccin/nvim",
+    enabled = false,
     name = "catppuccin",
     opts = {
       background = {
@@ -26,6 +29,7 @@ local colors = {
   },
   {
     "scottmckendry/cyberdream.nvim",
+    enabled = false,
     opts = {
       transparent = true,
       italic_comments = true,
@@ -35,6 +39,7 @@ local colors = {
   },
   {
     "sainnhe/everforest",
+    enabled = false,
     config = function()
       vim.g.everforest_background = "hard"
       vim.g.everforest_transparent_background = 0 -- 0, 1, 2
@@ -42,6 +47,7 @@ local colors = {
   },
   {
     "rebelot/kanagawa.nvim",
+    enabled = false,
     config = true,
     opts = {
       style = "moon",
@@ -51,12 +57,15 @@ local colors = {
   },
   {
     "dasupradyumna/midnight.nvim",
+    enabled = false,
   },
   {
     "miikanissi/modus-themes.nvim",
+    enabled = false,
   },
   {
     "olimorris/onedarkpro.nvim",
+    enabled = false,
     opts = {
       options = {
         cursorline = false,
@@ -67,9 +76,11 @@ local colors = {
   },
   {
     "nyoom-engineering/oxocarbon.nvim",
+    enabled = false,
   },
   {
     "sainnhe/sonokai",
+    enabled = false,
     config = function()
       vim.g.sonokai_style = "atlantis" -- default, shusia, andromeda, atlantis, maia, espresso
       vim.g.sonokai_better_performance = 1
@@ -77,6 +88,7 @@ local colors = {
   },
   {
     "ray-x/starry.nvim",
+    enabled = false,
     config = function(_, opts)
       local s = require "starry"
       s.setup(opts)
@@ -85,9 +97,11 @@ local colors = {
   },
   {
     "projekt0n/github-nvim-theme",
+    enabled = false,
   },
   {
     "folke/tokyonight.nvim",
+    enabled = false,
     opts = {
       transparent = true,
       style = "moon",
@@ -100,6 +114,7 @@ local colors = {
   },
   {
     "EdenEast/nightfox.nvim",
+    enabled = false,
     opts = {
       options = {
         transparent = true,
@@ -108,12 +123,14 @@ local colors = {
   },
   {
     "tiagovla/tokyodark.nvim",
+    enabled = false,
     opts = {
       transparent_background = true,
     },
   },
   {
     url = "https://codeberg.org/jthvai/lavender.nvim",
+    enabled = false,
     branch = "stable", -- versioned tags + docs updates from main
     lazy = false,
     priority = 1000,
@@ -122,8 +139,8 @@ local colors = {
     "rose-pine/neovim",
     name = "rose-pine",
     opts = {
-      variant = "moon",
-      dark_variant = "moon",
+      variant = "main",
+      dark_variant = "main",
       styles = {
         transparency = false,
       },

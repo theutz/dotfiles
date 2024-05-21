@@ -3,8 +3,8 @@
 # version = "0.92.2"
 
 $env.EDITOR = "nvim"
-$env.VISUAL = "wezterm -e nvim"
-$env.HOMEBREW_EDITOR = $env.EDITOR
+$env.VISUAL = "neovide"
+$env.HOMEBREW_EDITOR = $env.VISUAL
 
 def create_left_prompt [] {
     let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {

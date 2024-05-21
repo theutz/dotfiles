@@ -23,9 +23,10 @@ export def enter-edit [
   exec nu
 }
 
-# Edit the edit modules
-export def main [] {
-  enter-edit (scripts-path edit.nu)
+# Edit config files
+export def main [
+] {
+  help modules edit
 }
 
 # Edit the skhd configuration files
@@ -46,6 +47,11 @@ export def tmuxp [] {
 # Edit the tmux config
 export def tmux [] {
   enter-edit (xdg config tmux)
+}
+
+# Edit my tmux theme
+export def tmux-theme [] {
+  enter-edit ($env.HOME | path join code theutz stunning-theme)
 }
 
 # Edit the window manager module
@@ -92,7 +98,17 @@ export def sketchybar [] {
   enter-edit (xdg config sketchybar sketchybarrc)
 }
 
-export module nu {
+# Edit neovim config
+export def nvim [] {
+  enter-edit (xdg config nvim)
+}
+
+# Edit wezterm config
+export def wezterm [] {
+  enter-edit (xdg config wezterm)
+}
+
+module scripts {
   export def main [] {
     enter-edit $nu.default-config-dir config.nu
   }
@@ -111,6 +127,10 @@ export module nu {
 
   export def skhd [] {
     enter-edit (scripts-path skhd)
+  }
+
+  export def edit [] {
+    enter-edit (scripts-path edit.nu)
   }
 
   export def brew [] {
@@ -133,3 +153,5 @@ export module nu {
     enter-edit (scripts-path pueue)
   }
 }
+
+export use scripts

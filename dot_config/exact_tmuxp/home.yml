@@ -6,8 +6,3 @@ windows:
         sleep_before: 1
     window_name: main
     layout: main-vertical
-  - panes:
-      - shell_command: exit
-        sleep_before: 1
-        enter: true
-    window_name: spotify

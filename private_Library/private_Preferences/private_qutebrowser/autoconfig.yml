@@ -87,9 +87,9 @@ settings:
   colors.downloads.stop.fg:
     global: '#e0def4'
   colors.hints.bg:
-    global: '#f6c177'
-  colors.hints.fg:
     global: '#191724'
+  colors.hints.fg:
+    global: '#e0def4'
   colors.hints.match.fg:
     global: '#31748f'
   colors.keyhint.bg:
@@ -212,6 +212,8 @@ settings:
     global: 30%
   completion.shrink:
     global: true
+  completion.use_best_match:
+    global: true
   content.blocking.whitelist:
     global:
     - https://click.redditmail.com/*
@@ -237,6 +239,11 @@ settings:
     https://mail.google.com?extsrc=mailto&url=%25s: true
   downloads.position:
     global: bottom
+  editor.command:
+    global:
+    - /opt/homebrew/bin/neovide
+    - --no-fork
+    - '{}'
   editor.encoding:
     global: utf-8
   fonts.contextmenu:
@@ -272,19 +279,34 @@ settings:
   hints.auto_follow:
     global: unique-match
   hints.border:
-    global: '1px solid #f6c177'
+    global: '0 none #000000'
   hints.chars:
     global: asdfghjklweiocvnm
   hints.dictionary:
     global: /usr/share/dict/words
   hints.mode:
     global: letter
+  hints.next_regexes:
+    global:
+    - \bnext\b
+    - \bmore\b
+    - \bnewer\b
+    - \b[>→≫]\b
+    - \b(>>|»)\b
+    - \bcontinue\b
   hints.padding:
     global:
       bottom: 0
       left: 3
       right: 3
       top: 0
+  hints.prev_regexes:
+    global:
+    - \bprev(ious)?\b
+    - \bback\b
+    - \bolder\b
+    - \b[<←≪]\b
+    - \b(<<|«)\b
   hints.radius:
     global: 4
   hints.uppercase:
