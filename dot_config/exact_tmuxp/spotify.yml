@@ -1,0 +1,7 @@
+session_name: spotify
+start_directory: $HOME
+windows:
+  - panes:
+      - shell_command: spotify_player
+        sleep_before: 1
+    window_name: main
