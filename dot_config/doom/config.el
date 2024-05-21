@@ -82,10 +82,8 @@
 
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
 
-(map! :leader :n :desc "Find file" "e" 'find-file)
-
-;; TODO: Not sure why this isn't binding
-(map! :nv :desc "Open terminal" "c-/" 'vterm)
+(map! :leader :desc "Find file" :n "e" 'find-file)
+(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
 
 ;; Load other configuration
 (let ((directory (concat (file-name-directory (or load-file-name buffer-file-name)) "lisp")))
