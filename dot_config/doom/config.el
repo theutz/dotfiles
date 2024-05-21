@@ -73,12 +73,19 @@
 ;;
 ;; Emacs
 ;;
-(setq server-socket-dir
-      (concat (getenv "XDG_RUNTIME_DIR") "emacs"))
-(setq safe-local-variable-values '((line-spacing . 0.5)))
+(setq server-socket-dir (concat (getenv "XDG_RUNTIME_DIR") "emacs")
+      vterm-shell "/opt/homebrew/bin/nu"
+      safe-local-variable-values '((line-spacing . 0.5)))
+
 (after! nix-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
+
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
+
+(map! :leader :n :desc "Find file" "e" 'find-file)
+
+;; TODO: Not sure why this isn't binding
+(map! :nv :desc "Open terminal" "c-/" 'vterm)
 
 ;; Load other configuration
 (let ((directory (concat (file-name-directory (or load-file-name buffer-file-name)) "lisp")))
