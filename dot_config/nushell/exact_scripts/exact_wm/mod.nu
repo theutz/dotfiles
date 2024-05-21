@@ -1,6 +1,7 @@
 export use mode.nu
 export use window
 export use space
+export use display
 use yabai
 
 export def reload [] {

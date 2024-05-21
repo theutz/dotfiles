@@ -23,53 +23,106 @@ export def enter-edit [
   exec nu
 }
 
-export def main [
+export def main [] {
+  enter-edit (scripts-path edit.nu)
+}
+
+export def skhd [
+  --nushell (-n)
 ] {
-  help modules edit
+  if $nushell {
+    enter-edit (scripts-path skhd)
+  } else {
+    enter-edit (xdg config skhd skhdrc)
+  }
 }
 
-export def skhd [] {
-  enter-edit (xdg config skhd skhdrc)
+export def chezmoi [
+  --nushell (-n)
+] {
+  if $nushell {
+    enter-edit (scripts-path chezmoi)
+  } else {
+    enter-edit (^chezmoi source-path)
+  }
 }
 
-export def chezmoi [] {
-  enter-edit (^chezmoi source-path)
+export def tmux [
+  --tmuxp (-p)
+  --theme (-t)
+] {
+  if $tmuxp and $theme {
+    error make {
+      msg: "Cannot use both --tmuxp and --theme",
+      label: {
+        text: "mutually exclusive flags"
+        span: (metadata $tmuxp).span
+      },
+      help: "Please choose one or the other (or neither)"
+    }
+  } else if ($tmuxp) {
+    enter-edit (xdg config tmuxp)
+  } else if ($theme) {
+    enter-edit ($env.HOME | path join code theutz stunning-theme)
+  } else {
+    enter-edit (xdg config tmux)
+  }
 }
 
-export def tmuxp [] {
-  enter-edit (xdg config tmuxp)
+export def brew [] {
+  enter-edit (scripts-path brew)
 }
 
-export def tmux [] {
-  enter-edit (xdg config tmux)
+export def pueue [] {
+  enter-edit (scripts-path pueue)
 }
 
-export def tmux-theme [] {
-  enter-edit ($env.HOME | path join code theutz stunning-theme)
+export def wm [] {
+  enter-edit (scripts-path wm)
 }
 
-export def yabai [] {
-  enter-edit (xdg config yabai yabairc)
+export def follow [] {
+  enter-edit (scripts-path follow.nu)
+}
+
+export def rose-pine [] {
+  enter-edit (scripts-path rose-pine.nu)
+}
+
+export def yabai [
+  --nushell (-n)
+] {
+  if ($nushell) {
+    enter-edit (scripts-path yabai)
+  } else {
+    enter-edit (xdg config yabai yabairc)
+  }
 }
 
 export def aliases [] {
-  enter (scripts-path)
-  ^$env.EDITOR ...(glob (scripts-path "**" aliases.nu))
-  dexit
+  enter-edit (scripts-path aliases.nu)
 }
 
-export def commands [] {
-  enter-edit (scripts-path commands.nu)
+export def borders [
+  --nushell (-n)
+] {
+  if $nushell {
+    enter-edit (scripts-path borders.nu)
+  } else {
+    use borders.nu
+    enter-edit (xdg config borders bordersrc)
+    borders restart
+  }
 }
 
-export def borders [] {
-  use borders.nu
-  enter-edit (xdg config borders bordersrc)
-  borders restart
-}
-
-export def sketchybar [] {
-  enter-edit (xdg config sketchybar sketchybarrc)
+export def sketchybar [
+  --nushell (-n)
+] {
+  if ($nushell) {
+    enter-edit (scripts-path sketchybar.nu)
+  } else {
+    enter-edit (xdg config sketchybar sketchybarrc)
+  }
 }
 
 export def nvim [] {
@@ -79,59 +132,3 @@ export def nvim [] {
 export def wezterm [] {
   enter-edit (xdg config wezterm)
 }
-
-module scripts {
-  export def main [] {
-    enter-edit $nu.default-config-dir config.nu
-  }
-
-  export def env [] {
-    enter-edit $nu.default-config-dir env.nu
-  }
-
-  export def sketchybar [] {
-    enter-edit (scripts-path sketchybar.nu)
-  }
-
-  export def borders [] {
-    enter-edit (scripts-path borders.nu)
-  }
-
-  export def skhd [] {
-    enter-edit (scripts-path skhd)
-  }
-
-  export def edit [] {
-    enter-edit (scripts-path edit.nu)
-  }
-
-  export def brew [] {
-    enter-edit (scripts-path brew)
-  }
-
-  export def yabai [] {
-    enter-edit (scripts-path yabai)
-  }
-
-  export def chezmoi [] {
-    enter-edit (scripts-path chezmoi)
-  }
-
-  export def pueue [] {
-    enter-edit (scripts-path pueue)
-  }
-
-  export def wm [] {
-    enter-edit (scripts-path wm)
-  }
-
-  export def follow [] {
-    enter-edit (scripts-path follow.nu)
-  }
-
-  export def rose-pine [] {
-    enter-edit (scripts-path rose-pine.nu)
-  }
-}
-
-export use scripts

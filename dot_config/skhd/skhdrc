@@ -21,6 +21,7 @@ alt - 6 : wm space focus 6
 alt - 7 : wm space focus 7
 alt - 8 : wm space focus 8
 alt - 9 : wm space focus 9
+alt - d : wm display focus next --cycle
 alt - e : wm space balance
 alt - h : wm window focus west
 alt - i : wm window focus stack next
@@ -51,6 +52,7 @@ alt + shift - 6 : wm window space 6
 alt + shift - 7 : wm window space 7
 alt + shift - 8 : wm window space 8
 alt + shift - 9 : wm window space 9
+alt + shift - d : wm window display cycle
 alt + shift - e : wm space equalize
 alt + shift - h : wm window swap west
 alt + shift - j : wm window swap south

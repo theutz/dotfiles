@@ -1,3 +1,4 @@
+use edit.nu
 use pueue
 
 # Start background service

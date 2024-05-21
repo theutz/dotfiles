@@ -32,34 +32,40 @@ yabai -m config bottom_padding $padding       # int
 yabai -m config left_padding $padding         # int
 yabai -m config right_padding $padding        # int
 yabai -m config window_gap $padding           # int
-yabai -m config external_bar all:32:0
+yabai -m config external_bar all:40:0
 
 #
 # Labeled Spaces
 #
 [
-  primary
-  secondary
-  notes
-  messages
-  media
-  system
-] | enumerate | each {|x|
-  yabai -m space ($x.index + 1) --label $x.item
+  primary  secondary notes messages
+  meetings media     system
+] | do {
+  let labels = $in
+  yabai -m query --spaces | from json | do {
+    let spaces = $in
+    ($labels | length) - ($spaces | length) | if ($in > 0) {
+      seq 1 $in | each { yabai -m space --create }
+    }
+    $spaces | enumerate | each {|x|
+      yabai -m space ($x.index + 1) --label $x.item
+    }
+  }
 }
+
 
 #
 # Rules
 #
-[ [label app space];
-  [settings '^System Settings$' system]
-  [whatsapp WhatsApp messages]
-  [messages Messages messages]
-  [telegram Telegram messages]
-  [spotify Spotify media]
-  [clearvpn ClearVPN system]
-  [cleanmymac 'CleanMyMac X' system]
-] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
+#[ [label app space];
+#  [settings '^System Settings$' system]
+#  [whatsapp WhatsApp messages]
+#  [messages Messages messages]
+#  [telegram Telegram messages]
+#  [spotify Spotify media]
+#  [clearvpn ClearVPN system]
+#  [cleanmymac 'CleanMyMac X' system]
+#] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
 
 # Signals
 yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai --load-sa"
@@ -68,5 +74,6 @@ yabai -m signal --add label=spotify event=window_focused app="^Spotify$" action=
 yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' action='yabai -m rule --apply whatsapp'
 
 yabai -m rule --apply
+sketchybar --update
 
 # vim: ft=nu

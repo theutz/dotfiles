@@ -35,6 +35,7 @@ fi
 
 if [[ -z "$MANPAGER" ]]; then
   export MANPAGER='nvim +Man!'
+  export MANWIDTH=999
 fi
 
 #
