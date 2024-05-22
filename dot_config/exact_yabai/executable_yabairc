@@ -72,6 +72,7 @@ yabai -m signal --add label=focus-wez event=window_created action='yabai -m wind
 yabai -m signal --add label=spotify event=window_focused app="^Spotify$" action='yabai -m rule --apply spotify'
 yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' action='yabai -m rule --apply whatsapp'
 
+# Final Instructions
 yabai -m rule --apply
 sketchybar --update
 
