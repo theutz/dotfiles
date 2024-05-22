@@ -47,12 +47,11 @@ yabai -m config external_bar all:40:0
     ($labels | length) - ($spaces | length) | if ($in > 0) {
       seq 1 $in | each { yabai -m space --create }
     }
-    $spaces | enumerate | each {|x|
+    $labels | enumerate | each {|x|
       yabai -m space ($x.index + 1) --label $x.item
     }
   }
 }
-
 
 #
 # Rules

@@ -11,4 +11,9 @@ vim.o.ttimeoutlen = 0
 if vim.g.neovide then require "config.neovide" end
 
 vim.o.exrc = true
--- vim.o.shell = "nu"
+
+-- Use nushell
+vim.o.shell = "nu"
+vim.o.shellcmdflag = "-c"
+vim.o.shellquote = ""
+vim.o.shellxquote = ""

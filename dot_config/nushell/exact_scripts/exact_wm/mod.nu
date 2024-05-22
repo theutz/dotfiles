@@ -2,10 +2,9 @@ export use mode.nu
 export use window
 export use space
 export use display
-use yabai
 
 export def reload [] {
-  yabai restart
+  yabai --restart-service
 }
 
 # Commands for working with the window manager

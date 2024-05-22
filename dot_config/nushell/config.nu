@@ -881,24 +881,19 @@ $env.config = {
 # $env.config = ($env.config | merge {color_config: (rose-pine)})
 
 # Setup custom completions
-use custom-completions/bat/bat-completions.nu *
-#use custom-completions/composer/composer-completions.nu *
-use custom-completions/curl/curl-completions.nu *
-use custom-completions/gh/gh-completions.nu *
-use custom-completions/git/git-completions.nu *
-use custom-completions/glow/glow-completions.nu *
-use custom-completions/just/just-completions.nu *
-use custom-completions/less/less-completions.nu *
-use custom-completions/less/less-completions.nu *
+use nu_scripts/custom-completions/bat/bat-completions.nu *
+use nu_scripts/custom-completions/composer/composer-completions.nu *
+use nu_scripts/custom-completions/curl/curl-completions.nu *
+use nu_scripts/custom-completions/gh/gh-completions.nu *
+use nu_scripts/custom-completions/git/git-completions.nu *
+use nu_scripts/custom-completions/glow/glow-completions.nu *
+use nu_scripts/custom-completions/just/just-completions.nu *
+use nu_scripts/custom-completions/less/less-completions.nu *
 
 use edit.nu
 use rose-pine.nu
 use xdg.nu
-use chezmoi
-use yabai.nu
-use skhd.nu
-use service.nu
-use wm
-use borders.nu
 use follow.nu
+use wm
+use my
 use aliases.nu *

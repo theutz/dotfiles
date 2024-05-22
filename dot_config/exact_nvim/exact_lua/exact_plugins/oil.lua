@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     opts = {
       view_options = {
@@ -38,7 +38,7 @@ return {
         desc = "Open parent directory",
       },
       {
-        "<leader>o",
+        "<leader>e",
         function() require("oil").open() end,
         desc = "Open parent directory",
       },
