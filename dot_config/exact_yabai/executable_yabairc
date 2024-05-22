@@ -1,5 +1,6 @@
 #!/usr/bin/env nu --login
 
+
 # Settings
 let padding = 16
 
