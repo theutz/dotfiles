@@ -34,7 +34,7 @@ sketchybar --bar ...[
 sketchybar --default ...[
   $"icon.font=BlexMono Nerd Font:Bold:16.0"
   $"icon.color=0xff(rose-pine dark gold)"
-  $"label.font=BlexMono Nerd Font:Bold:12.0"
+  $"label.font=BlexMono Nerd Font:Bold:14.0"
   $"label.color=0xff(rose-pine dark text)"
   padding_left=8
   padding_right=8
