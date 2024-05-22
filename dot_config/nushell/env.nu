@@ -49,8 +49,8 @@ def create_right_prompt [] {
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
 $env.PROMPT_INDICATOR = {|| "> " }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| "" }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| "" }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| "> " }
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| ": " }
 $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 
 # If you want previously entered commands to have a different prompt from the usual one,
@@ -106,16 +106,3 @@ $env.NU_PLUGIN_DIRS = [
 
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
-
-# Setup atuin for history
-$env.ATUIN_NOBIND = true
-mkdir ~/.local/share/atuin/
-atuin init nu | save -f ~/.local/share/atuin/init.nu
-
-# Setup zoxide for cd history
-mkdir ~/.local/share/zoxide
-zoxide init nushell | save -f ~/.local/share/zoxide/init.nu
-
-# Setup starship
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu

@@ -891,32 +891,14 @@ use custom-completions/just/just-completions.nu *
 use custom-completions/less/less-completions.nu *
 use custom-completions/less/less-completions.nu *
 
-
-# Follow the log files for various services
-def "follow" [] {
-  "Follow the log files for various services"
-}
-
-# Atuin history
-source ~/.local/share/atuin/init.nu
-$env.config.keybindings = (
-  $env.config.keybindings |
-  filter {|x| not ($x.keycode == up and $x.name == atuin)}
-)
-
-# Zoxide improved cd
-source ~/.local/share/zoxide/init.nu
-
 use edit.nu
 use rose-pine.nu
 use xdg.nu
-use starship.nu *
 use chezmoi
-use yabai
-use skhd
-use pueue *
+use yabai.nu
+use skhd.nu
+use service.nu
 use wm
 use borders.nu
-use sketchybar.nu
 use follow.nu
 use aliases.nu *

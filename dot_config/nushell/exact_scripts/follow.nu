@@ -1,20 +1,20 @@
 use xdg.nu
 
-def pueue-group [name: string] {
+def groups [] {
+  pueue status --json | from json | get tasks | values | get group
+}
+
+# Follow pueue logs
+export def main [
+  name: string@groups
+] {
   pueue status -g $name --json | from json
     | get tasks | values
-    | where status == Running | get id.0
-    | (pueue log $in; pueue follow $in)
-}
-
-export def borders [] {
-  pueue-group borders
-}
-
-export def skhd [] {
-  pueue-group skhd
-}
-
-export def yabai [] {
-  pueue-group yabai
+    | where status == Running | get -i id.0
+    | if ($in | is-not-empty) {
+        pueue log $in
+        pueue follow $in
+      } else {
+        $"($name) is not active"
+      }
 }
