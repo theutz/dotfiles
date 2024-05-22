@@ -1,8 +1,4 @@
 #!/usr/bin/env nu
 
 # yabairc hash: {{ include "dot_config/exact_yabai/executable_yabairc" | sha256sum }}
-pueue kill -g yabai
-sleep 1sec
-pueue restart -g yabai
-pueue clean -g yabai
-sudo yabai --load-sa
+yabai --restart-service
