@@ -1,0 +1,448 @@
+#+title: Doom Emacs Config
+#+description: My best attempt at building a world for myself.
+#+property: header-args:emacs-lisp :tangle config.el :comments 'link'
+
+* Doom basics
+** Prologue
+
+#+begin_src emacs-lisp :comments nil
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+Place your private configuration here! Remember, you do not need to run ~doom sync~ after modifying this file!
+
+** Identity
+
+Some functionality uses this to identify you, e.g. GPG configuration, email
+clients, file templates and snippets. It is optional.
+
+#+begin_src emacs-lisp
+(setq user-full-name "Michael Utz"
+      user-mail-address "michael@theutz.com")
+#+end_src
+
+** Fonts
+
+Doom exposes five (optional) variables for controlling fonts in Doom:
+
+- ~doom-font~ :: the primary font to use
+- ~doom-variable-pitch-font~ :: a non-monospace font (where applicable)
+- ~doom-big-font~ :: used for ~doom-big-font-mode~; use this for presentations or streaming.
+- ~doom-symbol-font~ :: for symbols
+- ~doom-serif-font~ :: for the ~fixed-pitch-serif~ face
+
+See =C-h v doom-font= for documentation and more examples of what they
+accept. For example:
+
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 16 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14))
+#+end_src
+
+If you or Emacs can't find your font, use =M-x describe-font= to look them
+up, =M-x eval-region= to execute elisp code, and =M-x doom/reload-font= to
+refresh your font settings. If Emacs still can't find your font, it likely
+wasn't installed correctly. Font issues are rarely Doom issues!
+
+** Themes
+
+There are two ways to load a theme. Both assume the theme is installed and
+available. You can either set `doom-theme' or manually load a theme with the
+`load-theme' function. This is the default:
+
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-horizon)
+#+end_src
+
+** Line Number Style
+
+This determines the style of line numbers in effect. If set to `nil', line
+numbers are disabled. For relative line numbers, set this to `relative'.
+
+#+begin_src emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+end_src
+
+* My customizations
+
+** Doom Info
+
+Whenever you reconfigure a package, make sure to wrap your config in an
+~after!~ block, otherwise Doom's defaults may override your settings. E.g.
+
+
+#+begin_src emacs-lisp :tangle no
+(after! PACKAGE
+  (setq x y))
+#+end_src
+
+The exceptions to this rule:
+
+  - Setting file/directory variables (like ~org-directory~)
+  - Setting variables which explicitly tell you to set them before their package is loaded (see =C-h v VARIABLE= to look up their documentation).
+  - Setting doom variables (which start with =doom-= or =+=).
+
+Here are some additional functions/macros that will help you configure Doom.
+
+- ~load!~ for loading external *.el files relative to this one
+- ~use-package!~ for configuring packages
+- ~after!~ for running code after a package has loaded
+- ~add-load-path!~ for adding directories to the ~load-path~, relative to this file. Emacs searches the ~load-path~ when you load packages with ~require~ or =use-package~.
+- ~map!~ for binding new keys
+
+To get information about any of these functions/macros, move the cursor over the highlighted symbol at press =K= (non-evil users must press =C-c c k=). This will open documentation for it, including demos of how they are used. Alternatively, use ~C-h o= to look up a symbol (functions, variables, faces, etc).
+
+You can also try =gd= (or =C-c c d=) to jump to their definition and see how they are implemented.
+
+** Emacs
+
+*** Server
+
+#+begin_src emacs-lisp
+(setq server-socket-dir (concat (getenv "XDG_RUNTIME_DIR") "emacs"))
+#+end_src
+
+*** vterm
+
+#+begin_src emacs-lisp
+(setq vterm-shell "/opt/homebrew/bin/nu")
+#+end_src
+
+*** Local variables
+
+#+begin_src emacs-lisp
+(setq safe-local-variable-values '((line-spacing . 0.5)))
+#+end_src
+
+*** Line spacing
+
+Some useful tools for toggling line spacing. You can press =SPC t s= to toggle big or small spacing. Additionally, you can configure the amount of spacing that is toggled.
+
+#+begin_src emacs-lisp
+(defvar theutz-line-spacing 0.3
+  "Amount of line spacing to use when toggling line spacing")
+
+(defun theutz-toggle-line-spacing ()
+  "Toggle line spacing between no extra space to a lil extra space"
+  (interactive)
+  (if line-spacing
+      (setq line-spacing nil)
+    (setq line-spacing theutz-line-spacing))
+  (redraw-frame (selected-frame)))
+
+(map! :desc "Line spacing"
+      :leader
+      :n "ts"
+      #'theutz-toggle-line-spacing)
+#+end_src
+
+** Packages
+
+*** Doom overrrides
+
+**** evil-snipe
+
+#+begin_src emacs-lisp
+(after! evil-snipe
+  (setq evil-snipe-scope 'buffer))
+#+end_src
+**** which-key
+
+#+begin_src emacs-lisp
+(after! which-key
+  (setq which-key-allow-imprecise-window-fit nil))
+#+end_src
+
+*** Doom prelude
+
+To install a package with Doom you must declare them here and run 'doom sync' on the command line, then restart Emacs for the changes to take effect -- or use 'M-x doom/reload'.
+
+To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
+
+#+begin_src emacs-lisp :tangle no
+(package! some-package)
+#+end_src
+
+To install a package directly from a remote git repo, you must specify a `:recipe'. You'll find documentation on what `:recipe' accepts here: https://github.com/radian-software/straight.el#the-recipe-format
+
+#+begin_src emacs-lisp :tangle no
+(package! another-package
+  :recipe (:host github :repo "username/repo"))
+#+end_src
+
+If the package you are trying to install does not contain a PACKAGENAME.el file, or is located in a subdirectory of the repo, you'll need to specify `:files' in the `:recipe':
+
+#+begin_src emacs-lisp :tangle no
+(package! this-package
+  :recipe (:host github :repo "username/repo"
+           :files ("some-file.el" "src/lisp/*.el")))
+#+end_src
+
+If you'd like to disable a package included with Doom, you can do so here with the `:disable' property:
+
+#+begin_src emacs-lisp :tangle no
+(package! builtin-package :disable t)
+#+end_src
+
+You can override the recipe of a built in package without having to specify all the properties for `:recipe'. These will inherit the rest of its recipe from Doom or MELPA/ELPA/Emacsmirror:
+
+#+begin_src emacs-lisp :tangle no
+(package! builtin-package :recipe (:nonrecursive t))
+(package! builtin-package-2 :recipe (:repo "myfork/package"))
+#+end_src
+
+Specify a `:branch' to install a package from a particular branch or tag. This is required for some packages whose default branch isn't 'master' (which our package manager can't deal with; see radian-software/straight.el#279)
+
+#+begin_src emacs-lisp :tangle no
+(package! builtin-package :recipe (:branch "develop"))
+#+end_src
+
+Use `:pin' to specify a particular commit to install.
+
+#+begin_src emacs-lisp :tangle no
+(package! builtin-package :pin "1a2b3c4d5e")
+#+end_src
+
+Doom's packages are pinned to a specific commit and updated from release to release. The `unpin!' macro allows you to unpin single packages...
+
+#+begin_src emacs-lisp :tangle no
+(unpin! pinned-package)
+#+end_src
+
+...or multiple packages
+
+#+begin_src emacs-lisp :tangle no
+(unpin! pinned-package another-pinned-package)
+#+end_src
+
+...Or *all* packages (NOT RECOMMENDED; will likely break things)
+
+#+begin_src emacs-lisp :tangle no
+(unpin! t)
+#+end_src
+
+*** Custom packages
+
+#+begin_src emacs-lisp :tangle packages.el :comments nil
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+#+end_src
+
+**** just-mode
+#+begin_src emacs-lisp :tangle packages.el
+(package! just-mode)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! just-mode)
+#+end_src
+
+**** justl
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! justl)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! justl
+  :config
+  (let ((desc "Execute recipe")
+        (fn 'justl-exec-recipe))
+    (map! :desc desc
+          :map just-mode-map
+          :n "e"
+          fn)
+    (map! :desc desc
+          :n "e"
+          fn)))
+#+end_src
+
+**** kdl-mode
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! kdl-mode
+  :recipe (:host github
+           :repo "bobuk/kdl-mode"
+           :branch "main"))
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! kdl-mode)
+#+end_src
+
+**** nushell-mode
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! nushell-mode
+  :recipe (
+           :host github
+           :repo "mrkkrp/nushell-mode"))
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! nushell-mode
+  :mode "\\.nu")
+#+end_src
+
+#+begin_src emacs-lisp
+(defvar org-babel-nushell-command
+  "nu"
+  "The command to execute babel body code.")
+
+(defvar org-babel-nushell-command-options
+  "--login --env-config /Users/michael/.config/nushell/env.nu --config /Users/michael/.config/nushell/config.nu"
+  "The command options to use when executing code")
+
+(defun org-babel-execute:nushell (body params)
+  "Orgmode Babel NuShell evaluate function for `BODY' with `PARAMS'."
+  (let ((tmp-src-file (org-babel-temp-file "nu-src-" ".nu")))
+    (with-temp-file tmp-src-file (insert body))
+    (org-babel-eval (format "%s %s %s"
+                            org-babel-nushell-command
+                            org-babel-nushell-command-options
+                            (org-babel-process-file-name tmp-src-file)) "")))
+#+end_src
+
+**** autothemer
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! autothemer)
+#+end_src
+
+**** rose-pine-emacs
+
+Requires [[*autothemer][autothemer]]
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! rose-pine-emacs
+  :recipe (:host github
+           :repo "thongpv87/rose-pine-emacs"
+           :branch "master"))
+#+end_src
+
+**** gptel
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! gptel)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! gptel
+  :config
+  (setq gptel-model "gpt-4")
+  (add-hook! 'gptel-post-stream-hook 'gptel-auto-scroll)
+  (add-hook! 'gptel-post-response-functions 'gptel-end-of-response)
+  (map! :leader
+        :desc "Open GPT"
+        :n "og"
+        #'gptel)
+  (map! :localleader
+        :mode gptel-mode
+        :desc "Send prompt"
+        :n "RET"
+        #'gptel-send)
+  (map! :localleader
+        :mode gptel-mode
+        :desc "Open gpt menu"
+        :n "SPC"
+        #'gptel-menu))
+#+end_src
+
+** Modes
+
+*** Org
+
+#+begin_src emacs-lisp
+(after! org
+  (add-to-list 'org-modules 'org-habit)
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t)"             ; A task that needs doing & is ready to do
+           "PROJ(p)"             ; A project, which usually contains other tasks
+           "LOOP(r)"             ; A recurring task
+           "STRT(s)"             ; A task that is in progress
+           "WAIT(w)"             ; Something external is holding up this task
+           "HOLD(h)"             ; This task is paused/on hold because of me
+           "IDEA(i)"             ; An unconfirmed and unapproved task or notion
+           "|"
+           "DONE(d)"   ; Task successfully completed
+           "KILL(k)")  ; Task was cancelled, aborted, or is no longer applicable
+          (sequence
+           "[ ](T)"                     ; A task that needs doing
+           "[-](S)"                     ; Task is in progress
+           "[?](W)"                     ; Task is being held up or paused
+           "|"
+           "[X](D)")                    ; Task was completed
+          (sequence
+           "|"
+           "OKAY(o)"
+           "YES(y)"
+           "NO(n)"))
+        org-todo-keyword-faces
+        '(("[-]"  . +org-todo-active)
+          ("STRT" . +org-todo-active)
+          ("[?]"  . +org-todo-onhold)
+          ("WAIT" . +org-todo-onhold)
+          ("HOLD" . +org-todo-onhold)
+          ("PROJ" . +org-todo-project)
+          ("NO"   . +org-todo-cancel)
+          ("KILL" . +org-todo-cancel)))
+  (map! :localleader
+        :mode org-mode
+        :desc "org-columns"
+        :n "m"
+        #'org-columns)
+  (map! :localleader
+        :mode org-mode
+        :desc "org-refile-copy"
+        :n "rd"
+        #'org-refile-copy))
+#+end_src
+
+*** Nix
+
+Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
+
+#+begin_src emacs-lisp
+(after! nix-mode
+  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
+#+end_src
+
+For a lot of packages, we want to use the LSP to do the formatting. But not in this case.
+
+#+begin_src emacs-lisp
+(setq-hook! 'nix-mode-hook +format-with-lsp nil)
+#+end_src
+
+** Bindings
+
+*** Doom Overrides...
+**** Workspaces
+
+#+begin_src emacs-lisp
+(map! :leader
+      (:when (modulep! :ui workspaces)
+        (:prefix-map ("TAB" . "workspace")
+         :desc "Prev workspace" "p" #'+workspace/switch-left
+         :desc "Next workspace" "n" #'+workspace/switch-right
+         :desc "Create workspace" "c" #'+workspace/new
+         :desc "Swap workspace left" "<" #'+workspace/swap-left
+         :desc "Swap workspace right" ">" #'+workspace/swap-right)))
+#+end_src
+**** Org
+
+*** LazyVim compatibility layer
+
+I've got a lot of custom bindings that are meant to make switching between LazyVim and DoomEmacs less jarring.
+
+- Sometimes it's the simple things... =e= for /explorer/.
+
+#+begin_src emacs-lisp
+(map! :leader :desc "Find file" :n "e" 'find-file)
+#+end_src
+
+- Simple terminal stuff
+
+#+begin_src emacs-lisp
+(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
+#+end_src
