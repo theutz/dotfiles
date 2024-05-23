@@ -1,8 +1,14 @@
-use completions.nu * 
+use completions.nu *
+use externs.nu
 
 # Get the status of files managed by chezmoi
-export def status+ [] {
-  ^chezmoi status
+export def status --wrapped [
+  ...$args: string@"externs status"
+] {
+  if (["-h" "--help"] | any { $in in $args }) {
+    return (^chezmoi status --help)
+  }
+  ^chezmoi status ...$args
   | from ssv -m 1 -n
   | rename status path
 }

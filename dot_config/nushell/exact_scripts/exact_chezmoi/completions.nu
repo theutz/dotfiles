@@ -1,18 +1,18 @@
-export def "nu-complete config chezmoi targets" [] {
+export def targets [] {
   [ [value description];
     [rc-files ($env.XDG_DATA_HOME | path join chezmoi)]
     [nu-module ($nu.default-config-dir | path join scripts chezmoi)]
   ]
 }
 
-export def "nu-complete chezmoi mode" [] {
+export def mode [] {
   [
     file
     symlink
   ]
 }
 
-export def "nu-complete chezmoi config-format" [] {
+export def config-format [] {
   [
     json
     toml
@@ -20,7 +20,7 @@ export def "nu-complete chezmoi config-format" [] {
   ]
 }
 
-export def "nu-complete chezmoi bool-or-auto" [] {
+export def bool-or-auto [] {
   [
     on
     off
@@ -28,7 +28,7 @@ export def "nu-complete chezmoi bool-or-auto" [] {
   ]
 }
 
-export def "nu-complete chezmoi secrets" [] {
+export def secrets [] {
   [
     [value   description];
     [ignore  ""]
@@ -37,7 +37,7 @@ export def "nu-complete chezmoi secrets" [] {
   ]
 }
 
-export def "nu-complete chezmoi types" [] {
+export def types [] {
   const positive = [
     [value       description];
     ["all"       "All entries"]
@@ -63,7 +63,7 @@ export def "nu-complete chezmoi types" [] {
   $positive | append $negative
 }
 
-export def "nu-complete chezmoi path-style" [] {
+export def path-style [] {
   [
     absolute
     relative
@@ -72,7 +72,7 @@ export def "nu-complete chezmoi path-style" [] {
   ]
 }
 
-export def "nu-complete chezmoi chattr attributes" [] {
+export def attributes [] {
   let attrs = [after before empty encrypted exact executable external once private readonly remove template]
   let types = [create modify script symlink]
   let negative_types = $types | each {|x| $"no($x)"}

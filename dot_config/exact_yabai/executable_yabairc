@@ -75,6 +75,5 @@ yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' actio
 
 # Final Instructions
 yabai -m rule --apply
-sketchybar --update
 
 # vim: ft=nu

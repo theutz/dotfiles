@@ -23,6 +23,7 @@ settings:
       command:
         <Ctrl+e>: cmd-edit --run
       normal:
+        <Escape>: clear-keychain ;; search ;; fullscreen --leave ;; clear-messages
         <Meta+,>: config-edit
         J: tab-next
         K: tab-prev
@@ -334,6 +335,8 @@ settings:
     global: overlay
   scrolling.smooth:
     global: true
+  session.default_name:
+    global: main
   session.lazy_restore:
     global: true
   statusbar.padding:

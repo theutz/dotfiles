@@ -1,12 +1,13 @@
 #
 # XDG
 #
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_DATA_DIRS=""
+
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CONFIG_DIRS=""
+export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_DIRS=""
+export XDG_DATA_DIRS=""
 export XDG_RUNTIME_DIR="$TMPDIR"
 
 #
@@ -21,22 +22,24 @@ fi
 # Editors
 #
 
-if [[ -z "$EDITOR" ]]; then
+export LIFESTYLE="emacs" # emacs, vim
+
+if [[ "$LIFESTYLE" == emacs ]]; then
+  export EMACS_SOCKET_NAME="${XDG_RUNTIME_DIR}emacs/server"
+  export EDITOR='emacsclient --create-frame --tty'
+else
   export EDITOR='nvim'
 fi
 
-if [[ -z "$VISUAL" ]]; then
+if [[ "$LIFESTYLE" == emacs ]]; then
+  export VISUAL='emacsclient --create-frame'
+else
   export VISUAL='neovide --no-fork'
 fi
 
-if [[ -z "$PAGER" ]]; then
-  export PAGER='less'
-fi
-
-if [[ -z "$MANPAGER" ]]; then
-  export MANPAGER='nvim +Man!'
-  export MANWIDTH=999
-fi
+export PAGER='less'
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
 #
 # Language

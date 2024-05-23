@@ -1,12 +1,13 @@
 use chezmoi
 
-export alias c       = ^chezmoi
+export alias c        = ^chezmoi
 export alias e        = ^$env.EDITOR
 export alias j        = just --highlight
 export alias lazynvim = nvim --headless "+Lazy! sync" +qa
 export alias lg       = lazygit
 export alias sail     = vendor/bin/sail
 export alias v        = ^$env.VISUAL
+export alias q        = ^pueue
 
 # Start yazi file manager with cd on exit
 export def --env yy [...args] {

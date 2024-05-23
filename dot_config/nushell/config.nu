@@ -1,11 +1,3 @@
-# Nushell Config File
-#
-# version = "0.92.2"
-
-# For more information on defining custom themes, see
-# https://www.nushell.sh/book/coloring_and_theming.html
-# And here is the theme collection
-# https://github.com/nushell/nu_scripts/tree/main/themes
 let dark_theme = {
     # color for nushell primitives
     separator: white
@@ -136,12 +128,6 @@ let light_theme = {
     shape_vardecl: purple
 }
 
-# External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell ...$spans | from json
-# }
-
-# The default config record. This is where much of your global configuration is setup.
 $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
 
@@ -872,23 +858,8 @@ $env.config = {
     ]
 }
 
-#
-# nushell scripts
-#
-
-# Setup nushell theme
-# use themes/nu-themes/rose-pine.nu
-# $env.config = ($env.config | merge {color_config: (rose-pine)})
-
-# Setup custom completions
-use nu_scripts/custom-completions/bat/bat-completions.nu *
-use nu_scripts/custom-completions/composer/composer-completions.nu *
-use nu_scripts/custom-completions/curl/curl-completions.nu *
-use nu_scripts/custom-completions/gh/gh-completions.nu *
-use nu_scripts/custom-completions/git/git-completions.nu *
-use nu_scripts/custom-completions/glow/glow-completions.nu *
-use nu_scripts/custom-completions/just/just-completions.nu *
-use nu_scripts/custom-completions/less/less-completions.nu *
+$env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexec')
+ source /opt/homebrew/opt/asdf/libexec/asdf.nu
 
 use edit.nu
 use rose-pine.nu
@@ -896,4 +867,5 @@ use xdg.nu
 use follow.nu
 use wm
 use my
+use chezmoi
 use aliases.nu *

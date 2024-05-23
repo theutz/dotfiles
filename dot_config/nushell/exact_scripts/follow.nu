@@ -13,3 +13,7 @@ export def yabai [] {
 export def borders [] {
   lnav ...(glob /opt/homebrew/var/log/borders/borders.{err,out}.log)
 }
+
+export def main [] {
+  help follow
+}
