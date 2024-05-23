@@ -429,7 +429,6 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
          :desc "Swap workspace left" "<" #'+workspace/swap-left
          :desc "Swap workspace right" ">" #'+workspace/swap-right)))
 #+end_src
-**** Org
 
 *** LazyVim compatibility layer
 
