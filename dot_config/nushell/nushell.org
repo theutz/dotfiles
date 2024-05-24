@@ -129,8 +129,8 @@ $env.PATH = ($env.PATH | uniq)
 #+end_src
 ** Environment Variables
 #+begin_src nushell
-$env.EDITOR = "nvim"
-$env.VISUAL = "neovide"
+$env.EDITOR = $env.EDITOR | default "nvim"
+$env.VISUAL = $env.VISUAL | default "nvim"
 $env.HOMEBREW_EDITOR = $env.VISUAL
 #+end_src
 ** Additional Files

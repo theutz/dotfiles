@@ -77,6 +77,6 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-$env.EDITOR = "nvim"
-$env.VISUAL = "neovide"
+$env.EDITOR = $env.EDITOR | default "nvim"
+$env.VISUAL = $env.VISUAL | default "nvim"
 $env.HOMEBREW_EDITOR = $env.VISUAL
