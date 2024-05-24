@@ -1,29 +1,23 @@
 #+title: Doom Emacs Config
 #+description: My best attempt at building a world for myself.
 #+property: header-args:emacs-lisp :tangle config.el :comments 'link'
-#+startup: children
+#+startup: content
 
 * Doom basics
 ** Prologue
-
 #+begin_src emacs-lisp :comments nil
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
 
 Place your private configuration here! Remember, you do not need to run ~doom sync~ after modifying this file!
-
 ** Identity
-
-Some functionality uses this to identify you, e.g. GPG configuration, email
-clients, file templates and snippets. It is optional.
+Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets. It is optional.
 
 #+begin_src emacs-lisp
 (setq user-full-name "Michael Utz"
       user-mail-address "michael@theutz.com")
 #+end_src
-
 ** Fonts
-
 Doom exposes five (optional) variables for controlling fonts in Doom:
 
 - ~doom-font~ :: the primary font to use
@@ -32,45 +26,29 @@ Doom exposes five (optional) variables for controlling fonts in Doom:
 - ~doom-symbol-font~ :: for symbols
 - ~doom-serif-font~ :: for the ~fixed-pitch-serif~ face
 
-See =C-h v doom-font= for documentation and more examples of what they
-accept. For example:
+See =C-h v doom-font= for documentation and more examples of what they accept. For example:
 
 #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 16 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14))
 #+end_src
 
-If you or Emacs can't find your font, use =M-x describe-font= to look them
-up, =M-x eval-region= to execute elisp code, and =M-x doom/reload-font= to
-refresh your font settings. If Emacs still can't find your font, it likely
-wasn't installed correctly. Font issues are rarely Doom issues!
-
+If you or Emacs can't find your font, use =M-x describe-font= to look them up, =M-x eval-region= to execute elisp code, and =M-x doom/reload-font= to refresh your font settings. If Emacs still can't find your font, it likely wasn't installed correctly. Font issues are rarely Doom issues!
 ** Themes
-
-There are two ways to load a theme. Both assume the theme is installed and
-available. You can either set `doom-theme' or manually load a theme with the
-`load-theme' function. This is the default:
+There are two ways to load a theme. Both assume the theme is installed and available. You can either set `doom-theme' or manually load a theme with the `load-theme' function. This is the default:
 
 #+begin_src emacs-lisp
 (setq doom-theme 'doom-rose-pine-dawn)
 #+end_src
-
 ** Line Number Style
-
-This determines the style of line numbers in effect. If set to `nil', line
-numbers are disabled. For relative line numbers, set this to `relative'.
+This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
 
 #+begin_src emacs-lisp
 (setq display-line-numbers-type 'relative)
 #+end_src
-
 * My customizations
-
 ** Doom Info
-
-Whenever you reconfigure a package, make sure to wrap your config in an
-~after!~ block, otherwise Doom's defaults may override your settings. E.g.
-
+Whenever you reconfigure a package, make sure to wrap your config in an ~after!~ block, otherwise Doom's defaults may override your settings. E.g.
 
 #+begin_src emacs-lisp :tangle no
 (after! PACKAGE
@@ -94,23 +72,20 @@ Here are some additional functions/macros that will help you configure Doom.
 To get information about any of these functions/macros, move the cursor over the highlighted symbol at press =K= (non-evil users must press =C-c c k=). This will open documentation for it, including demos of how they are used. Alternatively, use =C-h o= to look up a symbol (functions, variables, faces, etc).
 
 You can also try =gd= (or =C-c c d=) to jump to their definition and see how they are implemented.
-
 ** Emacs
-
 *** Server
+I've set the corresponding environment variable in my =.zshenv= and =env.nu= files, so this should work without having.
 
 #+begin_src emacs-lisp
-(setq server-socket-dir (concat (getenv "XDG_RUNTIME_DIR") "emacs"))
+(setq server-socket-dir (concat (or (getenv "XDG_RUNTIME_DIR")
+                                    (getenv "TMPDIR")) "emacs"))
+
 #+end_src
-
 *** vterm
-
 #+begin_src emacs-lisp
 (setq vterm-shell "/opt/homebrew/bin/nu")
 #+end_src
-
 *** Line spacing
-
 Some useful tools for toggling line spacing. You can press =SPC t s= to toggle big or small spacing. Additionally, you can configure the amount of spacing that is toggled.
 
 #+begin_src emacs-lisp
@@ -130,26 +105,26 @@ Some useful tools for toggling line spacing. You can press =SPC t s= to toggle b
       :n "ts"
       #'theutz-toggle-line-spacing)
 #+end_src
-
 ** Packages
-
 *** Doom overrrides
-
 **** evil-snipe
-
 #+begin_src emacs-lisp
 (after! evil-snipe
   (setq evil-snipe-scope 'buffer))
 #+end_src
 **** which-key
-
 #+begin_src emacs-lisp
 (after! which-key
   (setq which-key-allow-imprecise-window-fit nil))
 #+end_src
-
+**** evil
+#+begin_src emacs-lisp
+(use-package-hook! evil
+  :pre-init
+  (setq evil-respect-visual-line-mode t)
+  t)
+#+end_src
 *** Doom prelude
-
 To install a package with Doom you must declare them here and run 'doom sync' on the command line, then restart Emacs for the changes to take effect -- or use 'M-x doom/reload'.
 
 To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
@@ -215,14 +190,11 @@ Doom's packages are pinned to a specific commit and updated from release to rele
 #+begin_src emacs-lisp :tangle no
 (unpin! t)
 #+end_src
-
 *** Custom packages
-
 #+begin_src emacs-lisp :tangle packages.el :comments nil
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 #+end_src
-
 **** just-mode
 #+begin_src emacs-lisp :tangle packages.el
 (package! just-mode)
@@ -231,9 +203,7 @@ Doom's packages are pinned to a specific commit and updated from release to rele
 #+begin_src emacs-lisp
 (use-package! just-mode)
 #+end_src
-
 **** justl
-
 #+begin_src emacs-lisp :tangle packages.el
 (package! justl)
 #+end_src
@@ -251,9 +221,7 @@ Doom's packages are pinned to a specific commit and updated from release to rele
           :n "e"
           fn)))
 #+end_src
-
 **** kdl-mode
-
 #+begin_src emacs-lisp :tangle packages.el
 (package! kdl-mode
   :recipe (:host github
@@ -264,9 +232,7 @@ Doom's packages are pinned to a specific commit and updated from release to rele
 #+begin_src emacs-lisp
 (use-package! kdl-mode)
 #+end_src
-
 **** nushell-mode
-
 #+begin_src emacs-lisp :tangle packages.el
 (package! nushell-mode
   :recipe (
@@ -297,9 +263,7 @@ Doom's packages are pinned to a specific commit and updated from release to rele
                             org-babel-nushell-command-options
                             (org-babel-process-file-name tmp-src-file)) "")))
 #+end_src
-
 **** rose-doom-pine-emacs
-
 #+begin_src emacs-lisp :tangle packages.el
 (package! rose-pine-doom-emacs
   :recipe (:host github
@@ -324,9 +288,7 @@ Doom's packages are pinned to a specific commit and updated from release to rele
         (copy-file file theme-dir t)))))
 (add-hook! 'doom-before-reload-hook 'doom-rose-pine-install)
 #+end_src
-
 **** gptel
-
 #+begin_src emacs-lisp :tangle packages.el
 (package! gptel)
 #+end_src
@@ -353,7 +315,6 @@ Doom's packages are pinned to a specific commit and updated from release to rele
         #'gptel-menu))
 #+end_src
 **** chezmoi.el
-
 #+begin_src emacs-lisp :tangle packages.el
 (package! chezmoi)
 #+end_src
@@ -382,13 +343,18 @@ Doom's packages are pinned to a specific commit and updated from release to rele
 
   (map! :leader
         :desc "Chezmoi git status"
-        :n "fzg"
-        #'chezmoi-git-status))
+        :n "fzo"
+        #'chezmoi-open-other))
+#+end_src
+** Modes
+*** Org
+Some variables need to be set before org loads.
+
+#+begin_src emacs-lisp
+(setq org-directory "~/Dropbox/org/")
 #+end_src
 
-** Modes
-
-*** Org
+But some can run after org loads
 
 #+begin_src emacs-lisp
 (after! org
@@ -434,11 +400,14 @@ Doom's packages are pinned to a specific commit and updated from release to rele
         :mode org-mode
         :desc "org-refile-copy"
         :n "rd"
-        #'org-refile-copy))
+        #'org-refile-copy)
+  (map! :localleader
+        :mode org-mode
+        :desc "org-delete-property"
+        :n "O"
+        #'org-delete-property))
 #+end_src
-
 *** Nix
-
 Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
 
 #+begin_src emacs-lisp
@@ -451,12 +420,9 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
 #+begin_src emacs-lisp
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
 #+end_src
-
 ** Bindings
-
 *** Doom Overrides...
 **** Workspaces
-
 #+begin_src emacs-lisp
 (map! :leader
       (:when (modulep! :ui workspaces)
@@ -467,22 +433,17 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
          :desc "Swap workspace left" "<" #'+workspace/swap-left
          :desc "Swap workspace right" ">" #'+workspace/swap-right)))
 #+end_src
-
 *** LazyVim compatibility layer
-
 I've got a lot of custom bindings that are meant to make switching between LazyVim and DoomEmacs less jarring.
 
 - Sometimes it's the simple things... =e= for /explorer/.
-
-#+begin_src emacs-lisp
-(map! :leader :desc "Find file" :n "e" 'find-file)
-#+end_src
-
+        #+begin_src emacs-lisp
+        (map! :leader :desc "Find file" :n "e" 'find-file)
+        #+end_src
 - Simple terminal stuff
-
-#+begin_src emacs-lisp
-(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
-#+end_src
+        #+begin_src emacs-lisp
+        (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
+        #+end_src
 
 # Local Variables:
 # eval: (add-hook 'org-babel-post-tangle-hook #'chezmoi-write)

@@ -23,6 +23,13 @@
            :repo "mrkkrp/nushell-mode"))
 ;; nushell-mode:1 ends here
 
+;; [[file:config.org::*rose-doom-pine-emacs][rose-doom-pine-emacs:1]]
+(package! rose-pine-doom-emacs
+  :recipe (:host github
+           :repo "donniebreve/rose-pine-doom-emacs"
+           :branch "main"))
+;; rose-doom-pine-emacs:1 ends here
+
 ;; [[file:config.org::*gptel][gptel:1]]
 (package! gptel)
 ;; gptel:1 ends here

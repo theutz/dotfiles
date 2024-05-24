@@ -11,7 +11,7 @@
 ;; Fonts:1 ends here
 
 ;; [[file:config.org::*Themes][Themes:1]]
-(setq doom-theme 'doom-rose-pine)
+(setq doom-theme 'doom-rose-pine-dawn)
 ;; Themes:1 ends here
 
 ;; [[file:config.org::*Line Number Style][Line Number Style:1]]
@@ -19,7 +19,8 @@
 ;; Line Number Style:1 ends here
 
 ;; [[file:config.org::*Server][Server:1]]
-(setq server-socket-dir (concat (getenv "XDG_RUNTIME_DIR") "emacs"))
+(setq server-socket-dir (concat (or (getenv "XDG_RUNTIME_DIR")
+                                    (getenv "TMPDIR")) "emacs"))
 ;; Server:1 ends here
 
 ;; [[file:config.org::*vterm][vterm:1]]
@@ -53,6 +54,13 @@
 (after! which-key
   (setq which-key-allow-imprecise-window-fit nil))
 ;; which-key:1 ends here
+
+;; [[file:config.org::*evil][evil:1]]
+(use-package-hook! evil
+  :pre-init
+  (setq evil-respect-visual-line-mode t)
+  t)
+;; evil:1 ends here
 
 ;; [[file:config.org::*just-mode][just-mode:2]]
 (use-package! just-mode)
@@ -100,6 +108,24 @@
                             (org-babel-process-file-name tmp-src-file)) "")))
 ;; nushell-mode:3 ends here
 
+;; [[file:config.org::*rose-doom-pine-emacs][rose-doom-pine-emacs:2]]
+(defun doom-rose-pine-install ()
+  "Copy theme files from straight repo to themes dir."
+  (let* ((themes '("rose-pine"
+                   "rose-pine-dawn"
+                   "rose-pine-moon"))
+         (suffix "-theme.el")
+         (prefix (concat straight-base-dir "straight/repos/rose-pine-doom-emacs/doom-"))
+         (theme-dir (concat doom-user-dir "themes/"))
+         (files (mapcar (lambda (item) (concat prefix item suffix)) themes)))
+    (unless (file-exists-p theme-dir)
+      (make-directory theme-dir t))
+    (dolist (file files)
+      (when (file-exists-p file)
+        (copy-file file theme-dir t)))))
+(add-hook! 'doom-before-reload-hook 'doom-rose-pine-install)
+;; rose-doom-pine-emacs:2 ends here
+
 ;; [[file:config.org::*gptel][gptel:2]]
 (use-package! gptel
   :config
@@ -146,11 +172,15 @@
 
   (map! :leader
         :desc "Chezmoi git status"
-        :n "fzg"
-        #'chezmoi-git-status))
+        :n "fzo"
+        #'chezmoi-open-other))
 ;; chezmoi.el:2 ends here
 
 ;; [[file:config.org::*Org][Org:1]]
+(setq org-directory "~/Dropbox/org/")
+;; Org:1 ends here
+
+;; [[file:config.org::*Org][Org:2]]
 (after! org
   (add-to-list 'org-modules 'org-habit)
   (setq org-todo-keywords
@@ -194,8 +224,13 @@
         :mode org-mode
         :desc "org-refile-copy"
         :n "rd"
-        #'org-refile-copy))
-;; Org:1 ends here
+        #'org-refile-copy)
+  (map! :localleader
+        :mode org-mode
+        :desc "org-delete-property"
+        :n "O"
+        #'org-delete-property))
+;; Org:2 ends here
 
 ;; [[file:config.org::*Nix][Nix:1]]
 (after! nix-mode
