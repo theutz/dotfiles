@@ -30,6 +30,13 @@
 (setq safe-local-variable-values '((line-spacing . 0.5)))
 ;; Local variables:1 ends here
 
+;; [[file:config.org::*Local variables][Local variables:2]]
+(setq safe-local-eval-forms
+      (add-hook 'after-save-hook
+                (lambda () (if (y-or-n-p "Tangle?")
+                          (org-babel-tangle))) nil t))
+;; Local variables:2 ends here
+
 ;; [[file:config.org::*Line spacing][Line spacing:1]]
 (defvar theutz-line-spacing 0.3
   "Amount of line spacing to use when toggling line spacing")

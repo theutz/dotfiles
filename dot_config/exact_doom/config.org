@@ -110,8 +110,19 @@ You can also try =gd= (or =C-c c d=) to jump to their definition and see how the
 
 *** Local variables
 
+Create a list of safe values for local variables.
+
 #+begin_src emacs-lisp
 (setq safe-local-variable-values '((line-spacing . 0.5)))
+#+end_src
+
+Create a list of safe values for local variables using the ~eval~ option
+
+#+begin_src emacs-lisp
+(setq safe-local-eval-forms
+      (add-hook 'after-save-hook
+                (lambda () (if (y-or-n-p "Tangle?")
+                          (org-babel-tangle))) nil t))
 #+end_src
 
 *** Line spacing
