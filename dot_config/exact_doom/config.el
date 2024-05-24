@@ -11,7 +11,7 @@
 ;; Fonts:1 ends here
 
 ;; [[file:config.org::*Themes][Themes:1]]
-(setq doom-theme 'doom-horizon)
+(setq doom-theme 'doom-rose-pine)
 ;; Themes:1 ends here
 
 ;; [[file:config.org::*Line Number Style][Line Number Style:1]]
@@ -25,17 +25,6 @@
 ;; [[file:config.org::*vterm][vterm:1]]
 (setq vterm-shell "/opt/homebrew/bin/nu")
 ;; vterm:1 ends here
-
-;; [[file:config.org::*Local variables][Local variables:1]]
-(setq safe-local-variable-values '((line-spacing . 0.5)))
-;; Local variables:1 ends here
-
-;; [[file:config.org::*Local variables][Local variables:2]]
-(setq safe-local-eval-forms
-      (add-hook 'after-save-hook
-                (lambda () (if (y-or-n-p "Tangle?")
-                          (org-babel-tangle))) nil t))
-;; Local variables:2 ends here
 
 ;; [[file:config.org::*Line spacing][Line spacing:1]]
 (defvar theutz-line-spacing 0.3
@@ -132,6 +121,34 @@
         :n "SPC"
         #'gptel-menu))
 ;; gptel:2 ends here
+
+;; [[file:config.org::*chezmoi.el][chezmoi.el:2]]
+(use-package! chezmoi
+  :config
+  (map! :leader
+        :desc "chezmoi"
+        :n "fz")
+
+  (map! :leader
+        :desc "Find in chezmoi"
+        :n "fzf"
+        #'chezmoi-find)
+
+  (map! :leader
+        :desc "Write to chezmoi"
+        :n "fzs"
+        #'chezmoi-write)
+
+  (map! :leader
+        :desc "Sync with chezmoi"
+        :n "fzt"
+        #'chezmoi-mode)
+
+  (map! :leader
+        :desc "Chezmoi git status"
+        :n "fzg"
+        #'chezmoi-git-status))
+;; chezmoi.el:2 ends here
 
 ;; [[file:config.org::*Org][Org:1]]
 (after! org

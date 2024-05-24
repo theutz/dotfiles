@@ -1,6 +1,7 @@
 #+title: Doom Emacs Config
 #+description: My best attempt at building a world for myself.
 #+property: header-args:emacs-lisp :tangle config.el :comments 'link'
+#+startup: children
 
 * Doom basics
 ** Prologue
@@ -51,7 +52,7 @@ available. You can either set `doom-theme' or manually load a theme with the
 `load-theme' function. This is the default:
 
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-horizon)
+(setq doom-theme 'doom-rose-pine-dawn)
 #+end_src
 
 ** Line Number Style
@@ -87,10 +88,10 @@ Here are some additional functions/macros that will help you configure Doom.
 - ~load!~ for loading external *.el files relative to this one
 - ~use-package!~ for configuring packages
 - ~after!~ for running code after a package has loaded
-- ~add-load-path!~ for adding directories to the ~load-path~, relative to this file. Emacs searches the ~load-path~ when you load packages with ~require~ or =use-package~.
+- ~add-load-path!~ for adding directories to the ~load-path~, relative to this file. Emacs searches the ~load-path~ when you load packages with ~require~ or =use-package=.
 - ~map!~ for binding new keys
 
-To get information about any of these functions/macros, move the cursor over the highlighted symbol at press =K= (non-evil users must press =C-c c k=). This will open documentation for it, including demos of how they are used. Alternatively, use ~C-h o= to look up a symbol (functions, variables, faces, etc).
+To get information about any of these functions/macros, move the cursor over the highlighted symbol at press =K= (non-evil users must press =C-c c k=). This will open documentation for it, including demos of how they are used. Alternatively, use =C-h o= to look up a symbol (functions, variables, faces, etc).
 
 You can also try =gd= (or =C-c c d=) to jump to their definition and see how they are implemented.
 
@@ -106,23 +107,6 @@ You can also try =gd= (or =C-c c d=) to jump to their definition and see how the
 
 #+begin_src emacs-lisp
 (setq vterm-shell "/opt/homebrew/bin/nu")
-#+end_src
-
-*** Local variables
-
-Create a list of safe values for local variables.
-
-#+begin_src emacs-lisp
-(setq safe-local-variable-values '((line-spacing . 0.5)))
-#+end_src
-
-Create a list of safe values for local variables using the ~eval~ option
-
-#+begin_src emacs-lisp
-(setq safe-local-eval-forms
-      (add-hook 'after-save-hook
-                (lambda () (if (y-or-n-p "Tangle?")
-                          (org-babel-tangle))) nil t))
 #+end_src
 
 *** Line spacing
@@ -314,21 +298,31 @@ Doom's packages are pinned to a specific commit and updated from release to rele
                             (org-babel-process-file-name tmp-src-file)) "")))
 #+end_src
 
-**** autothemer
+**** rose-doom-pine-emacs
 
 #+begin_src emacs-lisp :tangle packages.el
-(package! autothemer)
+(package! rose-pine-doom-emacs
+  :recipe (:host github
+           :repo "donniebreve/rose-pine-doom-emacs"
+           :branch "main"))
 #+end_src
 
-**** rose-pine-emacs
-
-Requires [[*autothemer][autothemer]]
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! rose-pine-emacs
-  :recipe (:host github
-           :repo "thongpv87/rose-pine-emacs"
-           :branch "master"))
+#+begin_src emacs-lisp
+(defun doom-rose-pine-install ()
+  "Copy theme files from straight repo to themes dir."
+  (let* ((themes '("rose-pine"
+                   "rose-pine-dawn"
+                   "rose-pine-moon"))
+         (suffix "-theme.el")
+         (prefix (concat straight-base-dir "straight/repos/rose-pine-doom-emacs/doom-"))
+         (theme-dir (concat doom-user-dir "themes/"))
+         (files (mapcar (lambda (item) (concat prefix item suffix)) themes)))
+    (unless (file-exists-p theme-dir)
+      (make-directory theme-dir t))
+    (dolist (file files)
+      (when (file-exists-p file)
+        (copy-file file theme-dir t)))))
+(add-hook! 'doom-before-reload-hook 'doom-rose-pine-install)
 #+end_src
 
 **** gptel
@@ -357,6 +351,39 @@ Requires [[*autothemer][autothemer]]
         :desc "Open gpt menu"
         :n "SPC"
         #'gptel-menu))
+#+end_src
+**** chezmoi.el
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! chezmoi)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! chezmoi
+  :config
+  (map! :leader
+        :desc "chezmoi"
+        :n "fz")
+
+  (map! :leader
+        :desc "Find in chezmoi"
+        :n "fzf"
+        #'chezmoi-find)
+
+  (map! :leader
+        :desc "Write to chezmoi"
+        :n "fzs"
+        #'chezmoi-write)
+
+  (map! :leader
+        :desc "Sync with chezmoi"
+        :n "fzt"
+        #'chezmoi-mode)
+
+  (map! :leader
+        :desc "Chezmoi git status"
+        :n "fzg"
+        #'chezmoi-git-status))
 #+end_src
 
 ** Modes
@@ -456,3 +483,7 @@ I've got a lot of custom bindings that are meant to make switching between LazyV
 #+begin_src emacs-lisp
 (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
 #+end_src
+
+# Local Variables:
+# eval: (add-hook 'org-babel-post-tangle-hook #'chezmoi-write)
+# End:
