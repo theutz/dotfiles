@@ -1077,6 +1077,7 @@ use wm
 use my
 use chezmoi
 use aliases.nu *
+use service
 #+end_src
 
 
@@ -1087,7 +1088,7 @@ use aliases.nu *
 I've written some of my own modules that I'd like to share with the class.
 ** XDG
 :PROPERTIES:
-:header-args:nushell: :tangle scripts/xdg.nu
+:header-args:nushell: :tangle scripts/xdg.nu :comments 'both'
 :END:
 These are just some little scripts to make creating XDG file paths. The [[https://wiki.archlinux.org/title/XDG_Base_Directory][Arch Linux docs]] have some good details about how this is supposed to work.
 *** XDG_CONFIG_HOME
