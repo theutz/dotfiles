@@ -56,6 +56,10 @@
       #'theutz-toggle-line-spacing)
 ;; Line spacing:1 ends here
 
+;; [[file:config.org::*Customize][Customize:1]]
+(load-file custom.el)
+;; Customize:1 ends here
+
 ;; [[file:config.org::*evil-snipe][evil-snipe:1]]
 (after! evil-snipe
   (setq evil-snipe-scope 'buffer))
@@ -264,9 +268,9 @@
 ;; Workspaces:1 ends here
 
 ;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:1]]
-        (map! :leader :desc "Find file" :n "e" 'find-file)
+(map! :leader :desc "Find file" :n "e" 'find-file)
 ;; LazyVim compatibility layer:1 ends here
 
 ;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:2]]
-        (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
+(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
 ;; LazyVim compatibility layer:2 ends here

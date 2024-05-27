@@ -116,6 +116,12 @@ Some useful tools for toggling line spacing. You can press =SPC t s= to toggle b
       :n "ts"
       #'theutz-toggle-line-spacing)
 #+end_src
+*** Customize
+While I'm generally avoiding the use of Emacs "customization" features, it is highly convenient for two things: adding safe local variables and safe local eval forms. So, I will be loading it here.
+
+#+begin_src emacs-lisp
+(load-file custom.el)
+#+end_src
 ** Packages
 *** Doom overrrides
 **** evil-snipe
