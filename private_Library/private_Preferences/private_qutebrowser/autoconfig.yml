@@ -389,6 +389,7 @@ settings:
     global: true
   url.searchengines:
     global:
+      '!g': https://google.com/search?q={}&udm=14
       '!k': https://kagi.com/search?q={}
       '!tw': https://kagi.com/search?q=!tw+{}
       DEFAULT: https://kagi.com/search?q={}
