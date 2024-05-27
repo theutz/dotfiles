@@ -1,3 +1,6 @@
+# Left Prompt
+
+# [[file:nushell.org::*Left Prompt][Left Prompt:1]]
 def create_left_prompt [] {
     let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
@@ -14,7 +17,11 @@ def create_left_prompt [] {
 
     $"($path)($overlay)"
 }
+# Left Prompt:1 ends here
 
+# Right
+
+# [[file:nushell.org::*Right][Right:1]]
 def create_right_prompt [] {
     # create a right prompt in magenta with green separators and am/pm underlined
     let time_segment = ([
@@ -32,7 +39,11 @@ def create_right_prompt [] {
 
     ([$last_exit_code, (char space), $time_segment] | str join)
 }
+# Right:1 ends here
 
+# Indicators
+
+# [[file:nushell.org::*Indicators][Indicators:1]]
 # Use nushell functions to define your right and left prompt
 # $env.PROMPT_COMMAND = {|| create_left_prompt }
 # FIXME: This default is not implemented in rust code as of 2023-09-08.
@@ -56,7 +67,18 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 # $env.TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = {|| "" }
 # $env.TRANSIENT_PROMPT_MULTILINE_INDICATOR = {|| "" }
 # $env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| "" }
+# Indicators:1 ends here
 
+# Environment Variable Conversions
+# Specifies how environment variables are:
+
+# - converted from a string to a value on Nushell startup (from_string)
+# - converted from a value back to a string when running external commands (to_string)
+
+# Note: The conversions happen *after* config.nu is loaded
+
+
+# [[file:nushell.org::*Environment Variable Conversions][Environment Variable Conversions:1]]
 $env.ENV_CONVERSIONS = {
     "PATH": {
         from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
@@ -67,16 +89,34 @@ $env.ENV_CONVERSIONS = {
         to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
     }
 }
+# Environment Variable Conversions:1 ends here
 
+# Library Directories
+# Directories to search for scripts when calling source or use. The default for this is =$nu.default-config-dir/scripts=
+
+
+# [[file:nushell.org::*Library Directories][Library Directories:1]]
 $env.NU_LIB_DIRS = [
     ($nu.default-config-dir | path join scripts)
     ($nu.default-config-dir | path join nu_scripts)
 ]
+# Library Directories:1 ends here
 
+
+
+# Directories to search for plugin binaries when calling register. The default for this is =$nu.default-config-dir/plugins=
+
+
+# [[file:nushell.org::*Library Directories][Library Directories:2]]
 $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
+# Library Directories:2 ends here
 
+# Environment Variables
+
+# [[file:nushell.org::*Environment Variables][Environment Variables:1]]
 $env.EDITOR = "nvim"
 $env.VISUAL = "neovide"
 $env.HOMEBREW_EDITOR = $env.VISUAL
+# Environment Variables:1 ends here

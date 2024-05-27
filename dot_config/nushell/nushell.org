@@ -5,7 +5,7 @@
 
 * Environment
 :PROPERTIES:
-:header-args:nushell: :tangle env.nu
+:header-args:nushell: :tangle env.nu :comments 'both'
 :END:
 ** Prompts
 *** Left Prompt
@@ -1083,3 +1083,171 @@ use aliases.nu *
 # Local Variables:
 # eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t)
 # End:
+* Modules
+I've written some of my own modules that I'd like to share with the class.
+** XDG
+:PROPERTIES:
+:header-args:nushell: :tangle scripts/xdg.nu
+:END:
+These are just some little scripts to make creating XDG file paths. The [[https://wiki.archlinux.org/title/XDG_Base_Directory][Arch Linux docs]] have some good details about how this is supposed to work.
+*** XDG_CONFIG_HOME
+- Where user-specific configurations should be written (analogous to /etc).
+- Should default to =$HOME/.config=.
+**** Definition
+#+name: xdg-config
+#+begin_src nushell
+# Construct an absolute path from XDG_CONFIG_HOME
+export def config [
+  ...path: string # The path segments to join
+] -> string {
+  $env.XDG_CONFIG_HOME | default [$env.HOME .config]
+    | path join ...$path
+}
+#+end_src
+
+#+RESULTS: xdg-config
+**** Example
+#+name: xdg-config-example
+#+begin_src nushell :noweb yes :tangle no
+<<xdg-config>>
+config | print
+config nushell this is a really good example
+#+end_src
+
+#+RESULTS: xdg-config-example
+: /Users/michael/.config
+: /Users/michael/.config/nushell/this/is/a/really/good/example
+*** XDG_CACHE_HOME
+- Where user-specific non-essential (cached) data should be written (analogous to /var/cache).
+- Should default to =$HOME/.cache=.
+**** Definition
+#+name: xdg-cache
+#+begin_src nushell
+# Construct an absolute path from XDG_CACHE_HOME
+export def cache [
+  ...path: string
+] -> string {
+  $env.XDG_CACHE_HOME
+    | default ([$env.HOME .cache])
+    | path join ...$path
+}
+#+end_src
+
+#+RESULTS: xdg-cache
+**** Example
+#+name: xdg-cache-example
+#+begin_src nushell :noweb yes :tangle no
+<<xdg-cache>>
+cache | print
+cache this is a great example actually
+#+end_src
+
+#+RESULTS: xdg-cache-example
+: /Users/michael/.cache
+: /Users/michael/.cache/this/is/a/great/example/actually
+*** XDG_DATA_HOME
+- Where user-specific data files should be written (analogous to /usr/share).
+- Should default to =$HOME/.local/share=.
+**** Definition
+#+name: xdg-data
+#+begin_src nushell
+# Construct an absolute path from XDG_DATA_HOME
+export def data [
+  ...path: string
+] -> string {
+  $env.XDG_DATA_HOME
+    | default ([$env.HOME .local state])
+    | path join ...$path
+}
+#+end_src
+**** Example
+#+name: xdg-data-example
+#+begin_src nushell :noweb yes :tangle no
+<<xdg-data>>
+data | print
+data this is a great example actually
+#+end_src
+
+#+RESULTS: xdg-data-example
+: /Users/michael/.local/share
+: /Users/michael/.local/share/this/is/a/great/example/actually
+*** XDG_STATE_HOME
+- Where user-specific state files should be written (analogous to /var/lib).
+- Should default to =$HOME/.local/state=.
+**** Definition
+#+name: xdg-state
+#+begin_src nushell
+# Construct an absolute path from XDG_STATE_HOME
+export def state [
+  ...path: string
+] -> string {
+  $env.XDG_STATE_HOME
+    | default ([$env.HOME .local state])
+    | path join ...$path
+}
+#+end_src
+
+#+RESULTS: xdg-state
+**** Example
+#+name: xdg-state-example
+#+begin_src nushell :noweb yes :tangle no
+<<xdg-state>>
+state | print
+state this is a great example actually
+#+end_src
+
+#+RESULTS: xdg-state-example
+: /Users/michael/.local/state
+: /Users/michael/.local/state/this/is/a/great/example/actually
+*** XDG_RUNTIME_DIR
+- Used for non-essential, user-specific data files such as sockets, named pipes, etc.
+- Not required to have a default value; warnings should be issued if not set or equivalents provided.
+- Must be owned by the user with an access mode of 0700.
+- Filesystem fully featured by standards of OS.
+- Must be on the local filesystem.
+- May be subject to periodic cleanup.
+- Modified every 6 hours or set sticky bit if persistence is desired.
+- Can only exist for the duration of the user's login.
+- Should not store large files as it may be mounted as a tmpfs.
+- pam_systemd sets this to =/run/user/$UID=.
+**** Definition
+#+name: xdg-runtime
+#+begin_src nushell
+# Construct an absolute path from XDG_RUNTIME_DIR
+export def runtime [
+  ...path: string
+] -> string {
+  $env.XDG_RUNTIME_DIR
+    | default ([$env.HOME .local state])
+    | path join ...$path
+}
+#+end_src
+
+#+RESULTS: xdg-runtime
+**** Example
+#+name: xdg-runtime-example
+#+begin_src nushell :noweb yes :tangle no
+<<xdg-runtime>>
+runtime | print
+runtime this is a great example actually
+#+end_src
+
+#+RESULTS: xdg-runtime-example
+: /var/folders/rb/3dlc977d1xd_5m1fz4sg3q2r0000gn/T/
+: /var/folders/rb/3dlc977d1xd_5m1fz4sg3q2r0000gn/T/this/is/a/great/example/actually
+** Service
+:PROPERTIES:
+:header-args:nushell: :tangle scripts/service/mod.nu
+:END:
+This module helps me start, stop, and monitor services that I run regularly via homebrew, pueue, or elsewhere.
+*** Module
+#+name: service-module
+#+begin_src nushell :tangle service/mod.nu :mkdirp t
+use start.nu
+
+export def main [] {
+    $"Commands for interacting with long-running services."
+}
+#+end_src
+
+#+RESULTS: service-module
