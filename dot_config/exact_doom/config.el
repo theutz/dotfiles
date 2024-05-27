@@ -11,7 +11,18 @@
 ;; Fonts:1 ends here
 
 ;; [[file:config.org::*Themes][Themes:1]]
-(setq doom-theme 'doom-rose-pine-dawn)
+(setq doom-theme-dark 'doom-rose-pine
+      doom-theme-light 'doom-rose-pine-dawn
+      doom-theme doom-theme-light)
+
+(defun my/apply-theme (appearance)
+  "Load theme, taking current system APPEARANCE into consideration."
+  (mapc #'disable-theme custom-enabled-themes)
+  (pcase appearance
+    ('light (load-theme doom-theme-light t))
+    ('dark (load-theme doom-theme-dark t))))
+
+(add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 ;; Themes:1 ends here
 
 ;; [[file:config.org::*Line Number Style][Line Number Style:1]]
@@ -253,9 +264,9 @@
 ;; Workspaces:1 ends here
 
 ;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:1]]
-(map! :leader :desc "Find file" :n "e" 'find-file)
+        (map! :leader :desc "Find file" :n "e" 'find-file)
 ;; LazyVim compatibility layer:1 ends here
 
 ;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:2]]
-(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
+        (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
 ;; LazyVim compatibility layer:2 ends here
