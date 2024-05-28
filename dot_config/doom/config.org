@@ -463,11 +463,11 @@ Lastly, I'll join them all together in a string with the ~--login~ flag.
 #+name: define-org-babel-nushell-command-options
 #+begin_src emacs-lisp :session org-babel-nushell :results silent
 (defvar org-babel-nushell-command-options
-  (mapconcat 'identity (list "--login"
-                         "--env-config"
-                         org-babel-nushell-env-config-file
-                         "--config"
-                         org-babel-nushell-config-file)
+  (mapconcat 'identity (list "--no-newline"
+                             "--env-config"
+                             org-babel-nushell-env-config-file
+                             "--config"
+                             org-babel-nushell-config-file)
              " ")
   "The command options to use when executing code")
 #+end_src
@@ -522,15 +522,16 @@ The function above depends on some helpers to deal with variables passed into co
   "Append custom variables at top."
   (if (= (length params) 0)
       body
-    (concat (mapconcat 'org-babel-nushell-var-to-nushell params) "\n" body)))
+    (concat (mapconcat 'org-babel-nushell-var-to-nushell params "\n") "\n" body)))
 #+end_src
 
 #+begin_src emacs-lisp :session org-babel-nushell-parsing-variables :tangle no
-(org-babel-nushell-custom-vars '(("one" . "a") ("two" . "b")) "my body")
+(org-babel-nushell-custom-vars '(("one" . "a\n") ("two" . "b")) "my body")
 #+end_src
 
 #+RESULTS:
-: let "one" = "a"let "two" = "b"
+: let "one" = "a"
+: let "two" = "b"
 : my body
 
 ******** Parsing individual parameters
@@ -539,10 +540,12 @@ The function above depends on some helpers to deal with variables passed into co
 (defun org-babel-nushell-var-to-nushell (pair)
   "Convert an elisp var into a string of go source code
 specifying a var of the same value."
-  (let ((var (car pair))
-        (val (cdr pair)))
+  (let* ((var (car pair))
+         (val (cdr pair)))
     (when (symbolp val)
       (setq val (symbol-name val)))
+    (while (string-match-p "\n\\'" val)
+      (setq val (substring val 0 -1)))
     (format "let %S = %S" var val)))
 #+end_src
 
@@ -655,7 +658,9 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
 : t
 
 ** Modes
+
 *** Org
+
 Some variables need to be set before org loads.
 
 #+begin_src emacs-lisp
@@ -667,7 +672,7 @@ Some variables need to be set before org loads.
 
 But some can run after org loads
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
 (after! org
   (add-to-list 'org-modules 'org-habit)
   (setq org-todo-keywords
@@ -719,9 +724,8 @@ But some can run after org loads
         #'org-delete-property))
 #+end_src
 
-#+RESULTS:
-
 *** Nix
+
 Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
 
 #+begin_src emacs-lisp
@@ -738,9 +742,12 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
 #+end_src
 
 ** Bindings
+
 *** Doom Overrides...
+
 **** Workspaces
-#+begin_src emacs-lisp
+
+#+begin_src emacs-lisp :results silent
 (map! :leader
       (:when (modulep! :ui workspaces)
         (:prefix-map ("TAB" . "workspace")
@@ -751,27 +758,18 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
          :desc "Swap workspace right" ">" #'+workspace/swap-right)))
 #+end_src
 
-#+RESULTS:
-: +workspace/swap-right
-
 *** LazyVim compatibility layer
+
 I've got a lot of custom bindings that are meant to make switching between LazyVim and DoomEmacs less jarring.
 
 - Sometimes it's the simple things... =e= for /explorer/.
-        #+begin_src emacs-lisp
+
+        #+begin_src emacs-lisp :results silent
         (map! :leader :desc "Find file" :n "e" 'find-file)
         #+end_src
 
-        #+RESULTS:
-        : find-file
-
 - Simple terminal stuff
-        #+begin_src emacs-lisp
+
+        #+begin_src emacs-lisp :results silent
         (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
         #+end_src
-
-        #+RESULTS:
-
-# Local Variables:
-# eval: (add-hook 'org-babel-post-tangle-hook #'chezmoi-write)
-# End:
