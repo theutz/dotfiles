@@ -5,7 +5,13 @@
  ;; If there is more than one, they won't work right.
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(safe-local-variable-values
-   '((eval add-hook 'org-babel-post-tangle-hook #'chezmoi-write)
+   '((eval add-hook 'after-save-hook
+      (lambda nil
+        (if
+            (y-or-n-p "Tangle?")
+            (org-babel-tangle)))
+      nil t)
+     (eval add-hook 'org-babel-post-tangle-hook #'chezmoi-write)
      (line-spacing . 0.5))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

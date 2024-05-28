@@ -133,7 +133,7 @@ Some useful tools for toggling line spacing. You can press =SPC t s= to toggle b
 Firstly, I'll setup a user defined variable that I'll use to change the line spacing.
 
 #+begin_src emacs-lisp :results silent
-(defvar toggle-line-spacing 0.4
+(defvar toggle-line-spacing 0.6
   "Amount of line spacing to use when toggling line spacing")
 #+end_src
 
@@ -152,10 +152,7 @@ Next, of course, we setup the actual function that does the toggling.
 And what's the point of all this if there's no keymap?
 
 #+begin_src emacs-lisp :results silent
-(map! :desc "Line spacing"
-      :leader
-      :n "ts"
-      #'toggle-line-spacing)
+(map! :desc "Line spacing" :leader :n "ts" #'toggle-line-spacing)
 #+end_src
 
 Finally, I'll set the default value for line spacing.
@@ -390,6 +387,22 @@ And requires very little configuration.
 
 ***** org-babel functions
 
+****** Tangling
+
+I need there to be a blank line between the output from =:comments link= and the actual content of a block. ~org-babel-tangle-body-hook~ seems like it might be a good candidate to accomplish that.
+
+#+begin_src emacs-lisp :results silent
+(defun my-nushell-tangle-formatter ()
+    "Format BODY of each tangled code block."
+    (save-excursion
+      (goto-char (point-min))
+      (while (search-forward-regexp "^# \\[\\[file:" nil t)
+        (end-of-line)
+        (insert "\n"))))
+
+(add-hook! 'org-babel-post-tangle-hook #'my-nushell-tangle-formatter)
+#+end_src
+
 ****** User-defined variables
 
 I want nushell to work with org-babel, but nobody's done the dirty work yet. We'll start with the basics. We might want this command to be customizable for someone's environment.
@@ -428,59 +441,65 @@ First I'll setup a variable for the root directory where the config files live. 
 
 Then I'll create two variables for the actual config files required for successful nushell startup.
 
-#+name: org-babel-define-config-env-file
-#+begin_src emacs-lisp :session org-babel-nushell :results silent
-(defvar org-babel-nushell-env-config-file
-  (concat org-babel-nushell-config-dir "env.nu")
-  "Absolute path to the nu file used to configure a non-interactive nushell session.")
-#+end_src
+- ~org-babel-nushell-env-config-file~
 
-#+name: org-babel-config-file
-#+begin_src emacs-lisp :tangle no :session org-babel-nushell
-org-babel-nushell-config-file
-#+end_src
+  #+name: org-babel-define-config-env-file
+  #+begin_src emacs-lisp :session org-babel-nushell :results silent
+  (defvar org-babel-nushell-env-config-file
+    (concat org-babel-nushell-config-dir "env.nu")
+    "Absolute path to the nu file used to configure a non-interactive nushell session.")
+  #+end_src
 
-#+RESULTS: org-babel-config-file
-: /Users/michael/.config/nushell/config.nu
+  #+name: org-babel-config-file
+  #+begin_src emacs-lisp :tangle no :session org-babel-nushell
+  org-babel-nushell-config-file
+  #+end_src
 
-#+name: org-babel-define-config-file
-#+begin_src emacs-lisp :session org-babel-nushell :results silent
-(defvar org-babel-nushell-config-file
-  (concat org-babel-nushell-config-dir "config.nu")
-  "Absolute path to the nu file used to configure an interactive nushell session.")
-#+end_src
+  #+RESULTS: org-babel-config-file
+  : /Users/michael/.config/nushell/config.nu
 
-#+name: org-babel-env-file
-#+begin_src emacs-lisp :tangle no :session org-babel-nushell
-org-babel-nushell-env-config-file
-#+end_src
+- ~org-babel-nushell-config-file~
 
-#+RESULTS: org-babel-env-file
-: /Users/michael/.config/nushell/env.nu
+  #+name: org-babel-define-config-file
+  #+begin_src emacs-lisp :session org-babel-nushell :results silent
+  (defvar org-babel-nushell-config-file
+    (concat org-babel-nushell-config-dir "config.nu")
+    "Absolute path to the nu file used to configure an interactive nushell session.")
+  #+end_src
+
+  #+name: org-babel-env-file
+  #+begin_src emacs-lisp :tangle no :session org-babel-nushell
+  org-babel-nushell-env-config-file
+  #+end_src
+
+  #+RESULTS: org-babel-env-file
+  : /Users/michael/.config/nushell/env.nu
 
 Lastly, I'll join them all together in a string with the ~--login~ flag.
 
-#+name: define-org-babel-nushell-command-options
-#+begin_src emacs-lisp :session org-babel-nushell :results silent
-(defvar org-babel-nushell-command-options
-  (mapconcat 'identity (list "--no-newline"
-                             "--env-config"
-                             org-babel-nushell-env-config-file
-                             "--config"
-                             org-babel-nushell-config-file)
-             " ")
-  "The command options to use when executing code")
-#+end_src
+- ~org-babel-nushell-command-options~
 
-Altogether, that should produce the following:
+  #+name: define-org-babel-nushell-command-options
+  #+begin_src emacs-lisp :session org-babel-nushell :results silent
+  (defvar org-babel-nushell-command-options
+    (mapconcat 'identity (list "--no-newline"
+                              "--env-config"
+                              org-babel-nushell-env-config-file
+                              "--config"
+                              org-babel-nushell-config-file)
+              " ")
+    "The command options to use when executing code")
+  #+end_src
 
-#+name: check-org-babel-nushell-command-options
-#+begin_src emacs-lisp :session org-babel-nushell :tangle no
-org-babel-nushell-command-options
-#+end_src
+  Altogether, that should produce the following:
 
-#+RESULTS: check-org-babel-nushell-command-options
-: --login --env-config /Users/michael/.config/nushell/env.nu --config /Users/michael/.config/nushell/config.nu
+  #+name: check-org-babel-nushell-command-options
+  #+begin_src emacs-lisp :session org-babel-nushell :tangle no
+  org-babel-nushell-command-options
+  #+end_src
+
+  #+RESULTS: check-org-babel-nushell-command-options
+  : --no-newline --env-config /Users/michael/.config/nushell/env.nu --config /Users/michael/.config/nushell/config.nu
 
 ****** The execute function
 
@@ -643,7 +662,7 @@ Chezmoi mode makes working with [[https://www.chezmoi.io/][chezmoi]] quite a bit
 
 I've setup a little sub-set of prefixes in the file-save keymap to work with some of it's commands.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
 (use-package! chezmoi
   :config
   (let ((base "fz"))
@@ -653,9 +672,6 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
     (map! :leader :desc "Sync with chezmoi" :n (concat base "t") #'chezmoi-mode)
     (map! :leader :desc "Chezmoi git status" :n (concat base "o") #'chezmoi-open-other)))
 #+end_src
-
-#+RESULTS:
-: t
 
 ** Modes
 
@@ -707,33 +723,35 @@ But some can run after org loads
           ("PROJ" . +org-todo-project)
           ("NO"   . +org-todo-cancel)
           ("KILL" . +org-todo-cancel)))
-  (map! :localleader
-        :mode org-mode
-        :desc "org-columns"
-        :n "m"
-        #'org-columns)
-  (map! :localleader
-        :mode org-mode
-        :desc "org-refile-copy"
-        :n "rd"
-        #'org-refile-copy)
-  (map! :localleader
-        :mode org-mode
-        :desc "org-delete-property"
-        :n "O"
-        #'org-delete-property))
+  (map! :localleader :mode org-mode :desc "org-columns" :n "m" #'org-columns)
+  (map! :localleader :mode org-mode :desc "org-refile-copy" :n "rd" #'org-refile-copy)
+  (map! :localleader :mode org-mode :desc "org-delete-property" :n "O" #'org-delete-property))
+#+end_src
+
+And some things can run on a hook!
+
+#+begin_src emacs-lisp :results silent
+(defun my-org-faces ()
+  (set-face-attribute 'org-level-1 nil :height 1.7)
+  (set-face-attribute 'org-level-2 nil :height 1.6)
+  (set-face-attribute 'org-level-3 nil :height 1.5)
+  (set-face-attribute 'org-level-4 nil :height 1.4)
+  (set-face-attribute 'org-level-5 nil :height 1.3)
+  (set-face-attribute 'org-level-6 nil :height 1.2)
+  (set-face-attribute 'org-level-7 nil :height 1.1)
+  (set-face-attribute 'org-level-8 nil :height 1.0))
+
+(add-hook! org-mode #'my-org-faces)
 #+end_src
 
 *** Nix
 
 Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
 (after! nix-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
 #+end_src
-
-#+RESULTS:
 
 For a lot of packages, we want to use the LSP to do the formatting. But not in this case.
 
