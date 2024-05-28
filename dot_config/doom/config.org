@@ -28,8 +28,8 @@ Doom exposes five (optional) variables for controlling fonts in Doom:
 
 See =C-h v doom-font= for documentation and more examples of what they accept. For example:
 
-#+begin_src emacs-lisp
-(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 16 :weight 'medium)
+#+begin_src emacs-lisp :results silent
+(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 14 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14))
 #+end_src
 
@@ -92,18 +92,22 @@ I've set the corresponding environment variable in my =.zshenv= and =env.nu= fil
                                     (getenv "TMPDIR")) "emacs"))
 
 #+end_src
+
 *** vterm
+
 #+begin_src emacs-lisp
 (setq vterm-shell "/opt/homebrew/bin/nu")
 #+end_src
+
 *** Line spacing
+
 Some useful tools for toggling line spacing. You can press =SPC t s= to toggle big or small spacing. Additionally, you can configure the amount of spacing that is toggled.
 
 #+begin_src emacs-lisp
-(defvar theutz-line-spacing 0.3
+(defvar toggle-line-spacing 0.4
   "Amount of line spacing to use when toggling line spacing")
 
-(defun theutz-toggle-line-spacing ()
+(defun toggle-line-spacing ()
   "Toggle line spacing between no extra space to a lil extra space"
   (interactive)
   (if line-spacing
@@ -114,9 +118,16 @@ Some useful tools for toggling line spacing. You can press =SPC t s= to toggle b
 (map! :desc "Line spacing"
       :leader
       :n "ts"
-      #'theutz-toggle-line-spacing)
+      #'toggle-line-spacing)
+
+(setq line-spacing toggle-line-spacing)
 #+end_src
+
+#+RESULTS:
+: 0.4
+
 *** Customize
+
 While I'm generally avoiding the use of Emacs "customization" features, it is highly convenient for two things: adding safe local variables and safe local eval forms. So, I will be loading it here.
 
 #+begin_src emacs-lisp
@@ -138,28 +149,34 @@ While I'm generally avoiding the use of Emacs "customization" features, it is hi
 #+begin_src emacs-lisp
 (use-package-hook! evil
   :pre-init
-  (setq evil-respect-visual-line-mode t)
+  (setq evil-respect-visual-line-mode t
+        evil-shift-width 2)
   t)
 #+end_src
+
 *** Doom prelude
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle no :eval no
+:END:
+
 To install a package with Doom you must declare them here and run 'doom sync' on the command line, then restart Emacs for the changes to take effect -- or use 'M-x doom/reload'.
 
 To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (package! some-package)
 #+end_src
 
 To install a package directly from a remote git repo, you must specify a `:recipe'. You'll find documentation on what `:recipe' accepts here: https://github.com/radian-software/straight.el#the-recipe-format
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (package! another-package
   :recipe (:host github :repo "username/repo"))
 #+end_src
 
 If the package you are trying to install does not contain a PACKAGENAME.el file, or is located in a subdirectory of the repo, you'll need to specify `:files' in the `:recipe':
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (package! this-package
   :recipe (:host github :repo "username/repo"
            :files ("some-file.el" "src/lisp/*.el")))
@@ -167,63 +184,84 @@ If the package you are trying to install does not contain a PACKAGENAME.el file,
 
 If you'd like to disable a package included with Doom, you can do so here with the `:disable' property:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (package! builtin-package :disable t)
 #+end_src
 
 You can override the recipe of a built in package without having to specify all the properties for `:recipe'. These will inherit the rest of its recipe from Doom or MELPA/ELPA/Emacsmirror:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (package! builtin-package :recipe (:nonrecursive t))
 (package! builtin-package-2 :recipe (:repo "myfork/package"))
 #+end_src
 
 Specify a `:branch' to install a package from a particular branch or tag. This is required for some packages whose default branch isn't 'master' (which our package manager can't deal with; see radian-software/straight.el#279)
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (package! builtin-package :recipe (:branch "develop"))
 #+end_src
 
 Use `:pin' to specify a particular commit to install.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (package! builtin-package :pin "1a2b3c4d5e")
 #+end_src
 
 Doom's packages are pinned to a specific commit and updated from release to release. The `unpin!' macro allows you to unpin single packages...
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (unpin! pinned-package)
 #+end_src
 
 ...or multiple packages
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (unpin! pinned-package another-pinned-package)
 #+end_src
 
 ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (unpin! t)
 #+end_src
+
 *** Custom packages
-#+begin_src emacs-lisp :tangle packages.el :comments nil
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle config.el :comments both
+:END:
+
+I'll add an obligatory header to the file so we don't byte compile this.
+
+#+begin_src emacs-lisp :tangle packages.el :comments nil :eval no
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 #+end_src
+
+Now we can start adding custom packages
+
 **** just-mode
-#+begin_src emacs-lisp :tangle packages.el
+
+This package provides a basic minor mode for interacting with a =Justfile=.
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
 (package! just-mode)
 #+end_src
+
+It requires minimal configuration.
 
 #+begin_src emacs-lisp
 (use-package! just-mode)
 #+end_src
+
 **** justl
-#+begin_src emacs-lisp :tangle packages.el
+
+This package creates a listing of public Just commands and lets you execute them in a compilation buffer.
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
 (package! justl)
 #+end_src
+
+I've assigned some keymaps to make this more convenient.
 
 #+begin_src emacs-lisp
 (use-package! justl
@@ -238,19 +276,29 @@ Doom's packages are pinned to a specific commit and updated from release to rele
           :n "e"
           fn)))
 #+end_src
+
 **** kdl-mode
-#+begin_src emacs-lisp :tangle packages.el
+
+KDL is a configuration language favored by some (mostly Rust-based) programs like [[https://zellij.dev/][Zellij]]. This provides basic syntax highlighting for it.
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
 (package! kdl-mode
   :recipe (:host github
            :repo "bobuk/kdl-mode"
            :branch "main"))
 #+end_src
 
+It requires almost no configuration to use
+
 #+begin_src emacs-lisp
 (use-package! kdl-mode)
 #+end_src
+
 **** nushell-mode
-#+begin_src emacs-lisp :tangle packages.el
+
+***** Package setup
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
 (package! nushell-mode
   :recipe (
            :host github
@@ -262,29 +310,169 @@ Doom's packages are pinned to a specific commit and updated from release to rele
   :mode "\\.nu")
 #+end_src
 
-#+begin_src emacs-lisp
+***** org-babel functions
+
+I want nushell to work with org-babel, but nobody's done the dirty work yet. We'll start with the basics. We might want this command to be customizable for someone's environment.
+
+#+name: define-org-babel-nushell-command
+#+begin_src emacs-lisp :session org-babel-nushell
 (defvar org-babel-nushell-command
   "nu"
   "The command to execute babel body code.")
+#+end_src
 
+#+RESULTS: define-org-babel-nushell-command
+: org-babel-nushell-command
+
+Additionally, since I can't be certain the specific environment emacs will be running this command in, I need to be able to pass in the nushell config files so things operate as expected in my environment.
+
+First I'll setup a variable for the root directory where the config files live. While nushell currently defaults to the Apple-specifc XDG paths (like in =~/Library=), I don't like that. So I'll use the arch-based defaults.
+
+#+name: define-org-babel-nushell-config-dir
+#+begin_src emacs-lisp :session org-babel-nushell
+(defvar org-babel-nushell-config-dir
+  (concat (file-name-as-directory (or (getenv "XDG_CONFIG_HOME")
+                                      (getenv "HOME" ".config")))
+          "nushell/")
+  "Absolute path to the root directory where config files for nushell exist.")
+#+end_src
+
+#+RESULTS: define-org-babel-nushell-config-dir
+: org-babel-nushell-config-dir
+
+Then I'll create two variables for the actual config files required for successful nushell startup.
+
+#+name: org-babel-define-config-files
+#+begin_src emacs-lisp :session org-babel-nushell
+(defvar org-babel-nushell-env-config-file
+  (concat org-babel-nushell-config-dir "env.nu")
+  "Absolute path to the nu file used to configure a non-interactive nushell session.")
+
+(defvar org-babel-nushell-config-file
+  (concat org-babel-nushell-config-dir "config.nu")
+  "Absolute path to the nu file used to configure an interactive nushell session.")
+#+end_src
+
+#+RESULTS: org-babel-define-config-files
+: org-babel-nushell-config-file
+
+For example, on my machine the results look like this:
+
+#+begin_src emacs-lisp :tangle no :results output :session org-babel-nushell
+(print org-babel-nushell-env-config-file)
+(print org-babel-nushell-config-file)
+#+end_src
+
+#+RESULTS:
+:
+: "/Users/michael/.config/nushell/env.nu"
+:
+: "/Users/michael/.config/nushell/config.nu"
+
+Lastly, I'll join them all together in a string with the ~--login~ flag.
+
+#+name: define-org-babel-nushell-command-options
+#+begin_src emacs-lisp :noweb eval :session org-babel-nushell
 (defvar org-babel-nushell-command-options
-  "--login --env-config /Users/michael/.config/nushell/env.nu --config /Users/michael/.config/nushell/config.nu"
+  (mapconcat 'identity `("--login"
+                         "--env-config"
+                         ,org-babel-nushell-env-config-file
+                         "--config"
+                         ,org-babel-nushell-config-file)
+             " ")
   "The command options to use when executing code")
+#+end_src
 
+#+RESULTS: define-org-babel-nushell-command-options
+: org-babel-nushell-command-options
+
+Altogether, that should produce the following:
+
+#+name: check-org-babel-nushell-command-options
+#+begin_src emacs-lisp :session org-babel-nushell :tangle no
+org-babel-nushell-command-options
+#+end_src
+
+#+RESULTS: check-org-babel-nushell-command-options
+: --login --env-config /Users/michael/.config/nushell/env.nu --config /Users/michael/.config/nushell/config.nu
+
+****** The execute function
+
+Everything before this was setting us up to be able to define a function that Org Babel will use to run a block of nushell code. That function must be named with a predictable format based on the language passed when defining src blocks.
+
+#+begin_src emacs-lisp :results silent
 (defun org-babel-execute:nushell (body params)
   "Orgmode Babel NuShell evaluate function for `BODY' with `PARAMS'."
-  (let ((tmp-src-file (org-babel-temp-file "nu-src-" ".nu")))
-    (with-temp-file tmp-src-file (insert body))
+  (let* ((tmp-src-file (org-babel-temp-file "nu-src-" ".nu"))
+         (processed-params (org-babel-process-params params))
+         (flags (cdr (assoc :flags processed-params)))
+         (args (cdr (assoc :args processed-params)))
+         (full-body (org-babel-expand-body:nushell
+                     body params processed-params))
+         (coding-system-for-read 'utf-8)
+         (coding-system-for-write 'utf-8))
+    (with-temp-file tmp-src-file (insert full-body))
     (org-babel-eval (format "%s %s %s"
                             org-babel-nushell-command
                             org-babel-nushell-command-options
                             (org-babel-process-file-name tmp-src-file)) "")))
 #+end_src
+
+The function above depends on some helpers to deal with variables passed into code blocks via the ~:var~ keyword. These are pretty straightforward string processing functions.
+
+#+begin_src emacs-lisp :results silent
+(defun org-babel-expand-body:nushell (body params &optional processed-params)
+  "Expand BODY according to PARAMS, return the expanded body."
+  (let* ((vars (org-babel--get-vars params)))
+    (org-babel-nushell-custom-vars vars)))
+#+end_src
+
+******* Creating variables
+
+#+begin_src emacs-lisp :results silent :session org-babel-nushell-parsing-variables
+(defun org-babel-nushell-custom-vars (params body)
+  "Append custom variables at top."
+  (if (= (length params) 0)
+      body
+    (concat (mapconcat 'org-babel-nushell-var-to-nushell params) "\n" body)))
+#+end_src
+#+begin_src emacs-lisp :session org-babel-nushell-parsing-variables :tangle no
+(org-babel-nushell-custom-vars '(("one" . "a") ("two" . "b")) "my body")
+#+end_src
+
+#+RESULTS:
+: let "one" = "a"let "two" = "b"
+: my body
+
+#+begin_src emacs-lisp :results silent :session org-babel-nushell-parsing-variables
+(defun org-babel-nushell-var-to-nushell (pair)
+  "Convert an elisp var into a string of go source code
+specifying a var of the same value."
+  (let ((var (car pair))
+        (val (cdr pair)))
+    (when (symbolp val)
+      (setq val (symbol-name val)))
+    (format "let %S = %S" var val)))
+#+end_src
+#+begin_src emacs-lisp :session org-babel-nushell-parsing-variables :tangle no
+(org-babel-nushell-var-to-nushell '("my_var" . "my value"))
+#+end_src
+
+#+RESULTS:
+: let "my_var" = "my value"
+
+Here's a code block that we can run as a sanity check to make sure this is all working.
+
+#+begin_src nushell :dir ~ :var str="hello" :tangle no
+$str | split chars
+#+end_src
+
 **** rose-doom-pine-emacs
-#+begin_src emacs-lisp :tangle packages.el
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
 (package! rose-pine-doom-emacs
   :recipe (:host github
-           :repo "donniebreve/rose-pine-doom-emacs"
+           :repo "theutz/rose-pine-doom-emacs"
            :branch "main"))
 #+end_src
 
@@ -305,8 +493,10 @@ Doom's packages are pinned to a specific commit and updated from release to rele
         (copy-file file theme-dir t)))))
 (add-hook! 'doom-before-reload-hook 'doom-rose-pine-install)
 #+end_src
+
 **** gptel
-#+begin_src emacs-lisp :tangle packages.el
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
 (package! gptel)
 #+end_src
 
@@ -332,37 +522,26 @@ Doom's packages are pinned to a specific commit and updated from release to rele
         #'gptel-menu))
 #+end_src
 **** chezmoi.el
-#+begin_src emacs-lisp :tangle packages.el
+
+Chezmoi mode makes working with [[https://www.chezmoi.io/][chezmoi]] quite a bit easier by keeping the source and target in sync when you write.
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
 (package! chezmoi)
 #+end_src
+
+I've setup a little sub-set of prefixes in the file-save keymap to work with some of it's commands.
 
 #+begin_src emacs-lisp
 (use-package! chezmoi
   :config
-  (map! :leader
-        :desc "chezmoi"
-        :n "fz")
-
-  (map! :leader
-        :desc "Find in chezmoi"
-        :n "fzf"
-        #'chezmoi-find)
-
-  (map! :leader
-        :desc "Write to chezmoi"
-        :n "fzs"
-        #'chezmoi-write)
-
-  (map! :leader
-        :desc "Sync with chezmoi"
-        :n "fzt"
-        #'chezmoi-mode)
-
-  (map! :leader
-        :desc "Chezmoi git status"
-        :n "fzo"
-        #'chezmoi-open-other))
+  (let ((base "fz"))
+    (map! :leader :desc "chezmoi" :n base)
+    (map! :leader :desc "Find in chezmoi" :n (concat base "f") #'chezmoi-find)
+    (map! :leader :desc "Write to chezmoi" :n (concat base "s") #'chezmoi-write)
+    (map! :leader :desc "Sync with chezmoi" :n (concat base "t") #'chezmoi-mode)
+    (map! :leader :desc "Chezmoi git status" :n (concat base "o") #'chezmoi-open-other)))
 #+end_src
+
 ** Modes
 *** Org
 Some variables need to be set before org loads.
@@ -424,6 +603,7 @@ But some can run after org loads
         :n "O"
         #'org-delete-property))
 #+end_src
+
 *** Nix
 Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
 
@@ -437,6 +617,7 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
 #+begin_src emacs-lisp
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
 #+end_src
+
 ** Bindings
 *** Doom Overrides...
 **** Workspaces
@@ -450,6 +631,7 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
          :desc "Swap workspace left" "<" #'+workspace/swap-left
          :desc "Swap workspace right" ">" #'+workspace/swap-right)))
 #+end_src
+
 *** LazyVim compatibility layer
 I've got a lot of custom bindings that are meant to make switching between LazyVim and DoomEmacs less jarring.
 
