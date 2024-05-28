@@ -117,7 +117,7 @@ I've set the corresponding environment variable in my =.zshenv= and =env.nu= fil
 #+RESULTS:
 : /var/folders/rb/3dlc977d1xd_5m1fz4sg3q2r0000gn/T/emacs
 
-*** vterm
+*** Vterm
 
 #+begin_src emacs-lisp
 (setq vterm-shell "/opt/homebrew/bin/nu")
@@ -130,23 +130,37 @@ I've set the corresponding environment variable in my =.zshenv= and =env.nu= fil
 
 Some useful tools for toggling line spacing. You can press =SPC t s= to toggle big or small spacing. Additionally, you can configure the amount of spacing that is toggled.
 
-#+begin_src emacs-lisp
+Firstly, I'll setup a user defined variable that I'll use to change the line spacing.
+
+#+begin_src emacs-lisp :results silent
 (defvar toggle-line-spacing 0.4
   "Amount of line spacing to use when toggling line spacing")
+#+end_src
 
+Next, of course, we setup the actual function that does the toggling.
+
+#+begin_src emacs-lisp :results silent
 (defun toggle-line-spacing ()
   "Toggle line spacing between no extra space to a lil extra space"
   (interactive)
   (if line-spacing
       (setq line-spacing nil)
-    (setq line-spacing theutz-line-spacing))
+    (setq line-spacing toggle-line-spacing))
   (redraw-frame (selected-frame)))
+#+end_src
 
+And what's the point of all this if there's no keymap?
+
+#+begin_src emacs-lisp :results silent
 (map! :desc "Line spacing"
       :leader
       :n "ts"
       #'toggle-line-spacing)
+#+end_src
 
+Finally, I'll set the default value for line spacing.
+
+#+begin_src emacs-lisp :results silent
 (setq line-spacing toggle-line-spacing)
 #+end_src
 
