@@ -9,6 +9,8 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
 
+#+RESULTS:
+
 Place your private configuration here! Remember, you do not need to run ~doom sync~ after modifying this file!
 ** Identity
 Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets. It is optional.
@@ -17,6 +19,10 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 (setq user-full-name "Michael Utz"
       user-mail-address "michael@theutz.com")
 #+end_src
+
+#+RESULTS:
+: michael@theutz.com
+
 ** Fonts
 Doom exposes five (optional) variables for controlling fonts in Doom:
 
@@ -51,17 +57,29 @@ There are two ways to load a theme. Both assume the theme is installed and avail
 
 (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 #+end_src
+
+#+RESULTS:
+| my/apply-theme |
+
 ** Line Number Style
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
 
 #+begin_src emacs-lisp
 (setq display-line-numbers-type 'relative)
 #+end_src
+
+#+RESULTS:
+: relative
+
 * My customizations
 ** Doom Info
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle no :eval no
+:END:
+
 Whenever you reconfigure a package, make sure to wrap your config in an ~after!~ block, otherwise Doom's defaults may override your settings. E.g.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (after! PACKAGE
   (setq x y))
 #+end_src
@@ -83,8 +101,11 @@ Here are some additional functions/macros that will help you configure Doom.
 To get information about any of these functions/macros, move the cursor over the highlighted symbol at press =K= (non-evil users must press =C-c c k=). This will open documentation for it, including demos of how they are used. Alternatively, use =C-h o= to look up a symbol (functions, variables, faces, etc).
 
 You can also try =gd= (or =C-c c d=) to jump to their definition and see how they are implemented.
+
 ** Emacs
+
 *** Server
+
 I've set the corresponding environment variable in my =.zshenv= and =env.nu= files, so this should work without having.
 
 #+begin_src emacs-lisp
@@ -93,11 +114,17 @@ I've set the corresponding environment variable in my =.zshenv= and =env.nu= fil
 
 #+end_src
 
+#+RESULTS:
+: /var/folders/rb/3dlc977d1xd_5m1fz4sg3q2r0000gn/T/emacs
+
 *** vterm
 
 #+begin_src emacs-lisp
 (setq vterm-shell "/opt/homebrew/bin/nu")
 #+end_src
+
+#+RESULTS:
+: /opt/homebrew/bin/nu
 
 *** Line spacing
 
@@ -130,31 +157,12 @@ Some useful tools for toggling line spacing. You can press =SPC t s= to toggle b
 
 While I'm generally avoiding the use of Emacs "customization" features, it is highly convenient for two things: adding safe local variables and safe local eval forms. So, I will be loading it here.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
 (load-file (concat doom-user-dir "custom.el"))
 #+end_src
-** Packages
-*** Doom overrrides
-**** evil-snipe
-#+begin_src emacs-lisp
-(after! evil-snipe
-  (setq evil-snipe-scope 'buffer))
-#+end_src
-**** which-key
-#+begin_src emacs-lisp
-(after! which-key
-  (setq which-key-allow-imprecise-window-fit nil))
-#+end_src
-**** evil
-#+begin_src emacs-lisp
-(use-package-hook! evil
-  :pre-init
-  (setq evil-respect-visual-line-mode t
-        evil-shift-width 2)
-  t)
-#+end_src
 
-*** Doom prelude
+** Packages
+*** Introduction
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no :eval no
 :END:
@@ -225,6 +233,50 @@ Doom's packages are pinned to a specific commit and updated from release to rele
 (unpin! t)
 #+end_src
 
+*** Doom overrrides
+
+**** evil-snipe
+
+#+begin_src emacs-lisp
+(after! evil-snipe
+  (setq evil-snipe-scope 'buffer))
+#+end_src
+
+**** which-key
+
+#+begin_src emacs-lisp :results silent
+(after! which-key
+  (setq which-key-allow-imprecise-window-fit nil))
+#+end_src
+
+**** evil
+
+To get evil to respect visual line mode, you've gotta delcare it early.
+
+#+begin_src emacs-lisp :results silent
+(use-package-hook! evil
+  :pre-init
+  (setq evil-respect-visual-line-mode t)
+  t)
+#+end_src
+
+But other variables are important to setup after evil loads.
+
+#+begin_src emacs-lisp :results silent
+(after! evil
+  (setq evil-shift-width 2))
+#+end_src
+
+**** evil-lion
+
+I like the idea of aligning stuff easily, but in org-mode, consistent navigation keys are better.
+
+#+begin_src emacs-lisp :results silent
+(after! evil-lion
+  (map! :mode org-mode :n "ga" #'evil-lion-left)
+  (map! :mode org-mode :n "gl" #'org-down-element))
+#+end_src
+
 *** Custom packages
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle config.el :comments both
@@ -253,6 +305,9 @@ It requires minimal configuration.
 (use-package! just-mode)
 #+end_src
 
+#+RESULTS:
+: t
+
 **** justl
 
 This package creates a listing of public Just commands and lets you execute them in a compilation buffer.
@@ -277,6 +332,9 @@ I've assigned some keymaps to make this more convenient.
           fn)))
 #+end_src
 
+#+RESULTS:
+: t
+
 **** kdl-mode
 
 KDL is a configuration language favored by some (mostly Rust-based) programs like [[https://zellij.dev/][Zellij]]. This provides basic syntax highlighting for it.
@@ -294,97 +352,111 @@ It requires almost no configuration to use
 (use-package! kdl-mode)
 #+end_src
 
+#+RESULTS:
+: t
+
 **** nushell-mode
 
 ***** Package setup
 
+This little package provides some syntax highlighting.
+
 #+begin_src emacs-lisp :tangle packages.el :eval no
 (package! nushell-mode
-  :recipe (
-           :host github
+  :recipe (:host github
            :repo "mrkkrp/nushell-mode"))
 #+end_src
 
-#+begin_src emacs-lisp
+And requires very little configuration.
+
+#+begin_src emacs-lisp :results silent
 (use-package! nushell-mode
   :mode "\\.nu")
 #+end_src
 
 ***** org-babel functions
 
+****** User-defined variables
+
 I want nushell to work with org-babel, but nobody's done the dirty work yet. We'll start with the basics. We might want this command to be customizable for someone's environment.
 
-#+name: define-org-babel-nushell-command
-#+begin_src emacs-lisp :session org-babel-nushell
-(defvar org-babel-nushell-command
-  "nu"
-  "The command to execute babel body code.")
-#+end_src
+- ~org-babel-nushell-command~
 
-#+RESULTS: define-org-babel-nushell-command
-: org-babel-nushell-command
+  #+name: define-org-babel-nushell-command
+  #+begin_src emacs-lisp :session org-babel-nushell :results silent
+  (defvar org-babel-nushell-command
+    "nu"
+    "The command to execute babel body code.")
+  #+end_src
+
+  #+name: org-babel-nushell-command
+  #+begin_src emacs-lisp :tangle no
+  org-babel-nushell-command
+  #+end_src
+
+  #+RESULTS: org-babel-nushell-command
+  : nu
 
 Additionally, since I can't be certain the specific environment emacs will be running this command in, I need to be able to pass in the nushell config files so things operate as expected in my environment.
 
 First I'll setup a variable for the root directory where the config files live. While nushell currently defaults to the Apple-specifc XDG paths (like in =~/Library=), I don't like that. So I'll use the arch-based defaults.
 
-#+name: define-org-babel-nushell-config-dir
-#+begin_src emacs-lisp :session org-babel-nushell
-(defvar org-babel-nushell-config-dir
-  (concat (file-name-as-directory (or (getenv "XDG_CONFIG_HOME")
-                                      (getenv "HOME" ".config")))
-          "nushell/")
-  "Absolute path to the root directory where config files for nushell exist.")
-#+end_src
+- ~org-babel-nushell-config-dir~
 
-#+RESULTS: define-org-babel-nushell-config-dir
-: org-babel-nushell-config-dir
+  #+name: define-org-babel-nushell-config-dir
+  #+begin_src emacs-lisp :session org-babel-nushell :results silent
+  (defvar org-babel-nushell-config-dir
+    (concat (file-name-as-directory (or (getenv "XDG_CONFIG_HOME")
+                                        (getenv "HOME" ".config")))
+            "nushell/")
+    "Absolute path to the root directory where config files for nushell exist.")
+  #+end_src
 
 Then I'll create two variables for the actual config files required for successful nushell startup.
 
-#+name: org-babel-define-config-files
-#+begin_src emacs-lisp :session org-babel-nushell
+#+name: org-babel-define-config-env-file
+#+begin_src emacs-lisp :session org-babel-nushell :results silent
 (defvar org-babel-nushell-env-config-file
   (concat org-babel-nushell-config-dir "env.nu")
   "Absolute path to the nu file used to configure a non-interactive nushell session.")
+#+end_src
 
+#+name: org-babel-config-file
+#+begin_src emacs-lisp :tangle no :session org-babel-nushell
+org-babel-nushell-config-file
+#+end_src
+
+#+RESULTS: org-babel-config-file
+: /Users/michael/.config/nushell/config.nu
+
+#+name: org-babel-define-config-file
+#+begin_src emacs-lisp :session org-babel-nushell :results silent
 (defvar org-babel-nushell-config-file
   (concat org-babel-nushell-config-dir "config.nu")
   "Absolute path to the nu file used to configure an interactive nushell session.")
 #+end_src
 
-#+RESULTS: org-babel-define-config-files
-: org-babel-nushell-config-file
-
-For example, on my machine the results look like this:
-
-#+begin_src emacs-lisp :tangle no :results output :session org-babel-nushell
-(print org-babel-nushell-env-config-file)
-(print org-babel-nushell-config-file)
+#+name: org-babel-env-file
+#+begin_src emacs-lisp :tangle no :session org-babel-nushell
+org-babel-nushell-env-config-file
 #+end_src
 
-#+RESULTS:
-:
-: "/Users/michael/.config/nushell/env.nu"
-:
-: "/Users/michael/.config/nushell/config.nu"
+#+RESULTS: org-babel-env-file
+: /Users/michael/.config/nushell/env.nu
 
 Lastly, I'll join them all together in a string with the ~--login~ flag.
 
 #+name: define-org-babel-nushell-command-options
-#+begin_src emacs-lisp :noweb eval :session org-babel-nushell
+#+begin_src emacs-lisp :session org-babel-nushell :results silent
 (defvar org-babel-nushell-command-options
-  (mapconcat 'identity `("--login"
+  (mapconcat 'identity (list "--login"
                          "--env-config"
-                         ,org-babel-nushell-env-config-file
+                         org-babel-nushell-env-config-file
                          "--config"
-                         ,org-babel-nushell-config-file)
+                         org-babel-nushell-config-file)
              " ")
   "The command options to use when executing code")
 #+end_src
-
-#+RESULTS: define-org-babel-nushell-command-options
-: org-babel-nushell-command-options
 
 Altogether, that should produce the following:
 
@@ -424,10 +496,12 @@ The function above depends on some helpers to deal with variables passed into co
 (defun org-babel-expand-body:nushell (body params &optional processed-params)
   "Expand BODY according to PARAMS, return the expanded body."
   (let* ((vars (org-babel--get-vars params)))
-    (org-babel-nushell-custom-vars vars)))
+    (org-babel-nushell-custom-vars vars body)))
 #+end_src
 
 ******* Creating variables
+
+******** Concatenating with body
 
 #+begin_src emacs-lisp :results silent :session org-babel-nushell-parsing-variables
 (defun org-babel-nushell-custom-vars (params body)
@@ -436,6 +510,7 @@ The function above depends on some helpers to deal with variables passed into co
       body
     (concat (mapconcat 'org-babel-nushell-var-to-nushell params) "\n" body)))
 #+end_src
+
 #+begin_src emacs-lisp :session org-babel-nushell-parsing-variables :tangle no
 (org-babel-nushell-custom-vars '(("one" . "a") ("two" . "b")) "my body")
 #+end_src
@@ -443,6 +518,8 @@ The function above depends on some helpers to deal with variables passed into co
 #+RESULTS:
 : let "one" = "a"let "two" = "b"
 : my body
+
+******** Parsing individual parameters
 
 #+begin_src emacs-lisp :results silent :session org-babel-nushell-parsing-variables
 (defun org-babel-nushell-var-to-nushell (pair)
@@ -454,6 +531,7 @@ specifying a var of the same value."
       (setq val (symbol-name val)))
     (format "let %S = %S" var val)))
 #+end_src
+
 #+begin_src emacs-lisp :session org-babel-nushell-parsing-variables :tangle no
 (org-babel-nushell-var-to-nushell '("my_var" . "my value"))
 #+end_src
@@ -461,11 +539,22 @@ specifying a var of the same value."
 #+RESULTS:
 : let "my_var" = "my value"
 
+******* Ensuring it works
+
 Here's a code block that we can run as a sanity check to make sure this is all working.
 
 #+begin_src nushell :dir ~ :var str="hello" :tangle no
 $str | split chars
 #+end_src
+
+#+RESULTS:
+: ╭───┬───╮
+: │ 0 │ h │
+: │ 1 │ e │
+: │ 2 │ l │
+: │ 3 │ l │
+: │ 4 │ o │
+: ╰───┴───╯
 
 **** rose-doom-pine-emacs
 
@@ -494,6 +583,8 @@ $str | split chars
 (add-hook! 'doom-before-reload-hook 'doom-rose-pine-install)
 #+end_src
 
+#+RESULTS:
+
 **** gptel
 
 #+begin_src emacs-lisp :tangle packages.el :eval no
@@ -521,6 +612,10 @@ $str | split chars
         :n "SPC"
         #'gptel-menu))
 #+end_src
+
+#+RESULTS:
+: t
+
 **** chezmoi.el
 
 Chezmoi mode makes working with [[https://www.chezmoi.io/][chezmoi]] quite a bit easier by keeping the source and target in sync when you write.
@@ -542,6 +637,9 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
     (map! :leader :desc "Chezmoi git status" :n (concat base "o") #'chezmoi-open-other)))
 #+end_src
 
+#+RESULTS:
+: t
+
 ** Modes
 *** Org
 Some variables need to be set before org loads.
@@ -549,6 +647,9 @@ Some variables need to be set before org loads.
 #+begin_src emacs-lisp
 (setq org-directory "~/Dropbox/org/")
 #+end_src
+
+#+RESULTS:
+: ~/Dropbox/org/
 
 But some can run after org loads
 
@@ -604,6 +705,8 @@ But some can run after org loads
         #'org-delete-property))
 #+end_src
 
+#+RESULTS:
+
 *** Nix
 Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
 
@@ -612,9 +715,11 @@ Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
 #+end_src
 
+#+RESULTS:
+
 For a lot of packages, we want to use the LSP to do the formatting. But not in this case.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
 #+end_src
 
@@ -632,6 +737,9 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
          :desc "Swap workspace right" ">" #'+workspace/swap-right)))
 #+end_src
 
+#+RESULTS:
+: +workspace/swap-right
+
 *** LazyVim compatibility layer
 I've got a lot of custom bindings that are meant to make switching between LazyVim and DoomEmacs less jarring.
 
@@ -639,10 +747,16 @@ I've got a lot of custom bindings that are meant to make switching between LazyV
         #+begin_src emacs-lisp
         (map! :leader :desc "Find file" :n "e" 'find-file)
         #+end_src
+
+        #+RESULTS:
+        : find-file
+
 - Simple terminal stuff
         #+begin_src emacs-lisp
         (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
         #+end_src
+
+        #+RESULTS:
 
 # Local Variables:
 # eval: (add-hook 'org-babel-post-tangle-hook #'chezmoi-write)
