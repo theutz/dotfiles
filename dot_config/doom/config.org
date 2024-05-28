@@ -391,16 +391,22 @@ And requires very little configuration.
 
 I need there to be a blank line between the output from =:comments link= and the actual content of a block. ~org-babel-tangle-body-hook~ seems like it might be a good candidate to accomplish that.
 
-#+begin_src emacs-lisp :results silent
-(defun my-nushell-tangle-formatter ()
-    "Format BODY of each tangled code block."
-    (save-excursion
-      (goto-char (point-min))
-      (while (search-forward-regexp "^# \\[\\[file:" nil t)
-        (end-of-line)
-        (insert "\n"))))
+#+begin_src emacs-lisp :results silent :tangle no
+(defun my/nushell-tangle-formatter ()
+  "Format tangled output of nushell blocks."
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward-regexp "^# \\[\\[file:" nil t)
+      (end-of-line)
+      (insert "\n"))
+    (save-buffer)))
 
-(add-hook! 'org-babel-post-tangle-hook #'my-nushell-tangle-formatter)
+(defun my/nushell-post-tangle-hook ()
+  "Only run this function when we've detectd a nushell file."
+  (when (string= (file-name-extension (buffer-file-name)) "nu")
+    (my/nushell-tangle-formatter)))
+
+(add-hook! 'org-babel-post-tangle-hook #'my/nushell-post-tangle-hook)
 #+end_src
 
 ****** User-defined variables
