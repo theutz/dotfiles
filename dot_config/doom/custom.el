@@ -5,7 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(safe-local-variable-values
-   '((eval add-hook 'after-save-hook
+   '((evil-shift-width . 2)
+     (eval add-hook! 'after-save-hook #'org-babel-tangle)
+     (eval add-hook 'after-save-hook
       (lambda nil
         (if
             (y-or-n-p "Tangle?")
