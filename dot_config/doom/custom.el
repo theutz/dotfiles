@@ -6,6 +6,12 @@
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(safe-local-variable-values
    '((eval add-hook 'after-save-hook
+      (lambda nil
+        (org-gfm-export-to-markdown)))
+     (eval add-hook 'after-save-hook
+      (lambda nil
+        (org-babel-tangle)))
+     (eval add-hook 'after-save-hook
       (lambda
         (if
             (yes-or-no-p "Tangle?")
