@@ -929,10 +929,11 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
   :config
   (defhydra doom-window-resize-hydra (:hint nil)
     "
-_h_ decrease width
-_j_ decrease height
-_k_ increase height
-_l_ increase width
+Resize window
+
+        _k_ +height
+  _h_ -width     _l_ +width
+        _j_ -height
 "
     ("h" evil-window-decrease-width)
     ("j" evil-window-decrease-height)
