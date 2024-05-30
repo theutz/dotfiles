@@ -30,6 +30,8 @@ def create_left_prompt [] {
 }
 #+end_src
 
+#+RESULTS:
+
 *** Right
 
 #+begin_src nushell
@@ -51,6 +53,8 @@ def create_right_prompt [] {
     ([$last_exit_code, (char space), $time_segment] | str join)
 }
 #+end_src
+
+#+RESULTS:
 
 *** Indicators
 
@@ -80,6 +84,8 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 # $env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| "" }
 #+end_src
 
+#+RESULTS:
+
 ** Environment Variable Conversions
 
 Specifies how environment variables are:
@@ -101,6 +107,8 @@ $env.ENV_CONVERSIONS = {
     }
 }
 #+end_src
+
+#+RESULTS:
 
 ** Library Directories
 
@@ -131,6 +139,8 @@ $env.NU_PLUGIN_DIRS = [
 ]
 #+end_src
 
+#+RESULTS:
+
 ** PATH
 
 To add entries to PATH (on Windows you might use Path), you can use the following pattern:
@@ -138,6 +148,8 @@ To add entries to PATH (on Windows you might use Path), you can use the followin
 #+begin_src nushell :tangle no
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 #+end_src
+
+#+RESULTS:
 
 An alternate way to add entries to $env.PATH is to use the custom command ~path add~ which is built into the nushell stdlib:
 
@@ -150,6 +162,8 @@ path add ($env.HOME | path join ".local" "bin")
 $env.PATH = ($env.PATH | uniq)
 #+end_src
 
+#+RESULTS:
+
 ** Environment Variables
 
 #+begin_src nushell
@@ -158,6 +172,8 @@ $env.VISUAL = "nvim"
 $env.HOMEBREW_EDITOR = "emacsclient --create-frame --no-wait --alternate-editor ''"
 #+end_src
 
+#+RESULTS:
+
 ** Additional Files
 
 To load from a custom file you can use:
@@ -165,6 +181,8 @@ To load from a custom file you can use:
 #+begin_src nushell :tangle no
 source ($nu.default-config-dir | path join 'custom.nu')
 #+end_src
+
+#+RESULTS:
 
 * Configuration
 :PROPERTIES:
@@ -178,7 +196,7 @@ source ($nu.default-config-dir | path join 'custom.nu')
 
 *** Dark
 
-#+begin_src nushell
+#+begin_src nushell :eval no
 let dark_theme = {
     # color for nushell primitives
     separator: white
@@ -247,7 +265,7 @@ let dark_theme = {
 
 *** Light
 
-#+begin_src nushell
+#+begin_src nushell :eval no
 let light_theme = {
     # color for nushell primitives
     separator: dark_gray
@@ -316,18 +334,20 @@ let light_theme = {
 
 ** Completion
 
-#+begin_src nushell :tangle no
+#+begin_src nushell :tangle no :eval n
 # External completer example
 # let carapace_completer = {|spans|
 #     carapace $spans.0 nushell ...$spans | from json
 # }
 #+end_src
 
+#+RESULTS:
+
 ** Default Config Record
 
 The default config record. This is where much of your global configuration is setup.
 
-#+begin_src nushell
+#+begin_src nushell :eval no
 $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
 
@@ -1065,7 +1085,7 @@ Load scripts from [[https://github.com/nushell/nu_scripts][nu_scripts]] repo.
 
 *** Themes
 
-#+begin_src
+#+begin_src nushell
 # Setup nushell theme
 # use nu_scripts/themes/nu-themes/rose-pine.nu
 # $env.config = ($env.config | merge {color_config: (rose-pine)})
@@ -1322,70 +1342,291 @@ export def status --wrapped [...args] {
 
 This module helps me start, stop, and monitor services that I run regularly via homebrew, pueue, or elsewhere.
 
+*** Main
+
 #+begin_src nushell
 export def main [] {
     "Commands for interacting with long-running services."
 }
 #+end_src
 
-*** start
+We need a place to define all of our services that can be referenced from multiple commands.
 
 #+begin_src nushell
-export module start {
-  use pueue.nu
+def service-definitions [] {
+    [
+      [name        type  command];
+      [yabai       pueue null]
+      [skhd        pueue null]
+      [borders     pueue null]
+      [sketchybar  pueue null]
+      [dark-notify pueue 'dark-notify -c "tmux source-file ~/.config/tmux/tmux.conf"']
+    ]
+}
+#+end_src
 
-  # Start specified processes
-  export def main [] {
-    "Start specified processes..."
-  }
+And then we'll want a few ways to slice-and-dice those definitions.
 
-  # Helper function for creating and managing a pueue group
-  def "with pueue" [
+#+begin_src nushell
+def service-names [] {
+  service-definitions | get name
+}
+
+def service-command [service: string@service-names] {
+  service-definitions | where name == $service | get command.0
+}
+#+end_src
+
+*** Start
+
+Now, on to the meat-and-potatoes! I like using [[https://github.com/Nukesor/pueue][pueue]] to manage most of my processes. As such, I'll set up a helper function to get services started running.
+
+#+begin_src nushell
+def start-with-pueue [
     group: string, # The name of the group
     command?: string # The command to pass, else just use the group name
-  ] {
+] {
+    use pueue.nu
+
     pueue status | get groups | where name == $group
-      | if ($in | is-empty) {
-          ^pueue groups add $group
-        }
-      | pueue status | get tasks.details | where group == $group
-      | if ($in | is-empty) {
-          with-env {SHELL: nu-login} {
+    | if ($in | is-empty) {
+        ^pueue groups add $group
+    }
+
+    pueue status | get tasks.details | where group == $group
+    | if ($in | is-empty) {
+        with-env { SHELL: nu-login } {
             ^pueue add --group $group --working-directory ~ -- ($command | default $group)
-          }
-          ^pueue start --group $group
-        } else {
-          pueue status | get tasks.details | where group == $group | each { ^pueue kill $in.id }
-          pueue clean --group $group
-          with pueue $group $command
         }
-  }
-
-  # Start yabai window manager
-  export def yabai [] {
-    with pueue yabai
-  }
-
-  # Start the skhd keyboard hotkey daemon manager
-  export def skhd [] {
-    with pueue skhd
-  }
-
-  # Start the window borders daemon
-  export def borders [] {
-    with pueue borders
-  }
-
-  # Start the top-bar daemon
-  export def sketchybar [] {
-    with pueue sketchybar
-  }
-
-  # Run dark notify to keep programs up-to-date with system appearance
-  export def dark-notify [] {
-    with pueue dark-notify 'dark-notify -c "tmux source-file ~/.config/tmux/tmux.conf"'
-  }
+        ^pueue start --group $group
+        } else {
+            pueue status | get tasks.details
+                | where group == $group
+                | each { ^pueue kill $in.id }
+            pueue clean --group $group
+            start-with-pueue $group $command
+        }
 }
+#+end_src
+
+With all these pieces in place, we can now assemle our first user-facing command.
+
+#+begin_src nushell
+# Start a service
+export def start [
+    service: string@service-names, # The name of the service
+] {
+    start-with-pueue $service (service-command $service)
+}
+#+end_src
+
+Now, let's check and see if it worked.
+
+#+name: service-start-test
+#+begin_src nushell :tangle no :results output replace
+service start skhd
+#+end_src
+
+#+RESULTS: service-start-test
+: All finished tasks have been removed from group 'skhd'
+: New task added (id 32).
+: Group "skhd" is being resumed.
+
+Great! Now, it'd be good to have a way to check the status of the service.
+
+*** Status
+
+Again, we'll want a helper function for our pueue services.
+
+#+begin_src nushell
+def status-with-pueue [] {
+  use pueue.nu
+
+  pueue status | get tasks.details | select group status command
+    | rename -c { group: service }
+    | upsert status {
+        match ($in | describe -d | get type) {
+          record => ($in | items {|k,v| $"($k): ($v)"} | first),
+          _ => $in
+        }
+    }
+}
+#+end_src
+
+Which we can use for our user-facing command:
+
+#+begin_src nushell
+# Get the status of a running service
+export def status [
+    service?: string@service-names
+    --verbose (-v) # Show extra output
+] {
+    status-with-pueue | if $verbose { $in } else { $in | reject command }
+    | if ($service | is-not-empty) {
+      $in | where service == $service
+    } else { $in }
+}
+#+end_src
+
+That produces the following output showing an overview of statuses.
+
+- [X] Basic invocation
+        #+name: service-status-test
+        #+begin_src nushell :tangle no :results replace output
+        service status
+        #+end_src
+
+        #+RESULTS: service-status-test
+        #+begin_example
+        ╭───┬─────────────┬──────────────╮
+        │ # │   service   │    status    │
+        ├───┼─────────────┼──────────────┤
+        │ 0 │ dark-notify │ Running      │
+        │ 1 │ sketchybar  │ Running      │
+        │ 2 │ borders     │ Running      │
+        │ 3 │ yabai       │ Running      │
+        │ 4 │ skhd        │ Done: Killed │
+        │ 5 │ skhd        │ Running      │
+        │ 6 │ skhd        │ Queued       │
+        ╰───┴─────────────┴──────────────╯
+        #+end_example
+- [X] With verbose
+        #+name: service-status-detailed-test
+        #+begin_src nushell :tangle no :results replace output
+        service status -v
+        #+end_src
+
+        #+RESULTS: service-status-detailed-test
+        #+begin_example
+        ╭───┬─────────────┬──────────────┬─────────────────────────────────────────────╮
+        │ # │   service   │    status    │                   command                   │
+        ├───┼─────────────┼──────────────┼─────────────────────────────────────────────┤
+        │ 0 │ dark-notify │ Running      │ dark-notify -c "tmux source-file            │
+        │   │             │              │ ~/.config/tmux/tmux.conf"                   │
+        │ 1 │ sketchybar  │ Running      │ sketchybar                                  │
+        │ 2 │ borders     │ Running      │ borders                                     │
+        │ 3 │ yabai       │ Running      │ yabai                                       │
+        │ 4 │ skhd        │ Done: Killed │ skhd                                        │
+        │ 5 │ skhd        │ Running      │ skhd                                        │
+        │ 6 │ skhd        │ Queued       │ skhd                                        │
+        ╰───┴─────────────┴──────────────┴─────────────────────────────────────────────╯
+        #+end_example
+- [X] With individual service
+        #+name: service-status-single-test
+        #+begin_src nushell :tangle no :results replace output
+        service status skhd
+        #+end_src
+
+        #+RESULTS: service-status-single-test
+        : ╭───┬─────────┬──────────────╮
+        : │ # │ service │    status    │
+        : ├───┼─────────┼──────────────┤
+        : │ 0 │ skhd    │ Done: Killed │
+        : │ 1 │ skhd    │ Running      │
+        : │ 2 │ skhd    │ Queued       │
+        : ╰───┴─────────┴──────────────╯
+
+*** Stop
+
+We'll need to handle pueue services specially again, so I'll create another helper function for that.
+
+#+begin_src nushell
+def stop-with-pueue [group: string] {
+  use pueue.nu
+
+  pueue status | get tasks.details | where group == $group
+  | each { pueue kill $in.id }
+
+  pueue clean -g $group
+}
+#+end_src
+
+#+begin_src nushell
+# Stop a service
+export def stop [
+    service: string@service-names, # The name of the service
+] {
+    stop-with-pueue $service
+}
+#+end_src
+
+#+name: service-stop-test
+#+begin_src nushell :tangle no :results output replace
+service stop skhd
+#+end_src
+
+#+RESULTS: service-stop-test
+: All finished tasks have been removed from group 'skhd'
+
+#+name: services-stop-status
+#+begin_src nushell :tangle no :results output replace
+service status skhd | to text
+#+end_src
+
+#+RESULTS: services-stop-status
+*** Logs
+
+I also want a way to check out the logs for the currently running services.
+
+**** Helper function for pueue
+
+For that, I'll need a trusty helper function again.
+
+#+begin_src nushell
+def logs-with-pueue [
+    group: string
+    --follow (-f)
+] {
+    ^pueue status --json | from json | get tasks | values
+        | where group == $group and status == Running
+        | get id.0
+        | do {|x|
+            pueue log $x
+            if ($follow) {
+                pueue follow $x
+            }
+        } $in
+}
+#+end_src
+
+**** Public facing command
+
+And, then of course, I'll expose my public facing API
+
+#+begin_src nushell
+# View the logs for a running process
+export def logs [
+    service: string@service-names
+    --follow (-f) # Follow logs after the initial dump
+] {
+    logs-with-pueue $service --follow=$follow
+}
+#+end_src
+
+This should produce output like the following:
+
+**** Normal invocation
+
+#+name: service-logs-output
+#+begin_src nushell :tangle no :results output replace
+service logs skhd
+#+end_src
+
+#+RESULTS: service-logs-output
+: ┌─────────────────────┐
+: │ Task 32:    running │
+: └─────────────────────┘
+: Command: skhd
+:    Path: /Users/michael
+:   Start: Wed, 29 May 2024 16:25:17 +0300
+
+**** With follow flag
+  
+This command presumes there's a TTY attached, and will hang if run as a code block.
+
+#+name: service-logs-follow
+#+begin_src nushell :tangle no :results output replace :eval no
+service logs skhd -f
 #+end_src
 
 ** Aliases
@@ -1523,6 +1764,12 @@ export def main [
 :header-args:nushell: :tangle (expand-file-name "rose-pine.nu" (org-sbe nu-primary-lib-dir)) :mkdirp t :comments link
 :END:
 
+This little module is useful for setting colors other places.
+
+*** Theme Definitions
+
+First, we'll create a data structure we can query that defines the themes's colors in undecorated hexadecimal format.
+
 #+begin_src nushell
 def themes [] {
   [
@@ -1544,19 +1791,35 @@ def themes [] {
     [hi-high 524f67 56526e cecacd]
   ]
 }
+#+end_src
 
+**** Completion functions
+
+We won't use this interactively much, but if we did...here's some completions
+
+#+begin_src nushell
 def variants [] {
   themes | columns | drop nth 0
 }
+#+end_src
 
+#+begin_src nushell
 def role [] {
   themes | get role
 }
+#+end_src
 
+#+begin_src nushell
 def format [] {
   [argb rgb]
 }
+#+end_src
 
+*** Main function
+
+Finally, we'll bring it all together in a single lil function.
+
+#+begin_src nushell
 export def main [
   variant: string@variants,
   role: string@role,
@@ -1570,6 +1833,16 @@ export def main [
 :PROPERTIES:
 :header-args:nushell: :tangle (expand-file-name "wm.nu" (org-sbe nu-primary-lib-dir)) :mkdirp t :comments link
 :END:
+
+We're using [[https://github.com/koekeishiya/yabai][yabai]] as our window manager, and [[https://github.com/koekeishiya/skhd][skhd]] to handle our hotkey invocations. While SKHD is configured elsewhere, we will want to create a file with our yabai-specific bindings. We can weave these key declarations in to this document if we can grab the default file location as a variable to use while tangling.
+
+#+name: skhdrc
+#+begin_src nushell :output value
+(xdg config skhd yabai)
+#+end_src
+
+#+RESULTS: skhdrc
+: /Users/michael/.config/skhd/yabai
 
 *** root
 
@@ -2053,9 +2326,3 @@ export module display {
  #+end_src
 ** TODO Chezmoi
 
-* Local Variables
-
-# Local Variables:
-# eval: (add-hook! 'after-save-hook #'org-babel-tangle)
-# evil-shift-width: 2
-# End:

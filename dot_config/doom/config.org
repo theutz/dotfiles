@@ -4,7 +4,9 @@
 #+startup: content
 
 * Doom basics
+
 ** Prologue
+
 #+begin_src emacs-lisp :comments nil
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
@@ -12,7 +14,9 @@
 #+RESULTS:
 
 Place your private configuration here! Remember, you do not need to run ~doom sync~ after modifying this file!
+
 ** Identity
+
 Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets. It is optional.
 
 #+begin_src emacs-lisp
@@ -24,6 +28,7 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 : michael@theutz.com
 
 ** Fonts
+
 Doom exposes five (optional) variables for controlling fonts in Doom:
 
 - ~doom-font~ :: the primary font to use
@@ -36,14 +41,17 @@ See =C-h v doom-font= for documentation and more examples of what they accept. F
 
 #+begin_src emacs-lisp :results silent
 (setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 14 :weight 'medium)
-      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14))
+      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14)
+      doom-serif-font (font-spec :family "IBM Plex Serif" :size 14 :weight 'medium))
 #+end_src
 
 If you or Emacs can't find your font, use =M-x describe-font= to look them up, =M-x eval-region= to execute elisp code, and =M-x doom/reload-font= to refresh your font settings. If Emacs still can't find your font, it likely wasn't installed correctly. Font issues are rarely Doom issues!
+
 ** Themes
+
 There are two ways to load a theme. Both assume the theme is installed and available. You can either set `doom-theme' or manually load a theme with the `load-theme' function. This is the default:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
 (setq doom-theme-dark 'doom-rose-pine
       doom-theme-light 'doom-rose-pine-dawn
       doom-theme doom-theme-light)
@@ -58,20 +66,16 @@ There are two ways to load a theme. Both assume the theme is installed and avail
 (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 #+end_src
 
-#+RESULTS:
-| my/apply-theme |
-
 ** Line Number Style
+
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
 (setq display-line-numbers-type 'relative)
 #+end_src
 
-#+RESULTS:
-: relative
-
 * My customizations
+
 ** Doom Info
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no :eval no
@@ -171,8 +175,16 @@ While I'm generally avoiding the use of Emacs "customization" features, it is hi
 #+begin_src emacs-lisp :results silent
 (load-file (concat doom-user-dir "custom.el"))
 #+end_src
+*** Auto Save
+
+I want my stuff saved as frequently as possible. This saves it automatically into the visited file.
+
+#+begin_src emacs-lisp :results silent
+(auto-save-visited-mode 1)
+#+end_src
 
 ** Packages
+
 *** Introduction
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no :eval no
@@ -637,7 +649,7 @@ $str | split chars
 (package! gptel)
 #+end_src
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results no
 (use-package! gptel
   :config
   (setq gptel-model "gpt-4")
@@ -659,9 +671,6 @@ $str | split chars
         #'gptel-menu))
 #+end_src
 
-#+RESULTS:
-: t
-
 **** chezmoi.el
 
 Chezmoi mode makes working with [[https://www.chezmoi.io/][chezmoi]] quite a bit easier by keeping the source and target in sync when you write.
@@ -682,25 +691,35 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
     (map! :leader :desc "Sync with chezmoi" :n (concat base "t") #'chezmoi-mode)
     (map! :leader :desc "Chezmoi git status" :n (concat base "o") #'chezmoi-open-other)))
 #+end_src
+**** ox-gfm
+
+#+begin_src emacs-lisp :tangle packages.el :eval no
+(package! ox-gfm)
+#+end_src
+
+#+begin_src emacs-lisp :results no
+(use-package! ox-gfm :after org)
+#+end_src
 
 ** Modes
-
 *** Org
-
+**** Before loading
 Some variables need to be set before org loads.
-
 #+begin_src emacs-lisp
 (setq org-directory "~/Dropbox/org/")
 #+end_src
 
 #+RESULTS:
 : ~/Dropbox/org/
-
-But some can run after org loads
-
+**** After loading
+But some can run after org loads. For instance, we can add some org modules.
 #+begin_src emacs-lisp :results silent
 (after! org
-  (add-to-list 'org-modules 'org-habit)
+  (add-to-list 'org-modules 'org-habit))
+#+end_src
+We can also change the org TODO keywords and their accompanying font styles
+#+begin_src emacs-lisp :results silent
+(after! org
   (setq org-todo-keywords
         '((sequence
            "TODO(t)"             ; A task that needs doing & is ready to do
@@ -732,26 +751,44 @@ But some can run after org loads
           ("HOLD" . +org-todo-onhold)
           ("PROJ" . +org-todo-project)
           ("NO"   . +org-todo-cancel)
-          ("KILL" . +org-todo-cancel)))
-  (map! :localleader :mode org-mode :desc "org-columns" :n "m" #'org-columns)
+          ("KILL" . +org-todo-cancel))))
+#+end_src
+Or we can override some key maps that don't make much sense to us.
+#+begin_src emacs-lisp :results silent
+(after! org
+  (map! :localleader :mode org-mode :desc "columns" :n "m")
+  (map! :localleader :mode org-mode :desc "org-columns" :n "mm" #'org-columns)
+  (map! :localleader :mode org-mode :desc "org-columns-quit" :n "mq" #'org-columns-quit)
   (map! :localleader :mode org-mode :desc "org-refile-copy" :n "rd" #'org-refile-copy)
   (map! :localleader :mode org-mode :desc "org-delete-property" :n "O" #'org-delete-property))
 #+end_src
-
-And some things can run on a hook!
-
+And we can change the face attributes for org mode so that headlines are bigger.
 #+begin_src emacs-lisp :results silent
-(defun my-org-faces ()
-  (set-face-attribute 'org-level-1 nil :height 1.7)
-  (set-face-attribute 'org-level-2 nil :height 1.6)
-  (set-face-attribute 'org-level-3 nil :height 1.5)
-  (set-face-attribute 'org-level-4 nil :height 1.4)
-  (set-face-attribute 'org-level-5 nil :height 1.3)
-  (set-face-attribute 'org-level-6 nil :height 1.2)
-  (set-face-attribute 'org-level-7 nil :height 1.1)
-  (set-face-attribute 'org-level-8 nil :height 1.0))
+(defun my/org-faces ()
+  "Define custom fonts for org mode."
+  (let ((h1 1.476)
+        (h2 1.383)
+        (h3 1.296)
+        (h4 1.215)
+        (h5 1.138)
+        (h6 1.067)
+        (p 1.0)
+        (small 0.937)
+        (tiny 0.878))
+    (set-face-attribute 'org-level-1 nil :height h2)
+    (set-face-attribute 'org-level-2 nil :height h3)
+    (set-face-attribute 'org-level-3 nil :height h4)
+    (set-face-attribute 'org-level-4 nil :height h5)
+    (set-face-attribute 'org-level-5 nil :height h6)
+    (set-face-attribute 'org-level-6 nil :height h6)
+    (set-face-attribute 'org-level-7 nil :height h6)
+    (set-face-attribute 'org-level-8 nil :height h6)
+    (set-face-attribute 'org-document-title nil :height h1)
+    (set-face-attribute 'org-block-begin-line nil :height small)
+    (set-face-attribute 'org-block-end-line nil :height small))
+  (setq-local line-spacing 0.16))
 
-(add-hook! org-mode #'my-org-faces)
+(add-hook! org-mode #'my/org-faces)
 #+end_src
 
 *** Nix
@@ -767,6 +804,13 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
 
 #+begin_src emacs-lisp :results silent
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
+#+end_src
+
+*** YAML
+
+#+begin_src emacs-lisp :results silent
+(after! yaml-mode
+  (set-formatter! 'prettierd '("/opt/homebrew/bin/prettierd") :modes '(yaml-mode)))
 #+end_src
 
 ** Bindings

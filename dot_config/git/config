@@ -47,3 +47,5 @@
 ; 	insteadOf = https://github.com/
 [submodule]
 	fetchJobs = 4
+[github]
+	user = theutz
