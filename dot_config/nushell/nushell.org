@@ -1,11 +1,13 @@
 #+title: NuShell Configuration
 #+description: This is the helm from which I manage my shells
 #+version: 0.92.2
+#+startup: content
 
 * Environment
 :PROPERTIES:
-:header-args:nushell: :tangle env.nu :comments 'both'
+:header-args:nushell: :tangle env.nu :comments both
 :END:
+
 ** Prompts
 
 *** Left Prompt
@@ -29,11 +31,11 @@ def create_left_prompt [] {
 }
 #+end_src
 
-#+RESULTS[9a2e247539f21458d7b472987fe08ddaafc5d19f]:
+#+RESULTS[e35260650063be5ad74f0280832b9bccb1643c89]:
 
-*** Right
+*** Right Prompt
 
-#+begin_src nushell
+#+begin_src nushell :cache yes
 def create_right_prompt [] {
     # create a right prompt in magenta with green separators and am/pm underlined
     let time_segment = ([
@@ -53,11 +55,11 @@ def create_right_prompt [] {
 }
 #+end_src
 
-#+RESULTS:
+#+RESULTS[fe246fb9992dc67a7f44a6bae6b99d822039e7bb]:
 
 *** Indicators
 
-#+begin_src nushell
+#+begin_src nushell :cache yes
 # Use nushell functions to define your right and left prompt
 # $env.PROMPT_COMMAND = {|| create_left_prompt }
 # FIXME: This default is not implemented in rust code as of 2023-09-08.
@@ -83,7 +85,7 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 # $env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| "" }
 #+end_src
 
-#+RESULTS:
+#+RESULTS[711956e3e066907bbdcf4a631d05103fa1aea118]:
 
 ** Environment Variable Conversions
 
@@ -94,7 +96,7 @@ Specifies how environment variables are:
 
 Note: The conversions happen *after* config.nu is loaded
 
-#+begin_src nushell
+#+begin_src nushell :cache yes
 $env.ENV_CONVERSIONS = {
     "PATH": {
         from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
@@ -107,52 +109,52 @@ $env.ENV_CONVERSIONS = {
 }
 #+end_src
 
-#+RESULTS:
+#+RESULTS[475f9192a2c0702705375fcbfd1c2f4d65742cdc]:
 
 ** Library Directories
 
 Directories to search for scripts when calling source or use. The default for this is =$nu.default-config-dir/scripts=
 
 #+name: nu-primary-lib-dir
-#+begin_src nushell :tangle no
+#+begin_src nushell :tangle no :cache yes :results none
 ($nu.default-config-dir | path join scripts)
 #+end_src
 
-#+RESULTS: nu-primary-lib-dir
+#+RESULTS[5ed25a1224323d4aa1f18220f72123762a00703d]: nu-primary-lib-dir
 : /Users/michael/.config/nushell/scripts
 
-#+begin_src nushell :var primary=nu-primary-lib-dir()
+#+begin_src nushell :var primary=nu-primary-lib-dir() :cache yes
 $env.NU_LIB_DIRS = [
   $primary
   ($nu.default-config-dir | path join nu_scripts)
 ]
 #+end_src
 
-#+RESULTS:
+#+RESULTS[a44f5aecb06c47f0a534dee49f94a16ea9b5a574]:
 
 Directories to search for plugin binaries when calling register. The default for this is =$nu.default-config-dir/plugins=
 
-#+begin_src nushell
+#+begin_src nushell :cache yes
 $env.NU_PLUGIN_DIRS = [
   ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 #+end_src
 
-#+RESULTS:
+#+RESULTS[2ae03b9a8ef622a6a644f9af2181ed946db1afc3]:
 
 ** PATH
 
 To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 
-#+begin_src nushell :tangle no
+#+begin_src nushell :tangle no :cache yes
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 #+end_src
 
-#+RESULTS:
+#+RESULTS[0cb4894eccb49abb9c8241213e06ab05e74c0ff1]:
 
 An alternate way to add entries to $env.PATH is to use the custom command ~path add~ which is built into the nushell stdlib:
 
-#+begin_src nushell :tangle no
+#+begin_src nushell :tangle no :cache yes
 use std "path add"
 $env.PATH = ($env.PATH | split row (char esep))
 path add /some/path
@@ -161,27 +163,27 @@ path add ($env.HOME | path join ".local" "bin")
 $env.PATH = ($env.PATH | uniq)
 #+end_src
 
-#+RESULTS:
+#+RESULTS[95dd5600ce27b3edc0301edbfcc12672fc3d34f8]:
 
 ** Environment Variables
 
-#+begin_src nushell
+#+begin_src nushell :cache yes
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
 $env.HOMEBREW_EDITOR = "emacsclient --create-frame --no-wait --alternate-editor ''"
 #+end_src
 
-#+RESULTS:
+#+RESULTS[14daf2817de871c7f33d2f948066da68f8a176b6]:
 
 ** Additional Files
 
 To load from a custom file you can use:
 
-#+begin_src nushell :tangle no
-source ($nu.default-config-dir | path join 'custom.nu')
+#+begin_src nushell :tangle no :cache yes
+# source ($nu.default-config-dir | path join 'custom.nu')
 #+end_src
 
-#+RESULTS:
+#+RESULTS[3ae8e25a5c14e4d6e6140e8a90b745f0173d385d]:
 
 * Configuration
 :PROPERTIES:
@@ -1090,6 +1092,8 @@ Load scripts from [[https://github.com/nushell/nu_scripts][nu_scripts]] repo.
 # $env.config = ($env.config | merge {color_config: (rose-pine)})
 #+end_src
 
+#+RESULTS:
+
 *** Completions
 
 Setup custom completions
@@ -1105,12 +1109,16 @@ use nu_scripts/custom-completions/just/just-completions.nu *
 use nu_scripts/custom-completions/less/less-completions.nu *
 #+end_src
 
+#+RESULTS:
+
 ** Third-Party Setup
 *** ASDF
 #+begin_src nushell
 $env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexec')
  source /opt/homebrew/opt/asdf/libexec/asdf.nu
 #+end_src
+
+#+RESULTS:
 
 ** Custom Modules
 
@@ -1334,6 +1342,8 @@ export def status --wrapped [...args] {
 }
 #+end_src
 
+#+RESULTS:
+
 ** Service
 :PROPERTIES:
 :header-args:nushell: :tangle (expand-file-name "service.nu" (org-sbe nu-primary-lib-dir)) :comments 'link' :results silent
@@ -1428,7 +1438,7 @@ service start skhd
 
 #+RESULTS: service-start-test
 : All finished tasks have been removed from group 'skhd'
-: New task added (id 32).
+: New task added (id 36).
 : Group "skhd" is being resumed.
 
 Great! Now, it'd be good to have a way to check the status of the service.
@@ -1476,19 +1486,15 @@ That produces the following output showing an overview of statuses.
         #+end_src
 
         #+RESULTS: service-status-test
-        #+begin_example
-        ╭───┬─────────────┬──────────────╮
-        │ # │   service   │    status    │
-        ├───┼─────────────┼──────────────┤
-        │ 0 │ dark-notify │ Running      │
-        │ 1 │ sketchybar  │ Running      │
-        │ 2 │ borders     │ Running      │
-        │ 3 │ yabai       │ Running      │
-        │ 4 │ skhd        │ Done: Killed │
-        │ 5 │ skhd        │ Running      │
-        │ 6 │ skhd        │ Queued       │
-        ╰───┴─────────────┴──────────────╯
-        #+end_example
+        : ╭───┬─────────────┬─────────╮
+        : │ # │   service   │ status  │
+        : ├───┼─────────────┼─────────┤
+        : │ 0 │ dark-notify │ Running │
+        : │ 1 │ sketchybar  │ Running │
+        : │ 2 │ borders     │ Running │
+        : │ 3 │ yabai       │ Running │
+        : │ 4 │ skhd        │ Running │
+        : ╰───┴─────────────┴─────────╯
 - [X] With verbose
         #+name: service-status-detailed-test
         #+begin_src nushell :tangle no :results replace output
@@ -1497,18 +1503,16 @@ That produces the following output showing an overview of statuses.
 
         #+RESULTS: service-status-detailed-test
         #+begin_example
-        ╭───┬─────────────┬──────────────┬─────────────────────────────────────────────╮
-        │ # │   service   │    status    │                   command                   │
-        ├───┼─────────────┼──────────────┼─────────────────────────────────────────────┤
-        │ 0 │ dark-notify │ Running      │ dark-notify -c "tmux source-file            │
-        │   │             │              │ ~/.config/tmux/tmux.conf"                   │
-        │ 1 │ sketchybar  │ Running      │ sketchybar                                  │
-        │ 2 │ borders     │ Running      │ borders                                     │
-        │ 3 │ yabai       │ Running      │ yabai                                       │
-        │ 4 │ skhd        │ Done: Killed │ skhd                                        │
-        │ 5 │ skhd        │ Running      │ skhd                                        │
-        │ 6 │ skhd        │ Queued       │ skhd                                        │
-        ╰───┴─────────────┴──────────────┴─────────────────────────────────────────────╯
+        ╭───┬─────────────┬─────────┬──────────────────────────────────────────────────╮
+        │ # │   service   │ status  │                     command                      │
+        ├───┼─────────────┼─────────┼──────────────────────────────────────────────────┤
+        │ 0 │ dark-notify │ Running │ dark-notify -c "tmux source-file                 │
+        │   │             │         │ ~/.config/tmux/tmux.conf"                        │
+        │ 1 │ sketchybar  │ Running │ sketchybar                                       │
+        │ 2 │ borders     │ Running │ borders                                          │
+        │ 3 │ yabai       │ Running │ yabai                                            │
+        │ 4 │ skhd        │ Running │ skhd                                             │
+        ╰───┴─────────────┴─────────┴──────────────────────────────────────────────────╯
         #+end_example
 - [X] With individual service
         #+name: service-status-single-test
@@ -1517,13 +1521,11 @@ That produces the following output showing an overview of statuses.
         #+end_src
 
         #+RESULTS: service-status-single-test
-        : ╭───┬─────────┬──────────────╮
-        : │ # │ service │    status    │
-        : ├───┼─────────┼──────────────┤
-        : │ 0 │ skhd    │ Done: Killed │
-        : │ 1 │ skhd    │ Running      │
-        : │ 2 │ skhd    │ Queued       │
-        : ╰───┴─────────┴──────────────╯
+        : ╭───┬─────────┬─────────╮
+        : │ # │ service │ status  │
+        : ├───┼─────────┼─────────┤
+        : │ 0 │ skhd    │ Running │
+        : ╰───┴─────────┴─────────╯
 
 *** Stop
 
@@ -1558,11 +1560,14 @@ service stop skhd
 : All finished tasks have been removed from group 'skhd'
 
 #+name: services-stop-status
-#+begin_src nushell :tangle no :results output replace
+#+begin_src nushell :tangle no :results output replace :noweb yes
+<<service-stop-test>>
 service status skhd | to text
 #+end_src
 
 #+RESULTS: services-stop-status
+: All finished tasks have been removed from group 'skhd'
+
 *** Logs
 
 I also want a way to check out the logs for the currently running services.
@@ -1612,12 +1617,6 @@ service logs skhd
 #+end_src
 
 #+RESULTS: service-logs-output
-: ┌─────────────────────┐
-: │ Task 32:    running │
-: └─────────────────────┘
-: Command: skhd
-:    Path: /Users/michael
-:   Start: Wed, 29 May 2024 16:25:17 +0300
 
 **** With follow flag
   
@@ -1627,6 +1626,51 @@ This command presumes there's a TTY attached, and will hang if run as a code blo
 #+begin_src nushell :tangle no :results output replace :eval no
 service logs skhd -f
 #+end_src
+*** Restart
+
+Of course, we might want to explicitly restart one service or another. This isn't as important with pueue services, but it is for brew services. So we'll make a standard API to help with that. First, the helper function:
+
+#+begin_src nushell
+def restart-with-pueue [group: string] {
+  stop-with-pueue $group
+  start-with-pueue $group (service-command $group)
+}
+#+end_src
+
+Now we can make the public API:
+
+#+begin_src nushell
+# Restart a service
+export def restart [
+  service: string@service-names, # The name of the service
+] {
+  restart-with-pueue $service
+}
+#+end_src
+
+#+name: services-restart-test
+#+begin_src nushell :tangle no :results output replace
+service restart skhd
+#+end_src
+
+#+RESULTS: services-restart-test
+: All finished tasks have been removed from group 'skhd'
+: New task added (id 36).
+: Group "skhd" is being resumed.
+
+#+name: services-restart-status
+#+begin_src nushell :tangle no :results output replace :noweb yes
+<<services-restart-test>>
+service status skhd | to text
+#+end_src
+
+#+RESULTS: services-restart-status
+: All finished tasks have been removed from group 'skhd'
+: All finished tasks have been removed from group 'skhd'
+: New task added (id 36).
+: Group "skhd" is being resumed.
+: service: skhd
+: status: Running
 
 ** Aliases
 :PROPERTIES:
@@ -1683,6 +1727,8 @@ export def --wrapped composer [...args] {
   }
 }
 #+end_src
+
+#+RESULTS:
 
 ** Edit
 :PROPERTIES:
@@ -1836,18 +1882,20 @@ export def main [
 We're using [[https://github.com/koekeishiya/yabai][yabai]] as our window manager, and [[https://github.com/koekeishiya/skhd][skhd]] to handle our hotkey invocations. While SKHD is configured elsewhere, we will want to create a file with our yabai-specific bindings. We can weave these key declarations in to this document if we can grab the default file location as a variable to use while tangling.
 
 #+name: skhdrc
-#+begin_src nushell :tangle no
+#+begin_src nushell :tangle no :cache yes
 (xdg config skhd yabai)
 #+end_src
 
-#+RESULTS: skhdrc
+#+RESULTS[a42a2981f8f042a44dad4233808a9017c5e90f80]: skhdrc
+: /Users/michael/.config/skhd/yabai
 
 *** root
 
 #+begin_src nushell
-# Reload the window manager
-export def reload [] {
-  yabai --restart-service
+# Restart the window manager
+export def restart [] {
+  use service.nu
+  service restart yabai
 }
 
 # Commands for working with the window manager
@@ -2322,4 +2370,299 @@ export module display {
 #+begin_src nushell
 }
  #+end_src
+
 ** TODO Chezmoi
+* External Configuration
+
+There are some services that are so tightly integrated with what I'm doing in the shell, it makes sense to define their configuration here.
+
+** ZSH
+
+Because NuShell isn't POSIX compliant, it doesn't make sense to use it for our login =$SHELL=. Lots of programs expect that POSIX compliance from the system shell, so goofing with that isn't a good idea. NuShell knows that, and it lets you inherit environment variables from your system shell that will be available in your =env.nu= and =config.nu= files, as well as any interactive shell. So, let's define our =.zshenv= file here.
+
+#+begin_src sh :tangle ~/.zshenv :eval no :comments both
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+[[ -d $XDG_CONFIG_HOME/zsh ]] && export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+source "$ZDOTDIR/.zshenv"
+#+end_src
+
+*** Env Configuration
+:PROPERTIES:
+:header-args:sh: :tangle ~/.config/zsh/.zshenv :eval no :mkdirp t :comments both
+:END:
+
+Of course, this doesn't actually give us what we want. It just asks =zsh= if it would kindly load the =.zshenv= file located in the =XDG_CONFIG_HOME= directory instead. But, here's were we can define the actual environment.
+
+**** XDG
+
+#+begin_src sh
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_DIRS=""
+export XDG_DATA_DIRS=""
+export XDG_RUNTIME_DIR="$TMPDIR"
+#+end_src
+
+**** Browser
+
+#+begin_src sh
+if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
+fi
+#+end_src
+
+**** Editors
+
+#+begin_src sh
+export LIFESTYLE="emacs" # emacs, vim
+
+if [[ "$LIFESTYLE" == emacs ]]; then
+  export EMACS_SOCKET_NAME="${XDG_RUNTIME_DIR}emacs/server"
+  export EDITOR='emacsclient --create-frame --tty'
+else
+  export EDITOR='nvim'
+fi
+
+if [[ "$LIFESTYLE" == emacs ]]; then
+  export VISUAL='emacsclient --create-frame'
+else
+  export VISUAL='neovide --no-fork'
+fi
+#+end_src
+
+**** Pagers
+
+#+begin_src sh
+export PAGER='less'
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+#+end_src
+
+**** Language
+
+#+begin_src sh
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+#+end_src
+
+**** Paths
+
+#+begin_src sh
+typeset -gU cdpath fpath mailpath path
+
+path=(
+  $HOME/{,s}bin(N)
+  $HOME/.local/bin
+  $HOME/bin
+  $HOME/.config/phpmon/bin
+  $HOME/.config/emacs/bin
+  $HOME/.local/share/bob/nvim-bin
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
+
+fpath=(
+  /opt/homebrew/share/zsh/site-functions
+  $fpath
+)
+#+end_src
+
+**** Less
+
+#+begin_src sh
+if [[ -z "$LESS" ]]; then
+  export LESS='-g -i -M -R -S -w -X -z-4'
+fi
+
+if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+export LESSHISTFILE="XDG_CONFIG_HOME"/less/history
+#+end_src
+
+**** Secrets
+
+#+begin_src sh
+if [[ -f "$HOME/.zsecrets" ]]; then
+  source "$HOME/.zsecrets"
+fi
+#+end_src
+
+** Yabai
+:PROPERTIES:
+:header-args:nushell: :tangle ~/.config/yabai/yabairc :eval no :comments link :mkdirp t
+:END:
+
+#+begin_src nushell
+#!/usr/bin/env nu --login
+
+# Settings
+let padding = 16
+
+# Load the scripting addition
+sudo yabai --load-sa
+
+# Global Settings
+yabai -m config menubar_opacity 1.0                  # 0-1
+yabai -m config mouse_follows_focus on               # on | off
+yabai -m config focus_follows_mouse autoraise        # autofocus | autoraise | off
+yabai -m config display_arrangement_order horizontal # default | vertical | horizontal
+yabai -m config window_origin_display focused        # default | focused | cursor
+yabai -m config window_placement first_child         # first_child | second_child
+yabai -m config window_zoom_persist off              # on | off
+yabai -m config window_shadow float                  # true | false | float
+yabai -m config window_opacity on                    # on | off
+yabai -m config window_opacity_duration 0.1          # 0-1
+yabai -m config active_window_opacity 0.95           # 0-1
+yabai -m config normal_window_opacity 0.80           # 0-1
+yabai -m config insert_feedback_color 0x88FF0000     # 0xAARRGGBB
+yabai -m config split_ratio 0.5                      # 0-1
+yabai -m config split_type auto                      # vertical | horizontal | auto
+yabai -m config mouse_modifier ctrl                  # cmd | alt | shift | ctrl | fn
+yabai -m config mouse_drop_action stack              # swap | stack
+
+# Space Settings
+yabai -m config layout bsp                    # bsp | stack | float
+yabai -m config top_padding $padding          # int
+yabai -m config bottom_padding $padding       # int
+yabai -m config left_padding $padding         # int
+yabai -m config right_padding $padding        # int
+yabai -m config window_gap $padding           # int
+yabai -m config external_bar all:40:0
+
+#
+# Labeled Spaces
+#
+[
+  primary  secondary notes messages
+  meetings media     system
+] | do {
+  let labels = $in
+  yabai -m query --spaces | from json | do {
+    let spaces = $in
+    ($labels | length) - ($spaces | length) | if ($in > 0) {
+      seq 1 $in | each { yabai -m space --create }
+    }
+    $labels | enumerate | each {|x|
+      yabai -m space ($x.index + 1) --label $x.item
+    }
+  }
+}
+
+#
+# Rules
+#
+#[ [label app space];
+#  [settings '^System Settings$' system]
+#  [whatsapp WhatsApp messages]
+#  [messages Messages messages]
+#  [telegram Telegram messages]
+#  [spotify Spotify media]
+#  [clearvpn ClearVPN system]
+#  [cleanmymac 'CleanMyMac X' system]
+#] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
+
+# Signals
+yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add label=focus-wez event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
+yabai -m signal --add label=spotify event=window_focused app="^Spotify$" action='yabai -m rule --apply spotify'
+yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' action='yabai -m rule --apply whatsapp'
+
+# Final Instructions
+yabai -m rule --apply
+
+# vim: ft=nu
+#+end_src
+
+** SKHD
+:PROPERTIES:
+:header-args:sh: :tangle ~/.config/skhd/skhdrc :eval no :mkdirp t :comments link
+:END:
+
+#+begin_src sh
+# Setup modes
+# :: default : wm mode default
+# :: win @ : wm mode win
+# :: spc @ : wm mode spc
+# alt - return ; win
+# win < s ; spc
+# win < escape ; default
+# spc < escape ; win
+# win < shift - escape ; default
+# spc < shift - escape ; default
+
+# DEFAULT Mode
+alt - 0x1E : wm space focus next # ]
+alt - 0x21 : wm space focus prev # [
+alt - 1 : wm space focus 1
+alt - 2 : wm space focus 2
+alt - 3 : wm space focus 3
+alt - 4 : wm space focus 4
+alt - 5 : wm space focus 5
+alt - 6 : wm space focus 6
+alt - 7 : wm space focus 7
+alt - 8 : wm space focus 8
+alt - 9 : wm space focus 9
+alt - d : wm display focus next --cycle
+alt - e : wm space balance
+alt - h : wm window focus west
+alt - i : wm window focus stack next
+alt - j : wm window focus south
+alt - k : wm window focus north
+alt - l : wm window focus east
+alt - n : wm window focus next
+alt - o : wm window focus stack prev
+alt - p : wm window focus prev
+alt - r : wm window toggle split
+alt - return : wm window zoom toggle-fullscreen
+alt - s : wm space create
+alt - space : wm window zoom toggle-parent
+alt - u : wm window stack pop
+alt - x : wm space flip-x
+alt - y : wm space flip-y
+
+alt + shift - 0x18 : wm window size ratio increase # =
+alt + shift - 0x1B : wm window size ratio decrease # -
+alt + shift - 0x1E : wm window space next # ]
+alt + shift - 0x21 : wm window space prev # [
+alt + shift - 1 : wm window space 1
+alt + shift - 2 : wm window space 2
+alt + shift - 3 : wm window space 3
+alt + shift - 4 : wm window space 4
+alt + shift - 5 : wm window space 5
+alt + shift - 6 : wm window space 6
+alt + shift - 7 : wm window space 7
+alt + shift - 8 : wm window space 8
+alt + shift - 9 : wm window space 9
+alt + shift - d : wm window display cycle
+alt + shift - e : wm space equalize
+alt + shift - h : wm window swap west
+alt + shift - j : wm window swap south
+alt + shift - k : wm window swap north
+alt + shift - l : wm window swap east
+alt + shift - n : wm window swap next
+alt + shift - p : wm window swap prev
+alt + shift - r : wm space rotate cw; wm mode go-back
+alt + shift - s : wm space destroy
+
+ctrl + alt - h : wm window warp west
+ctrl + alt - i : wm window stack next
+ctrl + alt - j : wm window warp south
+ctrl + alt - k : wm window warp north
+ctrl + alt - l : wm window warp east
+ctrl + alt - o : wm window stack prev
+ctrl + alt - u : wm window stack pop
+
+cmd + alt + ctrl - r : wm reload
+#+end_src
+
+* COMMENT Local Variables
+
+# Local Variables:
+# eval: (add-hook 'after-save-hook (lambda nil (org-babel-tangle)) nil t)
+# End:

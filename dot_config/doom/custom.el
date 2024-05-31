@@ -7,6 +7,14 @@
  '(safe-local-variable-values
    '((eval add-hook 'after-save-hook
       (lambda nil
+        (org-gfm-export-to-markdown))
+      nil t)
+     (eval add-hook 'after-save-hook
+      (lambda nil
+        (org-babel-tangle))
+      nil t)
+     (eval add-hook 'after-save-hook
+      (lambda nil
         (org-gfm-export-to-markdown)))
      (eval add-hook 'after-save-hook
       (lambda nil

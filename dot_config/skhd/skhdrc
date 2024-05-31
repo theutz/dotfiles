@@ -1,3 +1,4 @@
+# [[file:../nushell/nushell.org::*SKHD][SKHD:1]]
 # Setup modes
 # :: default : wm mode default
 # :: win @ : wm mode win
@@ -72,3 +73,4 @@ ctrl + alt - o : wm window stack prev
 ctrl + alt - u : wm window stack pop
 
 cmd + alt + ctrl - r : wm reload
+# SKHD:1 ends here

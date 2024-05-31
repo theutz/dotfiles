@@ -1,5 +1,5 @@
+# [[file:../nushell/nushell.org::*Yabai][Yabai:1]]
 #!/usr/bin/env nu --login
-
 
 # Settings
 let padding = 16
@@ -77,3 +77,4 @@ yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' actio
 yabai -m rule --apply
 
 # vim: ft=nu
+# Yabai:1 ends here

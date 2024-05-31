@@ -1,93 +1,10 @@
-#
-# XDG
-#
+# ZSH
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CONFIG_DIRS=""
-export XDG_DATA_DIRS=""
-export XDG_RUNTIME_DIR="$TMPDIR"
+# Because NuShell isn't POSIX compliant, it doesn't make sense to use it for our login =$SHELL=. Lots of programs expect that POSIX compliance from the system shell, so goofing with that isn't a good idea. NuShell knows that, and it lets you inherit environment variables from your system shell that will be available in your =env.nu= and =config.nu= files, as well as any interactive shell. So, let's define our =.zshenv= file here.
 
-#
-# Browser
-#
 
-if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
-
-#
-# Editors
-#
-
-export LIFESTYLE="emacs" # emacs, vim
-
-if [[ "$LIFESTYLE" == emacs ]]; then
-  export EMACS_SOCKET_NAME="${XDG_RUNTIME_DIR}emacs/server"
-  export EDITOR='emacsclient --create-frame --tty'
-else
-  export EDITOR='nvim'
-fi
-
-if [[ "$LIFESTYLE" == emacs ]]; then
-  export VISUAL='emacsclient --create-frame'
-else
-  export VISUAL='neovide --no-fork'
-fi
-
-export PAGER='less'
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-
-#
-# Language
-#
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-fi
-
-#
-# Paths
-#
-
-typeset -gU cdpath fpath mailpath path
-
-path=(
-  $HOME/{,s}bin(N)
-  $HOME/.local/bin
-  $HOME/bin
-  $HOME/.config/phpmon/bin
-  $HOME/.config/emacs/bin
-  $HOME/.local/share/bob/nvim-bin
-  /opt/{homebrew,local}/{,s}bin(N)
-  /usr/local/{,s}bin(N)
-  $path
-)
-
-fpath=(
-  /opt/homebrew/share/zsh/site-functions
-  $fpath
-)
-
-#
-# Less
-#
-if [[ -z "$LESS" ]]; then
-  export LESS='-g -i -M -R -S -w -X -z-4'
-fi
-
-if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
-fi
-
-export LESSHISTFILE="XDG_CONFIG_HOME"/less/history
-
-#
-# Secrets
-#
-if [[ -f "$HOME/.zsecrets" ]]; then
-  source "$HOME/.zsecrets"
-fi
+# [[file:.config/nushell/nushell.org::*ZSH][ZSH:1]]
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+[[ -d $XDG_CONFIG_HOME/zsh ]] && export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+source "$ZDOTDIR/.zshenv"
+# ZSH:1 ends here
