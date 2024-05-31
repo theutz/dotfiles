@@ -147,9 +147,9 @@
 ;;   #+name: define-org-babel-nushell-command
 
 ;; [[file:config.org::define-org-babel-nushell-command][define-org-babel-nushell-command]]
-  (defvar org-babel-nushell-command
-    "nu"
-    "The command to execute babel body code.")
+(defvar org-babel-nushell-command
+  "nu"
+  "The command to execute babel body code.")
 ;; define-org-babel-nushell-command ends here
 
 
@@ -166,11 +166,11 @@
 ;;   #+name: define-org-babel-nushell-config-dir
 
 ;; [[file:config.org::define-org-babel-nushell-config-dir][define-org-babel-nushell-config-dir]]
-  (defvar org-babel-nushell-config-dir
-    (concat (file-name-as-directory (or (getenv "XDG_CONFIG_HOME")
-                                        (getenv "HOME" ".config")))
-            "nushell/")
-    "Absolute path to the root directory where config files for nushell exist.")
+(defvar org-babel-nushell-config-dir
+  (concat (file-name-as-directory (or (getenv "XDG_CONFIG_HOME")
+                                      (getenv "HOME" ".config")))
+          "nushell/")
+  "Absolute path to the root directory where config files for nushell exist.")
 ;; define-org-babel-nushell-config-dir ends here
 
 
@@ -182,9 +182,9 @@
 ;;   #+name: org-babel-define-config-env-file
 
 ;; [[file:config.org::org-babel-define-config-env-file][org-babel-define-config-env-file]]
-  (defvar org-babel-nushell-env-config-file
-    (concat org-babel-nushell-config-dir "env.nu")
-    "Absolute path to the nu file used to configure a non-interactive nushell session.")
+(defvar org-babel-nushell-env-config-file
+  (concat org-babel-nushell-config-dir "env.nu")
+  "Absolute path to the nu file used to configure a non-interactive nushell session.")
 ;; org-babel-define-config-env-file ends here
 
 
@@ -197,9 +197,9 @@
 ;;   #+name: org-babel-define-config-file
 
 ;; [[file:config.org::org-babel-define-config-file][org-babel-define-config-file]]
-  (defvar org-babel-nushell-config-file
-    (concat org-babel-nushell-config-dir "config.nu")
-    "Absolute path to the nu file used to configure an interactive nushell session.")
+(defvar org-babel-nushell-config-file
+  (concat org-babel-nushell-config-dir "config.nu")
+  "Absolute path to the nu file used to configure an interactive nushell session.")
 ;; org-babel-define-config-file ends here
 
 
@@ -214,14 +214,14 @@
 ;;   #+name: define-org-babel-nushell-command-options
 
 ;; [[file:config.org::define-org-babel-nushell-command-options][define-org-babel-nushell-command-options]]
-  (defvar org-babel-nushell-command-options
-    (mapconcat 'identity (list "--no-newline"
-                              "--env-config"
-                              org-babel-nushell-env-config-file
-                              "--config"
-                              org-babel-nushell-config-file)
-              " ")
-    "The command options to use when executing code")
+(defvar org-babel-nushell-command-options
+  (mapconcat 'identity (list "--no-newline"
+                            "--env-config"
+                            org-babel-nushell-env-config-file
+                            "--config"
+                            org-babel-nushell-config-file)
+            " ")
+  "The command options to use when executing code")
 ;; define-org-babel-nushell-command-options ends here
 
 ;; The execute function
@@ -372,7 +372,7 @@ Resize window
     ("k" evil-window-increase-height)
     ("l" evil-window-increase-width)
     ("q" nil))
-  (map! :leader :prefix "w" :desc "resize windows" :n "SPC" #'doom-window-resize-hydra/body)))
+  (map! :leader :prefix "w" :desc "resize windows" :n "SPC" #'doom-window-resize-hydra/body))
 ;; hydra:2 ends here
 
 ;; [[file:config.org::*Before loading][Before loading:1]]
@@ -485,9 +485,9 @@ Resize window
 ;; Workspaces:1 ends here
 
 ;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:1]]
-        (map! :leader :desc "Find file" :n "e" 'find-file)
+(map! :leader :desc "Find file" :n "e" 'find-file)
 ;; LazyVim compatibility layer:1 ends here
 
 ;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:2]]
-        (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
+(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
 ;; LazyVim compatibility layer:2 ends here

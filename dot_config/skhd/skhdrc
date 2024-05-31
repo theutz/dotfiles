@@ -1,16 +1,52 @@
 # [[file:../nushell/nushell.org::*SKHD][SKHD:1]]
+#
 # Setup modes
-# :: default : wm mode default
-# :: win @ : wm mode win
-# :: spc @ : wm mode spc
-# alt - return ; win
-# win < s ; spc
-# win < escape ; default
-# spc < escape ; win
-# win < shift - escape ; default
-# spc < shift - escape ; default
+#
 
-# DEFAULT Mode
+:: default : wm mode default
+:: yab : wm mode yab
+alt - return ; yab
+yab < escape ; default
+yab < shift - escape ; default
+:: focus : wm mode focus
+default < f ; focus
+focus < escape ; default
+focus < shift - escape ; default
+:: swap : wm mode swap
+default < s ; swap
+swap < escape ; default
+swap < shift - escape ; default
+
+#
+# DEFAULT mode
+#
+
+
+
+#
+# YAB mode
+#
+
+
+
+#
+# FOCUS mode
+#
+
+
+
+#
+# SWAP mode
+#
+
+
+
+#
+# WARP mode
+#
+
+
+
 alt - 0x1E : wm space focus next # ]
 alt - 0x21 : wm space focus prev # [
 alt - 1 : wm space focus 1
@@ -73,4 +109,8 @@ ctrl + alt - o : wm window stack prev
 ctrl + alt - u : wm window stack pop
 
 cmd + alt + ctrl - r : wm reload
+
+# Local Variables:
+# mode: sh
+# End:
 # SKHD:1 ends here

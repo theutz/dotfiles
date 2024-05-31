@@ -915,10 +915,9 @@ use edit.nu
 use rose-pine.nu
 use xdg.nu
 use follow.nu
-use wm.nu
-use my
 use chezmoi
-overlay use aliases.nu
+overlay use --prefix wm.nu
 overlay use --prefix service.nu
 overlay use --prefix pueue.nu
+overlay use aliases.nu
 # Custom Modules:1 ends here

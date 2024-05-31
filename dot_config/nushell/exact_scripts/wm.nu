@@ -13,40 +13,7 @@ export def main [] {
 
 # [[file:../nushell.org::*mode][mode:1]]
 export module mode {
-    use rose-pine
-
-    export def default [] {
-        print "DEFAULT mode"
-        (
-            borders
-            $"active_color=0xff(rose-pine dark foam)"
-            $"inactive_color=0x88(rose-pine dark base)"
-            style=round
-            width=8
-        )
-    }
-
-    export def win [] {
-        print "WIN mode"
-        (
-            borders
-            width=12
-            style=round
-            $"active_color=0xff(rose-pine dark gold)"
-            $"inactive_color=0x44(rose-pine dark base)"
-        )
-    }
-
-    export def spc [] {
-        print "SPC mode"
-        (
-            borders
-            width=16
-            style=square
-            $"active_color=0xff(rose-pine dark love)"
-            $"inactive_color=0x88(rose-pine dark rose)"
-        )
-    }
+    use borders-preset.nu
 
     export def go-back [] {
         print "Go back one mode"
@@ -56,6 +23,29 @@ export module mode {
     export def goto-root [] {
         print "Return to root mode"
         skhd -k shift - escape
+    }
+
+    export def default [] {
+        print "DEFAULT mode"
+        borders-preset default
+    }
+    
+    export def yab [] {
+        use borders-preset.nu
+        print "YAB mode"
+        borders-preset note
+    }
+    
+    export def focus [] {
+        use borders-preset.nu
+        print "SPC mode"
+        borders-preset success
+    }
+    
+    export def swap [] {
+        use borders-preset.nu
+        print "SPC mode"
+        borders-preset warning
     }
 }
 # mode:1 ends here

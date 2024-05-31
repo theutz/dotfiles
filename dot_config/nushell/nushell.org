@@ -1127,12 +1127,11 @@ use edit.nu
 use rose-pine.nu
 use xdg.nu
 use follow.nu
-use wm.nu
-use my
 use chezmoi
-overlay use aliases.nu
+overlay use --prefix wm.nu
 overlay use --prefix service.nu
 overlay use --prefix pueue.nu
+overlay use aliases.nu
 #+end_src
 
 * Modules
@@ -1881,14 +1880,6 @@ export def main [
 
 We're using [[https://github.com/koekeishiya/yabai][yabai]] as our window manager, and [[https://github.com/koekeishiya/skhd][skhd]] to handle our hotkey invocations. While SKHD is configured elsewhere, we will want to create a file with our yabai-specific bindings. We can weave these key declarations in to this document if we can grab the default file location as a variable to use while tangling.
 
-#+name: skhdrc
-#+begin_src nushell :tangle no :cache yes
-(xdg config skhd yabai)
-#+end_src
-
-#+RESULTS[a42a2981f8f042a44dad4233808a9017c5e90f80]: skhdrc
-: /Users/michael/.config/skhd/yabai
-
 *** root
 
 #+begin_src nushell
@@ -1905,43 +1896,15 @@ export def main [] {
 #+end_src
 
 *** mode
+:PROPERTIES:
+:header-args:sh: :tangle no :noweb-ref skhd-modes
+:END:
 
-#+begin_src nushell
+We're going to organize our keybindings around modes in SKHD. So, we'll setup a small module to help us.
+
+#+begin_src nushell :noweb yes
 export module mode {
-    use rose-pine
-
-    export def default [] {
-        print "DEFAULT mode"
-        (
-            borders
-            $"active_color=0xff(rose-pine dark foam)"
-            $"inactive_color=0x88(rose-pine dark base)"
-            style=round
-            width=8
-        )
-    }
-
-    export def win [] {
-        print "WIN mode"
-        (
-            borders
-            width=12
-            style=round
-            $"active_color=0xff(rose-pine dark gold)"
-            $"inactive_color=0x44(rose-pine dark base)"
-        )
-    }
-
-    export def spc [] {
-        print "SPC mode"
-        (
-            borders
-            width=16
-            style=square
-            $"active_color=0xff(rose-pine dark love)"
-            $"inactive_color=0x88(rose-pine dark rose)"
-        )
-    }
+    use borders-preset.nu
 
     export def go-back [] {
         print "Go back one mode"
@@ -1952,8 +1915,83 @@ export module mode {
         print "Return to root mode"
         skhd -k shift - escape
     }
+
+    <<wm-modes>>
 }
 #+end_src
+
+**** Modes
+:PROPERTIES:
+:header-args:nushell: :tangle no :noweb-ref wm-modes :eval no :noweb-sep "\n\n"
+:END:
+
+Here we'll create helper functions for actually switching modes.
+
+***** default
+
+#+begin_src nushell
+export def default [] {
+    print "DEFAULT mode"
+    borders-preset default
+}
+#+end_src
+
+#+begin_src sh
+:: default : wm mode default
+#+end_src
+
+***** yab
+
+#+begin_src nushell
+export def yab [] {
+    use borders-preset.nu
+    print "YAB mode"
+    borders-preset note
+}
+#+end_src
+
+#+begin_src sh
+:: yab : wm mode yab
+alt - return ; yab
+yab < escape ; default
+yab < shift - escape ; default
+#+end_src
+
+***** focus
+
+#+begin_src nushell
+export def focus [] {
+    use borders-preset.nu
+    print "SPC mode"
+    borders-preset success
+}
+#+end_src
+
+#+begin_src sh
+:: focus : wm mode focus
+default < f ; focus
+focus < escape ; default
+focus < shift - escape ; default
+#+end_src
+
+***** swap
+
+#+begin_src nushell
+export def swap [] {
+    use borders-preset.nu
+    print "SPC mode"
+    borders-preset warning
+}
+#+end_src
+
+#+begin_src sh
+:: swap : wm mode swap
+default < s ; swap
+swap < escape ; default
+swap < shift - escape ; default
+#+end_src
+
+***** warp
 
 *** space
 
@@ -2370,6 +2408,61 @@ export module display {
 #+begin_src nushell
 }
  #+end_src
+** Borders Preset
+:PROPERTIES:
+:header-args:nushell: :tangle (expand-file-name "borders-preset.nu" (org-sbe nu-primary-lib-dir)) :mkdirp t :comments link
+:END:
+
+We use a lil program called [[https://github.com/FelixKratz/JankyBorders][JankyBorders]] to manage our window's border colors. To standardize the process of change them, here's a little helper module.
+
+#+begin_src nushell
+use rose-pine.nu
+
+export def default [] {
+    [
+        $"active_color=0x88(rose-pine dark base)"
+        $"inactive_color=0x11(rose-pine dark base)"
+        $"blur_radius=10.0"
+        $"width=8.0"
+    ] | ^borders ...$in
+}
+
+export def note [] {
+    [
+        $"active_color=0xff(rose-pine dark iris)"
+        $"inactive_color=0x88(rose-pine dark iris)"
+        $"blur_radius=10.0"
+        $"width=8.0"
+    ] | ^borders ...$in
+}
+
+export def important [] {
+    [
+        $"active_color=0xff(rose-pine dark foam)"
+        $"inactive_color=0x88(rose-pine dark pine)"
+        $"blur_radius=10.0"
+        $"width=8.0"
+    ] | ^borders ...$in
+}
+
+export def warning [] {
+    [
+        $"active_color=0xff(rose-pine dark gold)"
+        $"inactive_color=0x88(rose-pine dark gold)"
+        $"blur_radius=10.0"
+        $"width=8.0"
+    ] | ^borders ...$in
+}
+
+export def danger [] {
+    [
+        $"active_color=0xff(rose-pine dark love)"
+        $"inactive_color=0xff(rose-pine dark rose)"
+        $"blur_radius=10.0"
+        $"width=8.0"
+    ] | ^borders ...$in
+}
+#+end_src
 
 ** TODO Chezmoi
 * External Configuration
@@ -2498,8 +2591,8 @@ fi
 :header-args:nushell: :tangle (expand-file-name "yabai/yabairc" (getenv "XDG_CONFIG_HOME")) :eval no :comments link
 :END:
 
+#+header: :shebang #!/usr/bin/env nu --login
 #+begin_src nushell
-#!/usr/bin/env nu --login
 
 # Settings
 let padding = 16
@@ -2584,19 +2677,43 @@ yabai -m rule --apply
 :header-args:sh: :tangle (expand-file-name "skhd/skhdrc" (getenv "XDG_CONFIG_HOME")) :eval no :mkdirp t :comments link
 :END:
 
-#+begin_src sh
+#+begin_src sh :noweb yes
+#
 # Setup modes
-# :: default : wm mode default
-# :: win @ : wm mode win
-# :: spc @ : wm mode spc
-# alt - return ; win
-# win < s ; spc
-# win < escape ; default
-# spc < escape ; win
-# win < shift - escape ; default
-# spc < shift - escape ; default
+#
 
-# DEFAULT Mode
+<<skhd-modes>>
+
+#
+# DEFAULT mode
+#
+
+<<skhd-default-mode>>
+
+#
+# YAB mode
+#
+
+<<skhd-yab-mode>>
+
+#
+# FOCUS mode
+#
+
+<<skhd-focus-mode>>
+
+#
+# SWAP mode
+#
+
+<<skhd-swap-mode>>
+
+#
+# WARP mode
+#
+
+<<skhd-warp-mode>>
+
 alt - 0x1E : wm space focus next # ]
 alt - 0x21 : wm space focus prev # [
 alt - 1 : wm space focus 1
@@ -2659,10 +2776,33 @@ ctrl + alt - o : wm window stack prev
 ctrl + alt - u : wm window stack pop
 
 cmd + alt + ctrl - r : wm reload
+
+# Local Variables:
+# mode: sh
+# End:
+#+end_src
+
+** Borders
+
+We're using a program called JankyBorders to manage our window border colors. We can define the very minimal config below.
+
+#+header: :shebang #!/usr/bin/env -S XDG_CONFIG_HOME=${HOME}/.config nu --login
+#+header: :tangle (expand-file-name "borders/bordersrc" (getenv "XDG_CONFIG_HOME"))
+#+begin_src nushell :comments link
+use borders-preset.nu
+
+borders-preset default
+# Local Variables:
+# mode: nushell
+# End:
 #+end_src
 
 * COMMENT Local Variables
 
+We'll add a line-feed character =^L= here to make sure the local variables defined here are the only ones interpreted, since we're defining local variables for other tangled files above.
+
+
 # Local Variables:
-# eval: (add-hook 'after-save-hook (lambda nil (org-babel-tangle)) nil t)
+# mode: org
+# eval: (add-hook 'after-save-hook (lambda () (org-babel-tangle)) nil t)
 # End:

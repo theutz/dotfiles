@@ -940,7 +940,7 @@ Resize window
     ("k" evil-window-increase-height)
     ("l" evil-window-increase-width)
     ("q" nil))
-  (map! :leader :prefix "w" :desc "resize windows" :n "SPC" #'doom-window-resize-hydra/body)))
+  (map! :leader :prefix "w" :desc "resize windows" :n "SPC" #'doom-window-resize-hydra/body))
 #+end_src
 
 ** Modes
