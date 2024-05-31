@@ -2495,7 +2495,7 @@ fi
 
 ** Yabai
 :PROPERTIES:
-:header-args:nushell: :tangle ~/.config/yabai/yabairc :eval no :comments link :mkdirp t
+:header-args:nushell: :tangle (expand-file-name "yabai/yabairc" (getenv "XDG_CONFIG_HOME")) :eval no :comments link
 :END:
 
 #+begin_src nushell
@@ -2581,7 +2581,7 @@ yabai -m rule --apply
 
 ** SKHD
 :PROPERTIES:
-:header-args:sh: :tangle ~/.config/skhd/skhdrc :eval no :mkdirp t :comments link
+:header-args:sh: :tangle (expand-file-name "skhd/skhdrc" (getenv "XDG_CONFIG_HOME")) :eval no :mkdirp t :comments link
 :END:
 
 #+begin_src sh
