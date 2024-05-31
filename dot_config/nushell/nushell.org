@@ -1,7 +1,6 @@
 #+title: NuShell Configuration
 #+description: This is the helm from which I manage my shells
 #+version: 0.92.2
-#+startup: overview
 
 * Environment
 :PROPERTIES:
@@ -11,7 +10,7 @@
 
 *** Left Prompt
 
-#+begin_src nushell
+#+begin_src nushell :cache yes
 def create_left_prompt [] {
     let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
@@ -30,7 +29,7 @@ def create_left_prompt [] {
 }
 #+end_src
 
-#+RESULTS:
+#+RESULTS[9a2e247539f21458d7b472987fe08ddaafc5d19f]:
 
 *** Right
 
@@ -334,7 +333,7 @@ let light_theme = {
 
 ** Completion
 
-#+begin_src nushell :tangle no :eval n
+#+begin_src nushell :tangle no :eval no
 # External completer example
 # let carapace_completer = {|spans|
 #     carapace $spans.0 nushell ...$spans | from json
@@ -1837,12 +1836,11 @@ export def main [
 We're using [[https://github.com/koekeishiya/yabai][yabai]] as our window manager, and [[https://github.com/koekeishiya/skhd][skhd]] to handle our hotkey invocations. While SKHD is configured elsewhere, we will want to create a file with our yabai-specific bindings. We can weave these key declarations in to this document if we can grab the default file location as a variable to use while tangling.
 
 #+name: skhdrc
-#+begin_src nushell :output value
+#+begin_src nushell :tangle no
 (xdg config skhd yabai)
 #+end_src
 
 #+RESULTS: skhdrc
-: /Users/michael/.config/skhd/yabai
 
 *** root
 
@@ -2325,4 +2323,3 @@ export module display {
 }
  #+end_src
 ** TODO Chezmoi
-
