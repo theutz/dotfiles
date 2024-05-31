@@ -1,15 +1,17 @@
 # [[file:../nushell.org::*root][root:1]]
-# Restart the window manager
-export def restart [] {
-  use service.nu
-  service restart yabai
-}
-
 # Commands for working with the window manager
 export def main [] {
   help wm
 }
 # root:1 ends here
+
+# [[file:../nushell.org::*restart][restart:1]]
+# Restart the window manager
+export def restart [] {
+  use service.nu
+  service restart yabai
+}
+# restart:1 ends here
 
 # [[file:../nushell.org::*mode][mode:1]]
 export module mode {
@@ -19,7 +21,7 @@ export module mode {
         print "Go back one mode"
         skhd -k escape
     }
-
+    
     export def goto-root [] {
         print "Return to root mode"
         skhd -k shift - escape

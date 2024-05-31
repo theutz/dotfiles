@@ -1883,16 +1883,24 @@ We're using [[https://github.com/koekeishiya/yabai][yabai]] as our window manage
 *** root
 
 #+begin_src nushell
+# Commands for working with the window manager
+export def main [] {
+  help wm
+}
+#+end_src
+
+**** restart
+
+#+begin_src nushell
 # Restart the window manager
 export def restart [] {
   use service.nu
   service restart yabai
 }
+#+end_src
 
-# Commands for working with the window manager
-export def main [] {
-  help wm
-}
+#+begin_src sh :noweb-ref skhd-yab-mode
+yab < shift - r : wm restart
 #+end_src
 
 *** mode
@@ -1906,17 +1914,33 @@ We're going to organize our keybindings around modes in SKHD. So, we'll setup a 
 export module mode {
     use borders-preset.nu
 
-    export def go-back [] {
-        print "Go back one mode"
-        skhd -k escape
-    }
-
-    export def goto-root [] {
-        print "Return to root mode"
-        skhd -k shift - escape
-    }
+    <<wm-mode-utils>>
 
     <<wm-modes>>
+}
+    #+end_src
+
+
+**** Utilities
+:PROPERTIES:
+:header-args:nushell: :tangle no :noweb-ref wm-mode-utils :eval no :noweb-sep "\n\n"
+:END:
+
+***** go-back
+
+#+begin_src nushell
+export def go-back [] {
+    print "Go back one mode"
+    skhd -k escape
+}
+#+end_src
+
+***** goto-root
+
+#+begin_src nushell
+export def goto-root [] {
+    print "Return to root mode"
+    skhd -k shift - escape
 }
 #+end_src
 
