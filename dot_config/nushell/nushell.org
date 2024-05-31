@@ -1944,15 +1944,14 @@ export def default [] {
 
 #+begin_src nushell
 export def yab [] {
-    use borders-preset.nu
     print "YAB mode"
     borders-preset note
 }
 #+end_src
 
 #+begin_src sh
-:: yab : wm mode yab
-alt - return ; yab
+:: yab @ : wm mode yab
+f19 ; yab
 yab < escape ; default
 yab < shift - escape ; default
 #+end_src
@@ -1961,16 +1960,15 @@ yab < shift - escape ; default
 
 #+begin_src nushell
 export def focus [] {
-    use borders-preset.nu
-    print "SPC mode"
-    borders-preset success
+    print "FOCUS mode"
+    borders-preset important
 }
 #+end_src
 
 #+begin_src sh
-:: focus : wm mode focus
-default < f ; focus
-focus < escape ; default
+:: focus @ : wm mode focus
+yab < f ; focus
+focus < escape ; yab
 focus < shift - escape ; default
 #+end_src
 
@@ -1978,20 +1976,33 @@ focus < shift - escape ; default
 
 #+begin_src nushell
 export def swap [] {
-    use borders-preset.nu
-    print "SPC mode"
+    print "SWAP mode"
     borders-preset warning
 }
 #+end_src
 
 #+begin_src sh
-:: swap : wm mode swap
-default < s ; swap
-swap < escape ; default
+:: swap @ : wm mode swap
+yab < s ; swap
+swap < escape ; yab
 swap < shift - escape ; default
 #+end_src
 
 ***** warp
+
+#+begin_src nushell
+export def warp [] {
+    print "WARP mode"
+    borders-preset danger
+}
+#+end_src
+
+#+begin_src sh
+:: warp @ : wm mode warp
+yab < w ; warp
+warp < escape ; yab
+warp < shift - escape ; default
+#+end_src
 
 *** space
 

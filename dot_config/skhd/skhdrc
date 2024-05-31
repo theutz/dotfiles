@@ -4,18 +4,22 @@
 #
 
 :: default : wm mode default
-:: yab : wm mode yab
-alt - return ; yab
+:: yab @ : wm mode yab
+f19 ; yab
 yab < escape ; default
 yab < shift - escape ; default
-:: focus : wm mode focus
-default < f ; focus
-focus < escape ; default
+:: focus @ : wm mode focus
+yab < f ; focus
+focus < escape ; yab
 focus < shift - escape ; default
-:: swap : wm mode swap
-default < s ; swap
-swap < escape ; default
+:: swap @ : wm mode swap
+yab < s ; swap
+swap < escape ; yab
 swap < shift - escape ; default
+:: warp @ : wm mode warp
+yab < w ; warp
+warp < escape ; yab
+warp < shift - escape ; default
 
 #
 # DEFAULT mode

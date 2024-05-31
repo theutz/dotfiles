@@ -31,21 +31,23 @@ export module mode {
     }
     
     export def yab [] {
-        use borders-preset.nu
         print "YAB mode"
         borders-preset note
     }
     
     export def focus [] {
-        use borders-preset.nu
-        print "SPC mode"
-        borders-preset success
+        print "FOCUS mode"
+        borders-preset important
     }
     
     export def swap [] {
-        use borders-preset.nu
-        print "SPC mode"
+        print "SWAP mode"
         borders-preset warning
+    }
+    
+    export def warp [] {
+        print "WARP mode"
+        borders-preset danger
     }
 }
 # mode:1 ends here
