@@ -1150,16 +1150,16 @@ $env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexe
 
 ** Custom Modules
 
-#+begin_src nushell
+#+begin_src nushell :noweb yes
 use edit.nu
 use rose-pine.nu
 use xdg.nu
 use follow.nu
 use chezmoi
-overlay use --prefix wm.nu
 overlay use --prefix service.nu
 overlay use --prefix pueue.nu
 overlay use aliases.nu
+<<nu-modules>>
 #+end_src
 
 * Modules
@@ -1909,6 +1909,21 @@ export def main [
 We're using [[https://github.com/koekeishiya/yabai][yabai]] as our window manager, and [[https://github.com/koekeishiya/skhd][skhd]] to handle our hotkey invocations. While SKHD is configured elsewhere, we will want to create a file with our yabai-specific bindings. We can weave these key declarations in to this document if we can grab the default file location as a variable to use while tangling.
 
 *** root
+:PROPERTIES:
+:header-args:nushell: :noweb-ref wm-root :tangle no :noweb-sep "\n\n"
+:END:
+
+#+begin_src :tangle no :noweb-ref nu-modules
+overlay use --prefix wm
+#+end_src
+
+#+begin_src nushell :noweb yes :tangle (expand-file-name "wm/mod.nu" (org-sbe nu-primary-lib-dir)) :noweb-ref nil :comments link
+<<wm-root-imports>>
+
+<<wm-root>>
+#+end_src
+
+**** main
 
 #+begin_src nushell
 # Commands for working with the window manager
@@ -1938,16 +1953,19 @@ yab < shift - r : wm restart
 
 We're going to organize our keybindings around modes in SKHD. So, we'll setup a small module to help us.
 
-#+begin_src nushell :noweb yes
+#+begin_src nushell :noweb yes :tangle (expand-file-name "wm/mode.nu" (org-sbe nu-primary-lib-dir)) :comments link
 export module mode {
-    use borders-preset.nu
-
     <<wm-mode-utils>>
 
     <<wm-modes>>
 }
     #+end_src
 
+And then we'll make sure it's imported in the root module.
+
+#+begin_src nushell :tangle no :noweb-ref wm-root-imports
+export use mode.nu
+#+end_src
 
 **** Utilities
 :PROPERTIES:
@@ -1983,6 +2001,7 @@ Here we'll create helper functions for actually switching modes.
 
 #+begin_src nushell
 export def default [] {
+    use borders-presets.nu
     print "DEFAULT mode"
     borders-preset default
 }
@@ -1996,6 +2015,7 @@ export def default [] {
 
 #+begin_src nushell
 export def yab [] {
+    use borders-preset.nu
     print "YAB mode"
     borders-preset note
 }
@@ -2012,6 +2032,7 @@ yab < shift - escape ; default
 
 #+begin_src nushell
 export def focus [] {
+    use borders-preset.nu
     print "FOCUS mode"
     borders-preset important
 }
@@ -2028,6 +2049,7 @@ focus < shift - escape ; default
 
 #+begin_src nushell
 export def swap [] {
+    use borders-preset.nu
     print "SWAP mode"
     borders-preset warning
 }
@@ -2044,6 +2066,7 @@ swap < shift - escape ; default
 
 #+begin_src nushell
 export def warp [] {
+    use borders-preset.nu
     print "WARP mode"
     borders-preset danger
 }

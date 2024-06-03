@@ -944,8 +944,8 @@ use rose-pine.nu
 use xdg.nu
 use follow.nu
 use chezmoi
-overlay use --prefix wm.nu
 overlay use --prefix service.nu
 overlay use --prefix pueue.nu
 overlay use aliases.nu
+overlay use --prefix wm
 # Custom Modules:1 ends here
