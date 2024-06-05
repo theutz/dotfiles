@@ -1,5 +1,8 @@
-# [[file:../nushell.org::*Borders Preset][Borders Preset:1]]
 use rose-pine.nu
+
+def update [] list<string> -> nothing {
+  $in | ["borders" ...$in] | pueue add -- ...$in
+}
 
 export def default [] {
     [
@@ -7,7 +10,7 @@ export def default [] {
         $"inactive_color=0x11(rose-pine dark base)"
         $"blur_radius=10.0"
         $"width=8.0"
-    ] | ^borders ...$in
+    ] | update
 }
 
 export def note [] {
@@ -16,7 +19,7 @@ export def note [] {
         $"inactive_color=0x88(rose-pine dark iris)"
         $"blur_radius=10.0"
         $"width=8.0"
-    ] | ^borders ...$in
+    ] | update
 }
 
 export def important [] {
@@ -25,7 +28,7 @@ export def important [] {
         $"inactive_color=0x88(rose-pine dark pine)"
         $"blur_radius=10.0"
         $"width=8.0"
-    ] | ^borders ...$in
+    ] | update
 }
 
 export def warning [] {
@@ -34,7 +37,7 @@ export def warning [] {
         $"inactive_color=0x88(rose-pine dark gold)"
         $"blur_radius=10.0"
         $"width=8.0"
-    ] | ^borders ...$in
+    ] | update
 }
 
 export def danger [] {
@@ -43,6 +46,5 @@ export def danger [] {
         $"inactive_color=0xff(rose-pine dark rose)"
         $"blur_radius=10.0"
         $"width=8.0"
-    ] | ^borders ...$in
+    ] | update
 }
-# Borders Preset:1 ends here

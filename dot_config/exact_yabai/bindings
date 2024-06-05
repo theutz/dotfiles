@@ -2,120 +2,80 @@
 # Setup modes
 #
 
-:: default : wm mode default
-
-:: yab @ : wm mode yab
-f19 ; yab
-yab < escape ; default
-yab < shift - escape ; default
-
-:: focus @ : wm mode focus
-yab < f ; focus
-focus < escape ; yab
-focus < shift - escape ; default
-
-:: swap @ : wm mode swap
-yab < s ; swap
-swap < escape ; yab
-swap < shift - escape ; default
-
-:: warp @ : wm mode warp
-yab < w ; warp
-warp < escape ; yab
-warp < shift - escape ; default
+:: default : yab mode default
+:: yab @   : yab mode yab
+:: swap @  : yab mode swap
+:: warp @  : yab mode warp
 
 #
 # DEFAULT mode
 #
 
-
+f19 ; yab
+0x0A ; yab
+cmd + ctrl + alt - return ; yab
 
 #
 # YAB mode
 #
 
-yab < shift - r : wm restart
+# Switching Modes
+yab < f19 ; default
+yab < 0x0A ; default
+yab < escape ; default
+yab < s ; swap
+yab < w ; warp
 
-#
-# FOCUS mode
-#
+# Restarting
+yab < shift - r : yab restart
 
-
+# Windows
+yab < h : yab focus window west
+yab < j : yab focus window south
+yab < k : yab focus window north
+yab < l : yab focus window east
+yab < shift - h : yab focus space prev
+yab < shift - j : yab focus window next
+yab < shift - k : yab focus window prev
+yab < shift - l : yab focus space next
+yab < ctrl - h : yab swap window west
+yab < ctrl - j : yab swap window south
+yab < ctrl - k : yab swap window north
+yab < ctrl - l : yab swap window east
 
 #
 # SWAP mode
 #
 
+# Switching modes
+swap < escape ; yab
+swap < f19 ; yab
+swap < 0x0A ; yab
 
+swap < h : yab swap window west
+swap < j : yab swap window south
+swap < k : yab swap window north
+swap < l : yab swap window east
 
 #
 # WARP mode
 #
 
+# Switching modes
+warp < escape ; yab
+warp < f19 ; yab
+warp < 0x0A ; yab
 
-
-#alt - 0x1E : wm space focus next # ]
-#alt - 0x21 : wm space focus prev # [
-#alt - 1 : wm space focus 1
-#alt - 2 : wm space focus 2
-#alt - 3 : wm space focus 3
-#alt - 4 : wm space focus 4
-#alt - 5 : wm space focus 5
-#alt - 6 : wm space focus 6
-#alt - 7 : wm space focus 7
-#alt - 8 : wm space focus 8
-#alt - 9 : wm space focus 9
-#alt - d : wm display focus next --cycle
-#alt - e : wm space balance
-#alt - h : wm window focus west
-#alt - i : wm window focus stack next
-#alt - j : wm window focus south
-#alt - k : wm window focus north
-#alt - l : wm window focus east
-#alt - n : wm window focus next
-#alt - o : wm window focus stack prev
-#alt - p : wm window focus prev
-#alt - r : wm window toggle split
-#alt - return : wm window zoom toggle-fullscreen
-#alt - s : wm space create
-#alt - space : wm window zoom toggle-parent
-#alt - u : wm window stack pop
-#alt - x : wm space flip-x
-#alt - y : wm space flip-y
-#
-#alt + shift - 0x18 : wm window size ratio increase # =
-#alt + shift - 0x1B : wm window size ratio decrease # -
-#alt + shift - 0x1E : wm window space next # ]
-#alt + shift - 0x21 : wm window space prev # [
-#alt + shift - 1 : wm window space 1
-#alt + shift - 2 : wm window space 2
-#alt + shift - 3 : wm window space 3
-#alt + shift - 4 : wm window space 4
-#alt + shift - 5 : wm window space 5
-#alt + shift - 6 : wm window space 6
-#alt + shift - 7 : wm window space 7
-#alt + shift - 8 : wm window space 8
-#alt + shift - 9 : wm window space 9
-#alt + shift - d : wm window display cycle
-#alt + shift - e : wm space equalize
-#alt + shift - h : wm window swap west
-#alt + shift - j : wm window swap south
-#alt + shift - k : wm window swap north
-#alt + shift - l : wm window swap east
-#alt + shift - n : wm window swap next
-#alt + shift - p : wm window swap prev
-#alt + shift - r : wm space rotate cw; wm mode go-back
-#alt + shift - s : wm space destroy
-#
-#ctrl + alt - h : wm window warp west
-#ctrl + alt - i : wm window stack next
-#ctrl + alt - j : wm window warp south
-#ctrl + alt - k : wm window warp north
-#ctrl + alt - l : wm window warp east
-#ctrl + alt - o : wm window stack prev
-#ctrl + alt - u : wm window stack pop
-#
-#cmd + alt + ctrl - r : wm reload
+warp < h : yab warp window west
+warp < j : yab warp window south
+warp < k : yab warp window north
+warp < l : yab warp window east
+warp < r : yabai -m space --rotate 90
+warp < shift - r : yabai -m space --rotate 270
+warp < f : yabai -m space --mirror y-axis
+warp < shift - f : yabai -m space --mirror x-axis
+warp < e : yabai -m space --equalize
+warp < b : yabai -m space --balance
 
 # Local Variables:
 # mode: sh

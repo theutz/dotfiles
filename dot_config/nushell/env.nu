@@ -94,12 +94,13 @@ use xdg.nu
 $env.NU_LIB_DIRS = [
   ...([
     scripts
-    # nu_scripts
+    nu_scripts
     modules
   ] | each {|x| $nu.default-config-dir | path join $x })
-  (xdg config yabai)
+  (xdg config yabai nu)
 ]
 
 $env.NU_PLUGIN_DIRS = [
   ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
+

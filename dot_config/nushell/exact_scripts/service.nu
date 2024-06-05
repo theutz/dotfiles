@@ -1,10 +1,7 @@
-# [[file:../nushell.org::*Main][Main:1]]
 export def main [] {
     "Commands for interacting with long-running services."
 }
-# Main:1 ends here
 
-# [[file:../nushell.org::*Main][Main:2]]
 def service-definitions [] {
     [
       [name        type  command];
@@ -15,9 +12,7 @@ def service-definitions [] {
       [dark-notify pueue 'dark-notify -c "tmux source-file ~/.config/tmux/tmux.conf"']
     ]
 }
-# Main:2 ends here
 
-# [[file:../nushell.org::*Main][Main:3]]
 def service-names [] {
   service-definitions | get name
 }
@@ -25,9 +20,7 @@ def service-names [] {
 def service-command [service: string@service-names] {
   service-definitions | where name == $service | get command.0
 }
-# Main:3 ends here
 
-# [[file:../nushell.org::*Start][Start:1]]
 def start-with-pueue [
     group: string, # The name of the group
     command?: string # The command to pass, else just use the group name
@@ -53,18 +46,14 @@ def start-with-pueue [
             start-with-pueue $group $command
         }
 }
-# Start:1 ends here
 
-# [[file:../nushell.org::*Start][Start:2]]
 # Start a service
 export def start [
     service: string@service-names, # The name of the service
 ] {
     start-with-pueue $service (service-command $service)
 }
-# Start:2 ends here
 
-# [[file:../nushell.org::*Status][Status:1]]
 def status-with-pueue [] {
   use pueue.nu
 
@@ -77,9 +66,7 @@ def status-with-pueue [] {
         }
     }
 }
-# Status:1 ends here
 
-# [[file:../nushell.org::*Status][Status:2]]
 # Get the status of a running service
 export def status [
     service?: string@service-names
@@ -90,9 +77,7 @@ export def status [
       $in | where service == $service
     } else { $in }
 }
-# Status:2 ends here
 
-# [[file:../nushell.org::*Stop][Stop:1]]
 def stop-with-pueue [group: string] {
   use pueue.nu
 
@@ -101,18 +86,14 @@ def stop-with-pueue [group: string] {
 
   pueue clean -g $group
 }
-# Stop:1 ends here
 
-# [[file:../nushell.org::*Stop][Stop:2]]
 # Stop a service
 export def stop [
     service: string@service-names, # The name of the service
 ] {
     stop-with-pueue $service
 }
-# Stop:2 ends here
 
-# [[file:../nushell.org::*Helper function for pueue][Helper function for pueue:1]]
 def logs-with-pueue [
     group: string
     --follow (-f)
@@ -127,9 +108,7 @@ def logs-with-pueue [
             }
         } $in
 }
-# Helper function for pueue:1 ends here
 
-# [[file:../nushell.org::*Public facing command][Public facing command:1]]
 # View the logs for a running process
 export def logs [
     service: string@service-names
@@ -137,20 +116,9 @@ export def logs [
 ] {
     logs-with-pueue $service --follow=$follow
 }
-# Public facing command:1 ends here
 
-# [[file:../nushell.org::*Restart][Restart:1]]
-def restart-with-pueue [group: string] {
-  stop-with-pueue $group
-  start-with-pueue $group (service-command $group)
-}
-# Restart:1 ends here
-
-# [[file:../nushell.org::*Restart][Restart:2]]
-# Restart a service
 export def restart [
   service: string@service-names, # The name of the service
 ] {
-  restart-with-pueue $service
+  start-with-pueue $service
 }
-# Restart:2 ends here

@@ -22,17 +22,18 @@ $env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexe
 
 # Custom Modules
 
-# use edit.nu
-# use rose-pine.nu
-# use xdg.nu
-# use follow.nu
-# use chezmoi
-# overlay use --prefix service.nu
-# overlay use --prefix pueue.nu
-# overlay use aliases.nu
+use edit.nu
+use rose-pine.nu
+use xdg.nu
+use follow.nu
+use chezmoi
+use service.nu
+use pueue.nu
+use aliases.nu
 
 # My custom modules
-# overlay use --prefix wm
+use wm
+use yab
 
 # Custom Scripts
 

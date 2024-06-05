@@ -19,14 +19,15 @@ fi
 export LIFESTYLE="emacs" # emacs, vim
 
 if [[ "$LIFESTYLE" == emacs ]]; then
+  export ALTERNATE_EDITOR=''
   export EMACS_SOCKET_NAME="${XDG_RUNTIME_DIR}emacs/server"
-  export EDITOR='emacsclient --create-frame --tty'
+  export EDITOR='emacsclient --reuse-frame'
 else
   export EDITOR='nvim'
 fi
 
 if [[ "$LIFESTYLE" == emacs ]]; then
-  export VISUAL='emacsclient --create-frame'
+  export VISUAL='emacsclient --reuse-frame'
 else
   export VISUAL='neovide --no-fork'
 fi

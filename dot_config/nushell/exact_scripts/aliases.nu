@@ -1,16 +1,16 @@
 use chezmoi
 
-export alias c        = ^chezmoi
-export alias e        = ^$env.EDITOR
-export alias j        = just --highlight
-export alias lazynvim = nvim --headless "+Lazy! sync" +qa
-export alias lg       = lazygit
-export alias sail     = vendor/bin/sail
-export alias v        = ^$env.VISUAL
-export alias q        = ^pueue
+alias c        = ^chezmoi
+alias e        = ^$env.EDITOR
+alias j        = just --highlight
+alias lazynvim = nvim --headless "+Lazy! sync" +qa
+alias lg       = lazygit
+alias sail     = vendor/bin/sail
+alias v        = ^$env.VISUAL
+alias q        = ^pueue
 
 # Start yazi file manager with cd on exit
-export def --env yy [...args] {
+def --env yy [...args] {
   let tmp = (mktemp -t "yazi-cwd.XXXXXX")
   yazi ...$args --cwd-file $tmp
   let cwd = (open $tmp)
@@ -20,7 +20,7 @@ export def --env yy [...args] {
   rm -fp $tmp
 }
 
-export def --wrapped artisan [...args] {
+def --wrapped artisan [...args] {
   if ('vendor/bin/sail' | path exists) {
     print -e "🐳 Running in docker..."
     vendor/bin/sail artisan ...$args
@@ -29,7 +29,7 @@ export def --wrapped artisan [...args] {
   }
 }
 
-export def --wrapped please [...args] {
+def --wrapped please [...args] {
   if ('vendor/bin/sail' | path exists) {
     print -e "🐳 Running in docker..."
     vendor/bin/sail php please ...$args
@@ -38,7 +38,7 @@ export def --wrapped please [...args] {
   }
 }
 
-export def --wrapped composer [...args] {
+def --wrapped composer [...args] {
   if ('vendor/bin/sail' | path exists) {
     print -e "🐳 Running in docker..."
     vendor/bin/sail composer ...$args
