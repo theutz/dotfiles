@@ -8,3 +8,6 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 
 # vim: ft=sh
+# Local Variables:
+# mode: sh
+# End:

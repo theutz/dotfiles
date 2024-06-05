@@ -1,7 +1,4 @@
 # Left Prompt
-
-
-# [[file:nushell.org::*Left Prompt][Left Prompt:1]]
 def create_left_prompt [] {
     let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
@@ -18,12 +15,8 @@ def create_left_prompt [] {
 
     $"($path)($overlay)"
 }
-# Left Prompt:1 ends here
 
 # Right Prompt
-
-
-# [[file:nushell.org::*Right Prompt][Right Prompt:1]]
 def create_right_prompt [] {
     # create a right prompt in magenta with green separators and am/pm underlined
     let time_segment = ([
@@ -41,16 +34,13 @@ def create_right_prompt [] {
 
     ([$last_exit_code, (char space), $time_segment] | str join)
 }
-# Right Prompt:1 ends here
 
 # Indicators
 
-
-# [[file:nushell.org::*Indicators][Indicators:1]]
 # Use nushell functions to define your right and left prompt
-# $env.PROMPT_COMMAND = {|| create_left_prompt }
+$env.PROMPT_COMMAND = {|| create_left_prompt }
 # FIXME: This default is not implemented in rust code as of 2023-09-08.
-# $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
+$env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
@@ -70,7 +60,6 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 # $env.TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = {|| "" }
 # $env.TRANSIENT_PROMPT_MULTILINE_INDICATOR = {|| "" }
 # $env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| "" }
-# Indicators:1 ends here
 
 # Environment Variable Conversions
 
@@ -81,8 +70,6 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 
 # Note: The conversions happen *after* config.nu is loaded
 
-
-# [[file:nushell.org::*Environment Variable Conversions][Environment Variable Conversions:1]]
 $env.ENV_CONVERSIONS = {
     "PATH": {
         from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
@@ -91,42 +78,28 @@ $env.ENV_CONVERSIONS = {
     "Path": {
         from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
         to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
+    },
+    "EDITOR": {
+        from_string: { |s| $s | split row " " },
+        to_string: { |v| $v | str join " " }
+    },
+    "VISUAL": {
+        from_string: { |s| $s | split row " " },
+        to_string: { |v| $v | str join " " }
     }
 }
-# Environment Variable Conversions:1 ends here
 
+use xdg.nu
 
-
-# #+RESULTS[5ed25a1224323d4aa1f18220f72123762a00703d]: nu-primary-lib-dir
-# : /Users/michael/.config/nushell/scripts
-
-
-# [[file:nushell.org::*Library Directories][Library Directories:2]]
-let primary = "/Users/michael/.config/nushell/scripts"
 $env.NU_LIB_DIRS = [
-  $primary
-  ($nu.default-config-dir | path join nu_scripts)
+  ...([
+    scripts
+    # nu_scripts
+    modules
+  ] | each {|x| $nu.default-config-dir | path join $x })
+  (xdg config yabai)
 ]
-# Library Directories:2 ends here
 
-
-
-# #+RESULTS[a44f5aecb06c47f0a534dee49f94a16ea9b5a574]:
-
-# Directories to search for plugin binaries when calling register. The default for this is =$nu.default-config-dir/plugins=
-
-
-# [[file:nushell.org::*Library Directories][Library Directories:3]]
 $env.NU_PLUGIN_DIRS = [
   ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
-# Library Directories:3 ends here
-
-# Environment Variables
-
-
-# [[file:nushell.org::*Environment Variables][Environment Variables:1]]
-$env.EDITOR = "nvim"
-$env.VISUAL = "nvim"
-$env.HOMEBREW_EDITOR = "emacsclient --create-frame --no-wait --alternate-editor ''"
-# Environment Variables:1 ends here

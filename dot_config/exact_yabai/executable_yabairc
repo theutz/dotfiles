@@ -1,5 +1,5 @@
 #!/usr/bin/env nu --login
-# [[file:../nushell/nushell.org::*Yabai][Yabai:1]]
+
 # Settings
 let padding = 16
 
