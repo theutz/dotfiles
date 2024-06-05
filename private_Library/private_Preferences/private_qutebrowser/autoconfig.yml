@@ -229,6 +229,7 @@ settings:
     https://app.fastmail.com: true
     https://app.slack.com: true
     https://calendar.google.com: true
+    https://dnschecker.org: true
     https://projects.zoho.com: true
     https://web.telegram.org: true
     https://web.whatsapp.com: true

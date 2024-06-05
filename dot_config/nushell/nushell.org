@@ -1159,7 +1159,29 @@ use chezmoi
 overlay use --prefix service.nu
 overlay use --prefix pueue.nu
 overlay use aliases.nu
+
+# My custom modules
 <<nu-modules>>
+#+end_src
+** Custom Scripts
+
+#+begin_src nushell :noweb yes
+# My custom scripts
+<<nu-scripts>>
+#+end_src
+
+*** ssh keychain
+
+#+begin_src nushell :tangle no :noweb-ref nu-scripts
+ls -la ~/.ssh | each { $in.name | path split | last } | filter {|x| $x | str starts-with id_ } | filter {|x| not ($x | str ends-with .pub) } |
+keychain --eval --quiet ...$in
+    | lines
+    | where not ($it | is-empty)
+    | parse "{k}={v}; export {k2};"
+    | select k v
+    | transpose --header-row
+    | into record
+    | load-env
 #+end_src
 
 * Modules
@@ -1913,12 +1935,16 @@ We're using [[https://github.com/koekeishiya/yabai][yabai]] as our window manage
 :header-args:nushell: :noweb-ref wm-root :tangle no :noweb-sep "\n\n"
 :END:
 
+First, we'll want to make sure our base nushell configuration is using the module.
+
 #+begin_src :tangle no :noweb-ref nu-modules
 overlay use --prefix wm
 #+end_src
 
+Now we'll create a =mod.nu= file that will be the central hub where the commands are loaded.
+
 #+begin_src nushell :noweb yes :tangle (expand-file-name "wm/mod.nu" (org-sbe nu-primary-lib-dir)) :noweb-ref nil :comments link
-<<wm-root-imports>>
+<<wm-exports>>
 
 <<wm-root>>
 #+end_src
@@ -1949,59 +1975,24 @@ yab < shift - r : wm restart
 *** mode
 :PROPERTIES:
 :header-args:sh: :tangle no :noweb-ref skhd-modes
+:header-args:nushell: :tangle (expand-file-name "wm/mode.nu" (org-sbe nu-primary-lib-dir)) :comments link
 :END:
 
-We're going to organize our keybindings around modes in SKHD. So, we'll setup a small module to help us.
+We're going to organize our keybindings around modes in SKHD. So, we'll setup a small module to help us. And we'll make sure it's imported in the root module.
 
-#+begin_src nushell :noweb yes :tangle (expand-file-name "wm/mode.nu" (org-sbe nu-primary-lib-dir)) :comments link
-export module mode {
-    <<wm-mode-utils>>
-
-    <<wm-modes>>
-}
-    #+end_src
-
-And then we'll make sure it's imported in the root module.
-
-#+begin_src nushell :tangle no :noweb-ref wm-root-imports
+#+begin_src nushell :tangle no :noweb-ref wm-exports
 export use mode.nu
 #+end_src
 
-**** Utilities
-:PROPERTIES:
-:header-args:nushell: :tangle no :noweb-ref wm-mode-utils :eval no :noweb-sep "\n\n"
-:END:
-
-***** go-back
-
-#+begin_src nushell
-export def go-back [] {
-    print "Go back one mode"
-    skhd -k escape
-}
-#+end_src
-
-***** goto-root
-
-#+begin_src nushell
-export def goto-root [] {
-    print "Return to root mode"
-    skhd -k shift - escape
-}
-#+end_src
-
 **** Modes
-:PROPERTIES:
-:header-args:nushell: :tangle no :noweb-ref wm-modes :eval no :noweb-sep "\n\n"
-:END:
 
-Here we'll create helper functions for actually switching modes.
+Here we'll create helper functions for actually switching to distinct modes.
 
 ***** default
 
 #+begin_src nushell
 export def default [] {
-    use borders-presets.nu
+    use borders-preset.nu
     print "DEFAULT mode"
     borders-preset default
 }
@@ -2077,6 +2068,32 @@ export def warp [] {
 yab < w ; warp
 warp < escape ; yab
 warp < shift - escape ; default
+#+end_src
+
+**** Utilities
+
+Additionally, we'll setup some functions that will standardize the process of moving between modes.
+
+***** go-back
+
+This will pop you back a single level--usually to =yab= mode.
+
+#+begin_src nushell
+export def go-back [] {
+    print "Go back one mode"
+    skhd -k escape
+}
+#+end_src
+
+***** goto-root
+
+This should kick the user all the way back to =default= mode so they can use their keyboard normally.
+
+#+begin_src nushell
+export def goto-root [] {
+    print "Return to root mode"
+    skhd -k shift - escape
+}
 #+end_src
 
 *** space
@@ -2890,5 +2907,4 @@ We'll add a line-feed character =^L= here to make sure the local variables defin
 
 # Local Variables:
 # mode: org
-# eval: (add-hook 'after-save-hook (lambda () (org-babel-tangle)) nil t)
 # End:

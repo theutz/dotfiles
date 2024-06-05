@@ -1,7 +1,5 @@
 # Dark
 
-
-# [[file:nushell.org::*Dark][Dark:1]]
 let dark_theme = {
     # color for nushell primitives
     separator: white
@@ -71,7 +69,6 @@ let dark_theme = {
 # Light
 
 
-# [[file:nushell.org::*Light][Light:1]]
 let light_theme = {
     # color for nushell primitives
     separator: dark_gray
@@ -143,7 +140,6 @@ let light_theme = {
 # The default config record. This is where much of your global configuration is setup.
 
 
-# [[file:nushell.org::*Default Config Record][Default Config Record:1]]
 $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
 
@@ -906,7 +902,6 @@ $env.config = {
 # Themes
 
 
-# [[file:nushell.org::*Themes][Themes:1]]
 # Setup nushell theme
 # use nu_scripts/themes/nu-themes/rose-pine.nu
 # $env.config = ($env.config | merge {color_config: (rose-pine)})
@@ -917,7 +912,6 @@ $env.config = {
 # Setup custom completions
 
 
-# [[file:nushell.org::*Completions][Completions:1]]
 use nu_scripts/custom-completions/bat/bat-completions.nu *
 use nu_scripts/custom-completions/composer/composer-completions.nu *
 use nu_scripts/custom-completions/curl/curl-completions.nu *
@@ -930,7 +924,6 @@ use nu_scripts/custom-completions/less/less-completions.nu *
 
 # ASDF
 
-# [[file:nushell.org::*ASDF][ASDF:1]]
 $env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexec')
  source /opt/homebrew/opt/asdf/libexec/asdf.nu
 # ASDF:1 ends here
@@ -938,7 +931,6 @@ $env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexe
 # Custom Modules
 
 
-# [[file:nushell.org::*Custom Modules][Custom Modules:1]]
 use edit.nu
 use rose-pine.nu
 use xdg.nu
@@ -947,5 +939,22 @@ use chezmoi
 overlay use --prefix service.nu
 overlay use --prefix pueue.nu
 overlay use aliases.nu
+
+# My custom modules
 overlay use --prefix wm
 # Custom Modules:1 ends here
+
+# Custom Scripts
+
+
+# My custom scripts
+ls -la ~/.ssh | each { $in.name | path split | last } | filter {|x| $x | str starts-with id_ } | filter {|x| not ($x | str ends-with .pub) } |
+keychain --eval --quiet ...$in
+    | lines
+    | where not ($it | is-empty)
+    | parse "{k}={v}; export {k2};"
+    | select k v
+    | transpose --header-row
+    | into record
+    | load-env
+# Custom Scripts:1 ends here

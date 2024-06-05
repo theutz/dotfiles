@@ -88,3 +88,10 @@
 ;; [[file:config.org::*hydra][hydra:1]]
 (package! hydra)
 ;; hydra:1 ends here
+
+;; multi-vterm
+
+
+;; [[file:config.org::*multi-vterm][multi-vterm:1]]
+(package! multi-vterm)
+;; multi-vterm:1 ends here
