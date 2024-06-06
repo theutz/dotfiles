@@ -8,6 +8,8 @@ alias lg       = lazygit
 alias sail     = vendor/bin/sail
 alias v        = ^$env.VISUAL
 alias q        = ^pueue
+alias chezomi  = ^chezmoi
+alias chemzoi  = ^chezmoi
 
 # Start yazi file manager with cd on exit
 def --env yy [...args] {

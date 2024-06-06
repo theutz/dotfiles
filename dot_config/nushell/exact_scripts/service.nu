@@ -53,8 +53,11 @@ def start-with-pueue [
 
 # Start a service
 export def start [
-    service: string@service-names, # The name of the service
+    service?: string@service-names, # The name of the service
 ] {
+    if ($service | is-empty) {
+      service-names | each {|x| start $x }
+    }
     start-with-pueue $service (service-command $service)
 }
 
@@ -93,12 +96,15 @@ def stop-with-pueue [group: string] {
 
 # Stop a service
 export def stop [
-    service: string@service-names, # The name of the service
+    service?: string@service-names, # The name of the service
 ] {
+    if ($service | is-empty) {
+      service-names | each {|x| stop $x }
+    }
     stop-with-pueue $service
 }
 
-def logs-with-pueue [
+def log-with-pueue [
     group: string
     --follow (-f)
 ] {
@@ -114,11 +120,11 @@ def logs-with-pueue [
 }
 
 # View the logs for a running process
-export def logs [
+export def log [
     service: string@service-names
     --follow (-f) # Follow logs after the initial dump
 ] {
-    logs-with-pueue $service --follow=$follow
+    log-with-pueue $service --follow=$follow
 }
 
 export def restart [

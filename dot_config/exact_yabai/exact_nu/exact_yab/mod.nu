@@ -2,7 +2,7 @@ use service.nu
 
 # Convenience wrappers for working with yabai
 export def main [] {
-    service logs -f skhd
+    service log -f skhd
 }
 
 export def restart [] {
