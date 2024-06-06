@@ -69,14 +69,14 @@ c.editor.command = [
 ]
 
 c.colors.completion.category.bg = theme.get('base')
-c.colors.completion.category.border.bottom = theme.get('subtle')
-c.colors.completion.category.border.top = theme.get('subtle')
+c.colors.completion.category.border.bottom = theme.get('base')
+c.colors.completion.category.border.top = theme.get('base')
 c.colors.completion.category.fg = theme.get('text')
 c.colors.completion.even.bg = theme.get('base')
 c.colors.completion.fg = [theme.get('text'), theme.get('muted'), theme.get('muted')] # one for each column
 c.colors.completion.item.selected.bg = theme.get('gold')
-c.colors.completion.item.selected.border.bottom = theme.get('highlight_med')
-c.colors.completion.item.selected.border.top = theme.get('highlight_med')
+c.colors.completion.item.selected.border.bottom = theme.get('gold')
+c.colors.completion.item.selected.border.top = theme.get('gold')
 c.colors.completion.item.selected.fg = theme.get('surface')
 c.colors.completion.item.selected.match.fg = theme.get('muted')
 c.colors.completion.match.fg = theme.get('gold')
@@ -173,7 +173,7 @@ c.fonts.web.family.standard = "IBM Plex Sans"
 c.fonts.web.size.minimum_logical = 6
 
 
-c.hints.border = "1px solid " + theme.get('gold')
+c.hints.border = "0 none " + theme.get('gold')
 c.hints.padding = { "bottom": 0, "left": 3, "right": 3, "top": 0 }
 c.hints.radius = 5
 c.hints.uppercase = True

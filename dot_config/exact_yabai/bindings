@@ -18,27 +18,9 @@ ctrl + alt - return ; yab
 # YAB mode
 #
 
-# Switching Modes
-yab < f19 ; default
 yab < 0x0A ; default
-yab < escape ; default
-yab < s ; yabx
-
-# Restarting
-yab < shift - r : yab restart
-
-yab < h : yab focus window west --cycle
-yab < j : yab focus window south --cycle
-yab < k : yab focus window north --cycle
-yab < l : yab focus window east --cycle
-yab < shift - h : yab swap window west
-yab < shift - j : yab swap window north
-yab < shift - k : yab swap window south
-yab < shift - l : yab swap window east
-yab < ctrl - h : yab warp window west
-yab < ctrl - j : yab warp window north
-yab < ctrl - k : yab warp window south
-yab < ctrl - l : yab warp window east
+yab < 0x18 : yabai -m window --ratio rel:+0.05 # =
+yab < 0x1B : yabai -m window --ratio rel:-0.05 # -
 yab < 1 : yab focus space 1
 yab < 2 : yab focus space 2
 yab < 3 : yab focus space 3
@@ -47,9 +29,27 @@ yab < 5 : yab focus space 5
 yab < 6 : yab focus space 6
 yab < 7 : yab focus space 7
 yab < 8 : yab focus space 8
-yab < 9 : yab focus space 9
+yab < escape ; default
+yab < f19 ; default
+yab < h : yab focus window west --cycle
+yab < j : yab focus window south --cycle
+yab < k : yab focus window north --cycle
+yab < l : yab focus window east --cycle
+yab < s ; yabx
 yab < tab : yab focus display next
+yab < z : yabai -m window --toggle zoom-fullscreen
+
+yab < shift - h : yab swap window west
+yab < shift - j : yab swap window north
+yab < shift - k : yab swap window south
+yab < shift - l : yab swap window east
+yab < shift - r : yab restart
 yab < shift - tab : yab move display next
+
+yab < ctrl - h : yab warp window west
+yab < ctrl - j : yab warp window north
+yab < ctrl - k : yab warp window south
+yab < ctrl - l : yab warp window east
 
 #
 # YABX mode

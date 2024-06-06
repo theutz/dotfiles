@@ -11,7 +11,7 @@ def service-definitions [] {
       [skhd        pueue null]
       [borders     pueue null]
       [sketchybar  pueue null]
-      [dark-notify pueue 'dark-notify -c "tmux source-file ~/.config/tmux/tmux.conf"']
+      [dark-notify pueue 'dark-notify -c "nu ~/.config/nushell/scripts/dark-notified.nu"']
       [qutebrowser pueue 'qutebrowser --nowindow']
       [emacs       pueue 'emacs --fg-daemon']
     ]
