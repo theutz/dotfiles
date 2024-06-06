@@ -36,6 +36,11 @@ settings:
     - https://*.bugherd.com/*
     - sentry.io
     - p.typekit.net
+  content.cookies.accept:
+    '*://*.app.slack.com/*': no-3rdparty
+    '*://*.www.friendzy.co/*': all
+    '*://app.slack.com/*': no-3rdparty
+    '*://www.friendzy.co/*': all
   content.fullscreen.window:
     global: true
   content.javascript.clipboard:

@@ -10,40 +10,50 @@
 # DEFAULT mode
 #
 
-f19 ; yab
-0x0A ; yab
+f19                 ; yab
+0x0A                ; yab
 ctrl + alt - return ; yab
+
+cmd + ctrl + alt - r : yab restart
 
 #
 # YAB mode
 #
 
-yab < 0x0A ; default
+yab < 0x0A   ; default
+yab < escape ; default
+yab < f19    ; default
+yab < s      ; yabx
+
 yab < 0x18 : yabai -m window --ratio rel:+0.05 # =
 yab < 0x1B : yabai -m window --ratio rel:-0.05 # -
-yab < 1 : yab focus space 1
-yab < 2 : yab focus space 2
-yab < 3 : yab focus space 3
-yab < 4 : yab focus space 4
-yab < 5 : yab focus space 5
-yab < 6 : yab focus space 6
-yab < 7 : yab focus space 7
-yab < 8 : yab focus space 8
-yab < escape ; default
-yab < f19 ; default
-yab < h : yab focus window west --cycle
-yab < j : yab focus window south --cycle
-yab < k : yab focus window north --cycle
-yab < l : yab focus window east --cycle
-yab < s ; yabx
-yab < tab : yab focus display next
-yab < z : yabai -m window --toggle zoom-fullscreen
+yab < 1    : yab focus space 1
+yab < 2    : yab focus space 2
+yab < 3    : yab focus space 3
+yab < 4    : yab focus space 4
+yab < 5    : yab focus space 5
+yab < 6    : yab focus space 6
+yab < 7    : yab focus space 7
+yab < 8    : yab focus space 8
+yab < h    : yab focus window west --cycle
+yab < j    : yab focus window south --cycle
+yab < k    : yab focus window north --cycle
+yab < l    : yab focus window east --cycle
+yab < tab  : yab focus display next
+yab < z    : yabai -m window --toggle zoom-fullscreen
 
-yab < shift - h : yab swap window west
-yab < shift - j : yab swap window north
-yab < shift - k : yab swap window south
-yab < shift - l : yab swap window east
-yab < shift - r : yab restart
+yab < shift - 1   : yab move space 1
+yab < shift - 2   : yab move space 2
+yab < shift - 3   : yab move space 3
+yab < shift - 4   : yab move space 4
+yab < shift - 5   : yab move space 5
+yab < shift - 6   : yab move space 6
+yab < shift - 7   : yab move space 7
+yab < shift - 8   : yab move space 8
+yab < shift - h   : yab swap window west
+yab < shift - j   : yab swap window north
+yab < shift - k   : yab swap window south
+yab < shift - l   : yab swap window east
 yab < shift - tab : yab move display next
 
 yab < ctrl - h : yab warp window west

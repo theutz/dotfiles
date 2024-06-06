@@ -11,7 +11,7 @@ def service-definitions [] {
       [skhd        pueue null]
       [borders     pueue null]
       [sketchybar  pueue null]
-      [dark-notify pueue 'dark-notify -c "nu ~/.config/nushell/scripts/dark-notified.nu"']
+      [dark-notify pueue 'dark-notify -c "nu ~/.config/dark-notify/on-change.nu"']
       [qutebrowser pueue 'qutebrowser --nowindow']
       [emacs       pueue 'emacs --fg-daemon']
     ]

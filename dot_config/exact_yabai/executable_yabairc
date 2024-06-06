@@ -1,5 +1,7 @@
 #!/usr/bin/env nu --login
 
+use service.nu
+
 # Settings
 let padding = 16
 
@@ -54,16 +56,30 @@ yabai -m config external_bar all:40:0
 }
 
 #
+# Labeled Displays
+#
+yabai -m display 1 --label builtin
+yabai -m display 2 --label external
+
+#
 # Rules
 #
-[ [label app space];
- [settings '^System Settings$' system]
- [whatsapp WhatsApp messages]
- [messages Messages messages]
- [telegram Telegram messages]
- [spotify Spotify media]
- [clearvpn ClearVPN system]
- [cleanmymac 'CleanMyMac X' system]
+[
+    [space    	app                	label];
+    [system   	'^System Settings$'	settings]
+    [messages 	WhatsApp           	whatsapp]
+    [messages 	Messages           	messages]
+    [messages 	Telegram           	telegram]
+    [media    	Spotify            	spotify]
+    [system   	ClearVPN           	clearvpn]
+    [system   	'CleanMyMac X'     	cleanmymac]
+    [reference	"Figma"            	figma]
+    [meetings 	"Zoom"             	zoom]
+    [secondary	"Slack"            	slack]
+    [primary  	"Emacs"            	emacs]
+    [primary  	"qutebrowser"      	qutebrowser]
+    [secondary	"WezTerm"          	wezterm]
+    [secondary	"Dash"             	dash]
 ] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
 
 # Signals
@@ -71,11 +87,22 @@ yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai 
 yabai -m signal --add label=focus-wez event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
 yabai -m signal --add label=spotify event=window_focused app="^Spotify$" action='yabai -m rule --apply spotify'
 yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' action='yabai -m rule --apply whatsapp'
+[
+  window_focused
+  space_created
+  space_destroyed
+  space_changed
+  display_added
+  display_removed
+  display_moved
+  system_woke
+] | each {|x|
+  yabai -m signal --add $"event=($in)" action="sketchybar --reload"
+}
 
 # Final Instructions
 yabai -m rule --apply
-
-service restart sketchybar
+sketchybar --reload
 service restart borders
 
 # vim: ft=nu
