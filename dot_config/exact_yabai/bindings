@@ -43,17 +43,17 @@ yab < ctrl - h       : yab warp window west
 yab < ctrl - j       : yab warp window north
 yab < ctrl - k       : yab warp window south
 yab < ctrl - l       : yab warp window east
-yab < ctrl - n       : yabai -m window --stack next
-yab < ctrl - p       : yabai -m window --stack prev
-yab < ctrl - q       : yabai -m space --layout bsp
-yab < ctrl - s       : yabai -m space --layout stack
+yab < ctrl - n       : yab stack window next
+yab < ctrl - p       : yab stack window prev
+yab < ctrl - q       : yab stack none
+yab < ctrl - s       : yab stack all
 yab < f              : yabai -m space --mirror y-axis
 yab < h              : yab focus window west
 yab < j              : yab focus window south
 yab < k              : yab focus window north
 yab < l              : yab focus window east
-yab < n              : yab focus window stack.next
-yab < p              : yab focus window stack.prev
+yab < n              : yab focus window stack.next next first
+yab < p              : yab focus window stack.prev prev last
 yab < r              : yabai -m space --rotate 90
 yab < return         : yabai -m window --toggle zoom-fullscreen
 yab < shift - 1      : yab move space 1
@@ -70,6 +70,8 @@ yab < shift - j      : yab swap window north
 yab < shift - k      : yab swap window south
 yab < shift - l      : yab swap window east
 yab < shift - r      : yabai -m space --rotate 270
+yab < shift - n      : yab swap window stack.next
+yab < shift - p      : yab swap window stack.prev
 yab < shift - tab    : yab move display next
 yab < tab            : yab focus display next
 
