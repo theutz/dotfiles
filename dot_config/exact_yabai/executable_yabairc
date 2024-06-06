@@ -38,8 +38,8 @@ yabai -m config external_bar all:40:0
 # Labeled Spaces
 #
 [
-  primary  secondary notes messages
-  meetings media     system
+  primary   secondary  notes      messages
+  meetings  media      reference  system
 ] | do {
   let labels = $in
   yabai -m query --spaces | from json | do {
@@ -56,15 +56,15 @@ yabai -m config external_bar all:40:0
 #
 # Rules
 #
-#[ [label app space];
-#  [settings '^System Settings$' system]
-#  [whatsapp WhatsApp messages]
-#  [messages Messages messages]
-#  [telegram Telegram messages]
-#  [spotify Spotify media]
-#  [clearvpn ClearVPN system]
-#  [cleanmymac 'CleanMyMac X' system]
-#] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
+[ [label app space];
+ [settings '^System Settings$' system]
+ [whatsapp WhatsApp messages]
+ [messages Messages messages]
+ [telegram Telegram messages]
+ [spotify Spotify media]
+ [clearvpn ClearVPN system]
+ [cleanmymac 'CleanMyMac X' system]
+] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
 
 # Signals
 yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai --load-sa"
@@ -75,5 +75,7 @@ yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' actio
 # Final Instructions
 yabai -m rule --apply
 
+service restart sketchybar
+service restart borders
+
 # vim: ft=nu
-# Yabai:1 ends here

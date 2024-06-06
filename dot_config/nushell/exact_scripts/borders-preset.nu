@@ -4,46 +4,64 @@ def update [] list<string> -> nothing {
   $in | borders ...$in
 }
 
-export def default [] {
+export def base [] {
     [
-        $"active_color=0x88(rose-pine dark base)"
-        $"inactive_color=0x11(rose-pine dark base)"
+        $"active_color=0xff(rose-pine auto base)"
+        $"inactive_color=0x44(rose-pine auto base)"
         $"blur_radius=10.0"
         $"width=8.0"
     ] | update
 }
 
-export def note [] {
+export def gold [] {
     [
-        $"active_color=0xff(rose-pine dark iris)"
-        $"inactive_color=0x88(rose-pine dark iris)"
+        $"active_color=0xff(rose-pine auto gold)"
+        $"inactive_color=0x44(rose-pine auto gold)"
         $"blur_radius=10.0"
         $"width=8.0"
     ] | update
 }
 
-export def important [] {
+export def iris [] {
     [
-        $"active_color=0xff(rose-pine dark foam)"
-        $"inactive_color=0x88(rose-pine dark pine)"
+        $"active_color=0xff(rose-pine auto iris)"
+        $"inactive_color=0x44(rose-pine auto iris)"
         $"blur_radius=10.0"
         $"width=8.0"
     ] | update
 }
 
-export def warning [] {
+export def rose [] {
     [
-        $"active_color=0xff(rose-pine dark gold)"
-        $"inactive_color=0x88(rose-pine dark gold)"
+        $"active_color=0xff(rose-pine auto rose)"
+        $"inactive_color=0x44(rose-pine auto rose)"
         $"blur_radius=10.0"
         $"width=8.0"
     ] | update
 }
 
-export def danger [] {
+export def love [] {
     [
-        $"active_color=0xff(rose-pine dark love)"
-        $"inactive_color=0xff(rose-pine dark rose)"
+        $"active_color=0xff(rose-pine auto love)"
+        $"inactive_color=0x44(rose-pine auto love)"
+        $"blur_radius=10.0"
+        $"width=8.0"
+    ] | update
+}
+
+export def foam [] {
+    [
+        $"active_color=0xff(rose-pine auto foam)"
+        $"inactive_color=0x44(rose-pine auto foam)"
+        $"blur_radius=10.0"
+        $"width=8.0"
+    ] | update
+}
+
+export def pine [] {
+    [
+        $"active_color=0xff(rose-pine auto pine)"
+        $"inactive_color=0x44(rose-pine auto pine)"
         $"blur_radius=10.0"
         $"width=8.0"
     ] | update

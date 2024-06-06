@@ -1,4 +1,3 @@
-# [[file:../nushell.org::*Theme Definitions][Theme Definitions:1]]
 def themes [] {
   [
     [role    dark   moon   dawn ];
@@ -19,32 +18,28 @@ def themes [] {
     [hi-high 524f67 56526e cecacd]
   ]
 }
-# Theme Definitions:1 ends here
 
-# [[file:../nushell.org::*Completion functions][Completion functions:1]]
 def variants [] {
-  themes | columns | drop nth 0
+  themes | columns | drop nth 0 | prepend "auto"
 }
-# Completion functions:1 ends here
 
-# [[file:../nushell.org::*Completion functions][Completion functions:2]]
 def role [] {
   themes | get role
 }
-# Completion functions:2 ends here
 
-# [[file:../nushell.org::*Completion functions][Completion functions:3]]
-def format [] {
-  [argb rgb]
-}
-# Completion functions:3 ends here
-
-# [[file:../nushell.org::*Main function][Main function:1]]
 export def main [
   variant: string@variants,
   role: string@role,
 ] {
-  themes | where role == $role
-    | (get $variant).0
+    let var = match ($variant) {
+        "auto" => {
+            dark-notify -e | complete | get stdout | str trim
+                | match ($in) {
+                  "light" => "dawn",
+                  "dark" => "dark"
+                }
+        }
+        _ => $variant
+    }
+    themes | where role == $role | (get $var).0
 }
-# Main function:1 ends here

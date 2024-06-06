@@ -2,22 +2,17 @@ use borders-preset.nu
 
 export def default [] {
     print "DEFAULT mode"
-    borders-preset default
+    borders-preset base
 }
 
 export def yab [] {
     print "YAB mode"
-    borders-preset note
-}
-
-export def focus [] {
-    print "FOCUS mode"
-    borders-preset important
+    borders-preset gold
 }
 
 export def yabx [] {
     print "YABX mode"
-    borders-preset warning
+    borders-preset love
 }
 
 export def go-back [] {

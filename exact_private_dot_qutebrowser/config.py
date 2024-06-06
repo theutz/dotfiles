@@ -1,5 +1,7 @@
 config.load_autoconfig(True)
 
+is_dark = False
+
 # Theming
 
 rose_pine = {
@@ -56,7 +58,7 @@ rose_pine_dawn = {
     "highlight_high": "#cecacd"
 }
 
-theme = rose_pine_dawn
+theme = rose_pine if is_dark else rose_pine_dawn
 
 # Settings
 
@@ -66,7 +68,7 @@ c.editor.command = [
     "{}",
 ]
 
-c.colors.completion.category.bg = theme.get('muted')
+c.colors.completion.category.bg = theme.get('base')
 c.colors.completion.category.border.bottom = theme.get('subtle')
 c.colors.completion.category.border.top = theme.get('subtle')
 c.colors.completion.category.fg = theme.get('text')
@@ -79,7 +81,7 @@ c.colors.completion.item.selected.fg = theme.get('surface')
 c.colors.completion.item.selected.match.fg = theme.get('muted')
 c.colors.completion.match.fg = theme.get('gold')
 c.colors.completion.odd.bg = theme.get('surface')
-c.colors.completion.scrollbar.bg = theme.get('muted')
+c.colors.completion.scrollbar.bg = theme.get('base')
 c.colors.completion.scrollbar.fg = theme.get('subtle')
 c.colors.contextmenu.disabled.bg = theme.get('highlight_low')
 c.colors.contextmenu.disabled.fg = theme.get('text')
@@ -183,7 +185,7 @@ c.qt.environ = {
 c.statusbar.position = "bottom"
 c.statusbar.padding = { "top": 8, "right": 8, "bottom": 8, "left": 8 }
 
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = is_dark
 
 never_dark_mode = [
     '*://docs.google.com/*',
