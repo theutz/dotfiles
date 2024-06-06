@@ -29,7 +29,3 @@ export def right [amount: number] {
      [left $amount 0]
     ] | each (apply)
 }
-
-def apply [--flip-x (-x), --flip-y (-y)] {
-    {|x| main $in.dir ($in.x | if ($flip_x) { $in * -1 } else $in) ($in.y | if ($flip_y) { $in * -1 } else $in) }
-}
