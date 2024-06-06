@@ -74,7 +74,7 @@ Because I wanted this all to live together in peace and harmony.
        (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        lispy             ; vim for lisp, for people who don't like vim
-       ;;multiple-cursors  ; editing in many places at once
+       multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
@@ -470,6 +470,9 @@ Doom's packages are pinned to a specific commit and updated from release to rele
   (setq evil-snipe-scope 'buffer))
 #+end_src
 
+#+RESULTS:
+: buffer
+
 **** which-key
 
 #+begin_src emacs-lisp :results silent
@@ -531,7 +534,7 @@ It requires minimal configuration.
 #+end_src
 
 #+RESULTS:
-: t
+: just-mode
 
 **** justl
 
@@ -578,7 +581,7 @@ It requires almost no configuration to use
 #+end_src
 
 #+RESULTS:
-: t
+: kdl-mode
 
 **** nushell-mode
 
@@ -873,6 +876,9 @@ $str | split chars
         #'gptel-menu))
 #+end_src
 
+#+RESULTS:
+: t
+
 **** chezmoi.el
 
 Chezmoi mode makes working with [[https://www.chezmoi.io/][chezmoi]] quite a bit easier by keeping the source and target in sync when you write.
@@ -902,6 +908,10 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
 #+begin_src emacs-lisp :results no
 (use-package! ox-gfm :after org)
 #+end_src
+
+#+RESULTS:
+: ox-gfm
+
 **** grip-mode
 
 #+begin_src emacs-lisp :tangle packages.el :eval no

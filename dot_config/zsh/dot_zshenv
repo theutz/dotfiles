@@ -52,6 +52,7 @@ path=(
   $HOME/{,s}bin(N)
   $HOME/.local/bin
   $HOME/bin
+  $HOME/.config/composer/vendor/bin
   $HOME/.config/phpmon/bin
   $HOME/.config/emacs/bin
   $HOME/.local/share/bob/nvim-bin

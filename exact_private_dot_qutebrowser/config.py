@@ -1,6 +1,7 @@
 config.load_autoconfig(True)
 
-is_dark = False
+import subprocess
+is_dark = subprocess.run(['dark-notify', '-e'], capture_output=True).stdout == b'dark\n'
 
 # Theming
 

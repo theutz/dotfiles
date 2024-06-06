@@ -18,6 +18,20 @@ settings:
     global: 60
   auto_save.session:
     global: true
+  bindings.commands:
+    global:
+      command:
+        <Ctrl+e>: cmd-edit --run
+      normal:
+        <Escape>: clear-keychain ;; search ;; fullscreen --leave ;; clear-messages
+        <Meta+,>: config-edit
+        J: tab-next
+        K: tab-prev
+        ge: edit-url {url}
+        tdH: config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled
+        tda: config-cycle -p colors.webpage.darkmode.enabled
+        tdh: config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled
+        tdu: config-cycle -p -u {url} colors.webpage.darkmode.enabled
   colors.webpage.darkmode.enabled:
     global: true
   completion.cmd_history_max_items:

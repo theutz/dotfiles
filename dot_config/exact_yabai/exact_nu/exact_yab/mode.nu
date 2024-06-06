@@ -10,9 +10,9 @@ export def yab [] {
     borders-preset gold
 }
 
-export def yabx [] {
-    print "YABX mode"
-    borders-preset love
+export def stack [] {
+    print "STACK mode"
+    borders-preset iris
 }
 
 export def go-back [] {

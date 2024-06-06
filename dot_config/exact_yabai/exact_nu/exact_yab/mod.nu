@@ -14,3 +14,4 @@ export use focus.nu
 export use swap.nu
 export use warp.nu
 export use move.nu
+export use resize.nu
