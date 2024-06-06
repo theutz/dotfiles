@@ -1,5 +1,7 @@
+use pueue.nu
+
 export def main [] {
-    "Commands for interacting with long-running services."
+    pueue status | get tasks.details | select id command group status | where status == Running
 }
 
 def service-definitions [] {
@@ -10,6 +12,8 @@ def service-definitions [] {
       [borders     pueue null]
       [sketchybar  pueue null]
       [dark-notify pueue 'dark-notify -c "tmux source-file ~/.config/tmux/tmux.conf"']
+      [qutebrowser pueue 'qutebrowser --nowindow']
+      [emacs       pueue 'emacs --fg-daemon']
     ]
 }
 
@@ -29,7 +33,7 @@ def start-with-pueue [
 
     pueue status | get groups | where name == $group
     | if ($in | is-empty) {
-        ^pueue groups add $group
+        ^pueue group add $group
     }
 
     pueue status | get tasks.details | where group == $group

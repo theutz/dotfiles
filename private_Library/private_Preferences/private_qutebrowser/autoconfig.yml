@@ -28,6 +28,13 @@ settings:
         J: tab-next
         K: tab-prev
         ge: edit-url {url}
+        tdH: config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled
+          ;; reload
+        tda: config-cycle -p colors.webpage.darkmode.enabled ;; reload
+        tdu: config-cycle -p -u {url} colors.webpage.darkmode.enabled ;; reload
+        tdx: config-unset -u {url} colors.webpage.darkmode.enabled ;; config-unset
+          -u *://{url:host}/* colors.webpage.darkmode.enabled ;; config-unset -u *://*.{url:host}/*
+          colors.webpage.darkmode.enabled ;; reload
   colors.completion.category.bg:
     global: '#26233a'
   colors.completion.category.border.bottom:
@@ -205,6 +212,11 @@ settings:
     global: '#9ccfd8'
   colors.tooltip.fg:
     global: '#191724'
+  colors.webpage.darkmode.enabled:
+    '*://*.help/*': false
+    docs.google.com: false
+    global: true
+    mail.google.com: false
   completion.cmd_history_max_items:
     global: -1
   completion.delay:

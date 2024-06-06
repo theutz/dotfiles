@@ -1,7 +1,7 @@
 use rose-pine.nu
 
 def update [] list<string> -> nothing {
-  $in | ["borders" ...$in] | pueue add -- ...$in
+  $in | borders ...$in
 }
 
 export def default [] {

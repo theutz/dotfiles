@@ -15,14 +15,9 @@ export def focus [] {
     borders-preset important
 }
 
-export def swap [] {
-    print "SWAP mode"
+export def yabx [] {
+    print "YABX mode"
     borders-preset warning
-}
-
-export def warp [] {
-    print "WARP mode"
-    borders-preset danger
 }
 
 export def go-back [] {

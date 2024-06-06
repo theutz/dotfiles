@@ -20,7 +20,7 @@ export LIFESTYLE="emacs" # emacs, vim
 
 if [[ "$LIFESTYLE" == emacs ]]; then
   export ALTERNATE_EDITOR=''
-  export EMACS_SOCKET_NAME="${XDG_RUNTIME_DIR}emacs/server"
+  export EMACS_SOCKET_NAME="${XDG_STATE_HOME}/emacs/server"
   export EDITOR='emacsclient --reuse-frame'
 else
   export EDITOR='nvim'

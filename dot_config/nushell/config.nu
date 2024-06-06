@@ -32,7 +32,6 @@ use pueue.nu
 use aliases.nu
 
 # My custom modules
-use wm
 use yab
 
 # Custom Scripts

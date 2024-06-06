@@ -13,3 +13,4 @@ export use mode.nu
 export use focus.nu
 export use swap.nu
 export use warp.nu
+export use move.nu

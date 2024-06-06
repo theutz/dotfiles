@@ -31,8 +31,8 @@
 ;; Line Number Style:1 ends here
 
 ;; [[file:config.org::*Server][Server:1]]
-(setq server-socket-dir (concat (or (getenv "XDG_RUNTIME_DIR")
-                                    (getenv "TMPDIR")) "emacs"))
+(setq server-socket-dir (expand-file-name "emacs" (or (getenv "XDG_STATE_DIR")
+                                                      (expand-file-name ".local/state" (getenv "HOME")))))
 ;; Server:1 ends here
 
 ;; [[file:config.org::*Vterm][Vterm:1]]
