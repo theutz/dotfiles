@@ -2,7 +2,7 @@
 #+description: My best attempt at building a world for myself.
 #+property: header-args:emacs-lisp :tangle config.el :comments link
 
-* Init
+* =init.el=
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle init.el :eval no :noweb yes
 :END:
@@ -58,7 +58,7 @@ Because I wanted this all to live together in peace and harmony.
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
        (popup +defaults)   ; tame sudden yet inevitable temporary windows
-       tabs              ; a tab bar for Emacs
+       ;;tabs              ; a tab bar for Emacs
        ;;treemacs          ; a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
        (vc-gutter +pretty) ; vcs diff in the fringe
@@ -245,9 +245,9 @@ Doom exposes five (optional) variables for controlling fonts in Doom:
 See =C-h v doom-font= for documentation and more examples of what they accept. For example:
 
 #+begin_src emacs-lisp :results silent
-(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 14 :weight 'medium)
-      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14)
-      doom-serif-font (font-spec :family "IBM Plex Serif" :size 14 :weight 'medium))
+(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 12 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 12)
+      doom-serif-font (font-spec :family "IBM Plex Serif" :size 12 :weight 'medium))
 #+end_src
 
 If you or Emacs can't find your font, use =M-x describe-font= to look them up, =M-x eval-region= to execute elisp code, and =M-x doom/reload-font= to refresh your font settings. If Emacs still can't find your font, it likely wasn't installed correctly. Font issues are rarely Doom issues!
@@ -1086,6 +1086,11 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
 #+begin_src emacs-lisp :results silent
 (after! yaml-mode
   (set-formatter! 'prettierd '("/opt/homebrew/bin/prettierd") :modes '(yaml-mode)))
+#+end_src
+*** Compilation
+
+#+begin_src emacs-lisp
+(add-hook! )
 #+end_src
 
 ** Bindings

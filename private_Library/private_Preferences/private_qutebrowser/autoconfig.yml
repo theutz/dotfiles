@@ -52,19 +52,26 @@ settings:
     - p.typekit.net
   content.cookies.accept:
     '*://*.app.slack.com/*': no-3rdparty
+    '*://*.projects.zoho.com/*': all
+    '*://*.stock.adobe.com/*': all
     '*://*.www.friendzy.co/*': all
     '*://app.slack.com/*': no-3rdparty
+    '*://projects.zoho.com/*': all
     '*://www.friendzy.co/*': all
+    https://projects.zoho.com/portal/delegator#todomilestones/1711669000000798015/customview/1711669000004804003: all
   content.fullscreen.window:
     global: true
   content.javascript.clipboard:
     global: access
   content.notifications.enabled:
+    '*://*.app.slack.com/*': true
+    '*://*.projects.zoho.com/*': true
     https://app.fastmail.com: true
     https://app.slack.com: true
     https://calendar.google.com: true
     https://dnschecker.org: true
     https://projects.zoho.com: true
+    https://projects.zoho.com/portal/delegator#todomilestones/1711669000000798015/customview/1711669000004804003: true
     https://web.telegram.org: true
     https://web.whatsapp.com: true
     https://www.facebook.com: false
@@ -142,6 +149,8 @@ settings:
     global: -1
   tabs.last_close:
     global: close
+  tabs.mousewheel_switching:
+    global: false
   tabs.padding:
     global:
       bottom: 4
@@ -149,7 +158,7 @@ settings:
       right: 5
       top: 4
   tabs.position:
-    global: top
+    global: right
   tabs.select_on_remove:
     global: next
   tabs.show:
@@ -163,7 +172,7 @@ settings:
   tabs.undo_stack_size:
     global: -1
   tabs.width:
-    global: 15%
+    global: 20%
   tabs.wrap:
     global: true
   url.auto_search:

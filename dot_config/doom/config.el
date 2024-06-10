@@ -6,9 +6,9 @@
 ;; Identity:1 ends here
 
 ;; [[file:config.org::*Fonts][Fonts:1]]
-(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 14 :weight 'medium)
-      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 14)
-      doom-serif-font (font-spec :family "IBM Plex Serif" :size 14 :weight 'medium))
+(setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 12 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 12)
+      doom-serif-font (font-spec :family "IBM Plex Serif" :size 12 :weight 'medium))
 ;; Fonts:1 ends here
 
 ;; [[file:config.org::*Themes][Themes:1]]
@@ -480,6 +480,10 @@ Resize window
 (after! yaml-mode
   (set-formatter! 'prettierd '("/opt/homebrew/bin/prettierd") :modes '(yaml-mode)))
 ;; YAML:1 ends here
+
+;; [[file:config.org::*Compilation][Compilation:1]]
+(add-hook! )
+;; Compilation:1 ends here
 
 ;; [[file:config.org::*Workspaces][Workspaces:1]]
 (map! :leader

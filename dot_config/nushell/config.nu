@@ -29,7 +29,7 @@ use follow.nu
 use chezmoi
 use service.nu
 use pueue.nu
-use aliases.nu
+source aliases.nu
 
 # My custom modules
 use yab
@@ -47,18 +47,3 @@ keychain --eval --quiet ...$in
     | into record
     | load-env
 
-alias chemzoi = chezmoi
-
-def --wrapped editor [...args] {
-  let cmd = $env.EDITOR | first
-  let flags = $env.EDITOR | drop nth 0
-  run-external $cmd ...$flags ...$args
-}
-
-def --wrapped visual [...args] {
-  let cmd = $env.VISUAL | first
-  let flags = $env.VISUAL | drop nth 0
-  run-external $cmd ...$flags ...$args
-}
-
-alias e = visual

@@ -19,8 +19,13 @@ yabai -m config window_zoom_persist off              # on | off
 yabai -m config window_shadow float                  # true | false | float
 yabai -m config window_opacity on                    # on | off
 yabai -m config window_opacity_duration 0.1          # 0-1
-yabai -m config active_window_opacity 0.95           # 0-1
-yabai -m config normal_window_opacity 0.80           # 0-1
+dark-notify -e | complete | match ($in.stdout | str trim) {
+  "light" => [0.97 0.92],
+  "dark" => [0.90 0.75]
+} | do {
+  yabai -m config active_window_opacity ($in | get 0)
+  yabai -m config normal_window_opacity ($in | get 1)
+}
 yabai -m config insert_feedback_color 0x88FF0000     # 0xAARRGGBB
 yabai -m config split_ratio 0.5                      # 0-1
 yabai -m config split_type auto                      # vertical | horizontal | auto
@@ -58,13 +63,14 @@ yabai -m config external_bar all:40:0
 #
 # Labeled Displays
 #
+
 yabai -m display 1 --label builtin
-yabai -m display 2 --label external
+try { yabai -m display 2 --label external }
 
 #
 # Rules
 #
-[
+let rules = [
     [space    	app                	label];
     [system   	'^System Settings$'	settings]
     [messages 	WhatsApp           	whatsapp]
@@ -80,15 +86,14 @@ yabai -m display 2 --label external
     [primary  	"qutebrowser"      	qutebrowser]
     [secondary	"WezTerm"          	wezterm]
     [secondary	"Dash"             	dash]
-] | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
+]
+
+$rules | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
 
 # Signals
 yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai --load-sa"
 yabai -m signal --add label=focus-wez event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
-yabai -m signal --add label=spotify event=window_focused app="^Spotify$" action='yabai -m rule --apply spotify'
-yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' action='yabai -m rule --apply whatsapp'
 [
-  window_focused
   space_created
   space_destroyed
   space_changed
@@ -97,7 +102,7 @@ yabai -m signal --add label=whatsapp event=window_focused app='^WhatsApp$' actio
   display_moved
   system_woke
 ] | each {|x|
-  yabai -m signal --add $"event=($in)" action="sketchybar --reload"
+  yabai -m signal --add $"event=($in)" action="/opt/homebrew/bin/sketchybar --reload"
 }
 
 # Final Instructions

@@ -90,13 +90,13 @@ c.colors.contextmenu.menu.bg = theme.get('base')
 c.colors.contextmenu.menu.fg = theme.get('text')
 c.colors.contextmenu.selected.bg = theme.get('subtle')
 c.colors.contextmenu.selected.fg = theme.get('text')
-c.colors.downloads.bar.bg = theme.get('base')
-c.colors.downloads.error.bg = theme.get('love')
+c.colors.downloads.bar.bg = theme.get('overlay')
+c.colors.downloads.error.bg = theme.get('rose')
 c.colors.downloads.error.fg = theme.get('text')
-c.colors.downloads.start.bg = theme.get('gold')
-c.colors.downloads.start.fg = theme.get('text')
+c.colors.downloads.start.bg = theme.get('iris')
+c.colors.downloads.start.fg = theme.get('base')
 c.colors.downloads.stop.bg = theme.get('pine')
-c.colors.downloads.stop.fg = theme.get('text')
+c.colors.downloads.stop.fg = theme.get('base')
 c.colors.hints.bg = theme.get('gold')
 c.colors.hints.fg = theme.get('surface')
 c.colors.hints.match.fg = theme.get('pine')
@@ -222,7 +222,8 @@ c.url.searchengines = {
     'DEFAULT': 'https://kagi.com/search?q={}',
     '!k': 'https://kagi.com/search?q={}',
     '!g': 'https://google.com/search?q={}&udm=14',
-    '!tw': "https://kagi.com/search?q=!tw+{}", # kagi search with tailwind lens
+    '!tw': "https://kagi.com/search?q=!tw+{}", # kagi search with tailwind lens,
+    '!lar': 'https://kagi.com/search?1=!laravel+{}'
 }
 
 c.url.start_pages = "https://kagi.com"
@@ -243,6 +244,11 @@ normal_bindings = {
     'tdH': 'config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled',
     'tdh': 'config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled',
     'tdu': 'config-cycle -p -u {url} colors.webpage.darkmode.enabled',
+    'tnu': 'config-cycle -p -u {url} content.notifications.enabled true false ask',
+    'tnh': 'config-cycle -p -u *://{url:host}/* content.notifications.enabled true false ask',
+    'tnH': 'config-cycle -p -u *://*.{url:host}/* content.notifications.enabled true false ask',
+    'ttp': 'config-cycle -p tabs.position top right bottom left',
+    'ttP': 'config-cycle -p tabs.position top left bottom right'
 }
 for key, cmd in normal_bindings.items():
     config.bind(key, cmd)

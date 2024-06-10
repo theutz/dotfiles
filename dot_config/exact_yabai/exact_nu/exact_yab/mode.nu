@@ -2,12 +2,12 @@ use borders-preset.nu
 
 export def default [] {
     print "DEFAULT mode"
-    borders-preset base
+    borders-preset gold
 }
 
 export def yab [] {
     print "YAB mode"
-    borders-preset gold
+    borders-preset love
 }
 
 export def stack [] {

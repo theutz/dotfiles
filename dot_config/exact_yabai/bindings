@@ -13,7 +13,17 @@ f19                 ; yab
 0x0A                ; yab
 ctrl + alt - return ; yab
 
-cmd + ctrl + alt - r : yab restart
+cmd + ctrl + alt - b      : yabai -m space --balance
+cmd + ctrl + alt - e      : yabai -m space --equalize
+cmd + ctrl + alt - h      : yab focus window west
+cmd + ctrl + alt - j      : yab focus window south
+cmd + ctrl + alt - k      : yab focus window north
+cmd + ctrl + alt - l      : yab focus window east
+cmd + ctrl + alt - n      : yab focus window stack.next next first
+cmd + ctrl + alt - p      : yab focus window stack.prev prev last
+cmd + ctrl + alt - r      : yab restart
+cmd + ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
+cmd + ctrl + alt - s      : yab stack toggle
 
 #
 # YAB mode
@@ -40,8 +50,8 @@ yab < ctrl + alt - l : yab resize right 50
 yab < ctrl - b       : yabai -m space --balance
 yab < ctrl - e       : yabai -m space --equalize
 yab < ctrl - h       : yab warp window west
-yab < ctrl - j       : yab warp window north
-yab < ctrl - k       : yab warp window south
+yab < ctrl - j       : yab warp window south
+yab < ctrl - k       : yab warp window north
 yab < ctrl - l       : yab warp window east
 yab < ctrl - n       : yab stack window next
 yab < ctrl - p       : yab stack window prev
@@ -66,8 +76,8 @@ yab < shift - 7      : yab move space 7
 yab < shift - 8      : yab move space 8
 yab < shift - f      : yabai -m space --mirror x-axis
 yab < shift - h      : yab swap window west
-yab < shift - j      : yab swap window north
-yab < shift - k      : yab swap window south
+yab < shift - j      : yab swap window south
+yab < shift - k      : yab swap window north
 yab < shift - l      : yab swap window east
 yab < shift - r      : yabai -m space --rotate 270
 yab < shift - n      : yab swap window stack.next

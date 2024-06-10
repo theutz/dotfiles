@@ -5,7 +5,20 @@
  ;; If there is more than one, they won't work right.
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(safe-local-variable-values
-   '((eval add-hook 'before-save-hook
+   '((eval add-hook 'compilation-filter-hook
+      (lambda nil
+        (remove-overlays))
+      nil t)
+     (eval add-hook 'org-babel-tangle-finished-hook
+      (lambda nil
+        (org-gfm-export-to-markdown))
+      nil t)
+     (eval add-hook 'before-save-hook
+      (lambda nil
+        (save-excursion
+          (org-babel-execute-buffer)))
+      nil t)
+     (eval add-hook 'before-save-hook
       (lambda nil
         (org-babel-execute-buffer)))
      (eval add-hook 'org-babel-tangle-finished-hook
