@@ -1,7 +1,8 @@
+import subprocess
+
 config.load_autoconfig(True)
 
-import subprocess
-is_dark = subprocess.run(['dark-notify', '-e'], capture_output=True).stdout == b'dark\n'
+is_dark = subprocess.run(["dark-notify", "-e"], capture_output=True).stdout == b"dark\n"
 
 # Theming
 
@@ -20,7 +21,7 @@ rose_pine = {
     "iris": "#c4a7e7",
     "highlight_low": "#21202e",
     "highlight_med": "#403d52",
-    "highlight_high": "#524f67"
+    "highlight_high": "#524f67",
 }
 
 rose_pine_moon = {
@@ -38,7 +39,7 @@ rose_pine_moon = {
     "iris": "#c4a7e7",
     "highlight_low": "#2a283e",
     "highlight_med": "#44415a",
-    "highlight_high": "#56526e"
+    "highlight_high": "#56526e",
 }
 
 rose_pine_dawn = {
@@ -56,106 +57,112 @@ rose_pine_dawn = {
     "iris": "#907aa9",
     "highlight_low": "#f4ede8",
     "highlight_med": "#dfdad9",
-    "highlight_high": "#cecacd"
+    "highlight_high": "#cecacd",
 }
 
 theme = rose_pine if is_dark else rose_pine_dawn
 
 # Settings
 
-c.editor.command = [
-    "emacsclient",
-    "--reuse-frame",
-    "{}",
-]
+# c.editor.command = [
+#     "emacsclient",
+#     "--reuse-frame",
+#     "{}",
+# ]
 
-c.colors.completion.category.bg = theme.get('base')
-c.colors.completion.category.border.bottom = theme.get('base')
-c.colors.completion.category.border.top = theme.get('base')
-c.colors.completion.category.fg = theme.get('text')
-c.colors.completion.even.bg = theme.get('base')
-c.colors.completion.fg = [theme.get('text'), theme.get('muted'), theme.get('muted')] # one for each column
-c.colors.completion.item.selected.bg = theme.get('gold')
-c.colors.completion.item.selected.border.bottom = theme.get('gold')
-c.colors.completion.item.selected.border.top = theme.get('gold')
-c.colors.completion.item.selected.fg = theme.get('surface')
-c.colors.completion.item.selected.match.fg = theme.get('muted')
-c.colors.completion.match.fg = theme.get('gold')
-c.colors.completion.odd.bg = theme.get('surface')
-c.colors.completion.scrollbar.bg = theme.get('base')
-c.colors.completion.scrollbar.fg = theme.get('subtle')
-c.colors.contextmenu.disabled.bg = theme.get('highlight_low')
-c.colors.contextmenu.disabled.fg = theme.get('text')
-c.colors.contextmenu.menu.bg = theme.get('base')
-c.colors.contextmenu.menu.fg = theme.get('text')
-c.colors.contextmenu.selected.bg = theme.get('subtle')
-c.colors.contextmenu.selected.fg = theme.get('text')
-c.colors.downloads.bar.bg = theme.get('overlay')
-c.colors.downloads.error.bg = theme.get('rose')
-c.colors.downloads.error.fg = theme.get('text')
-c.colors.downloads.start.bg = theme.get('iris')
-c.colors.downloads.start.fg = theme.get('base')
-c.colors.downloads.stop.bg = theme.get('pine')
-c.colors.downloads.stop.fg = theme.get('base')
-c.colors.hints.bg = theme.get('gold')
-c.colors.hints.fg = theme.get('surface')
-c.colors.hints.match.fg = theme.get('pine')
-c.colors.keyhint.bg = theme.get('surface')
-c.colors.keyhint.fg = theme.get('text')
-c.colors.keyhint.suffix.fg = theme.get('iris')
-c.colors.messages.error.bg = theme.get('love')
-c.colors.messages.error.border = theme.get('love')
-c.colors.messages.error.fg = theme.get('base')
-c.colors.messages.info.bg = theme.get('foam')
-c.colors.messages.info.border = theme.get('foam')
-c.colors.messages.info.fg = theme.get('base')
-c.colors.messages.warning.bg = theme.get('gold')
-c.colors.messages.warning.border = theme.get('gold')
-c.colors.messages.warning.fg = theme.get('base')
-c.colors.prompts.bg = theme.get('gold')
-c.colors.prompts.border = theme.get('surface')
-c.colors.prompts.fg = theme.get('surface')
-c.colors.statusbar.caret.selection.bg = theme.get('iris')
-c.colors.statusbar.caret.selection.fg = theme.get('base')
-c.colors.statusbar.command.bg = theme.get('base')
-c.colors.statusbar.command.fg = theme.get('text')
-c.colors.statusbar.command.private.bg = theme.get('highlight_high')
-c.colors.statusbar.command.private.fg = theme.get('text')
-c.colors.statusbar.insert.bg = theme.get('foam')
-c.colors.statusbar.insert.fg = theme.get('base')
-c.colors.statusbar.normal.bg = theme.get('base')
-c.colors.statusbar.normal.fg = theme.get('muted')
-c.colors.statusbar.private.bg = theme.get('highlight_med')
-c.colors.statusbar.private.fg = theme.get('text')
-c.colors.statusbar.progress.bg = theme.get('iris')
-c.colors.statusbar.url.error.fg = theme.get('love')
-c.colors.statusbar.url.fg = theme.get('text')
-c.colors.statusbar.url.hover.fg = theme.get('gold')
-c.colors.statusbar.url.success.http.fg = theme.get('rose')
-c.colors.statusbar.url.success.https.fg = theme.get('pine')
-c.colors.statusbar.url.warn.fg = theme.get('iris')
-c.colors.tabs.bar.bg = theme.get('base')
-c.colors.tabs.even.bg = theme.get('surface')
-c.colors.tabs.even.fg = theme.get('text')
-c.colors.tabs.indicator.error = theme.get('love')
-c.colors.tabs.indicator.start = theme.get('iris')
-c.colors.tabs.indicator.stop = theme.get('pine')
-c.colors.tabs.odd.bg = theme.get('base')
-c.colors.tabs.odd.fg = theme.get('text')
-c.colors.tabs.pinned.even.bg = theme.get('surface')
-c.colors.tabs.pinned.even.fg = theme.get('text')
-c.colors.tabs.pinned.odd.bg = theme.get('base')
-c.colors.tabs.pinned.odd.fg = theme.get('text')
-c.colors.tabs.pinned.selected.even.bg = theme.get('gold')
-c.colors.tabs.pinned.selected.even.fg = theme.get('surface')
-c.colors.tabs.pinned.selected.odd.bg = theme.get('gold')
-c.colors.tabs.pinned.selected.odd.fg = theme.get('surface')
-c.colors.tabs.selected.even.bg = theme.get('gold')
-c.colors.tabs.selected.even.fg = theme.get('surface')
-c.colors.tabs.selected.odd.bg = theme.get('gold')
-c.colors.tabs.selected.odd.fg = theme.get('surface')
-c.colors.tooltip.bg = theme.get('subtle')
-c.colors.tooltip.fg = theme.get('text')
+c.editor.command = ["neovide", "--no-fork", "{}"]
+
+c.colors.completion.category.bg = theme.get("base")
+c.colors.completion.category.border.bottom = theme.get("base")
+c.colors.completion.category.border.top = theme.get("base")
+c.colors.completion.category.fg = theme.get("text")
+c.colors.completion.even.bg = theme.get("base")
+c.colors.completion.fg = [
+    theme.get("text"),
+    theme.get("muted"),
+    theme.get("muted"),
+]  # one for each column
+c.colors.completion.item.selected.bg = theme.get("gold")
+c.colors.completion.item.selected.border.bottom = theme.get("gold")
+c.colors.completion.item.selected.border.top = theme.get("gold")
+c.colors.completion.item.selected.fg = theme.get("surface")
+c.colors.completion.item.selected.match.fg = theme.get("muted")
+c.colors.completion.match.fg = theme.get("gold")
+c.colors.completion.odd.bg = theme.get("surface")
+c.colors.completion.scrollbar.bg = theme.get("base")
+c.colors.completion.scrollbar.fg = theme.get("subtle")
+c.colors.contextmenu.disabled.bg = theme.get("highlight_low")
+c.colors.contextmenu.disabled.fg = theme.get("text")
+c.colors.contextmenu.menu.bg = theme.get("base")
+c.colors.contextmenu.menu.fg = theme.get("text")
+c.colors.contextmenu.selected.bg = theme.get("subtle")
+c.colors.contextmenu.selected.fg = theme.get("text")
+c.colors.downloads.bar.bg = theme.get("overlay")
+c.colors.downloads.error.bg = theme.get("rose")
+c.colors.downloads.error.fg = theme.get("text")
+c.colors.downloads.start.bg = theme.get("iris")
+c.colors.downloads.start.fg = theme.get("base")
+c.colors.downloads.stop.bg = theme.get("pine")
+c.colors.downloads.stop.fg = theme.get("base")
+c.colors.hints.bg = theme.get("gold")
+c.colors.hints.fg = theme.get("surface")
+c.colors.hints.match.fg = theme.get("pine")
+c.colors.keyhint.bg = theme.get("surface")
+c.colors.keyhint.fg = theme.get("text")
+c.colors.keyhint.suffix.fg = theme.get("iris")
+c.colors.messages.error.bg = theme.get("love")
+c.colors.messages.error.border = theme.get("love")
+c.colors.messages.error.fg = theme.get("base")
+c.colors.messages.info.bg = theme.get("foam")
+c.colors.messages.info.border = theme.get("foam")
+c.colors.messages.info.fg = theme.get("base")
+c.colors.messages.warning.bg = theme.get("gold")
+c.colors.messages.warning.border = theme.get("gold")
+c.colors.messages.warning.fg = theme.get("base")
+c.colors.prompts.bg = theme.get("gold")
+c.colors.prompts.border = theme.get("surface")
+c.colors.prompts.fg = theme.get("surface")
+c.colors.statusbar.caret.selection.bg = theme.get("iris")
+c.colors.statusbar.caret.selection.fg = theme.get("base")
+c.colors.statusbar.command.bg = theme.get("base")
+c.colors.statusbar.command.fg = theme.get("text")
+c.colors.statusbar.command.private.bg = theme.get("highlight_high")
+c.colors.statusbar.command.private.fg = theme.get("text")
+c.colors.statusbar.insert.bg = theme.get("foam")
+c.colors.statusbar.insert.fg = theme.get("base")
+c.colors.statusbar.normal.bg = theme.get("base")
+c.colors.statusbar.normal.fg = theme.get("muted")
+c.colors.statusbar.private.bg = theme.get("highlight_med")
+c.colors.statusbar.private.fg = theme.get("text")
+c.colors.statusbar.progress.bg = theme.get("iris")
+c.colors.statusbar.url.error.fg = theme.get("love")
+c.colors.statusbar.url.fg = theme.get("text")
+c.colors.statusbar.url.hover.fg = theme.get("gold")
+c.colors.statusbar.url.success.http.fg = theme.get("rose")
+c.colors.statusbar.url.success.https.fg = theme.get("pine")
+c.colors.statusbar.url.warn.fg = theme.get("iris")
+c.colors.tabs.bar.bg = theme.get("base")
+c.colors.tabs.even.bg = theme.get("surface")
+c.colors.tabs.even.fg = theme.get("text")
+c.colors.tabs.indicator.error = theme.get("love")
+c.colors.tabs.indicator.start = theme.get("iris")
+c.colors.tabs.indicator.stop = theme.get("pine")
+c.colors.tabs.odd.bg = theme.get("base")
+c.colors.tabs.odd.fg = theme.get("text")
+c.colors.tabs.pinned.even.bg = theme.get("surface")
+c.colors.tabs.pinned.even.fg = theme.get("text")
+c.colors.tabs.pinned.odd.bg = theme.get("base")
+c.colors.tabs.pinned.odd.fg = theme.get("text")
+c.colors.tabs.pinned.selected.even.bg = theme.get("gold")
+c.colors.tabs.pinned.selected.even.fg = theme.get("surface")
+c.colors.tabs.pinned.selected.odd.bg = theme.get("gold")
+c.colors.tabs.pinned.selected.odd.fg = theme.get("surface")
+c.colors.tabs.selected.even.bg = theme.get("gold")
+c.colors.tabs.selected.even.fg = theme.get("surface")
+c.colors.tabs.selected.odd.bg = theme.get("gold")
+c.colors.tabs.selected.odd.fg = theme.get("surface")
+c.colors.tooltip.bg = theme.get("subtle")
+c.colors.tooltip.fg = theme.get("text")
 
 c.fonts.contextmenu = "12pt default_family"
 c.fonts.default_family = "BlexMono Nerd Font"
@@ -174,8 +181,8 @@ c.fonts.web.family.standard = "IBM Plex Sans"
 c.fonts.web.size.minimum_logical = 6
 
 
-c.hints.border = "0 none " + theme.get('gold')
-c.hints.padding = { "bottom": 0, "left": 3, "right": 3, "top": 0 }
+c.hints.border = "0 none " + theme.get("gold")
+c.hints.padding = {"bottom": 0, "left": 3, "right": 3, "top": 0}
 c.hints.radius = 5
 c.hints.uppercase = True
 
@@ -184,79 +191,70 @@ c.qt.environ = {
 }
 
 c.statusbar.position = "bottom"
-c.statusbar.padding = { "top": 8, "right": 8, "bottom": 8, "left": 8 }
+c.statusbar.padding = {"top": 8, "right": 8, "bottom": 8, "left": 8}
 
 c.colors.webpage.darkmode.enabled = is_dark
 
-never_dark_mode = [
-    '*://docs.google.com/*',
-    '*://mail.google.com/*'
-]
+never_dark_mode = ["*://docs.google.com/*", "*://mail.google.com/*"]
 for pattern in never_dark_mode:
     with config.pattern(pattern) as p:
         p.colors.webpage.darkmode.enabled = False
 
 for url in [
-    'https://click.redditmail.com/*',
-    'https://*.bugherd.com/*',
-    'https://sentry.io/*',
-    'https://p.typekit.net/*'
+    "https://click.redditmail.com/*",
+    "https://*.bugherd.com/*",
+    "https://sentry.io/*",
+    "https://p.typekit.net/*",
 ]:
     c.content.blocking.whitelist.append(url)
 
-notifications_allowed = [
-    'https://app.slack.com'
-]
+notifications_allowed = ["https://app.slack.com"]
 for site in notifications_allowed:
     with config.pattern(site) as p:
         p.content.notifications.enabled = True
 
-notifications_blocked = [
-    'https://www.facebook.com'
-]
+notifications_blocked = ["https://www.facebook.com"]
 for site in notifications_blocked:
     with config.pattern(site) as p:
         p.content.notifications.enabled = False
 
 c.url.searchengines = {
-    'DEFAULT': 'https://kagi.com/search?q={}',
-    '!k': 'https://kagi.com/search?q={}',
-    '!g': 'https://google.com/search?q={}&udm=14',
-    '!tw': "https://kagi.com/search?q=!tw+{}", # kagi search with tailwind lens,
-    '!lar': 'https://kagi.com/search?1=!laravel+{}'
+    "DEFAULT": "https://kagi.com/search?q={}",
+    "!k": "https://kagi.com/search?q={}",
+    "!g": "https://google.com/search?q={}&udm=14",
+    "!tw": "https://kagi.com/search?q=!tw+{}",  # kagi search with tailwind lens,
+    "!lar": "https://kagi.com/search?1=!laravel+{}",
 }
 
 c.url.start_pages = "https://kagi.com"
 
 c.content.pdfjs = True
 
-c.completion.height = '20%'
+c.completion.height = "20%"
 c.completion.shrink = True
 c.completion.use_best_match = True
 
 # Bindings
 normal_bindings = {
-    '<Escape>': 'clear-keychain ;; search ;; fullscreen --leave ;; clear-messages',
-    '<Meta+,>': 'config-edit',
-    'J': 'tab-next',
-    'K': 'tab-prev',
-    'ge': 'edit-url {url}',
-    'tdH': 'config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled',
-    'tdh': 'config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled',
-    'tdu': 'config-cycle -p -u {url} colors.webpage.darkmode.enabled',
-    'tnu': 'config-cycle -p -u {url} content.notifications.enabled true false ask',
-    'tnh': 'config-cycle -p -u *://{url:host}/* content.notifications.enabled true false ask',
-    'tnH': 'config-cycle -p -u *://*.{url:host}/* content.notifications.enabled true false ask',
-    'ttp': 'config-cycle -p tabs.position top right bottom left',
-    'ttP': 'config-cycle -p tabs.position top left bottom right'
+    "<Escape>": "clear-keychain ;; search ;; fullscreen --leave ;; clear-messages",
+    "<Meta+,>": "config-edit",
+    "J": "tab-next",
+    "K": "tab-prev",
+    "ge": "edit-url {url}",
+    "tdH": "config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled",
+    "tdh": "config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled",
+    "tdu": "config-cycle -p -u {url} colors.webpage.darkmode.enabled",
+    "tnu": "config-cycle -p -u {url} content.notifications.enabled true false ask",
+    "tnh": "config-cycle -p -u *://{url:host}/* content.notifications.enabled true false ask",
+    "tnH": "config-cycle -p -u *://*.{url:host}/* content.notifications.enabled true false ask",
+    "ttp": "config-cycle -p tabs.position top right bottom left",
+    "ttP": "config-cycle -p tabs.position top left bottom right",
 }
 for key, cmd in normal_bindings.items():
     config.bind(key, cmd)
 
-command_bindings = {
-    '<Ctrl+e>': 'cmd-edit --run'
-}
+command_bindings = {"<Ctrl+e>": "cmd-edit --run"}
 for key, cmd in command_bindings.items():
-    config.bind(key, cmd, mode='command')
+    config.bind(key, cmd, mode="command")
 
-c.tabs.title.format_pinned = '{audio}{index}: 📌 {current_title}'
+c.tabs.title.format_pinned = "{audio}{index}: 📌 {current_title}"

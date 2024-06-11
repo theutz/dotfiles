@@ -27,12 +27,21 @@ settings:
         <Meta+,>: config-edit
         J: tab-next
         K: tab-prev
+        ^: tab-focus last
         ge: edit-url {url}
         tdH: config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled
         tda: config-cycle -p colors.webpage.darkmode.enabled
         tdh: config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled
         tdu: config-cycle -p -u {url} colors.webpage.darkmode.enabled
+        tnH: config-cycle -p -u *://*.{url:host}/* content.notifications.enabled true
+          false ask
+        tnh: config-cycle -p -u *://{url:host}/* content.notifications.enabled true
+          false ask
+        tnu: config-cycle -p -u {url} content.notifications.enabled true false ask
+        ttP: config-cycle -p tabs.position top left bottom right
+        ttp: config-cycle -p tabs.position top right bottom left
   colors.webpage.darkmode.enabled:
+    '*://*.ah-crap.test/*': false
     global: true
   completion.cmd_history_max_items:
     global: -1

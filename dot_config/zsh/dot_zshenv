@@ -16,7 +16,7 @@ fi
 
 # Editors
 
-export LIFESTYLE="emacs" # emacs, vim
+export LIFESTYLE="vim" # emacs, vim
 
 if [[ "$LIFESTYLE" == emacs ]]; then
   export ALTERNATE_EDITOR=''
