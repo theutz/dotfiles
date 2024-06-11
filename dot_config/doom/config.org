@@ -208,15 +208,12 @@ Because I wanted this all to live together in peace and harmony.
        literate
        (default +bindings +smartparens))
 #+end_src
-* Doom basics
-
+* =config.el=
 ** Prologue
 
-#+begin_src emacs-lisp :comments nil
+#+begin_src emacs-lisp :comments nil :results none :eval no
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
-
-#+RESULTS:
 
 Place your private configuration here! Remember, you do not need to run ~doom sync~ after modifying this file!
 
@@ -224,13 +221,10 @@ Place your private configuration here! Remember, you do not need to run ~doom sy
 
 Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets. It is optional.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results none
 (setq user-full-name "Michael Utz"
       user-mail-address "michael@theutz.com")
 #+end_src
-
-#+RESULTS:
-: michael@theutz.com
 
 ** Fonts
 
@@ -244,7 +238,7 @@ Doom exposes five (optional) variables for controlling fonts in Doom:
 
 See =C-h v doom-font= for documentation and more examples of what they accept. For example:
 
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results none
 (setq doom-font (font-spec :family "BlexMono Nerd Font Mono" :size 12 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 12)
       doom-serif-font (font-spec :family "IBM Plex Serif" :size 12 :weight 'medium))
@@ -271,7 +265,7 @@ There are two ways to load a theme. Both assume the theme is installed and avail
 (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 #+end_src
 
-** Line Number Style
+** Line number style
 
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
 
@@ -279,9 +273,7 @@ This determines the style of line numbers in effect. If set to `nil', line numbe
 (setq display-line-numbers-type 'relative)
 #+end_src
 
-* My customizations
-
-** Doom Info
+** More prologue...
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no :eval no
 :END:
@@ -313,7 +305,7 @@ You can also try =gd= (or =C-c c d=) to jump to their definition and see how the
 
 ** Emacs
 
-*** Server
+** Server
 
 I've set the corresponding environment variable in my =.zshenv= and =env.nu= files, so this should work without having.
 
@@ -325,7 +317,7 @@ I've set the corresponding environment variable in my =.zshenv= and =env.nu= fil
 #+RESULTS:
 : /Users/michael/.local/state/emacs
 
-*** Vterm
+** Vterm
 
 #+begin_src emacs-lisp
 (setq vterm-shell "/opt/homebrew/bin/nu")
@@ -334,7 +326,11 @@ I've set the corresponding environment variable in my =.zshenv= and =env.nu= fil
 #+RESULTS:
 : /opt/homebrew/bin/nu
 
-*** Line spacing
+#+begin_src emacs-lisp :results silent
+(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
+#+end_src
+
+** Line spacing
 
 Some useful tools for toggling line spacing. You can press =SPC t s= to toggle big or small spacing. Additionally, you can configure the amount of spacing that is toggled.
 
@@ -372,7 +368,7 @@ Finally, I'll set the default value for line spacing.
 #+RESULTS:
 : 0.4
 
-*** Customize
+** Customize
 
 While I'm generally avoiding the use of Emacs "customization" features, it is highly convenient for two things: adding safe local variables and safe local eval forms. So, I will be loading it here.
 
@@ -380,14 +376,14 @@ While I'm generally avoiding the use of Emacs "customization" features, it is hi
 (load-file (concat doom-user-dir "custom.el"))
 #+end_src
 
-*** Auto Save
+** Auto Save
 
 +i want my stuff saved as frequently as possible. This saves it automatically into the visited file.+ I'm not using this anymore because there's a number of unintended consequences that I'd rather control manually each time.
 
 #+begin_src emacs-lisp :results silent
 ;; (auto-save-visited-mode 1)
 #+end_src
-*** Tree Sitter
+** Tree Sitter
 
 Good information about setting this up [[https://www.masteringemacs.org/article/how-to-get-started-tree-sitter][can be found here]]. Here's a catalog of treesitter grammar definitions:
 
@@ -418,7 +414,7 @@ Good information about setting this up [[https://www.masteringemacs.org/article/
 #+RESULTS:
 | bash | cmake | css | elisp | go | html | javascript | json | make | markdown | python | toml | tsx | typescript | yaml |
 
-** Packages
+** =packages.el=
 
 *** Introduction
 :PROPERTIES:
@@ -491,9 +487,12 @@ Doom's packages are pinned to a specific commit and updated from release to rele
 (unpin! t)
 #+end_src
 
-*** Doom overrrides
+#+begin_src emacs-lisp :tangle packages.el :comments nil :eval no
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+#+end_src
 
-**** evil-snipe
+*** evil-snipe
 
 #+begin_src emacs-lisp
 (after! evil-snipe
@@ -503,14 +502,14 @@ Doom's packages are pinned to a specific commit and updated from release to rele
 #+RESULTS:
 : buffer
 
-**** which-key
+*** which-key
 
 #+begin_src emacs-lisp :results silent
 (after! which-key
   (setq which-key-allow-imprecise-window-fit nil))
 #+end_src
 
-**** evil
+*** evil
 
 To get evil to respect visual line mode, you've gotta delcare it early in the =init.el= file.
 
@@ -525,7 +524,7 @@ But other variables need to be setup after evil loads.
   (setq evil-shift-width 2))
 #+end_src
 
-**** evil-lion
+*** evil-lion
 
 I like the idea of aligning stuff easily, but in org-mode, consistent navigation keys are better.
 
@@ -536,20 +535,8 @@ I like the idea of aligning stuff easily, but in org-mode, consistent navigation
 #+end_src
 
 *** Custom packages
-:PROPERTIES:
-:header-args:emacs-lisp: :tangle config.el :comments both
-:END:
 
-I'll add an obligatory header to the file so we don't byte compile this.
-
-#+begin_src emacs-lisp :tangle packages.el :comments nil :eval no
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
-#+end_src
-
-Now we can start adding custom packages
-
-**** just-mode
+*** just-mode
 
 This package provides a basic minor mode for interacting with a =Justfile=.
 
@@ -566,7 +553,7 @@ It requires minimal configuration.
 #+RESULTS:
 : just-mode
 
-**** justl
+*** justl
 
 This package creates a listing of public Just commands and lets you execute them in a compilation buffer.
 
@@ -593,7 +580,7 @@ I've assigned some keymaps to make this more convenient.
 #+RESULTS:
 : t
 
-**** kdl-mode
+*** kdl-mode
 
 KDL is a configuration language favored by some (mostly Rust-based) programs like [[https://zellij.dev/][Zellij]]. This provides basic syntax highlighting for it.
 
@@ -613,9 +600,9 @@ It requires almost no configuration to use
 #+RESULTS:
 : kdl-mode
 
-**** nushell-mode
+*** nushell-mode
 
-***** Package setup
+**** Package setup
 
 This little package provides some syntax highlighting.
 
@@ -632,9 +619,9 @@ And requires very little configuration.
   :mode "\\.nu")
 #+end_src
 
-***** org-babel functions
+**** org-babel functions
 
-****** Tangling
+***** Tangling
 
 I need there to be a blank line between the output from =:comments link= and the actual content of a block. ~org-babel-tangle-body-hook~ seems like it might be a good candidate to accomplish that.
 
@@ -660,7 +647,7 @@ I need there to be a blank line between the output from =:comments link= and the
 (add-hook! 'org-babel-post-tangle-hook #'my/nushell-post-tangle-hook)
 #+end_src
 
-****** User-defined variables
+***** User-defined variables
 
 I want nushell to work with org-babel, but nobody's done the dirty work yet. We'll start with the basics. We might want this command to be customizable for someone's environment.
 
@@ -758,7 +745,7 @@ Lastly, I'll join them all together in a string with the ~--login~ flag.
   #+RESULTS: check-org-babel-nushell-command-options
   : --no-newline --env-config /Users/michael/.config/nushell/env.nu --config /Users/michael/.config/nushell/config.nu
 
-****** The execute function
+***** The execute function
 
 Everything before this was setting us up to be able to define a function that Org Babel will use to run a block of nushell code. That function must be named with a predictable format based on the language passed when defining src blocks.
 
@@ -789,9 +776,9 @@ The function above depends on some helpers to deal with variables passed into co
     (org-babel-nushell-custom-vars vars body)))
 #+end_src
 
-******* Creating variables
+****** Creating variables
 
-******** Concatenating with body
+******* Concatenating with body
 
 #+begin_src emacs-lisp :results silent :session org-babel-nushell-parsing-variables
 (defun org-babel-nushell-custom-vars (params body)
@@ -810,7 +797,7 @@ The function above depends on some helpers to deal with variables passed into co
 : let "two" = "b"
 : my body
 
-******** Parsing individual parameters
+******* Parsing individual parameters
 
 #+begin_src emacs-lisp :results silent :session org-babel-nushell-parsing-variables
 (defun org-babel-nushell-var-to-nushell (pair)
@@ -832,7 +819,7 @@ specifying a var of the same value."
 #+RESULTS:
 : let "my_var" = "my value"
 
-******* Ensuring it works
+****** Ensuring it works
 
 Here's a code block that we can run as a sanity check to make sure this is all working.
 
@@ -849,7 +836,7 @@ $str | split chars
 : │ 4 │ o │
 : ╰───┴───╯
 
-**** rose-doom-pine-emacs
+*** rose-doom-pine-emacs
 
 #+begin_src emacs-lisp :tangle packages.el :eval no
 (package! rose-pine-doom-emacs
@@ -878,7 +865,7 @@ $str | split chars
 
 #+RESULTS:
 
-**** gptel
+*** gptel
 
 #+begin_src emacs-lisp :tangle packages.el :eval no
 (package! gptel)
@@ -909,7 +896,7 @@ $str | split chars
 #+RESULTS:
 : t
 
-**** chezmoi.el
+*** chezmoi.el
 
 Chezmoi mode makes working with [[https://www.chezmoi.io/][chezmoi]] quite a bit easier by keeping the source and target in sync when you write.
 
@@ -929,7 +916,8 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
     (map! :leader :desc "Sync with chezmoi" :n (concat base "t") #'chezmoi-mode)
     (map! :leader :desc "Chezmoi git status" :n (concat base "o") #'chezmoi-open-other)))
 #+end_src
-**** ox-gfm
+
+*** ox-gfm
 
 #+begin_src emacs-lisp :tangle packages.el :eval no
 (package! ox-gfm)
@@ -942,7 +930,7 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
 #+RESULTS:
 : ox-gfm
 
-**** grip-mode
+*** grip-mode
 
 #+begin_src emacs-lisp :tangle packages.el :eval no
 (package! grip-mode)
@@ -957,7 +945,8 @@ I've setup a little sub-set of prefixes in the file-save keymap to work with som
           grip-github-password (cadr credential)))
   (map! :mode org-mode :localleader :n "E" #'grip-browse-preview))
 #+end_src
-**** hydra
+
+*** hydra
 
 #+begin_src emacs-lisp :tangle packages.el :eval no
 (package! hydra)
@@ -982,7 +971,7 @@ Resize window
   (map! :leader :prefix "w" :desc "resize windows" :n "SPC" #'doom-window-resize-hydra/body))
 #+end_src
 
-**** multi-vterm
+*** multi-vterm
 
 #+begin_src emacs-lisp :tangle packages.el :eval no
 (package! multi-vterm)
@@ -995,7 +984,8 @@ Resize window
   (map! :localleader :mode vterm-mode :n "n" #'multi-vterm-next)
   (map! :localleader :mode vterm-mode :n "p" #'multi-vterm-prev))
 #+end_src
-**** php-ts-mode
+
+*** php-ts-mode
 
 #+begin_src emacs-lisp :tangle packages.el
 (package! php-ts-mode
@@ -1004,17 +994,19 @@ Resize window
            :branch "master"))
 #+end_src
 
-** Modes
-*** Org
-**** Before loading
+*** org-mode
+**** Pre-load
+
 Some variables need to be set before org loads.
+
 #+begin_src emacs-lisp
 (setq org-directory "~/Dropbox/org/")
 #+end_src
 
 #+RESULTS:
 : ~/Dropbox/org/
-**** After loading
+
+**** Post-load
 
 But some can run after org loads. For instance, we can add some org modules.
 
@@ -1104,7 +1096,7 @@ And we can change the face attributes for org mode so that headlines are bigger.
 (add-hook! org-mode #'my/org-faces)
 #+end_src
 
-*** Nix
+*** nix-mode
 
 Use the [[https://github.com/kamadorueda/alejandra][Alejandra]] formatter.
 
@@ -1119,23 +1111,14 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
 #+end_src
 
-*** YAML
+*** yaml-mode
 
 #+begin_src emacs-lisp :results silent
 (after! yaml-mode
   (set-formatter! 'prettierd '("/opt/homebrew/bin/prettierd") :modes '(yaml-mode)))
 #+end_src
-*** Compilation
 
-#+begin_src emacs-lisp
-(add-hook! )
-#+end_src
-
-** Bindings
-
-*** Doom Overrides...
-
-**** Workspaces
+** Workspaces
 
 #+begin_src emacs-lisp :results silent
 (map! :leader
@@ -1147,8 +1130,8 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
          :desc "Swap workspace left" "<" #'+workspace/swap-left
          :desc "Swap workspace right" ">" #'+workspace/swap-right)))
 #+end_src
+** Bindings
 
-*** LazyVim compatibility layer
 
 I've got a lot of custom bindings that are meant to make switching between LazyVim and DoomEmacs less jarring.
 
@@ -1156,10 +1139,4 @@ I've got a lot of custom bindings that are meant to make switching between LazyV
 
         #+begin_src emacs-lisp :results silent
         (map! :leader :desc "Find file" :n "e" 'find-file)
-        #+end_src
-
-- Simple terminal stuff
-
-        #+begin_src emacs-lisp :results silent
-        (map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
         #+end_src

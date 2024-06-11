@@ -26,9 +26,9 @@
 (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 ;; Themes:1 ends here
 
-;; [[file:config.org::*Line Number Style][Line Number Style:1]]
+;; [[file:config.org::*Line number style][Line number style:1]]
 (setq display-line-numbers-type 'relative)
-;; Line Number Style:1 ends here
+;; Line number style:1 ends here
 
 ;; [[file:config.org::*Server][Server:1]]
 (setq server-socket-dir (expand-file-name "emacs" (or (getenv "XDG_STATE_DIR")
@@ -38,6 +38,10 @@
 ;; [[file:config.org::*Vterm][Vterm:1]]
 (setq vterm-shell "/opt/homebrew/bin/nu")
 ;; Vterm:1 ends here
+
+;; [[file:config.org::*Vterm][Vterm:2]]
+(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
+;; Vterm:2 ends here
 
 ;; [[file:config.org::*Line spacing][Line spacing:1]]
 (defvar toggle-line-spacing 0.6
@@ -111,19 +115,9 @@
   (map! :mode org-mode :n "gl" #'org-down-element))
 ;; evil-lion:1 ends here
 
-
-
-;; It requires minimal configuration.
-
-
 ;; [[file:config.org::*just-mode][just-mode:2]]
 (use-package! just-mode)
 ;; just-mode:2 ends here
-
-
-
-;; I've assigned some keymaps to make this more convenient.
-
 
 ;; [[file:config.org::*justl][justl:2]]
 (use-package! justl
@@ -139,51 +133,20 @@
           fn)))
 ;; justl:2 ends here
 
-
-
-;; It requires almost no configuration to use
-
-
 ;; [[file:config.org::*kdl-mode][kdl-mode:2]]
 (use-package! kdl-mode)
 ;; kdl-mode:2 ends here
-
-
-
-;; And requires very little configuration.
-
 
 ;; [[file:config.org::*Package setup][Package setup:2]]
 (use-package! nushell-mode
   :mode "\\.nu")
 ;; Package setup:2 ends here
 
-;; User-defined variables
-
-;; I want nushell to work with org-babel, but nobody's done the dirty work yet. We'll start with the basics. We might want this command to be customizable for someone's environment.
-
-;; - ~org-babel-nushell-command~
-
-;;   #+name: define-org-babel-nushell-command
-
 ;; [[file:config.org::define-org-babel-nushell-command][define-org-babel-nushell-command]]
 (defvar org-babel-nushell-command
   "nu"
   "The command to execute babel body code.")
 ;; define-org-babel-nushell-command ends here
-
-
-
-;;   #+RESULTS: org-babel-nushell-command
-;;   : nu
-
-;; Additionally, since I can't be certain the specific environment emacs will be running this command in, I need to be able to pass in the nushell config files so things operate as expected in my environment.
-
-;; First I'll setup a variable for the root directory where the config files live. While nushell currently defaults to the Apple-specifc XDG paths (like in =~/Library=), I don't like that. So I'll use the arch-based defaults.
-
-;; - ~org-babel-nushell-config-dir~
-
-;;   #+name: define-org-babel-nushell-config-dir
 
 ;; [[file:config.org::define-org-babel-nushell-config-dir][define-org-babel-nushell-config-dir]]
 (defvar org-babel-nushell-config-dir
@@ -193,45 +156,17 @@
   "Absolute path to the root directory where config files for nushell exist.")
 ;; define-org-babel-nushell-config-dir ends here
 
-
-
-;; Then I'll create two variables for the actual config files required for successful nushell startup.
-
-;; - ~org-babel-nushell-env-config-file~
-
-;;   #+name: org-babel-define-config-env-file
-
 ;; [[file:config.org::org-babel-define-config-env-file][org-babel-define-config-env-file]]
 (defvar org-babel-nushell-env-config-file
   (concat org-babel-nushell-config-dir "env.nu")
   "Absolute path to the nu file used to configure a non-interactive nushell session.")
 ;; org-babel-define-config-env-file ends here
 
-
-
-;;   #+RESULTS: org-babel-config-file
-;;   : /Users/michael/.config/nushell/config.nu
-
-;; - ~org-babel-nushell-config-file~
-
-;;   #+name: org-babel-define-config-file
-
 ;; [[file:config.org::org-babel-define-config-file][org-babel-define-config-file]]
 (defvar org-babel-nushell-config-file
   (concat org-babel-nushell-config-dir "config.nu")
   "Absolute path to the nu file used to configure an interactive nushell session.")
 ;; org-babel-define-config-file ends here
-
-
-
-;;   #+RESULTS: org-babel-env-file
-;;   : /Users/michael/.config/nushell/env.nu
-
-;; Lastly, I'll join them all together in a string with the ~--login~ flag.
-
-;; - ~org-babel-nushell-command-options~
-
-;;   #+name: define-org-babel-nushell-command-options
 
 ;; [[file:config.org::define-org-babel-nushell-command-options][define-org-babel-nushell-command-options]]
 (defvar org-babel-nushell-command-options
@@ -243,11 +178,6 @@
             " ")
   "The command options to use when executing code")
 ;; define-org-babel-nushell-command-options ends here
-
-;; The execute function
-
-;; Everything before this was setting us up to be able to define a function that Org Babel will use to run a block of nushell code. That function must be named with a predictable format based on the language passed when defining src blocks.
-
 
 ;; [[file:config.org::*The execute function][The execute function:1]]
 (defun org-babel-execute:nushell (body params)
@@ -267,20 +197,12 @@
                             (org-babel-process-file-name tmp-src-file)) "")))
 ;; The execute function:1 ends here
 
-
-
-;; The function above depends on some helpers to deal with variables passed into code blocks via the ~:var~ keyword. These are pretty straightforward string processing functions.
-
-
 ;; [[file:config.org::*The execute function][The execute function:2]]
 (defun org-babel-expand-body:nushell (body params &optional processed-params)
   "Expand BODY according to PARAMS, return the expanded body."
   (let* ((vars (org-babel--get-vars params)))
     (org-babel-nushell-custom-vars vars body)))
 ;; The execute function:2 ends here
-
-;; Concatenating with body
-
 
 ;; [[file:config.org::*Concatenating with body][Concatenating with body:1]]
 (defun org-babel-nushell-custom-vars (params body)
@@ -289,9 +211,6 @@
       body
     (concat (mapconcat 'org-babel-nushell-var-to-nushell params "\n") "\n" body)))
 ;; Concatenating with body:1 ends here
-
-;; Parsing individual parameters
-
 
 ;; [[file:config.org::*Parsing individual parameters][Parsing individual parameters:1]]
 (defun org-babel-nushell-var-to-nushell (pair)
@@ -346,11 +265,6 @@ specifying a var of the same value."
         #'gptel-menu))
 ;; gptel:2 ends here
 
-
-
-;; I've setup a little sub-set of prefixes in the file-save keymap to work with some of it's commands.
-
-
 ;; [[file:config.org::*chezmoi.el][chezmoi.el:2]]
 (use-package! chezmoi
   :config
@@ -403,16 +317,16 @@ Resize window
   (map! :localleader :mode vterm-mode :n "p" #'multi-vterm-prev))
 ;; multi-vterm:2 ends here
 
-;; [[file:config.org::*Before loading][Before loading:1]]
+;; [[file:config.org::*Pre-load][Pre-load:1]]
 (setq org-directory "~/Dropbox/org/")
-;; Before loading:1 ends here
+;; Pre-load:1 ends here
 
-;; [[file:config.org::*After loading][After loading:1]]
+;; [[file:config.org::*Post-load][Post-load:1]]
 (after! org
   (add-to-list 'org-modules 'org-habit))
-;; After loading:1 ends here
+;; Post-load:1 ends here
 
-;; [[file:config.org::*After loading][After loading:2]]
+;; [[file:config.org::*Post-load][Post-load:2]]
 (after! org
   (setq org-todo-keywords
         '((sequence
@@ -446,9 +360,9 @@ Resize window
           ("PROJ" . +org-todo-project)
           ("NO"   . +org-todo-cancel)
           ("KILL" . +org-todo-cancel))))
-;; After loading:2 ends here
+;; Post-load:2 ends here
 
-;; [[file:config.org::*After loading][After loading:3]]
+;; [[file:config.org::*Post-load][Post-load:3]]
 (after! org
   (map! :mode org-mode :n "gj" #'org-forward-element)
   (map! :mode org-mode :n "gk" #'org-backward-element)
@@ -457,9 +371,9 @@ Resize window
   (map! :localleader :mode org-mode :desc "org-columns-quit" :n "mq" #'org-columns-quit)
   (map! :localleader :mode org-mode :desc "org-refile-copy" :n "rd" #'org-refile-copy)
   (map! :localleader :mode org-mode :desc "org-delete-property" :n "O" #'org-delete-property))
-;; After loading:3 ends here
+;; Post-load:3 ends here
 
-;; [[file:config.org::*After loading][After loading:4]]
+;; [[file:config.org::*Post-load][Post-load:4]]
 (defun my/org-faces ()
   "Define custom fonts for org mode."
   (let ((h1 1.476)
@@ -485,25 +399,21 @@ Resize window
   (setq-local line-spacing 0.16))
 
 (add-hook! org-mode #'my/org-faces)
-;; After loading:4 ends here
+;; Post-load:4 ends here
 
-;; [[file:config.org::*Nix][Nix:1]]
+;; [[file:config.org::*nix-mode][nix-mode:1]]
 (after! nix-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
-;; Nix:1 ends here
+;; nix-mode:1 ends here
 
-;; [[file:config.org::*Nix][Nix:2]]
+;; [[file:config.org::*nix-mode][nix-mode:2]]
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
-;; Nix:2 ends here
+;; nix-mode:2 ends here
 
-;; [[file:config.org::*YAML][YAML:1]]
+;; [[file:config.org::*yaml-mode][yaml-mode:1]]
 (after! yaml-mode
   (set-formatter! 'prettierd '("/opt/homebrew/bin/prettierd") :modes '(yaml-mode)))
-;; YAML:1 ends here
-
-;; [[file:config.org::*Compilation][Compilation:1]]
-(add-hook! )
-;; Compilation:1 ends here
+;; yaml-mode:1 ends here
 
 ;; [[file:config.org::*Workspaces][Workspaces:1]]
 (map! :leader
@@ -516,10 +426,6 @@ Resize window
          :desc "Swap workspace right" ">" #'+workspace/swap-right)))
 ;; Workspaces:1 ends here
 
-;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:1]]
+;; [[file:config.org::*Bindings][Bindings:1]]
 (map! :leader :desc "Find file" :n "e" 'find-file)
-;; LazyVim compatibility layer:1 ends here
-
-;; [[file:config.org::*LazyVim compatibility layer][LazyVim compatibility layer:2]]
-(map! :desc "Open terminal" :nvi "C-/" '+vterm/toggle)
-;; LazyVim compatibility layer:2 ends here
+;; Bindings:1 ends here
