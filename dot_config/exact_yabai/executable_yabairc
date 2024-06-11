@@ -21,7 +21,7 @@ yabai -m config window_opacity on                    # on | off
 yabai -m config window_opacity_duration 0.1          # 0-1
 dark-notify -e | complete | match ($in.stdout | str trim) {
   "light" => [0.97 0.92],
-  "dark" => [0.90 0.75]
+  "dark" => [0.95 0.80]
 } | do {
   yabai -m config active_window_opacity ($in | get 0)
   yabai -m config normal_window_opacity ($in | get 1)
@@ -45,8 +45,14 @@ yabai -m config external_bar all:40:0
 # Labeled Spaces
 #
 [
-  primary   secondary  notes      messages
-  meetings  media      reference  system
+  main
+  other
+  docs
+  design
+  social
+  media
+  work
+  system
 ] | do {
   let labels = $in
   yabai -m query --spaces | from json | do {
@@ -63,32 +69,36 @@ yabai -m config external_bar all:40:0
 #
 # Labeled Displays
 #
-
-yabai -m display 1 --label builtin
-try { yabai -m display 2 --label external }
+yabai -m query --displays | from json | each {|x|
+    [
+      builtin
+      external
+    ] | get ($x.index - 1)
+      | yabai -m display $x.index --label $in
+}
 
 #
 # Rules
 #
 let rules = [
     [space    	app                	label];
-    [system   	'^System Settings$'	settings]
-    [messages 	WhatsApp           	whatsapp]
-    [messages 	Messages           	messages]
-    [messages 	Telegram           	telegram]
+    [design   	"Figma"            	figma]
+    [docs     	"Dash"             	dash]
+    [main     	"Emacs"            	emacs]
+    [main     	"qutebrowser"      	qutebrowser]
     [media    	Spotify            	spotify]
-    [system   	ClearVPN           	clearvpn]
-    [system   	'CleanMyMac X'     	cleanmymac]
-    [reference	"Figma"            	figma]
     [meetings 	"Zoom"             	zoom]
-    [secondary	"Slack"            	slack]
-    [primary  	"Emacs"            	emacs]
-    [primary  	"qutebrowser"      	qutebrowser]
-    [secondary	"WezTerm"          	wezterm]
-    [secondary	"Dash"             	dash]
+    [other    	"WezTerm"          	wezterm]
+    [social   	Messages           	messages]
+    [social   	Telegram           	telegram]
+    [social   	WhatsApp           	whatsapp]
+    [system   	'CleanMyMac X'     	cleanmymac]
+    [system   	'^System Settings$'	settings]
+    [system   	ClearVPN           	clearvpn]
+    [work     	"Slack"            	slack]
 ]
 
-$rules | each { items {|k, v| $"($k)=($v)"} | yabai -m rule --add ...$in }
+$rules | each { items {|k, v| $"($k)=^($v)"} | yabai -m rule --add ...$in }
 
 # Signals
 yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai --load-sa"

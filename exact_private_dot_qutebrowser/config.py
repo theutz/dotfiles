@@ -258,3 +258,5 @@ command_bindings = {
 }
 for key, cmd in command_bindings.items():
     config.bind(key, cmd, mode='command')
+
+c.tabs.title.format_pinned = '{audio}{index}: 📌 {current_title}'

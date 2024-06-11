@@ -95,3 +95,13 @@
 ;; [[file:config.org::*multi-vterm][multi-vterm:1]]
 (package! multi-vterm)
 ;; multi-vterm:1 ends here
+
+;; php-ts-mode
+
+
+;; [[file:config.org::*php-ts-mode][php-ts-mode:1]]
+(package! php-ts-mode
+  :recipe (:host github
+           :repo "emacs-php/php-ts-mode"
+           :branch "master"))
+;; php-ts-mode:1 ends here

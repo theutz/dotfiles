@@ -157,6 +157,8 @@ settings:
       left: 5
       right: 5
       top: 4
+  tabs.pinned.shrink:
+    global: true
   tabs.position:
     global: right
   tabs.select_on_remove:
@@ -168,7 +170,7 @@ settings:
   tabs.title.format:
     global: '{audio}{index}: {current_title}'
   tabs.title.format_pinned:
-    global: '{index}'
+    global: "\U0001F4CC {audio}{index}: {current_title}"
   tabs.undo_stack_size:
     global: -1
   tabs.width:
