@@ -415,6 +415,10 @@ Resize window
   (set-formatter! 'prettierd '("/opt/homebrew/bin/prettierd") :modes '(yaml-mode)))
 ;; yaml-mode:1 ends here
 
+;; [[file:config.org::*woman-mode][woman-mode:1]]
+(setq woman-fill-frame t)
+;; woman-mode:1 ends here
+
 ;; [[file:config.org::*Workspaces][Workspaces:1]]
 (map! :leader
       (:when (modulep! :ui workspaces)

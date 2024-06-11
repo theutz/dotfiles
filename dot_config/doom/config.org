@@ -534,8 +534,6 @@ I like the idea of aligning stuff easily, but in org-mode, consistent navigation
   (map! :mode org-mode :n "gl" #'org-down-element))
 #+end_src
 
-*** Custom packages
-
 *** just-mode
 
 This package provides a basic minor mode for interacting with a =Justfile=.
@@ -1116,6 +1114,11 @@ For a lot of packages, we want to use the LSP to do the formatting. But not in t
 #+begin_src emacs-lisp :results silent
 (after! yaml-mode
   (set-formatter! 'prettierd '("/opt/homebrew/bin/prettierd") :modes '(yaml-mode)))
+#+end_src
+*** woman-mode
+
+#+begin_src emacs-lisp :results none
+(setq woman-fill-frame t)
 #+end_src
 
 ** Workspaces
