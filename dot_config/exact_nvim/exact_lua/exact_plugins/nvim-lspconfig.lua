@@ -5,5 +5,19 @@ return {
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "<C-k>", false, mode = "i" }
     end,
+    opts = {
+      servers = {
+        phpactor = false,
+        intelephense = {
+          settings = {
+            intelephense = {
+              diagnostics = {
+                enable = false,
+              },
+            },
+          },
+        },
+      },
+    },
   },
 }
