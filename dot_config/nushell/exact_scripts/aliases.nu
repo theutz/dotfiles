@@ -105,3 +105,4 @@ alias v        = ^$env.VISUAL
 alias q        = ^pueue
 alias chezomi  = ^chezmoi
 alias chemzoi  = ^chezmoi
+alias marked = ^open -a "Marked"

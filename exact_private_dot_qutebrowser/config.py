@@ -1,4 +1,9 @@
+from qutebrowser.config.configfiles import ConfigAPI  # type: ignore
+from qutebrowser.config.config import ConfigContainer  # type: ignore
 import subprocess
+
+config: ConfigAPI = config  # pyright: ignore [reportUndefinedVariable] # noqa: F821
+c: ConfigContainer = c  # noqa: F821 # pyright: ignore [reportUndefinedVariable]
 
 config.load_autoconfig(True)
 
@@ -181,7 +186,7 @@ c.fonts.web.family.standard = "IBM Plex Sans"
 c.fonts.web.size.minimum_logical = 6
 
 
-c.hints.border = "0 none " + theme.get("gold")
+c.hints.border = "0 none " + theme.get("gold", "")
 c.hints.padding = {"bottom": 0, "left": 3, "right": 3, "top": 0}
 c.hints.radius = 5
 c.hints.uppercase = True
