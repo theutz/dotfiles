@@ -11,3 +11,4 @@ open $lgconfig
   | upsert git.paging.pager $"delta --($scheme) --paging=never"
   | to yaml
   | save -f $lgconfig
+  | chezmoi re-add $lgconfig
