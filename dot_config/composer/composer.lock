@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5da4080548c28f9f7976066f709997f5",
+    "content-hash": "dca783493ffa7bc8d6aa201326c13218",
     "packages": [
         {
             "name": "beyondcode/expose",
@@ -3841,21 +3841,22 @@
         },
         {
             "name": "statamic/cli",
-            "version": "2.6.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cli.git",
-                "reference": "15af33a4c8d466a0003b9dea744f97139595e6e5"
+                "reference": "304a0b265dc7f569ddb50e01bd13d54d96bd04e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cli/zipball/15af33a4c8d466a0003b9dea744f97139595e6e5",
-                "reference": "15af33a4c8d466a0003b9dea744f97139595e6e5",
+                "url": "https://api.github.com/repos/statamic/cli/zipball/304a0b265dc7f569ddb50e01bd13d54d96bd04e2",
+                "reference": "304a0b265dc7f569ddb50e01bd13d54d96bd04e2",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.5.5|^7.0.1",
-                "php": ">=7.2.5",
+                "laravel/prompts": "^0.1.3",
+                "php": "^8.1",
                 "symfony/console": "^4.0|^5.0|^6.0",
                 "symfony/process": "^4.2|^5.0|^6.0"
             },
@@ -3881,9 +3882,9 @@
             ],
             "support": {
                 "issues": "https://github.com/statamic/cli/issues",
-                "source": "https://github.com/statamic/cli/tree/2.6.0"
+                "source": "https://github.com/statamic/cli/tree/3.2.0"
             },
-            "time": "2023-05-08T20:14:48+00:00"
+            "time": "2024-05-10T18:31:33+00:00"
         },
         {
             "name": "symfony/console",

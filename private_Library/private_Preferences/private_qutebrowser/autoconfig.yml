@@ -183,7 +183,7 @@ settings:
   tabs.undo_stack_size:
     global: -1
   tabs.width:
-    global: 20%
+    global: 15%
   tabs.wrap:
     global: true
   url.auto_search:

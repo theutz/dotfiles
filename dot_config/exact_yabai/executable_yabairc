@@ -1,6 +1,7 @@
 #!/usr/bin/env nu --login
 
 use service.nu
+use rose-pine.nu
 
 # Settings
 let padding = 16
@@ -26,7 +27,7 @@ dark-notify -e | complete | match ($in.stdout | str trim) {
   yabai -m config active_window_opacity ($in | get 0)
   yabai -m config normal_window_opacity ($in | get 1)
 }
-yabai -m config insert_feedback_color 0x88FF0000     # 0xAARRGGBB
+yabai -m config insert_feedback_color $"0x88(rose-pine love)"     # 0xAARRGGBB
 yabai -m config split_ratio 0.5                      # 0-1
 yabai -m config split_type auto                      # vertical | horizontal | auto
 yabai -m config mouse_modifier ctrl                  # cmd | alt | shift | ctrl | fn
@@ -81,21 +82,22 @@ yabai -m query --displays | from json | each {|x|
 # Rules
 #
 let rules = [
-    [space    	app                	label];
-    [design   	"Figma"            	figma]
-    [docs     	"Dash"             	dash]
-    [main     	"Emacs"            	emacs]
-    [main     	"qutebrowser"      	qutebrowser]
-    [media    	Spotify            	spotify]
-    [meetings 	"Zoom"             	zoom]
-    [other    	"WezTerm"          	wezterm]
-    [social   	Messages           	messages]
-    [social   	Telegram           	telegram]
-    [social   	WhatsApp           	whatsapp]
-    [system   	'CleanMyMac X'     	cleanmymac]
-    [system   	'^System Settings$'	settings]
-    [system   	ClearVPN           	clearvpn]
-    [work     	"Slack"            	slack]
+    [ space    app                 label       ];
+    [ design   Figma               figma       ]
+    [ docs     Dash                dash        ]
+    [ main     Emacs               emacs       ]
+    [ main     qutebrowser         qutebrowser ]
+    [ media    Spotify             spotify     ]
+    [ meetings Zoom                zoom        ]
+    [ main     WezTerm             wezterm     ]
+    [ social   Messages            messages    ]
+    [ social   Telegram            telegram    ]
+    [ social   WhatsApp            whatsapp    ]
+    [ system   "CleanMyMac X"      cleanmymac  ]
+    [ system   "^System Settings$" settings    ]
+    [ system   ClearVPN            clearvpn    ]
+    [ work     Slack               slack       ]
+    [ main     Neovide             neovide     ]
 ]
 
 $rules | each { items {|k, v| $"($k)=^($v)"} | yabai -m rule --add ...$in }

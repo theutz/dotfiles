@@ -252,8 +252,17 @@ normal_bindings = {
     "tnu": "config-cycle -p -u {url} content.notifications.enabled true false ask",
     "tnh": "config-cycle -p -u *://{url:host}/* content.notifications.enabled true false ask",
     "tnH": "config-cycle -p -u *://*.{url:host}/* content.notifications.enabled true false ask",
-    "ttp": "config-cycle -p tabs.position top right bottom left",
-    "ttP": "config-cycle -p tabs.position top left bottom right",
+    "sth": "set tabs.position left ;; clear-messages",
+    "stj": "set tabs.position bottom ;; clear-messages",
+    "stk": "set tabs.position top ;; clear-messages",
+    "stl": "set tabs.position right ;; clear-messages",
+    "st=": "config-cycle -p tabs.width 10% 15% 20% 25% 30% 35% 40% 45% 50% ;; clear-messages",
+    "st-": "config-cycle -p tabs.width 50% 45% 40% 35% 30% 25% 20% 15% 10% ;; clear-messages",
+    "sS": "cmd-set-text --space :session-save --only-active-window --current",
+    "ss": "cmd-set-text --space :session-save --current",
+    "so": "cmd-set-text --space :session-load --clear",
+    "shs": "cmd-set-text --space :help -t",
+    "shk": "open -t qute://bindings",
 }
 for key, cmd in normal_bindings.items():
     config.bind(key, cmd)

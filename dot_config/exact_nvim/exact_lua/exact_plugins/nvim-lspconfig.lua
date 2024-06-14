@@ -7,12 +7,18 @@ return {
     end,
     opts = {
       servers = {
-        phpactor = false,
+        emmet_ls = {
+          filetypes = {
+            "blade",
+            "css",
+            "html",
+          },
+        },
         intelephense = {
           settings = {
             intelephense = {
               diagnostics = {
-                enable = false,
+                enable = true,
               },
             },
           },

@@ -1,7 +1,8 @@
 return {
-  { "folke/persistence.nvim", enabled = false },
+  { "folke/persistence.nvim", enabled = true },
   {
     "olimorris/persisted.nvim",
+    enabled = false,
     lazy = false,
     config = true,
     opts = {

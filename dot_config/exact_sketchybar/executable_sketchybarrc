@@ -23,7 +23,7 @@ sketchybar --bar ...[
   sticky=off
   padding_left=10
   padding_right=10
-  $"color=0x88(rose-pine auto base)"
+  $"color=0x88(rose-pine base)"
 ]
 
 ##### Changing Defaults #####
@@ -33,9 +33,9 @@ sketchybar --bar ...[
 
 sketchybar --default ...[
   $"icon.font=BlexMono Nerd Font:Bold:16.0"
-  $"icon.color=0xff(rose-pine auto text)"
+  $"icon.color=0xff(rose-pine text)"
   $"label.font=BlexMono Nerd Font:Bold:14.0"
-  $"label.color=0xff(rose-pine auto iris)"
+  $"label.color=0xff(rose-pine iris)"
   padding_left=0
   padding_right=0
   label.padding_left=4
@@ -61,7 +61,7 @@ $space_icons | each {|x|
     --add space $"space.($x.index)" left
     --set $"space.($x.index)" $"associated_space=($x.index)"
     $"icon=($x.index)"
-    $"background.color=0x55(rose-pine auto gold)"
+    $"background.color=0x55(rose-pine gold)"
     background.corner_radius=5
     background.height=28
     background.drawing=off
