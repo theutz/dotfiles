@@ -36,7 +36,7 @@ core:
     background: pine
 
   socket:
-    foreground: text
+    foreground: base
     background: rose
 
   door:
@@ -117,4 +117,5 @@ executable:
   font-style: bold
 
 unimportant:
-  foreground: overlay
+  foreground: muted
+  background: overlay

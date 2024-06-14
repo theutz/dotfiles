@@ -42,6 +42,8 @@ settings:
         ttp: config-cycle -p tabs.position top right bottom left
   colors.webpage.darkmode.enabled:
     '*://*.ah-crap.test/*': false
+    '*://*.lineworker.test/*': false
+    '*://*.www.lineworker.com/*': false
     global: true
   completion.cmd_history_max_items:
     global: -1
@@ -169,7 +171,7 @@ settings:
   tabs.pinned.shrink:
     global: true
   tabs.position:
-    global: right
+    global: left
   tabs.select_on_remove:
     global: next
   tabs.show:
@@ -183,7 +185,7 @@ settings:
   tabs.undo_stack_size:
     global: -1
   tabs.width:
-    global: 15%
+    global: 20%
   tabs.wrap:
     global: true
   url.auto_search:

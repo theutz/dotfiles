@@ -20,9 +20,9 @@ end
 
 local Util = require "lazyvim.util"
 local open_lazydocker = function()
-  Util.float_term(
-    { "lazydocker", "-f", Util.get_root() .. "docker-compose.yml" },
-    { cwd = Util.get_root(), esc_esc = false }
+  Util.terminal.open(
+    { "lazydocker", "-f", Util.root.get() .. "docker-compose.yml" },
+    { cwd = Util.root.get(), esc_esc = false }
   )
 end
 
