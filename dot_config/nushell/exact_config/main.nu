@@ -1,5 +1,5 @@
-source dark-theme.nu
 source light-theme.nu
+source dark-theme.nu
 
 # Default Config Record
 
@@ -89,7 +89,7 @@ $env.config = {
         vi_normal: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
-    color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
+    color_config: {} # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     use_grid_icons: true
     footer_mode: "25" # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
@@ -762,3 +762,17 @@ $env.config = {
         }
     ]
 }
+
+use rose-pine.nu
+rose-pine to-env
+match ($env.ROSE_PINE) {
+  dark => $dark_theme,
+  moon => $dark_theme,
+  dawn => $light_theme
+} | $env.config.color_config = $in
+match ($env.ROSE_PINE) {
+  dark => "rose-pine",
+  moon => "rose-pine-moon",
+  dawn => "rose-pine-dawn"
+} | $env.LS_COLORS = (vivid generate $in)
+$env.config.table.mode = light

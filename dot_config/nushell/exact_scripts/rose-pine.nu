@@ -27,18 +27,29 @@ def role [] {
   themes | get role
 }
 
+# set the $env.ROSE_PINE variable
+export def --env to-env [] {
+  if ($env.ROSE_PINE? | is-empty) {
+    $env.ROSE_PINE = (
+      dark-notify -e
+        | complete
+        | get stdout
+        | str trim
+        | match ($in) {
+            "light" => "dawn"
+            "dark" => "dark"
+          }
+    )
+  }
+}
+
 export def main [
-  variant: string@variants,
   role: string@role,
+  variant: string@variants = 'auto',
 ] {
+    to-env
     let var = match ($variant) {
-        "auto" => {
-            dark-notify -e | complete | get stdout | str trim
-                | match ($in) {
-                  "light" => "dawn",
-                  "dark" => "dark"
-                }
-        }
+        "auto" => $env.ROSE_PINE,
         _ => $variant
     }
     themes | where role == $role | (get $var).0
