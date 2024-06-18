@@ -12,3 +12,5 @@ open $lgconfig
   | to yaml
   | save -f $lgconfig
   | chezmoi re-add $lgconfig
+
+qutebrowser :config-source

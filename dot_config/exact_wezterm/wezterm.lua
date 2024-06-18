@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 c:set_strict_mode(true)
 
-c.default_prog = { "zsh", "-c", "/opt/homebrew/bin/nu" }
+-- c.default_prog = { "zsh", "-c", "/opt/homebrew/bin/nu" }
 c.macos_window_background_blur = 20
 c.font = wezterm.font("BlexMono Nerd Font Mono", { weight = 500 })
 c.font_size = 14

@@ -42,7 +42,10 @@ settings:
         ttp: config-cycle -p tabs.position top right bottom left
   colors.webpage.darkmode.enabled:
     '*://*.ah-crap.test/*': false
+    '*://*.app.fastmail.com/*': false
+    '*://*.hiwasseepackaging.test/*': false
     '*://*.lineworker.test/*': false
+    '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
     global: true
   completion.cmd_history_max_items:
@@ -171,7 +174,7 @@ settings:
   tabs.pinned.shrink:
     global: true
   tabs.position:
-    global: left
+    global: right
   tabs.select_on_remove:
     global: next
   tabs.show:

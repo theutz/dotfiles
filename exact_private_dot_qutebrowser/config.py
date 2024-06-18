@@ -7,7 +7,10 @@ c: ConfigContainer = c  # noqa: F821 # pyright: ignore [reportUndefinedVariable]
 
 config.load_autoconfig(True)
 
-is_dark = subprocess.run(["dark-notify", "-e"], capture_output=True).stdout == b"dark\n"
+is_dark = (
+    subprocess.run(["/opt/homebrew/bin/dark-notify", "-e"], capture_output=True).stdout
+    == b"dark\n"
+)
 
 # Theming
 
@@ -246,9 +249,9 @@ normal_bindings = {
     "J": "tab-next",
     "K": "tab-prev",
     "ge": "edit-url {url}",
-    "tdH": "config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled ;; reload",
-    "tdh": "config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled ;; reload",
-    "tdu": "config-cycle -p -u {url} colors.webpage.darkmode.enabled ;; reload",
+    "tdH": "config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled false true ;; reload",
+    "tdh": "config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled false true ;; reload",
+    "tdu": "config-cycle -p -u {url} colors.webpage.darkmode.enabled false true ;; reload",
     "tnu": "config-cycle -p -u {url} content.notifications.enabled true false ask",
     "tnh": "config-cycle -p -u *://{url:host}/* content.notifications.enabled true false ask",
     "tnH": "config-cycle -p -u *://*.{url:host}/* content.notifications.enabled true false ask",

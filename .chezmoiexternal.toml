@@ -9,3 +9,9 @@ type = "git-repo"
 url = "git@github.com:theutz/nu_scripts"
 refreshPeriod = "1h"
 exact = false
+
+[".config/zsh/prezto"]
+type = "git-repo"
+url = "git@github.com:theutz/prezto"
+refreshPeriod = "1h"
+exact = false
