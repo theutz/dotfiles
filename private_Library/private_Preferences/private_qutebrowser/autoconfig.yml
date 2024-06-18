@@ -43,8 +43,11 @@ settings:
   colors.webpage.darkmode.enabled:
     '*://*.ah-crap.test/*': false
     '*://*.app.fastmail.com/*': false
+    '*://*.app.hubspot.com/*': false
     '*://*.hiwasseepackaging.test/*': false
     '*://*.lineworker.test/*': false
+    '*://*.unix.stackexchange.com/*': false
+    '*://*.www.bugherd.com/*': false
     '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
     global: true

@@ -1,17 +1,5 @@
-# vim: ft=zsh
-
-if [[ "$(dark-notify -e | nu --stdin -c 'str trim" ]]; then
-  options=(
-    active_color=0xfff6c177
-    inactive_color=0xff191724
-    width=8.0
-  )
+if [[ "$(dark-notify -e | nu --stdin -c 'str trim"]]; then
+  borders active_color=0xfff6c177 inactive_color=0xff191724 width=8.0 &
 else
-  options=(
-    active_color=0xffea9d34
-    inactive_color=0xff575279
-    width=8.0
-  )
+  borders active_color=0xffea9d34 inactive_color=0xff575279 width=8.0 &
 fi
-
-borders "${options[@]"
