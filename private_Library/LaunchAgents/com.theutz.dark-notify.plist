@@ -6,7 +6,9 @@
     <string>com.theutz.dark-notify</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/opt/homebrew/bin/dark-notify</string>
+      <string>/opt/homebrew/bin/dark-notify</string>
+      <string>-c</string>
+      <string>"$HOME/.config/dark-notify/on-change"</string>
     </array>
     <key>EnvironmentVariables</key>
     <dict>
