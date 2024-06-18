@@ -1,3 +1,4 @@
+:: default : echo 'default mode'
 :: win @ : echo 'win mode'
 
 default < alt - m ; win

@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+appearance="$(dark-notify -e | nu --stdin -c 'str trim')"
+
 # Load the scripting addition
 sudo yabai --load-sa
 
@@ -27,13 +29,6 @@ else
   yabai -m config active_window_opacity 0.95
   yabai -m config normal_window_opacity 0.80
 fi
-#dark-notify -e | complete | match ($in.stdout | str trim) {
-#  "light" => [0.97 0.92],
-#  "dark" => [0.95 0.80]
-#} | do {
-#  yabai -m config active_window_opacity ($in | get 0)
-#  yabai -m config normal_window_opacity ($in | get 1)
-#}
 
 # Space Settings
 # Settings
@@ -97,6 +92,10 @@ yabai -m signal --add event=display_added action="yabai -m display $YABAI_DISPLA
 # Final Instructions
 yabai -m rule --apply
 sketchybar --reload
-# service restart borders
+if [[ "$(dark-notify -e | nu --stdin -c 'str trim"]]; then
+  borders active_color=0xfff6c177 inactive_color=0xff191724 width=8.0 &
+else
+  borders active_color=0xffea9d34 inactive_color=0xff575279 width=8.0 &
+fi
 
 # vim: ft=nu
