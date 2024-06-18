@@ -7,7 +7,7 @@ windows:
     options:
       main-pane-width: 80
     panes:
-      - shell_command: chezmoi edit --watch yabairc
+      - shell_command: nvim yabairc
         focus: true
       - tail -f /tmp/yabai_michael.err.log
       - tail -f /tmp/yabai_michael.out.log
@@ -17,7 +17,7 @@ windows:
     options:
       main-pane-width: 80
     panes:
-      - shell_command: chezmoi edit --watch skhdrc
+      - shell_command: nvim skhdrc
         focus: true
       - tail -f /tmp/skhd_michael.err.log
       - tail -f /tmp/skhd_michael.out.log
@@ -27,7 +27,7 @@ windows:
     options:
       main-pane-width: 80
     panes:
-      - shell_command: chezmoi edit --watch bordersrc
+      - shell_command: nvim bordersrc
         focus: true
       - tail -f /opt/homebrew/var/log/borders/borders.err.log
       - tail -f /opt/homebrew/var/log/borders/borders.out.log
