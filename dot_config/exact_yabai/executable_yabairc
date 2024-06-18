@@ -22,7 +22,7 @@ yabai -m config split_ratio 0.5                      # 0-1
 yabai -m config split_type auto                      # vertical | horizontal | auto
 yabai -m config mouse_modifier ctrl                  # cmd | alt | shift | ctrl | fn
 yabai -m config mouse_drop_action stack              # swap | stack
-if [[ "$(dark-notify -e)" =~ light ]]; then
+if [[ "$appearance" == "light" ]]; then
   yabai -m config active_window_opacity 0.97
   yabai -m config normal_window_opacity 0.85
 else
@@ -92,10 +92,5 @@ yabai -m signal --add event=display_added action="yabai -m display $YABAI_DISPLA
 # Final Instructions
 yabai -m rule --apply
 sketchybar --reload
-if [[ "$(dark-notify -e | nu --stdin -c 'str trim"]]; then
-  borders active_color=0xfff6c177 inactive_color=0xff191724 width=8.0 &
-else
-  borders active_color=0xffea9d34 inactive_color=0xff575279 width=8.0 &
-fi
 
 # vim: ft=nu
