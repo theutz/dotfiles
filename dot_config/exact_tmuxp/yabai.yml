@@ -7,7 +7,8 @@ windows:
     options:
       main-pane-width: 80
     panes:
-      - nvim yabairc
+      - shell_command: chezmoi edit --watch yabairc
+        focus: true
       - tail -f /tmp/yabai_michael.err.log
       - tail -f /tmp/yabai_michael.out.log
   - window_name: skhd
@@ -16,6 +17,7 @@ windows:
     options:
       main-pane-width: 80
     panes:
-      - nvim skhdrc
+      - shell_command: chezmoi edit --watch skhdrc
+        focus: true
       - tail -f /tmp/skhd_michael.err.log
       - tail -f /tmp/skhd_michael.out.log
