@@ -1,5 +1,5 @@
 session_name: yabai
-start_directory: $HOME/config/yabai
+start_directory: $HOME/.config/yabai
 windows:
   - window_name: yabai
     focus: true
@@ -11,7 +11,7 @@ windows:
       - tail -f /tmp/yabai_michael.err.log
       - tail -f /tmp/yabai_michael.out.log
   - window_name: skhd
-    start_directory: $HOME/config/skhd
+    start_directory: $HOME/.config/skhd
     layout: main-vertical
     options:
       main-pane-width: 80
