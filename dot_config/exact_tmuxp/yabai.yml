@@ -1,0 +1,21 @@
+session_name: yabai
+start_directory: $HOME/config/yabai
+windows:
+  - window_name: yabai
+    focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: 80
+    panes:
+      - nvim yabairc
+      - tail -f /tmp/yabai_michael.err.log
+      - tail -f /tmp/yabai_michael.out.log
+  - window_name: skhd
+    start_directory: $HOME/config/skhd
+    layout: main-vertical
+    options:
+      main-pane-width: 80
+    panes:
+      - nvim skhdrc
+      - tail -f /tmp/skhd_michael.err.log
+      - tail -f /tmp/skhd_michael.out.log
