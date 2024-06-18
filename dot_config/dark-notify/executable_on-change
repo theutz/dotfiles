@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# Save scheme as a string
+scheme="$(dark-notify -e | nu --stdin -c "str trim")"
+
+# Reload sketchybar
+sketchybar --reload
+
+# Reload tmux
+tmux source-file "${XDG_CONFIG_HOME:-${HOME/.config}}"/tmux/tmux.conf
+
+# Change delta theme
+nu "${0:a:h}"/update-lazygit.nu $scheme $XDG_CONFIG_HOME/lazygit/config.yml
+
+# Reload qutebrowser config
+qutebrowser :config-source
