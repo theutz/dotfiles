@@ -14,9 +14,6 @@ args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 exclude = ["scripts"]
 {{- end }}
 
-# [cd]
-# command = "nu"
-
 [edit]
 command = "nvim"
 args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
