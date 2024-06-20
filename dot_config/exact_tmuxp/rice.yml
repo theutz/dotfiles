@@ -3,21 +3,12 @@ start_directory: $HOME/.config
 options:
   main-pane-width: "50%"
 windows:
-  - window_name: yabai
-    start_directory: $HOME/.config/yabai
-    focus: true
+  - window_name: aerospace
+    start_directory: $HOME/.config/aerospace
     layout: main-vertical
     panes:
-      - shell_command: nvim yabairc
+      - shell_command: nvim
         focus: true
-      - lnav /tmp/yabai_*.log
-  - window_name: skhd
-    start_directory: $HOME/.config/skhd
-    layout: main-vertical
-    panes:
-      - shell_command: nvim skhdrc
-        focus: true
-      - lnav /tmp/skhd_*.log
   - window_name: sketchybar
     start_directory: $HOME/.config/sketchybar
     layout: main-vertical

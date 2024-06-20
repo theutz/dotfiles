@@ -53,6 +53,7 @@ settings:
     '*://*.www.bugherd.com/*': false
     '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
+    '*://*.www.youtube.com/*': false
     global: true
   completion.cmd_history_max_items:
     global: -1
