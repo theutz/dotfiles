@@ -361,8 +361,6 @@ brew "hashicorp/tap/terraform"
 brew "knqyf263/pet/pet"
 # Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd"
-# A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
 # Simple command line tool for DeepL
 brew "kojix2/brew/deepl-cli"
 # a TUI playground to experiment and play with jq
@@ -478,6 +476,34 @@ cask "wireshark"
 cask "zed"
 # Collect, organise, cite, and share research sources
 cask "zotero"
+mas "1Password for Safari", id: 1569813296
+mas "2048 Game", id: 871033113
+mas "Bear", id: 1091189122
+mas "com.kagimacOS.Kagi-Search", id: 1622835804
+mas "Consent-O-Matic", id: 1606897889
+mas "Developer", id: 640199958
+mas "Farm It!", id: 1538476446
+mas "Ground News", id: 1324203419
+mas "iMovie", id: 408981434
+mas "Ivory", id: 6444602274
+mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
+mas "Mane Merge", id: 1596302742
+mas "Mercury", id: 1621800675
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Word", id: 462054704
+mas "Momentum", id: 1564329434
+mas "Numbers", id: 409203825
+mas "Octotree", id: 1457450145
+mas "OneAuth", id: 1142928979
+mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
+mas "Reeder", id: 1529448980
+mas "Save to Reader", id: 1640236961
+mas "Snake.io+", id: 6443553808
+mas "Squiggle Drop", id: 1623460434
+mas "Xcode", id: 497799835
+mas "Zen Pinball Party", id: 1536783591
 vscode "13xforever.language-x86-64-assembly"
 vscode "aaron-bond.better-comments"
 vscode "alefragnani.project-manager"
