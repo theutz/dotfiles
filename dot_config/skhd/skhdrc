@@ -45,6 +45,8 @@ win < alt - h : for size in left:-50:0 right:-50:0; do yabai -m window --resize 
 win < alt - j : for size in bottom:0:50 top:0:50; do yabai -m window --resize $size; done
 win < alt - k : for size in bottom:0:-50 top:0:-50; do yabai -m window --resize $size; done
 win < alt - l : for size in left:50:0 right:50:0; do yabai -m window --resize $size; done
+win < alt - 9 : yabai -m space --destroy last
+win < alt - 0 : yabai -m space --create
 
 win < ctrl - h : yabai -m window --warp west
 win < ctrl - j : yabai -m window --warp south

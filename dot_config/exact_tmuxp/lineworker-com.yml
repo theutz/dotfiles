@@ -4,8 +4,9 @@ windows:
   - focus: true
     layout: main-vertical
     panes:
-      - nvim
+      - shell_command: nvim
+        focus: true
     window_name: main
   - panes:
-      - bin/dev
-    window_name: bin/dev
+      - just up
+    window_name: servers

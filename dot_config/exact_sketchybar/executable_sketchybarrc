@@ -49,12 +49,12 @@ sketchybar --default ...[
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces
 
-let space_icons = yabai -m query --spaces | from json
+let space_icons = (yabai -m query --spaces | from json
   | get label | enumerate
   | each { upsert index {|x| $x.index + 1} }
   | each { upsert item {|x|
       if ($x.item | is-empty) { $x.index | into string } else { $x.item } }
-    }
+    })
 
 $space_icons | each {|x| 
   sketchybar ...[

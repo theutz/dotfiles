@@ -44,8 +44,11 @@ settings:
     '*://*.ah-crap.test/*': false
     '*://*.app.fastmail.com/*': false
     '*://*.app.hubspot.com/*': false
+    '*://*.app.slack.com/*': false
     '*://*.hiwasseepackaging.test/*': false
     '*://*.lineworker.test/*': false
+    '*://*.projects.zoho.com/*': false
+    '*://*.statamic.dev/*': false
     '*://*.unix.stackexchange.com/*': false
     '*://*.www.bugherd.com/*': false
     '*://*.www.impactelectronics.com/*': false

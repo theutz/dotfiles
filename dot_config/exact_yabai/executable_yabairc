@@ -78,13 +78,13 @@ yabai -m rule --add space=system app="^ClearVPN$"
 yabai -m rule --add space=work app=Slack
 yabai -m rule --add space=main app=Neovide
 
+#
+# Signals
+#
 yabai -m signal --add event=space_created action="sketchybar --update"
 yabai -m signal --add event=space_changed action="sketchybar --update"
 yabai -m signal --add event=space_destroyed action="sketchybar --update"
 
-#
-# Signals
-#
 yabai -m signal --add label=reload-sa event=dock_did_restart action="sudo yabai --load-sa"
 yabai -m signal --add label=focus-wez event=window_created action='yabai -m window $YABAI_WINDOW_ID --focus' app='^wezterm-gui$'
 yabai -m signal --add event=display_added action="yabai -m display $YABAI_DISPLAY_INDEX --label external"

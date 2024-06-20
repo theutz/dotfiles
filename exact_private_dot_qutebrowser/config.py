@@ -230,6 +230,7 @@ c.url.searchengines = {
     "DEFAULT": "https://kagi.com/search?q={}",
     "!k": "https://kagi.com/search?q={}",
     "!g": "https://google.com/search?q={}&udm=14",
+    "!i": "https://kagi.com/images?q={}",
     "!tw": "https://kagi.com/search?q=!tw+{}",  # kagi search with tailwind lens,
     "!lar": "https://kagi.com/search?1=!laravel+{}",
 }
@@ -261,7 +262,6 @@ normal_bindings = {
     "stl": "set tabs.position right ;; clear-messages",
     "st=": "config-cycle -p tabs.width 10% 15% 20% 25% 30% 35% 40% 45% 50% ;; clear-messages",
     "st-": "config-cycle -p tabs.width 50% 45% 40% 35% 30% 25% 20% 15% 10% ;; clear-messages",
-    "sS": "session-save --current",
     "ss": "cmd-set-text --space :session-save",
     "so": "cmd-set-text --space :session-load --clear",
     "shs": "cmd-set-text --space :help -t",
