@@ -1,0 +1,41 @@
+session_name: rice
+start_directory: $HOME/.config
+options:
+  main-pane-width: "50%"
+windows:
+  - window_name: yabai
+    start_directory: $HOME/.config/yabai
+    focus: true
+    layout: main-vertical
+    panes:
+      - shell_command: nvim yabairc
+        focus: true
+      - lnav /tmp/yabai_*.log
+  - window_name: skhd
+    start_directory: $HOME/.config/skhd
+    layout: main-vertical
+    panes:
+      - shell_command: nvim skhdrc
+        focus: true
+      - lnav /tmp/skhd_*.log
+  - window_name: sketchybar
+    start_directory: $HOME/.config/sketchybar
+    layout: main-vertical
+    panes:
+      - shell_command: nvim
+        focus: true
+      - lnav /opt/homebrew/var/log/sketchybar/*.log
+  - window_name: borders
+    start_directory: $HOME/.config/borders
+    layout: main-vertical
+    panes:
+      - shell_command: nvim bordersrc
+        focus: true
+      - lnav /opt/homebrew/var/log/borders/*.log
+  - window_name: dark-notify
+    start_directory: $HOME/.config/dark-notify
+    layout: main-vertical
+    panes:
+      - shell_command: nvim
+        focus: true
+      - lnav /tmp/*.log
