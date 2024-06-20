@@ -1,3 +1,4 @@
+tap "cormacrelf/tap"
 tap "d12frosted/emacs-plus"
 tap "dopplerhq/cli"
 tap "dzfrias/formulae"
@@ -18,11 +19,13 @@ tap "homebrew/test-bot"
 tap "knqyf263/pet"
 tap "koekeishiya/formulae"
 tap "kojix2/brew"
+tap "nikitabobko/tap"
 tap "noahgorstein/tap"
 tap "oven-sh/bun"
 tap "railwaycat/emacsmacport"
 tap "rsteube/tap"
 tap "shivammathur/php"
+tap "socsieng/tap"
 # Run your GitHub Actions locally
 brew "act"
 # Simple, modern, secure file encryption
@@ -45,6 +48,8 @@ brew "bat"
 brew "bats-core"
 # Version manager for neovim
 brew "bob"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
 # Draw boxes around text
 brew "boxes"
 # New way to see and navigate directory trees
@@ -73,6 +78,8 @@ brew "composer"
 brew "llvm"
 # Command-line csv viewer
 brew "csvlens"
+# Control the macOS dark mode from the command-line
+brew "dark-mode"
 # Diff that understands syntax
 brew "difftastic"
 # Lightweight DNS forwarder and DHCP server
@@ -91,12 +98,12 @@ brew "fennel"
 brew "openjpeg"
 # Secure hashing function
 brew "libb2"
-# Open Visual Inference And Optimization toolkit for AI inference
-brew "openvino"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Open Visual Inference And Optimization toolkit for AI inference
+brew "openvino"
 # Create thumbnails for your video files
 brew "ffmpegthumbnailer"
 # Banner-like program prints strings as ASCII art
@@ -145,6 +152,8 @@ brew "librsvg"
 brew "graphviz"
 # GNU grep, egrep and fgrep
 brew "grep"
+# GitHub Markdown previewer
+brew "grip"
 # Tool for glamorous shell scripts
 brew "gum"
 # Post-modern modal text editor
@@ -157,6 +166,8 @@ brew "httpie"
 brew "hugo"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Interactive JSON filter using jq
@@ -171,6 +182,8 @@ brew "keychain"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Input filter for the pager less
+brew "lesspipe"
 # Terminal file manager
 brew "lf"
 # JIT library for the GNU compiler collection
@@ -202,13 +215,15 @@ brew "mosh"
 # CLI for MySQL with auto-completion and syntax highlighting
 brew "mycli"
 # Open source relational database management system
-brew "mysql", restart_service: true
+brew "mysql"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Command-line and local web note-taking, bookmarking, and archiving
 brew "nb"
 # Fast, highly customisable system info script
 brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
 # Trigger notifications when a process completes
@@ -233,6 +248,10 @@ brew "pnpm"
 brew "pop"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
+# Prettier daemon
+brew "prettierd"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Command-line tool for managing long-running shell commands
@@ -263,6 +282,8 @@ brew "ssh-copy-id"
 brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
+# Modern and pretty fancy file manager for the terminal
+brew "superfile"
 # Log file highlighter
 brew "tailspin"
 # Feature-rich console based todo list manager
@@ -287,6 +308,10 @@ brew "ugrep"
 brew "unar"
 # Vi 'workalike' with many additional features
 brew "vim"
+# Generator for LS_COLORS with support for multiple color themes
+brew "vivid"
+# Manage the desktop wallpaper
+brew "wallpaper"
 # Execute commands when watched files change
 brew "watchexec"
 # Lightweight, configurable incoming webhook server
@@ -313,13 +338,17 @@ brew "zoxide"
 brew "zsh"
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
+# Watcher for macOS 10.14+ light/dark mode changes
+brew "cormacrelf/tap/dark-notify"
 # GNU Emacs text editor
-brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-ctags", "with-dbus", "with-debug", "with-imagemagick", "with-mailutils", "with-modern-pen-black-icon", "with-native-comp", "with-no-frame-refocus", "with-poll", "with-xwidgets"]
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-debug", "with-imagemagick", "with-modern-pen-black-icon", "with-native-comp", "with-no-frame-refocus", "with-poll", "with-xwidgets"]
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler", link: false
 brew "f1bonacc1/tap/process-compose"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar"
 # Detect secrets in source code, scan your repos and docker images for leaks
 brew "gitguardian/tap/ggshield"
 # GPTScript CLI
@@ -348,10 +377,16 @@ brew "shivammathur/php/php@7.2"
 brew "shivammathur/php/php@7.3"
 # General-purpose scripting language
 brew "shivammathur/php/php@7.4"
+# Command-line tool for automating keystrokes and mouse events
+brew "socsieng/tap/sendkeys"
 # Command-line interface for 1Password
 cask "1password-cli"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
 # Opensource IDE for exploring and testing api's
 cask "bruno"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Automated testing of webapps for Google Chrome
 cask "chromedriver"
 # Trains AIs to understand and translate texts
@@ -363,17 +398,11 @@ cask "figma"
 # Web browser
 cask "firefox"
 cask "font-awesome-terminal-fonts"
-# Icon set and toolkit
 cask "font-fontawesome"
-# Sans-serif typeface
 cask "font-geist"
-# Monospaced typeface designed to be used where code is represented
 cask "font-geist-mono"
-# Superfamily of fonts for code
 cask "font-monaspace"
-# Developer targeted fonts with a high number of glyphs
 cask "font-monaspace-nerd-font"
-# Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
 cask "forklift"
@@ -391,6 +420,8 @@ cask "inkscape"
 cask "kitty"
 # Open source code editor written in Rust
 cask "lapce"
+# WordPress local development tool by Flywheel
+cask "local"
 # Privacy-first, open-source platform for knowledge sharing and management
 cask "logseq"
 # Full TeX Live distribution with GUI applications
@@ -447,34 +478,6 @@ cask "wireshark"
 cask "zed"
 # Collect, organise, cite, and share research sources
 cask "zotero"
-mas "1Password for Safari", id: 1569813296
-mas "2048 Game", id: 871033113
-mas "Bear", id: 1091189122
-mas "com.kagimacOS.Kagi-Search", id: 1622835804
-mas "Consent-O-Matic", id: 1606897889
-mas "Developer", id: 640199958
-mas "Farm It!", id: 1538476446
-mas "Ground News", id: 1324203419
-mas "iMovie", id: 408981434
-mas "Ivory", id: 6444602274
-mas "Keynote", id: 409183694
-mas "Kindle", id: 302584613
-mas "Mane Merge", id: 1596302742
-mas "Mercury", id: 1621800675
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft Word", id: 462054704
-mas "Momentum", id: 1564329434
-mas "Numbers", id: 409203825
-mas "Octotree", id: 1457450145
-mas "OneAuth", id: 1142928979
-mas "Pages", id: 409201541
-mas "Pixelmator Pro", id: 1289583905
-mas "Reeder", id: 1529448980
-mas "Save to Reader", id: 1640236961
-mas "Snake.io+", id: 6443553808
-mas "Squiggle Drop", id: 1623460434
-mas "Xcode", id: 497799835
-mas "Zen Pinball Party", id: 1536783591
 vscode "13xforever.language-x86-64-assembly"
 vscode "aaron-bond.better-comments"
 vscode "alefragnani.project-manager"
