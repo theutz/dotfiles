@@ -54,6 +54,7 @@ settings:
     '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
     '*://*.www.youtube.com/*': false
+    '*://www.homerow.app/*': false
     global: true
   completion.cmd_history_max_items:
     global: -1
@@ -98,6 +99,7 @@ settings:
     https://www.facebook.com: false
     https://www.instagram.com: true
     https://www.sozcu.com.tr: false
+    https://www.youtube.com: true
   content.pdfjs:
     global: true
   content.register_protocol_handler:
