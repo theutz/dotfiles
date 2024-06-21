@@ -93,9 +93,9 @@ labels=(
 	social
 	docs
 	slack
-	meetings
-	design
-	time
+	zoom
+	figma
+	timeator
 	spotify
 	external
 )
