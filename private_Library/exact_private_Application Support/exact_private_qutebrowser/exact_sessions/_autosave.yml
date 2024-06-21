@@ -1,0 +1,124 @@
+windows:
+- geometry: !!binary |
+    AdnQywADAAAAAAXeAAAAOAAAC64AAAaKAAAF3gAAAFQAAAuuAAAGigAAAAAAAAAAC8AAAAXeAAAA
+    VAAAC64AAAaK
+  tabs:
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:23'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Inbox | Fastmail
+      url: https://app.fastmail.com/mail/Inbox/?u=b181401c
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:23'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Facebook
+      url: https://www.facebook.com/
+      zoom: 1.0
+  - history:
+    - last_visited: '2024-06-21T22:44:23'
+      pinned: true
+      title: https://x.com/home
+      url: https://x.com/home
+    - active: true
+      last_visited: '2024-06-21T22:44:24'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: x.com/home
+      url: https://x.com/home
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:24'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Feed | LinkedIn
+      url: https://www.linkedin.com/feed/
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:31'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Following — Bluesky
+      url: https://bsky.app/
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:23'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Instagram
+      url: https://www.instagram.com/
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:23'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Hachyderm.io
+      url: https://hachyderm.io/home
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:23'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Reddit - Dive into anything
+      url: https://www.reddit.com/
+      zoom: 1.0
+  - history:
+    - last_visited: '2024-06-21T22:45:55'
+      pinned: false
+      title: qutebrowser where are sessions saved? - Kagi Search
+      url: https://kagi.com/search?q=qutebrowser+where+are+sessions+saved%3F
+    - active: true
+      last_visited: '2024-06-21T22:46:10'
+      pinned: false
+      scroll-pos:
+        x: 0
+        y: 0
+      title: 'Locating saved sessions? : r/qutebrowser'
+      url: https://www.reddit.com/r/qutebrowser/comments/ekfwz0/locating_saved_sessions/
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:46:30'
+      pinned: false
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Kagi Search
+      url: https://kagi.com/
+      zoom: 1.0
+  - active: true
+    history:
+    - active: true
+      last_visited: '2024-06-21T22:46:32'
+      pinned: false
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Version info
+      url: qute://version/
+      zoom: 1.0

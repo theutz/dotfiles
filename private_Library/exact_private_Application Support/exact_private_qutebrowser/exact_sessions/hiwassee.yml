@@ -1,0 +1,91 @@
+windows:
+- active: true
+  geometry: !!binary |
+    AdnQywADAAAAAAXVAAAAOAAAC68AAAaKAAAF1QAAAFQAAAuvAAAGigAAAAAAAAAAC8AAAAXVAAAA
+    VAAAC68AAAaK
+  tabs:
+  - active: true
+    history:
+    - active: true
+      last_visited: '2024-06-21T22:44:09'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Inbox | Fastmail
+      url: https://app.fastmail.com/mail/Inbox/?u=b181401c
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:10'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Facebook
+      url: https://www.facebook.com/
+      zoom: 1.0
+  - history:
+    - last_visited: '2024-06-21T22:44:10'
+      pinned: true
+      title: https://x.com/home
+      url: https://x.com/home
+    - active: true
+      last_visited: '2024-06-21T22:44:10'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: x.com/home
+      url: https://x.com/home
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:10'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Feed | LinkedIn
+      url: https://www.linkedin.com/feed/
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:10'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Bluesky
+      url: https://bsky.app/
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:10'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Instagram
+      url: https://www.instagram.com/
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:09'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Hachyderm.io
+      url: https://hachyderm.io/home
+      zoom: 1.0
+  - history:
+    - active: true
+      last_visited: '2024-06-21T22:44:09'
+      pinned: true
+      scroll-pos:
+        x: 0
+        y: 0
+      title: Reddit - Dive into anything
+      url: https://www.reddit.com/
+      zoom: 1.0
