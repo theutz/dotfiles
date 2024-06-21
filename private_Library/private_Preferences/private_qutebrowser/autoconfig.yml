@@ -172,6 +172,8 @@ settings:
     global: -1
   tabs.last_close:
     global: close
+  tabs.max_width:
+    global: -1
   tabs.mousewheel_switching:
     global: false
   tabs.padding:
@@ -183,7 +185,7 @@ settings:
   tabs.pinned.shrink:
     global: true
   tabs.position:
-    global: right
+    global: left
   tabs.select_on_remove:
     global: next
   tabs.show:
@@ -197,7 +199,7 @@ settings:
   tabs.undo_stack_size:
     global: -1
   tabs.width:
-    global: 20%
+    global: 15%
   tabs.wrap:
     global: true
   url.auto_search:

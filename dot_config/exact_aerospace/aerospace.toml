@@ -1,7 +1,7 @@
 after-login-command = []
 after-startup-command = [
   'exec-and-forget sketchybar',
-  'exec-and-forget borders active_color=0xffe1e3e5 inactive_color=0xff595d65 width=8.0',
+  'exec-and-forget borders active_color=0xffea9d34 inactive_color=0xff595d65 width=8.0',
 ]
 exec-on-workspace-change = [
   '/bin/bash',
@@ -29,6 +29,26 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.kapeli.dashdoc'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 2'
 
 [workspace-to-monitor-force-assignment]
 5 = ['secondary', 'built-in']
@@ -71,6 +91,8 @@ alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
+alt-leftSquareBracket = 'focus-monitor --wrap-around left'
+alt-rightSquareBracket = 'focus-monitor --wrap-around right'
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
@@ -105,6 +127,14 @@ alt-shift-p = [
 ]
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-semicolon = 'mode service'
+alt-shift-leftSquareBracket = [
+  'move-node-to-monitor --wrap-around left',
+  'focus-monitor --wrap-around left',
+]
+alt-shift-rightSquareBracket = [
+  'move-node-to-monitor --wrap-around right',
+  'focus-monitor --wrap-around right',
+]
 
 # 'service' binding mode declaration.
 [mode.service.binding]
@@ -119,6 +149,7 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 alt-shift-enter = [
   'exec-and-forget neovide --fork ~/.config/aerospace/aerospace.toml',
+  'mode main',
 ]
 
 [mode.app.binding]
