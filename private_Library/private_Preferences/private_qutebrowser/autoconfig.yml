@@ -51,6 +51,7 @@ settings:
     '*://*.statamic.dev/*': false
     '*://*.unix.stackexchange.com/*': false
     '*://*.www.bugherd.com/*': false
+    '*://*.www.facebook.com/*': false
     '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
     '*://*.www.youtube.com/*': false
