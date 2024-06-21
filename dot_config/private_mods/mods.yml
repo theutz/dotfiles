@@ -4,6 +4,10 @@ apis:
   openai:
     base-url: https://api.openai.com/v1
     models:
+      gpt-4o:
+        aliases: ["4o"]
+        max-input-chars: 392000
+        fallback: gpt-4
       gpt-4:
         aliases: ["4"]
         max-input-chars: 24500
@@ -28,7 +32,7 @@ apis:
         max-input-chars: 12250
         fallback:
 # Default model (gpt-3.5-turbo, gpt-4, ggml-gpt4all-j...).
-default-model: gpt-4
+default-model: gpt-4o
 # Default character limit on input to model.
 max-input-chars: 12250
 # Format response as markdown.
