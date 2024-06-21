@@ -77,26 +77,16 @@ sketchybar --add event aerospace_workspace_change
 tyepset -A labels icons
 icons=(
 	
-	󱞈
-	
-	
-	󰒱
-	󰖠
-	󰏘
-	󱎫
-	󰓇
+  
+  
+  
 	󰍺
 )
 labels=(
 	main
 	alt
-	social
-	docs
-	slack
-	zoom
-	figma
-	timeator
-	spotify
+  docs
+	media
 	external
 )
 index=1
@@ -105,7 +95,7 @@ for sid in $(aerospace list-workspaces --all); do
 		--subscribe space.$sid aerospace_workspace_change \
 		--set space.$sid \
 		icon.font="$FONT:Bold:18.0" \
-		label.font="$FONT:Bold:10.0" \
+		label.font="$FONT:Bold:14.0" \
 		icon.color=0xff$foam \
 		label.color=0xff$text \
 		background.color=0x88$gold \
