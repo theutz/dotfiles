@@ -80,6 +80,7 @@ icons=(
   
   
   
+  
 	󰍺
 )
 labels=(
@@ -87,6 +88,7 @@ labels=(
 	alt
   docs
 	media
+  system
 	external
 )
 index=1

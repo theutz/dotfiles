@@ -45,8 +45,12 @@ settings:
     '*://*.app.fastmail.com/*': false
     '*://*.app.hubspot.com/*': false
     '*://*.app.slack.com/*': false
+    '*://*.dashboard.doppler.com/*': false
+    '*://*.forge.laravel.com/*': false
+    '*://*.hiwasseepackaging.com/*': false
     '*://*.hiwasseepackaging.test/*': false
     '*://*.lineworker.test/*': false
+    '*://*.ohdear.app/*': false
     '*://*.projects.zoho.com/*': false
     '*://*.statamic.dev/*': false
     '*://*.unix.stackexchange.com/*': false
