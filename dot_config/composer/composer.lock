@@ -1371,16 +1371,16 @@
         },
         {
             "name": "laravel/installer",
-            "version": "v5.8.2",
+            "version": "v5.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/installer.git",
-                "reference": "ee69a99c011d90ddf92655cdf22174d35703d06c"
+                "reference": "34852d5deed3bd1933d22321eb7c1c7a3257b545"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/installer/zipball/ee69a99c011d90ddf92655cdf22174d35703d06c",
-                "reference": "ee69a99c011d90ddf92655cdf22174d35703d06c",
+                "url": "https://api.github.com/repos/laravel/installer/zipball/34852d5deed3bd1933d22321eb7c1c7a3257b545",
+                "reference": "34852d5deed3bd1933d22321eb7c1c7a3257b545",
                 "shasum": ""
             },
             "require": {
@@ -1420,28 +1420,28 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/installer/issues",
-                "source": "https://github.com/laravel/installer/tree/v5.8.2"
+                "source": "https://github.com/laravel/installer/tree/v5.8.3"
             },
-            "time": "2024-06-02T14:41:15+00:00"
+            "time": "2024-06-18T16:43:24+00:00"
         },
         {
             "name": "laravel/laravel",
-            "version": "v10.2.6",
+            "version": "v10.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/laravel.git",
-                "reference": "36047268f130477fa17270e26b1bb5991d781265"
+                "reference": "d3287461e15862d1c7a8f10925988b4f1640d92b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/laravel/zipball/36047268f130477fa17270e26b1bb5991d781265",
-                "reference": "36047268f130477fa17270e26b1bb5991d781265",
+                "url": "https://api.github.com/repos/laravel/laravel/zipball/d3287461e15862d1c7a8f10925988b4f1640d92b",
+                "reference": "d3287461e15862d1c7a8f10925988b4f1640d92b",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.2",
                 "laravel/framework": "^10.10",
-                "laravel/sanctum": "^3.2",
+                "laravel/sanctum": "^3.3",
                 "laravel/tinker": "^2.8",
                 "php": "^8.1"
             },
@@ -1477,9 +1477,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/laravel/tree/v10.2.6"
+                "source": "https://github.com/laravel/laravel/tree/v10.3.3"
             },
-            "time": "2023-08-10T07:19:31+00:00"
+            "time": "2024-02-13T02:23:34+00:00"
         },
         {
             "name": "laravel/prompts",
