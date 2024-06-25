@@ -28,7 +28,7 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.kapeli.dashdoc'
@@ -36,22 +36,26 @@ run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 2'
 
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'move-node-to-workspace 7'
+
 [workspace-to-monitor-force-assignment]
-6 = ['secondary', 'built-in']
+7 = ['secondary', 'built-in']
 
 [gaps]
 inner.horizontal = 16
@@ -106,6 +110,7 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
 alt-n = 'workspace --wrap-around next'
 alt-o = 'mode app'
 alt-p = 'workspace --wrap-around prev'
@@ -117,6 +122,7 @@ alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
 alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
 alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
 alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
 alt-shift-minus = 'resize smart -150'
 alt-shift-equal = 'resize smart +150'
 alt-shift-n = [
@@ -142,7 +148,7 @@ alt-shift-rightSquareBracket = [
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
-s = ['exec-and-forget sketchybar --reload', 'mode main']
+s = ['reload-config', 'exec-and-forget sketchybar --reload', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
 alt-shift-h = ['join-with left', 'mode main']

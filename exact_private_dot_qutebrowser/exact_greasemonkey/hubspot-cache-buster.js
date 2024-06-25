@@ -3,6 +3,7 @@
 // @version  1.0
 // @include  https://poligon.delegator.com/*
 // @include  https://*.hs-sites.com/*
+// @include  https://*.poligon.com/*
 // ==/UserScript==
 
 console.log("Loaded HubSpot Cache Buster from Greasemonkey");

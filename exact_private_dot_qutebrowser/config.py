@@ -208,13 +208,13 @@ for pattern in never_dark_mode:
     with config.pattern(pattern) as p:
         p.colors.webpage.darkmode.enabled = False
 
-for url in [
-    "https://click.redditmail.com/*",
-    "https://*.bugherd.com/*",
-    "https://sentry.io/*",
-    "https://p.typekit.net/*",
-]:
-    c.content.blocking.whitelist.append(url)
+# for url in [
+#     "https://click.redditmail.com/*",
+#     "https://*.bugherd.com/*",
+#     "https://sentry.io/*",
+#     "https://p.typekit.net/*",
+# ]:
+#     c.content.blocking.whitelist.append(url)
 
 notifications_allowed = ["https://app.slack.com"]
 for site in notifications_allowed:

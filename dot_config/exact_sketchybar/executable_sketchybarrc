@@ -79,6 +79,7 @@ icons=(
 	
   
   
+  󰭹
   
   
 	󰍺
@@ -87,6 +88,7 @@ labels=(
 	main
 	alt
   docs
+  social
 	media
   system
 	external

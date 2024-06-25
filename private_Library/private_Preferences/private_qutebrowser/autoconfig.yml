@@ -41,6 +41,7 @@ settings:
         ttP: config-cycle -p tabs.position top left bottom right
         ttp: config-cycle -p tabs.position top right bottom left
   colors.webpage.darkmode.enabled:
+    '*//*.poligon.com/*': false
     '*://*.ah-crap.test/*': false
     '*://*.app.fastmail.com/*': false
     '*://*.app.hubspot.com/*': false
@@ -58,8 +59,11 @@ settings:
     '*://*.www.facebook.com/*': false
     '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
+    '*://*.www.linkedin.com/*': true
+    '*://*.www.poligon.com/*': false
     '*://*.www.youtube.com/*': false
     '*://www.homerow.app/*': false
+    '*://www.linkedin.com/*': false
     global: true
   completion.cmd_history_max_items:
     global: -1
@@ -71,12 +75,12 @@ settings:
     global: true
   completion.use_best_match:
     global: true
+  content.blocking.enabled:
+    '*.hubspot.com/*': false
+    '*.poligon.com/*': false
+    '*://click.redditmail.com/*': false
   content.blocking.whitelist:
-    global:
-    - https://click.redditmail.com/*
-    - https://*.bugherd.com/*
-    - sentry.io
-    - p.typekit.net
+    global: null
   content.cookies.accept:
     '*://*.app.slack.com/*': no-3rdparty
     '*://*.projects.zoho.com/*': all
@@ -103,6 +107,7 @@ settings:
     https://web.whatsapp.com: true
     https://www.facebook.com: false
     https://www.instagram.com: true
+    https://www.reddit.com: true
     https://www.sozcu.com.tr: false
     https://www.youtube.com: true
   content.pdfjs:
@@ -204,7 +209,7 @@ settings:
   tabs.undo_stack_size:
     global: -1
   tabs.width:
-    global: 15%
+    global: 20%
   tabs.wrap:
     global: true
   url.auto_search:
