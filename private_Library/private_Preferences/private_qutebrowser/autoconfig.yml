@@ -61,6 +61,7 @@ settings:
     '*://*.www.lineworker.com/*': false
     '*://*.www.linkedin.com/*': true
     '*://*.www.poligon.com/*': false
+    '*://*.www.ultimatelinings.com/*': false
     '*://*.www.youtube.com/*': false
     '*://www.homerow.app/*': false
     '*://www.linkedin.com/*': false
@@ -78,6 +79,7 @@ settings:
   content.blocking.enabled:
     '*.hubspot.com/*': false
     '*.poligon.com/*': false
+    '*://*.www.lineworker.com/*': false
     '*://click.redditmail.com/*': false
   content.blocking.whitelist:
     global: null
@@ -195,7 +197,7 @@ settings:
   tabs.pinned.shrink:
     global: true
   tabs.position:
-    global: left
+    global: right
   tabs.select_on_remove:
     global: next
   tabs.show:
@@ -209,7 +211,7 @@ settings:
   tabs.undo_stack_size:
     global: -1
   tabs.width:
-    global: 20%
+    global: 15%
   tabs.wrap:
     global: true
   url.auto_search:

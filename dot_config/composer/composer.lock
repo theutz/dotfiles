@@ -1114,16 +1114,16 @@
         },
         {
             "name": "laravel/forge-cli",
-            "version": "v1.8.0",
+            "version": "v1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/forge-cli.git",
-                "reference": "04c3acbd4c2f5d6f88a1decdfa06bbc461c70572"
+                "reference": "253e2989e704e838fd029904fd0052e3d3b8d944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/forge-cli/zipball/04c3acbd4c2f5d6f88a1decdfa06bbc461c70572",
-                "reference": "04c3acbd4c2f5d6f88a1decdfa06bbc461c70572",
+                "url": "https://api.github.com/repos/laravel/forge-cli/zipball/253e2989e704e838fd029904fd0052e3d3b8d944",
+                "reference": "253e2989e704e838fd029904fd0052e3d3b8d944",
                 "shasum": ""
             },
             "require": {
@@ -1131,10 +1131,10 @@
                 "phpseclib/phpseclib": "^3.0.19"
             },
             "require-dev": {
+                "larastan/larastan": "^2.6.0",
                 "laravel-zero/framework": "^10.0.2",
                 "laravel/forge-sdk": "^3.13.4",
                 "mockery/mockery": "^1.5.1",
-                "nunomaduro/larastan": "^2.6.0",
                 "pestphp/pest": "^2.6.1",
                 "spatie/once": "^3.1.0"
             },
@@ -1167,7 +1167,7 @@
                 "issues": "https://github.com/laravel/forge-cli/issues",
                 "source": "https://github.com/laravel/forge-cli"
             },
-            "time": "2023-06-06T14:50:26+00:00"
+            "time": "2024-06-24T14:39:48+00:00"
         },
         {
             "name": "laravel/framework",
