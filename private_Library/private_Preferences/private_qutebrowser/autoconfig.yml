@@ -51,16 +51,20 @@ settings:
     '*://*.hiwasseepackaging.com/*': false
     '*://*.hiwasseepackaging.test/*': false
     '*://*.lineworker.test/*': false
+    '*://*.mysimplephones.com/*': false
     '*://*.ohdear.app/*': false
     '*://*.projects.zoho.com/*': false
     '*://*.statamic.dev/*': false
+    '*://*.ultimatelinings.test/*': false
     '*://*.unix.stackexchange.com/*': false
+    '*://*.www.bestbuy.com/*': false
     '*://*.www.bugherd.com/*': false
     '*://*.www.facebook.com/*': false
     '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
     '*://*.www.linkedin.com/*': true
     '*://*.www.poligon.com/*': false
+    '*://*.www.simplemobile.com/*': false
     '*://*.www.ultimatelinings.com/*': false
     '*://*.www.youtube.com/*': false
     '*://www.homerow.app/*': false
@@ -79,6 +83,7 @@ settings:
   content.blocking.enabled:
     '*.hubspot.com/*': false
     '*.poligon.com/*': false
+    '*://*.ultimatelinings.test/*': false
     '*://*.www.lineworker.com/*': false
     '*://click.redditmail.com/*': false
   content.blocking.whitelist:
