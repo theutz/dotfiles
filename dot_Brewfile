@@ -277,6 +277,8 @@ brew "pueue", restart_service: true
 brew "python@3.11"
 # Generic machine emulator and virtualizer
 brew "qemu"
+# File browser
+brew "ranger"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: true
 # Wrapper around ripgrep that adds multiple rich file types
