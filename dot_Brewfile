@@ -26,6 +26,7 @@ tap "railwaycat/emacsmacport"
 tap "rsteube/tap"
 tap "shivammathur/php"
 tap "socsieng/tap"
+tap "xwmx/taps"
 # Run your GitHub Actions locally
 brew "act"
 # Simple, modern, secure file encryption
