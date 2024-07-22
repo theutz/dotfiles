@@ -229,10 +229,6 @@ brew "mosh"
 brew "mycli"
 # Open source relational database management system
 brew "mysql"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Command-line and local web note-taking, bookmarking, and archiving
-brew "nb"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -275,6 +271,8 @@ brew "python@3.11"
 brew "qemu"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: true
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Safe, concurrent, practical language
@@ -390,6 +388,7 @@ brew "shivammathur/php/php@7.3"
 brew "shivammathur/php/php@7.4"
 # Command-line tool for automating keystrokes and mouse events
 brew "socsieng/tap/sendkeys"
+brew "xwmx/taps/nb", args: ["HEAD"]
 # Command-line interface for 1Password
 cask "1password-cli"
 # AeroSpace is an i3-like tiling window manager for macOS
