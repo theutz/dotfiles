@@ -27,7 +27,7 @@
 	light = false
 [diff]
 	colorMoved = default
-	tool = Kaleidoscope
+	tool = delta
 [mergetool]
   keepBackup = false
 	prompt = false
@@ -35,13 +35,8 @@
   cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c 'wincmd l' -c 'norm ]c'
 [init]
 	defaultBranch = main
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
-	trustExitCode = true
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 ; [url "ssh://git@github.com/"]
 ; 	insteadOf = https://github.com/
