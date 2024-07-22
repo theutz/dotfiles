@@ -11,7 +11,8 @@ highlight: true
 indent_character: "|"
 journals:
   default:
-    journal: /Users/michael/Dropbox/journal.txt
+    journal: /Users/michael/Dropbox/jrnl/journal.txt
+    delegator: /Users/michael/Dropbox/jrnl/delegator.txt
 linewrap: 79
 tagsymbols: "#@"
 template: false
