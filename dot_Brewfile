@@ -185,6 +185,8 @@ brew "imagemagick"
 brew "jnv"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Command-line note taker
+brew "jrnl"
 # Handy way to save and run project-specific commands
 brew "just"
 # User-friendly front-end to ssh-agent(1)
