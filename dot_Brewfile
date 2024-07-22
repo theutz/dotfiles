@@ -388,7 +388,7 @@ brew "shivammathur/php/php@7.3"
 brew "shivammathur/php/php@7.4"
 # Command-line tool for automating keystrokes and mouse events
 brew "socsieng/tap/sendkeys"
-brew "xwmx/taps/nb", args: ["HEAD"]
+brew "xwmx/taps/nb", args: ["HEAD"], link: false
 # Command-line interface for 1Password
 cask "1password-cli"
 # AeroSpace is an i3-like tiling window manager for macOS
