@@ -6,12 +6,12 @@ colors:
 default_hour: 9
 default_minute: 0
 editor: nvim
-encrypt: false
+encrypt: true
 highlight: true
 indent_character: "|"
 journals:
   default:
-    journal: /Users/michael/.local/share/jrnl/journal.txt
+    journal: /Users/michael/Dropbox/journal.txt
 linewrap: 79
 tagsymbols: "#@"
 template: false
