@@ -319,6 +319,8 @@ brew "tere"
 brew "terragrunt"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+# CLI csv pretty printer
+brew "tidy-viewer"
 # Simplified and community-driven man pages
 brew "tldr"
 # Tmux session manager. Built on libtmux
