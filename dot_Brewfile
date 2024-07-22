@@ -70,6 +70,12 @@ brew "chezmoi"
 brew "cmake"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
+# Library for encoding and decoding .avif files
+brew "libavif"
+# General-purpose scripting language
+brew "php"
+# Dependency Manager for PHP
+brew "composer"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Command-line csv viewer
@@ -114,8 +120,6 @@ brew "figlet"
 brew "fortune"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Library for encoding and decoding .avif files
-brew "libavif"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -244,8 +248,6 @@ brew "tmux"
 brew "overmind"
 # Shell command parallelization utility
 brew "parallel"
-# General-purpose scripting language
-brew "php"
 # General-purpose scripting language
 brew "php@8.2"
 # Pinentry for GPG on Mac
