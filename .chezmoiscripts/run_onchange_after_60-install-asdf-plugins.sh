@@ -15,6 +15,7 @@ plugins=(
   pnpm
   pipx
   tmux
+  golang
 )
 
 foreach plugin in $plugins; do
