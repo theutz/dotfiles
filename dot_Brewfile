@@ -315,6 +315,8 @@ brew "tailspin"
 brew "task"
 # Shell wrapper for Taskwarrior commands
 brew "tasksh"
+# Terminal user interface for taskwarrior
+brew "taskwarrior-tui"
 # Terminal file explorer
 brew "tere"
 # Thin wrapper for Terraform e.g. for locking state
