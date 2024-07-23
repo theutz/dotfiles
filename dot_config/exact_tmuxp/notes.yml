@@ -1,0 +1,12 @@
+session_name: notes
+start_directory: $HOME
+windows:
+  - panes:
+      - shell_command: nb shell
+        sleep_before: 1
+    window_name: nb
+  - panes:
+      - shell_command: while :; do clear; jrnl -from today; sleep 10; done
+        sleep_before: 1
+      - blank
+    window_name: jrnl
