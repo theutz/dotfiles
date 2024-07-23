@@ -181,14 +181,16 @@ brew "hugo"
 brew "hurl"
 # Command-line benchmarking tool
 brew "hyperfine"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Interactive jq
+brew "ijq"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Interactive JSON filter using jq
 brew "jnv"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # Command-line note taker
 brew "jrnl"
 # Handy way to save and run project-specific commands
