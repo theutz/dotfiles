@@ -325,6 +325,8 @@ brew "terragrunt"
 brew "thefuck"
 # CLI csv pretty printer
 brew "tidy-viewer"
+# Command-line time tracking application
+brew "timewarrior"
 # Simplified and community-driven man pages
 brew "tldr"
 # Tmux session manager. Built on libtmux
