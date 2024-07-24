@@ -86,7 +86,7 @@ brew "dark-mode"
 # Diff that understands syntax
 brew "difftastic"
 # Lightweight DNS forwarder and DHCP server
-brew "dnsmasq", restart_service: true
+brew "dnsmasq"
 # Git-powered personal task tracker
 brew "dstask"
 # Embeddable SQL OLAP Database Management System
