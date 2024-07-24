@@ -67,6 +67,7 @@ settings:
     '*://*.www.simplemobile.com/*': false
     '*://*.www.ultimatelinings.com/*': false
     '*://*.www.youtube.com/*': false
+    '*://localhost/*': false
     '*://www.homerow.app/*': false
     '*://www.linkedin.com/*': false
     global: true

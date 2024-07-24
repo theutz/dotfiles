@@ -10,3 +10,9 @@ windows:
   - panes:
       - just up
     window_name: servers
+  - panes:
+      - lnav storage/logs/*.log
+    window_name: logs
+  - panes:
+      - doppler tui
+    window_name: secrets
