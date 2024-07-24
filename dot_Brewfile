@@ -252,7 +252,7 @@ brew "noti"
 # Modern shell for the GitHub era
 brew "nushell"
 # Terminal multiplexer
-brew "tmux"
+brew "tmux", args: ["HEAD"]
 # Process manager for Procfile-based applications and tmux
 brew "overmind"
 # Shell command parallelization utility
