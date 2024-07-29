@@ -89,6 +89,7 @@ EDITOR = 'neovide --fork'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 [mode.main.binding]
+f14 = 'exec-and-forget wezterm cli spawn --new-window -- tmux -L spotify new -A -s spotify -n main spotify_player'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 alt-h = 'focus left'
@@ -170,7 +171,10 @@ e = ["""exec-and-forget osascript <<EOF
   EOF""", 'mode main']
 l = ['exec-and-forget open -a Timemator.app', 'mode main']
 m = ['exec-and-forget open -a Messages.app', 'mode main']
-p = ['exec-and-forget open -a Spotify.app', 'mode main']
+p = [
+  'exec-and-forget wezterm cli spawn --new-window -- tmux -L spotify new -A -s spotify -n main spotify_player',
+  'mode main',
+]
 s = ['exec-and-forget open -a Slack.app', 'mode main']
 t = ["""exec-and-forget osascript <<EOF
   tell application "WezTerm"

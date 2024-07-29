@@ -112,8 +112,8 @@ c.colors.downloads.start.bg = theme.get("iris")
 c.colors.downloads.start.fg = theme.get("base")
 c.colors.downloads.stop.bg = theme.get("pine")
 c.colors.downloads.stop.fg = theme.get("base")
-c.colors.hints.bg = theme.get("gold")
-c.colors.hints.fg = theme.get("surface")
+c.colors.hints.bg = rose_pine.get("gold")
+c.colors.hints.fg = rose_pine.get("base")
 c.colors.hints.match.fg = theme.get("pine")
 c.colors.keyhint.bg = theme.get("surface")
 c.colors.keyhint.fg = theme.get("text")
@@ -190,7 +190,7 @@ c.fonts.web.size.minimum_logical = 6
 
 
 c.hints.border = "0 none " + theme.get("gold", "")
-c.hints.padding = {"bottom": 0, "left": 3, "right": 3, "top": 0}
+c.hints.padding = {"bottom": 1, "left": 4, "right": 4, "top": 1}
 c.hints.radius = 5
 c.hints.uppercase = True
 
