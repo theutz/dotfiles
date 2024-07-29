@@ -447,6 +447,8 @@ cask "google-chrome"
 cask "hammerspoon"
 # Vector graphics editor
 cask "inkscape"
+# Keyboard customiser
+cask "karabiner-elements"
 # GPU-based terminal emulator
 cask "kitty"
 # Open source code editor written in Rust
