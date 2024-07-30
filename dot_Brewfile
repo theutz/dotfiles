@@ -16,6 +16,7 @@ tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
+tap "jfryy/tap"
 tap "knqyf263/pet"
 tap "koekeishiya/formulae"
 tap "kojix2/brew"
@@ -392,6 +393,8 @@ brew "gptscript-ai/tap/gptscript"
 brew "hashicorp/tap/packer"
 # Terraform
 brew "hashicorp/tap/terraform"
+# Multi-tool structured format processor for query and transcoding
+brew "jfryy/tap/qq"
 # Simple command-line snippet manager
 brew "knqyf263/pet/pet"
 # Simple command line tool for DeepL
