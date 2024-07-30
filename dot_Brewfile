@@ -90,6 +90,8 @@ brew "dark-mode"
 brew "difftastic"
 # Lightweight DNS forwarder and DHCP server
 brew "dnsmasq"
+# Command-line DNS Client for Humans
+brew "doggo"
 # Git-powered personal task tracker
 brew "dstask"
 # Embeddable SQL OLAP Database Management System
