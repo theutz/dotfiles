@@ -60,6 +60,8 @@ brew "broot"
 brew "gcc"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Powerful command-line bookmark manager
+brew "buku"
 # Powerful, enterprise-ready, open source web server with automatic HTTPS
 brew "caddy"
 # Core application library for C
