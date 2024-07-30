@@ -266,6 +266,7 @@ normal_bindings = {
     "so": "cmd-set-text --space :session-load --clear",
     "shs": "cmd-set-text --space :help -t",
     "shk": "open -t qute://bindings",
+    "yn": "spawn --output nb bookmark {url}"
 }
 for key, cmd in normal_bindings.items():
     config.bind(key, cmd)

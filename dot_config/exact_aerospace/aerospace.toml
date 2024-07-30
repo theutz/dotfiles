@@ -89,7 +89,9 @@ EDITOR = 'neovide --fork'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 [mode.main.binding]
-f14 = 'exec-and-forget wezterm cli spawn --new-window -- tmux -L spotify new -A -s spotify -n main spotify_player'
+f13 = 'exec-and-forget spotify_player playback previous'
+f14 = 'exec-and-forget spotify_player playback play-pause'
+f15 = 'exec-and-forget spotify_player playback next'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 alt-h = 'focus left'
