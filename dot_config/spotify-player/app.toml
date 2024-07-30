@@ -11,9 +11,9 @@ playback_refresh_duration_in_ms = 0
 cover_image_refresh_duration_in_ms = 2000
 page_size_in_rows = 20
 play_icon = "▶"
-pause_icon = "▌▌"
-liked_icon = "♥"
-border_type = "Plain"
+pause_icon = ""
+liked_icon = ""
+border_type = "Rounded"
 progress_bar_type = "Rectangle"
 playback_window_position = "Top"
 cover_img_length = 9
@@ -24,6 +24,7 @@ enable_media_control = false
 enable_streaming = "Always"
 enable_cover_image_cache = true
 default_device = "spotify-player"
+enable_notify = false
 
 [copy_command]
 command = "pbcopy"
