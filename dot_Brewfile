@@ -298,6 +298,8 @@ brew "rsync"
 brew "rust"
 # CLI search and replace | Space Age seD
 brew "sad"
+# Spreadsheet program for the terminal, using ncurses
+brew "sc-im"
 # Intuitive find & replace CLI
 brew "sd"
 # Static analysis and lint tool, for (ba)sh scripts
