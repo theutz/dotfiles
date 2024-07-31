@@ -117,7 +117,28 @@
                     "mouse_flip_y": false,
                     "mouse_swap_wheels": false,
                     "mouse_swap_xy": false,
-                    "simple_modifications": [],
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "non_us_backslash"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "grave_accent_and_tilde"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "grave_accent_and_tilde"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "left_shift"
+                                }
+                            ]
+                        }
+                    ],
                     "treat_as_built_in_keyboard": false
                 },
                 {
@@ -351,31 +372,21 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "left_command"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_option"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_option"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
                                 "consumer_key_code": "play_or_pause"
                             },
                             "to": [
                                 {
                                     "key_code": "f14"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "consumer_key_code": "scan_next_track"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "f15"
                                 }
                             ]
                         },
@@ -391,11 +402,21 @@
                         },
                         {
                             "from": {
-                                "consumer_key_code": "scan_next_track"
+                                "key_code": "left_command"
                             },
                             "to": [
                                 {
-                                    "key_code": "f15"
+                                    "key_code": "left_option"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_option"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "left_command"
                                 }
                             ]
                         }

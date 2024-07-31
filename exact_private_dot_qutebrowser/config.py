@@ -266,7 +266,13 @@ normal_bindings = {
     "so": "cmd-set-text --space :session-load --clear",
     "shs": "cmd-set-text --space :help -t",
     "shk": "open -t qute://bindings",
-    "yn": "spawn --output nb bookmark {url}"
+    "yb": "spawn --output-messages buku --nostdin --nc -w neovide -a {url:pretty}",
+    "yj": "yank selection ;; spawn --output-messages jrnl --edit {clipboard} {url:pretty}",
+    "gxc": "spawn --output-messages open -a 'Google Chrome.app' {url:pretty}",
+    "gxf": "spawn --output-messages open -a 'Firefox.app' {url:pretty}",
+    ";xc": "hint links spawn --output-messages open -a 'Google Chrome.app' {hint-url}",
+    ";xf": "hint links spawn --output-messages open -a 'Firefox.app' {hint-url}",
+    "gs": "spawn -u social"
 }
 for key, cmd in normal_bindings.items():
     config.bind(key, cmd)
@@ -276,3 +282,6 @@ for key, cmd in command_bindings.items():
     config.bind(key, cmd, mode="command")
 
 c.tabs.title.format_pinned = "{audio}{index}: 📌 {current_title}"
+
+c.content.javascript.log_message.excludes = {"userscript:_qute_stylesheet": ["*Refused to apply inline style because it violates the following Content Security Policy directive: *"],
+                                             "userscript:_qute_js": ["*TrustedHTML*"]}

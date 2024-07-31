@@ -1,16 +1,15 @@
 #!/usr/bin/env zsh
 
 urls=(
-  fastmail.com
   facebook.com
+  twitter.com
   instagram.com
   linkedin.com
   bsky.app
   hachyderm.io
   reddit.com
-  twitter.com
 )
 
 for url in $urls; do
-  echo "open -t https://$url" >> "$QUTE_FIFO"
+  echo "open -t https://$url ;; tab-focus -7" >> "$QUTE_FIFO"
 done

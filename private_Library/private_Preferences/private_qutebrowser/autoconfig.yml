@@ -68,6 +68,7 @@ settings:
     '*://*.www.ultimatelinings.com/*': false
     '*://*.www.youtube.com/*': false
     '*://localhost/*': false
+    '*://projects.zoho.com/*': false
     '*://www.homerow.app/*': false
     '*://www.linkedin.com/*': false
     global: true
