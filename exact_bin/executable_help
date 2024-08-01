@@ -41,8 +41,9 @@ case "$argv[1]" in
     exit
     ;;
 
-  sources)
-    yq .sources $config_file
+  with)
+    yq .sources $config_file | fzf | cut -d: -f2- | read action
+    eval "$action"
     exit
     ;;
 
