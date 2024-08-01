@@ -50,6 +50,7 @@ case "$argv[1]" in
     cat $config_file
     exit
     ;;
+
   *)
     local source="${(j: :)argv[@]}"
     local action="$(echo $config | jq -r --arg source $source '.sources[$source]')"
