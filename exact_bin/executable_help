@@ -8,15 +8,15 @@ local config_file="$dir/help.yml"
 if [[ "${#argv[@]}" == 0 ]]; then
   local sources="$(yq '.sources | keys | join(", ")' $config_file)"
   echo "
-help [source]
+help [[source] | <subcommand>]
 
   source: ${sources}
 
 SUBCOMMANDS:
 
+  with                    choose a source from a fuzzy finder
   add SOURCE COMMAND...   add a new source
   remove SOURCE           remove a source
-  sources                 print a list of all the sources
 
 INFO:
 
