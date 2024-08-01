@@ -50,6 +50,11 @@ case "$argv[1]" in
     export source="${(j: :)argv[@]}"
     local action="$(yq '.sources[env(source)]' $config_file)"
 
+    if [[ "$action" == "null" ]]; then
+      echo "$source is not a known help source."
+      exit 1
+    fi
+
     echo "Running '$action'"
     eval "$action"
     exit

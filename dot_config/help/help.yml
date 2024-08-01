@@ -5,3 +5,5 @@ sources:
   nb: open https://xwmx.github.com/nb
   tmuxp: open https://tmuxp.git-pull.com/configuration/index.html
   valet: open https://laravel.com/docs/valet
+  gum: man gum
+  yq: man yq
