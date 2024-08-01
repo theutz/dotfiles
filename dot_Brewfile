@@ -260,6 +260,8 @@ brew "nushell"
 brew "tmux", args: ["HEAD"]
 # Process manager for Procfile-based applications and tmux
 brew "overmind"
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
 # Shell command parallelization utility
 brew "parallel"
 # General-purpose scripting language
