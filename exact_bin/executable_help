@@ -8,22 +8,53 @@ local config="$(qq $config_file)"
 
 if [[ "${#argv[@]}" == 0 ]]; then
   local sources="$(echo $config | jq -r '.sources | keys | join(", ")')"
-  echo "help [SOURCE]
+  echo "
+help [source]
 
-SOURCE: ${sources}
-  "
+  source: ${sources}
+
+SUBCOMMANDS:
+
+  add SOURCE COMMAND...   add a new source
+  remove SOURCE           remove a source
+  config                  print the config
+
+INFO:
+
+  Config file: $config_file
+"
   exit
 fi
 
-if [[ $argv[1] == "add" ]]; then
-  local source="${argv[2]}"
-  local action="${argv[3,0]}"
-  qq -r --arg source $source --arg action $action '.sources[$source] = $action' $config_file | sponge $config_file
-  exit
-fi
+case "$argv[1]" in
+  add)
+    local source="${argv[2]}"
+    local action="${argv[3,-1]}"
+    echo $config \
+      | jq -r --arg source $source --arg action $action '.sources[$source] = $action' \
+      | qq . --output yml >! $config_file
+    echo "Added $source"
+    exit
+    ;;
 
-local source="${(j: :)argv[@]}"
-local action="$(echo $config | jq -r --arg source $source '.sources[$source]')"
+  remove)
+    local source="${argv[2]}"
+    echo $config \
+      | jq -r --arg source $source 'del(.sources[$source])' \
+      | qq . --output yml >! $config_file
+    echo "Removed $source"
+    exit
+    ;;
 
-echo "Running '$action'"
-eval "$action"
+  config)
+    cat $config_file
+    exit
+    ;;
+  *)
+    local source="${(j: :)argv[@]}"
+    local action="$(echo $config | jq -r --arg source $source '.sources[$source]')"
+
+    echo "Running '$action'"
+    eval "$action"
+    exit
+esac
