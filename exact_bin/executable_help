@@ -4,10 +4,9 @@ set -euo pipefail
 
 local dir="$XDG_CONFIG_HOME/help"
 local config_file="$dir/help.yml"
-local config="$(qq $config_file)"
 
 if [[ "${#argv[@]}" == 0 ]]; then
-  local sources="$(echo $config | jq -r '.sources | keys | join(", ")')"
+  local sources="$(yq '.sources | keys | join(", ")' $config_file)"
   echo "
 help [source]
 
@@ -17,7 +16,7 @@ SUBCOMMANDS:
 
   add SOURCE COMMAND...   add a new source
   remove SOURCE           remove a source
-  config                  print the config
+  sources                 print a list of all the sources
 
 INFO:
 
@@ -28,32 +27,28 @@ fi
 
 case "$argv[1]" in
   add)
-    local source="${argv[2]}"
-    local action="${argv[3,-1]}"
-    echo $config \
-      | jq -r --arg source $source --arg action $action '.sources[$source] = $action' \
-      | qq . --output yml >! $config_file
+    export source="${argv[2]}"
+    export action="${argv[3,-1]}"
+    yq -i '.sources[env(source)] = env(action)' $config_file
     echo "Added $source"
     exit
     ;;
 
   remove)
-    local source="${argv[2]}"
-    echo $config \
-      | jq -r --arg source $source 'del(.sources[$source])' \
-      | qq . --output yml >! $config_file
+    export source="${argv[2,-1]}"
+    yq -i 'del(.sources[env(source)])' $config_file
     echo "Removed $source"
     exit
     ;;
 
-  config)
-    cat $config_file
+  sources)
+    yq .sources $config_file
     exit
     ;;
 
   *)
-    local source="${(j: :)argv[@]}"
-    local action="$(echo $config | jq -r --arg source $source '.sources[$source]')"
+    export source="${(j: :)argv[@]}"
+    local action="$(yq '.sources[env(source)]' $config_file)"
 
     echo "Running '$action'"
     eval "$action"
