@@ -5,9 +5,8 @@ set -euo pipefail
 local dir="$XDG_CONFIG_HOME/help"
 local config_file="$dir/help.yml"
 
-if [[ "${#argv[@]}" == 0 ]]; then
-  local sources="$(yq '.sources | keys | join(", ")' $config_file)"
-  echo "
+local sources="$(yq '.sources | keys | join(", ")' $config_file)"
+help="
 help [[source] | <subcommand>]
 
   source: ${sources}
@@ -22,10 +21,17 @@ INFO:
 
   Config file: $config_file
 "
+
+if [[ "${#argv[@]}" == 0 ]]; then
+  echo $help
   exit
 fi
 
 case "$argv[1]" in
+  -h|--help)
+    echo $help
+    exit
+    ;;
   add)
     export source="${argv[2]}"
     export action="${argv[3,-1]}"

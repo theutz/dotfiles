@@ -7,3 +7,4 @@ sources:
   valet: open https://laravel.com/docs/valet
   gum: man gum
   yq: man yq
+  bats: man bats
