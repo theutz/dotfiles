@@ -256,10 +256,6 @@ brew "nginx"
 brew "noti"
 # Modern shell for the GitHub era
 brew "nushell"
-# Terminal multiplexer
-brew "tmux", args: ["HEAD"]
-# Process manager for Procfile-based applications and tmux
-brew "overmind"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Shell command parallelization utility
@@ -344,6 +340,8 @@ brew "tidy-viewer"
 brew "timewarrior"
 # Simplified and community-driven man pages
 brew "tldr"
+# Terminal multiplexer
+brew "tmux", args: ["HEAD"]
 # Tmux session manager. Built on libtmux
 brew "tmuxp"
 # Display directories as trees (with optional color/HTML output)
