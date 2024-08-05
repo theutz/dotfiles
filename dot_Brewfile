@@ -241,7 +241,7 @@ brew "mosh"
 # CLI for MySQL with auto-completion and syntax highlighting
 brew "mycli"
 # Open source relational database management system
-brew "mysql"
+brew "mysql", restart_service: true
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Command-line and local web note-taking, bookmarking, and archiving
@@ -256,6 +256,10 @@ brew "nginx"
 brew "noti"
 # Modern shell for the GitHub era
 brew "nushell"
+# Terminal multiplexer
+brew "tmux", args: ["HEAD"]
+# Process manager for Procfile-based applications and tmux
+brew "overmind"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Shell command parallelization utility
@@ -340,8 +344,6 @@ brew "tidy-viewer"
 brew "timewarrior"
 # Simplified and community-driven man pages
 brew "tldr"
-# Terminal multiplexer
-brew "tmux", args: ["HEAD"]
 # Tmux session manager. Built on libtmux
 brew "tmuxp"
 # Display directories as trees (with optional color/HTML output)
@@ -478,6 +480,8 @@ cask "messenger"
 cask "microsoft-edge"
 # All-in-one calendars, tasks and scheduler
 cask "morgen"
+# Web browser focused on privacy and on minimizing tracking and fingerprinting
+cask "mullvad-browser"
 # Neovim Client
 cask "neovide"
 # App to write, plan, collaborate, and get organised
