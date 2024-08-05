@@ -358,6 +358,8 @@ brew "unar"
 brew "vim"
 # Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
+# Terminal navigator
+brew "walk"
 # Manage the desktop wallpaper
 brew "wallpaper"
 # Execute commands when watched files change
