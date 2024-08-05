@@ -482,6 +482,8 @@ cask "microsoft-edge"
 cask "morgen"
 # Web browser focused on privacy and on minimizing tracking and fingerprinting
 cask "mullvad-browser"
+# VPN client
+cask "mullvadvpn"
 # Neovim Client
 cask "neovide"
 # App to write, plan, collaborate, and get organised
