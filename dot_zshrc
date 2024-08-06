@@ -1,0 +1,17 @@
+# Options
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt EXTENDED_GLOB
+
+bindkey -v
+
+# Starship
+eval "$(starship init zsh)"
+
+# Completion
+autoload -Uz compinit
+compinit
+autoload -U +x bashcompinit && bashcompinit
+
+# Enable path completion for multiple segments
+zstyle ':completion:*' completer _complete _ignored _approximate
