@@ -1,3 +1,4 @@
+tap "achannarasappa/tap"
 tap "cormacrelf/tap"
 tap "d12frosted/emacs-plus"
 tap "dopplerhq/cli"
@@ -390,6 +391,8 @@ brew "zoxide"
 brew "zsh"
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
+# Terminal stock ticker with live updates and position tracking
+brew "achannarasappa/tap/ticker"
 # Watcher for macOS 10.14+ light/dark mode changes
 brew "cormacrelf/tap/dark-notify"
 # GNU Emacs text editor
