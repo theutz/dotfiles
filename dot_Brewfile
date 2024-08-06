@@ -350,6 +350,8 @@ brew "tmuxp"
 brew "tree"
 # Network diagnostic tool, inspired by mtr
 brew "trippy"
+# CLI time zone visualizer
+brew "tz"
 # Ultra fast grep with query UI, fuzzy search, archive search, and more
 brew "ugrep"
 # Command-line unarchiving tools supporting multiple formats
