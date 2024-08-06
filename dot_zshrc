@@ -9,7 +9,7 @@ bindkey -v
 # Starship
 eval "$(starship init zsh)"
 
-for func in "$HOME/.local/functions"; do
+for func in "$HOME"/.local/functions/*(:t); do
   autoload -Uz $func
 done
 
