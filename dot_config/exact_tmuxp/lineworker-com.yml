@@ -8,11 +8,8 @@ windows:
         focus: true
     window_name: main
   - panes:
-      - just up
+      - just dev
     window_name: servers
   - panes:
       - lnav storage/logs/*.log
     window_name: logs
-  - panes:
-      - doppler tui
-    window_name: secrets

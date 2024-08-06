@@ -24,6 +24,6 @@ path=(
   $path
 )
 
-if [[ -f $HOME/.zsecrets ]]; then
-  source $HOME/.zsecrets
-fi
+# if [[ -f $HOME/.zsecrets ]]; then
+#   source $HOME/.zsecrets
+# fi

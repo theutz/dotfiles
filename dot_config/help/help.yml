@@ -5,6 +5,15 @@ sources:
   nb: open https://xwmx.github.io/nb/
   tmuxp: open https://tmuxp.git-pull.com/configuration/index.html
   valet: open https://laravel.com/docs/valet
-  gum: man gum
+  gum: open https://github.com/charmbracelet/gum
   yq: man yq
   bats: man bats
+  just: open https://github.com/casey/just
+  brew: open https://brew.sh
+  asdf: open https://asdf-vm.com/guide/getting-started.html
+  composer: open https://getcomposer.org/doc/
+  doppler: open https://docs.doppler.com/docs/start
+  sttr: open https://github.com/abhimanyu003/sttr
+  starship: open https://starship.rs/config/
+  chezmoi: open https://www.chezmoi.io/user-guide/command-overview/
+  mods: brew home mods

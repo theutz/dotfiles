@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dca783493ffa7bc8d6aa201326c13218",
+    "content-hash": "357fb1d03c96cdd7adbad6d0d0b5fe3c",
     "packages": [
         {
             "name": "beyondcode/expose",
@@ -1735,27 +1735,27 @@
         },
         {
             "name": "laravel/valet",
-            "version": "v4.6.1",
+            "version": "v4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/valet.git",
-                "reference": "9f03cdc17d3767310da097b1cc63ccc6e74f83cd"
+                "reference": "467087c1559b78a52f9fae1294441247d138f1d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/valet/zipball/9f03cdc17d3767310da097b1cc63ccc6e74f83cd",
-                "reference": "9f03cdc17d3767310da097b1cc63ccc6e74f83cd",
+                "url": "https://api.github.com/repos/laravel/valet/zipball/467087c1559b78a52f9fae1294441247d138f1d7",
+                "reference": "467087c1559b78a52f9fae1294441247d138f1d7",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0|^7.4",
-                "illuminate/collections": "^8.0|^9.0|^10.0",
-                "illuminate/container": "~5.1|^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/collections": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/container": "~5.1|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
                 "mnapoli/silly": "^1.5",
                 "php": "^7.1|^8.0",
-                "symfony/console": "^3.0|^4.0|^5.0|^6.0",
-                "symfony/event-dispatcher": "^3.0|^4.0|^5.0|^6.0",
-                "symfony/process": "^3.0|^4.0|^5.0|^6.0"
+                "symfony/console": "^3.0|^4.0|^5.0|^6.0|^7.0",
+                "symfony/event-dispatcher": "^3.0|^4.0|^5.0|^6.0|^7.0",
+                "symfony/process": "^3.0|^4.0|^5.0|^6.0|^7.0"
             },
             "conflict": {
                 "mnapoli/silly": ">=1.8.1 <1.8.3"
@@ -1810,9 +1810,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/valet/issues",
-                "source": "https://github.com/laravel/valet/tree/v4.6.1"
+                "source": "https://github.com/laravel/valet/tree/v4.7.1"
             },
-            "time": "2024-01-01T09:13:28+00:00"
+            "time": "2024-06-25T21:01:48+00:00"
         },
         {
             "name": "league/commonmark",
@@ -2210,28 +2210,28 @@
         },
         {
             "name": "mnapoli/silly",
-            "version": "1.8.3",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnapoli/silly.git",
-                "reference": "895b189e3a59a5ea47aff6965a92180fdf417ced"
+                "reference": "fdb69ac9335b4c83f70baf433eae91e691901f1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnapoli/silly/zipball/895b189e3a59a5ea47aff6965a92180fdf417ced",
-                "reference": "895b189e3a59a5ea47aff6965a92180fdf417ced",
+                "url": "https://api.github.com/repos/mnapoli/silly/zipball/fdb69ac9335b4c83f70baf433eae91e691901f1c",
+                "reference": "fdb69ac9335b4c83f70baf433eae91e691901f1c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
                 "php-di/invoker": "~2.0",
                 "psr/container": "^1.0|^2.0",
-                "symfony/console": "~3.0|~4.0|~5.0|~6.0"
+                "symfony/console": "~3.0|~4.0|~5.0|~6.0|~7.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.12",
                 "mnapoli/phpunit-easymock": "~1.0",
-                "phpunit/phpunit": "^6.4|^7|^8|^9"
+                "phpunit/phpunit": "^6.4|^7|^8|^9|^10"
             },
             "type": "library",
             "autoload": {
@@ -2254,7 +2254,7 @@
             ],
             "support": {
                 "issues": "https://github.com/mnapoli/silly/issues",
-                "source": "https://github.com/mnapoli/silly/tree/1.8.3"
+                "source": "https://github.com/mnapoli/silly/tree/1.9.0"
             },
             "funding": [
                 {
@@ -2266,7 +2266,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-17T05:50:57+00:00"
+            "time": "2024-01-18T15:47:39+00:00"
         },
         {
             "name": "monolog/monolog",

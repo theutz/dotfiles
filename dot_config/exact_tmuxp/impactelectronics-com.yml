@@ -9,10 +9,8 @@ windows:
       - focus: true
         shell_command: nvim
         enter: false
-      - sleep 0.3 && exit
     window_name: main
   - layout: even-vertical
     panes:
       - just dev
-      - lazydocker
     window_name: server

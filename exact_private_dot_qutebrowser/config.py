@@ -268,8 +268,8 @@ normal_bindings = {
     "shk": "open -t qute://bindings",
     "yb": "spawn --output-messages buku --nostdin --nc -w neovide -a {url:pretty}",
     "yj": "yank selection ;; spawn --output-messages jrnl --edit {clipboard} {url:pretty}",
-    "gxc": "spawn --output-messages open -a 'Google Chrome.app' {url:pretty}",
-    "gxf": "spawn --output-messages open -a 'Firefox.app' {url:pretty}",
+    "gxc": "spawn --output-messages open -a 'Google Chrome.app' {url:pretty} ;; tab-close",
+    "gxf": "spawn --output-messages open -a 'Firefox.app' {url:pretty} ;; tab-close",
     ";xc": "hint links spawn --output-messages open -a 'Google Chrome.app' {hint-url}",
     ";xf": "hint links spawn --output-messages open -a 'Firefox.app' {hint-url}",
     "gs": "spawn -u social"

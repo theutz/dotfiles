@@ -8,5 +8,5 @@ windows:
         focus: true
     window_name: main
   - panes:
-      - just up
+      - just dev
     window_name: servers

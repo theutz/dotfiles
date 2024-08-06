@@ -9,7 +9,10 @@ urls=(
   hachyderm.io
   reddit.com
 )
+count="${#urls[@]}"
 
 for url in $urls; do
-  echo "open -t https://$url ;; tab-focus -7" >> "$QUTE_FIFO"
+  echo "open -t https://$url" >> "$QUTE_FIFO"
 done
+
+echo "tab-focus -$count" >> $QUTE_FIFO
