@@ -1,0 +1,43 @@
+#!/usr/bin/env just --unstable --working-directory . --justfile
+
+set shell := ["zsh", "-cu"]
+cmd := justfile()
+
+[private]
+default:
+  @{{cmd}} --list
+
+[private]
+pick session="":
+  #!/usr/bin/env zsh
+  tmuxp ls | \
+    gum filter --select-if-one \
+      --limit=1 \
+      --value="{{session}}" \
+      --header="Select a session..." \
+      --placeholder="session_name"
+
+alias l := load
+# Load a tmuxp session in detached state
+load session="":
+  {{cmd}} pick {{session}} | xargs tmuxp load -d
+
+alias a := attach
+# Attach to a tmuxp session
+attach session="":
+  #!/usr/bin/env zsh
+  {{cmd}} pick {{session}} | read session
+  tmuxp load -d $session
+  [[ -z "$TMUX" ]] &&
+    tmux attach -t $session ||
+    tmux switch -t $session
+
+alias x := trash
+# Send a tmuxp definition to the trash
+trash session="":
+  #!/usr/bin/env zsh
+  {{cmd}} pick {{session}} | read session
+  file="${XDG_CONFIG_HOME:-$HOME/.config}/tmuxp/$session.yml"
+  if gum confirm "Are you sure you want to send $file to the trash?"; then
+    trash $file && gum log -l info "$file deleted."
+  fi
