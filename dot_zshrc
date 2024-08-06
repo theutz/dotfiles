@@ -1,19 +1,30 @@
+#
 # Options
+#
+
 setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt EXTENDED_GLOB
 
+#
+# Bindings
+#
+
 # Use vim-style key bindings
 bindkey -v
+bindkey -v '^?' backward-delete-char
 
-# Starship
-eval "$(starship init zsh)"
-
+#
+# Autoload Functions
+#
 for func in "$HOME"/.local/functions/*(:t); do
   autoload -Uz $func
 done
 
-# Completion
+#
+# Autocomplete
+#
+
 autoload -Uz compinit
 compinit
 #autoload -U +x bashcompinit && bashcompinit
@@ -24,7 +35,17 @@ zstyle ':completion:*' completer _complete _ignored _approximate
 # Syntax Highlighting
 source "$XDG_STATE_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+#
+# Third-party
+#
+
+# Starship
+eval "$(starship init zsh)"
+
+#
 # Aliases
+#
+
 alias txe='tmuxp ls | gum filter | xargs -I{} nvim ~/.config/tmuxp/{}.yml'
 alias txa="tmuxp ls | gum filter | xargs -I{} zsh -c 'tmuxp load -d {} && tmux switch -t {}'"
 alias tmuxl="tmux ls -F '#S' | gum filter"
