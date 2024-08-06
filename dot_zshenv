@@ -26,6 +26,11 @@ path=(
   $path
 )
 
+fpath=(
+  /opt/homebrew/share/zsh/site-functions
+  $fpath
+)
+
 # if [[ -f $HOME/.zsecrets ]]; then
 #   source $HOME/.zsecrets
 # fi
