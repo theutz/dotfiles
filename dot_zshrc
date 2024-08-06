@@ -3,6 +3,7 @@ setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt EXTENDED_GLOB
 
+# Use vim-style key bindings
 bindkey -v
 
 # Starship
