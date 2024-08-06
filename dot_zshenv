@@ -34,3 +34,5 @@ fpath=(
 # if [[ -f $HOME/.zsecrets ]]; then
 #   source $HOME/.zsecrets
 # fi
+
+export TZ_LIST='US/Pacific;US/Central;US/Eastern;GMT;Europe/London;Asia/Istanbul'

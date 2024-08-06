@@ -5,10 +5,10 @@ sources:
   nb: open https://xwmx.github.io/nb/
   tmuxp: open https://tmuxp.git-pull.com/configuration/index.html
   valet: open https://laravel.com/docs/valet
-  gum: open https://github.com/charmbracelet/gum
+  gum: brew home gum
   yq: man yq
   bats: man bats
-  just: open https://github.com/casey/just
+  just: brew home just
   brew: open https://brew.sh
   asdf: open https://asdf-vm.com/guide/getting-started.html
   composer: open https://getcomposer.org/doc/
@@ -17,3 +17,4 @@ sources:
   starship: open https://starship.rs/config/
   chezmoi: open https://www.chezmoi.io/user-guide/command-overview/
   mods: brew home mods
+  delta: open https://dandavison.github.io/delta/
