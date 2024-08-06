@@ -18,3 +18,4 @@ sources:
   chezmoi: open https://www.chezmoi.io/user-guide/command-overview/
   mods: brew home mods
   delta: open https://dandavison.github.io/delta/
+  zparseopts: open https://gist.github.com/mattmc3/804a8111c4feba7d95b6d7b984f12a53
