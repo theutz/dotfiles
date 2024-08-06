@@ -24,3 +24,4 @@ source "$XDG_STATE_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 alias txe='tmuxp ls | gum filter | xargs -I{} nvim ~/.config/tmuxp/{}.yml'
 alias txa="tmuxp ls | gum filter | xargs -I{} zsh -c 'tmuxp load -d {} && tmux switch -t {}'"
 alias tmuxl="tmux ls -F '#S' | gum filter"
+alias txa="tmux ls -F '#S' | gum choose | read session; tmux attach -t \$session"
