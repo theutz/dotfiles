@@ -310,6 +310,8 @@ brew "sd"
 brew "sevenzip"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Hunt down social media accounts by username
+brew "sherlock"
 # Fuzzy Finder in rust!
 brew "sk"
 # Command-line interface for https://speedtest.net bandwidth tests
