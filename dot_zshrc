@@ -18,4 +18,4 @@ compinit
 zstyle ':completion:*' completer _complete _ignored _approximate
 
 # Syntax Highlighting
-source "$XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$XDG_STATE_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
