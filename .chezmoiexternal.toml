@@ -26,4 +26,8 @@ exact = false
 type = "git-repo"
 url = "git@github.com:theutz/hammerspoon"
 refreshPeriod = "168h"
-exact = false
+
+[".local/state/zsh-syntax-highlighting"]
+type = "git-repo"
+url = "git@github.com:zsh-users/zsh-syntax-highlighting"
+refreshPeriod = "168h"
