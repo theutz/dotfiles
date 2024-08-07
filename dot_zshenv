@@ -37,7 +37,7 @@ timezones=(
   US/Pacific
   # US/Central
   US/Eastern
-  GMT
+  # GMT
   # Europe/London
   # Asia/Istanbul
 )
