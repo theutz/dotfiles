@@ -53,12 +53,11 @@ eval "$(starship init zsh)"
 
 # Global
 
-alias -g HELP='--help 2>&1 | ${(z)PAGER}'
+alias -g P='| ${(z)PAGER}'
+alias -g H='--help 2>&1 | ${(z)PAGER}'
 
 # Suffix
 
-alias -s P='| ${(z)PAGER}'
-alias -s H='--help | ${(z)PAGER}'
 
 # Normal
 
