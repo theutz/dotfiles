@@ -3,54 +3,77 @@
 set shell := ["zsh", "-cu"]
 set quiet
 
-cmd := justfile()
-dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
-
-export JUST_LIST_HEADING := ""
+export cmd := justfile()
+export dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
+export GUM_FILTER_PLACEHOLDER := ''
+export GUM_FILTER_HEADER := 'Choose session...'
+export JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  SUBCOMMANDS\n\n"
 
 [private]
 default:
-  @{{cmd}} --list
+  @$cmd --list --unsorted
 
-alias ls := list
-# List all files
+# List all sessions
+[group('session')]
 list:
-  gum file {{dir}}
+   ls $dir | sed 's/.yml//' | gum filter
 
-alias l := load
 # Load a tmuxp session in detached state
+[group('session')]
 load:
-  {{cmd}} ls | xargs tmuxp load -d
+  tmuxp load -d $($cmd list)
 
-alias a := attach
 # Attach to a tmuxp session
-attach:
-  {{cmd}} ls | xargs tmuxp load -y
+[group('session')]
+launch:
+  tmuxp load -y $($cmd list)
 
-alias rm := delete
 # Send a tmuxp definition to the trash
+[group('session')]
 delete:
   #!/usr/bin/env zsh
-  gum file {{dir}} | read file
+  file="$dir/$(ls $dir | gum filter)" || { gum log -l fatal "No file selected"; return 1 }
   if
-    gum confirm "Are you sure you want to send $file to the trash?"
+    gum confirm "Send ${file:t} to the trash?"
   then
     trash $file &&
-    gum log -l info "$file deleted."
+      gum log -l info "$file deleted." ||
+      gum log -l fatal "$file not deleted."
   fi
 
-alias mk := create
 # Create a new tmuxp session
+[group('session')]
 create session:
   #!/usr/bin/env zsh
-  tmuxp ls |
-    gum filter --select-if-one \
-      --limit=1 \
-      --header="Select a session to use as a template..." \
-      --placeholder="session_name" |
-    xargs -I{} cp {{dir}}/{}.yml {{join(dir, session)}}.yml
+  ls $dir |
+    gum filter --select-if-one --limit=1 |
+    read template
+  cp $dir/$template {{join(dir, session)}}.yml
 
-alias e := edit
 # Edit a template in $EDITOR
+[group('session')]
 edit:
   $EDITOR $({{cmd}} ls)
+
+# Switch to a new server
+[group('server')]
+swap:
+  #!/usr/bin/env zsh
+  set -euo pipefail
+  socket="$(ls /tmp/tmux-$UID | gum filter || { gum log -l warn "No socket chosen."; exit 1 })"
+  hook="tmux -L $socket attach"
+  tmux detach -E $hook
+
+# Remove leftover server socket files
+[group('server')]
+cleanup:
+  #!/usr/bin/env zsh
+  set -euo pipefail
+  dir="/tmp/tmux-$UID"
+  sockets="$(ls $dir | gum filter --no-limit || { gum log -l warn "No socket chosen."; return 1 })"
+  if
+    gum confirm "Delete sockets?"
+  then
+    gum log -l info "Deleting sockets..."
+    rm -v ${${(f)sockets}/#/$dir\/}
+  fi

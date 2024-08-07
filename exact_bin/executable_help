@@ -98,3 +98,6 @@ sed:
 
 pandoc:
   brew home pandoc
+
+prezto:
+  open https://github.com/sorin-ionescu/prezto
