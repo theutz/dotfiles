@@ -6,6 +6,8 @@ set quiet
 cmd := justfile()
 dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
 
+export JUST_LIST_HEADING := ""
+
 [private]
 default:
   @{{cmd}} --list
