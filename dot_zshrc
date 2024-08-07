@@ -58,6 +58,7 @@ alias -g HELP='--help 2>&1 | ${(z)PAGER}'
 # Suffix
 
 alias -s P='| ${(z)PAGER}'
+alias -s H='--help | ${(z)PAGER}'
 
 # Normal
 
