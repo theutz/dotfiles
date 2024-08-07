@@ -15,6 +15,7 @@ setopt EXTENDED_GLOB
 # Use vim-style key bindings
 bindkey -v
 bindkey -v '^?' backward-delete-char
+bindkey -M vicmd 'v' edit-command-line
 
 #
 # Autoload Functions
