@@ -95,3 +95,6 @@ zparseopts:
 
 sed:
   open https://quickref.me/sed.html
+
+pandoc:
+  brew home pandoc
