@@ -51,6 +51,9 @@ eval "$(starship init zsh)"
 # SSH Agent
 eval $(ssh-agent -s) &>/dev/null
 
+# asdf
+. $(brew --prefix asdf)/libexec/asdf.sh
+
 #
 # Aliases
 #
