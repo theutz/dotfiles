@@ -55,6 +55,10 @@ eval "$(starship init zsh)"
 
 alias -g HELP='--help 2>&1 | ${(z)PAGER}'
 
+# Suffix
+
+alias -s P='| ${(z)PAGER}'
+
 # Normal
 
 alias txe='tmuxp ls | gum filter | xargs -I{} nvim ~/.config/tmuxp/{}.yml'
