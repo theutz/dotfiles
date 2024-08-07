@@ -49,7 +49,7 @@ eval "$(starship init zsh)"
 # broken syntax highlighting
 
 # SSH Agent
-eval $(ssh-agent -s)
+eval $(ssh-agent -s) &>/dev/null
 
 #
 # Aliases
