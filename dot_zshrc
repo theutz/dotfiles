@@ -54,7 +54,8 @@ eval "$(starship init zsh)"
 # Global
 
 alias -g P='| ${(z)PAGER}'
-alias -g H='--help 2>&1 | ${(z)PAGER}'
+alias -g HP='--help 2>&1 | ${(z)PAGER}'
+alias -g HF='--help 2>&1 | gum filter'
 
 # Suffix
 
