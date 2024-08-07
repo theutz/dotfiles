@@ -51,7 +51,7 @@ eval "$(starship init zsh)"
 # SSH Agent
 eval $(ssh-agent -s)
 for k in "$HOME"/.ssh/id_^*.pub; do 
-  ssh-add --apple-use-keychain ${k:t}
+  ssh-add --apple-use-keychain $k
 done
 
 #
