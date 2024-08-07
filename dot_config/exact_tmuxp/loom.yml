@@ -1,9 +1,0 @@
-session_name: loom
-start_directory: $HOME/code/delegator/loom
-windows:
-  - panes:
-      - ssh loom
-      - focus: true
-        shell_command: nvim
-    window_name: main
-    layout: main-vertical
