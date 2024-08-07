@@ -11,8 +11,8 @@ export EDITOR='nvim'
 export VISUAL='neovide'
 export PAGER='gum pager'
 export MANPAGER='nvim -c +Man!'
-export BAT_PAGER='less'
-export DELTA_PAGER='less'
+export BAT_PAGER='${(z)PAGER:-less}'
+export DELTA_PAGER='${(z)PAGER:-less}'
 
 export LANG='en_US.UTF-8'
 
