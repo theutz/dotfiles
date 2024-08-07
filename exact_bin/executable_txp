@@ -1,43 +1,54 @@
 #!/usr/bin/env just --unstable --working-directory . --justfile
 
 set shell := ["zsh", "-cu"]
+set quiet
+
 cmd := justfile()
+dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
 
 [private]
 default:
   @{{cmd}} --list
 
-[private]
-pick session="":
-  #!/usr/bin/env zsh
-  tmuxp ls | \
-    gum filter --select-if-one \
-      --limit=1 \
-      --value="{{session}}" \
-      --header="Select a session..." \
-      --placeholder="session_name"
+alias ls := list
+# List all files
+list:
+  gum file {{dir}}
 
 alias l := load
 # Load a tmuxp session in detached state
-load session="":
-  {{cmd}} pick {{session}} | xargs tmuxp load -d
+load:
+  {{cmd}} ls | xargs tmuxp load -d
 
 alias a := attach
 # Attach to a tmuxp session
-attach session="":
-  #!/usr/bin/env zsh
-  {{cmd}} pick {{session}} | read session
-  tmuxp load -d $session
-  [[ -z "$TMUX" ]] &&
-    tmux attach -t $session ||
-    tmux switch -t $session
+attach:
+  {{cmd}} ls | xargs tmuxp load -y
 
-alias x := trash
+alias rm := delete
 # Send a tmuxp definition to the trash
-trash session="":
+delete:
   #!/usr/bin/env zsh
-  {{cmd}} pick {{session}} | read session
-  file="${XDG_CONFIG_HOME:-$HOME/.config}/tmuxp/$session.yml"
-  if gum confirm "Are you sure you want to send $file to the trash?"; then
-    trash $file && gum log -l info "$file deleted."
+  gum file {{dir}} | read file
+  if
+    gum confirm "Are you sure you want to send $file to the trash?"
+  then
+    trash $file &&
+    gum log -l info "$file deleted."
   fi
+
+alias mk := create
+# Create a new tmuxp session
+create session:
+  #!/usr/bin/env zsh
+  tmuxp ls |
+    gum filter --select-if-one \
+      --limit=1 \
+      --header="Select a session to use as a template..." \
+      --placeholder="session_name" |
+    xargs -I{} cp {{dir}}/{}.yml {{join(dir, session)}}.yml
+
+alias e := edit
+# Edit a template in $EDITOR
+edit:
+  $EDITOR $({{cmd}} ls)
