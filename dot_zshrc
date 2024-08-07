@@ -1,3 +1,5 @@
+# vim: ft=zsh
+
 #
 # Options
 #
@@ -27,13 +29,13 @@ done
 
 autoload -Uz compinit
 compinit
-#autoload -U +x bashcompinit && bashcompinit
+# autoload -U +x bashcompinit && bashcompinit
 
 # Enable path completion for multiple segments
 zstyle ':completion:*' completer _complete _ignored _approximate
 
 # Syntax Highlighting
-source "$XDG_STATE_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$XDG_STATE_HOME"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh #
 
 #
 # Third-party
@@ -45,6 +47,12 @@ eval "$(starship init zsh)"
 #
 # Aliases
 #
+
+# Global
+
+alias -g HELP='--help 2>&1 | $PAGER'
+
+# Normal
 
 alias txe='tmuxp ls | gum filter | xargs -I{} nvim ~/.config/tmuxp/{}.yml'
 alias txa="tmuxp ls | gum filter | xargs -I{} zsh -c 'tmuxp load -d {} && tmux switch -t {}'"
