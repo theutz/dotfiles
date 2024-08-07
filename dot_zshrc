@@ -22,7 +22,7 @@ bindkey -M vicmd 'v' edit-command-line
 #
 # Autoload Functions
 #
-for func in "$HOME"/.local/functions/*(:t); do
+for func in "$HOME"/.local/functions/*(N:t); do
   autoload -Uz $func
 done
 
