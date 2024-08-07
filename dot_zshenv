@@ -8,7 +8,7 @@ export XDG_RUNTIME_DIR="$TMPDIR"
 
 export BROWSER='open'
 export EDITOR='nvim'
-export VISUAL='neovide'
+export VISUAL='neovide --no-fork'
 export PAGER='gum pager'
 export MANPAGER='nvim -c +Man!'
 export BAT_PAGER='${(z)PAGER:-less}'
