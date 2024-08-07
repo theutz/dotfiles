@@ -50,7 +50,6 @@ eval "$(starship init zsh)"
 
 # SSH Agent
 eval $(ssh-agent -s)
-ssh-add --apple-use-keychain "$HOME"/.ssh/id_^*.pub
 
 #
 # Aliases
@@ -70,6 +69,7 @@ alias -g HF='--help 2>&1 | gum filter'
 alias c='chezmoi'
 alias lg='lazygit'
 alias ls='eza'
+alias ssh-add-all='ssh-add --apple-use-keychain "$HOME"/.ssh/id_^*.pub'
 alias tmuxl="tmux ls -F '#S' | gum filter"
 alias txa="tmux ls -F '#S' | gum choose | read session; tmux attach -t \$session"
 alias txa="tmuxp ls | gum filter | xargs -I{} zsh -c 'tmuxp load -d {} && tmux switch -t {}'"
