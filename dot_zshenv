@@ -33,4 +33,4 @@ fpath=(
   $fpath
 )
 
-export TZ_LIST='US/PacificUS/Eastern;GMT;Asia/Istanbul'
+export TZ_LIST='US/Pacific;US/Eastern;GMT;Asia/Istanbul'
