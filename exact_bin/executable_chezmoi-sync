@@ -20,8 +20,15 @@ while read -r stat file; do
   esac
 done <<< $(chezmoi status)
 
-if gum confirm "Proceed"; then
-  chezmoi re-add "${readd[@]}"
-  chezmoi destroy "${destroy[@]}"
+if
+  ((( $#readd )) || (( $#destroy ))) &&
+  gum confirm "Proceed"
+then
+  if (( $#readd )); then
+    chezmoi re-add "${readd[@]}"
+  fi
+  if (( $#destroy )): then
+    chezmoi destroy "${destroy[@]}"
+  fi
 fi
 
