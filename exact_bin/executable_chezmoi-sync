@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh -euo pipefail
+
+while read -r stat file; do
+  local readd=()
+  local destroy=()
+  case $stat in
+    MM)
+      readd+=$file
+      ;;
+    *)
+
+      echo $stat $file
+      ;;
+  esac
+done <<< $(chezmoi status)
