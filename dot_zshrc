@@ -103,8 +103,9 @@ alias ls='eza'
 alias sa='search-aliases'
 # alias sa='alias | gum filter --select-if-one | cut -d "=" -f 2 | read cmd; cmd=${cmd#[\'\''\"]}; cmd=${cmd%[\'\''\"]}; print -z $cmd'
 alias ssh-add-all='ssh-add --apple-use-keychain "$HOME"/.ssh/id_^*.pub'
-alias tmuxl="tmux ls -F '#S' | gum filter"
+alias tmuxa='tmux-control attach'
+alias tmuxl='tmux-control list'
 alias tx='tmux-control'
-alias txa="tmux ls -F '#S' | gum choose | read session; tmux attach -t \$session"
-alias txa="tmuxp ls | gum filter | xargs -I{} zsh -c 'tmuxp load -d {} && tmux switch -t {}'"
-alias txe='tmuxp ls | gum filter | xargs -I{} nvim ~/.config/tmuxp/{}.yml'
+alias txa='tmuxa'
+alias txe='tmux-control edit'
+alias txl='tmuxl'
