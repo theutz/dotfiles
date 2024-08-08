@@ -1,4 +1,4 @@
-session_name: ixscoatings.com
+session_name: ixscoatings-com
 start_directory: $HOME/code/delegator/ixscoatings.com/
 windows:
   - focus: true
