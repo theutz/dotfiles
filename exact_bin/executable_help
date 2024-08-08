@@ -101,3 +101,6 @@ pandoc:
 
 prezto:
   open https://github.com/sorin-ionescu/prezto
+
+hammerspoon:
+  open https://www.hammerspoon.org/docs/index.html
