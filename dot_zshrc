@@ -70,6 +70,8 @@ alias -g HF='--help 2>&1 | gum filter'
 # Normal
 
 alias c='chezmoi'
+alias cms='chezmoi status'
+alias e='${(z)VISUAL:-${(z)EDITOR}'
 alias lg='lazygit'
 alias ls='eza'
 alias ssh-add-all='ssh-add --apple-use-keychain "$HOME"/.ssh/id_^*.pub'
