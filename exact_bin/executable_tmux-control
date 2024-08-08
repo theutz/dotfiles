@@ -2,12 +2,15 @@
 
 set shell := ["zsh", "-euo", "pipefail", "-c"]
 set quiet
+set export
+set positional-arguments
 
-export cmd := justfile()
-export dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
-export GUM_FILTER_PLACEHOLDER := ''
-export GUM_FILTER_HEADER := 'Choose session...'
-export JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  SUBCOMMANDS\n\n"
+cmd := justfile()
+this := file_stem(justfile())
+dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
+GUM_FILTER_PLACEHOLDER := ''
+GUM_FILTER_HEADER := 'Choose session...'
+JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  SUBCOMMANDS\n\n"
 
 [private]
 default:
@@ -23,8 +26,7 @@ default:
 # List all active sessions
 [group('sessions')]
 list:
-  #!/usr/bin/env zsh
-  set -euo pipefail
+  #!/usr/bin/env zsh -euo pipefail
   if ! tmux ls 2>/dev/null; then
     gum log -l warn "No tmux sessions"
   fi
@@ -32,15 +34,24 @@ list:
 # Switch to a different session
 [group('sessions')]
 switch $session="":
-  #!/usr/bin/env zsh
-  set -euo pipefail
-  session="$(tmux ls -F '#S' | gum filter --value "$session")"
+  #!/usr/bin/env zsh -euo pipefail
+  tmux ls -F '#S' |
+  gum filter --value "$session" |
+  read session
   tmux switch-client -t $session
+
+# Attach to a running session
+attach session="":
+  #!/usr/bin/env zsh -euo pipefail
+  tmux ls -F '#S' |
+  gum filter --value=$session |
+  read session
+  tmux attach -t $session
 
 # Catalog all session templates
 [group('templates')]
 catalog $session="":
-  ls $dir | sed 's/.yml//' | gum filter --value "$session"
+  ls $dir | sed 's/\.ya*ml//' | gum filter --value "$session"
 
 # Load a tmuxp session in detached state
 [group('templates')]
@@ -50,7 +61,11 @@ load:
 # Attach to a tmuxp session
 [group('templates')]
 launch $session="":
-  $cmd catalog $session | xargs tmuxp load -y
+  #!/usr/bin/env zsh -euo pipefail
+  $cmd catalog $session | read session
+  tmuxp load -y $session ||
+  tmuxp load -y -d $session ||
+  tmux switch-client -t $session
 
 # Send a tmuxp definition to the trash
 [group('templates')]
@@ -78,8 +93,10 @@ create $session $template="":
 
 # Edit a template in $EDITOR
 [group('templates')]
-edit:
-  $EDITOR $({{cmd}} list)
+edit session="":
+  #!/usr/bin/env zsh -euo pipefail
+  gum file $dir | read file
+  ${(z)VISUAL:-${(z)EDITOR}} $file
 
 # Switch to a new server
 [group('server')]
