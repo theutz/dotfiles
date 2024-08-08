@@ -1,6 +1,6 @@
 #!/usr/bin/env just --unstable --working-directory . --justfile
 
-set shell := ["zsh", "-cu"]
+set shell := ["zsh", "-euo", "pipefail", "-c"]
 set quiet
 
 export cmd := justfile()
@@ -14,16 +14,26 @@ default:
   @$cmd --list --unsorted
 
 # List all active sessions
+[group('sessions')]
 list:
   #!/usr/bin/env zsh
+  set -euo pipefail
   if ! tmux ls 2>/dev/null; then
     gum log -l warn "No tmux sessions"
   fi
 
+# Switch to a different session
+[group('sessions')]
+switch $session="":
+  #!/usr/bin/env zsh
+  set -euo pipefail
+  session="$(tmux ls -F '#S' | gum filter --value "$session")"
+  tmux switch-client -t $session
+
 # Catalog all session templates
 [group('templates')]
-catalog:
-   ls $dir | sed 's/.yml//' | gum filter
+catalog $session="":
+  ls $dir | sed 's/.yml//' | gum filter --value "$session"
 
 # Load a tmuxp session in detached state
 [group('templates')]
@@ -32,13 +42,14 @@ load:
 
 # Attach to a tmuxp session
 [group('templates')]
-launch:
-  tmuxp load -y $($cmd catalog)
+launch $session="":
+  $cmd catalog $session | xargs tmuxp load -y
 
 # Send a tmuxp definition to the trash
 [group('templates')]
 delete:
   #!/usr/bin/env zsh
+  set -euo pipefail
   file="$dir/$(ls $dir | gum filter)" || { gum log -l fatal "No file selected"; return 1 }
   if
     gum confirm "Send ${file:t} to the trash?"
@@ -50,12 +61,13 @@ delete:
 
 # Create a new tmuxp session
 [group('templates')]
-create session:
+create $session $template="":
   #!/usr/bin/env zsh
+  set -euo pipefail
   ls $dir |
-    gum filter --select-if-one --limit=1 |
+    gum filter --select-if-one --limit=1 --value "$template" |
     read template
-  cp $dir/$template {{join(dir, session)}}.yml
+  cp $dir/$template $dir/${session}.yml
 
 # Edit a template in $EDITOR
 [group('templates')]
