@@ -1,15 +1,24 @@
 #!/usr/bin/env zsh -euo pipefail
 
+local readd=()
+local destroy=()
+
 while read -r stat file; do
-  local readd=()
-  local destroy=()
   case $stat in
     MM)
       readd+=$file
       ;;
+    DA)
+      destroy+=$file
+      ;;
     *)
-
       echo $stat $file
       ;;
   esac
 done <<< $(chezmoi status)
+
+gum log -l info --prefix "RE-ADD" "${readd[@]}"
+gum log -l warn --prefix "DESTROY" "${destroy[@]}"
+
+chezmoi re-add --interactive "${readd[@]}"
+chezmoi destroy "${destroy[@]}"
