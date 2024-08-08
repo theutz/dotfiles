@@ -70,10 +70,15 @@ alias -g HF='--help 2>&1 | gum filter'
 # Normal
 
 alias c='chezmoi'
+alias cme='chezmoi edit'
+alias cmew='chezmoi edit --watch'
 alias cms='chezmoi status'
+alias cmr='chezmoi re-add'
+alias cmri='chezmoi re-add --interactive'
 alias e='${(z)VISUAL:-${(z)EDITOR}'
 alias lg='lazygit'
 alias ls='eza'
+alias sa='alias | gum filter --select-if-one | cut -d "=" -f 2 | read cmd; cmd=${cmd#['\''\"]}; cmd=${cmd%['\''\"]}; print -z $cmd'
 alias ssh-add-all='ssh-add --apple-use-keychain "$HOME"/.ssh/id_^*.pub'
 alias tmuxl="tmux ls -F '#S' | gum filter"
 alias txa="tmux ls -F '#S' | gum choose | read session; tmux attach -t \$session"
