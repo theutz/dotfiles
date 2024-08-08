@@ -6,19 +6,22 @@ local destroy=()
 while read -r stat file; do
   case $stat in
     MM)
+      gum log -l info --prefix "re-add" "$file"
       readd+=$file
       ;;
     DA)
+      gum log -l warn --prefix "destroy" "$file"
       destroy+=$file
       ;;
     *)
-      echo $stat $file
+      gum log -l error --prefix "ERROR" "unknown status: $stat"
+      gum log --prefix "$file"
       ;;
   esac
 done <<< $(chezmoi status)
 
-gum log -l info --prefix "RE-ADD" "${readd[@]}"
-gum log -l warn --prefix "DESTROY" "${destroy[@]}"
+if gum confirm "Proceed"; then
+  chezmoi re-add "${readd[@]}"
+  chezmoi destroy "${destroy[@]}"
+fi
 
-chezmoi re-add --interactive "${readd[@]}"
-chezmoi destroy "${destroy[@]}"
