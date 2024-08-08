@@ -90,8 +90,33 @@ sttr *args:
 starship:
   open https://starship.rs/config/
 
-chezmoi:
-  open https://www.chezmoi.io/user-guide/command-overview/
+alias cm := chezmoi
+chezmoi *flags:
+  #!/usr/bin/env zsh -euo pipefail
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -w|--web)
+        open https://www.chezmoi.io/user-guide/command-overview/
+        exit 0
+        shift
+        ;;
+    esac
+  done
+  if
+    chezmoi --help |
+    gum filter --strict |
+    sed -e 's/^  //' |
+    tr -s ' ' '\t' |
+    cut -f 1 |
+    read subcommand
+  then
+    chezmoi $subcommand --help |
+    gum pager
+  else
+    ! chezmoi --help |
+    gum pager
+  fi
+
 
 mods:
   $this _dash $0 $@
