@@ -55,6 +55,27 @@ eval $(ssh-agent -s) &>/dev/null
 . $(brew --prefix asdf)/libexec/asdf.sh
 
 #
+# Custom Functions
+#
+
+function search-aliases () {
+  if (( $#argv )); then
+    value="--value $argv[@]"
+  else
+    value=""
+  fi
+  alias |
+    gum filter --select-if-one ${(z)value} |
+    cut -d '=' -f 2 |
+    read cmd
+  if [[ -n "$cmd" ]]; then
+    cmd=${cmd#[\']}
+    cmd=${cmd%[\']}
+    print -z "$cmd"
+  fi
+}
+
+#
 # Aliases
 #
 
@@ -78,7 +99,8 @@ alias cmri='chezmoi re-add --interactive'
 alias e='${(z)VISUAL:-${(z)EDITOR}'
 alias lg='lazygit'
 alias ls='eza'
-alias sa='alias | gum filter --select-if-one | cut -d "=" -f 2 | read cmd; cmd=${cmd#['\''\"]}; cmd=${cmd%['\''\"]}; print -z $cmd'
+alias sa='search-aliases'
+# alias sa='alias | gum filter --select-if-one | cut -d "=" -f 2 | read cmd; cmd=${cmd#[\'\''\"]}; cmd=${cmd%[\'\''\"]}; print -z $cmd'
 alias ssh-add-all='ssh-add --apple-use-keychain "$HOME"/.ssh/id_^*.pub'
 alias tmuxl="tmux ls -F '#S' | gum filter"
 alias txa="tmux ls -F '#S' | gum choose | read session; tmux attach -t \$session"

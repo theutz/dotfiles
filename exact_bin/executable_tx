@@ -11,7 +11,14 @@ export JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  S
 
 [private]
 default:
-  @$cmd --list --unsorted
+  #!/usr/bin/env zsh
+  set -euo pipefail
+  $cmd --dump --dump-format json |
+  jq -r '.recipes | to_entries[] | select(.key != "default") | .key + "\t" + .value.doc' |
+  column |
+  gum filter --header="Choose command..." --limit=1 |
+  cut -f 1 |
+  xargs {{cmd}}
 
 # List all active sessions
 [group('sessions')]
@@ -72,7 +79,7 @@ create $session $template="":
 # Edit a template in $EDITOR
 [group('templates')]
 edit:
-  $EDITOR $({{cmd}} ls)
+  $EDITOR $({{cmd}} list)
 
 # Switch to a new server
 [group('server')]
