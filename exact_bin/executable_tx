@@ -13,23 +13,30 @@ export JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  S
 default:
   @$cmd --list --unsorted
 
-# List all sessions
-[group('session')]
+# List all active sessions
 list:
+  #!/usr/bin/env zsh
+  if ! tmux ls 2>/dev/null; then
+    gum log -l warn "No tmux sessions"
+  fi
+
+# Catalog all session templates
+[group('templates')]
+catalog:
    ls $dir | sed 's/.yml//' | gum filter
 
 # Load a tmuxp session in detached state
-[group('session')]
+[group('templates')]
 load:
-  tmuxp load -d $($cmd list)
+  tmuxp load -d $($cmd catalog)
 
 # Attach to a tmuxp session
-[group('session')]
+[group('templates')]
 launch:
-  tmuxp load -y $($cmd list)
+  tmuxp load -y $($cmd catalog)
 
 # Send a tmuxp definition to the trash
-[group('session')]
+[group('templates')]
 delete:
   #!/usr/bin/env zsh
   file="$dir/$(ls $dir | gum filter)" || { gum log -l fatal "No file selected"; return 1 }
@@ -42,7 +49,7 @@ delete:
   fi
 
 # Create a new tmuxp session
-[group('session')]
+[group('templates')]
 create session:
   #!/usr/bin/env zsh
   ls $dir |
@@ -51,7 +58,7 @@ create session:
   cp $dir/$template {{join(dir, session)}}.yml
 
 # Edit a template in $EDITOR
-[group('session')]
+[group('templates')]
 edit:
   $EDITOR $({{cmd}} ls)
 

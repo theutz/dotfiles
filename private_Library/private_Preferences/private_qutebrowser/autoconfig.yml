@@ -89,11 +89,13 @@ settings:
     '*://*.www.lineworker.com/*': false
     '*://click.redditmail.com/*': false
   content.blocking.whitelist:
-    global: null
+    global:
+    - '*://*.terminal.sexy/*'
   content.cookies.accept:
     '*://*.app.slack.com/*': no-3rdparty
     '*://*.projects.zoho.com/*': all
     '*://*.stock.adobe.com/*': all
+    '*://*.terminal.sexy/*': all
     '*://*.www.friendzy.co/*': all
     '*://app.slack.com/*': no-3rdparty
     '*://projects.zoho.com/*': all
