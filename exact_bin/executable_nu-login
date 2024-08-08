@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-nu --login $argv
