@@ -43,3 +43,5 @@ timezones=(
   # Asia/Istanbul
 )
 export TZ_LIST=${(j:;:@)timezones}
+
+export NB_DIR="$XDG_DATA_HOME/nb"
