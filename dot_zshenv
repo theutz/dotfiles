@@ -45,3 +45,4 @@ timezones=(
 export TZ_LIST=${(j:;:@)timezones}
 
 export NB_DIR="$XDG_DATA_HOME/nb"
+GUM_FILTER_FUZZY=false
