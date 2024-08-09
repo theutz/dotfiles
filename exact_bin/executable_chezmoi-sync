@@ -1,4 +1,6 @@
-#!/usr/bin/env zsh -euo pipefail
+#!/usr/bin/env zsh
+
+set -euo pipefail
 
 local readd=()
 local destroy=()
@@ -18,9 +20,14 @@ while read -r stat file; do
       gum log -l warn --prefix apply "  $file"
       apply+="$file"
       ;;
+    "")
+      gum log -l warn "No files to sync"
+      exit 1
+      ;;
     *)
       gum log -l error --prefix "ERROR" "unknown status: $stat"
       gum log --prefix "$file"
+      exit 1
       ;;
   esac
 done <<< $(chezmoi status)
