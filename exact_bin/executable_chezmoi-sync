@@ -6,6 +6,29 @@ local readd=()
 local destroy=()
 local apply=()
 
+gum log -l info --prefix externals ""
+chezmoi source-path |
+  xargs -I_ cat _/.chezmoiexternal.toml |
+  yj -t |
+  jq -r 'keys | @sh | gsub("'\''"; "")' |
+  read repos
+
+for repo in ${(z)repos}; do
+  gum log -l info --prefix externals "Checking $repo"
+  repo="$HOME/$repo"
+  if ! git -C $repo diff-index --quiet HEAD --; then
+    git -C $repo status -s
+    if gum confirm "Open lazygit?"; then
+      lazygit -p $repo
+    fi
+  fi
+  git -C $repo pull
+  branch=$(git -C $repo rev-parse --abbrev-ref HEAD)
+  if ! git -C $repo rev-list --left-right --count $branch | cut -f 1; then
+    git -C $repo push
+  fi
+done
+
 while read -r stat file; do
   case $stat in
     MM)
@@ -43,14 +66,3 @@ then
   (( $#apply )) && chezmoi apply "${apply[@]}"
 fi
 
-chezmoi source-path |
-  xargs -I_ cat _/.chezmoiexternal.toml |
-  yj -t |
-  jq -r 'keys[] | @sh' |
-  read repos
-
-for repo in $repos; do
-  if [[ -n "git -C $repo status -s" ]]; then
-    lazygit -p $repo
-  fi
-done
