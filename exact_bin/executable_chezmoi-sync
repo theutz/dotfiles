@@ -20,6 +20,9 @@ while read -r stat file; do
       gum log -l warn --prefix apply "  $file"
       apply+="$file"
       ;;
+    R)
+      gum log -l warn --prefix run "    $file"
+      ;;
     "")
       gum log -l info "No files to sync"
       ;;
@@ -31,9 +34,9 @@ while read -r stat file; do
   esac
 done <<< $(gum spin --title="Checking status..." --show-output -- chezmoi status)
 
-(( $#readd )) && gum spin --title="Re-adding..." -- chezmoi re-add "${readd[@]}"
-(( $#destroy )) && gum spin --title="Destroying..." -- chezmoi destroy "${destroy[@]}"
-(( $#apply )) && gum spin --title="Applying..." -- chezmoi apply "${apply[@]}"
+(( $#readd )) && gum spin --title="Re-adding..." --show-error -- chezmoi re-add "${readd[@]}"
+(( $#destroy )) && gum spin --title="Destroying..." --show-error -- chezmoi destroy "${destroy[@]}"
+(( $#apply )) && gum spin --title="Applying..." --show-error -- chezmoi apply "${apply[@]}"
 
 gum log -l info --prefix externals "Refreshing externals..."
 chezmoi source-path |

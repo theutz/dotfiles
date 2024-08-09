@@ -21,7 +21,7 @@ spotify:
   cat <<-EOF | read -r cmd
     tmux -L spotify new -A -s spotify -n main spotify_player
   EOF
-  tmux display-popup -x R -y C -h 100% -w 80% -E $cmd
+  tmux display-popup -x C -y S -h 100% -w 80% -E $cmd
 
 # Run nb shell
 nb:
@@ -35,3 +35,11 @@ nb:
 tmux-control:
   #!/usr/bin/env zsh -euo pipefail
   tmux display-popup -xC -yS -h 20 -w 80 -E tmux-control
+
+# Interact with buku bookmark manager
+buku:
+  #!/usr/bin/env zsh -euo pipefail
+  cat <<-EOF | read -r cmd
+    tmux -L buku new -A -s buku -n main 'buku'
+  EOF
+  tmux display-popup -x C -y S -h 50% -w 120 -E $cmd
