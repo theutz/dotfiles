@@ -53,7 +53,7 @@ for repo in ${(z)repos}; do
   gum spin --title="Pulling..." --show-error -- git -C $repo pull
   branch=$(git -C $repo rev-parse --abbrev-ref HEAD)
   if [[ $(git -C $repo rev-list --left-right --count $branch | cut -f 1) -ne 0 ]]; then
-    gum spin --title="Pushing..." -- $( git -C $repo push || true )
+    gum spin --title="Pushing..." --show-error -- $( git -C $repo push || true )
   fi
 done
 
