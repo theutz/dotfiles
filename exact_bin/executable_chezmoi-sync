@@ -43,12 +43,14 @@ then
   (( $#apply )) && chezmoi apply "${apply[@]}"
 fi
 
-chezmoi source-path | read src
-cat $src/.chezmoiexternal |
+chezmoi source-path |
+  xargs -I_ cat _/.chezmoiexternal.toml |
   yj -t |
   jq -r 'keys[] | @sh' |
-  while read -r repo; do
-    if [[ -n "$(git -C $repo status -s)" ]]; then
-      lazygit -p $repo
-    fi
-  done
+  read repos
+
+for repo in $repos; do
+  if [[ -n "git -C $repo status -s" ]]; then
+    lazygit -p $repo
+  fi
+done
