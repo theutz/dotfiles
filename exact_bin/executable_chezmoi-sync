@@ -6,7 +6,7 @@ local readd=()
 local destroy=()
 local apply=()
 
-gum log -l info --prefix externals ""
+gum log -l info --prefix externals "Refreshing externals..."
 chezmoi source-path |
   xargs -I_ cat _/.chezmoiexternal.toml |
   yj -t |
@@ -14,7 +14,7 @@ chezmoi source-path |
   read repos
 
 for repo in ${(z)repos}; do
-  gum log -l info --prefix externals "Checking $repo"
+  gum log -l info --prefix externals "$repo"
   repo="$HOME/$repo"
   if ! git -C $repo diff-index --quiet HEAD --; then
     git -C $repo status -s
@@ -24,7 +24,7 @@ for repo in ${(z)repos}; do
   fi
   git -C $repo pull
   branch=$(git -C $repo rev-parse --abbrev-ref HEAD)
-  if ! git -C $repo rev-list --left-right --count $branch | cut -f 1; then
+  if [[ $(git -C $repo rev-list --left-right --count $branch | cut -f 1) -ne 0 ]]; then
     git -C $repo push
   fi
 done
