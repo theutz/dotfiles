@@ -22,7 +22,6 @@ while read -r stat file; do
       ;;
     "")
       gum log -l info "No files to sync"
-      exit 1
       ;;
     *)
       gum log -l error --prefix "ERROR" "unknown status: $stat"
@@ -44,3 +43,12 @@ then
   (( $#apply )) && chezmoi apply "${apply[@]}"
 fi
 
+chezmoi source-path | read src
+cat $src/.chezmoiexternal |
+  yj -t |
+  jq -r 'keys[] | @sh' |
+  while read -r repo; do
+    if [[ -n "$(git -C $repo status -s)" ]]; then
+      lazygit -p $repo
+    fi
+  done

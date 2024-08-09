@@ -1,12 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = true
+add_newline = false
 
 [shell]
 disabled = false
-
-[env_var.NU_OVERLAYS]
-symbol = '📌 '
-format = 'with [$symbol($env_value )]($style)'
-style = 'red'
-
