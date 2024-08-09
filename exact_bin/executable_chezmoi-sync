@@ -2,16 +2,21 @@
 
 local readd=()
 local destroy=()
+local apply=()
 
 while read -r stat file; do
   case $stat in
     MM)
-      gum log -l info --prefix "re-add" "$file"
-      readd+=$file
+      gum log -l info --prefix "re-add" " $file"
+      readd+="$file"
       ;;
     DA)
-      gum log -l warn --prefix "destroy" "$file"
-      destroy+=$file
+      gum log -l warn --prefix destroy "$file"
+      destroy+="$file"
+      ;;
+    D)
+      gum log -l warn --prefix apply "  $file"
+      apply+="$file"
       ;;
     *)
       gum log -l error --prefix "ERROR" "unknown status: $stat"
@@ -21,14 +26,14 @@ while read -r stat file; do
 done <<< $(chezmoi status)
 
 if
-  ((( $#readd )) || (( $#destroy ))) &&
-  gum confirm "Proceed"
+  (
+    (( $#readd )) ||
+      (( $#destroy )) ||
+      (($#apply))
+  ) && gum confirm "Proceed"
 then
-  if (( $#readd )); then
-    chezmoi re-add "${readd[@]}"
-  fi
-  if (( $#destroy )): then
-    chezmoi destroy "${destroy[@]}"
-  fi
+  (( $#readd )) && chezmoi re-add "${readd[@]}"
+  (( $#destroy )) && chezmoi destroy "${destroy[@]}"
+  (( $#apply )) && chezmoi apply "${apply[@]}"
 fi
 

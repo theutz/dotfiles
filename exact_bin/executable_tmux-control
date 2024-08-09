@@ -14,8 +14,7 @@ JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  SUBCOMMA
 
 [private]
 default:
-  #!/usr/bin/env zsh
-  set -euo pipefail
+  #!/usr/bin/env zsh -euo pipefail
   $cmd --dump --dump-format json |
   jq -r '.recipes | to_entries[] | select(.key != "default") | .key + "\t" + .value.doc' |
   column |
@@ -43,9 +42,14 @@ switch $session="":
 # Attach to a running session
 attach session="":
   #!/usr/bin/env zsh -euo pipefail
-  tmux ls -F '#S' |
-  gum filter --value=$session |
-  read session
+  if tmux ls &>/dev/null; then
+    tmux ls -F '#S' | gum filter --value=$session |
+    read session
+  else
+    gum input --header "Name your new session..." --placeholder="" |
+    read session
+    tmux new -s $session -n main -d
+  fi
   tmux attach -t $session
 
 # Catalog all session templates
@@ -70,8 +74,7 @@ launch $session="":
 # Send a tmuxp definition to the trash
 [group('templates')]
 delete:
-  #!/usr/bin/env zsh
-  set -euo pipefail
+  #!/usr/bin/env zsh -euo pipefail
   file="$dir/$(ls $dir | gum filter)" || { gum log -l fatal "No file selected"; return 1 }
   if
     gum confirm "Send ${file:t} to the trash?"
@@ -84,8 +87,7 @@ delete:
 # Create a new tmuxp session
 [group('templates')]
 create $session $template="":
-  #!/usr/bin/env zsh
-  set -euo pipefail
+  #!/usr/bin/env zsh -euo pipefail
   ls $dir |
     gum filter --select-if-one --limit=1 --value "$template" |
     read template
@@ -101,8 +103,7 @@ edit session="":
 # Switch to a new server
 [group('server')]
 swap:
-  #!/usr/bin/env zsh
-  set -euo pipefail
+  #!/usr/bin/env zsh -euo pipefail
   socket="$(ls /tmp/tmux-$UID | gum filter || { gum log -l warn "No socket chosen."; exit 1 })"
   hook="tmux -L $socket attach"
   tmux detach -E $hook
@@ -110,8 +111,7 @@ swap:
 # Remove leftover server socket files
 [group('server')]
 cleanup:
-  #!/usr/bin/env zsh
-  set -euo pipefail
+  #!/usr/bin/env zsh -euo pipefail
   dir="/tmp/tmux-$UID"
   sockets="$(ls $dir | gum filter --no-limit || { gum log -l warn "No socket chosen."; return 1 })"
   if
