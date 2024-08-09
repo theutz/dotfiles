@@ -29,7 +29,7 @@ while read -r stat file; do
       exit 1
       ;;
   esac
-done <<< $(gum spin --title="Checking status..." --show-error --show-output -- chezmoi status)
+done <<< $(gum spin --title="Checking status..." --show-output -- chezmoi status)
 
 (( $#readd )) && chezmoi re-add "${readd[@]}"
 (( $#destroy )) && chezmoi destroy "${destroy[@]}"
