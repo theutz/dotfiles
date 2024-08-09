@@ -51,7 +51,7 @@ for repo in ${(z)repos}; do
       lazygit -p $repo
     fi
   fi
-  gum spin --title="Pulling..." -- git -C $repo pull
+  gum spin --title="Pulling..." --show-error --show-output -- git -C $repo pull
   branch=$(git -C $repo rev-parse --abbrev-ref HEAD)
   if [[ $(git -C $repo rev-list --left-right --count $branch | cut -f 1) -ne 0 ]]; then
     git -C $repo push
