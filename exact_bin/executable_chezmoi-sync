@@ -31,9 +31,9 @@ while read -r stat file; do
   esac
 done <<< $(gum spin --title="Checking status..." --show-output -- chezmoi status)
 
-(( $#readd )) && chezmoi re-add "${readd[@]}"
-(( $#destroy )) && chezmoi destroy "${destroy[@]}"
-(( $#apply )) && chezmoi apply "${apply[@]}"
+(( $#readd )) && gum spin -- chezmoi re-add "${readd[@]}"
+(( $#destroy )) && gum spin -- chezmoi destroy "${destroy[@]}"
+(( $#apply )) && gum spin -- chezmoi apply "${apply[@]}"
 
 gum log -l info --prefix externals "Refreshing externals..."
 chezmoi source-path |
