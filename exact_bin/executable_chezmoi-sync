@@ -46,10 +46,9 @@ for repo in ${(z)repos}; do
   gum log -l info --prefix externals "$repo"
   repo="$HOME/$repo"
   if ! git -C $repo diff-index --quiet HEAD --; then
+    git -C $repo add -A
     git -C $repo status -s
-    if gum confirm "Open lazygit?"; then
-      lazygit -p $repo
-    fi
+    git -C $repo commit "$(gum input --header "Commit message...")"
   fi
   gum spin --title="Pulling..." --show-error -- git -C $repo pull
   branch=$(git -C $repo rev-parse --abbrev-ref HEAD)
