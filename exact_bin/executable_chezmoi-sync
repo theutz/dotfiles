@@ -21,7 +21,7 @@ while read -r stat file; do
       apply+="$file"
       ;;
     "")
-      gum log -l warn "No files to sync"
+      gum log -l info "No files to sync"
       exit 1
       ;;
     *)
