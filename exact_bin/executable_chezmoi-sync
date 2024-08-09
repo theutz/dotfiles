@@ -31,17 +31,9 @@ while read -r stat file; do
   esac
 done <<< $(chezmoi status)
 
-if
-  (
-    (( $#readd )) ||
-      (( $#destroy )) ||
-      (($#apply))
-  ) && gum confirm "Proceed"
-then
-  (( $#readd )) && chezmoi re-add "${readd[@]}"
-  (( $#destroy )) && chezmoi destroy "${destroy[@]}"
-  (( $#apply )) && chezmoi apply "${apply[@]}"
-fi
+(( $#readd )) && chezmoi re-add "${readd[@]}"
+(( $#destroy )) && chezmoi destroy "${destroy[@]}"
+(( $#apply )) && chezmoi apply "${apply[@]}"
 
 gum log -l info --prefix externals "Refreshing externals..."
 chezmoi source-path |
