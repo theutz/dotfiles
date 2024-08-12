@@ -6,13 +6,3 @@ windows:
         shell_command: nvim
     window_name: main
     layout: main-vertical
-
-  - panes:
-      - shell_command: ssh playcore-com-stg-blue || exit
-    layout: main-vertical
-    window_name: blue
-
-  - panes:
-      - shell_command: ssh playcore-com-stg-green || exit
-    layout: main-vertical
-    window_name: green
