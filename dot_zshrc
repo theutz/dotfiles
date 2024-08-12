@@ -91,6 +91,7 @@ alias -g HF='--help 2>&1 | gum filter'
 # Normal
 
 alias cm='chezmoi'
+alias cma='chezmoi add'
 alias cme='chezmoi edit'
 alias cmew='chezmoi edit --watch'
 alias cmm='chezmoi merge'
