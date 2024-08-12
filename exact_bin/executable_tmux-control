@@ -2,15 +2,14 @@
 
 set shell := ["zsh", "-euo", "pipefail", "-c"]
 set quiet
-set export
 set positional-arguments
 
-cmd := justfile()
-this := file_stem(justfile())
-dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
-GUM_FILTER_PLACEHOLDER := ''
-GUM_FILTER_HEADER := 'Choose session...'
-JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  SUBCOMMANDS\n\n"
+export cmd := justfile()
+export this := file_stem(justfile())
+export dir := join(env('XDG_CONFIG_HOME', join(env('HOME'), '.config')), "tmuxp")
+export GUM_FILTER_PLACEHOLDER := ''
+export GUM_FILTER_HEADER := 'Choose session...'
+export JUST_LIST_HEADING := "\n  " + file_stem(cmd) + " <subcommand>\n\n" + "  SUBCOMMANDS\n\n"
 
 [private]
 default:
