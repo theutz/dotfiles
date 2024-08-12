@@ -56,7 +56,7 @@ for repo in ${(z)repos}; do
   if ! git -C $repo diff-index --quiet HEAD --; then
     git -C $repo add -A
     git -C $repo status -s
-    git -C $repo commit "$(gum input --header "Commit message...")"
+    git -C $repo commit -m "$(gum input --header "Commit message...")"
   fi
   gum spin --title="Pulling..." --show-error -- git -C $repo pull
   branch=$(git -C $repo rev-parse --abbrev-ref HEAD)
