@@ -2,15 +2,15 @@
 
 set -euo pipefail
 
-local readd=()
+local merge=()
 local destroy=()
 local apply=()
 
 while read -r stat file; do
   case $stat in
     MM)
-      gum log -l info --prefix "re-add" " $file"
-      readd+="$file"
+      gum log -l info --prefix "merge" " $file"
+      merge+="$file"
       ;;
     DA)
       gum log -l warn --prefix destroy "$file"
@@ -34,8 +34,8 @@ while read -r stat file; do
   esac
 done <<< $(gum spin --title="Checking status..." --show-output -- chezmoi status)
 
-(( $#readd )) && gum spin --title="Re-adding..." --show-error -- \
-  chezmoi re-add "${readd[@]/#/$HOME/}"
+(( $#merge )) && \
+  chezmoi merge "${merge[@]/#/$HOME/}"
 
 (( $#destroy )) && gum spin --title="Destroying..." --show-error -- \
   chezmoi destroy "${destroy[@]}"
