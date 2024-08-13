@@ -63,6 +63,7 @@ settings:
     '*://*.www.impactelectronics.com/*': false
     '*://*.www.lineworker.com/*': false
     '*://*.www.linkedin.com/*': true
+    '*://*.www.nordtheme.com/*': false
     '*://*.www.poligon.com/*': false
     '*://*.www.simplemobile.com/*': false
     '*://*.www.ultimatelinings.com/*': false

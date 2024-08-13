@@ -16,11 +16,13 @@ export DELTA_PAGER='${(z)PAGER:-less}'
 
 export LANG='en_US.UTF-8'
 
-typeset -gU fpath path
+typeset -gU path fpath
 
-export path=(
-  $HOME/.local/bin
-  $HOME/bin
+#
+# PATH
+#
+
+path+=(
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
@@ -28,23 +30,37 @@ export path=(
 
 if (( $+commands[go] )); then
   export GOPATH="$(go env GOPATH)"
-  export PATH="${GOPATH:-$HOME/go}"/bin:$PATH
+  path+=("${GOPATH:-$HOME/go}"/bin)
 fi
 
 if (( $+commands[bob] )); then
-  export PATH="${XDG_DATA_HOME:-$HOME/.local/share}"/bob/nvim-bin:$PATH
+  path+=("${XDG_DATA_HOME}"/bob/nvim-bin)
 fi
 
 if (( $+commands[composer] )); then
-  export PATH="${XDG_CONFIG_HOME:-$HOME/.config}"/composer/vendor/bin:$PATH
+  path+=("$XDG_CONFIG_HOME"/composer/vendor/bin)
 fi
 
-export fpath=(
+path+=(
+  $HOME/.local/bin
+  $HOME/bin
+)
+
+#
+# FPATH
+#
+
+fpath=(
   $HOME/.local/functions
   /opt/homebrew/share/zsh/site-functions
   $fpath
 )
 
+#
+# Apps
+#
+
+# tz
 timezones=(
   US/Pacific
   # US/Central
@@ -53,7 +69,7 @@ timezones=(
   # Europe/London
   # Asia/Istanbul
 )
-export TZ_LIST=${(j:;:@)timezones}
+export TZ_LIST="${(j:;:@)timezones}"
 
+# nb
 export NB_DIR="$XDG_DATA_HOME/nb"
-GUM_FILTER_FUZZY=false
