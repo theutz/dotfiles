@@ -20,7 +20,7 @@ c.window_decorations = "RESIZE"
 c.adjust_window_size_when_changing_font_size = false
 c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
-local padding = "16px"
+local padding = "8px"
 c.window_padding = {
 	top = padding,
 	bottom = "0",
