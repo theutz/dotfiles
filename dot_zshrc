@@ -90,6 +90,14 @@ alias -g HF='--help 2>&1 | gum filter'
 
 # Normal
 
+alias brewh='brew home'
+alias brewi='brew install'
+alias brews='brew search'
+alias brewx='brew uninstall'
+alias caskh='brew home --cask'
+alias caski='brew install --cask'
+alias casks='brew search --cask'
+alias caskx='brew uninstall --cask'
 alias cm='chezmoi'
 alias cma='chezmoi add'
 alias cme='chezmoi edit'
