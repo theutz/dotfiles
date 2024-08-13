@@ -71,5 +71,6 @@ timezones=(
 )
 export TZ_LIST="${(j:;:@)timezones}"
 
+
 # nb
 export NB_DIR="$XDG_DATA_HOME/nb"
