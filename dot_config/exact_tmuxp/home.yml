@@ -1,4 +1,4 @@
-session_name: home
+session_name: main
 start_directory: $HOME
 windows:
   - panes:
