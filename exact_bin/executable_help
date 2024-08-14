@@ -138,3 +138,6 @@ prezto:
 
 hammerspoon:
   open https://www.hammerspoon.org/docs/index.html
+
+neovide:
+  neovide open https://neovide.dev/configuration.html#scale

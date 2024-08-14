@@ -52,6 +52,7 @@ settings:
     '*://*.hiwasseepackaging.test/*': false
     '*://*.lineworker.test/*': false
     '*://*.mysimplephones.com/*': false
+    '*://*.neovide.dev/*': false
     '*://*.ohdear.app/*': false
     '*://*.projects.zoho.com/*': false
     '*://*.statamic.dev/*': false
@@ -72,7 +73,7 @@ settings:
     '*://projects.zoho.com/*': false
     '*://www.homerow.app/*': false
     '*://www.linkedin.com/*': false
-    global: true
+    global: false
   completion.cmd_history_max_items:
     global: -1
   completion.delay:
