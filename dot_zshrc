@@ -75,6 +75,10 @@ function search-aliases () {
   fi
 }
 
+function lfcd() {
+  cd "$(command lf -print-last-dir "$@")"
+}
+
 #
 # Aliases
 #
@@ -102,7 +106,6 @@ alias cm='chezmoi'
 alias cma='chezmoi add'
 alias cmap='chezmoi apply --interactive'
 alias cmaP='chezmoi apply'
-alias cmcd='chezmoi cd'
 alias cmd='chezmoi diff'
 alias cme='chezmoi edit'
 alias cmew='chezmoi edit --watch'
@@ -112,7 +115,7 @@ alias cmR='chezmoi re-add'
 alias cms='chezmoi status'
 alias cmS='chezmoi-sync'
 alias cmx='chezmoi destroy'
-alias e='${(z)VISUAL:-${(z)EDITOR}'
+alias e='${(z)VISUAL:-${(z)EDITOR}}'
 alias gb='git branch'
 alias gbv='git branch -v'
 alias gcam='git commit -am'
@@ -133,12 +136,13 @@ alias ls='eza'
 alias sa='search-aliases'
 alias ssh-add-all='ssh-add --apple-use-keychain "$HOME"/.ssh/id_^*.pub'
 alias sshc='sed -e '\''/^Host/!d'\'' -e '\''s/^Host //'\'' ~/.ssh/config | gum filter | read host; ssh $host'
-alias tmux.conf='chezmoi edit --watch ~/.config/tmux.conf; tmux source-file ~/.config/tmux.conf'
+alias tmux.conf='e ~/.config/tmux/tmux.conf'
 alias tmuxa='tmux-control attach'
 alias tmuxl='tmux-control list'
 alias tx='tmux-control'
 alias txa='tmuxa'
 alias txe='tmux-control edit'
 alias txl='tmuxl'
-alias zshenv='chezmoi edit ~/.zshenv; exec zsh'
-alias zshrc='chezmoi edit ~/.zshrc; exec zsh'
+alias zshenv='e ~/.zshenv; exec zsh'
+alias zlogin='e ~/.zlogin'
+alias zshrc='e ~/.zshrc; exec zsh'
