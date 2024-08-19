@@ -54,6 +54,16 @@ eval $(ssh-agent -s) &>/dev/null
 # asdf
 . $(brew --prefix asdf)/libexec/asdf.sh
 
+# lf
+
+function lfcd() {
+  cd "$(command lf -print-last-dir "$@")"
+}
+
+# zoxide
+
+eval "$(zoxide init zsh --cmd cd)"
+
 #
 # Custom Functions
 #
@@ -73,10 +83,6 @@ function search-aliases () {
     cmd=${cmd%[\']}
     print -z "$cmd"
   fi
-}
-
-function lfcd() {
-  cd "$(command lf -print-last-dir "$@")"
 }
 
 #

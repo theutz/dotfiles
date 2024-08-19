@@ -9,7 +9,7 @@ c:set_strict_mode(true)
 
 -- c.default_prog = { "zsh", "-c", "/opt/homebrew/bin/nu" }
 c.macos_window_background_blur = 40
-c.window_background_opacity = 0.85
+c.window_background_opacity = 0.75
 c.font = wezterm.font("BlexMono Nerd Font", { weight = 500 })
 c.font_size = 16
 c.line_height = 1.6
