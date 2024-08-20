@@ -1,185 +1,185 @@
-after-login-command = []
-after-startup-command = [
-  'exec-and-forget sketchybar',
-  'exec-and-forget borders active_color=0xffea9d34 inactive_color=0xff595d65 width=8.0',
-]
-exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-]
-start-at-login = true
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
-accordion-padding = 30
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
-key-mapping.preset = 'qwerty'
-
-[[on-window-detected]]
-if.app-id = 'com.macpaw.clearvpn.macos-setapp'
-check-further-callbacks = true
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-check-further-callbacks = true
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.kapeli.dashdoc'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace 7'
-
-[workspace-to-monitor-force-assignment]
-7 = ['secondary', 'built-in']
-
-[gaps]
-inner.horizontal = 16
-inner.vertical = 16
-outer.left = 16
-outer.bottom = 16
-outer.top = [{ monitor."SAMSUNG" = 56 }, 25]
-outer.right = 16
-
-[exec] # Again, you don't need to copy all config sections to your config.
-inherit-env-vars = true # If you don't touch "exec" section,
-
-[exec.env-vars] # it will fallback to "default-config.toml"
-PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
-EDITOR = 'neovide --fork'
-
-# All possible keys:
-# - Letters.        a, b, c, ..., z
-# - Numbers.        0, 1, 2, ..., 9
-# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-# - F-keys.         f1, f2, ..., f20
-# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
-#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
-# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-#                   keypadMinus, keypadMultiply, keypadPlus
-# - Arrows.         left, down, up, right
-
-# All possible modifiers: cmd, alt, ctrl, shift
-
-# 'main' binding mode declaration
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# 'main' binding mode must be always presented
-[mode.main.binding]
-f13 = 'exec-and-forget spotify_player playback previous'
-f14 = 'exec-and-forget spotify_player playback play-pause'
-f15 = 'exec-and-forget spotify_player playback next'
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
-alt-m = 'fullscreen'
-alt-leftSquareBracket = 'focus-monitor --wrap-around left'
-alt-rightSquareBracket = 'focus-monitor --wrap-around right'
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
-alt-minus = 'resize smart -50'
-alt-equal = 'resize smart +50'
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-n = 'workspace --wrap-around next'
-alt-o = 'mode app'
-alt-p = 'workspace --wrap-around prev'
-alt-tab = 'workspace-back-and-forth'
-
-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
-alt-shift-minus = 'resize smart -150'
-alt-shift-equal = 'resize smart +150'
-alt-shift-n = [
-  'move-node-to-workspace --wrap-around next',
-  'workspace --wrap-around next',
-]
-alt-shift-p = [
-  'move-node-to-workspace --wrap-around prev',
-  'workspace --wrap-around prev',
-]
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-alt-shift-semicolon = 'mode service'
-alt-shift-leftSquareBracket = [
-  'move-node-to-monitor --wrap-around left',
-  'focus-monitor --wrap-around left',
-]
-alt-shift-rightSquareBracket = [
-  'move-node-to-monitor --wrap-around right',
-  'focus-monitor --wrap-around right',
-]
-
-# 'service' binding mode declaration.
-[mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main']
-s = ['reload-config', 'exec-and-forget sketchybar --reload', 'mode main']
-f = ['layout floating tiling', 'mode main']
-backspace = ['close-all-windows-but-current', 'mode main']
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
-alt-shift-enter = [
-  'exec-and-forget neovide --fork ~/.config/aerospace/aerospace.toml',
-  'mode main',
-]
-
-[mode.app.binding]
-esc = 'mode main'
-b = ['exec-and-forget open -a qutebrowser.app', 'mode main']
-e = ["""exec-and-forget osascript <<EOF
-  tell application "Neovide"
-    activate
-  end tell
-  EOF""", 'mode main']
-l = ['exec-and-forget open -a Timemator.app', 'mode main']
-m = ['exec-and-forget open -a Messages.app', 'mode main']
-p = [
-  'exec-and-forget wezterm cli spawn --new-window -- tmux -L spotify new -A -s spotify -n main spotify_player',
-  'mode main',
-]
-s = ['exec-and-forget open -a Slack.app', 'mode main']
-t = ["""exec-and-forget osascript <<EOF
-  tell application "WezTerm"
-    activate
-  end tell
-  EOF""", 'mode main']
+# after-login-command = []
+# after-startup-command = [
+#   'exec-and-forget sketchybar',
+#   'exec-and-forget borders active_color=0xffea9d34 inactive_color=0xff595d65 width=8.0',
+# ]
+# exec-on-workspace-change = [
+#   '/bin/bash',
+#   '-c',
+#   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+# ]
+# start-at-login = true
+# enable-normalization-flatten-containers = true
+# enable-normalization-opposite-orientation-for-nested-containers = true
+# accordion-padding = 30
+# default-root-container-layout = 'tiles'
+# default-root-container-orientation = 'auto'
+# key-mapping.preset = 'qwerty'
+#
+# [[on-window-detected]]
+# if.app-id = 'com.macpaw.clearvpn.macos-setapp'
+# check-further-callbacks = true
+# run = 'layout floating'
+#
+# [[on-window-detected]]
+# if.app-id = 'com.apple.systempreferences'
+# check-further-callbacks = true
+# run = 'layout floating'
+#
+# [[on-window-detected]]
+# if.app-id = 'com.spotify.client'
+# run = 'move-node-to-workspace 5'
+#
+# [[on-window-detected]]
+# if.app-id = 'com.kapeli.dashdoc'
+# run = 'move-node-to-workspace 3'
+#
+# [[on-window-detected]]
+# if.app-id = 'ru.keepcoder.Telegram'
+# run = 'move-node-to-workspace 4'
+#
+# [[on-window-detected]]
+# if.app-id = 'net.whatsapp.WhatsApp'
+# run = 'move-node-to-workspace 4'
+#
+# [[on-window-detected]]
+# if.app-id = 'com.apple.MobileSMS'
+# run = 'move-node-to-workspace 4'
+#
+# [[on-window-detected]]
+# if.app-id = 'com.tinyspeck.slackmacgap'
+# run = 'move-node-to-workspace 2'
+#
+# [[on-window-detected]]
+# if.app-id = 'us.zoom.xos'
+# run = 'move-node-to-workspace 7'
+#
+# [workspace-to-monitor-force-assignment]
+# 7 = ['secondary', 'built-in']
+#
+# [gaps]
+# inner.horizontal = 16
+# inner.vertical = 16
+# outer.left = 16
+# outer.bottom = 16
+# outer.top = [{ monitor."SAMSUNG" = 56 }, 25]
+# outer.right = 16
+#
+# [exec] # Again, you don't need to copy all config sections to your config.
+# inherit-env-vars = true # If you don't touch "exec" section,
+#
+# [exec.env-vars] # it will fallback to "default-config.toml"
+# PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+# EDITOR = 'neovide --fork'
+#
+# # All possible keys:
+# # - Letters.        a, b, c, ..., z
+# # - Numbers.        0, 1, 2, ..., 9
+# # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# # - F-keys.         f1, f2, ..., f20
+# # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
+# #                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
+# # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+# #                   keypadMinus, keypadMultiply, keypadPlus
+# # - Arrows.         left, down, up, right
+#
+# # All possible modifiers: cmd, alt, ctrl, shift
+#
+# # 'main' binding mode declaration
+# # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# # 'main' binding mode must be always presented
+# [mode.main.binding]
+# f13 = 'exec-and-forget spotify_player playback previous'
+# f14 = 'exec-and-forget spotify_player playback play-pause'
+# f15 = 'exec-and-forget spotify_player playback next'
+# alt-slash = 'layout tiles horizontal vertical'
+# alt-comma = 'layout accordion horizontal vertical'
+# alt-h = 'focus left'
+# alt-j = 'focus down'
+# alt-k = 'focus up'
+# alt-l = 'focus right'
+# alt-m = 'fullscreen'
+# alt-leftSquareBracket = 'focus-monitor --wrap-around left'
+# alt-rightSquareBracket = 'focus-monitor --wrap-around right'
+# alt-shift-h = 'move left'
+# alt-shift-j = 'move down'
+# alt-shift-k = 'move up'
+# alt-shift-l = 'move right'
+# alt-minus = 'resize smart -50'
+# alt-equal = 'resize smart +50'
+# alt-1 = 'workspace 1'
+# alt-2 = 'workspace 2'
+# alt-3 = 'workspace 3'
+# alt-4 = 'workspace 4'
+# alt-5 = 'workspace 5'
+# alt-6 = 'workspace 6'
+# alt-7 = 'workspace 7'
+# alt-n = 'workspace --wrap-around next'
+# alt-o = 'mode app'
+# alt-p = 'workspace --wrap-around prev'
+# alt-tab = 'workspace-back-and-forth'
+#
+# alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+# alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+# alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+# alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+# alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+# alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+# alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+# alt-shift-minus = 'resize smart -150'
+# alt-shift-equal = 'resize smart +150'
+# alt-shift-n = [
+#   'move-node-to-workspace --wrap-around next',
+#   'workspace --wrap-around next',
+# ]
+# alt-shift-p = [
+#   'move-node-to-workspace --wrap-around prev',
+#   'workspace --wrap-around prev',
+# ]
+# alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+# alt-shift-semicolon = 'mode service'
+# alt-shift-leftSquareBracket = [
+#   'move-node-to-monitor --wrap-around left',
+#   'focus-monitor --wrap-around left',
+# ]
+# alt-shift-rightSquareBracket = [
+#   'move-node-to-monitor --wrap-around right',
+#   'focus-monitor --wrap-around right',
+# ]
+#
+# # 'service' binding mode declaration.
+# [mode.service.binding]
+# esc = ['reload-config', 'mode main']
+# r = ['flatten-workspace-tree', 'mode main']
+# s = ['reload-config', 'exec-and-forget sketchybar --reload', 'mode main']
+# f = ['layout floating tiling', 'mode main']
+# backspace = ['close-all-windows-but-current', 'mode main']
+# alt-shift-h = ['join-with left', 'mode main']
+# alt-shift-j = ['join-with down', 'mode main']
+# alt-shift-k = ['join-with up', 'mode main']
+# alt-shift-l = ['join-with right', 'mode main']
+# alt-shift-enter = [
+#   'exec-and-forget neovide --fork ~/.config/aerospace/aerospace.toml',
+#   'mode main',
+# ]
+#
+# [mode.app.binding]
+# esc = 'mode main'
+# b = ['exec-and-forget open -a qutebrowser.app', 'mode main']
+# e = ["""exec-and-forget osascript <<EOF
+#   tell application "Neovide"
+#     activate
+#   end tell
+#   EOF""", 'mode main']
+# l = ['exec-and-forget open -a Timemator.app', 'mode main']
+# m = ['exec-and-forget open -a Messages.app', 'mode main']
+# p = [
+#   'exec-and-forget wezterm cli spawn --new-window -- tmux -L spotify new -A -s spotify -n main spotify_player',
+#   'mode main',
+# ]
+# s = ['exec-and-forget open -a Slack.app', 'mode main']
+# t = ["""exec-and-forget osascript <<EOF
+#   tell application "WezTerm"
+#     activate
+#   end tell
+#   EOF""", 'mode main']
