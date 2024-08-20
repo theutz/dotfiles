@@ -8,8 +8,8 @@ end
 c:set_strict_mode(true)
 
 -- c.default_prog = { "zsh", "-c", "/opt/homebrew/bin/nu" }
-c.macos_window_background_blur = 40
-c.window_background_opacity = 0.75
+c.macos_window_background_blur = 50
+c.window_background_opacity = 0.5
 c.font = wezterm.font("BlexMono Nerd Font", { weight = 500 })
 c.font_size = 16
 c.line_height = 1.6
@@ -34,6 +34,7 @@ c.use_fancy_tab_bar = false
 c.tab_max_width = 80
 c.show_tab_index_in_tab_bar = true
 c.command_palette_font_size = 18
-c.color_scheme = "ChallengerDeep"
+c.color_scheme = "BlulocoDark"
+-- c.colors = require("cyberdream")
 
 return c

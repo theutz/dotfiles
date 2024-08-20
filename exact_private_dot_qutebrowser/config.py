@@ -247,8 +247,8 @@ c.completion.use_best_match = True
 normal_bindings = {
     "<Escape>": "clear-keychain ;; search ;; fullscreen --leave ;; clear-messages",
     "<Meta+,>": "config-edit",
-    "J": "tab-next",
-    "K": "tab-prev",
+    "J": "tab-prev",
+    "K": "tab-next",
     "ge": "edit-url {url}",
     "tdH": "config-cycle -p -u *://*.{url:host}/* colors.webpage.darkmode.enabled false true ;; reload",
     "tdh": "config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled false true ;; reload",

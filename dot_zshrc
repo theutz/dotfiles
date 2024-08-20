@@ -1,4 +1,4 @@
-# vim: ft=zsh
+# vim: ft=text
 
 #
 # Options
@@ -38,7 +38,7 @@ compinit
 zstyle ':completion:*' completer _complete _ignored _approximate
 
 # Syntax Highlighting
-source "$XDG_STATE_HOME"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # broken syntax highlighting
+source "${XDG_STATE_HOME}"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #
 # Third-party
@@ -46,7 +46,6 @@ source "$XDG_STATE_HOME"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # b
 
 # Starship
 eval "$(starship init zsh)"
-# broken syntax highlighting
 
 # SSH Agent
 eval $(ssh-agent -s) &>/dev/null
@@ -62,7 +61,8 @@ function lfcd() {
 
 # zoxide
 
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh)"
+alias cd='zoxide'
 
 #
 # Custom Functions
