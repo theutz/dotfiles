@@ -1,3 +1,6 @@
+after-startup-command = [
+  'exec-and-forget borders'
+]
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -21,6 +24,10 @@ inherit-env-vars = true # If you don't touch "exec" section,
 PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 
+[[on-window-detected]]
+if.app-id = 'net.mullvad.vpn'
+run = 'layout floating'
+
 # All possible keys:
 # - Letters.        a, b, c, ..., z
 # - Numbers.        0, 1, 2, ..., 9
@@ -38,92 +45,58 @@ EDITOR = 'neovide --fork'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 [mode.main.binding]
-cmd-alt-ctrl-0 = 'balance-sizes'
-cmd-alt-ctrl-h = 'focus left'
-cmd-alt-ctrl-i = 'layout accordion tiles'
-cmd-alt-ctrl-j = 'focus down'
-cmd-alt-ctrl-k = 'focus up'
-cmd-alt-ctrl-l = 'focus right'
-cmd-alt-ctrl-n = 'workspace next'
-cmd-alt-ctrl-o = 'layout horizontal vertical'
-cmd-alt-ctrl-p = 'workspace prev'
 
-cmd-alt-ctrl-enter = 'fullscreen'
-cmd-alt-ctrl-equal = 'resize smart +50'
-cmd-alt-ctrl-leftSquareBracket = 'focus-monitor --wrap-around left'
-cmd-alt-ctrl-minus = 'resize smart -50'
-cmd-alt-ctrl-rightSquareBracket = 'focus-monitor --wrap-around right'
-cmd-alt-ctrl-space = 'mode movement'
+f13 = 'mode win'
+cmd-alt-ctrl-space = 'mode win'
 
-cmd-alt-ctrl-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-cmd-alt-ctrl-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-cmd-alt-ctrl-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-cmd-alt-ctrl-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-cmd-alt-ctrl-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-cmd-alt-ctrl-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-cmd-alt-ctrl-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
-cmd-alt-ctrl-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
-cmd-alt-ctrl-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-cmd-alt-ctrl-shift-n = ['move-node-to-workspace next', 'workspace next']
-cmd-alt-ctrl-shift-p = ['move-node-to-workspace prev', 'workspace prev']
+[mode.win.binding]
 
-[mode.movement.binding]
-0 = 'balance-sizes'
+0 = 'workspace next'
 1 = 'workspace 1'
 2 = 'workspace 2'
 3 = 'workspace 3'
 4 = 'workspace 4'
-5 = 'workspace 5'
-6 = 'workspace 6'
-7 = 'workspace 7'
-8 = 'workspace 8'
-9 = 'workspace 9'
+9 = 'workspace prev'
+backslash = 'balance-sizes'
+enter = 'fullscreen'
+equal = 'resize smart +50'
+esc = 'mode main'
 f = "layout floating tiling"
 h = 'focus left'
 i = 'layout accordion tiles'
 j = 'focus down'
 k = 'focus up'
 l = 'focus right'
-n = 'workspace next'
-o = 'layout horizontal vertical'
-p = 'workspace prev'
-
-enter = 'fullscreen'
-equal = 'resize smart +50'
-esc = 'mode main'
 leftSquareBracket = 'focus-monitor --wrap-around left'
 minus = 'resize smart -50'
+o = 'layout horizontal vertical'
+r = ['reload-config', 'exec-and-forget noti -t aerospace -m "Config reloaded!"', 'mode win']
 rightSquareBracket = 'focus-monitor --wrap-around right'
+semicolon = 'focus-monitor --wrap-around next'
 
-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-shift-h = 'move left'
-shift-j = 'move down'
-shift-k = 'move up'
-shift-l = 'move right'
-shift-n = 'move-node-to-workspace next'
-shift-p = 'move-node-to-workspace prev'
-
-alt-1 = ['move-node-to-workspace 1']
-alt-2 = ['move-node-to-workspace 2']
-alt-3 = ['move-node-to-workspace 3']
-alt-4 = ['move-node-to-workspace 4']
-alt-5 = ['move-node-to-workspace 5']
-alt-6 = ['move-node-to-workspace 6']
-alt-7 = ['move-node-to-workspace 7']
-alt-8 = ['move-node-to-workspace 8']
-alt-9 = ['move-node-to-workspace 9']
+alt-0 = 'move-node-to-workspace next'
+alt-1 = 'move-node-to-workspace 1'
+alt-2 = 'move-node-to-workspace 2'
+alt-3 = 'move-node-to-workspace 3'
+alt-4 = 'move-node-to-workspace 4'
+alt-9 = 'move-node-to-workspace prev'
 alt-h = 'join-with left'
 alt-j = 'join-with down'
 alt-k = 'join-with up'
 alt-l = 'join-with right'
+alt-semicolon = 'move-node-to-monitor --wrap-around next'
+
+shift-0 = ['trigger-binding --mode win alt-0', 'workspace next']
+shift-1 = ['trigger-binding --mode win alt-1', 'workspace 1']
+shift-2 = ['trigger-binding --mode win alt-2', 'workspace 2']
+shift-3 = ['trigger-binding --mode win alt-3', 'workspace 3']
+shift-4 = ['trigger-binding --mode win alt-4', 'workspace 4']
+shift-9 = ['trigger-binding --mode win alt-9', 'workspace prev']
+shift-h = 'move left'
+shift-j = 'move down'
+shift-k = 'move up'
+shift-l = 'move right'
+shift-semicolon = ['trigger-binding --mode win alt-semicolon', 'focus-monitor --wrap-around next']
 
 # alt-minus = 'resize smart -50'
 # alt-equal = 'resize smart +50'
