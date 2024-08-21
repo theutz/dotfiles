@@ -1,0 +1,95 @@
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CONFIG_DIRS=""
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_DATA_DIRS=""
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_RUNTIME_DIR="$TMPDIR"
+
+if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
+fi
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+export MANPAGER='nvim -c +Man!'
+export BAT_PAGER='${(z)PAGER:-less}'
+export DELTA_PAGER='${(z)PAGER:-less}'
+
+export LANG='en_US.UTF-8'
+
+typeset -gU path fpath
+
+#
+# PATH
+#
+
+path=(
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
+
+if (( $+commands[go] )); then
+  export GOPATH="$(go env GOPATH)"
+  path=("${GOPATH:-$HOME/go}"/bin $path)
+fi
+
+if (( $+commands[bob] )); then
+  path=("${XDG_DATA_HOME}"/bob/nvim-bin $path)
+fi
+
+if (( $+commands[composer] )); then
+  path=("$XDG_CONFIG_HOME"/composer/vendor/bin $path)
+fi
+
+path=(
+  $HOME/.local/bin
+  $HOME/bin
+  $path
+)
+
+#
+# FPATH
+#
+
+fpath=(
+  $HOME/.local/functions
+  /opt/homebrew/share/zsh/site-functions
+  $fpath
+)
+
+#
+# Apps
+#
+
+# 
+# Less
+#
+
+if [[ -z "$LESS" ]]; then
+  export LESS='-g -i -M -R -S -w -X -z-4'
+fi
+
+if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+
+# tz
+timezones=(
+  US/Pacific
+  # US/Central
+  US/Eastern
+  # GMT
+  # Europe/London
+  # Asia/Istanbul
+)
+export TZ_LIST="${(j:;:@)timezones}"
+
+
+# nb
+export NB_DIR="$XDG_DATA_HOME/nb"
