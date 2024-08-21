@@ -1,4 +1,4 @@
-# vim: ft=text
+# vim: ft=zsh
 
 #
 # Options
@@ -62,7 +62,7 @@ function lfcd() {
 # zoxide
 
 eval "$(zoxide init zsh)"
-alias cd='zoxide'
+alias cd='z'
 
 #
 # Custom Functions
@@ -145,6 +145,7 @@ alias sshc='sed -e '\''/^Host/!d'\'' -e '\''s/^Host //'\'' ~/.ssh/config | gum f
 alias tmux.conf='e ~/.config/tmux/tmux.conf'
 alias tmuxa='tmux-control attach'
 alias tmuxl='tmux-control list'
+alias t='tmux'
 alias tx='tmux-control'
 alias txa='tmuxa'
 alias txe='tmux-control edit'
