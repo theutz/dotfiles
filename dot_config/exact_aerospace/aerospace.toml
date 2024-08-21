@@ -11,7 +11,7 @@ inner.horizontal = 16
 inner.vertical = 16
 outer.left = 16
 outer.bottom = 16
-outer.top = [{ monitor."SAMSUNG" = 56 }, 16]
+outer.top = [{ monitor."SAMSUNG" = 16 }, 16]
 outer.right = 16
 
 [exec] # Again, you don't need to copy all config sections to your config.
@@ -44,11 +44,11 @@ cmd-alt-ctrl-i = 'layout accordion tiles'
 cmd-alt-ctrl-j = 'focus down'
 cmd-alt-ctrl-k = 'focus up'
 cmd-alt-ctrl-l = 'focus right'
-cmd-alt-ctrl-m = 'fullscreen'
 cmd-alt-ctrl-n = 'workspace next'
 cmd-alt-ctrl-o = 'layout horizontal vertical'
 cmd-alt-ctrl-p = 'workspace prev'
 
+cmd-alt-ctrl-enter = 'fullscreen'
 cmd-alt-ctrl-equal = 'resize smart +50'
 cmd-alt-ctrl-leftSquareBracket = 'focus-monitor --wrap-around left'
 cmd-alt-ctrl-minus = 'resize smart -50'
@@ -84,11 +84,11 @@ i = 'layout accordion tiles'
 j = 'focus down'
 k = 'focus up'
 l = 'focus right'
-m = 'fullscreen'
 n = 'workspace next'
 o = 'layout horizontal vertical'
 p = 'workspace prev'
 
+enter = 'fullscreen'
 equal = 'resize smart +50'
 esc = 'mode main'
 leftSquareBracket = 'focus-monitor --wrap-around left'
