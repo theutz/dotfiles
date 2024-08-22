@@ -3,7 +3,8 @@
 apis:
   openai:
     base-url: https://api.openai.com/v1
-    api-key: {{ onepasswordRead "op://Private/o3rg532nasf6pt6y3uozx3veze/credential" "theutz" }}
+    #api-key: {{ onepasswordRead "op://Private/o3rg532nasf6pt6y3uozx3veze/credential" "theutz" }}
+    api-key: {{ include "dot_config/openai/api_key" | decrypt }}
     models:
       gpt-4o:
         aliases: ["4o"]
