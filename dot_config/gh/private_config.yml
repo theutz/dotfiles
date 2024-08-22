@@ -10,7 +10,7 @@ aliases:
   squash: pr merge --squash --delete-branch
   cw: pr checks -i 3 --watch
   rebase: pr merge --rebase --delete-branch
-  "pr me": pr create --assignee @me
+  "pr @me": pr create --assignee @me
   "pr stg@me": pr create --assignee @me --base staging
   "run last-id": "run list --json databaseId -q '.[0].databaseId'"
   "run see": "!gh run last-id | xargs gh run watch"
