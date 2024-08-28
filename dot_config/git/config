@@ -55,3 +55,5 @@
 	fetchJobs = 4
 [github]
 	user = theutz
+[alias]
+	recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG
