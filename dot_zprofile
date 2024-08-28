@@ -46,6 +46,10 @@ if (( $+commands[composer] )); then
   path=("$XDG_CONFIG_HOME"/composer/vendor/bin $path)
 fi
 
+if (( $+commands[python3] )); then
+  path=("$(brew --prefix)"/opt/python@3.12/libexec/bin $path)
+fi
+
 path=(
   $HOME/.local/bin
   $HOME/bin

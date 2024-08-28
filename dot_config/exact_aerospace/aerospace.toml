@@ -1,18 +1,23 @@
+# Root {{{ 
+start-at-login = true 
 after-startup-command = [
   'exec-and-forget borders'
 ]
-start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 32
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 key-mapping.preset = 'qwerty'
+# }}}
 
+# Callbacks {{{
 [[on-window-detected]]
 if.app-id = 'net.mullvad.vpn'
 run = 'layout floating'
+# }}}
 
+# Gaps {{{
 [gaps]
 inner.horizontal = 16
 inner.vertical = 16
@@ -20,14 +25,21 @@ outer.left = 16
 outer.bottom = 16
 outer.top = [{ monitor."SAMSUNG" = 16 }, 16]
 outer.right = 16
+# }}}
 
-[exec] # Again, you don't need to copy all config sections to your config.
+# Exec {{{
+[exec]
+# Again, you don't need to copy all config sections to your config.
 inherit-env-vars = true # If you don't touch "exec" section,
 
 [exec.env-vars] # it will fallback to "default-config.toml"
 PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
+# }}}
 
+# Bindings {{{
+
+# README {{{
 # All possible keys:
 # - Letters.        a, b, c, ..., z
 # - Numbers.        0, 1, 2, ..., 9
@@ -43,49 +55,68 @@ EDITOR = 'neovide --fork'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# 'main' binding mode must be always presented
+# 'main' binding mode must be always presented}}}
+
+# Main {{{
 [mode.main.binding]
-
 f13 = 'mode win'
-cmd-alt-ctrl-space = 'mode win'
+cmd-alt-ctrl-j = 'mode jot'
+# }}}
 
+# Go {{{
+[mode.jot.binding]
+esc = 'mode main'
+l = ['exec-and-forget wezterm cli spawn --new-window -- nvim', 'mode main']
+# }}}
+
+# Win {{{
 [mode.win.binding]
 
+# Unmodified{{{
 0 = 'workspace next'
 1 = 'workspace 1'
 2 = 'workspace 2'
 3 = 'workspace 3'
 4 = 'workspace 4'
 9 = 'workspace prev'
-backslash = 'balance-sizes'
-enter = 'fullscreen'
-equal = 'resize smart +50'
-esc = 'mode main'
+
 f = "layout floating tiling"
 h = 'focus left'
 i = 'layout accordion tiles'
 j = 'focus down'
 k = 'focus up'
 l = 'focus right'
-leftSquareBracket = 'focus-monitor --wrap-around left'
-minus = 'resize smart -50'
 o = 'layout horizontal vertical'
 r = ['reload-config', 'exec-and-forget noti -t aerospace -m "Config reloaded!"', 'mode win']
+
+f13 = 'mode main'
+backslash = 'balance-sizes'
+enter = 'fullscreen'
+equal = 'resize smart +50'
+esc = 'mode main'
+leftSquareBracket = 'focus-monitor --wrap-around left'
+minus = 'resize smart -50'
 rightSquareBracket = 'focus-monitor --wrap-around right'
 semicolon = 'focus-monitor --wrap-around next'
+# }}}
 
+# alt{{{
 alt-0 = 'move-node-to-workspace next'
 alt-1 = 'move-node-to-workspace 1'
 alt-2 = 'move-node-to-workspace 2'
 alt-3 = 'move-node-to-workspace 3'
 alt-4 = 'move-node-to-workspace 4'
 alt-9 = 'move-node-to-workspace prev'
+
 alt-h = 'join-with left'
 alt-j = 'join-with down'
 alt-k = 'join-with up'
 alt-l = 'join-with right'
-alt-semicolon = 'move-node-to-monitor --wrap-around next'
 
+alt-semicolon = 'move-node-to-monitor --wrap-around next'
+# }}}
+
+# Shift{{{
 shift-0 = ['trigger-binding --mode win alt-0', 'workspace next']
 shift-1 = ['trigger-binding --mode win alt-1', 'workspace 1']
 shift-2 = ['trigger-binding --mode win alt-2', 'workspace 2']
@@ -96,4 +127,8 @@ shift-h = 'move left'
 shift-j = 'move down'
 shift-k = 'move up'
 shift-l = 'move right'
+
 shift-semicolon = ['trigger-binding --mode win alt-semicolon', 'focus-monitor --wrap-around next']
+# }}}
+# }}}
+# vim: fdm=marker fdl=1

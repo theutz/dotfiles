@@ -13,8 +13,10 @@
 # Execute code only if STDERR is bound to a TTY.
 if [[ -o INTERACTIVE && -t 2 ]]; then
 
-  if (( $+commands[tz] )); then
-    tz -q
+  if (( $+commands[onefetch] )); then
+    if ! onefetch 2>/dev/null && (($+commands[neofetch])); then
+      neofetch
+    fi
   fi
 
 fi >&2
