@@ -5,3 +5,4 @@ windows:
     panes:
       - shell: nvim
         focus: true
+      - shell: just up
