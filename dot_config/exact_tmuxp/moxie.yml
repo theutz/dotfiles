@@ -1,0 +1,7 @@
+session_name: moxie
+start_directory: $HOME/code/theutz/moxie-collaborative.com/
+windows:
+  - window_name: main
+    panes:
+      - shell: nvim
+        focus: true
