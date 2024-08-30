@@ -120,7 +120,6 @@ export FZF_ALT_C_OPTS="
 # }}}}}}
 # Custom{{{
 # Functions{{{
-
 function search-aliases () {
   if (( $#argv )); then
     value="--value $argv[@]"
@@ -136,6 +135,27 @@ function search-aliases () {
     cmd=${cmd%[\']}
     print -z "$cmd"
   fi
+}
+
+function tmuxp-edit-template() {
+  local session="$(tmux display-message -p -F '#{session_name}')"
+  local dir="${XDG_CONFIG_HOME:-$HOME/.config}/tmuxp"
+  local file="$(fd "$session" --type f $dir | fzf --query="$session" --exit-0 --select-1)"
+  if [[ -s $file ]]; then
+    "${(z)VISUAL:-${(z)EDITOR}}" $file
+  else
+    gum log -l error "$file does not exist"
+  fi
+}
+
+function tmuxp-create-template() {
+  local dir="${XDG_CONFIG_HOME:-$HOME/.config}/tmuxp"
+  if [[ -z $1 ]]; then
+    name="$(gum input --header="What should we name it?")"
+  else
+    name="$1"
+  fi
+  "${(z)VISUAL:-${(z)EDITOR}}" "$dir/$name.yml"
 }
 # }}}
 # Aliases{{{
@@ -177,16 +197,17 @@ alias e='${(z)VISUAL:-${(z)EDITOR}}'
 alias gb='git branch'
 alias gbv='git branch -v'
 alias gcam='git commit -am'
-alias gcm='git commit -m'
+alias gcm='git commit -m "$(gum write)"'
 alias gco='git checkout'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gfap='git fetch --all --prune'
 alias gfm='git pull'
 alias giA='git add -A'
-alias gia='git add'
+alias gia='git status --porcelain | fzf --multi | awk '\''{ print $2 }'\'' | xargs -I {} git add {}'
 alias gp='git push'
 alias gpp='git pull && git push'
+alias grc='git recommit'
 alias gws='git status -s'
 alias gwS='git status'
 alias j='just'
@@ -200,11 +221,16 @@ alias sshc='sed -e '\''/^Host/!d'\'' -e '\''s/^Host //'\'' ~/.ssh/config | gum f
 alias tmux.conf='e ~/.config/tmux/tmux.conf'
 alias tmuxa='tmux-control attach'
 alias tmuxl='tmux-control list'
+alias tmuxp
 alias t='tmux'
+alias tp='tmuxp'
+alias tpc='tmuxp-create-template'
+alias tpe='tmuxp-edit-template'
 alias tx='tmux-control'
 alias txa='tmuxa'
 alias txe='tmux-control edit'
 alias txl='tmuxl'
+alias we='watchexec'
 alias zshenv='e ~/.zshenv; exec zsh'
 alias zlogin='e ~/.zlogin; exec zsh'
 alias zprofile='e ~/.zprofile; exec zsh'
