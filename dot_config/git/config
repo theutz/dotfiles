@@ -9,7 +9,7 @@
 [merge]
 	autoStash = true
 	conflictStyle = diff3
-	tool = Kaleidoscope
+	tool = vimdiff
 [rebase]
 	autoStash = true
 [commit]

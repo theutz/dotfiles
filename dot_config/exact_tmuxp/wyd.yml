@@ -4,25 +4,14 @@ windows:
   - panes:
       - shell: nvim
         focus: true
-      - shell: just watch clients list
-      - shell: just watch projects list
+      - shell: just up
+      - shell_command: |
+          tmux selectp -t .1 -T editor
+          tmux selectp -t .2 -T server
+          tmux set -p -t .3 remain-on-exit off
+          exit
     window_name: main
-    layout: main-horizontal
+    layout: main-vertical
     options:
       remain-on-exit: true
-      other-pane-height: 12
-
-  - panes:
-      - shell: overmind start
-
-  - panes:
-      - shell_command: |
-          tmux splitw -ht wyd:main.1
-          tmux selectp -t wyd:main.1 -T editor
-          tmux selectp -t wyd:main.2 -T commands
-          tmux selectp -t wyd:main.3 -T clients
-          tmux selectp -t wyd:main.4 -T projects
-          tmux resizep -t wyd:main.2 -x 80
-          tmux send -t wyd:main.1 s
-          tmux kill-window -t wyd:bs
-    window_name: bs
+      other-pane-width: 80

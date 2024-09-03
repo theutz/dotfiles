@@ -137,6 +137,7 @@ function search-aliases () {
   fi
 }
 
+# tmuxp {{{
 function tmuxp-edit-template() {
   local session="$(tmux display-message -p -F '#{session_name}')"
   local dir="${XDG_CONFIG_HOME:-$HOME/.config}/tmuxp"
@@ -150,6 +151,7 @@ function tmuxp-edit-template() {
 
 function tmuxp-create-template() {
   local dir="${XDG_CONFIG_HOME:-$HOME/.config}/tmuxp"
+  local name
   if [[ -z $1 ]]; then
     name="$(gum input --header="What should we name it?")"
   else
@@ -157,6 +159,30 @@ function tmuxp-create-template() {
   fi
   "${(z)VISUAL:-${(z)EDITOR}}" "$dir/$name.yml"
 }
+
+function tmuxp-attach() {
+  local name
+  if [[ -z $1 ]]; then
+    name="$(tmuxp ls | fzf)"
+  else
+    name="$1"
+  fi
+  if tmux has -t $name; then
+    if [[ -n $TMUX ]]; then
+      tmux switch-client -t $name
+    else
+      tmux attach -t $name
+    fi
+  else
+    if [[ -n $TMUX ]]; then
+      tmuxp load -d $name
+      tmux switch-client -t $name
+    else
+      tmuxp load $name
+    fi
+  fi
+}
+# }}}
 # }}}
 # Aliases{{{
 
@@ -224,6 +250,7 @@ alias tmuxl='tmux-control list'
 alias tmuxp
 alias t='tmux'
 alias tp='tmuxp'
+alias tpa='tmuxp-attach'
 alias tpc='tmuxp-create-template'
 alias tpe='tmuxp-edit-template'
 alias tx='tmux-control'
