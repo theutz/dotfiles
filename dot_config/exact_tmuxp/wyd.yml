@@ -4,12 +4,7 @@ windows:
   - panes:
       - shell: nvim
         focus: true
-      - shell: just up
-      - shell_command: |
-          tmux selectp -t .1 -T editor
-          tmux selectp -t .2 -T server
-          tmux set -p -t .3 remain-on-exit off
-          exit
+      - shell: watchexec go test -v ./...
     window_name: main
     layout: main-vertical
     options:
