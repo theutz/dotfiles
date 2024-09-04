@@ -34,6 +34,13 @@ c.tab_max_width = 80
 c.show_tab_index_in_tab_bar = true
 c.command_palette_font_size = 18
 c.color_scheme = "BlulocoDark"
--- c.colors = require("cyberdream")
+
+c.keys = {
+	{
+		key = "Escape",
+		mods = "NONE",
+		action = wezterm.action({ SendString = "\x1b" }),
+	},
+}
 
 return c

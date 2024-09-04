@@ -1,4 +1,4 @@
-# Root {{{ 
+# Root {{{1
 start-at-login = true 
 after-startup-command = [
   'exec-and-forget borders'
@@ -9,15 +9,13 @@ accordion-padding = 32
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 key-mapping.preset = 'qwerty'
-# }}}
 
-# Callbacks {{{
+# Callbacks {{{1
 [[on-window-detected]]
 if.app-id = 'net.mullvad.vpn'
 run = 'layout floating'
-# }}}
 
-# Gaps {{{
+# Gaps {{{1
 [gaps]
 inner.horizontal = 16
 inner.vertical = 16
@@ -25,9 +23,8 @@ outer.left = 16
 outer.bottom = 16
 outer.top = [{ monitor."SAMSUNG" = 16 }, 16]
 outer.right = 16
-# }}}
 
-# Exec {{{
+# Exec {{{1
 [exec]
 # Again, you don't need to copy all config sections to your config.
 inherit-env-vars = true # If you don't touch "exec" section,
@@ -35,9 +32,8 @@ inherit-env-vars = true # If you don't touch "exec" section,
 [exec.env-vars] # it will fallback to "default-config.toml"
 PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
-# }}}
 
-# Bindings {{{
+# Bindings {{{1
 
 # README {{{
 # All possible keys:
@@ -57,22 +53,17 @@ EDITOR = 'neovide --fork'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented}}}
 
-# Main {{{
+# Main Mode {{{2
 [mode.main.binding]
-f13 = 'mode win'
-cmd-alt-ctrl-j = 'mode jot'
-# }}}
+f13 = [
+  'mode win',
+  'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0'
+]
 
-# Go {{{
-[mode.jot.binding]
-esc = 'mode main'
-l = ['exec-and-forget wezterm cli spawn --new-window -- nvim', 'mode main']
-# }}}
-
-# Win {{{
+# Win Mode {{{2
 [mode.win.binding]
 
-# Unmodified{{{
+# no-mods {{{3
 0 = 'workspace next'
 1 = 'workspace 1'
 2 = 'workspace 2'
@@ -89,18 +80,19 @@ l = 'focus right'
 o = 'layout horizontal vertical'
 r = ['reload-config', 'exec-and-forget noti -t aerospace -m "Config reloaded!"', 'mode win']
 
-f13 = 'mode main'
 backslash = 'balance-sizes'
 enter = 'fullscreen'
 equal = 'resize smart +50'
-esc = 'mode main'
+esc = [
+  'mode main',
+  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0x884483aa width=8.0'
+]
 leftSquareBracket = 'focus-monitor --wrap-around left'
 minus = 'resize smart -50'
 rightSquareBracket = 'focus-monitor --wrap-around right'
 semicolon = 'focus-monitor --wrap-around next'
-# }}}
 
-# alt{{{
+# alt {{{3
 alt-0 = 'move-node-to-workspace next'
 alt-1 = 'move-node-to-workspace 1'
 alt-2 = 'move-node-to-workspace 2'
@@ -114,9 +106,8 @@ alt-k = 'join-with up'
 alt-l = 'join-with right'
 
 alt-semicolon = 'move-node-to-monitor --wrap-around next'
-# }}}
 
-# Shift{{{
+# shift {{{3
 shift-0 = ['trigger-binding --mode win alt-0', 'workspace next']
 shift-1 = ['trigger-binding --mode win alt-1', 'workspace 1']
 shift-2 = ['trigger-binding --mode win alt-2', 'workspace 2']
@@ -129,6 +120,4 @@ shift-k = 'move up'
 shift-l = 'move right'
 
 shift-semicolon = ['trigger-binding --mode win alt-semicolon', 'focus-monitor --wrap-around next']
-# }}}
-# }}}
 # vim: fdm=marker fdl=1

@@ -13,3 +13,5 @@ just 1.34.0
 gum 0.14.4
 process-compose 1.24.2
 lorem 0.8.0
+watchexec 2.1.2
+doppler 3.69.0
