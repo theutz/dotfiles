@@ -1,14 +1,11 @@
-start-at-login                                                  = true# {{{
+start-at-login                                                  = true # {{{1
 after-startup-command                                           = ['exec-and-forget borders']
 enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding                                               = 32
 default-root-container-layout                                   = 'tiles'
 default-root-container-orientation                              = 'auto'
-key-mapping.preset                                              = 'qwerty'# }}}
-[[on-window-detected]] # {{{1
-if.app-id = 'net.mullvad.vpn'
-run       = 'layout floating'
+key-mapping.preset                                              = 'qwerty'
 
 [gaps] # {{{1
 inner.horizontal = 16
@@ -26,15 +23,54 @@ PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 
 [workspace-to-monitor-force-assignment] # {{{1
-1-main  = 'main'
-2-aux   = 'main'
-3-docs  = 'main'
-4-data  = 'main'
-5-reqs  = 'main'
-6-slack = 'secondary'
-7-chat  = 'secondary'
-8-stats = 'secondary'
-9-media = 'main'
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = 'secondary'
+7 = 'secondary'
+8 = 'secondary'
+9 = 'secondary'
+
+# Callbacks {{{1
+# run `aerospace list-apps` to see all current app ids
+
+[[on-window-detected]]
+if.app-id = 'net.mullvad.vpn'
+run       = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.hammerspoon.Hammerspoon'
+run       = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.kapeli.dashdoc'
+run       = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run       = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run       = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run       = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run       = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run       = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run       = 'move-node-to-workspace 7'
 
 # Keybinding Reference {{{1
 # All possible keys:
@@ -54,20 +90,52 @@ EDITOR = 'neovide --fork'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 
+# Current Color Scheme "Bluloco Dark" {{{2
+# {
+#     "ansi": [
+#         "#41444d",
+#         "#fc2f52",
+#         "#25a45c",
+#         "#ff936a",
+#         "#3476ff",
+#         "#7a82da",
+#         "#4483aa",
+#         "#cdd4e0",
+#     ],
+#     "background": "#282c34",
+#     "brights": [
+#         "#8f9aae",
+#         "#ff6480",
+#         "#3fc56b",
+#         "#f9c859",
+#         "#10b1fe",
+#         "#ff78f8",
+#         "#5fb9bc",
+#         "#ffffff",
+#     ],
+#     "cursor_bg": "#ffcc00",
+#     "cursor_border": "#ffcc00",
+#     "cursor_fg": "#282c34",
+#     "foreground": "#b9c0cb",
+#     "indexed": [],
+#     "selection_bg": "#b9c0ca",
+#     "selection_fg": "#272b33",
+# }
+
 [mode.main.binding] #{{{1
 f13 = [
-  'mode win',
+  'mode normal',
   'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0',
 ]
 
-[mode.win.binding] #{{{1
-1                        = 'workspace 1-main'# {{{
-2                        = 'workspace 2'
-3                        = 'workspace 3'
-4                        = 'workspace 4'
-5                        = 'workspace 5'
+[mode.normal.binding] #{{{1
+1                        = 'workspace 1' # {{{
+2                        = 'workspace 2'  
+3                        = 'workspace 3' 
+4                        = 'workspace 4' 
+5                        = 'workspace 5' 
 6                        = 'workspace 6'
-7                        = 'workspace 7'
+7                        = 'workspace 7' 
 8                        = 'workspace 8'
 9                        = 'workspace 9'
 f                        = "layout floating tiling"
@@ -80,8 +148,9 @@ o                        = 'layout horizontal vertical'
 r                        = [
   'reload-config',
   'exec-and-forget noti -t aerospace -m "Config reloaded!"',
-  'mode win',
+  'mode normal',
 ]
+x                        = 'close --quit-if-last-window'
 backslash                = 'balance-sizes'
 enter                    = 'fullscreen'
 equal                    = 'resize smart +50'
@@ -92,14 +161,15 @@ esc                      = [
 leftSquareBracket        = 'workspace prev'
 minus                    = 'resize smart -50'
 rightSquareBracket       = 'workspace next'
-semicolon                = 'focus-monitor --wrap-around next'# }}}
-alt-1                    = 'move-node-to-workspace 1-main'# {{{
-alt-2                    = 'move-node-to-workspace 2'
-alt-3                    = 'move-node-to-workspace 3'
-alt-4                    = 'move-node-to-workspace 4'
-alt-5                    = 'move-node-to-workspace 5'
+semicolon                = 'focus-monitor --wrap-around next'
+# }}}
+alt-1                    = 'move-node-to-workspace 1' # {{{
+alt-2                    = 'move-node-to-workspace 2'  
+alt-3                    = 'move-node-to-workspace 3' 
+alt-4                    = 'move-node-to-workspace 4' 
+alt-5                    = 'move-node-to-workspace 5' 
 alt-6                    = 'move-node-to-workspace 6'
-alt-7                    = 'move-node-to-workspace 7'
+alt-7                    = 'move-node-to-workspace 7' 
 alt-8                    = 'move-node-to-workspace 8'
 alt-9                    = 'move-node-to-workspace 9'
 alt-h                    = 'join-with left'
@@ -108,58 +178,24 @@ alt-k                    = 'join-with up'
 alt-l                    = 'join-with right'
 alt-semicolon            = 'move-node-to-monitor --wrap-around next'
 alt-leftSquareBracket    = 'move-node-to-workspace prev'
-alt-rightSquareBracket   = 'move-node-to-workspace next'# }}}
-shift-1                  = [# {{{
-  'trigger-binding --mode win alt-1',
-  'workspace 1-main'
-]
-shift-2                  = [
-  'trigger-binding --mode win alt-2',
-  'workspace 2'
-]
-shift-3                  = [
-  'trigger-binding --mode win alt-3',
-  'workspace 3'
-]
-shift-4                  = [
-  'trigger-binding --mode win alt-4',
-  'workspace 4'
-]
-shift-5                  = [
-  'trigger-binding --mode win alt-5',
-  'workspace 5'
-]
-shift-6                  = [
-  'trigger-binding --mode win alt-6',
-  'workspace 6'
-]
-shift-7                  = [
-  'trigger-binding --mode win alt-7',
-  'workspace 7'
-]
-shift-8                  = [
-  'trigger-binding --mode win alt-8',
-  'workspace 8'
-]
-shift-9                  = [
-  'trigger-binding --mode win alt-9',
-  'workspace 9'
-]
+alt-rightSquareBracket   = 'move-node-to-workspace next'
+# }}}
+shift-1                  = [ 'trigger-binding --mode normal alt-1', 'workspace 1'  ]
+shift-2                  = [ 'trigger-binding --mode normal alt-2', 'workspace 2'   ]
+shift-3                  = [ 'trigger-binding --mode normal alt-3', 'workspace 3'  ]
+shift-4                  = [ 'trigger-binding --mode normal alt-4', 'workspace 4'  ]
+shift-5                  = [ 'trigger-binding --mode normal alt-5', 'workspace 5'  ]
+shift-6                  = [ 'trigger-binding --mode normal alt-6', 'workspace 6' ]
+shift-7                  = [ 'trigger-binding --mode normal alt-7', 'workspace 7'  ]
+shift-8                  = [ 'trigger-binding --mode normal alt-8', 'workspace 8' ]
+shift-9                  = [ 'trigger-binding --mode normal alt-9', 'workspace 9' ]
 shift-h                  = 'move left'
 shift-j                  = 'move down'
 shift-k                  = 'move up'
 shift-l                  = 'move right'
-shift-semicolon          = [
-  'trigger-binding --mode win alt-semicolon',
-  'focus-monitor --wrap-around next',
-]
-shift-leftSquareBracket  = [
-  'trigger-binding --mode win alt-leftSquareBracket',
-  'workspace prev'
-]
-shift-rightSquareBracket = [
-  'trigger-binding --mode win alt-rightSquareBracket',
-  'workspace next'
-]# }}}
+shift-semicolon          = [ 'trigger-binding --mode normal alt-semicolon', 'focus-monitor --wrap-around next' ]
+shift-leftSquareBracket  = [ 'trigger-binding --mode normal alt-leftSquareBracket', 'workspace prev' ]
+shift-rightSquareBracket = [ 'trigger-binding --mode normal alt-rightSquareBracket', 'workspace next' ]
+# }}}
 
 # vim: fdm=marker fdl=1
