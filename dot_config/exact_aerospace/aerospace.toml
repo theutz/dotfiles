@@ -45,6 +45,10 @@ if.app-id = 'org.hammerspoon.Hammerspoon'
 run       = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.checkitt'
+run       = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
 if.app-id = 'com.kapeli.dashdoc'
 run       = 'move-node-to-workspace 3'
 
