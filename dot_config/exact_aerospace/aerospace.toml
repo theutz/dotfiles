@@ -1,41 +1,42 @@
-# Root {{{1
-start-at-login = true 
-after-startup-command = [
-  'exec-and-forget borders'
-]
-enable-normalization-flatten-containers = true
+start-at-login                                                  = true# {{{
+after-startup-command                                           = ['exec-and-forget borders']
+enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-accordion-padding = 32
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
-key-mapping.preset = 'qwerty'
-
-# Callbacks {{{1
-[[on-window-detected]]
+accordion-padding                                               = 32
+default-root-container-layout                                   = 'tiles'
+default-root-container-orientation                              = 'auto'
+key-mapping.preset                                              = 'qwerty'# }}}
+[[on-window-detected]] # {{{1
 if.app-id = 'net.mullvad.vpn'
-run = 'layout floating'
+run       = 'layout floating'
 
-# Gaps {{{1
-[gaps]
+[gaps] # {{{1
 inner.horizontal = 16
-inner.vertical = 16
-outer.left = 16
-outer.bottom = 16
-outer.top = [{ monitor."SAMSUNG" = 16 }, 16]
-outer.right = 16
+inner.vertical   = 16
+outer.left       = 16
+outer.bottom     = 16
+outer.top        = [{ monitor."SAMSUNG" = 16 }, 16]
+outer.right      = 16
 
-# Exec {{{1
-[exec]
-# Again, you don't need to copy all config sections to your config.
-inherit-env-vars = true # If you don't touch "exec" section,
+[exec] # {{{1
+inherit-env-vars = true
 
-[exec.env-vars] # it will fallback to "default-config.toml"
-PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+[exec.env-vars] # {{{2
+PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 
-# Bindings {{{1
+[workspace-to-monitor-force-assignment] # {{{1
+1-main  = 'main'
+2-aux   = 'main'
+3-docs  = 'main'
+4-data  = 'main'
+5-reqs  = 'main'
+6-slack = 'secondary'
+7-chat  = 'secondary'
+8-stats = 'secondary'
+9-media = 'main'
 
-# README {{{
+# Keybinding Reference {{{1
 # All possible keys:
 # - Letters.        a, b, c, ..., z
 # - Numbers.        0, 1, 2, ..., 9
@@ -51,73 +52,114 @@ EDITOR = 'neovide --fork'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# 'main' binding mode must be always presented}}}
+# 'main' binding mode must be always presented
 
-# Main Mode {{{2
-[mode.main.binding]
+[mode.main.binding] #{{{1
 f13 = [
   'mode win',
-  'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0'
+  'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0',
 ]
 
-# Win Mode {{{2
-[mode.win.binding]
-
-# no-mods {{{3
-0 = 'workspace next'
-1 = 'workspace 1'
-2 = 'workspace 2'
-3 = 'workspace 3'
-4 = 'workspace 4'
-9 = 'workspace prev'
-
-f = "layout floating tiling"
-h = 'focus left'
-i = 'layout accordion tiles'
-j = 'focus down'
-k = 'focus up'
-l = 'focus right'
-o = 'layout horizontal vertical'
-r = ['reload-config', 'exec-and-forget noti -t aerospace -m "Config reloaded!"', 'mode win']
-
-backslash = 'balance-sizes'
-enter = 'fullscreen'
-equal = 'resize smart +50'
-esc = [
+[mode.win.binding] #{{{1
+1                        = 'workspace 1-main'# {{{
+2                        = 'workspace 2'
+3                        = 'workspace 3'
+4                        = 'workspace 4'
+5                        = 'workspace 5'
+6                        = 'workspace 6'
+7                        = 'workspace 7'
+8                        = 'workspace 8'
+9                        = 'workspace 9'
+f                        = "layout floating tiling"
+h                        = 'focus left'
+i                        = 'layout accordion tiles'
+j                        = 'focus down'
+k                        = 'focus up'
+l                        = 'focus right'
+o                        = 'layout horizontal vertical'
+r                        = [
+  'reload-config',
+  'exec-and-forget noti -t aerospace -m "Config reloaded!"',
+  'mode win',
+]
+backslash                = 'balance-sizes'
+enter                    = 'fullscreen'
+equal                    = 'resize smart +50'
+esc                      = [
   'mode main',
-  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0x884483aa width=8.0'
+  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0x884483aa width=8.0',
 ]
-leftSquareBracket = 'focus-monitor --wrap-around left'
-minus = 'resize smart -50'
-rightSquareBracket = 'focus-monitor --wrap-around right'
-semicolon = 'focus-monitor --wrap-around next'
+leftSquareBracket        = 'workspace prev'
+minus                    = 'resize smart -50'
+rightSquareBracket       = 'workspace next'
+semicolon                = 'focus-monitor --wrap-around next'# }}}
+alt-1                    = 'move-node-to-workspace 1-main'# {{{
+alt-2                    = 'move-node-to-workspace 2'
+alt-3                    = 'move-node-to-workspace 3'
+alt-4                    = 'move-node-to-workspace 4'
+alt-5                    = 'move-node-to-workspace 5'
+alt-6                    = 'move-node-to-workspace 6'
+alt-7                    = 'move-node-to-workspace 7'
+alt-8                    = 'move-node-to-workspace 8'
+alt-9                    = 'move-node-to-workspace 9'
+alt-h                    = 'join-with left'
+alt-j                    = 'join-with down'
+alt-k                    = 'join-with up'
+alt-l                    = 'join-with right'
+alt-semicolon            = 'move-node-to-monitor --wrap-around next'
+alt-leftSquareBracket    = 'move-node-to-workspace prev'
+alt-rightSquareBracket   = 'move-node-to-workspace next'# }}}
+shift-1                  = [# {{{
+  'trigger-binding --mode win alt-1',
+  'workspace 1-main'
+]
+shift-2                  = [
+  'trigger-binding --mode win alt-2',
+  'workspace 2'
+]
+shift-3                  = [
+  'trigger-binding --mode win alt-3',
+  'workspace 3'
+]
+shift-4                  = [
+  'trigger-binding --mode win alt-4',
+  'workspace 4'
+]
+shift-5                  = [
+  'trigger-binding --mode win alt-5',
+  'workspace 5'
+]
+shift-6                  = [
+  'trigger-binding --mode win alt-6',
+  'workspace 6'
+]
+shift-7                  = [
+  'trigger-binding --mode win alt-7',
+  'workspace 7'
+]
+shift-8                  = [
+  'trigger-binding --mode win alt-8',
+  'workspace 8'
+]
+shift-9                  = [
+  'trigger-binding --mode win alt-9',
+  'workspace 9'
+]
+shift-h                  = 'move left'
+shift-j                  = 'move down'
+shift-k                  = 'move up'
+shift-l                  = 'move right'
+shift-semicolon          = [
+  'trigger-binding --mode win alt-semicolon',
+  'focus-monitor --wrap-around next',
+]
+shift-leftSquareBracket  = [
+  'trigger-binding --mode win alt-leftSquareBracket',
+  'workspace prev'
+]
+shift-rightSquareBracket = [
+  'trigger-binding --mode win alt-rightSquareBracket',
+  'workspace next'
+]# }}}
 
-# alt {{{3
-alt-0 = 'move-node-to-workspace next'
-alt-1 = 'move-node-to-workspace 1'
-alt-2 = 'move-node-to-workspace 2'
-alt-3 = 'move-node-to-workspace 3'
-alt-4 = 'move-node-to-workspace 4'
-alt-9 = 'move-node-to-workspace prev'
-
-alt-h = 'join-with left'
-alt-j = 'join-with down'
-alt-k = 'join-with up'
-alt-l = 'join-with right'
-
-alt-semicolon = 'move-node-to-monitor --wrap-around next'
-
-# shift {{{3
-shift-0 = ['trigger-binding --mode win alt-0', 'workspace next']
-shift-1 = ['trigger-binding --mode win alt-1', 'workspace 1']
-shift-2 = ['trigger-binding --mode win alt-2', 'workspace 2']
-shift-3 = ['trigger-binding --mode win alt-3', 'workspace 3']
-shift-4 = ['trigger-binding --mode win alt-4', 'workspace 4']
-shift-9 = ['trigger-binding --mode win alt-9', 'workspace prev']
-shift-h = 'move left'
-shift-j = 'move down'
-shift-k = 'move up'
-shift-l = 'move right'
-
-shift-semicolon = ['trigger-binding --mode win alt-semicolon', 'focus-monitor --wrap-around next']
 # vim: fdm=marker fdl=1
