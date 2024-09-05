@@ -1,5 +1,7 @@
 start-at-login                                                  = true # {{{1
-after-startup-command                                           = ['exec-and-forget borders']
+after-startup-command                                           = [
+  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0xff4483aa hidpi=on width=8.0 style=round'
+]
 enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding                                               = 32
@@ -94,7 +96,7 @@ run       = 'move-node-to-workspace 7'
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 
-# Current Color Scheme "Bluloco Dark" {{{2
+# Current Color Scheme "Bluloco Dark" {{{1
 # {
 #     "ansi": [
 #         "#41444d",
@@ -132,8 +134,11 @@ f13 = [
   'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0',
 ]
 
+[mode.edit.binding]
+esc = ['mode normal', 'exec-and-forget borders active_color=0xffff78f8 inactive_color=0x884483aa width=8.0']
+
 [mode.normal.binding] #{{{1
-1                        = 'workspace 1' # {{{
+1                        = 'workspace 1' # {{{2
 2                        = 'workspace 2'  
 3                        = 'workspace 3' 
 4                        = 'workspace 4' 
@@ -142,6 +147,7 @@ f13 = [
 7                        = 'workspace 7' 
 8                        = 'workspace 8'
 9                        = 'workspace 9'
+e                        = ['mode edit', 'exec-and-forget borders width=16.0']
 f                        = "layout floating tiling"
 h                        = 'focus left'
 i                        = 'layout accordion tiles'
@@ -160,14 +166,14 @@ enter                    = 'fullscreen'
 equal                    = 'resize smart +50'
 esc                      = [
   'mode main',
-  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0x884483aa width=8.0',
+  'exec-and-forget borders active_color=0xffff7878 inactive_color=0x884483aa width=8.0',
 ]
 leftSquareBracket        = 'workspace prev'
 minus                    = 'resize smart -50'
 rightSquareBracket       = 'workspace next'
 semicolon                = 'focus-monitor --wrap-around next'
-# }}}
-alt-1                    = 'move-node-to-workspace 1' # {{{
+
+alt-1                    = 'move-node-to-workspace 1' # {{{2
 alt-2                    = 'move-node-to-workspace 2'  
 alt-3                    = 'move-node-to-workspace 3' 
 alt-4                    = 'move-node-to-workspace 4' 
@@ -183,8 +189,8 @@ alt-l                    = 'join-with right'
 alt-semicolon            = 'move-node-to-monitor --wrap-around next'
 alt-leftSquareBracket    = 'move-node-to-workspace prev'
 alt-rightSquareBracket   = 'move-node-to-workspace next'
-# }}}
-shift-1                  = [ 'trigger-binding --mode normal alt-1', 'workspace 1'  ]
+
+shift-1                  = [ 'trigger-binding --mode normal alt-1', 'workspace 1'  ] # {{{2
 shift-2                  = [ 'trigger-binding --mode normal alt-2', 'workspace 2'   ]
 shift-3                  = [ 'trigger-binding --mode normal alt-3', 'workspace 3'  ]
 shift-4                  = [ 'trigger-binding --mode normal alt-4', 'workspace 4'  ]
@@ -200,6 +206,5 @@ shift-l                  = 'move right'
 shift-semicolon          = [ 'trigger-binding --mode normal alt-semicolon', 'focus-monitor --wrap-around next' ]
 shift-leftSquareBracket  = [ 'trigger-binding --mode normal alt-leftSquareBracket', 'workspace prev' ]
 shift-rightSquareBracket = [ 'trigger-binding --mode normal alt-rightSquareBracket', 'workspace next' ]
-# }}}
 
 # vim: fdm=marker fdl=1
