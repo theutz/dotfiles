@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-# tmux.conf has: {{ include (joinPath .chezmoi.homeDir ".config" "tmux" "tmux.conf") | sha256sum }}
-
-if (( $+commands[tmux] )); then
-  tmux source-file {{ .chezmoi.homeDir }}
-fi
-
-# vim: ft=zsh.tmpl

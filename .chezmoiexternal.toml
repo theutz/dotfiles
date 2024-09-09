@@ -10,11 +10,13 @@ url = "git@github.com:theutz/nu_scripts"
 refreshPeriod = "1h"
 exact = false
 
-[".config/zsh/prezto"]
+[".zprezto"]
 type = "git-repo"
 url = "git@github.com:sorin-ionescu/prezto"
 refreshPeriod = "1h"
 exact = false
+clone.args = ['--recursive']
+pull.args = ['--recurse-submodules']
 
 [".config/nvim"]
 type = "git-repo"
