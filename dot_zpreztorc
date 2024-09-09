@@ -36,6 +36,7 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
+  'tmux' \
   'utility' \
   'completion' \
   'history-substring-search' \
