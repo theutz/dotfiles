@@ -1,3 +1,5 @@
+# vim: fdm=marker fdl=0 fmr=\ »»»,\ ««« cms=\ #\ %s
+
 start-at-login                                                  = true # {{{1
 after-startup-command                                           = [
   'exec-and-forget borders active_color=0xffff78f8 inactive_color=0xff4483aa hidpi=on width=8.0 style=round'
@@ -10,6 +12,7 @@ default-root-container-orientation                              = 'auto'
 key-mapping.preset                                              = 'qwerty'
 
 [gaps] # {{{1
+
 inner.horizontal = 16
 inner.vertical   = 16
 outer.left       = 16
@@ -18,13 +21,17 @@ outer.top        = [{ monitor."SAMSUNG" = 16 }, 16]
 outer.right      = 16
 
 [exec] # {{{1
+
 inherit-env-vars = true
 
 [exec.env-vars] # {{{2
+
 PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
+VISUAL = 'neovide --fork'
 
 [workspace-to-monitor-force-assignment] # {{{1
+
 1 = 'main'
 2 = 'main'
 3 = 'main'
@@ -44,6 +51,10 @@ run       = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'org.hammerspoon.Hammerspoon'
+run       = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.xiaomi.mihome'
 run       = 'layout floating'
 
 [[on-window-detected]]
@@ -129,82 +140,128 @@ run       = 'move-node-to-workspace 7'
 # }
 
 [mode.main.binding] #{{{1
+
 f13 = [
   'mode normal',
   'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0',
 ]
 
-[mode.edit.binding]
-esc = ['mode normal', 'exec-and-forget borders active_color=0xffff78f8 inactive_color=0x884483aa width=8.0']
+[mode.edit.binding] #{{{1
+
+esc = ['trigger-binding --mode main f13']
+a = ['exec-and-forget $VISUAL ~/.config/aerospace/aerospace.toml', 'trigger-binding --mode normal esc']
+c = ['exec-and-forget $VISUAL ~/.config',                          'trigger-binding --mode normal esc']
+t = ['exec-and-forget $VISUAL ~/.config/tmux/tmux.conf',           'trigger-binding --mode normal esc']
+w = ['exec-and-forget $VISUAL ~/.config/wezterm/wezterm.lua',      'trigger-binding --mode normal esc']
+v = ['exec-and-forget $VISUAL ~/.config/nvim',                     'trigger-binding --mode normal esc']
+z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-binding --mode normal esc']
 
 [mode.normal.binding] #{{{1
-1                        = 'workspace 1' # {{{2
-2                        = 'workspace 2'  
-3                        = 'workspace 3' 
-4                        = 'workspace 4' 
-5                        = 'workspace 5' 
-6                        = 'workspace 6'
-7                        = 'workspace 7' 
-8                        = 'workspace 8'
-9                        = 'workspace 9'
-e                        = ['mode edit', 'exec-and-forget borders width=16.0']
-f                        = "layout floating tiling"
-h                        = 'focus left'
-i                        = 'layout accordion tiles'
-j                        = 'focus down'
-k                        = 'focus up'
-l                        = 'focus right'
-o                        = 'layout horizontal vertical'
-r                        = [
+
+1                   = 'workspace 1' # {{{2
+2                   = 'workspace 2'
+3                   = 'workspace 3'
+4                   = 'workspace 4'
+5                   = 'workspace 5'
+6                   = 'workspace 6'
+7                   = 'workspace 7'
+8                   = 'workspace 8'
+9                   = 'workspace 9'
+e                   = [
+  'mode edit',
+  'exec-and-forget borders active_color=0xff5fb9b6 inactive_color=0xff5fb9b6 width=16.0'
+]
+f                   = "layout floating tiling"
+h                   = 'focus left'
+i                   = 'layout accordion tiles'
+j                   = 'focus down'
+k                   = 'focus up'
+l                   = 'focus right'
+o                   = 'layout horizontal vertical'
+r                   = [
   'reload-config',
   'exec-and-forget noti -t aerospace -m "Config reloaded!"',
-  'mode normal',
+  'mode normal' 
 ]
-x                        = 'close --quit-if-last-window'
-backslash                = 'balance-sizes'
-enter                    = 'fullscreen'
-equal                    = 'resize smart +50'
-esc                      = [
+x                   = 'close --quit-if-last-window'
+backslash           = 'balance-sizes'
+enter               = 'fullscreen'
+equal               = 'resize smart +50'
+esc                 = [
   'mode main',
-  'exec-and-forget borders active_color=0xffff7878 inactive_color=0x884483aa width=8.0',
+  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0xff4483aa hidpi=on width=8.0 style=round'
 ]
-leftSquareBracket        = 'workspace prev'
-minus                    = 'resize smart -50'
-rightSquareBracket       = 'workspace next'
-semicolon                = 'focus-monitor --wrap-around next'
+leftSquareBracket   = 'workspace prev'
+minus               = 'resize smart -50'
+rightSquareBracket  = 'workspace next'
+semicolon           = 'focus-monitor --wrap-around next'
 
-alt-1                    = 'move-node-to-workspace 1' # {{{2
-alt-2                    = 'move-node-to-workspace 2'  
-alt-3                    = 'move-node-to-workspace 3' 
-alt-4                    = 'move-node-to-workspace 4' 
-alt-5                    = 'move-node-to-workspace 5' 
-alt-6                    = 'move-node-to-workspace 6'
-alt-7                    = 'move-node-to-workspace 7' 
-alt-8                    = 'move-node-to-workspace 8'
-alt-9                    = 'move-node-to-workspace 9'
-alt-h                    = 'join-with left'
-alt-j                    = 'join-with down'
-alt-k                    = 'join-with up'
-alt-l                    = 'join-with right'
-alt-semicolon            = 'move-node-to-monitor --wrap-around next'
-alt-leftSquareBracket    = 'move-node-to-workspace prev'
-alt-rightSquareBracket   = 'move-node-to-workspace next'
+alt-1                  = 'move-node-to-workspace 1' # {{{2
+alt-2                  = 'move-node-to-workspace 2'  
+alt-3                  = 'move-node-to-workspace 3' 
+alt-4                  = 'move-node-to-workspace 4' 
+alt-5                  = 'move-node-to-workspace 5' 
+alt-6                  = 'move-node-to-workspace 6'
+alt-7                  = 'move-node-to-workspace 7' 
+alt-8                  = 'move-node-to-workspace 8'
+alt-9                  = 'move-node-to-workspace 9'
+alt-h                  = 'join-with left'
+alt-j                  = 'join-with down'
+alt-k                  = 'join-with up'
+alt-l                  = 'join-with right'
+alt-semicolon          = 'move-node-to-monitor --wrap-around next'
+alt-leftSquareBracket  = 'move-node-to-workspace prev'
+alt-rightSquareBracket = 'move-node-to-workspace next'
 
-shift-1                  = [ 'trigger-binding --mode normal alt-1', 'workspace 1'  ] # {{{2
-shift-2                  = [ 'trigger-binding --mode normal alt-2', 'workspace 2'   ]
-shift-3                  = [ 'trigger-binding --mode normal alt-3', 'workspace 3'  ]
-shift-4                  = [ 'trigger-binding --mode normal alt-4', 'workspace 4'  ]
-shift-5                  = [ 'trigger-binding --mode normal alt-5', 'workspace 5'  ]
-shift-6                  = [ 'trigger-binding --mode normal alt-6', 'workspace 6' ]
-shift-7                  = [ 'trigger-binding --mode normal alt-7', 'workspace 7'  ]
-shift-8                  = [ 'trigger-binding --mode normal alt-8', 'workspace 8' ]
-shift-9                  = [ 'trigger-binding --mode normal alt-9', 'workspace 9' ]
+shift-1 = [ # {{{2
+  'trigger-binding --mode normal alt-1',
+  'workspace 1'
+]
+shift-2 = [
+  'trigger-binding --mode normal alt-2',
+  'workspace 2'
+]
+shift-3 = [
+  'trigger-binding --mode normal alt-3',
+  'workspace 3'
+]
+shift-4 = [
+  'trigger-binding --mode normal alt-4',
+  'workspace 4'
+]
+shift-5 = [
+  'trigger-binding --mode normal alt-5',
+  'workspace 5'
+]
+shift-6 = [
+  'trigger-binding --mode normal alt-6',
+  'workspace 6'
+]
+shift-7 = [
+  'trigger-binding --mode normal alt-7',
+  'workspace 7'
+]
+shift-8 = [
+  'trigger-binding --mode normal alt-8',
+  'workspace 8'
+]
+shift-9 = [
+  'trigger-binding --mode normal alt-9',
+  'workspace 9'
+]
 shift-h                  = 'move left'
 shift-j                  = 'move down'
 shift-k                  = 'move up'
 shift-l                  = 'move right'
-shift-semicolon          = [ 'trigger-binding --mode normal alt-semicolon', 'focus-monitor --wrap-around next' ]
-shift-leftSquareBracket  = [ 'trigger-binding --mode normal alt-leftSquareBracket', 'workspace prev' ]
-shift-rightSquareBracket = [ 'trigger-binding --mode normal alt-rightSquareBracket', 'workspace next' ]
-
-# vim: fdm=marker fdl=1
+shift-semicolon          = [
+  'trigger-binding --mode normal alt-semicolon',
+  'focus-monitor --wrap-around next'
+]
+shift-leftSquareBracket  = [
+  'trigger-binding --mode normal alt-leftSquareBracket',
+  'workspace prev'
+]
+shift-rightSquareBracket = [
+  'trigger-binding --mode normal alt-rightSquareBracket',
+  'workspace next'
+]

@@ -1,56 +1,58 @@
-# vim: ft=zsh fdm=marker fdl=0
-# Builtin{{{
-# Options{{{
+# vim: ft=zsh fdm=marker fdl=0 fmr=\ »»»,\ ««« cms=\ #\ %s
+
+# Builtin »»»
+# Options »»»
 setopt AUTO_CD
 setopt AUTO_PUSHD
-setopt EXTENDED_GLOB
-# }}}
-# Environment{{{
-export KEYTIMEOUT=1
-# }}}
-# Bindings{{{
-# Use vim-style key bindings
+setopt EXTENDED_GLOB #  «««
+
+# Environment »»»
+export KEYTIMEOUT=1 #  «««
+
+# Bindings »»»
+
+# Use vim-style key bindings »»»
 bindkey -v
 bindkey -v '^?' backward-delete-char
 autoload edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd 'v' edit-command-line
-# }}}
-# Autoload Functions{{{
+bindkey -M vicmd 'v' edit-command-line #  «««
+
+# Autoload Functions »»»
 for func in "$HOME/.local/functions/*(N:t)"; do
   autoload -Uz $func
-done
-# }}}
-# Autocomplete{{{
+done #  «««
+
+# Autocomplete »»»
 autoload -Uz compinit
 compinit
-# autoload -U +x bashcompinit && bashcompinit
+# autoload -U +x bashcompinit && bashcompinit «««
 
-# Enable path completion for multiple segments
-zstyle ':completion:*' completer _complete _ignored _approximate
-# }}}
-# Syntax Highlighting{{{
-source "${XDG_STATE_HOME}"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# }}}
-# }}}
-# Integrations{{{
-# Starship{{{
-eval "$(starship init zsh)"
-# }}}
-# SSH Agent{{{
+# Enable path completion for multiple segments »»»
+zstyle ':completion:*' completer _complete _ignored _approximate #  «««
+
+# Syntax Highlighting »»»
+source "${XDG_STATE_HOME}"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh #  «««
+#  «««
+#  «««
+
+# Integrations »»»
+# Starship »»»
+eval "$(starship init zsh)" #  «««
+
+# SSH Agent »»»
 eval $(ssh-agent -s) &> /dev/null
-find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q --apple-use-keychain {} \; &!
-# }}}
-# asdf{{{
-. $(brew --prefix asdf)/libexec/asdf.sh
-# }}}
-# lf{{{
+find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q --apple-use-keychain {} \; &! #  «««
 
-function lfcd() {# {{{
+# asdf »»»
+. $(brew --prefix asdf)/libexec/asdf.sh #  «««
+
+# lf »»»
+function lfcd() {#  »»»
   cd "$(command lf -print-last-dir "$@")" 
-}
-# }}}
-_zlf() {# {{{
+} #  «««
+
+_zlf() {#  »»»
     emulate -L zsh
     local d=$(mktemp -d) || return 1
     {
@@ -64,9 +66,9 @@ _zlf() {# {{{
     }
 }
 zle -N _zlf
-bindkey '\ek' _zlf
-# }}}
-_zlf_handler() {# {{{
+bindkey '\ek' _zlf #  «««
+
+_zlf_handler() {#  »»»
     emulate -L zsh
     local line
     if ! read -r line <&$1; then
@@ -77,10 +79,10 @@ _zlf_handler() {# {{{
     eval $line
     zle -R
 }
-zle -N _zlf_handler
-# }}}
-# }}}
-# zoxide{{{
+zle -N _zlf_handler #  «««
+#  «««
+
+# zoxide »»»
 eval "$(zoxide init zsh)"
 alias cd='z'
 export _ZO_FZF_OPTS="
@@ -88,12 +90,12 @@ export _ZO_FZF_OPTS="
 --preview 'eza --color=always --width \$FZF_PREVIEW_COLUMNS --only-files --sort name --icons --all {2}'
 --bind 'ctrl-d:preview-half-page-down'
 --bind 'ctrl-u:preview-half-page-up'
-"
-# }}}
-# sqlite{{{
-export PATH="$(brew --prefix)/opt/sqlite/bin:$PATH"
-# }}}
-# fzf{{{
+" #  «««
+
+# sqlite »»»
+export PATH="$(brew --prefix)/opt/sqlite/bin:$PATH" #  «««
+
+# fzf »»»
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND='fd --type f --hidden'
 export FZF_DEFAULT_OPTS="
@@ -116,10 +118,11 @@ export FZF_CTRL_T_OPTS="
 export FZF_ALT_C_OPTS="
 --walker-skip .git,node_modules,target
 --preview 'tree -C {}'
-"
-# }}}}}}
-# Custom{{{
-# Functions{{{
+" #  «««
+#  «««
+
+# Custom »»»
+# Functions »»» »»»
 function search-aliases () {
   if (( $#argv )); then
     value="--value $argv[@]"
@@ -135,9 +138,14 @@ function search-aliases () {
     cmd=${cmd%[\']}
     print -z "$cmd"
   fi
+} #  «««
+
+function flush-dns () {
+  sudo dscacheutil -flushcache
+  sudo killall -HUP mDNSResponder
 }
 
-# tmuxp {{{
+# tmuxp  »»»
 function tmuxp-edit-template() {
   local session="$(tmux display-message -p -F '#{session_name}')"
   local dir="${XDG_CONFIG_HOME:-$HOME/.config}/tmuxp"
@@ -181,22 +189,20 @@ function tmuxp-attach() {
       tmuxp load $name
     fi
   fi
-}
-# }}}
-# }}}
-# Aliases{{{
+} #  «««
+#  «««
 
-# Global{{{
+# Aliases »»»
 
+# Global »»»
 alias -g P='| ${(z)PAGER}'
 alias -g HP='--help 2>&1 | ${(z)PAGER}'
-alias -g HF='--help 2>&1 | gum filter'
-# }}}
-# Suffix{{{
+alias -g HF='--help 2>&1 | gum filter' #  «««
 
-# }}}
-# Normal{{{
+# Suffix »»»
+#  «««
 
+# Normal »»»
 alias brewh='brew home'
 alias brewi='brew install'
 alias brews='brew search'
@@ -261,7 +267,6 @@ alias we='watchexec'
 alias zshenv='e ~/.zshenv; exec zsh'
 alias zlogin='e ~/.zlogin; exec zsh'
 alias zprofile='e ~/.zprofile; exec zsh'
-alias zshrc='e ~/.zshrc; exec zsh'
-# }}}
-# }}}
-# }}}
+alias zshrc='e ~/.zshrc; exec zsh' #  «««
+#  «««
+#  «««

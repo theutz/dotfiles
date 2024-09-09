@@ -7,8 +7,7 @@ windows:
       main-pane-width: "60%"
     panes:
       - focus: true
-        shell_command: nvim
-        enter: false
+        shell: nvim
     window_name: main
   - layout: even-vertical
     panes:

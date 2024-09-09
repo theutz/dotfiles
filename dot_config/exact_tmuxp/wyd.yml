@@ -4,7 +4,7 @@ windows:
   - panes:
       - shell: nvim
         focus: true
-      - shell: watchexec go test -v ./...
+      - shell: watchexec -w process-compose.yml --wrap-process=none -- process-compose
     window_name: main
     layout: main-vertical
     options:

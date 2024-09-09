@@ -1,33 +1,28 @@
 [".config/tmux/plugins/tpm"]
 type = "git-repo"
 url = "git@github.com:tmux-plugins/tpm"
-refreshPeriod = "168h"
+refreshPeriod = "1h"
 exact = false
 
 [".config/nushell/nu_scripts"]
 type = "git-repo"
 url = "git@github.com:theutz/nu_scripts"
-refreshPeriod = "168h"
+refreshPeriod = "1h"
 exact = false
 
 [".config/zsh/.zprezto"]
 type = "git-repo"
-url = "git@github.com:theutz/prezto"
-refreshPeriod = "168h"
+url = "git@github.com:sorin-ionescu/prezto"
+refreshPeriod = "1h"
 exact = false
 
 [".config/nvim"]
 type = "git-repo"
 url = "git@github.com:theutz/nvim"
-refreshPeriod = "168h"
+refreshPeriod = "1h"
 exact = false
 
 [".hammerspoon"]
 type = "git-repo"
 url = "git@github.com:theutz/hammerspoon"
-refreshPeriod = "168h"
-
-[".local/state/zsh-syntax-highlighting"]
-type = "git-repo"
-url = "git@github.com:zsh-users/zsh-syntax-highlighting"
-refreshPeriod = "168h"
+refreshPeriod = "1h"

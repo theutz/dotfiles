@@ -1,3 +1,6 @@
+# vim: fdl=1 fdm=marker fcl fmr=\ »»»,\ «««
+
+# xdg »»»
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CONFIG_DIRS=""
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
@@ -5,27 +8,31 @@ export XDG_DATA_DIRS=""
 export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_RUNTIME_DIR="$TMPDIR"
+#  «««
 
+# editors »»»
+export EDITOR='nvim'
+export VISUAL='neovide --no-fork'
+export HOMEBREW_EDITOR='nvim'
+#  «««
+
+# readers »»»
 if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
-
-export EDITOR='nvim'
-export VISUAL='nvim'
 export PAGER='less'
-
 export MANPAGER='nvim -c +Man!'
 export MANWIDTH='999'
 export BAT_PAGER='${(z)PAGER:-less}'
 export DELTA_PAGER='${(z)PAGER:-less}'
+#  «««
 
+# language »»»
 export LANG='en_US.UTF-8'
+#  «««
 
+# PATH »»»
 typeset -gU path fpath
-
-#
-# PATH
-#
 
 path=(
   /opt/{homebrew,local}/{,s}bin(N)
@@ -55,24 +62,19 @@ path=(
   $HOME/bin
   $path
 )
+#  «««
 
-#
-# FPATH
-#
-
+# FPATH »»»
 fpath=(
   $HOME/.local/functions
   /opt/homebrew/share/zsh/site-functions
   $fpath
 )
+#  «««
 
-#
-# Apps
-#
+# Apps »»»
 
-# 
-# Less
-#
+# Less »»»
 
 if [[ -z "$LESS" ]]; then
   export LESS='-g -i -M -R -S -w -X -z-4'
@@ -83,18 +85,22 @@ if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
 fi
 
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+#  «««
 
-# tz
+# tz »»»
 timezones=(
   US/Pacific
   # US/Central
   US/Eastern
-  # GMT
+  GMT
   # Europe/London
   # Asia/Istanbul
 )
 export TZ_LIST="${(j:;:@)timezones}"
+unset timezones
+#  «««
 
-
-# nb
+# nb »»»
 export NB_DIR="$XDG_DATA_HOME/nb"
+#  «««
+# «««
