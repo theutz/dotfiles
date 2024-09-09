@@ -37,8 +37,13 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'tmux' \
+  'homebrew' \
+  'osx' \
   'utility' \
+  'ssh' \
   'completion' \
+  'autosuggestions' \
+  'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
 
