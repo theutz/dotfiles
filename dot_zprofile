@@ -6,6 +6,13 @@
 #
 
 #
+# Secrets
+#
+if [[ -f "${ZDOTDIR:-$HOME}"/.zsecrets ]]; then
+  source "${ZDOTDIR:-$HOME}"/.zsecrets
+fi
+
+#
 # Browser
 #
 
