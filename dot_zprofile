@@ -49,10 +49,38 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  $HOME/{,s}bin(N)
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
+)
+
+if (( $+commands[go] )); then
+  export GOPATH="$(go env GOPATH)"
+  path=("${GOPATH:-$HOME/go}"/bin $path)
+fi
+
+if (( $+commands[bob] )); then
+  path=("${XDG_DATA_HOME}"/bob/nvim-bin $path)
+fi
+
+if (( $+commands[composer] )); then
+  path=("$XDG_CONFIG_HOME"/composer/vendor/bin $path)
+fi
+
+if (( $+commands[python3] )); then
+  path=("$(brew --prefix)"/opt/python@3.12/libexec/bin $path)
+fi
+
+path=(
+  $HOME/.local/bin
+  $HOME/bin
+  $path
+)
+
+fpath=(
+  $HOME/.local/functions
+  /opt/homebrew/share/zsh/site-functions
+  $fpath
 )
 
 #
