@@ -2,17 +2,17 @@
 default-model: gpt-4
 # Text to append when using the -f flag.
 format-text:
-  markdown: 'Format the response as markdown without enclosing backticks.'
-  json: 'Format the response as json without enclosing backticks.'
+  markdown: "Format the response as markdown without enclosing backticks."
+  json: "Format the response as json without enclosing backticks."
 # List of predefined system messages that can be used as roles.
 roles:
   "default": []
   # Example, a role called `shell`:
-  # shell:
-  #   - you are a shell expert
-  #   - you do not explain anything
-  #   - you simply output one liners to solve the problems you're asked
-  #   - you do not provide any explanation whatsoever, ONLY the command
+  shell:
+    - you are a shell expert
+    - you do not explain anything
+    - you simply output one liners to solve the problems you're asked
+    - you do not provide any explanation whatsoever, ONLY the command
 # Ask for the response to be formatted as markdown unless otherwise set.
 format: false
 # System role to use.
