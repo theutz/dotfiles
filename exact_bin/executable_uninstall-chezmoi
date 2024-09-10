@@ -2,15 +2,6 @@
 
 set -euo pipefail
 
-files=$(chezmoi managed -i files,symlinks | sed 's/.*/"&"/')
-
-for file in "$files"; do
-  rm $file
-done
-
-dirs=$(chezmoi managed -i dirs | sed 's/.*/"&"/')
-for dir in "$dirs"; do
-  rmdir $dir || true
-done
-
+chezmoi managed -i files,symlinks | sed 's/.*/"&"/' | xargs rm
+chezmoi managed -i dirs | sed 's/.*/"&"/' | xargs rmdir
 # chezmoi purge --force
