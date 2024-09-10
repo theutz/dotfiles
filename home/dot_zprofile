@@ -1,38 +1,26 @@
-#
-# Executes commands at login pre-zshrc.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+# vim: fdm=marker fdl=1 fmr=\ »»»,\ «««
 
-#
-# XDG
-#
+# XDG »»»
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:=$HOME/.local/share}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:=$HOME/.local/state}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:=$HOME/.cache}"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=$TMPDIR}"
+#  «««
 
-#
-# Secrets
-#
+# Secrets »»»
 if [[ -f "${ZDOTDIR:-$HOME}"/.zsecrets ]]; then
   source "${ZDOTDIR:-$HOME}"/.zsecrets
 fi
+#  «««
 
-#
-# Browser
-#
-
+# Browser »»»
 if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
+#  «««
 
-#
-# Editors
-#
-
+# Editors »»»
 if [[ -z "$EDITOR" ]]; then
   export EDITOR='nvim'
 fi
@@ -42,18 +30,22 @@ fi
 if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
+#  «««
 
-#
-# Language
-#
-
+# Language »»»
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
+#  «««
 
-#
-# Paths
-#
+{{ if eq .chezmoi.os "linux" -}}
+# homebrew »»»
+eval "$(brew --prefix)/bin/brew shellenv"
+#  «««
+{{- end }}
+
+
+# Paths »»»
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -98,10 +90,9 @@ fpath=(
   /opt/homebrew/share/zsh/site-functions
   $fpath
 )
+#  «««
 
-#
-# Less
-#
+# Less »»»
 
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
@@ -115,8 +106,8 @@ fi
 if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
+#  «««
 
-#
-# Rust
-#
+# Rust »»»
 . "$HOME/.cargo/env"
+#  «««

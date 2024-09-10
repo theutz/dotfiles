@@ -13,11 +13,6 @@ fi
 #  «««
 # Customize to your needs...
 
-{{ if eq .chezmoi.os "linux" -}}
-# homebrew
-eval "$(brew --prefix)/bin/brew shellenv"
-{{- end }}
-
 # man »»»
 export MANPAGER='nvim -c +Man!'
 export MANWIDTH='999'
