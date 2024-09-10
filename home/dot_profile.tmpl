@@ -1,7 +1,13 @@
-# vim: fdm=marker fdl=1 fmr=\ »»»,\ «««
+# vim: ft=sh.tmpl fdm=marker fdl=1 fmr=\ »»»,\ «««
 
+{{ $brew := "" }}
+{{ if eq .chezmoi.os "linux" }}
+{{ $brew = "/home/linuxbrew/.linuxbrew/bin/brew" }}
+{{ else }}
+{{ $brew = "/opt/homebrew/bin/brew" }}
+{{ end }}
 # homebrew »»»
-eval "$(brew --prefix)/bin/brew shellenv"
+eval "$({{ $brew }} shellenv)"
 #  «««
 
 # rust »»»
