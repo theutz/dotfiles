@@ -1,5 +1,10 @@
 # vim: fdm=marker fdl=1 fmr=\ »»»,\ «««
 
+{{ if eq .chezmoi.os "linux" -}}
+# homebrew
+eval "$(brew --prefix)/bin/brew shellenv"
+{{- end -}}
+
 # history »»»
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 #  «««
