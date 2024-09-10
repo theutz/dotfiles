@@ -2,12 +2,10 @@
 
 {{ template "chezmoi-cmd.sh" . }}
 
-{{
-  $file := "key.txt"
-  $src := joinPath .chezmoi.sourceDir (print $file ".age")
-  $destDir := osDir .chezmoi.configFile
-  $dest := joinPath $destDir $file
-}}
+{{ with $file := "key.txt" }}
+{{ with $src := joinPath .chezmoi.sourceDir (print $file ".age") }}
+{{ with $destDir := osDir .chezmoi.configFile }}
+{{ with $dest := joinPath $destDir $file }}
 
 if [ ! -d "{{ $destDir }}" ]; then
   mkdir -p "{{ $destDir }}"
@@ -20,5 +18,10 @@ if [ ! -f "{{ $dest }}" ]; then
 
   chmod 600 "{{ $dest }}"
 fi
+
+{{ end }}
+{{ end }}
+{{ end }}
+{{ end }}
 
 # vim: ft=sh.tmpl
