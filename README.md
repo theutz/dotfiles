@@ -1,1 +1,0 @@
-# Dotfiles: A Love Story
