@@ -1,0 +1,17 @@
+0000000000000000000000000000000000000000 2a3ae6616973b4042c751ecacf489db42fc560dc Michael Utz <michael@theutz.com> 1721670568 -0700	clone: from github.com:theutz/nvim
+2a3ae6616973b4042c751ecacf489db42fc560dc 4b51e0d2ba18000290a76ac0434c279501b3fdfc Michael Utz <michael@theutz.com> 1721854737 -0700	commit: feat: upgrade which-key
+4b51e0d2ba18000290a76ac0434c279501b3fdfc 6b33ec4859bc50f4da697d678a69f5b3fb881b99 Michael Utz <michael@theutz.com> 1722586908 +0300	commit: feat: update plugins
+6b33ec4859bc50f4da697d678a69f5b3fb881b99 ce7f13c5170216c9e4d905d1ec925d042569a815 Michael Utz <michael@theutz.com> 1723198446 +0300	commit: feat: plugins
+ce7f13c5170216c9e4d905d1ec925d042569a815 4b1031fb88b2000bcd54205d368263cebba8fc0c Michael Utz <michael@theutz.com> 1723460971 +0300	commit: chore: update plugins
+4b1031fb88b2000bcd54205d368263cebba8fc0c 5050a8f3e60a24e1da62143d8fb9f96e8a774f13 Michael Utz <michael@theutz.com> 1723477888 +0300	commit: chore: update plugins
+5050a8f3e60a24e1da62143d8fb9f96e8a774f13 6e1b6fee4ede758590273ad9cc101d79ee2a9a84 Michael Utz <michael@theutz.com> 1723581145 +0300	commit: feat: use flow colorscheme
+6e1b6fee4ede758590273ad9cc101d79ee2a9a84 2bc9bf1c0afbd8b13956cd0c5a78c7b79f90a6e6 Michael Utz <michael@theutz.com> 1723635297 +0300	commit: feat: update neovide settings
+2bc9bf1c0afbd8b13956cd0c5a78c7b79f90a6e6 c52de81fb2c2a9836974507e2f98dfef496d3d05 Michael Utz <michael@theutz.com> 1723875911 +0300	commit: chore: update plugins
+c52de81fb2c2a9836974507e2f98dfef496d3d05 296ceba169f3803a4584964c82a37a2cb6f2c80c Michael Utz <michael@theutz.com> 1723875931 +0300	commit: chore: update chezomi in background
+296ceba169f3803a4584964c82a37a2cb6f2c80c 7ee4de27a3ad9af44448389045ca373863d993e1 Michael Utz <michael@theutz.com> 1723875940 +0300	commit: chore: clean up unused color schemes
+7ee4de27a3ad9af44448389045ca373863d993e1 54335d7fb4930961c5286d74caf63a899bd2ba38 Michael Utz <michael@theutz.com> 1724087606 +0300	commit: feat: use tokyonight
+54335d7fb4930961c5286d74caf63a899bd2ba38 d50e27d8c3123fb4f2f3a4d54755334ad09f1b6b Michael Utz <michael@theutz.com> 1724159110 +0300	commit: feat: switch to cyberdream
+d50e27d8c3123fb4f2f3a4d54755334ad09f1b6b d24db4646655425fadb1010eadaf3ccec0b413a3 Michael Utz <michael@theutz.com> 1724188961 +0300	commit: feat: autocmd for aerospace files
+d24db4646655425fadb1010eadaf3ccec0b413a3 5dda2fc4b2b0bd21cbbbe1ab9aab67b2bda536f5 Michael Utz <michael@theutz.com> 1724188978 +0300	commit: feat: switch to bluloco
+5dda2fc4b2b0bd21cbbbe1ab9aab67b2bda536f5 43bfd4d5627253d72a9076b8288d0a9b4bd9373b Michael Utz <michael@theutz.com> 1724236194 +0300	commit: chore: change neovide transparency
+43bfd4d5627253d72a9076b8288d0a9b4bd9373b f0ef675c44d6c07e9cd93937a10ee3ee1fc04afe Michael Utz <michael@theutz.com> 1725951587 +0300	commit: chore: update lots of stuff
