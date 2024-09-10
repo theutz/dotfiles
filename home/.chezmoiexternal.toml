@@ -17,8 +17,3 @@ refreshPeriod = "1h"
 exact = false
 clone.args = ['--recursive']
 pull.args = ['--recurse-submodules']
-
-[".hammerspoon"]
-type = "git-repo"
-url = "git@github.com:theutz/hammerspoon"
-refreshPeriod = "1h"
