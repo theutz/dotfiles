@@ -9,13 +9,12 @@
 {{ $dest := joinPath $dir $file -}}
 
 if [ ! -d "{{ $dir }}" ]; then
+  printf "making %s and setting permissions...\n" "{{ $dir }}"
   mkdir -p "{{ $dir }}"
   chmod 0700 "{{ $dir }}"
 fi
 
 if [ ! -f "{{ $dest }}" ]; then
-  $chezmoi age decrypt \
-    --passphrase \
-    --output "{{ $dest }}" \
-    "{{ $src }}"
+  printf "attempting to decrypt %s to %s with %s" "{{ $src }}" "{{ $dest }}"
+  $chezmoi decrypt --output "{{ $dest }}" "{{ $src }}"
 fi
