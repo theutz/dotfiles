@@ -3,7 +3,7 @@
 {{ $hostname := "" }}
 {{ if eq .chezmoi.os "darwin" }}
 {{ $hostname = output "scutil" "--get" "ComputerName" }}
-{{ else if .chezmoi.os "linux" }}
+{{ else if eq .chezmoi.os "linux" }}
 {{ $hostname = .chezmoi.os }}
 {{ end -}}
 
