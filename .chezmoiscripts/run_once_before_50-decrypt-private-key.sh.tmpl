@@ -1,10 +1,23 @@
 #!/bin/sh
 
+set -euo pipefail
+
 cd $HOME
+
+if command -v chezmoi 2>/dev/null; then
+	cmd="chezmoi"
+else if [ -x "$HOME/bin/chezmoi" ]; then
+	cmd="$HOME/bin/chezmoi"
+else if [ -x "/opt/homebrew/bin/chezmoi" ]; then
+	cmd="/opt/homebrew/bin/chezmoi"
+else
+  	echo "error: chezmoi command could not be found"
+	exit 1
+fi
 
 if [ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt" ]; then
 	mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi"
-	bin/chezmoi age decrypt --passphrase --output "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
+	$cmd age decrypt --passphrase --output "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
 	chmod 600 "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt"
 fi
 
