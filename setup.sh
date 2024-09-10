@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-curl -fsLS get.chezmoi.io -- init --apply theutz --purge-binary
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply theutz --purge-binary
