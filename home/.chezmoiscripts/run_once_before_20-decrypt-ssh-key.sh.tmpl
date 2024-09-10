@@ -6,7 +6,7 @@
 {{ $file := "id_ed25519" -}}
 {{ $dir := joinPath .chezmoi.homeDir ".ssh" -}}
 {{ $dest := joinPath $dir $file -}}
-{{ $src := joinPath .chezmoi.sourceDir "private_dot_ssh" (print "private_encrypted_" $file) -}}
+{{ $src := joinPath .chezmoi.sourceDir "private_dot_ssh" (print "private_encrypted_" $file ".age") -}}
 
 if [ ! -d "{{ $dir }}" ]; then
   mkdir -p "{{ $dir }}"
