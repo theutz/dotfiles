@@ -28,7 +28,7 @@ args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" 
 command = "nvim"
 args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
 watch = false
-apply = true
+apply = false
 {{ end }}
 
 # vim: ft=tmpl.toml
