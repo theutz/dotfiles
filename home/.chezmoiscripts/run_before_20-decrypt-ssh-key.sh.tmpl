@@ -15,6 +15,6 @@ if [ ! -d "{{ $dir }}" ]; then
 fi
 
 if [ ! -f "{{ $dest }}" ]; then
-  printf "attempting to decrypt %s to %s with %s" "{{ $src }}" "{{ $dest }}" $chezmoi
+  printf "attempting to decrypt %s to %s with %s\n" "{{ $src }}" "{{ $dest }}" $chezmoi
   $chezmoi decrypt --output "{{ $dest }}" "{{ $src }}"
 fi
