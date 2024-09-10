@@ -3,8 +3,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 # homebrew
 eval "$(brew --prefix)/bin/brew shellenv"
-{{- end -}}
-
+{{- end }}
 # history »»»
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 #  «««
