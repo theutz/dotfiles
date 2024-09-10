@@ -4,4 +4,5 @@ set -euo pipefail
 
 chezmoi managed -i files,symlinks | sed 's/.*/"&"/' | xargs rm
 chezmoi managed -i dirs | sed 's/.*/"&"/' | xargs rmdir
+chezmoi state reset --force
 chezmoi purge --force
