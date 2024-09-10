@@ -17,4 +17,5 @@ fi
 if [ ! -f "{{ $dest }}" ]; then
   printf "attempting to decrypt %s to %s with %s\n" "{{ $src }}" "{{ $dest }}" $chezmoi
   $chezmoi decrypt --output "{{ $dest }}" "{{ $src }}"
+  chmod 0600 "{{ $dest }}"
 fi
