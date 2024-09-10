@@ -7,14 +7,16 @@ recipient = "FD235DFD"
 identity = "~/.config/chezmoi/key.txt"
 recipient = "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa"
 
+{{ if lookPath "delta" -}}
 [diff]
 pager = "delta"
-args = ["{{ .Destination }}", "{{ .Target }}"]
+args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 exclude = ["scripts"]
+{{- end }}
 
 [edit]
 command = "nvim"
-args = ["-c", "cd /Users/michael/.local/share/chezmoi"]
+args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
 watch = true
 apply = true
 
@@ -23,10 +25,10 @@ autoAdd = true
 autoCommit = true
 autoPush = true
 
-
+{{ if lookPath "nvim" }}
 [merge]
 command = "nvim"
-args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
-
+args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+{{ end }}
 
 # vim: ft=tmpl.toml
