@@ -1,10 +1,10 @@
 #!/bin/sh
 
+cd $HOME
+
 if [ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt" ]; then
-	if [ ! -d "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi" ]; then
-		mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi"
-	fi
-	age --decrypt --output "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
+	mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi"
+	bin/chezmoi age decrypt --passphrase --output "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt" "{{ .chezmoi.sourceDir }}/key.txt.age"
 	chmod 600 "${XDG_CONFIG_HOME:-$HOME/.config}/chezmoi/key.txt"
 fi
 
