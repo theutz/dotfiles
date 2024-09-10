@@ -1,12 +1,28 @@
 #!/usr/bin/env zsh
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ $hostname := "" }}
+{{ if eq .chezmoi.os "darwin" }}
+{{ $hostname = output "scutil" "--get" "ComputerName" }}
+{{ else if .chezmoi.os "linux" }}
+{{ $hostname = .chezmoi.os }}
+{{ end -}}
+
+{{ $password := "" }}
+{{ if eq $hostname "moxie" }}
+{{ $account := "theutz" }}
+{{ $password = onepasswordRead "op://Moxie Collaborative/6lt7pzsuoatjbdzd74p4jpdwue/password" $account }}
+{{ else if eq $hostname "kocaeli" }}
+{{ $account := "theutz" }}
+{{ $password = onepasswordRead "op://Private/fa2n5by5mxwltzwwreozfh5264/password" $account }}
+{{ end -}}
+
+{{- if eq .chezmoi.os "darwin" -}}
 if ! id -P | grep 'zsh$'; then
 {{ else if eq .chezmoi.os "linux" }}
 if ! awk -F: '/{{ .chezmoi.username }}/ { print $7 }' | grep 'zsh$'; then
 {{ else }}
-echo "Invalid system"
+echo "Invalid system: {{ .chezmoi.os }}"
 exit 1
 {{- end }}
-  chsh -s $(which zsh)
+  echo {{ $password }} | sudo -Su {{.chezmoi.username }} chsh -s $(which zsh)
 fi
