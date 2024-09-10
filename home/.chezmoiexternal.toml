@@ -18,12 +18,6 @@ exact = false
 clone.args = ['--recursive']
 pull.args = ['--recurse-submodules']
 
-[".config/nvim"]
-type = "git-repo"
-url = "git@github.com:theutz/nvim"
-refreshPeriod = "1h"
-exact = false
-
 [".hammerspoon"]
 type = "git-repo"
 url = "git@github.com:theutz/hammerspoon"
