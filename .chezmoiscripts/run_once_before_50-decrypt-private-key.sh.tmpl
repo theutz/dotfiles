@@ -6,9 +6,9 @@ cd $HOME
 
 if command -v chezmoi 2>/dev/null; then
 	cmd="chezmoi"
-else if [ -x "$HOME/bin/chezmoi" ]; then
+elif [ -x "$HOME/bin/chezmoi" ]; then
 	cmd="$HOME/bin/chezmoi"
-else if [ -x "/opt/homebrew/bin/chezmoi" ]; then
+elif [ -x "/opt/homebrew/bin/chezmoi" ]; then
 	cmd="/opt/homebrew/bin/chezmoi"
 else
 	echo "error: chezmoi command could not be found"
