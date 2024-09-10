@@ -3,3 +3,8 @@
 if ! command -v zsh >/dev/null; then
   brew install zsh
 fi
+
+echo "$(brew --prefix)/bin/zsh" |
+  sudo tee -a /etc/shells
+
+sudo chsh -s $(brew --prefix)/bin/zsh" "{{ .chezmoi.username }}"
