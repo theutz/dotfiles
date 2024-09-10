@@ -1,11 +1,12 @@
+{{- /* vim: ft=sh.tmpl */ -}}
 #!/bin/sh
 
-{{ template "chezmoi-cmd.sh" . }}
+{{ template "chezmoi-cmd.sh" . -}}
 
-{{ $file := "id_ed25519" }}
-{{ $dir := joinPath .chezmoi.homeDir ".ssh" }}
-{{ $dest := joinPath $dir $file }}
-{{ $src := joinPath .chezmoi.sourceDir "private_dot_ssh" (print "private_encrypted_" $file) }}
+{{ $file := "id_ed25519" -}}
+{{ $dir := joinPath .chezmoi.homeDir ".ssh" -}}
+{{ $dest := joinPath $dir $file -}}
+{{ $src := joinPath .chezmoi.sourceDir "private_dot_ssh" (print "private_encrypted_" $file) -}}
 
 if [ ! -d "{{ $dir }}" ]; then
   mkdir -p "{{ $dir }}"
@@ -14,6 +15,7 @@ fi
 
 if [ ! -f "{{ $dest }}" ]; then
   $chezmoi age decrypt \
+    --passphrase \
     --output "{{ $dest }}" \
     "{{ $src }}"
 fi

@@ -11,4 +11,4 @@ else
   exit 1
 fi
 
-printf "using chezmoi at %s" "$chezmoi"
+printf "using chezmoi at %s\n" "$chezmoi"
