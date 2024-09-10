@@ -2,7 +2,7 @@
 
 {{ template "chezmoi-cmd.sh" . }}
 
-{{ $file := "id_ed25519"
+{{ $file := "id_ed25519" }}
 {{ $dir := joinPath .chezmoi.homeDir ".ssh" }}
 {{ $dest := joinPath $dir $file }}
 {{ $src := joinPath .chezmoi.sourceDir "private_dot_ssh" (print "private_encrypted_" $file) }}
