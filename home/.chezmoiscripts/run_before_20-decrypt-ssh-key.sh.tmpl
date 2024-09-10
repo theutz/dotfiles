@@ -4,7 +4,7 @@
 {{ template "chezmoi-cmd.sh" . -}}
 
 {{ $file := "id_ed25519" -}}
-{{ $src := joinPath .chezmoi.sourceDir "private_dot_skm" "default" (print "private_encrypted_" $file ".age") -}}
+{{ $src := print "*" $file ".age" | joinPath .chezmoi.sourceDir "*skm" "*default" | glob | first -}}
 {{ $dir := joinPath .chezmoi.homeDir ".ssh" -}}
 {{ $dest := joinPath $dir $file -}}
 
