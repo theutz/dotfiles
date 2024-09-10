@@ -4,7 +4,7 @@
 {{ template "chezmoi-cmd.sh" . -}}
 
 {{ $file := "id_ed25519" -}}
-{{ $src := output .chezmoi.executable "source-path" "~/.skm/default/id_ed25519" }}
+{{ $src := output .chezmoi.executable "source-path" "~/.skm/default/id_ed25519" | trim }}
 {{ $dir := joinPath .chezmoi.homeDir ".ssh" -}}
 {{ $dest := joinPath $dir $file -}}
 
