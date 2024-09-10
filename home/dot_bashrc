@@ -1,5 +1,13 @@
+# vim: fdm=marker fdl=1 fmr=\ »»»,\ «««
+
+# history »»»
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
+#  «««
 
+# fzf »»»
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#  «««
 
+# Rust »»»
 . "$HOME/.cargo/env"
+#  «««
