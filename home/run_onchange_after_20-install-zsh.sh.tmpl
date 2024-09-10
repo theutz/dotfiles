@@ -1,14 +1,5 @@
 #!/bin/sh
 
 if ! command -v zsh >/dev/null; then
-  {{ if eq .chezmoi.os "darwin" -}}
   brew install zsh
-  {{- end }}
-  {{ if eq .chezmoi.os "linux" -}}
-  {{ if eq .chezmoi.osRelease.id "ubuntu" -}}
-  sudo apt install zsh
-  {{- end }}
-  {{- end }}
 fi
-
-chsh -s /bin/zsh

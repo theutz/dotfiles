@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+{{ if eq .chezmoi.os "darwin" -}}
+if ! id -P | grep 'zsh$'; then
+{{ else if .chezmoi.os "linux" }}
+if ! awk -F: '/{{ .chezmoi.userName }}/ { print $7 }' | grep 'zsh$'; then
+{{ else }}
+echo "Invalid system"
+exit 1
+{{- end }}
+  chsh -s $(which zsh)
+fi
