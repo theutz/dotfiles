@@ -27,10 +27,16 @@ fi
 if [[ -z "$VISUAL" ]]; then
   export VISUAL='neovide --no-fork'
 fi
+#  «««
+
+# Pagers
 if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
-#  «««
+export MANPAGER='nvim -c +Man!'
+export MANWIDTH='999'
+export BAT_PAGER='less'
+export DELTA_PAGER='less'
 
 # Language »»»
 if [[ -z "$LANG" ]]; then
