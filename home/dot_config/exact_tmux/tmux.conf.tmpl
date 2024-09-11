@@ -12,6 +12,11 @@ if "test ! -d #{d:current_file}/plugins/tpm" \
 run "#{d:current_file}/plugins/tpm/tpm"
 #  «««
 
+# Icons
+set -g @session-icon ""
+set -g @window-icon "󰓫"
+set -g @pane-icon ""
+
 # Colors »»»
 set -g @bg "terminal"
 set -g @fg "colour15"
@@ -35,7 +40,7 @@ set -g @pane "colour10"
 # Options »»»
 set -g aggressive-resize on
 set -g allow-passthrough all
-set -g automatic-rename-format "#{?pane_in_mode,[tmux],󰎔}"
+set -g automatic-rename-format "#{?pane_in_mode,[tmux],󰎔 }"
 set -g base-index 1
 set -g command-alias[100] vsp="split-window -h"
 set -g command-alias[101] sp="split-window -v"
@@ -57,7 +62,7 @@ set -g menu-border-style 'fg=#{E:@active}'
 set -g menu-selected-style "fg=#{E:@inactive} bg=#{E:@active}"
 set -g message-command-style "bg=#{E:@bg} fg=#{E:@session} bold italics"
 set -g message-line 2
-set -g message-style "bg=#{E:@session} fg=#{E:@fg} bold"
+set -g message-style "#{message-command-style}"
 set -g mode-keys vi
 set -g mode-style 'bg=colour11 fg=colour0'
 set -g mouse on
@@ -79,18 +84,18 @@ set -g status-format[1] " #[fg=#{E:@session}]  #[fg=#{E:@fg}]#{s|$HOME|~|:pan
 set -g status-interval 1
 set -g status-justify absolute-centre
 set -g status-keys vi
-set -g status-left "#[fg=#{E:@session}]#[bg=#{E:@session} fg=default]  #S:#{s|$HOME|~|:session_path}#{?session_alerts, #{session_alerts},}#[fg=#{E:@session} bg=default]"
+set -g status-left "#[fg=#{E:@session}]#[reverse]  #S:#{s|$HOME|~|:session_path}#{?session_alerts, #{session_alerts},}#[noreverse]"
 set -g status-left-length 120
 set -g status-left-style ""
 set -g status-position bottom
-set -g status-right "#{P: #[range=pane|#{pane_id}]#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active}],#[fg=#{E:@pane}]}#{?window_zoomed_flag,#[fg=#{E:@inactive} bg=#{E:@active}],#[fg=#{E:@fg} bg=#{E:@pane}]},#{?pane_last,#[fg=#{E:@pane}],#[fg=#{E:@inactive} bold]}}  #P :#{?#{==:#{pane_title},#{host}},#[italics]#{pane_current_command}#[noitalics],#{pane_title}}#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active} bg=#{E:@bg}],#[fg=#{E:@pane} bg=#{E:@bg}]},} #[range=right default]#{?#{==:#{window_panes},#{pane_index}},,#{E:window-status-separator}}}"
+set -g status-right "#{P: #[range=pane|#{pane_id}]#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active}],#[fg=#{E:@pane}]}#[reverse],#{?pane_last,#[fg=#{E:@pane}],#[fg=#{E:@inactive} bold]}} #P:#{?#{==:#{pane_title},#{host}},#[italics]#{pane_current_command}#[noitalics],#{pane_title}}#{?pane_active,#[noreverse],} #[range=right default]#{?#{==:#{window_panes},#{pane_index}},,#{E:window-status-separator}}}"
 set -g status-right-length 120
 set -g status-style "bg=#{E:@bg} fg=#{E:@fg}"
 set -g visual-activity off
 set -g visual-bell off
 set -g visual-silence off
 set -g window-active-style 'bg=terminal'
-set -g window-status-current-format "#{?window_start_flag,, }#[fg=#{E:@fg} bg=#{E:@window}]󰓫 #I:#W#{?#F, #F,}#[default]#{?window_end_flag,, }"
+set -g window-status-current-format "#{?window_start_flag,, }#[reverse]󰓫 #I:#W#{?#F, #F,}#[default]#{?window_end_flag,, }"
 set -g window-status-current-style "fg=#{E:@window}"
 set -g window-status-format "#{?window_start_flag,, }󰓫 #I:#W#{?#F, #F,}#{?window_end_flag,, }"
 set -g window-status-last-style "fg=#{E:@window} nobold"
@@ -101,10 +106,11 @@ set -sa terminal-overrides ",xterm*:Tc"
 
 #  «««
 
-# Hooks
+# Hooks »»»
 set-hook -g session-created[10] {
   if "! tmux has -t spotify" 'run -b "tmuxp load -d spotify"'
 }
+#  «««
 
 # Bindings »»»
 
