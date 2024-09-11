@@ -47,6 +47,6 @@ function readme() {
   brew info "$1" --json |
     jq -r '.|first|.urls.head.url' |
     sed 's|http://||' |
-    sed 's/.git$//'
-  glow -p
+    sed 's/.git$//' |
+    glow -p
 }
