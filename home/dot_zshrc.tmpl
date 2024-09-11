@@ -82,8 +82,10 @@ _zlf() { #  »»»
         rm -rf $d
     }
 }
+#  «««
+
 zle -N _zlf
-bindkey '\ek' _zlf #  «««
+bindkey '\ea' _zlf
 
 _zlf_handler() { #  »»»
     emulate -L zsh
@@ -96,8 +98,9 @@ _zlf_handler() { #  »»»
     eval $line
     zle -R
 }
-zle -N _zlf_handler
 #  «««
+
+zle -N _zlf_handler
 #  «««
 
 # aliases »»»

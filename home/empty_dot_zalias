@@ -1,12 +1,13 @@
 # vim: ft=sh fdm=marker fdl=1 fmr=\ »»»,\ «««
 
-# functions
+# functions »»»
 function brew-readme() {
   brew info "$1" --json |
     jq -r '.|first|.homepage' |
     sed -e 's|https\{0,1\}://||' |
     xargs glow -p
 }
+#  «««
 
 # global aliases »»»
 alias -g P='| ${(z)PAGER}'
