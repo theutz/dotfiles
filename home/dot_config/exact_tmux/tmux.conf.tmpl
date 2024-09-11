@@ -83,7 +83,7 @@ set -g status-left "#[fg=#{E:@session}]#[bg=#{E:@session} fg=default]  #S:
 set -g status-left-length 120
 set -g status-left-style ""
 set -g status-position bottom
-set -g status-right "#{P: #[range=pane|#{pane_id}]#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active}],#[fg=#{E:@pane}]}#[fg=#{E:@fg} bg=#{E:@pane}],#{?pane_last,#[fg=#{E:@pane}],#[fg=#{E:@inactive} bold]}}  #P :#{?#{==:#{pane_title},#{host}},#[italics]#{pane_current_command}#[noitalics],#{pane_title}} #{?pane_active,#[fg=#{E:@pane} bg=#{E:@bg}],} #[range=right default]#{?#{==:#{window_panes},#{pane_index}},,#{E:window-status-separator}}}"
+set -g status-right "#{P: #[range=pane|#{pane_id}]#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active}],#[fg=#{E:@pane}]}#{?window_zoomed_flag,#[fg=#{E:@inactive} bg=#{E:@active}],#[fg=#{E:@fg} bg=#{E:@pane}]},#{?pane_last,#[fg=#{E:@pane}],#[fg=#{E:@inactive} bold]}}  #P :#{?#{==:#{pane_title},#{host}},#[italics]#{pane_current_command}#[noitalics],#{pane_title}}#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active} bg=#{E:@bg}],#[fg=#{E:@pane} bg=#{E:@bg}]},} #[range=right default]#{?#{==:#{window_panes},#{pane_index}},,#{E:window-status-separator}}}"
 set -g status-right-length 120
 set -g status-style "bg=#{E:@bg} fg=#{E:@fg}"
 set -g visual-activity off
