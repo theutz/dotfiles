@@ -89,11 +89,11 @@ set -g pane-border-format " #{?pane_active,,#[fg=terminal]}#{E:@pane-icon} #P #{
 set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g pane-border-status top
-set -g pane-border-style "fg=#{E:@inactive} bright bg=#{E:@inactive}"
+set -g pane-border-style "fg=#{E:@inactive} bg=terminal"
 set -g popup-border-lines rounded
 set -g popup-border-style "fg=#{E:@active}"
 set -g remain-on-exit off
-set -g remain-on-exit-format "󰯈 Pane is dead #{?pane_dead_status,status #{pane_dead_status},} #{pane_dead_signal}"
+set -g remain-on-exit-format "#[fg=#{E:@error} reverse] 󰯈 Pane is dead#{?pane_dead_status, (status: #{pane_dead_status}),}#{?pane_dead_signal, (signal: #{pane_dead_signal}),}#[fill=#{E:@error}]"
 set -g renumber-windows on
 set -g set-titles on
 set -g status 2
