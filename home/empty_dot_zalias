@@ -42,3 +42,9 @@ alias e-zsh='chezmoi edit --watch --apply ~/.z{alias,sh{env,rc},log{in,out},prez
 alias e-nvim='chezmoi edit --watch --apply ~/.config/nvim'
 alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux.conf'
 #  «««
+
+function readme() {
+  brew info "$1" --json |
+    jq -r '.|first|.urls.head.url' |
+    glow -p
+}
