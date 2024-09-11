@@ -1,6 +1,9 @@
 # vim: ft=sh fdm=marker fdl=1 fmr=\ »»»,\ «««
 
-alias als="chezmoi edit --apply ${0:a}"
+# suffix aliases »»»
+alias -s P='| ${(z)PAGER}'
+alias -s HP='--help | ${(z)PAGER}'
+#  «««
 
 # chezmoi »»»
 alias cm='chezmoi'
@@ -32,4 +35,10 @@ alias cmsp='chezmoi source-path'
 alias cmtp='chezmoi target-path'
 alias cmup='chezmoi update'
 alias cmx='chezmoi forget'
+#  «««
+
+# edit config files »»»
+alias e-zsh='chezmoi edit --watch --apply ~/.z{alias,sh{env,rc},log{in,out},preztorc,profile}; exec zsh'
+alias e-nvim='chezmoi edit --watch --apply ~/.config/nvim'
+alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux.conf'
 #  «««
