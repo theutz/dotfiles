@@ -50,7 +50,7 @@ alias cmx='chezmoi forget'
 # edit config files »»»
 alias e-zsh='chezmoi edit --watch --apply ~/.z{alias,sh{env,rc},log{in,out},preztorc,profile}; exec zsh'
 alias e-nvim='chezmoi edit --watch --apply ~/.config/nvim'
-alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux.conf'
+alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux/tmux.conf'
 #  «««
 
 # tmux »»»
