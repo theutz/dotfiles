@@ -38,15 +38,18 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'tmux' \
   'homebrew' \
+  'archive' \
+  'rsync' \
+  'command-not-found' \
+  'docker' \
   'osx' \
   'git' \
   'utility' \
   'ssh' \
   'completion' \
-  'autosuggestions' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'prompt'
+  'autosuggestions'
 
 #
 # Autosuggestions
