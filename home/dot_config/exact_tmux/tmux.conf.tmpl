@@ -12,7 +12,7 @@ if "test ! -d #{d:current_file}/plugins/tpm" \
 run "#{d:current_file}/plugins/tpm/tpm"
 #  «««
 
-# Icons
+# Icons »»»
 set -g @session-icon ""
 set -g @window-icon "󰓫"
 set -g @pane-icon ""
@@ -29,6 +29,7 @@ set -ga @win-flags "#{?#{m:*-*,#F},󱞥 ,}"
 set -ga @win-flags "#{?#{m:*##*,#F}, ,}"
 set -ga @win-flags "#{?#{m:*!*,#F}, ,}"
 set -ga @win-flags "#{?#{m:*~*,#F},󰒲 ,}"
+#  «««
 
 # Colors »»»
 set -g @bg "terminal"
@@ -92,6 +93,7 @@ set -g pane-border-style "fg=#{E:@inactive} bright bg=#{E:@inactive}"
 set -g popup-border-lines rounded
 set -g popup-border-style "fg=#{E:@active}"
 set -g remain-on-exit off
+set -g remain-on-exit-format "󰯈 Pane is dead #{?pane_dead_status,status #{pane_dead_status},} #{pane_dead_signal}"
 set -g renumber-windows on
 set -g set-titles on
 set -g status 2
@@ -129,13 +131,16 @@ set-hook -g session-created[10] {
 
 # Bindings »»»
 
-bind-key -n MouseDown1Status \
+bind -n MouseDown1Status \
   display -d0 'line: #{mouse_status_line}, range: #{mouse_status_range}' \;\
   if -F '#{==:#{mouse_status_range},pane}' {
     run "tmux select-pane -t '#{pane_id}'"
   } {
     if -F '#{==:#{mouse_status_range},window}' { select-window -t = }
   }
+
+bind -n -N "Respawn dead pane" Enter \
+  if -F '#{pane_dead}' respawn-pane { send-keys Enter }
 
 bind -N "Last pane" \; last-pane -Z
 bind -N "Rename pane" v \
