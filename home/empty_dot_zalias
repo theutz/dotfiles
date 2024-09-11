@@ -1,5 +1,8 @@
-# vim: ft=sh
+# vim: ft=sh fdm=marker fdl=1 fmr=\ »»»,\ «««
 
+alias als="chezmoi edit --apply ${0:a}"
+
+# chezmoi »»»
 alias cm='chezmoi'
 alias cmad='chezmoi add'
 alias cmap='chezmoi apply'
@@ -28,3 +31,4 @@ alias cmsp='chezmoi source-path'
 alias cmtp='chezmoi target-path'
 alias cmup='chezmoi update'
 alias cmx='chezmoi forget'
+#  «««
