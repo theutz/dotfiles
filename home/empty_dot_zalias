@@ -1,5 +1,13 @@
 # vim: ft=sh fdm=marker fdl=1 fmr=\ »»»,\ «««
 
+# functions
+function readme() {
+  brew info "$1" --json |
+    jq -r '.|first|.homepage' |
+    sed -e 's|https\{0,1\}://||' |
+    xargs glow -p
+}
+
 # suffix aliases »»»
 alias -s P='| ${(z)PAGER}'
 alias -s HP='--help | ${(z)PAGER}'
@@ -43,9 +51,11 @@ alias e-nvim='chezmoi edit --watch --apply ~/.config/nvim'
 alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux.conf'
 #  «««
 
-function readme() {
-  brew info "$1" --json |
-    jq -r '.|first|.homepage' |
-    sed -e 's|https\{0,1\}://||' |
-    xargs glow -p
-}
+# tmux »»»
+alias t='tmux'
+alias txp='tmuxp'
+alias txpls='tmuxp ls'
+#  «««
+
+alias lg='lazygit'
+alias ls='eza --group-directories-first --icons'
