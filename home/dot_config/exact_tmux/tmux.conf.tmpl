@@ -103,7 +103,7 @@ set -sa terminal-overrides ",xterm*:Tc"
 
 # Hooks
 set-hook -g session-created[10] {
-  if "! tmux has -t spotify" 'run -bC "tmuxp load -d spotify"'
+  if "! tmux has -t spotify" 'run -b "tmuxp load -d spotify"'
 }
 
 # Bindings »»»
