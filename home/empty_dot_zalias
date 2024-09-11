@@ -8,9 +8,9 @@ function readme() {
     xargs glow -p
 }
 
-# suffix aliases »»»
-alias -s P='| ${(z)PAGER}'
-alias -s HP='--help | ${(z)PAGER}'
+# global aliases »»»
+alias -g P='| ${(z)PAGER}'
+alias -g HP='--help 2>&1 | ${(z)PAGER}'
 #  «««
 
 # chezmoi »»»
