@@ -11,7 +11,7 @@ function brew-readme() {
 
 function tmuxp-attach() {
   filename=$(tmuxp ls | fzf)
-  file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$file".yml
+  file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
   session=$(yq '.session_name' "$file")
 
   if ! tmux has -t "$session"; then
