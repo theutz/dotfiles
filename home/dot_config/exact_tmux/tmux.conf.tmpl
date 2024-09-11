@@ -16,6 +16,19 @@ run "#{d:current_file}/plugins/tpm/tpm"
 set -g @session-icon ""
 set -g @window-icon "󰓫"
 set -g @pane-icon ""
+set -g @dir-icon " "
+set -g @cmd-icon " "
+set -g @open-icon "#[reverse] "
+set -g @close-icon " #[noreverse]"
+set -gF @sep-icon " #[push-default fg=#{E:@inactive}]󰇙#[default pop-default] "
+set -g @label-icon "󰌕 "
+set -g @win-flags " #{?#{m:*M*,#F},󰍕 ,}"
+set -ga @win-flags "#{?#{m:*Z*,#F},󰁌 ,}"
+set -ga @win-flags "#{?#{m:*\\**,#F},󰛄 ,}"
+set -ga @win-flags "#{?#{m:*-*,#F},󱞥 ,}"
+set -ga @win-flags "#{?#{m:*##*,#F}, ,}"
+set -ga @win-flags "#{?#{m:*!*,#F}, ,}"
+set -ga @win-flags "#{?#{m:*~*,#F},󰒲 ,}"
 
 # Colors »»»
 set -g @bg "terminal"
@@ -25,9 +38,9 @@ set -g @warning "colour3"
 set -g @error "colour1"
 set -g @inactive "colour0"
 {{ if eq .chezmoi.os "darwin" }}
-set -g @active "colour11"
+set -g @active "colour13"
 set -g @session "colour13"
-set -g @window "colour5"
+set -g @window "colour4"
 set -g @pane "colour5"
 {{ else }}
 set -g @active "colour2"
@@ -40,66 +53,68 @@ set -g @pane "colour10"
 # Options »»»
 set -g aggressive-resize on
 set -g allow-passthrough all
-set -g automatic-rename-format "#{?pane_in_mode,[tmux],󰎔 }"
+set -g allow-rename on
+set -g automatic-rename on
+set -g automatic-rename-format "#{?pane_in_mode,#{pane_mode},#{E:@cmd-icon}#{pane_current_command}}"
 set -g base-index 1
 set -g command-alias[100] vsp="split-window -h"
 set -g command-alias[101] sp="split-window -v"
 set -g command-alias[1450] is-pane-dead='run "[[ $(tmux display -p \"#{pane_dead}\") == 1 ]]"'
 set -g command-alias[20548] mods='splitw -hbl 80 mods'
 set -g command-alias[29547] man='splitw -hbl 80 ''; set -p remain-on-exit off; respawnp -k man tmux'
-set -g copy-mode-current-match-style 'bg=colour1 fg=colour7'
-set -g copy-mode-mark-style 'bg=colour4 fg=colour7'
-set -g copy-mode-match-style 'bg=colour3 fg=colour0'
+set -g copy-mode-current-match-style "#{E:copy-mode-match-style} blink"
+set -g copy-mode-mark-style "bg=#{E:@active} fg=#{E:@inactive}"
+set -g copy-mode-match-style "bg=#{E:@inactive} fg=#{E:@active} underscore"
 set -g cursor-style blinking-block
 set -g default-terminal "xterm-256color"
 set -g destroy-unattached off
 set -g detach-on-destroy off
-set -g display-panes-active-colour 'colour1'
-set -g display-panes-color 'colour7'
+set -gF display-panes-active-colour '#{E:@active}'
+set -gF display-panes-color '#{E:@fg}'
 set -g escape-time 0
 set -g menu-border-lines rounded
-set -g menu-border-style 'fg=#{E:@active}'
+set -g menu-border-style "fg=#{E:@active}"
 set -g menu-selected-style "fg=#{E:@inactive} bg=#{E:@active}"
-set -g message-command-style "bg=#{E:@bg} fg=#{E:@session} bold italics"
+set -g message-command-style "bg=#{E:@bg} fg=#{E:@active} italics"
 set -g message-line 2
-set -g message-style "#{message-command-style}"
+set -g message-style "#{E:message-command-style} reverse noitalics"
 set -g mode-keys vi
-set -g mode-style 'bg=colour11 fg=colour0'
+set -g mode-style "bg=#{E:@active} fg=#{E:@inactive}"
 set -g mouse on
 set -g other-pane-width 80
 set -g pane-active-border-style "fg=#{E:@active}"
 set -g pane-base-index 1
-set -g pane-border-format " #{?pane_active,,#[fg=terminal]} #P#{?#{||:#{==:#T,#H},#{==:#T,}},, 󰌖 #T}#{?pane_current_path,   #{s|$HOME|~|:pane_current_path},}#{?#{pane_start_command},   #{pane_start_command},} "
+set -g pane-border-format " #{?pane_active,,#[fg=terminal]}#{E:@pane-icon} #P #{E:@label-icon}#T#{?pane_current_path,#{E:@sep-icon}#{E:@dir-icon} #{s|$HOME|~|:pane_current_path},}#{E:@sep-icon}#{E:@cmd-icon}#{?#{pane_start_command},#{pane_start_command},#{pane_current_command}} "
 set -g pane-border-indicators both
 set -g pane-border-lines heavy
 set -g pane-border-status top
 set -g pane-border-style "fg=#{E:@inactive} bright bg=#{E:@inactive}"
 set -g popup-border-lines rounded
-set -g popup-border-style "fg=colour13"
+set -g popup-border-style "fg=#{E:@active}"
 set -g remain-on-exit off
 set -g renumber-windows on
 set -g set-titles on
 set -g status 2
-set -g status-format[1] " #[fg=#{E:@session}]  #[fg=#{E:@fg}]#{s|$HOME|~|:pane_current_path}#[default] #[align=absolute-centre] #[fg=#{E:@success}] #[fg=default]#{host} #{window-status-separator} #[fg=#{E:@warning}]  #[fg=default]%Y-%m-%d #{window-status-separator} #[fg=#{E:@error}] #[fg=default] %H:%M #[align=right] #{?client_prefix,#[fg=#{E:@error}]#[reverse]󰧹 <C-b>#[noreverse]#[fg=default] ,}"
+set -g status-format[1] " #[fg=#{E:@session}]#{E:@session-icon} #{session_id}#[default]#{E:@sep-icon}#[fg=#{E:@window}]#{E:@window-icon} #{window_id}#[default]#{E:@sep-icon}#[fg=#{E:@pane}]#{E:@pane-icon} #{pane_id} #[align=absolute-centre] #{?client_prefix,#[fg=#{E:@error}]#{@open-icon}󰧹 <C-b>#{E:@close-icon}#[fg=default] ,} #[align=right] #[fg=#{E:@success}] #[fg=default]#{host}#{E:@sep-icon}#[fg=#{E:@warning}]  #[fg=default]%Y-%m-%d#{E:@sep-icon}#[fg=#{E:@error}] #[fg=default] %H:%M "
 set -g status-interval 1
 set -g status-justify absolute-centre
 set -g status-keys vi
-set -g status-left "#[fg=#{E:@session}]#[reverse]  #S:#{s|$HOME|~|:session_path}#{?session_alerts, #{session_alerts},}#[noreverse]"
+set -g status-left "#[fg=#{E:@session}]#{@open-icon}#{E:@session-icon} #S#{?session_alerts, #{session_alerts},}#{E:@close-icon}"
 set -g status-left-length 120
 set -g status-left-style ""
 set -g status-position bottom
-set -g status-right "#{P: #[range=pane|#{pane_id}]#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active}],#[fg=#{E:@pane}]}#[reverse],#{?pane_last,#[fg=#{E:@pane}],#[fg=#{E:@inactive} bold]}} #P:#{?#{==:#{pane_title},#{host}},#[italics]#{pane_current_command}#[noitalics],#{pane_title}}#{?pane_active,#[noreverse],} #[range=right default]#{?#{==:#{window_panes},#{pane_index}},,#{E:window-status-separator}}}"
+set -g status-right "#{P:#[range=pane|#{pane_id}]#{?pane_active,#{?window_zoomed_flag,#[fg=#{E:@active}],#[fg=#{E:@pane}]}#{@open-icon},#{?pane_last,#[fg=#{E:@pane}],#[fg=#{E:@inactive} bold]}}#{E:@pane-icon} #P #{?#{==:#{pane_title},#{host}},#{E:@cmd-icon}#[italics]#{pane_current_command}#[noitalics],#{E:@label-icon}#{pane_title}}#{?pane_active,#{E:@close-icon},}#[range=right default]#{?#{==:#{window_panes},#{pane_index}},,#{E:@sep-icon}}}"
 set -g status-right-length 120
 set -g status-style "bg=#{E:@bg} fg=#{E:@fg}"
 set -g visual-activity off
 set -g visual-bell off
 set -g visual-silence off
 set -g window-active-style 'bg=terminal'
-set -g window-status-current-format "#{?window_start_flag,, }#[reverse]󰓫 #I:#W#{?#F, #F,}#[default]#{?window_end_flag,, }"
+set -g window-status-current-format "#{@open-icon}#{E:@window-icon} #I #W#{E:@win-flags}#{E:@close-icon}"
 set -g window-status-current-style "fg=#{E:@window}"
-set -g window-status-format "#{?window_start_flag,, }󰓫 #I:#W#{?#F, #F,}#{?window_end_flag,, }"
+set -g window-status-format "#{E:@window-icon} #I #W#{E:@win-flags}"
 set -g window-status-last-style "fg=#{E:@window} nobold"
-set -g window-status-separator '#[fg=colour8]'
+set -gF window-status-separator "#{E:@sep-icon}"
 set -g window-status-style "fg=#{E:@inactive} bold"
 set -g window-style 'bg=#{E:@inactive}'
 set -sa terminal-overrides ",xterm*:Tc"
