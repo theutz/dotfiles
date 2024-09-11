@@ -1,7 +1,7 @@
 # vim: ft=sh fdm=marker fdl=1 fmr=\ »»»,\ «««
 
 # functions
-function readme() {
+function brew-readme() {
   brew info "$1" --json |
     jq -r '.|first|.homepage' |
     sed -e 's|https\{0,1\}://||' |
@@ -55,6 +55,10 @@ alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux.conf'
 alias t='tmux'
 alias txp='tmuxp'
 alias txpls='tmuxp ls'
+#  «««
+
+# homebrew »»»
+alias brewr='brew-readme'
 #  «««
 
 alias lg='lazygit'
