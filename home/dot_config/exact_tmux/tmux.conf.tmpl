@@ -101,6 +101,9 @@ set -sa terminal-overrides ",xterm*:Tc"
 
 #  «««
 
+# Hooks
+set-hook -g after-server-start 'run-shell noti -t "server started"'
+
 # Bindings »»»
 
 bind-key -n MouseDown1Status \
