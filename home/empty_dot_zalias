@@ -46,5 +46,7 @@ alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux.conf'
 function readme() {
   brew info "$1" --json |
     jq -r '.|first|.urls.head.url' |
-    glow -p
+    sed 's|http://||' |
+    sed 's/.git$//'
+  glow -p
 }
