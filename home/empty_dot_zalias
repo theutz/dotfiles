@@ -1,4 +1,4 @@
-# vim: ft=sh fdm=marker fdl=1 fmr=\ »»»,\ «««
+# vim: ft=sh fdm=marker fdl=0 fmr=\ »»»,\ «««
 
 # functions »»»
 function brew-readme() {
