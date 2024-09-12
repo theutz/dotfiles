@@ -94,7 +94,7 @@
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope-terraform-doc.nvim": { "branch": "main", "commit": "ce2d39a576a68755a623982a7a88bcb3d981b15b" },
   "telescope-terraform.nvim": { "branch": "main", "commit": "072c97023797ca1a874668aaa6ae0b74425335df" },
-  "telescope.nvim": { "branch": "master", "commit": "cfaf68420e9f493ee7783ba243e262be7c7f4d08" },
+  "telescope.nvim": { "branch": "master", "commit": "1398e11b06f67276881ed44dcefda5050d8ecd0c" },
   "text-case.nvim": { "branch": "main", "commit": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457" },
   "thanks.nvim": { "branch": "main", "commit": "6daefdf73e8555755fed89fe6e2c64568e34f836" },
   "todo-comments.nvim": { "branch": "main", "commit": "319c01b99b7a8c9ac2066bf0efd4d6ec68fef444" },
