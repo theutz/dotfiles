@@ -152,6 +152,9 @@ bind -n -N "Respawn dead pane" Enter \
 bind -N 'Attach via tmuxp' a \
   run 'zsh -ic "tmuxp-attach"'
 
+bind -N 'Edit tmuxp template' C-a \
+  run 'zsh -ic "tmuxp-edit"'
+
 bind -N 'Open goto menu' g \
   menu -T 'Goto Menu' \
     buku b {
