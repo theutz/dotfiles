@@ -129,6 +129,7 @@ set-hook -g session-created[10] {
   if "! tmux has -t spotify" 'run -b "tmuxp load -d spotify"'
 }
 {{ end }}
+set-hook -g pane-died { }
 #  «««
 
 # Bindings »»»
@@ -214,5 +215,4 @@ bind -N "Clear screen" C-l send 'C-l'
 #  «««
 #  «««
 
-# vim: ft=tmux.tmpl fdm=marker fdl=0 fmr=\ »»»,\ «««
-
+# vim: ft=tmux.tmpl fdm=marker fdl=0 fmr=\ »»»,\ ««« ts=2 sw=2 sts=2 et
