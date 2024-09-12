@@ -13,21 +13,21 @@ run "#{d:current_file}/plugins/tpm/tpm"
 #  «««
 
 # Icons »»»
-set -g @session-icon ""
-set -g @window-icon "󰓫"
-set -g @pane-icon ""
-set -g @dir-icon " "
-set -g @cmd-icon " "
+set -g @session-icon "󰋁 "
+set -g @window-icon " "
+set -g @pane-icon " "
+set -g @dir-icon " "
+set -g @cmd-icon " "
 set -g @open-icon "#[reverse] "
 set -g @close-icon " #[noreverse]"
 set -gF @sep-icon " #[push-default fg=#{E:@inactive}]󰇙#[default pop-default] "
-set -g @label-icon "󰌕 "
-set -g @win-flags " #{?#{m:*M*,#F},󰍕 ,}"
+set -g @label-icon "󰌖 "
+set -g @win-flags " #{?#{m:*M*,#F},󰍒 ,}"
 set -ga @win-flags "#{?#{m:*Z*,#F},󰁌 ,}"
 set -ga @win-flags "#{?#{m:*\\**,#F},󰛄 ,}"
 set -ga @win-flags "#{?#{m:*-*,#F},󱞥 ,}"
-set -ga @win-flags "#{?#{m:*##*,#F}, ,}"
-set -ga @win-flags "#{?#{m:*!*,#F}, ,}"
+set -ga @win-flags "#{?#{m:*##*,#F},󰶹 ,}"
+set -ga @win-flags "#{?#{m:*!*,#F}, ,}"
 set -ga @win-flags "#{?#{m:*~*,#F},󰒲 ,}"
 #  «««
 
@@ -56,7 +56,7 @@ set -g aggressive-resize on
 set -g allow-passthrough all
 set -g allow-rename on
 set -g automatic-rename on
-set -g automatic-rename-format "#{?pane_in_mode,#{pane_mode},#{E:@cmd-icon}#{pane_current_command}}"
+set -g automatic-rename-format "#{?pane_in_mode,#{pane_mode},#{pane_current_command}}"
 set -g base-index 1
 set -g command-alias[100] vsp="split-window -h"
 set -g command-alias[101] sp="split-window -v"
@@ -163,37 +163,23 @@ bind -N 'Attach via tmuxp' a \
 bind -N 'Edit tmuxp template' C-a \
   run 'zsh -ic "tmuxp-edit"'
 
-bind -N 'Open goto menu' g \
-  menu -T 'Goto Menu' \
-    buku b {
-      popup -T 'buku' -EE 'tmuxp load -d buku && tmux attach -t buku'
-    } 'launch session' g {
-      popup -h 80% -w 80 -T 'launch session' -EE '\
-        tmuxp ls | \
-        fzf --multi \
-          --bind "ctrl-o:execute(tmuxp load -d {})" \
-          --bind "ctrl-e:execute(tmuxp edit {})" | \
-        xargs tmuxp load -y'
-    } mods m {
-      splitp -hbl 80 mods
-    } nb n {
-      popup -h 90% -w 66% -y 0 -T nb -EE 'tmux attach -t nb'
-    } spotify p {
-      popup -h 90% -w 66% -T 'spotify' -EE 'tmux attach -t spotify'
-    } btop t {
-      popup -h 100% -w 100% -T btop -h 90% -w 95% -E btop
-    }
-
 bind -N "Customize mode" O customize-mode -Z
-
-bind -N "Respawn pane" r \
-  command-prompt -I "respawn-pane -k #{pane_start_command}"
 
 bind -N "Rename pane" v \
   command-prompt -I "#{pane_title}" { selectp -T '%%' }
 
+bind -N "Open rename menu" r \
+  menu -T "Rename..." -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
+    session s {
+      command-prompt -I '#{session_name}' { rename-session '%%' }
+    } window w {
+      command-prompt -I '#{window_name}' { rename-window '%%' }
+    } pane p {
+      command-prompt -I '#{pane_title}' { select-pane -T '%%' }
+    }
+
 bind -N "Open kill menu" x \
-  menu -T 'Kill...' \
+  menu -T "Kill..." -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
     server S {
       kill-server
     } '' session s {
