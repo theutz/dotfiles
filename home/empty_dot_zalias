@@ -102,6 +102,6 @@ alias brewr='brew-readme'
 #  «««
 
 alias lg='lazygit'
-alias ls='eza --group-directories-first --icons'
+alias ls='eza --group --group-directories-first --icons'
 alias reload='exec zsh'
 alias rl='exec zsh'
