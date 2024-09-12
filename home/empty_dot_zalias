@@ -10,9 +10,9 @@ function brew-readme() {
 }
 
 function tmuxp-attach() {
-  filename=$(tmuxp ls | fzf)
-  file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
-  session=$(yq '.session_name' "$file")
+  local filename=$(tmuxp ls | fzf)
+  local file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
+  local session=$(yq '.session_name' "$file")
 
   if ! tmux has -t "$session"; then
     tmuxp load -d "$filename"
@@ -27,13 +27,13 @@ function tmuxp-attach() {
 
 function oil() {
   if [[ -z "$@" ]]; then
-    user="$(gum input --header "user")"
+    local user="$(gum input --header "user")"
     if [[ -n "$user" ]]; then
       user="$user@"
     fi
-    domain="$(gum input --header "domain")"
-    path="$(gum input --header "path")"
-    # nvim oil-ssh://$user$domain/$path
+    local domain="$(gum input --header "domain")"
+    local path="$(gum input --header "path")"
+    nvim oil-ssh://$user$domain/$path
   else
     nvim oil-ssh://$@
   fi
