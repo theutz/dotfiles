@@ -75,6 +75,7 @@ alias e-cms='nvim "$(chezmoi source-path)"/.chezmoiscripts; lazygit -p "$(chezmo
 alias t='tmux'
 alias txp='tmuxp'
 alias txpls='tmuxp ls'
+alias txa='tmuxp-attach'
 #  «««
 
 # homebrew »»»
