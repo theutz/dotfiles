@@ -107,7 +107,9 @@ eval "$(atuin init zsh)"
 #  «««
 
 # asdf »»»
-. "$(brew --prefix asdf)/libexec/asdf.sh"
+. "$HOME/.asdf/asdf.sh"
+fpath=$(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
 #  «««
 
 # aliases »»»
