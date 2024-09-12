@@ -26,11 +26,11 @@ function tmuxp-attach() {
 }
 
 function tmuxp-edit() {
-  local filename="$(tmuxp ls | fzf --tmux=left,30)"
+  local filename=$(tmuxp ls | fzf --tmux=left,30)
   local file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
 
   if [[ -n "$TMUX" ]]; then
-    tmux popup { chezmoi edit --watch --apply $file }
+    tmux popup "chezmoi edit --watch --apply $file"
   else
     chezmoi edit --watch --apply $file
   fi
