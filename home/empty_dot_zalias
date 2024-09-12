@@ -10,7 +10,7 @@ function brew-readme() {
 }
 
 function tmuxp-attach() {
-  local filename=$(tmuxp ls | fzf --tmux=center)
+  local filename=$(tmuxp ls | fzf --tmux=left)
   local file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
   local session=$(yq '.session_name' "$file")
 
