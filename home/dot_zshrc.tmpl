@@ -6,7 +6,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 #  «««
 
-# Customize to your needs...
+# asdf »»»
+. "$HOME/.asdf/asdf.sh"
+#  «««
 
 # timezones »»»
 timezones=(
@@ -104,12 +106,6 @@ eval "$(starship init zsh)"
 
 # atuin »»»
 eval "$(atuin init zsh)"
-#  «««
-
-# asdf »»»
-. "$HOME/.asdf/asdf.sh"
-fpath=$(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
 #  «««
 
 # aliases »»»
