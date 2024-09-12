@@ -133,6 +133,7 @@ set-hook -g session-created[10] {
 
 # Bindings »»»
 
+# mouse »»»
 bind -n MouseDown1Status \
   display -d0 'line: #{mouse_status_line}, range: #{mouse_status_range}' \;\
   if -F '#{==:#{mouse_status_range},pane}' {
@@ -140,18 +141,46 @@ bind -n MouseDown1Status \
   } {
     if -F '#{==:#{mouse_status_range},window}' { select-window -t = }
   }
+#  «««
 
+# root »»»
 bind -n -N "Respawn dead pane" Enter \
   if -F '#{pane_dead}' respawn-pane { send-keys Enter }
+#  «««
 
-bind -N "Last pane" \; last-pane -Z
-bind -N "Rename pane" v \
-  command-prompt -I "#{pane_title}" { selectp -T '%%' }
+# prefix »»»
+bind -N 'Attach via tmuxp' a \
+  run 'zsh -ic "tmuxp-attach"'
+
+bind -N 'Open goto menu' g \
+  menu -T 'Goto Menu' \
+    buku b {
+      popup -T 'buku' -EE 'tmuxp load -d buku && tmux attach -t buku'
+    } 'launch session' g {
+      popup -h 80% -w 80 -T 'launch session' -EE '\
+        tmuxp ls | \
+        fzf --multi \
+          --bind "ctrl-o:execute(tmuxp load -d {})" \
+          --bind "ctrl-e:execute(tmuxp edit {})" | \
+        xargs tmuxp load -y'
+    } mods m {
+      splitp -hbl 80 mods
+    } nb n {
+      popup -h 90% -w 66% -y 0 -T nb -EE 'tmux attach -t nb'
+    } spotify p {
+      popup -h 90% -w 66% -T 'spotify' -EE 'tmux attach -t spotify'
+    } btop t {
+      popup -h 100% -w 100% -T btop -h 90% -w 95% -E btop
+    }
+
+bind -N "Customize mode" O customize-mode -Z
+
 bind -N "Respawn pane" r \
   command-prompt -I "respawn-pane -k #{pane_start_command}"
-bind -N "Clear screen" C-l send 'C-l'
-bind -N "List all keys" / list-keys
-bind -N "Customize mode" O customize-mode -Z
+
+bind -N "Rename pane" v \
+  command-prompt -I "#{pane_title}" { selectp -T '%%' }
+
 bind -N "Open kill menu" x \
   menu -T 'Kill...' \
     server S {
@@ -174,26 +203,12 @@ bind -N "Open kill menu" x \
       respawn-pane -k #{pane_start_command}
     }
 
-bind -N 'Open goto menu' g \
-  menu -T 'Goto Menu' \
-    buku b {
-      popup -T 'buku' -EE 'tmuxp load -d buku && tmux attach -t buku'
-    } 'launch session' g {
-      popup -h 80% -w 80 -T 'launch session' -EE '\
-        tmuxp ls | \
-        fzf --multi \
-          --bind "ctrl-o:execute(tmuxp load -d {})" \
-          --bind "ctrl-e:execute(tmuxp edit {})" | \
-        xargs tmuxp load -y'
-    } mods m {
-      splitp -hbl 80 mods
-    } nb n {
-      popup -h 90% -w 66% -y 0 -T nb -EE 'tmux attach -t nb'
-    } spotify p {
-      popup -h 90% -w 66% -T 'spotify' -EE 'tmux attach -t spotify'
-    } btop t {
-      popup -h 100% -w 100% -T btop -h 90% -w 95% -E btop
-    }
+bind -N "Last pane" \; last-pane -Z
+
+bind -N "List all keys" / list-keys
+
+bind -N "Clear screen" C-l send 'C-l'
+#  «««
 #  «««
 
 # vim: ft=tmux.tmpl fdm=marker fdl=0 fmr=\ »»»,\ «««
