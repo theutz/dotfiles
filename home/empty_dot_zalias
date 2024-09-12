@@ -32,8 +32,8 @@ function oil() {
       user="$user@"
     fi
     local domain="$(gum input --header "domain")"
-    local path="$(gum input --header "path")"
-    nvim oil-ssh://$user$domain/$path
+    local filepath="$(gum input --header "path")"
+    nvim oil-ssh://$user$domain/$filepath
   else
     nvim oil-ssh://$@
   fi
