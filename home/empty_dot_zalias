@@ -28,10 +28,12 @@ function tmuxp-attach() {
 function oil() {
   if [[ -z "$@" ]]; then
     user="$(gum input "User: ")"
-    if [[ -n "$user" ]]; then; user="$user@"; fi
+    if [[ -n "$user" ]]; then
+      user="$user@"
+    fi
     domain="$(gum input "Domain: ")"
     path="$(gum input "Path: ")"
-    nvim oil-ssh://"$user$domain/$path"
+    nvim "oil-ssh://$user$domain/$path"
   else
     nvim oil-ssh://"$@"
   fi
