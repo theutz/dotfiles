@@ -24,6 +24,10 @@ function tmuxp-attach() {
     tmux attach-client -t "$session"
   fi
 }
+
+function oil() {
+  nvim oil-ssh://"$@"
+}
 #  «««
 
 # global aliases »»»
@@ -91,4 +95,3 @@ alias lg='lazygit'
 alias ls='eza --group-directories-first --icons'
 alias reload='exec zsh'
 alias rl='exec zsh'
-alias oil='nvim oil-ssh://'
