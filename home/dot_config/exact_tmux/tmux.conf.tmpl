@@ -131,8 +131,8 @@ set-hook -g session-created[10] {
 {{ end }}
 
 set-hook -g pane-died[10] {
-  menu -T "What next?" -x "#{popup_pane_left}" -y "#{popup_pane_top}" \
-    respawn r "respawnp" \
+  menu -T "What next?" -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
+    respawn r "respawn-pane -k" \
     "new command" n {
       command-prompt -I "respawn-pane #{pane_start_command}"
     } kill q "kill-pane"
