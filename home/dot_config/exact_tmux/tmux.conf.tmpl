@@ -124,9 +124,11 @@ set -sa terminal-overrides ",xterm*:Tc"
 #  «««
 
 # Hooks »»»
+{{ if eq .chezmoi.os "darwin" }}
 set-hook -g session-created[10] {
   if "! tmux has -t spotify" 'run -b "tmuxp load -d spotify"'
 }
+{{ end }}
 #  «««
 
 # Bindings »»»
