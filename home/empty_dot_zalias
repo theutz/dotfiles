@@ -68,7 +68,7 @@ alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux/tmux.conf'
 alias e-ham='chezmoi edit --watch --apply ~/.hammerspoon'
 alias e-tmuxp='chezmoi edit --watch --apply ~/.config/tmuxp'
 alias e-brew='chezmoi edit --watch --apply ~/.Brewfile'
-alias e-cms='nvim ~/.local/share/chezmoi/home/.chezmoiscripts'
+alias e-cms='nvim $(chemzoi source-path)/.chezmoiscripts; lazygit -p $(chezmoi source-path)'
 #  «««
 
 # tmux »»»
