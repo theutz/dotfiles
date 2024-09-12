@@ -33,7 +33,7 @@ c.use_fancy_tab_bar = false
 c.tab_max_width = 80
 c.show_tab_index_in_tab_bar = true
 c.command_palette_font_size = 18
-c.color_scheme = "GruvboxDarkHard"
+c.color_scheme = "kurokola"
 
 c.keys = {
 	{
