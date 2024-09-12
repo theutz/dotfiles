@@ -129,7 +129,8 @@ set-hook -g session-created[10] {
   if "! tmux has -t spotify" 'run -b "tmuxp load -d spotify"'
 }
 {{ end }}
-set-hook -g pane-died {
+
+set-hook -g pane-died[10] {
   menu -T "What next?" -x "#{popup_pane_left}" -y "#{popup_pane_top}" \
     respawn r "respawnp" \
     "new command" n {
