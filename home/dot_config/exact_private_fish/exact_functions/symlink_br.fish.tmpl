@@ -1,1 +1,6 @@
-/Users/michael/Library/Application Support/org.dystroy.broot/launcher/fish/br.fish
+{{ $end := "launcher/fish/br.fish" }}
+{{ if eq .chezmoi.os "darwin" }}
+{{ .chezmoi.homeDir }}/Library/Application Support/org.dystroy.broot/{{ $end }}
+{{ else }}
+{{ .chezmoi.homeDir }}/.local/share/broot/{{ $end }}
+{{ end }}
