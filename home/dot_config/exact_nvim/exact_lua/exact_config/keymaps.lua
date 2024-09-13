@@ -13,6 +13,8 @@ local open_lazydocker = function()
   )
 end
 
+del("n", "H")
+del("n", "L")
 set("n", "<leader>.", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search curent buffer" })
 set("n", "<leader>ap", "<cmd>Copilot panel<cr>", { desc = "Copilot Panel" })
 set("n", "<leader>b<", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
