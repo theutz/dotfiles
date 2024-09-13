@@ -1,5 +1,3 @@
-tap "dopplerhq/cli"
-tap "f1bonacc1/tap"
 brew "age"
 brew "atuin"
 brew "bash"
@@ -26,7 +24,6 @@ brew "gum"
 brew "htop"
 brew "jq"
 brew "ijq"
-brew "just"
 brew "lazygit"
 brew "lesspipe"
 brew "lf"
@@ -56,10 +53,11 @@ brew "zoxide"
 brew "zsh"
 brew "zsh-lovers"
 {{ if eq .chezmoi.os "darwin" -}}
+tap FelixKratz/formulae
+
 brew "php"
 brew "composer"
-brew "f1bonacc1/tap/process-compose"
-brew "dopplerhq/cli/doppler"
+brew "sketchybar"
 
 cask "1password-cli"
 cask "aerospace"
@@ -70,3 +68,4 @@ cask "mullvadvpn"
 cask "neovide"
 cask "wezterm"
 {{- end }}
+
