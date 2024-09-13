@@ -150,7 +150,11 @@ set-hook -g pane-died[10] {
     respawn r "respawn-pane -k" \
     "new command" n {
       command-prompt -I "respawn-pane #{pane_start_command}"
-    } kill q "kill-pane"
+    } kill q "kill-pane" \
+    "scroll up" C-u {
+      copy-mode
+      send-keys -X halfpage-up
+    }
 }
 #  «««
 
@@ -178,10 +182,13 @@ bind -N 'Attach via tmuxp' a \
 bind -N 'Edit tmuxp template' C-a \
   run 'zsh -ic "tmuxp-edit"'
 
-bind -N "Customize mode" O customize-mode -Z
+bind -N "Open mods menu" C-m \
+  menu -T "mods..." -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
+    new n { splitw -hbl 80 mods } \
+    continue c { splitw -hbl 80 "mods -C" } \
+    last l { splitw -hbl 80 "mods -PS" }
 
-bind -N "Rename pane" v \
-  command-prompt -I "#{pane_title}" { selectp -T '%%' }
+bind -N "Customize mode" O customize-mode -Z
 
 bind -N "Open rename menu" r \
   menu -T "Rename..." -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
