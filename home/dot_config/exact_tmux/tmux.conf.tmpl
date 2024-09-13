@@ -209,7 +209,7 @@ bind -N "Build and run" C-r \
 bind -N "Build and test" C-t \
   command-prompt -p "test cmd:" -I "#{E:@tester-prg}" {
     set-option -p @tester-prg "%%"
-    display-popup -x C -y P -h 30% -w 80% "%%"
+    display-popup -x C -y P -h 80% -w 80% "%%"
   }
 
 bind -N "Open kill menu" x \
