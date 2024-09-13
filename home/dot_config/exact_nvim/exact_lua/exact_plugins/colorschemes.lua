@@ -22,10 +22,12 @@ local colors = {
   },
   {
     "echasnovski/mini.base16",
+    enabled = false,
     version = false,
   },
   {
     "uloco/bluloco.nvim",
+    enabled = false,
     dependencies = { "rktjmp/lush.nvim" },
     opts = {
       transparent = true,
@@ -33,9 +35,10 @@ local colors = {
       italics = true,
     },
   },
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 }
 
-local colorscheme = "bluloco"
+local colorscheme = "moonfly"
 
 local plugins = {
   {
