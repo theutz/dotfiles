@@ -39,10 +39,13 @@ sketchybar --default "${default[@]}"
 # to indicate active and available mission control spaces.
 
 SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
-SPACE_ICONS=$(aerospace list-workspaces --all | xargs printf "%s ")
+# SPACE_ICONS=()
+# while read -r line; do
+#   SPACE_ICONS+=("$line")
+# done <<< "$(aerospace list-workspaces --all)"
 for i in "${!SPACE_ICONS[@]}"
 do
-  sid="$(($i+1))"
+  sid="${SPACE_ICONS[i]}"
   space=(
     space="$sid"
     icon="${SPACE_ICONS[i]}"
@@ -53,7 +56,7 @@ do
     background.height=25
     label.drawing=off
     script="$PLUGIN_DIR/space.sh"
-    click_script="yabai -m space --focus $sid"
+    # click_script="yabai -m space --focus $sid"
   )
   sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
 done
