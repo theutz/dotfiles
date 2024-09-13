@@ -108,7 +108,7 @@ set -g pane-border-style "fg=#{E:@inactive} bg=terminal"
 set -g popup-border-lines rounded
 set -g popup-border-style "fg=#{E:@active}"
 set -g remain-on-exit off
-set -g remain-on-exit-format "#[fg=#{E:@error} reverse] 󰯈 Pane is dead#{?pane_dead_status, (status: #{pane_dead_status}),}#{?pane_dead_signal, (signal: #{pane_dead_signal}),}#[fill=#{E:@error}]"
+set -g remain-on-exit-format "#[align=absolute-centre]#[fg=#{E:@error} reverse] 󰯈 Pane is dead#{?pane_dead_status, (status: #{pane_dead_status}),}#{?pane_dead_signal, (signal: #{pane_dead_signal}),}#[fill=#{E:@error}]"
 set -g renumber-windows on
 set -g set-titles on
 set -g status 2
