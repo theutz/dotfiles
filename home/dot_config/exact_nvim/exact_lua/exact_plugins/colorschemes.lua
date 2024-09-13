@@ -35,10 +35,16 @@ local colors = {
       italics = true,
     },
   },
-  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+  {
+    "bluz71/vim-moonfly-colors",
+    enabled = false,
+    name = "moonfly",
+    lazy = false,
+    priority = 1000,
+  },
 }
 
-local colorscheme = "moonfly"
+local colorscheme = "tokyonight"
 
 local plugins = {
   {
