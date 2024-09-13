@@ -179,9 +179,15 @@ bind -N "Open rename menu" r \
     }
 
 bind -N "Build and run" C-r \
-  command-prompt -p "prg:" -I "#{E:@runner-prg}" {
+  command-prompt -p "run cmd:" -I "#{E:@runner-prg}" {
     set-option -p @runner-prg "%%"
-    display-popup -x P -y P -h 30% "%%"
+    display-popup -x C -y P -h 30% -w 80% "%%"
+  }
+
+bind -N "Build and test" C-t \
+  command-prompt -p "test cmd:" -I "#{E:@tester-prg}" {
+    set-option -p @tester-prg "%%"
+    display-popup -x C -y P -h 30% -w 80% "%%"
   }
 
 bind -N "Open kill menu" x \
