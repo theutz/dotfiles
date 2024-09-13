@@ -184,9 +184,9 @@ bind -N 'Edit tmuxp template' C-a \
 
 bind -N "Open mods menu" C-m \
   menu -T "mods..." -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
-    new n { splitw -hbl 80 mods } \
-    continue c { splitw -hbl 80 "mods -C" } \
-    last l { splitw -hbl 80 "mods -PS" }
+    new n { splitw -hbl 82 mods } \
+    continue c { splitw -hbl 82 "mods -C" } \
+    last l { splitw -hbl 82 "mods -PS" }
 
 bind -N "Customize mode" O customize-mode -Z
 
