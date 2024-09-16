@@ -112,6 +112,7 @@ alias txa='tmuxp-attach'
 alias brewr='brew-readme'
 #  «««
 
+alias j='just'
 alias lg='lazygit'
 alias ls='eza --group --group-directories-first --icons'
 alias reload='exec zsh'
