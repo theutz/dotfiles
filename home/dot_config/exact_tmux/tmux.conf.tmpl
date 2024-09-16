@@ -134,7 +134,10 @@ set -g window-status-last-style "fg=#{E:@window} nobold"
 set -gF window-status-separator "#{E:@sep-icon}"
 set -g window-status-style "fg=#{E:@inactive} bold"
 set -g window-style 'bg=#{E:@inactive}'
+set -g default-terminal "${TERM}"
 set -sa terminal-overrides ",xterm*:Tc"
+set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
 
 #  «««
 
