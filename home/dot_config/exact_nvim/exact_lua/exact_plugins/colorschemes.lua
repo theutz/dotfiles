@@ -10,6 +10,7 @@ local colors = {
         sidebars = "transparent",
         floats = "transparent",
       },
+      on_colors = function(c) c.border = c.blue0 end,
     },
   },
   {
