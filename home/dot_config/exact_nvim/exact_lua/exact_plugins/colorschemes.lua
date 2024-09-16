@@ -4,12 +4,12 @@ local colors = {
     "folke/tokyonight.nvim",
     enabled = true,
     opts = {
-      transparent = true,
+      transparent = false,
       style = "moon",
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
+      -- styles = {
+      --   sidebars = "transparent",
+      --   floats = "transparent",
+      -- },
       on_colors = function(c) c.border = c.blue0 end,
     },
   },
