@@ -16,8 +16,6 @@ end
 del("n", "H")
 del("n", "L")
 set("n", "<leader>ck", "<Cmd>LspRestart<cr>", { desc = "Restart LSP" })
--- set("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
--- set("n", "<leader>fS", "<cmd>wa<cr>", { desc = "Save all files" })
 set("n", "<leader>w_", "<Cmd>wincmd _<cr>", { desc = "Max out the height" })
 set("n", "<leader>wo", "<Cmd>wincmd o<cr>", { desc = "Close Other Windows" })
 set("n", "<leader>ws", "<cmd>sp<cr>", { desc = "Split horizontal" })
