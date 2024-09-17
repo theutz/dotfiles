@@ -1,6 +1,7 @@
 return {
   {
     "gsuuon/model.nvim",
+    enabled = false,
     dependencies = {
       "folke/which-key.nvim",
     },
