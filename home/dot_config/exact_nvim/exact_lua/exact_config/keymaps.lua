@@ -5,18 +5,9 @@
 local set = vim.keymap.set
 local del = vim.keymap.del
 
-local Util = require "lazyvim.util"
-local open_lazydocker = function()
-  Util.terminal.open(
-    { "lazydocker", "-f", Util.root.get() .. "docker-compose.yml" },
-    { cwd = Util.root.get(), esc_esc = false }
-  )
-end
-
 del("n", "H")
 del("n", "L")
 set("n", "<leader>ck", "<Cmd>LspRestart<cr>", { desc = "Restart LSP" })
-set("n", "<leader>w_", "<Cmd>wincmd _<cr>", { desc = "Max out the height" })
 set("n", "<leader>wo", "<Cmd>wincmd o<cr>", { desc = "Close Other Windows" })
 set("n", "<leader>ws", "<cmd>sp<cr>", { desc = "Split horizontal" })
 set("n", "<leader>wv", "<cmd>vsp<cr>", { desc = "Split vertical" })
