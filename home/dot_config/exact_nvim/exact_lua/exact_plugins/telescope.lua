@@ -2,13 +2,6 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     opts = {
-      defaults = {
-        mappings = {
-          i = {
-            ["<c-t>"] = require("telescope.actions").file_tab,
-          },
-        },
-      },
       pickers = {
         buffers = {
           mappings = {

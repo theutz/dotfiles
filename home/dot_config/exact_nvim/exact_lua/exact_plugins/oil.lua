@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     opts = {
       view_options = {
