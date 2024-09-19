@@ -3,6 +3,8 @@ start_directory: $HOME/code/delegator/playcore
 windows:
   - panes:
       - focus: true
-        shell_command: nvim
+        shell: nvim
     window_name: main
     layout: main-vertical
+    options:
+      remain-on-exit: true
