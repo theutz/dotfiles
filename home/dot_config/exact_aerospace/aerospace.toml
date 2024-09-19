@@ -47,15 +47,19 @@ VISUAL = 'neovide --fork'
 
 [[on-window-detected]]
 if.app-id = 'net.mullvad.vpn'
-run       = 'layout floating'
+run       = ['layout floating', 'move-node-to-workspace 9']
+
+[[on-window-detected]]
+if.app-id = 'com.macpaw.CleanMyMac-setapp'
+run       = ['layout floating', 'move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'org.hammerspoon.Hammerspoon'
-run       = 'layout floating'
+run       = ['layout floating', 'move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'com.xiaomi.mihome'
-run       = 'layout floating'
+run       = ['layout floating', 'move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'com.checkitt'
@@ -91,7 +95,7 @@ run       = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.fivegencare.com.motorola.nursery'
-run       = ['layout floating', 'move-node-to-workspace 8']
+run       = ['layout floating', 'move-node-to-workspace 9']
 
 # Keybinding Reference {{{1
 # All possible keys:
