@@ -5,12 +5,7 @@
 local set = vim.keymap.set
 local del = vim.keymap.del
 
-del("n", "H")
-del("n", "L")
 set("n", "<leader>ck", "<Cmd>LspRestart<cr>", { desc = "Restart LSP" })
-set("n", "<leader>wo", "<Cmd>wincmd o<cr>", { desc = "Close Other Windows" })
-set("n", "<leader>ws", "<cmd>sp<cr>", { desc = "Split horizontal" })
-set("n", "<leader>wv", "<cmd>vsp<cr>", { desc = "Split vertical" })
 set("t", "<S-space>", "<Space>")
 set("i", "<C-j>", "<Esc>o<Esc>^Di", { desc = "Create a new blank line below" })
 set("i", "<S-C-j>", "<Esc>O<Esc>^Di", { desc = "Create a new blank line above" })
