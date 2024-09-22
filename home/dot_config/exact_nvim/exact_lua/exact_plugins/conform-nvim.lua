@@ -7,6 +7,7 @@ return {
         php = { "pint" },
         blade = { "blade-formatter", "rustywind" },
         javascript = { "prettierd" },
+        httml = { "prettierd", "rustywind" },
       },
     },
   },
