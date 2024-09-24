@@ -143,12 +143,6 @@ set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{25
 #  «««
 
 # Hooks »»»
-{{ if eq .chezmoi.os "darwin" }}
-set-hook -g session-created[10] {
-  if "! tmux has -t spotify" 'run -b "tmuxp load -d spotify"'
-}
-{{ end }}
-
 set-hook -g pane-died[10] {
   menu -T "What next?" -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
     respawn r "respawn-pane -k" \
