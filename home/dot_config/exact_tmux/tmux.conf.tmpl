@@ -204,18 +204,6 @@ bind -N "Open rename menu" r \
       command-prompt -p "pane title:" -I '#{pane_title}' { select-pane -T '%%' }
     }
 
-bind -N "Build and run" C-r \
-  command-prompt -p "run cmd:" -I "#{E:@runner-prg}" {
-    set-option -p @runner-prg "%%"
-    display-popup -x C -y P -h 30% -w 80% "%%"
-  }
-
-bind -N "Build and test" C-t \
-  command-prompt -p "test cmd:" -I "#{E:@tester-prg}" {
-    set-option -p @tester-prg "%%"
-    display-popup -x C -y P -h 80% -w 80% "%%"
-  }
-
 bind -N "Open kill menu" x \
   menu -T "Kill..." -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
     server S {
@@ -229,13 +217,13 @@ bind -N "Open kill menu" x \
     } other-windows C-w {
       kill-window -a
     } respawn-window W {
-      respawn-window -k
+      command-prompt -I "respawn-window -k #{pane_start_command}"
     } '' pane p {
       kill-pane
     } other-panes C-p {
       kill-pane -a
     } respawn-pane P {
-      respawn-pane -k #{pane_start_command}
+      command-prompt -I "respawn-pane -k #{pane_start_command}"
     }
 
 bind -N "Last pane" \; last-pane -Z
