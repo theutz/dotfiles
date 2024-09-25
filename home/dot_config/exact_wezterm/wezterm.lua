@@ -33,7 +33,22 @@ c.use_fancy_tab_bar = false
 c.tab_max_width = 80
 c.show_tab_index_in_tab_bar = true
 c.command_palette_font_size = 18
-c.color_scheme = "Tokyo Night"
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Tokyo Night"
+	else
+		return "Tokyo Night Day"
+	end
+end
+
+c.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+
+wezterm.on("window-config-reloaded", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	overrides.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+	window:set_config_overrides(overrides)
+end)
 
 c.keys = {
 	{
