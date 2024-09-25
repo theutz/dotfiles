@@ -211,7 +211,7 @@ bind -N "Open kill menu" x \
     } other-windows C-w {
       kill-window -a
     } respawn-window W {
-      command-prompt -I "respawn-window -k #{pane_start_command}"
+      command-prompt -I { respawn-window -k #{pane_start_command} }
     } '' pane p {
       kill-pane
     } other-panes C-p {
