@@ -11,7 +11,8 @@ git:
     signOff: true
   paging:
     colorArg: always
-    pager: delta --light --paging=never
+    pager: |
+      if dark-mode status | grep on; then delta --light --paging=never; else delta --dark --paging=never; fi
 notARepository: skip
 promptToReturnFromSubprocess: false
 disableStartupPopups: true
