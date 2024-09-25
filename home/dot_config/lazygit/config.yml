@@ -11,7 +11,7 @@ git:
     signOff: true
   paging:
     colorArg: always
-    pager: delta --paging=never
+    pager: delta --light --paging=never
 notARepository: skip
 promptToReturnFromSubprocess: false
 disableStartupPopups: true
