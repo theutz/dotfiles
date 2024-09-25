@@ -99,6 +99,7 @@ alias e-brew='chezmoi edit --watch --apply ~/.Brewfile'
 alias e-cms='nvim "$(chezmoi source-path)"/.chezmoiscripts; lazygit -p "$(chezmoi execute-template "{{ .chezmoi.config.sourceDir }}")"'
 alias e-wez='chezmoi edit --watch --apply ~/.config/wezterm/wezterm.lua'
 alias e-bash='chezmoi edit --watch --apply ~/.bashrc ~/.bash_profile'
+alias e-lg='chezmoi edit --watch --apply "$(lazygit -cd)/config.yml"'
 #  «««
 
 # tmux »»»
