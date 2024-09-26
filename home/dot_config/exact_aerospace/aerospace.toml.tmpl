@@ -122,7 +122,7 @@ run       = ['layout floating', 'move-node-to-workspace 9']
 
 f13 = [
   'mode normal',
-  'exec-and-forget {{ template "borders/normal.tmpl" . }}',
+  'exec-and-forget {{ template "borders/normal.tmpl" . -}}',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal'
 ]
 
@@ -152,7 +152,7 @@ z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-bind
 9                   = 'workspace 9'
 e                   = [
   'mode edit',
-  'exec-and-forget {{ template "borders/edit.tmpl" . }}'
+  'exec-and-forget {{ template "borders/edit.tmpl" . -}}'
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=edit'
 ]
 f                   = "layout floating tiling"
@@ -166,7 +166,7 @@ r                   = [
   'reload-config',
   'exec-and-forget noti -t aerospace -m "Config reloaded!"',
   'mode normal',
-  'exec-and-forget {{ template "borders/normal.tmpl" . }}'
+  'exec-and-forget {{ template "borders/normal.tmpl" . -}}'
 ]
 x                   = 'close --quit-if-last-window'
 backslash           = 'balance-sizes'
@@ -174,7 +174,7 @@ enter               = 'fullscreen'
 equal               = 'resize smart +50'
 esc                 = [
   'mode main',
-  'exec-and-forget {{ template "borders/main.tmpl" . }}'
+  'exec-and-forget {{ template "borders/main.tmpl" . -}}'
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'
 ]
 leftSquareBracket   = 'workspace prev'
