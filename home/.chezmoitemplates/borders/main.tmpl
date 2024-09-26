@@ -1,3 +1,9 @@
-{{ $active := index .theme 4 | trimPrefix "#" -}}
-{{ $inactive := index .theme 1 | trimPrefix "#" -}}
-borders active_color=0xff{{ $active }} inactive_color=0x88{{ $inactive }} width=12.0
+{{ $active := index .theme 6 | trimPrefix "#" -}}
+{{ $inactive := index .theme 7 | trimPrefix "#" -}}
+{{ $args := (dict
+  "active_color" (print "0xff" $active)
+  "inactive_color" (print "0xff" $inactive)
+  "width" "12.0"
+  "style" "square"
+) -}}
+borders {{- range $k, $v := $args }} {{ $k }}={{ $v }}{{ end }}
