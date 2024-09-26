@@ -4,6 +4,9 @@ start-at-login                                                  = true # {{{1
 after-startup-command                                           = [
   'exec-and-forget borders active_color=0xffff78f8 inactive_color=0xff4483aa hidpi=on width=8.0 style=round'
 ]
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE'
+]
 enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding                                               = 32
@@ -152,11 +155,15 @@ run       = ['layout floating', 'move-node-to-workspace 9']
 f13 = [
   'mode normal',
   'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal'
 ]
 
 [mode.edit.binding] #{{{1
 
-esc = ['trigger-binding --mode main f13']
+esc = [
+  'trigger-binding --mode main f13',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=default'
+]
 a = ['exec-and-forget $VISUAL ~/.config/aerospace/aerospace.toml', 'trigger-binding --mode normal esc']
 c = ['exec-and-forget $VISUAL ~/.config',                          'trigger-binding --mode normal esc']
 t = ['exec-and-forget $VISUAL ~/.config/tmux/tmux.conf',           'trigger-binding --mode normal esc']
@@ -177,7 +184,8 @@ z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-bind
 9                   = 'workspace 9'
 e                   = [
   'mode edit',
-  'exec-and-forget borders active_color=0xff5fb9b6 inactive_color=0xff5fb9b6 width=16.0'
+  'exec-and-forget borders active_color=0xff5fb9b6 inactive_color=0xff5fb9b6 width=16.0',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=edit'
 ]
 f                   = "layout floating tiling"
 h                   = 'focus left'
@@ -197,7 +205,8 @@ enter               = 'fullscreen'
 equal               = 'resize smart +50'
 esc                 = [
   'mode main',
-  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0xff4483aa hidpi=on width=8.0 style=round'
+  'exec-and-forget borders active_color=0xffff78f8 inactive_color=0xff4483aa hidpi=on width=8.0 style=round',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'
 ]
 leftSquareBracket   = 'workspace prev'
 minus               = 'resize smart -50'
