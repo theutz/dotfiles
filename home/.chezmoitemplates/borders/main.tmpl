@@ -1,9 +1,9 @@
 {{ $active := index .theme 6 | trimPrefix "#" -}}
 {{ $inactive := index .theme 7 | trimPrefix "#" -}}
-{{ $args := (dict
+{{ $args := (list
   "active_color" (print "0xff" $active)
   "inactive_color" (print "0xff" $inactive)
   "width" "12.0"
   "style" "square"
-) -}}
-borders {{- range $k, $v := $args }} {{ $k }}={{ $v }}{{ end }}
+) | chunk 2 -}}
+borders {{- range $a := $args }} {{ index 0 $a }}={{ index 1 $a }}{{ end }}
