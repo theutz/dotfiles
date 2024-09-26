@@ -1,6 +1,6 @@
 # vim: fdm=marker fdl=0 fmr=\ »»»,\ ««« cms=\ #\ %s
 
-start-at-login                                                  = true # {{{1
+start-at-login                                                  = true
 after-startup-command                                           = [
   'exec-and-forget borders active_color=0xffff78f8 inactive_color=0xff4483aa hidpi=on width=8.0 style=round'
 ]
@@ -14,7 +14,7 @@ default-root-container-layout                                   = 'tiles'
 default-root-container-orientation                              = 'auto'
 key-mapping.preset                                              = 'qwerty'
 
-[gaps] # {{{1
+[gaps]
 
 inner.horizontal = 16
 inner.vertical   = 16
@@ -23,17 +23,17 @@ outer.bottom     = 16
 outer.top        = [{ monitor."SAMSUNG" = 16 }, 16]
 outer.right      = 16
 
-[exec] # {{{1
+[exec]
 
 inherit-env-vars = true
 
-[exec.env-vars] # {{{2
+[exec.env-vars]
 
 PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
-[workspace-to-monitor-force-assignment] # {{{1
+[workspace-to-monitor-force-assignment]
 
 1 = 'main'
 2 = 'main'
@@ -45,7 +45,7 @@ VISUAL = 'neovide --fork'
 8 = 'secondary'
 9 = 'secondary'
 
-# Callbacks {{{1
+# Callbacks
 # run `aerospace list-apps` to see all current app ids
 
 [[on-window-detected]]
@@ -100,7 +100,7 @@ run       = 'move-node-to-workspace 7'
 if.app-id = 'com.fivegencare.com.motorola.nursery'
 run       = ['layout floating', 'move-node-to-workspace 9']
 
-# Keybinding Reference {{{1
+# Keybinding Reference
 # All possible keys:
 # - Letters.        a, b, c, ..., z
 # - Numbers.        0, 1, 2, ..., 9
@@ -118,47 +118,15 @@ run       = ['layout floating', 'move-node-to-workspace 9']
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 
-# Current Color Scheme "Bluloco Dark" {{{1
-# {
-#     "ansi": [
-#         "#41444d",
-#         "#fc2f52",
-#         "#25a45c",
-#         "#ff936a",
-#         "#3476ff",
-#         "#7a82da",
-#         "#4483aa",
-#         "#cdd4e0",
-#     ],
-#     "background": "#282c34",
-#     "brights": [
-#         "#8f9aae",
-#         "#ff6480",
-#         "#3fc56b",
-#         "#f9c859",
-#         "#10b1fe",
-#         "#ff78f8",
-#         "#5fb9bc",
-#         "#ffffff",
-#     ],
-#     "cursor_bg": "#ffcc00",
-#     "cursor_border": "#ffcc00",
-#     "cursor_fg": "#282c34",
-#     "foreground": "#b9c0cb",
-#     "indexed": [],
-#     "selection_bg": "#b9c0ca",
-#     "selection_fg": "#272b33",
-# }
-
-[mode.main.binding] #{{{1
+[mode.main.binding]
 
 f13 = [
   'mode normal',
-  'exec-and-forget borders active_color=0xfffc2f52 inactive_color=0x88ff6480 width=12.0',
+  'exec-and-forget borders active_color=0xff{{ index .theme 1 }} inactive_color=0x88{{ index .theme 0 }} width=12.0',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal'
 ]
 
-[mode.edit.binding] #{{{1
+[mode.edit.binding]
 
 esc = [
   'trigger-binding --mode main f13',
@@ -171,9 +139,9 @@ w = ['exec-and-forget $VISUAL ~/.config/wezterm/wezterm.lua',      'trigger-bind
 v = ['exec-and-forget $VISUAL ~/.config/nvim',                     'trigger-binding --mode normal esc']
 z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-binding --mode normal esc']
 
-[mode.normal.binding] #{{{1
+[mode.normal.binding]
 
-1                   = 'workspace 1' # {{{2
+1                   = 'workspace 1'
 2                   = 'workspace 2'
 3                   = 'workspace 3'
 4                   = 'workspace 4'
@@ -213,7 +181,7 @@ minus               = 'resize smart -50'
 rightSquareBracket  = 'workspace next'
 semicolon           = 'focus-monitor --wrap-around next'
 
-alt-1                  = 'move-node-to-workspace 1' # {{{2
+alt-1                  = 'move-node-to-workspace 1'
 alt-2                  = 'move-node-to-workspace 2'  
 alt-3                  = 'move-node-to-workspace 3' 
 alt-4                  = 'move-node-to-workspace 4' 
@@ -230,7 +198,7 @@ alt-semicolon          = 'move-node-to-monitor --wrap-around next'
 alt-leftSquareBracket  = 'move-node-to-workspace prev'
 alt-rightSquareBracket = 'move-node-to-workspace next'
 
-shift-1 = [ # {{{2
+shift-1 = [
   'trigger-binding --mode normal alt-1',
   'workspace 1'
 ]
