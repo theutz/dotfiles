@@ -152,7 +152,7 @@ z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-bind
 9                   = 'workspace 9'
 e                   = [
   'mode edit',
-  'exec-and-forget {{ (includeTemplate "borders/edit.tmpl" .) | trim }}'
+  'exec-and-forget {{ (includeTemplate "borders/edit.tmpl" .) | trim }}',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=edit'
 ]
 f                   = "layout floating tiling"
@@ -174,7 +174,7 @@ enter               = 'fullscreen'
 equal               = 'resize smart +50'
 esc                 = [
   'mode main',
-  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}'
+  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'
 ]
 leftSquareBracket   = 'workspace prev'
