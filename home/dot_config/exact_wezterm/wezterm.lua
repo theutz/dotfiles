@@ -10,9 +10,9 @@ c:set_strict_mode(true)
 -- c.default_prog = { "zsh", "-c", "/opt/homebrew/bin/nu" }
 c.macos_window_background_blur = 50
 c.window_background_opacity = 1.0
-c.font = wezterm.font("Lilex Nerd Font", { weight = 500 })
-c.font_size = 14
-c.line_height = 1
+c.font = wezterm.font("JetBrainsMono Nerd Font", { weight = 400 })
+c.font_size = 16
+c.line_height = 1.3
 c.bold_brightens_ansi_colors = "BrightAndBold"
 c.window_close_confirmation = "NeverPrompt"
 c.quit_when_all_windows_are_closed = true
