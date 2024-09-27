@@ -1,0 +1,19 @@
+workspaces:
+  - name: main
+    icon: 
+  - name: other
+    icon: 󰻺
+  - name: docs
+    icon: 
+  - name: design
+    icon: 
+  - name: slack
+    icon: 
+  - name: webcam
+    icon: 󰖠
+  - name: chat
+    icon: 󰭹
+  - name: watch
+    icon: 
+  - name: utils
+    icon: 

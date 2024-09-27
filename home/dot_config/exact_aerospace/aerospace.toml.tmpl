@@ -1,17 +1,5 @@
 # vim: fdm=marker fdl=0 fmr=\ »»»,\ ««« cms=\ #\ %s
 
-{{ $workspaces := (list
-  "main"
-  "other"
-  "docs"
-  "specs"
-  "slack"
-  "video"
-  "chat"
-  "watch"
-  "utils")
--}}
-
 start-at-login                                                  = true
 after-startup-command                                           = [
   'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
@@ -47,9 +35,9 @@ EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
 [workspace-to-monitor-force-assignment]
-{{ range $i, $v := $workspaces }}
+{{ range $i, $v := .workspaces }}
   {{- $monitor := le $i 4 | ternary "main" "samsung" }}
-  {{- (list (default (add $i 1) $v) ($monitor | quote)) | join " = " | nindent 0 }}
+  {{- (list (get $v "name") ($monitor | quote)) | join " = " | nindent 0 }}
 {{- end }}
 
 # Callbacks
