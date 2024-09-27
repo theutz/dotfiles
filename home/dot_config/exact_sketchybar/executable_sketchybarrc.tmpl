@@ -1,5 +1,5 @@
 {{ define "sb" }}
-  {{- $indent := len .cmd }}
+  {{- $indent := add (len .cmd) 1 | int }}
   {{- $args := .args | chunk 2 }}
   {{- print "\n" .cmd }}
   {{- range $i, $v := $args }}
