@@ -1,8 +1,21 @@
 # vim: fdm=marker fdl=0 fmr=\ »»»,\ ««« cms=\ #\ %s
 
+{{ $workspaces := (list
+  "main"
+  "other"
+  "docs"
+  "specs"
+  "slack"
+  "video"
+  "chat"
+  "watch"
+  "utils")
+-}}
+
 start-at-login                                                  = true
 after-startup-command                                           = [
-  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}'
+  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
+  'exec-and-forget sketchybar --reload'
 ]
 exec-on-workspace-change = [
   '/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE'
@@ -34,16 +47,10 @@ EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
 [workspace-to-monitor-force-assignment]
-
-1 = 'main'
-2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'main'
-6 = 'secondary'
-7 = 'secondary'
-8 = 'secondary'
-9 = 'secondary'
+{{ range $i, $v := $workspaces }}
+  {{- $monitor := le $i 4 | ternary "main" "samsung" }}
+  {{- (list (default (add $i 1) $v) ($monitor | quote)) | join " = " | nindent 0 }}
+{{- end }}
 
 # Callbacks
 # run `aerospace list-apps` to see all current app ids
