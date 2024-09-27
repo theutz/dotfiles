@@ -158,10 +158,11 @@ k                   = 'focus up'
 l                   = 'focus right'
 o                   = 'layout horizontal vertical'
 r                   = [
+  'exec-and-forget sketchybar --reload',
+  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
+  'mode main',
   'reload-config',
   'exec-and-forget noti -t aerospace -m "Config reloaded!"',
-  'mode normal',
-  'exec-and-forget {{ (includeTemplate "borders/normal.tmpl" .) | trim }}'
 ]
 x                   = 'close --quit-if-last-window'
 backslash           = 'balance-sizes'
