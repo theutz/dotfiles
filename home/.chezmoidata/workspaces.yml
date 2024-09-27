@@ -2,27 +2,44 @@ workspaces:
   - name: home
     icon: 
     shortcut: h
+    monitor: main
+
   - name: alt
     icon: 󰻺
     shortcut: o
-  - name: ref
-    icon: 
-    shortcut: r
+    monitor: main
+
   - name: design
     icon: 
     shortcut: d
+    monitor: main
+
   - name: slack
     icon: 
     shortcut: s
-  - name: zoom
-    icon: 󰖠
-    shortcut: z
+    monitor: main
+
   - name: chat
     icon: 󰭹
     shortcut: c
+    monitor: main
+
+  - name: ref
+    icon: 
+    shortcut: r
+    monitor: secondary
+
+  - name: zoom
+    icon: 󰖠
+    shortcut: z
+    monitor: secondary
+
   - name: spotify
     icon: 
     shortcut: p
+    monitor: secondary
+
   - name: utils
     icon: 
     shortcut: u
+    monitor: secondary

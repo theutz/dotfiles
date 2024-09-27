@@ -50,57 +50,43 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 {{- $defaults := (dict
   "cmd" "sketchybar --default"
   "args" (list
-    "padding_left"        "5"
-    "padding_right"       "5"
-    "icon.font"           (list .fonts.mono.family "Bold"   .fonts.mono.size | join ":" | quote)
-    "label.font"          (list .fonts.mono.family "Normal" .fonts.mono.size | join ":" | quote)
-    "icon.color"          (print "0xff" (index .theme 4 | trimPrefix "#"))
-    "label.color"         (print "0xff" (index .theme 7 | trimPrefix "#"))
+    "background.height"   "24"
+    "icon.color"          (print "0xff" (index .theme 3 | trimPrefix "#"))
+    "icon.font.family"    (.fonts.mono.family | quote)
+    "icon.font.size"      "18"
     "icon.padding_left"   "4"
     "icon.padding_right"  "4"
-    "label.padding_left"  "4"
-    "label.padding_right" "4"))
+    "label.color"         (print "0xff" (index .theme 7 | trimPrefix "#"))
+    "label.font.family"   (.fonts.mono.family | quote)
+    "label.font.size"     "16"
+    "label.padding_left"  "0"
+    "label.padding_right" "8"
+    "padding_left"        "5"
+    "padding_right"       "5"))
 }}
 {{ template "sb" $defaults }}
 
-##### Adding Mission Control Space Indicators #####
-# Let's add some mission control spaces:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces.
+##### Adding AeroSpace Space Indicators #####
 
 sketchybar --add event aerospace_workspace_change \
-  --add event aerospace_mode_change
-{{- /*
-SPACE_ICONS=()
-while IFS= read -r line; do
-  SPACE_ICONS+=("$line")
-done <<< "$(aerospace list-workspaces --all)"
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid="${SPACE_ICONS[i]}"
-  sketchybar --add item space."$sid" left \
-    --set space."$sid" \
-      icon="$sid" \
-      icon.padding_left=7 \
-      icon.padding_right=7 \
-      label.drawing=on \
-      background.color=0x40ffffff \
-      background.corner_radius=5 \
-      background.drawing=on \
-      script="$PLUGIN_DIR/aerospace.sh" \
-      click_script="$PLUGIN_DIR/aerospace-switch.sh" \
-    --subscribe space."$sid" aerospace_workspace_change
-done */}}
+           --add event aerospace_mode_change
+
 {{ range $i, $v := .workspaces -}}
   {{- $icon := get $v "icon" }}
   {{- $label := get $v "name" }}
   {{- $key := get $v "shortcut" }}
 sketchybar --add item space.{{ $label }} left \
            --set space.{{ $label }} \
-                 label="({{ $key }}) {{ $label }}" \
-                 icon="{{ $icon }}" \
-                 icon.padding_left=7 \
-                 icon.padding_right=7 \
+                 padding_left=0 \
+                 padding_right=12 \
+                 label="{{ $label }}" \
+                 label.font.size=14 \
+                 label.padding_left=8 \
+                 label.padding_right=0 \
+                 icon="{{ $icon }} {{ $key }}" \
+                 icon.padding_left=0 \
+                 icon.padding_right=0 \
+                 icon.font.size="16" \
                  background.color=0x33ffffff \
                  background.corner_radius=5 \
                  script="$PLUGIN_DIR/aerospace.sh" \
@@ -116,9 +102,7 @@ sketchybar --add item chevron left \
            --set chevron icon= label.drawing=off \
            --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched \
-           --add item aerospace_mode left script="$PLUGIN_DIR/aerospace_mode.sh" \
-           --set aerospace_mode icon="󱎯 "
+           --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
@@ -138,8 +122,20 @@ sketchybar --add item clock right \
            --subscribe volume volume_change \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
-           --add alias "Mullvad VPN" right
+           --subscribe battery system_woke power_source_change \
+           {{- $aliases := (list "Mullvad VPN" "TextInputMenuAgent" "AeroSpace") }}
+           {{ range $i, $v := $aliases -}}
+           --add alias {{ $v | quote }} right \
+           --set {{ $v | quote }} \
+                 alias.color=0xff{{ index $.theme 4 | trimPrefix "#" }} \
+                 icon.padding_left=0 \
+                 icon.padding_right=0 \
+                 label.padding_left=0 \
+                 label.padding_right=0 \
+                 background.padding_left=0 \
+                 background.padding_right=0
+                 {{- if lt (add 1 $i) (len $aliases) }} \{{end}}
+           {{ end }}
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

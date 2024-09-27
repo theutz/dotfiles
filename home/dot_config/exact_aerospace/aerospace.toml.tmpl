@@ -1,5 +1,10 @@
 # vim: fdm=marker fdl=0 fmr=\ »»»,\ ««« cms=\ #\ %s
 
+{{- define "workspace-by-name" }}
+{{- $index := jq (print "map(.name == \"" .name "\") | index(true)") .workspaces }}
+{{- $name := jq (print "map(select(.name == \"" .name "\")) | first | .name") .workspaces }}
+{{- $index | first | add 1 }}-{{ $name | first }}
+{{- end }}
 start-at-login                                                  = true
 after-startup-command                                           = [
   'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
@@ -35,61 +40,68 @@ EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
 [workspace-to-monitor-force-assignment]
-{{ range $i, $v := .workspaces }}
-  {{- $monitor := le $i 4 | ternary "main" "samsung" }}
-  {{- (list (get $v "name") ($monitor | quote)) | join " = " | nindent 0 }}
+{{ range $v := .workspaces }}
+{{ template "workspace-by-name" (deepCopy $ | merge (dict "name" $v.name))}} = {{ $v.monitor | quote }}
 {{- end }}
 
 # Callbacks
 # run `aerospace list-apps` to see all current app ids
+{{- range $v := (list
+  "net.mullvad.vpn"
+  "com.macpaw.CleanMyMac-setapp"
+  "org.hammerspoon.Hammerspoon"
+  "com.fivegencare.com.motorola.nursery"
+  "com.xiaomi.mihome")
+}}
+{{- with (deepCopy $ | merge (dict "name" "utils")) }}
 
 [[on-window-detected]]
-if.app-id = 'net.mullvad.vpn'
-run       = ['layout floating', 'move-node-to-workspace utils']
+if.app-id = {{ $v | quote }}
+run       = ['layout floating', 'move-node-to-workspace {{ template "workspace-by-name" . }}']
 
-[[on-window-detected]]
-if.app-id = 'com.macpaw.CleanMyMac-setapp'
-run       = ['layout floating', 'move-node-to-workspace utils']
+{{- end }}
+{{- end }}
 
-[[on-window-detected]]
-if.app-id = 'org.hammerspoon.Hammerspoon'
-run       = ['layout floating', 'move-node-to-workspace utils']
-
-[[on-window-detected]]
-if.app-id = 'com.xiaomi.mihome'
-run       = ['layout floating', 'move-node-to-workspace utils']
+{{ with (deepCopy $ | merge (dict "name" "ref")) -}}
 
 [[on-window-detected]]
 if.app-id = 'com.kapeli.dashdoc'
-run       = 'move-node-to-workspace ref'
+run       = 'move-node-to-workspace {{ template "workspace-by-name" . }}'
+{{- end }}
+
+{{- range $v := (list
+  "ru.keepcoder.Telegram"
+  "net.whatsapp.WhatsApp"
+  "com.apple.MobileSMS"
+) }}
+{{- with (deepCopy $ | merge (dict "name" "chat")) }}
 
 [[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
-run       = 'move-node-to-workspace chat'
+if.app-id = {{ $v | quote }}
+run       = 'move-node-to-workspace {{ template "workspace-by-name" . }}'
+{{- end }}
+{{- end }}
 
-[[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp'
-run       = 'move-node-to-workspace chat'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.MobileSMS'
-run       = 'move-node-to-workspace chat'
+{{- with (deepCopy . | merge (dict "name" "spotify")) }}
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run       = 'move-node-to-workspace spotify'
+run       = 'move-node-to-workspace {{ template "workspace-by-name" . }}'
+{{- end }}
+
+{{- with (deepCopy . | merge (dict "name" "slack")) }}
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run       = 'move-node-to-workspace slack'
+run       = 'move-node-to-workspace {{ template "workspace-by-name" . }}'
+{{- end }}
+
+{{- with (deepCopy . | merge (dict "name" "zoom")) }}
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-run       = 'move-node-to-workspace zoom'
-
-[[on-window-detected]]
-if.app-id = 'com.fivegencare.com.motorola.nursery'
-run       = ['layout floating', 'move-node-to-workspace utils']
+run       = 'move-node-to-workspace {{ template "workspace-by-name" . }}'
+{{- end }}
 
 # Keybinding Reference
 # All possible keys:
@@ -132,37 +144,42 @@ z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-bind
 
 [mode.normal.binding]
 
-e                   = [
+e = [
   'mode edit',
   'exec-and-forget {{ (includeTemplate "borders/edit.tmpl" .) | trim }}',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=edit'
 ]
-f                   = "layout floating tiling"
-h                   = 'focus left'
-i                   = 'layout accordion tiles'
-j                   = 'focus down'
-k                   = 'focus up'
-l                   = 'focus right'
-o                   = 'layout horizontal vertical'
-r                   = [
+f = "layout floating tiling"
+h = 'focus left'
+i = 'layout accordion tiles'
+j = 'focus down'
+k = 'focus up'
+l = 'focus right'
+o = 'layout horizontal vertical'
+r = [
   'exec-and-forget sketchybar --reload',
   'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
   'mode main',
   'reload-config',
   'exec-and-forget noti -t aerospace -m "Config reloaded!"',
 ]
-x                   = 'close --quit-if-last-window'
-backslash           = 'balance-sizes'
-enter               = 'fullscreen'
-equal               = 'resize smart +50'
-esc                 = [
+w = [
+  'mode workspace',
+  'exec-and-forget {{ (includeTemplate "borders/workspace.tmpl" .) | trim }}',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=workspace'
+]
+x         = 'close --quit-if-last-window'
+backslash = 'balance-sizes'
+enter     = 'fullscreen'
+equal     = 'resize smart +50'
+esc       = [
   'mode main',
   'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'
 ]
-leftSquareBracket   = 'workspace prev'
+leftSquareBracket   = 'workspace --wrap-around prev'
 minus               = 'resize smart -50'
-rightSquareBracket  = 'workspace next'
+rightSquareBracket  = 'workspace --wrap-around next'
 semicolon           = 'focus-monitor --wrap-around next'
 
 alt-h                  = 'join-with left'
@@ -170,22 +187,38 @@ alt-j                  = 'join-with down'
 alt-k                  = 'join-with up'
 alt-l                  = 'join-with right'
 alt-semicolon          = 'move-node-to-monitor --wrap-around next'
-alt-leftSquareBracket  = 'move-node-to-workspace prev'
-alt-rightSquareBracket = 'move-node-to-workspace next'
+alt-leftSquareBracket  = 'move-node-to-workspace --wrap-around prev'
+alt-rightSquareBracket = 'move-node-to-workspace --wrap-around next'
 
-shift-h                  = 'move left'
-shift-j                  = 'move down'
-shift-k                  = 'move up'
-shift-l                  = 'move right'
-shift-semicolon          = [
-  'trigger-binding --mode normal alt-semicolon',
-  'focus-monitor --wrap-around next'
+shift-h = 'move left'
+shift-j = 'move down'
+shift-k = 'move up'
+shift-l = 'move right'
+shift-semicolon          = [ 'trigger-binding --mode normal alt-semicolon',          'focus-monitor --wrap-around next' ]
+shift-leftSquareBracket  = [ 'trigger-binding --mode normal alt-leftSquareBracket',  'workspace --wrap-around prev' ]
+shift-rightSquareBracket = [ 'trigger-binding --mode normal alt-rightSquareBracket', 'workspace --wrap-around next' ]
+
+[mode.workspace.binding]
+
+esc       = [
+  'mode normal',
+  'exec-and-forget {{ (includeTemplate "borders/normal.tmpl" .) | trim }}',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal'
 ]
-shift-leftSquareBracket  = [
-  'trigger-binding --mode normal alt-leftSquareBracket',
-  'workspace prev'
+{{ range $i, $v := .workspaces }}
+{{- $index := (add 1 $i) }}
+{{- $name := (printf "%d-%s" $index $v.name)}}
+{{ $v.shortcut }} = [
+  'workspace {{ $name }}',
+  'trigger-binding --mode workspace esc'
 ]
-shift-rightSquareBracket = [
-  'trigger-binding --mode normal alt-rightSquareBracket',
-  'workspace next'
+alt-{{ $v.shortcut }} = [
+  'move-node-to-workspace {{ $name }}',
+  'trigger-binding --mode workspace esc'
 ]
+shift-{{ $v.shortcut }} = [
+  'move-node-to-workspace {{ $name }}',
+  'trigger-binding --mode workspace {{ $v.shortcut }}',
+  'trigger-binding --mode workspace esc'
+]
+{{ end }}
