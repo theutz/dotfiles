@@ -1,3 +1,20 @@
+{{ define "sb" }}
+  {{- $indent := len .cmd }}
+  {{- $args := .args | chunk 2 }}
+  {{- print "\n" .cmd }}
+  {{- range $i, $v := $args }}
+    {{- $isFirst := eq $i 0 }}
+    {{- $isLast := eq (add $i 1) (len $args) }}
+    {{- $v = $v | join "=" }}
+    {{- if $isFirst }}
+      {{- printf " %s \\" $v }}
+    {{- else if $isLast }}
+      {{- nindent $indent $v }}
+    {{- else }}
+      {{- cat $v "\\" | nindent $indent  }}
+    {{- end }}
+  {{- end }}
+{{- end -}}
 # This is a demo config to showcase some of the most important commands.
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
@@ -12,33 +29,38 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-{{ $args := (list
-  "position" "top"
-  "height" "40"
-  "blur_radius" "30"
-  "color" (print "0x80" (index .theme 0 | trimPrefix "#"))
-  "display" "all"
-) | chunk 2 -}}
-sketchybar --bar {{- range $a := $args }} {{ $a | join "=" }}{{ end }}
+{{- $bar := (dict
+  "cmd" "sketchybar --bar"
+  "args" (list
+      "position"    "top"
+      "height"      "40"
+      "blur_radius" "10"
+      "color"       (print "0x80" (index .theme 0 | trimPrefix "#"))
+      "display"     "all"
+      "shadow"      "off"))
+}}
+{{ template "sb" $bar }}
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-default=(
-  padding_left=5
-  padding_right=5
-  icon.font="{{ .fonts.mono.family }}:Bold:{{ .fonts.mono.size }}.0"
-  label.font="{{ .fonts.mono.family }}:Bold:{{ .fonts.mono.size }}.0"
-  icon.color=0xff{{  index .theme 4 | trimPrefix "#" }}
-  label.color=0xff{{ index .theme 7 | trimPrefix "#" }}
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
-)
-sketchybar --default "${default[@]}"
+{{- $defaults := (dict
+  "cmd" "sketchybar --default"
+  "args" (list
+    "padding_left"        "5"
+    "padding_right"       "5"
+    "icon.font"           (list .fonts.mono.family "Bold"   .fonts.mono.size | join ":" | quote)
+    "label.font"          (list .fonts.mono.family "Normal" .fonts.mono.size | join ":" | quote)
+    "icon.color"          (print "0xff" (index .theme 4 | trimPrefix "#"))
+    "label.color"         (print "0xff" (index .theme 7 | trimPrefix "#"))
+    "icon.padding_left"   "4"
+    "icon.padding_right"  "4"
+    "label.padding_left"  "4"
+    "label.padding_right" "4"))
+}}
+{{ template "sb" $defaults }}
 
 ##### Adding Mission Control Space Indicators #####
 # Let's add some mission control spaces:
