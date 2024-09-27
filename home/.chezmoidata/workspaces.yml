@@ -5,12 +5,12 @@ workspaces:
   - name: alt
     icon: 󰻺
     shortcut: o
-  - name: docs
+  - name: ref
     icon: 
-    shortcut: d
+    shortcut: r
   - name: design
     icon: 
-    shortcut: f
+    shortcut: d
   - name: slack
     icon: 
     shortcut: s

@@ -96,16 +96,16 @@ done */}}
   {{- $key := get $v "shortcut" }}
 sketchybar --add item space.{{ $label }} left \
            --set space.{{ $label }} \
-                 label="[{{ $key }}] {{ $label }}" \
+                 label="({{ $key }}) {{ $label }}" \
                  icon="{{ $icon }}" \
                  icon.padding_left=7 \
                  icon.padding_right=7 \
-                 background.color=0xffffffff \
+                 background.color=0x33ffffff \
                  background.corner_radius=5 \
                  script="$PLUGIN_DIR/aerospace.sh" \
                  click_script="$PLUGIN_DIR/aerospace-switch.sh" \
            --subscribe space.{{ $label }} aerospace_workspace_change
-{{ end -}}
+{{ end }}
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar, where

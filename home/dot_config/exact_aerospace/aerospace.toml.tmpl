@@ -45,55 +45,51 @@ VISUAL = 'neovide --fork'
 
 [[on-window-detected]]
 if.app-id = 'net.mullvad.vpn'
-run       = ['layout floating', 'move-node-to-workspace 9']
+run       = ['layout floating', 'move-node-to-workspace utils']
 
 [[on-window-detected]]
 if.app-id = 'com.macpaw.CleanMyMac-setapp'
-run       = ['layout floating', 'move-node-to-workspace 9']
+run       = ['layout floating', 'move-node-to-workspace utils']
 
 [[on-window-detected]]
 if.app-id = 'org.hammerspoon.Hammerspoon'
-run       = ['layout floating', 'move-node-to-workspace 9']
+run       = ['layout floating', 'move-node-to-workspace utils']
 
 [[on-window-detected]]
 if.app-id = 'com.xiaomi.mihome'
-run       = ['layout floating', 'move-node-to-workspace 9']
-
-[[on-window-detected]]
-if.app-id = 'com.checkitt'
-run       = 'move-node-to-workspace 8'
+run       = ['layout floating', 'move-node-to-workspace utils']
 
 [[on-window-detected]]
 if.app-id = 'com.kapeli.dashdoc'
-run       = 'move-node-to-workspace 3'
+run       = 'move-node-to-workspace ref'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
-run       = 'move-node-to-workspace 4'
+run       = 'move-node-to-workspace chat'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run       = 'move-node-to-workspace 4'
+run       = 'move-node-to-workspace chat'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run       = 'move-node-to-workspace 4'
+run       = 'move-node-to-workspace chat'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run       = 'move-node-to-workspace 5'
+run       = 'move-node-to-workspace spotify'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run       = 'move-node-to-workspace 6'
+run       = 'move-node-to-workspace slack'
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-run       = 'move-node-to-workspace 7'
+run       = 'move-node-to-workspace zoom'
 
 [[on-window-detected]]
 if.app-id = 'com.fivegencare.com.motorola.nursery'
-run       = ['layout floating', 'move-node-to-workspace 9']
+run       = ['layout floating', 'move-node-to-workspace utils']
 
 # Keybinding Reference
 # All possible keys:
@@ -136,15 +132,6 @@ z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-bind
 
 [mode.normal.binding]
 
-1                   = 'workspace 1'
-2                   = 'workspace 2'
-3                   = 'workspace 3'
-4                   = 'workspace 4'
-5                   = 'workspace 5'
-6                   = 'workspace 6'
-7                   = 'workspace 7'
-8                   = 'workspace 8'
-9                   = 'workspace 9'
 e                   = [
   'mode edit',
   'exec-and-forget {{ (includeTemplate "borders/edit.tmpl" .) | trim }}',
@@ -178,15 +165,6 @@ minus               = 'resize smart -50'
 rightSquareBracket  = 'workspace next'
 semicolon           = 'focus-monitor --wrap-around next'
 
-alt-1                  = 'move-node-to-workspace 1'
-alt-2                  = 'move-node-to-workspace 2'  
-alt-3                  = 'move-node-to-workspace 3' 
-alt-4                  = 'move-node-to-workspace 4' 
-alt-5                  = 'move-node-to-workspace 5' 
-alt-6                  = 'move-node-to-workspace 6'
-alt-7                  = 'move-node-to-workspace 7' 
-alt-8                  = 'move-node-to-workspace 8'
-alt-9                  = 'move-node-to-workspace 9'
 alt-h                  = 'join-with left'
 alt-j                  = 'join-with down'
 alt-k                  = 'join-with up'
@@ -195,42 +173,6 @@ alt-semicolon          = 'move-node-to-monitor --wrap-around next'
 alt-leftSquareBracket  = 'move-node-to-workspace prev'
 alt-rightSquareBracket = 'move-node-to-workspace next'
 
-shift-1 = [
-  'trigger-binding --mode normal alt-1',
-  'workspace 1'
-]
-shift-2 = [
-  'trigger-binding --mode normal alt-2',
-  'workspace 2'
-]
-shift-3 = [
-  'trigger-binding --mode normal alt-3',
-  'workspace 3'
-]
-shift-4 = [
-  'trigger-binding --mode normal alt-4',
-  'workspace 4'
-]
-shift-5 = [
-  'trigger-binding --mode normal alt-5',
-  'workspace 5'
-]
-shift-6 = [
-  'trigger-binding --mode normal alt-6',
-  'workspace 6'
-]
-shift-7 = [
-  'trigger-binding --mode normal alt-7',
-  'workspace 7'
-]
-shift-8 = [
-  'trigger-binding --mode normal alt-8',
-  'workspace 8'
-]
-shift-9 = [
-  'trigger-binding --mode normal alt-9',
-  'workspace 9'
-]
 shift-h                  = 'move left'
 shift-j                  = 'move down'
 shift-k                  = 'move up'
