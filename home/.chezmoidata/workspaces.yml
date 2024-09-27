@@ -1,19 +1,28 @@
 workspaces:
-  - name: main
+  - name: home
     icon: 
-  - name: other
+    shortcut: h
+  - name: alt
     icon: 󰻺
+    shortcut: o
   - name: docs
     icon: 
+    shortcut: d
   - name: design
     icon: 
+    shortcut: f
   - name: slack
     icon: 
-  - name: webcam
+    shortcut: s
+  - name: zoom
     icon: 󰖠
+    shortcut: z
   - name: chat
     icon: 󰭹
-  - name: watch
-    icon: 
+    shortcut: c
+  - name: spotify
+    icon: 
+    shortcut: p
   - name: utils
     icon: 
+    shortcut: u

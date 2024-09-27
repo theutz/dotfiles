@@ -93,13 +93,14 @@ done */}}
 {{ range $i, $v := .workspaces -}}
   {{- $icon := get $v "icon" }}
   {{- $label := get $v "name" }}
+  {{- $key := get $v "shortcut" }}
 sketchybar --add item space.{{ $label }} left \
            --set space.{{ $label }} \
-                 label="{{ $label }}" \
+                 label="[{{ $key }}] {{ $label }}" \
                  icon="{{ $icon }}" \
                  icon.padding_left=7 \
                  icon.padding_right=7 \
-                 background.color=0x40ffffff \
+                 background.color=0xffffffff \
                  background.corner_radius=5 \
                  script="$PLUGIN_DIR/aerospace.sh" \
                  click_script="$PLUGIN_DIR/aerospace-switch.sh" \
