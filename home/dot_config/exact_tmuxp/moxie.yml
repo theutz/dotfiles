@@ -9,5 +9,5 @@ windows:
     panes:
       - shell: nvim
         focus: true
-      - shell: just up
+      - shell: just serve
       - blank
