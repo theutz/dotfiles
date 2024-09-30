@@ -1,8 +1,0 @@
-frame = "transparent"
-maximized = false
-title-hidden = false
-
-[font]
-normal = { family = "BlexMono Nerd Font Mono", style = "Regular" }
-bold = { family = "BlexMono Nerd Font Mono", style = "Medium" }
-size = 14
