@@ -1,6 +1,6 @@
 fonts:
   mono:
-    family: "IosevkaTerm Nerd Font"
+    family: "JetBrainsMono Nerd Font"
     size: 16
     height: 1.3
     weight: 400
