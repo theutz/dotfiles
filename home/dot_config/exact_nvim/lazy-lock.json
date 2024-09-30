@@ -6,7 +6,7 @@
   "SchemaStore.nvim": { "branch": "main", "commit": "63836d8d9e17755c67919f5840ead0efd0bc0098" },
   "aerial.nvim": { "branch": "master", "commit": "140f48fb068d21c02e753c63f7443649e55576f0" },
   "alpha-nvim": { "branch": "main", "commit": "b6f4129302db197a7249e67a90de3f2b676de13e" },
-  "avante.nvim": { "branch": "main", "commit": "bac46cee83ce532d597e6ee7da844d448f8c24cc" },
+  "avante.nvim": { "branch": "main", "commit": "0705234991d03170a72582085dc508600a03a779" },
   "better-digraphs.nvim": { "branch": "master", "commit": "5b2c63418d1e2c91d17f6d4e966bdafc5072a8d9" },
   "bluloco.nvim": { "branch": "main", "commit": "07f4b5cca8cfe31aad69ab5c1be0f6a0715a8d2e" },
   "boole.nvim": { "branch": "main", "commit": "7b4a3dae28e3b2497747aa840439e9493cabdc49" },
