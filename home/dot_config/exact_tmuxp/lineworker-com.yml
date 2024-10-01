@@ -9,4 +9,6 @@ windows:
     window_name: main
   - panes:
       - shell_command: just dev
+        environment:
+          SHELL: "/opt/homebrew/bin/zsh"
     window_name: servers
