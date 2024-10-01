@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# flake.lock hash {{ include "dot_config/nix-darwin/flake.lock" | sha256sum }}
+# flake.nix hash {{ include "dot_config/nix-darwin/flake.nix" | sha256sum }}
+
+darwin-rebuild switch --flake ~/.config/nix-darwin
+
+# vim: ft=sh.tmpl
