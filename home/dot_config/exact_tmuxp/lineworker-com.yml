@@ -8,8 +8,5 @@ windows:
         focus: true
     window_name: main
   - panes:
-      - just dev
+      - shell_command: just dev
     window_name: servers
-  - panes:
-      - lnav storage/logs/*.log
-    window_name: logs
