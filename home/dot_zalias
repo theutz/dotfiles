@@ -102,7 +102,6 @@ alias e-bash='chezmoi edit --watch --apply ~/.bashrc ~/.bash_profile'
 alias e-lg='chezmoi edit --watch --apply "$(lazygit -cd)/config.yml"'
 alias e-aero='chezmoi edit --watch --apply ~/.config/aerospace/aerospace.toml'
 alias e-bar='chezmoi edit --watch --apply ~/.config/sketchybar'
-alias e-nix='chezmoi edit --watch --apply ~/.config/nix-darwin/flake.nix'
 #  «««
 
 # tmux »»»
