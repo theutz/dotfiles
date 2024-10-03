@@ -1,10 +1,11 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
 add_newline = true
 
 [directory]
-truncate_to_repo = true
 fish_style_pwd_dir_length = 2
+truncate_to_repo = true
+
+[shell]
+disabled = false
 
 [sudo]
 disabled = false
