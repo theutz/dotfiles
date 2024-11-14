@@ -119,7 +119,9 @@
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vim-jinja2-syntax": { "branch": "master", "commit": "2c17843b074b06a835f88587e1023ceff7e2c7d1" },
   "vim-just": { "branch": "main", "commit": "cd11f4bb51ae576daae48a27c1c0f98afd59e52c" },
+  "vim-wakatime": { "branch": "master", "commit": "f699e30ca1ba0c7f316847316fd0ba19d3ee51c1" },
   "which-key.nvim": { "branch": "main", "commit": "68e37e12913a66b60073906f5d3f14dee0de19f2" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
-  "yanky.nvim": { "branch": "main", "commit": "f9b905994cccf3c55f41af3a0a1f4c76c844e411" }
+  "yanky.nvim": { "branch": "main", "commit": "f9b905994cccf3c55f41af3a0a1f4c76c844e411" },
+  "yazi.nvim": { "branch": "main", "commit": "d83466fc9dd0fb9b84ad95faa87de610cfd01754" }
 }
