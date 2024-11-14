@@ -1,4 +1,0 @@
-source ~/.config/tig/vim.tig
-
-color cursor black cyan
-color title-focus black magenta
