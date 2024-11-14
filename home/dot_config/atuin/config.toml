@@ -1,10 +1,13 @@
 auto_sync = true
-enter_accept = true
 dialect = "us"
+enter_accept = true
 filter_mode = "session"
-search_mode = "fuzzy"
 filter_mode_shell_up_keybinding = "session"
 inline_height = 10
 keymap_mode = "vim-normal"
+search_mode = "fuzzy"
 style = "compact"
 sync_frequency = "1h"
+
+[theme]
+name = "autumn"
