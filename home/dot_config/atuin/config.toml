@@ -1,6 +1,8 @@
 auto_sync = true
-enter_accept = false
+enter_accept = true
+dialect = "us"
 filter_mode = "session"
+search_mode = "fuzzy"
 filter_mode_shell_up_keybinding = "session"
 inline_height = 10
 keymap_mode = "vim-normal"

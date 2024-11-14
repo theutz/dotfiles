@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "357fb1d03c96cdd7adbad6d0d0b5fe3c",
+    "content-hash": "55d49ca7fbc8a7e8c31282cffcd4b7bf",
     "packages": [
         {
             "name": "beyondcode/expose",
@@ -1735,16 +1735,16 @@
         },
         {
             "name": "laravel/valet",
-            "version": "v4.7.1",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/valet.git",
-                "reference": "467087c1559b78a52f9fae1294441247d138f1d7"
+                "reference": "ed36ab2076c7d0bbefee321fa3e97ab3aa6f18c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/valet/zipball/467087c1559b78a52f9fae1294441247d138f1d7",
-                "reference": "467087c1559b78a52f9fae1294441247d138f1d7",
+                "url": "https://api.github.com/repos/laravel/valet/zipball/ed36ab2076c7d0bbefee321fa3e97ab3aa6f18c4",
+                "reference": "ed36ab2076c7d0bbefee321fa3e97ab3aa6f18c4",
                 "shasum": ""
             },
             "require": {
@@ -1810,9 +1810,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/valet/issues",
-                "source": "https://github.com/laravel/valet/tree/v4.7.1"
+                "source": "https://github.com/laravel/valet/tree/v4.8.0"
             },
-            "time": "2024-06-25T21:01:48+00:00"
+            "time": "2024-09-03T15:33:07+00:00"
         },
         {
             "name": "league/commonmark",
@@ -6410,10 +6410,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
