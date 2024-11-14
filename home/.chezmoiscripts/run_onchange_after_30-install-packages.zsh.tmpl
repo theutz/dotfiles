@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+# .Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
+
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.osRelease.id "ubuntu" -}}
+sudo apt install gcc
+{{ end -}}
+{{ end -}}
+brew bundle --global --no-lock
+
+# vim: ft=sh.tmpl

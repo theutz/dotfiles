@@ -1,0 +1,143 @@
+#!/usr/bin/env -S just --working-directory . --justfile
+
+set shell := ["zsh", "-euo", "pipefail", "-c"]
+set export
+set positional-arguments
+set quiet
+
+JUST_CHOOSER := "gum filter"
+this := file_stem(justfile())
+
+[private]
+default:
+   $this --choose
+
+_dash docset *query:
+  open "dash://?query={{docset}}:{{encode_uri_component(query)}}"
+
+[group('builtin')]
+[no-quiet]
+@add topic +command:
+  #!/usr/bin/env zsh -euo pipefail
+  if
+    $this --dump --dump-format json |
+    jq -e --arg topic "$topic" '.recipes | keys[] | select(. == $topic) | length'
+  then
+    $this --dump |
+      sed -n '/^{{topic}}:/=' |
+      read line_number
+    (( line_number++ ))
+    nvim +$line_number $this
+    return
+  fi
+  if [[ "$@" == "dash" ]]; then
+    recipe='$this _dash $0 $@'
+  else
+    recipe="$@"
+  fi
+  cat <<-EOF >> {{justfile()}}
+
+  $topic:
+    $recipe
+  EOF
+
+[group('builtin')]
+edit:
+  ${(z)EDITOR} {{justfile()}}
+
+buku:
+  man buku
+
+laravel:
+  open https://laravel.com/docs
+
+nb *query:
+  $this _dash $0 $@
+
+tmuxp:
+  open https://tmuxp.git-pull.com/configuration/index.html
+
+valet:
+  open https://laravel.com/docs/valet
+
+gum *query:
+  $this _dash $0 $@
+
+yq:
+  man yq
+
+bats:
+  man bats
+
+just *query:
+  {{this}} _dash $0 $@
+
+brew:
+  open https://brew.sh
+
+asdf:
+  open https://asdf-vm.com/guide/getting-started.html
+
+composer:
+  open https://getcomposer.org/doc/
+
+doppler:
+  open https://docs.doppler.com/docs/start
+
+sttr *args:
+  {{this}} _dash $0 $@
+
+starship:
+  open https://starship.rs/config/
+
+alias cm := chezmoi
+chezmoi *flags:
+  #!/usr/bin/env zsh -euo pipefail
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -w|--web)
+        open https://www.chezmoi.io/user-guide/command-overview/
+        exit 0
+        shift
+        ;;
+    esac
+  done
+  if
+    chezmoi --help |
+    gum filter --strict |
+    sed -e 's/^  //' |
+    tr -s ' ' '\t' |
+    cut -f 1 |
+    read subcommand
+  then
+    chezmoi $subcommand --help |
+    gum pager
+  else
+    ! chezmoi --help |
+    gum pager
+  fi
+
+
+mods:
+  $this _dash $0 $@
+
+delta:
+  open https://dandavison.github.io/delta/
+
+zparseopts:
+  open https://gist.github.com/mattmc3/804a8111c4feba7d95b6d7b984f12a53
+
+sed:
+  open https://quickref.me/sed.html
+
+pandoc:
+  brew home pandoc
+
+prezto:
+  $this _dash $0 $@
+
+hammerspoon:
+  open https://www.hammerspoon.org/docs/index.html
+
+neovide:
+  neovide open https://neovide.dev/configuration.html#scale

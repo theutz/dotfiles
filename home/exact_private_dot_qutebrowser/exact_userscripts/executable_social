@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+urls=(
+  facebook.com
+  twitter.com
+  instagram.com
+  linkedin.com
+  bsky.app
+  hachyderm.io
+  reddit.com
+)
+count="${#urls[@]}"
+
+for url in $urls; do
+  echo "open -t https://$url" >> "$QUTE_FIFO"
+done
+
+echo "tab-focus -$count" >> $QUTE_FIFO

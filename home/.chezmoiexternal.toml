@@ -1,0 +1,13 @@
+[".config/tmux/plugins/tpm"]
+type = "git-repo"
+url = "git@github.com:tmux-plugins/tpm"
+refreshPeriod = "24h"
+exact = false
+
+[".zprezto"]
+type = "git-repo"
+url = "git@github.com:sorin-ionescu/prezto"
+refreshPeriod = "24h"
+exact = false
+clone.args = ['--recursive']
+pull.args = ['--recurse-submodules']

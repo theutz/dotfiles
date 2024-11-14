@@ -1,0 +1,57 @@
+[user]
+	name = Michael Utz
+	email = michael@theutz.com
+	signingkey = F73C931E48B95546!
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[merge]
+	autoStash = true
+	conflictStyle = diff3
+	tool = vimdiff
+[rebase]
+	autoStash = true
+[commit]
+	gpgSign = true
+[push]
+	gpgSign = false
+[tag]
+	gpgSign = true
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+  features = decorations
+	navigate = true
+  side-by-side = false
+[delta "interactive"]
+  keep-plus-minus-markers = false
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-style = file line-number syntax
+[diff]
+	colorMoved = default
+	tool = delta
+[mergetool]
+  keepBackup = false
+	prompt = false
+[mergetool "vimdiff"]
+  cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c 'wincmd l' -c 'norm ]c'
+[init]
+	defaultBranch = main
+[difftool]
+	prompt = false
+	trustExitCode = true
+; [url "ssh://git@github.com/"]
+; 	insteadOf = https://github.com/
+[submodule]
+	fetchJobs = 4
+[github]
+	user = theutz
+[alias]
+	recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG

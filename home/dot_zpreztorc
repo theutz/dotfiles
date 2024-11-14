@@ -1,0 +1,74 @@
+# vim: ft=zsh
+
+zstyle ':prezto:*:*' case-sensitive 'yes'
+
+zstyle ':prezto:*:*' color 'yes'
+
+zstyle ':prezto:load' zmodule 'attr' 'stat'
+
+zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'tmux' \
+  'homebrew' \
+  'archive' \
+  'rsync' \
+  'command-not-found' \
+  'docker' \
+  'osx' \
+  'git' \
+  'utility' \
+  'ssh' \
+  'completion' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'autosuggestions'
+
+zstyle ':prezto:module:autosuggestions:color' found 'fg=cyan'
+
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+zstyle ':prezto:module:editor' dot-expansion 'no'
+
+zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+zstyle ':prezto:module:prompt' theme 'sorin'
+
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'line' \
+  'cursor' \
+  'root'
+
+zstyle ':prezto:module:syntax-highlighting' styles \
+  'builtin' 'fg=magenta' \
+'command' 'fg=green' \
+'function' 'bg=blue'
+
+zstyle ':prezto:module:syntax-highlighting' pattern \
+  'rm*-rf*' 'fg=white,bold,bg=red'
+
+zstyle ':prezto:module:terminal' auto-title 'yes'
+
+zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+
+zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+
+zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
+
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
+
+zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
+zstyle ':prezto:module:tmux:session' name 'main'
+
+zstyle ':prezto:module:utility' safe-ops 'yes'
+

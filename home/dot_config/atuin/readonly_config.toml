@@ -1,0 +1,8 @@
+auto_sync = true
+enter_accept = false
+filter_mode = "session"
+filter_mode_shell_up_keybinding = "session"
+inline_height = 10
+keymap_mode = "vim-normal"
+style = "compact"
+sync_frequency = "1h"

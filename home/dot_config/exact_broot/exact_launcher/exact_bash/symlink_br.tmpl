@@ -1,0 +1,5 @@
+{{ if eq .chezmoi.os "darwin" }}
+{{ .chezmoi.homeDir }}/Library/Application Support/org.dystroy.broot/launcher/bash/1
+{{ else }}
+{{ .chezmoi.homeDir }}/.local/share/broot/launcher/bash/1
+{{ end }}
