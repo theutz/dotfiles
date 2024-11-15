@@ -25,7 +25,7 @@ if [[ -z "$EDITOR" ]]; then
   export EDITOR='nvim'
 fi
 if [[ -z "$VISUAL" ]]; then
-  {{ if eq .chezmoi.os "darwin" }}
+  {{ if eq .chezmoi.os "darwin" -}}
   export VISUAL='neovide --no-fork'
   {{ else }}
   export VISUAL='${(z)EDITOR}'
@@ -49,12 +49,13 @@ if [[ -z "$LANG" ]]; then
 fi
 #  «««
 
-{{ if eq .chezmoi.os "linux" -}}
+{{- if eq .chezmoi.os "linux" }}
+
 # homebrew »»»
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 #  «««
-{{- end }}
 
+{{ end -}}
 
 # Paths »»»
 
@@ -122,3 +123,7 @@ fi
 # Rust »»»
 . "$HOME/.cargo/env"
 #  «««
+
+# tmux
+TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux"
+
