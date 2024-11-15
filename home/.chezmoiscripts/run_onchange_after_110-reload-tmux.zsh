@@ -1,8 +1,4 @@
 #!/usr/bin/env zsh
 
-# tmux.conf hash {{ include "dot_config/exact_tmux/tmux.conf.tmpl" | sha256sum }}
-
 tmux source-file ~/.config/tmux/tmux.conf \; \
   display-message "Config reloaded by chezmoi!"
-
-# vim: ft=sh.tmpl

@@ -1,62 +1,75 @@
-# vim: ft=sh fdm=marker fdl=0 fmr=\ »»»,\ «««
-
-# functions »»»
 function brew-readme() {
-  brew info "$1" --json |
-    jq -r '.|first|.urls.stable.url' |
-    gsed -e 's|^https\?://||' |
-    awk -F/ '{ print $1 "/" $2 "/" $3 }' |
-    xargs glow -p
+	gum spin -- brew info "$1" --json |
+		jq -r -f <(
+			cat <<-'jq'
+				.[0].urls.stable.url |
+					gsub("^https?://"; "") |
+					split("/")[0:3] |
+					join("/")
+			jq
+		) | xargs glow -p
 }
 
 function tmuxp-attach() {
-  local filename=$(tmuxp ls | fzf --tmux=left,30)
-  local file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
-  local session=$(yq '.session_name' "$file")
+	local filename
+	filename=$(tmuxp ls | fzf --tmux=left,30)
 
-  if ! tmux has -t "$session"; then
-    tmuxp load -d "$filename"
-  fi
+	local file
+	file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
 
-  if [[ -n "$TMUX" ]]; then
-    tmux switch-client -t "$session"
-  else
-    tmux attach-client -t "$session"
-  fi
+	local session
+	session=$(yq '.session_name' "$file")
+
+	if ! tmux has -t "$session"; then
+		tmuxp load -d "$filename"
+	fi
+
+	if [[ -n "$TMUX" ]]; then
+		tmux switch-client -t "$session"
+	else
+		tmux attach-client -t "$session"
+	fi
 }
 
 function tmuxp-edit() {
-  local filename=$(tmuxp ls | fzf --tmux=left,30)
-  local file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
+	local filename
+	filename=$(tmuxp ls | fzf --tmux=left,30)
 
-  if [[ -n "$TMUX" ]]; then
-    tmux popup -x 120 -y 90% -EE "chezmoi edit --watch --apply $file"
-  else
-    chezmoi edit --watch --apply $file
-  fi
+	local file
+	file="${XDG_CONFIG_HOME:-$HOME/.config}"/tmuxp/"$filename".yml
+
+	if [[ -n "$TMUX" ]]; then
+		tmux popup -x 120 -y 90% -EE "chezmoi edit --watch --apply $file"
+	else
+		chezmoi edit --watch --apply "$file"
+	fi
 }
 
 function oil() {
-  if [[ -z "$@" ]]; then
-    local user="$(gum input --header "user")"
-    if [[ -n "$user" ]]; then
-      user="$user@"
-    fi
-    local domain="$(gum input --header "domain")"
-    local filepath="$(gum input --header "path")"
-    nvim oil-ssh://$user$domain/$filepath
-  else
-    nvim oil-ssh://$@
-  fi
-}
-#  «««
+	if [[ -z "$*" ]]; then
+		local user
+		user="$(gum input --header "user")"
 
-# global aliases »»»
+		if [[ -n "$user" ]]; then
+			user="$user@"
+		fi
+
+		local domain
+		domain="$(gum input --header "domain")"
+		local filepath
+		filepath="$(gum input --header "path")"
+
+		nvim "oil-ssh://$user$domain/$filepath"
+	else
+		nvim "oil-ssh://$*"
+	fi
+}
+
+# global aliases
 alias -g P='| ${(z)PAGER}'
 alias -g HP='--help 2>&1 | ${(z)PAGER}'
-#  «««
 
-# chezmoi »»»
+# chezmoi
 alias cm='chezmoi'
 alias cma='chezmoi add'
 alias cmap='chezmoi apply'
@@ -87,37 +100,24 @@ alias cms='chezmoi status'
 alias cmsp='chezmoi source-path'
 alias cmtp='chezmoi target-path'
 alias cmup='chezmoi update'
-#  «««
 
-# edit config files »»»
-alias e-zsh='chezmoi edit --watch --apply ~/.z{alias,sh{env,rc},log{in,out},preztorc,profile,secrets}; exec zsh'
-alias e-nvim='chezmoi edit --watch --apply ~/.config/nvim'
-alias e-tmux='chezmoi edit --watch --apply ~/.config/tmux/tmux.conf'
-alias e-ham='chezmoi edit --watch --apply ~/.hammerspoon'
-alias e-tmuxp='chezmoi edit --watch --apply ~/.config/tmuxp'
-alias e-brew='chezmoi edit --watch --apply ~/.Brewfile'
-alias e-cms='nvim "$(chezmoi source-path)"/.chezmoiscripts; lazygit -p "$(chezmoi execute-template "{{ .chezmoi.config.sourceDir }}")"'
-alias e-wez='chezmoi edit --watch --apply ~/.config/wezterm/wezterm.lua'
-alias e-bash='chezmoi edit --watch --apply ~/.bashrc ~/.bash_profile'
-alias e-lg='chezmoi edit --watch --apply "$(lazygit -cd)/config.yml"'
-alias e-aero='chezmoi edit --watch --apply ~/.config/aerospace/aerospace.toml'
-alias e-bar='chezmoi edit --watch --apply ~/.config/sketchybar'
-alias e-nix='chezmoi edit --apply ~/.config/nix-darwin'
-#  «««
-
-# tmux »»»
+# tmux
 alias t='tmux'
 alias txp='tmuxp'
 alias txpls='tmuxp ls'
 alias txa='tmuxp-attach'
-#  «««
 
-# homebrew »»»
+# homebrew
+alias brewn='brew info'
 alias brewr='brew-readme'
-#  «««
+alias caskn='brew --cask info'
 
+# Other
 alias j='just'
 alias lg='lazygit'
 alias ls='eza --group --group-directories-first --icons'
 alias reload='exec zsh'
 alias rl='exec zsh'
+alias m='mise'
+
+# vim: ft=sh noet ts=4 sts=4 sw=4
