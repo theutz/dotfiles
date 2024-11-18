@@ -5,7 +5,7 @@ set -euo pipefail
 SCRIPT_NAME="${0:t}"
 
 log() {
-  gum log --prefix="$SCRIPT_NAME" "$@"
+  gum log --prefix="$SCRIPT_NAME" --structured "$@"
 }
 
 debug() {
@@ -19,16 +19,23 @@ export DEBUG
 
 clear_screen=true
 interval=6
+pesky_dir="${XDG_DATA_HOME:-$HOME/.local/share}/pesky"
+timesheet="$pesky_dir/timesheet.csv"
 
 args=()
 while [[ $# -gt 0 ]]; do
+  debug "parsing arg" "'$1'" "${2:-''}"
   case "$1" in
   --verbose | -v)
     DEBUG=true
     export DEBUG
     clear_screen=false
-    debug -- "parsed '$1'"
+    debug -- "parsing arg" "'$1'"
     shift 1
+    ;;
+  --timesheet | -t)
+    timesheet="$2"
+    shift 2
     ;;
   --interval | -i)
     debug -- "parsed '$1' as $2"
@@ -42,34 +49,20 @@ while [[ $# -gt 0 ]]; do
 done
 set -- "${args[@]}"
 
+for v in pesky_dir timesheet interval clear_screen; do
+  debug "setting" "$v" "${(P)v}"
+done
+
 while :; do
-  debug creating empty jrnl entry
-  jrnl EMPTY
-
-  debug popping up jrnl
-  tmux popup -EE jrnl -today --edit
-
-  if [[ "$clear_screen" == true ]]; then
-    debug clearing screen
-    clear
-  else
-    debug "not clearing screen"
-  fi
-
-  debug "listing today's entries"
-  jrnl -today
-
-  debug "initial minutes to wait $interval"
   minutes="$interval"
   while [[ "$minutes" -gt 0 ]]; do
-    debug "minutes left to wait $minutes"
+    debug remaining minutes "$minutes"
     gum spin --spinner moon \
       --title="Waiting for $minutes more minutes..." \
       -- \
       sleep 60
-    debug "subtracting one minute"
+    debug "subtracting 1 minute"
     minutes="$((minutes - 1))"
   done
-  debug "notifying of new chances"
-  noti -t pesky -m "time to update"
+  noti -t "$SCRIPT_NAME" -m "time to update"
 done

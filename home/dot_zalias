@@ -112,6 +112,23 @@ alias brewn='brew info'
 alias brewr='brew-readme'
 alias caskn='brew --cask info'
 
+# timewarrior
+alias tw1='timew day'
+alias tw30='timew month'
+alias tw7='timew week'
+alias tw='timew'
+alias twa='timewarrior annotate'
+alias twmv='timew move'
+alias twn='timew track'
+alias twrm='timew delete'
+alias twS='timew continue'
+alias tws='timew start'
+alias twt='timew tag'
+alias twT='timew untag'
+alias twtls='timew tags'
+alias twX='timew cancel'
+alias twx='timew stop'
+
 # Other
 alias j='just'
 alias lg='lazygit'
