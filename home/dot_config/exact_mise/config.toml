@@ -2,3 +2,7 @@
 go = "latest"
 frankenphp = "latest"
 node = "22"
+just = "latest"
+
+[settings]
+experimental = true
