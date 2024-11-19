@@ -1,6 +1,6 @@
 fonts:
   mono:
-    family: "ComicShannsMono Nerd Font"
-    size: 16
+    family: "MartianMono Nerd Font"
+    size: 14
     height: 1.2
-    weight: 400
+    weight: 500
