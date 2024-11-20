@@ -35,7 +35,7 @@ tokyonight:
     - "#86e1fc"
     - "#c8d3f5"
 
-  night: &tokyonight
+  night:
     - "#15161e"
     - "#f7768e"
     - "#9ece6a"
@@ -71,4 +71,59 @@ tokyonight:
     - "#7dcfff"
     - "#c0caf5"
 
-theme: *tokyonight
+rose_pine:
+  main: &theme
+    - "#191724"
+    - "#1f1d2e"
+    - "#26233a"
+    - "#6e6a86"
+    - "#908caa"
+    - "#e0def4"
+    - "#e0def4"
+    - "#524f67"
+    - "#eb6f92"
+    - "#f6c177"
+    - "#ebbcba"
+    - "#31748f"
+    - "#9ccfd8"
+    - "#c4a7e7"
+    - "#f6c177"
+    - "#524f67"
+
+  moon:
+    - "#232136"
+    - "#2a273f"
+    - "#393552"
+    - "#6e6a86"
+    - "#908caa"
+    - "#e0def4"
+    - "#e0def4"
+    - "#56526e"
+    - "#eb6f92"
+    - "#f6c177"
+    - "#ea9a97"
+    - "#3e8fb0"
+    - "#9ccfd8"
+    - "#c4a7e7"
+    - "#f6c177"
+    - "#56526e"
+
+  dawn:
+    - "#faf4ed"
+    - "#fffaf3"
+    - "#f2e9de"
+    - "#9893a5"
+    - "#797593"
+    - "#575279"
+    - "#575279"
+    - "#cecacd"
+    - "#b4637a"
+    - "#ea9d34"
+    - "#d7827e"
+    - "#286983"
+    - "#56949f"
+    - "#907aa9"
+    - "#ea9d34"
+    - "#cecacd"
+
+theme: *theme
