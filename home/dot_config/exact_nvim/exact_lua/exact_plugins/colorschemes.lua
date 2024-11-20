@@ -1,10 +1,10 @@
 local colors = {
   {
     "folke/tokyonight.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       transparent = true,
-      style = "moon",
+      style = "night",
       styles = {
         sidebars = "transparent",
         floats = "transparent",
@@ -46,9 +46,13 @@ local colors = {
     "nyoom-engineering/oxocarbon.nvim",
     enabled = true,
   },
+  {
+    "austinliuigi/smoke.nvim",
+    enabled = true,
+  },
 }
 
-local colorscheme = "oxocarbon"
+local colorscheme = "tokyonight"
 
 local plugins = {
   {
