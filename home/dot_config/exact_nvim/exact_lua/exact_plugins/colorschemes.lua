@@ -61,14 +61,28 @@ local colors = {
   },
   {
     "shaunsingh/nord.nvim",
-    enabled = true,
+    enabled = false,
     priority = 1000,
     lazy = false,
     init = function() vim.g.nord_disable_background = true end,
   },
+  {
+    "rose-pine/neovim",
+    enabled = true,
+    priority = 1000,
+    lazy = false,
+    name = "rose-pine",
+    opts = {
+      variant = "main",
+      dark_variant = "dawn",
+      styles = {
+        transparency = true,
+      },
+    },
+  },
 }
 
-local colorscheme = "nord"
+local colorscheme = "rose-pine"
 
 local plugins = {
   {
