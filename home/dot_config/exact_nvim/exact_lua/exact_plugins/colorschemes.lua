@@ -64,6 +64,7 @@ local colors = {
     enabled = true,
     priority = 1000,
     lazy = false,
+    init = function() vim.g.nord_disable_background = true end,
   },
 }
 
