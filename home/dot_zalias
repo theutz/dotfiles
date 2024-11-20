@@ -129,12 +129,16 @@ alias twtls='timew tags'
 alias twX='timew cancel'
 alias twx='timew stop'
 
+# mise
+alias m='mise'
+alias mr='mise run'
+alias mt='mise tasks --extended'
+
 # Other
 alias j='just'
 alias lg='lazygit'
 alias ls='eza --group --group-directories-first --icons'
 alias reload='exec zsh'
 alias rl='exec zsh'
-alias m='mise'
 
 # vim: ft=sh noet ts=4 sts=4 sw=4

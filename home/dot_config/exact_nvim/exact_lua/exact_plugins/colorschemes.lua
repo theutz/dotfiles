@@ -76,7 +76,7 @@ local colors = {
       variant = "main",
       dark_variant = "dawn",
       styles = {
-        transparency = true,
+        transparency = false,
       },
     },
   },
