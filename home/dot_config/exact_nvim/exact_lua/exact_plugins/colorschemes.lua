@@ -1,10 +1,10 @@
 local colors = {
   {
     "folke/tokyonight.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
       transparent = true,
-      style = "night",
+      style = "moon",
       styles = {
         sidebars = "transparent",
         floats = "transparent",
@@ -44,15 +44,24 @@ local colors = {
   },
   {
     "nyoom-engineering/oxocarbon.nvim",
-    enabled = true,
+    enabled = false,
   },
   {
     "austinliuigi/smoke.nvim",
+    enabled = false,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
     enabled = true,
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_mode = true,
+    },
   },
 }
 
-local colorscheme = "tokyonight"
+local colorscheme = "gruvbox"
 
 local plugins = {
   {
