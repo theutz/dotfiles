@@ -1,7 +1,6 @@
 [tools]
 go = "latest"
-frankenphp = "latest"
-node = "22"
+node = "latest"
 just = "latest"
 
 [settings]
