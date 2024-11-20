@@ -52,16 +52,22 @@ local colors = {
   },
   {
     "ellisonleao/gruvbox.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     priority = 1000,
     opts = {
       transparent_mode = true,
     },
   },
+  {
+    "shaunsingh/nord.nvim",
+    enabled = true,
+    priority = 1000,
+    lazy = false,
+  },
 }
 
-local colorscheme = "gruvbox"
+local colorscheme = "nord"
 
 local plugins = {
   {
