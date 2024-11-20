@@ -1,15 +1,14 @@
--- vim: fdm=indent fdl=1
 local colors = {
   {
     "folke/tokyonight.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
-      transparent = false,
+      transparent = true,
       style = "moon",
-      -- styles = {
-      --   sidebars = "transparent",
-      --   floats = "transparent",
-      -- },
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
       on_colors = function(c) c.border = c.blue0 end,
     },
   },
@@ -43,9 +42,13 @@ local colors = {
     lazy = false,
     priority = 1000,
   },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    enabled = true,
+  },
 }
 
-local colorscheme = "tokyonight"
+local colorscheme = "oxocarbon"
 
 local plugins = {
   {

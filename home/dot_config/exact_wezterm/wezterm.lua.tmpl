@@ -9,7 +9,7 @@ c:set_strict_mode(true)
 
 -- c.default_prog = { "zsh", "-c", "/opt/homebrew/bin/nu" }
 c.macos_window_background_blur = 50
-c.window_background_opacity = 1.0
+c.window_background_opacity = 0.8
 c.font = wezterm.font("{{ .fonts.mono.family }}", { weight = {{ .fonts.mono.weight }} })
 c.font_size = {{ .fonts.mono.size }}
 c.line_height = {{ .fonts.mono.height }}
@@ -38,7 +38,7 @@ local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Tokyo Night Moon"
 	else
-		return "Tokyo Night Day"
+		return "Oxocarbon Dark (Gogh)"
 	end
 end
 
