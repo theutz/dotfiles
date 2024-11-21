@@ -1,0 +1,25 @@
+---
+syntax: sql
+tags: [ sql, database ]
+---
+-- Date & Time
+CREATE TABLE IF NOT EXISTS records (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  timestamp TEXT NOT NULL DEFAULT (DATETIME('now', 'utc'))
+);
+
+-- Foreign Keys
+CREATE TABLE IF NOT EXISTS records (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS metadata (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  key TEXT,
+  value TEXT,
+  record_id INTEGER NOT NULL,
+  FOREIGN KEY (record_id) REFERENCES records (id)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
