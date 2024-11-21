@@ -16,4 +16,4 @@ pull.args = ['--recurse-submodules']
 type = "git-repo"
 url = "git@github.com:cheat/cheatsheets"
 refreshPeriod = "24h"
-exact = true
+exact = false
