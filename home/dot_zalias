@@ -69,9 +69,17 @@ function oil() {
 alias -g P='| ${(z)PAGER}'
 alias -g HP='--help 2>&1 | ${(z)PAGER}'
 
+chezmoi-add-deleted() {
+	chezmoi status |
+		awk -F' ' '/^ D/ { print "~/" $2 }' |
+		fzf -m |
+		xargs chezmoi add
+}
+
 # chezmoi
 alias cm='chezmoi'
 alias cma='chezmoi add'
+alias cmad='chezmoi-add-deleted'
 alias cmap='chezmoi apply'
 alias cmcat='chezmoi cat'
 alias cmch='chezmoi chattr'
