@@ -1,5 +1,5 @@
-{{ $active := index .theme 6 | trimPrefix "#" -}}
-{{ $inactive := index .theme 7 | trimPrefix "#" -}}
+{{ $active := index .theme 7 | trimPrefix "#" -}}
+{{ $inactive := index .theme 8 | trimPrefix "#" -}}
 {{ $args := (list
   "active_color" (print "0xff" $active)
   "inactive_color" (print "0x88" $inactive)
