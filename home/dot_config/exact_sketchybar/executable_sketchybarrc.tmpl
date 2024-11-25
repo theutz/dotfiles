@@ -15,7 +15,6 @@
     {{- end }}
   {{- end }}
 {{- end -}}
-# vim: ft=sh
 # This is a demo config to showcase some of the most important commands.
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
@@ -58,7 +57,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
     "icon.font.size"      "18"
     "icon.padding_left"   "4"
     "icon.padding_right"  "4"
-    "label.color"         (print "0xff" (index .theme 7 | trimPrefix "#"))
+    "label.color"         (print "0xff" (index .theme 3 | trimPrefix "#"))
     "label.font.family"   (.fonts.mono.family | quote)
     "label.font.size"     "16"
     "label.padding_left"  "0"
@@ -139,3 +138,5 @@ sketchybar --add item clock right \
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
+
+# vim: ft=sh.tmpl
