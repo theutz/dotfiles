@@ -1,4 +1,3 @@
-{{- /* vim ft=tmux.tmpl */ -}}
 # Smart pane switching with awareness of Neovim splits.
 bind-key -N "Switch pane left" -n C-h if -F "#{@pane-is-vim}" 'send-keys C-h'  'select-pane -L'
 bind-key -N "Switch pane down" -n C-j if -F "#{@pane-is-vim}" 'send-keys C-j'  'select-pane -D'

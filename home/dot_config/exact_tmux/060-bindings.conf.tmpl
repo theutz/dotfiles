@@ -1,4 +1,3 @@
-{{- /* vim: ft=tmux.tmpl */ -}}
 bind -n MouseDown1Status \
   display -d0 'line: #{mouse_status_line}, range: #{mouse_status_range}' \;\
   if -F '#{==:#{mouse_status_range},pane}' {

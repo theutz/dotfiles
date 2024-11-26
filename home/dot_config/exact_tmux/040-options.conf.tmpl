@@ -1,4 +1,3 @@
-{{- /* vim: ft=tmux.tmpl */ -}}
 set -g @seg-session "#[fg=#{E:@session}]#{@open-icon}#{E:@session-icon} #S#{?session_alerts, #{session_alerts},}#{E:@close-icon}"
 set -g @seg-pane-title "#{E:@pane-icon} #P #{?#{==:#{pane_title},#{host}},#{E:@cmd-icon}#[italics]#{pane_current_command}#[noitalics],#{E:@label-icon}#{pane_title}}"
 set -g @seg-pane "#{?pane_active,#[fg=#{E:@pane}]#{@open-icon},#{?pane_last,#[fg=#{E:@pane}],#[fg=#{E:@inactive} bold]}}#{E:@seg-pane-title}#{?pane_active,#{E:@close-icon},}"

@@ -1,10 +1,9 @@
-# vim: fdm=marker fdl=0 fmr=\ »»»,\ ««« cms=\ #\ %s
-
 {{- define "workspace-by-name" }}
-{{- $index := jq (print "map(.name == \"" .name "\") | index(true)") .workspaces }}
-{{- $name := jq (print "map(select(.name == \"" .name "\")) | first | .name") .workspaces }}
-{{- $index | first | add 1 }}-{{ $name | first }}
+  {{- $index := jq (print "map(.name == \"" .name "\") | index(true)") .workspaces }}
+  {{- $name := jq (print "map(select(.name == \"" .name "\")) | first | .name") .workspaces }}
+  {{- $index | first | add 1 }}-{{ $name | first }}
 {{- end }}
+
 start-at-login                                                  = true
 after-startup-command                                           = [
   'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',

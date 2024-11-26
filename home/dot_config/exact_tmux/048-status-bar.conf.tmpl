@@ -1,4 +1,3 @@
-{{- /* vim: ft=tmux.tmpl */ -}}
 set -g status 2
 set -g status-format[1] " #{E:@seg-stats}#[align=absolute-centre]#{?pane_in_mode,#[fg=#{E:@active}]#[reverse] #{pane_mode} #[noreverse]#[default],}#[align=right]#{E:@seg-info} "
 set -g status-interval 1
