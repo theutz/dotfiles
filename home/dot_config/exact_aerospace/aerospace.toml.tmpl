@@ -65,47 +65,46 @@ f13 = [
 ]
 
 [mode.normal.binding]
-{{- range $i, $v := .workspaces }}
-{{- $index := add $i 1 }}
+esc = [ 'mode main', 'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}' ]
+
+{{- range $i, $v := .workspaces -}}{{ $index := add $i 1 }}
 {{ $index }} = 'summon-workspace {{ $v.name }}'
 shift-{{ $index }} = ['move-node-to-workspace {{ $v.name }}', 'summon-workspace {{ $v.name }}']
 {{- end }}
 
-h = 'focus left'
-j = 'focus down'
-k = 'focus up'
-l = 'focus right'
+h       = 'focus left'
+shift-h = 'move left'
+alt-h   = 'join-with left'
 
-f = 'fullscreen'
+j       = 'focus down'
+shift-j = 'move down'
+alt-j   = 'join-with down'
 
-# f = "layout floating tiling"
+k       = 'focus up'
+shift-k = 'move up'
+alt-k   = 'join-with up'
+
+l       = 'focus right'
+shift-l = 'move right'
+alt-l   = 'join-with right'
+
+p       = 'workspace prev'
+shift-p = [ 'move-node-to-workspace prev', 'workspace prev' ]
+
+n       = 'workspace next'
+shift-n = [ 'move-node-to-workspace next', 'workspace next' ]
+
+semicolon       = 'focus-monitor next'
+alt-semicolon   = 'move-node-to-monitor next'
+
+b = "workspace-back-and-forth"
+f = "fullscreen"
 i = 'layout horizontal vertical'
 o = 'layout accordion tiles'
-x         = 'close --quit-if-last-window'
+
+x = 'close --quit-if-last-window'
+
 backslash = 'balance-sizes'
-enter     = 'fullscreen'
 equal     = 'resize smart +50'
-esc       = [
-  'mode main',
-  'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}'
-]
-leftSquareBracket   = 'workspace --wrap-around prev'
-minus               = 'resize smart -50'
-rightSquareBracket  = 'workspace --wrap-around next'
-semicolon           = 'focus-monitor --wrap-around next'
+minus     = 'resize smart -50'
 
-alt-h                  = 'join-with left'
-alt-j                  = 'join-with down'
-alt-k                  = 'join-with up'
-alt-l                  = 'join-with right'
-alt-semicolon          = 'move-node-to-monitor --wrap-around next'
-alt-leftSquareBracket  = 'move-node-to-workspace --wrap-around prev'
-alt-rightSquareBracket = 'move-node-to-workspace --wrap-around next'
-
-shift-h = 'move left'
-shift-j = 'move down'
-shift-k = 'move up'
-shift-l = 'move right'
-shift-semicolon          = [ 'trigger-binding --mode normal alt-semicolon',          'focus-monitor --wrap-around next' ]
-shift-leftSquareBracket  = [ 'trigger-binding --mode normal alt-leftSquareBracket',  'workspace --wrap-around prev' ]
-shift-rightSquareBracket = [ 'trigger-binding --mode normal alt-rightSquareBracket', 'workspace --wrap-around next' ]
