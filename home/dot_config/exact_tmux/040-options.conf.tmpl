@@ -20,14 +20,6 @@ set -g allow-rename on
 set -g automatic-rename on
 set -g automatic-rename-format "#{?pane_in_mode,#{pane_mode},#{pane_current_command}}"
 set -g base-index 1
-set -g command-alias[100] vsp="split-window -h"
-set -g command-alias[101] sp="split-window -v"
-set -g command-alias[102] rsp="respawn-pane -k"
-set -g command-alias[103] x="resize-pane -x"
-set -g command-alias[104] y="resize-pane -y"
-set -g command-alias[1450] is-pane-dead='run "[[ $(tmux display -p \"#{pane_dead}\") == 1 ]]"'
-set -g command-alias[20548] mods='splitw -hbl 80 mods'
-set -g command-alias[29547] man='splitw -hbl 80 ''; set -p remain-on-exit off; respawnp -k man tmux'
 set -g copy-mode-current-match-style "#{E:copy-mode-match-style} blink"
 set -g copy-mode-mark-style "bg=#{E:@active} fg=#{E:@inactive}"
 set -g copy-mode-match-style "bg=#{E:@inactive} fg=#{E:@active} underscore"
@@ -61,28 +53,10 @@ set -g remain-on-exit on
 set -g remain-on-exit-format "#[align=absolute-centre]#[fg=#{E:@error} reverse] 󰯈 Pane is dead#{?pane_dead_status, (status: #{pane_dead_status}),}#{?pane_dead_signal, (signal: #{pane_dead_signal}),}#[fill=#{E:@error}]"
 set -g renumber-windows on
 set -g set-titles on
-set -g status 2
-set -g status-format[1] " #{E:@seg-stats}#[align=absolute-centre]#{?pane_in_mode,#[fg=#{E:@active}]#[reverse] #{pane_mode} #[noreverse]#[default],}#[align=right]#{E:@seg-info} "
-set -g status-interval 1
-set -g status-justify absolute-centre
-set -g status-keys vi
-set -g status-left "#{E:@seg-session} #{E:@seg-prefix-indicator} "
-set -g status-left-length 120
-set -g status-left-style ""
-set -g status-position bottom
-set -g status-right "#{E:@seg-panes}"
-set -g status-right-length 120
-set -g status-style "bg=#{E:@bg} fg=#{E:@fg}"
 set -g visual-activity off
 set -g visual-bell off
 set -g visual-silence off
 # set -g window-active-style 'bg=#{E:@inactive}'
-set -g window-status-current-format "#{@open-icon}#{E:@window-icon} #I #W#{E:@win-flags}#{E:@close-icon}"
-set -g window-status-current-style "fg=#{E:@window}"
-set -g window-status-format "#{E:@window-icon} #I #W#{E:@win-flags}"
-set -g window-status-last-style "fg=#{E:@window} nobold"
-set -gF window-status-separator "#{E:@sep-icon}"
-set -g window-status-style "fg=#{E:@inactive} bold"
 set -g window-style 'bg=terminal'
 set -g default-terminal "${TERM}"
 set -sa terminal-overrides ",xterm*:Tc"
