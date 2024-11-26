@@ -1,20 +1,22 @@
+{{ $gap := 16 -}}
 start-at-login                                                  = true
 after-startup-command                                           = [
   'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
   'exec-and-forget sketchybar --reload'
 ]
 exec-on-workspace-change = [
-  '/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE'
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-accordion-padding                                               = 32
+accordion-padding                                               = {{ mul $gap 2 }}
 default-root-container-layout                                   = 'tiles'
 default-root-container-orientation                              = 'auto'
 key-mapping.preset                                              = 'qwerty'
 
 [gaps]
-{{ $gap := 16 -}}
 inner.horizontal = {{ $gap }}
 inner.vertical = {{ $gap }}
 outer.left = {{ $gap }}
@@ -33,11 +35,9 @@ EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
 [workspace-to-monitor-force-assignment]
-1 = 'main'
-2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'secondary'
+{{- range $v := .workspaces }}
+{{ $v.name }} = '{{ $v.monitor }}'
+{{- end }}
 
 # Keybinding Reference
 # All possible keys:
@@ -61,57 +61,33 @@ VISUAL = 'neovide --fork'
 
 f13 = [
   'mode normal',
-  'exec-and-forget {{ (includeTemplate "borders/normal.tmpl" .) | trim }}',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal'
+  'exec-and-forget {{ includeTemplate "borders/normal.tmpl" . | trim }}'
 ]
-
-[mode.edit.binding]
-
-esc = [
-  'trigger-binding --mode main f13',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=default'
-]
-a = ['exec-and-forget $VISUAL ~/.config/aerospace/aerospace.toml', 'trigger-binding --mode normal esc']
-c = ['exec-and-forget $VISUAL ~/.config',                          'trigger-binding --mode normal esc']
-t = ['exec-and-forget $VISUAL ~/.config/tmux/tmux.conf',           'trigger-binding --mode normal esc']
-w = ['exec-and-forget $VISUAL ~/.config/wezterm/wezterm.lua',      'trigger-binding --mode normal esc']
-v = ['exec-and-forget $VISUAL ~/.config/nvim',                     'trigger-binding --mode normal esc']
-z = ['exec-and-forget $VISUAL ~/.zshrc ~/.zprofile',               'trigger-binding --mode normal esc']
 
 [mode.normal.binding]
+{{- range $i, $v := .workspaces }}
+{{- $index := add $i 1 }}
+{{ $index }} = 'summon-workspace {{ $v.name }}'
+shift-{{ $index }} = ['move-node-to-workspace {{ $v.name }}', 'summon-workspace {{ $v.name }}']
+{{- end }}
 
-e = [
-  'mode edit',
-  'exec-and-forget {{ (includeTemplate "borders/edit.tmpl" .) | trim }}',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=edit'
-]
-f = "layout floating tiling"
 h = 'focus left'
-i = 'layout horizontal vertical'
 j = 'focus down'
 k = 'focus up'
 l = 'focus right'
+
+f = 'fullscreen'
+
+# f = "layout floating tiling"
+i = 'layout horizontal vertical'
 o = 'layout accordion tiles'
-r = [
-  'exec-and-forget sketchybar --reload',
-  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
-  'mode main',
-  'reload-config',
-  'exec-and-forget noti -t aerospace -m "Config reloaded!"',
-]
-w = [
-  'mode workspace',
-  'exec-and-forget {{ (includeTemplate "borders/workspace.tmpl" .) | trim }}',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=workspace'
-]
 x         = 'close --quit-if-last-window'
 backslash = 'balance-sizes'
 enter     = 'fullscreen'
 equal     = 'resize smart +50'
 esc       = [
   'mode main',
-  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'
+  'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}'
 ]
 leftSquareBracket   = 'workspace --wrap-around prev'
 minus               = 'resize smart -50'
