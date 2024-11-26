@@ -34,11 +34,6 @@ PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
-[workspace-to-monitor-force-assignment]
-{{- range $i, $v := .workspaces }}
-{{ $i }}-{{ $v.name }} = '{{ $v.monitor }}'
-{{- end }}
-
 # Keybinding Reference
 # All possible keys:
 # - Letters.        a, b, c, ..., z
@@ -102,18 +97,12 @@ shift-0 = 'move-node-to-monitor next'
 shift-9 = 'move-node-to-monitor prev'
 
 b = "workspace-back-and-forth"
-
-o = "fullscreen"
-
-r = 'layout horizontal vertical'
-
+m = "fullscreen"
+o = 'layout horizontal vertical'
 i = 'layout accordion tiles'
-
-x = 'close --quit-if-last-window'
+# x = 'close --quit-if-last-window'
 
 equal = 'balance-sizes'
- 
 comma     = 'resize smart +50'
-
 period     = 'resize smart -50'
 
