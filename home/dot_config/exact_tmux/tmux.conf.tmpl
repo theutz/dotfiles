@@ -2,9 +2,8 @@
 
 {{- range (glob (joinPath .chezmoi.sourceDir "dot_config" "exact_tmux" "*.conf.tmpl")) }}
 {{- if (eq (base .) "tmux.conf.tmpl") }}{{ break }}{{ end }}
-
 #
-# {{ base . | replaceAllRegex "^\\d{3}-(.*?)\\.conf\\.tmpl$" "$1" | title }}
+# {{ base . | replaceAllRegex "^\\d{3}-(.*?)\\.conf\\.tmpl$" "$1" | title | replace "-" " " }}
 #
 
 {{ includeTemplate . $ }}
