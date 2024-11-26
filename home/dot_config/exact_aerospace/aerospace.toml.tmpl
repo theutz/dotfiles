@@ -35,8 +35,8 @@ EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
 [workspace-to-monitor-force-assignment]
-{{- range $v := .workspaces }}
-{{ $v.name }} = '{{ $v.monitor }}'
+{{- range $i, $v := .workspaces }}
+{{ $i }}-{{ $v.name }} = '{{ $v.monitor }}'
 {{- end }}
 
 # Keybinding Reference
@@ -66,10 +66,11 @@ f13 = [
 
 [mode.normal.binding]
 esc = [ 'mode main', 'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}' ]
+f13 = [ 'mode main', 'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}' ]
 
-{{- range $i, $v := .workspaces -}}{{ $index := add $i 1 }}
-{{ $index }} = 'summon-workspace {{ $v.name }}'
-shift-{{ $index }} = ['move-node-to-workspace {{ $v.name }}', 'summon-workspace {{ $v.name }}']
+{{ range $i, $v := .workspaces }}
+{{ $v.name }} = 'summon-workspace {{ $i }}-{{ $v.name }}'
+shift-{{ $v.name }} = ['move-node-to-workspace {{ $i }}-{{ $v.name }}', 'summon-workspace {{ $i }}-{{ $v.name }}']
 {{- end }}
 
 h       = 'focus left'
@@ -94,17 +95,25 @@ shift-p = [ 'move-node-to-workspace prev', 'workspace prev' ]
 n       = 'workspace next'
 shift-n = [ 'move-node-to-workspace next', 'workspace next' ]
 
-semicolon       = 'focus-monitor next'
-alt-semicolon   = 'move-node-to-monitor next'
+0       = 'focus-monitor next'
+shift-0 = 'move-node-to-monitor next'
+
+9       = 'focus-monitor prev'
+shift-9 = 'move-node-to-monitor prev'
 
 b = "workspace-back-and-forth"
-f = "fullscreen"
-i = 'layout horizontal vertical'
-o = 'layout accordion tiles'
+
+o = "fullscreen"
+
+r = 'layout horizontal vertical'
+
+i = 'layout accordion tiles'
 
 x = 'close --quit-if-last-window'
 
-backslash = 'balance-sizes'
-equal     = 'resize smart +50'
-minus     = 'resize smart -50'
+equal = 'balance-sizes'
+ 
+comma     = 'resize smart +50'
+
+period     = 'resize smart -50'
 

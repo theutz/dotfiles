@@ -8,7 +8,7 @@ windows:
         focus: true
     window_name: main
   - panes:
-      - shell_command: just dev
+      - shell_command: mise run dev
         environment:
           SHELL: "/opt/homebrew/bin/zsh"
     window_name: servers

@@ -1,20 +1,16 @@
 workspaces:
-  - name: main
-    icon: 1️⃣
+  - name: a
+    icon: 🥑
     monitor: main
 
-  - name: alt
-    icon: 2️⃣
+  - name: s
+    icon: 🍓
     monitor: main
 
-  - name: later
-    icon: 3️⃣
-    monitor: main
+  - name: d
+    icon: 🍩
+    monitor: secondary
 
-  - name: utils
-    icon: 4️⃣
-    monitor: main
-
-  - name: other
-    icon: 5️⃣
+  - name: f
+    icon: 🍟
     monitor: secondary
