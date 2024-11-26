@@ -1,25 +1,20 @@
 workspaces:
-  - name: 1
-    icon: 1
-    shortcut: 1
+  - name: main
+    icon: 1️⃣
     monitor: main
 
-  - name: 2
-    icon: 2
-    shortcut: 2
+  - name: alt
+    icon: 2️⃣
     monitor: main
 
-  - name: 3
-    icon: 3
-    shortcut: 3
+  - name: later
+    icon: 3️⃣
     monitor: main
 
-  - name: 4
-    icon: 4
-    shortcut: 4
+  - name: utils
+    icon: 4️⃣
     monitor: main
 
-  - name: 5
-    icon: 5
-    shortcut: 5
+  - name: other
+    icon: 5️⃣
     monitor: secondary

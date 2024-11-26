@@ -8,43 +8,6 @@
                 },
                 "rules": [
                     {
-                        "description": "left_shift + volume = brightness",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "consumer_key_code": "volume_increment",
-                                    "modifiers": {
-                                        "mandatory": ["left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "consumer_key_code": "display_brightness_increment",
-                                        "modifiers": []
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "consumer_key_code": "volume_decrement",
-                                    "modifiers": {
-                                        "mandatory": ["left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "consumer_key_code": "display_brightness_decrement",
-                                        "modifiers": []
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "caps_lock to escape if alone, left_ctrl if held",
                         "manipulators": [
                             {
@@ -60,6 +23,7 @@
                     },
                     {
                         "description": "right_alt,left_alt to f13 if alone",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": { "key_code": "right_alt" },

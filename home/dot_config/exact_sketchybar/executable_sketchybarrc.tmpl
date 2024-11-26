@@ -73,7 +73,6 @@ sketchybar --add event aerospace_workspace_change \
 {{ range $i, $v := .workspaces -}}
   {{- $icon := get $v "icon" }}
   {{- $label := get $v "name" }}
-  {{- $key := get $v "shortcut" }}
 sketchybar --add item space.{{ $label }} left \
            --set space.{{ $label }} \
                  padding_left=0 \
@@ -82,7 +81,7 @@ sketchybar --add item space.{{ $label }} left \
                  label.font.size=14 \
                  label.padding_left=8 \
                  label.padding_right=8 \
-                 icon="{{ $icon }} {{ $key }}" \
+                 icon="{{ $icon }}" \
                  icon.padding_left=8 \
                  icon.padding_right=0 \
                  icon.font.size="16" \
