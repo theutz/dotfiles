@@ -71,17 +71,15 @@ sketchybar --add event aerospace_workspace_change \
            --add event aerospace_mode_change
 
 {{ range $i, $v := .workspaces -}}
-  {{- $icon := get $v "icon" }}
-  {{- $label := get $v "name" }}
-sketchybar --add item space.{{ $label }} left \
-           --set space.{{ $label }} \
+sketchybar --add item space.{{ printf "%d-%s" $i $v.name }} left \
+           --set space.{{ printf "%d-%s" $i $v.name }} \
                  padding_left=0 \
                  padding_right=12 \
-                 label="{{ $label }}" \
+                 label="{{ $v.name }}" \
                  label.font.size=14 \
                  label.padding_left=8 \
                  label.padding_right=8 \
-                 icon="{{ $icon }}" \
+                 icon="{{ $v.icon }}" \
                  icon.padding_left=8 \
                  icon.padding_right=0 \
                  icon.font.size="16" \
@@ -89,8 +87,8 @@ sketchybar --add item space.{{ $label }} left \
                  background.corner_radius=5 \
                  script="$PLUGIN_DIR/aerospace.sh" \
                  click_script="$PLUGIN_DIR/aerospace-switch.sh" \
-           --subscribe space.{{ $label }} aerospace_workspace_change
-{{- end }}
+           --subscribe space.{{ printf "%d-%s" $i $v.name }} aerospace_workspace_change
+{{ end }}
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar, where
