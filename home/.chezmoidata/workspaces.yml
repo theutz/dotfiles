@@ -6,13 +6,13 @@ workspaces:
     icon: 🍓
 
   - name: d
-    icon: 🐶
+    icon: 🍩
 
   - name: f
     icon: 🍟
 
   - name: q
-    icon: 🦑
+    icon: 🥥
 
   - name: w
     icon: 🍉
@@ -24,13 +24,13 @@ workspaces:
     icon: 🍚
 
   - name: z
-    icon: 🦓
+    icon: 🍕
 
   - name: x
-    icon: 📠
+    icon: 🍱
 
   - name: c
-    icon: 🍆
+    icon: 🍒
 
   - name: v
-    icon: 🍚
+    icon: 🫒

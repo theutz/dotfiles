@@ -1,20 +1,3 @@
-{{- define "sb" }}
-  {{- $indent := add (len .cmd) 1 | int }}
-  {{- $args := .args | chunk 2 }}
-  {{- print "\n" .cmd }}
-  {{- range $i, $v := $args }}
-    {{- $isFirst := eq $i 0 }}
-    {{- $isLast := eq (add $i 1) (len $args) }}
-    {{- $v = $v | join "=" }}
-    {{- if $isFirst }}
-      {{- printf " %s \\" $v }}
-    {{- else if $isLast }}
-      {{- nindent $indent $v }}
-    {{- else }}
-      {{- cat $v "\\" | nindent $indent  }}
-    {{- end }}
-  {{- end }}
-{{- end -}}
 # This is a demo config to showcase some of the most important commands.
 # It is meant to be changed and configured, as it is intentionally kept sparse.
 # For a (much) more advanced configuration example see my dotfiles:
@@ -29,41 +12,33 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-{{- $bar := (dict
-  "cmd" "sketchybar --bar"
-  "args" (list
-      "position"    "top"
-      "height"      "40"
-      "blur_radius" "10"
-      "color"       (print "0x80" (index .theme 0 | trimPrefix "#"))
-      "display"     "all"
-      "shadow"      "off"))
-}}
-{{ template "sb" $bar }}
+sketchybar --bar \
+      position=top \
+      height=40 \
+      blur_radius=10 \
+      color={{ print "0x80" (index .theme 0 | trimPrefix "#") }} \
+      display=all \
+      shadow=off
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-{{- $defaults := (dict
-  "cmd" "sketchybar --default"
-  "args" (list
-    "background.height"   "24"
-    "background.padding_left"        "5"
-    "background.padding_right"       "5"
-    "icon.color"          (print "0xff" (index .theme 3 | trimPrefix "#"))
-    "icon.font.family"    (.fonts.mono.family | quote)
-    "icon.font.size"      "18"
-    "icon.padding_left"   "4"
-    "icon.padding_right"  "4"
-    "label.color"         (print "0xff" (index .theme 7 | trimPrefix "#"))
-    "label.font.family"   (.fonts.mono.family | quote)
-    "label.font.size"     "16"
-    "label.padding_left"  "0"
-    "label.padding_right" "8"))
-}}
-{{ template "sb" $defaults }}
+sketchybar --default \
+    background.height=24 \
+    background.padding_left=5 \
+    background.padding_right=5 \
+    icon.color={{ print "0xff" (index .theme 3 | trimPrefix "#") }} \
+    icon.font.family={{ .fonts.mono.family | quote }} \
+    icon.font.size=18 \
+    icon.padding_left=4 \
+    icon.padding_right=4 \
+    label.color={{ print "0xff" (index .theme 7 | trimPrefix "#") }} \
+    label.font.family={{ .fonts.mono.family | quote }} \
+    label.font.size=16 \
+    label.padding_left=0 \
+    label.padding_right=8
 
 ##### Adding AeroSpace Space Indicators #####
 
