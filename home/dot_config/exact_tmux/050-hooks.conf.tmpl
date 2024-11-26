@@ -1,5 +1,4 @@
-# Hooks
-
+{{- /* vim: ft=tmux.tmpl */ -}}
 set-hook -g pane-died[10] {
   menu -T "What next?" -x "#{popup_pane_left}" -y "#{popup_pane_bottom}" \
     respawn r "respawn-pane -k" \
@@ -11,5 +10,3 @@ set-hook -g pane-died[10] {
       send-keys -X halfpage-up
     }
 }
-
-# vim: ft=tmux

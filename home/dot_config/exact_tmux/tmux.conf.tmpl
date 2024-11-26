@@ -1,16 +1,13 @@
 # Tmux Configuration
 
-# {{ include "dot_config/exact_tmux/plugins.conf" }}
+{{- range (glob (joinPath .chezmoi.sourceDir "dot_config" "exact_tmux" "*.conf.tmpl")) }}
+{{- if (eq (base .) "tmux.conf.tmpl") }}{{ break }}{{ end }}
 
-# {{ include "dot_config/exact_tmux/icons.conf" | sha256sum }}
-source "$HOME/.config/tmux/icons.conf"
-# {{ include "dot_config/exact_tmux/colors.conf" | sha256sum }}
-source "$HOME/.config/tmux/colors.conf"
-# {{ include "dot_config/exact_tmux/options.conf" | sha256sum }}
-source "$HOME/.config/tmux/options.conf"
-# {{ include "dot_config/exact_tmux/hooks.conf" | sha256sum }}
-source "$HOME/.config/tmux/hooks.conf"
-# {{ include "dot_config/exact_tmux/bindings.conf" | sha256sum }}
-source "$HOME/.config/tmux/bindings.conf"
+#
+# {{ base . | replaceAllRegex "^\\d{3}-(.*?)\\.conf\\.tmpl$" "$1" | title }}
+#
+
+{{ includeTemplate . $ }}
+{{- end }}
 
 # vim: ft=tmux.tmpl

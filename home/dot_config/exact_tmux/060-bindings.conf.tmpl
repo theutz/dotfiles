@@ -1,5 +1,4 @@
-# Bindings
-
+{{- /* vim: ft=tmux.tmpl */ -}}
 bind -n MouseDown1Status \
   display -d0 'line: #{mouse_status_line}, range: #{mouse_status_range}' \;\
   if -F '#{==:#{mouse_status_range},pane}' {
@@ -89,5 +88,3 @@ bind-key -N "Switch pane left" 	-T copy-mode-vi 'C-h' select-pane -L
 bind-key -N "Switch pane down" 	-T copy-mode-vi 'C-j' select-pane -D
 bind-key -N "Switch pane up"   	-T copy-mode-vi 'C-k' select-pane -U
 bind-key -N "Switch pane right"	-T copy-mode-vi 'C-l' select-pane -R
-
-# vim: ft=tmux
