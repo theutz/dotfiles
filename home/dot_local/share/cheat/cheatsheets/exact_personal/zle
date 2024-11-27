@@ -1,0 +1,15 @@
+---
+syntax: zsh
+tags: [ zsh, shell ]
+---
+# Edit command line in $VISUAL
+C-x C-e
+
+# Complete a single word
+C-f
+
+# Complete a whole line
+C-e
+
+# Start completion mid-word
+C-i
