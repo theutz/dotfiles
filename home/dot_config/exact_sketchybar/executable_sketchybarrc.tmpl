@@ -1,16 +1,11 @@
-# This is a demo config to showcase some of the most important commands.
-# It is meant to be changed and configured, as it is intentionally kept sparse.
-# For a (much) more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
+# Plugin checksums (DO NOT REMOVE - used for template regeneration):
+{{- range (glob (joinPath .chezmoi.sourceDir "dot_config" "exact_sketchybar" "exact_plugins" "*")) }}
+# {{ base . }}: {{ includeTemplate . $ | sha256sum }}
+{{- end }}
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+# Setup the bar
 
 sketchybar --bar \
       position=top \
@@ -20,10 +15,7 @@ sketchybar --bar \
       display=all \
       shadow=off
 
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
+# Defaults
 
 sketchybar --default \
     background.height=24 \
@@ -40,7 +32,7 @@ sketchybar --default \
     label.padding_left=0 \
     label.padding_right=6
 
-##### Adding AeroSpace Space Indicators #####
+# Setup the dude
 
 sketchybar --add event aerospace_workspace_change \
            --add event aerospace_mode_change \
@@ -51,6 +43,8 @@ sketchybar --add event aerospace_workspace_change \
                  padding_right=12 \
                  script="$PLUGIN_DIR/aerospace-mode-change.sh" \
            --subscribe dude aerospace_mode_change
+
+# Adding AeroSpace Space Indicators #
 
 {{ range $i, $v := .workspaces -}}
 sketchybar --add item space.{{ printf "%d-%s" $i $v.name }} left \
@@ -74,9 +68,7 @@ sketchybar --add item space.{{ printf "%d-%s" $i $v.name }} left \
            --subscribe space.{{ printf "%d-%s" $i $v.name }} aerospace_workspace_change
 {{ end }}
 
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
+# Left items
 
 # sketchybar --add item chevron left \
 #            --set chevron icon= label.drawing=off \
@@ -84,16 +76,7 @@ sketchybar --add item space.{{ printf "%d-%s" $i $v.name }} left \
 #            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
 #            --subscribe front_app front_app_switched
 
-##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-# Some items refresh on a fixed cycle, e.g. the clock runs its script once
-# every 10s. Other items respond to events they subscribe to, e.g. the
-# volume.sh script is only executed once an actual change in system audio
-# volume is registered. More info about the event system can be found here:
-# https://felixkratz.github.io/SketchyBar/config/events
+# Right Items
 
 sketchybar --add item clock right \
            --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
