@@ -74,21 +74,30 @@ path=(
   $path
 )
 
+# Python
 if (( $+commands[python3] )); then
   path=("$(brew --prefix)"/opt/python@3.12/libexec/bin $path)
 fi
 
+# Neovim
 if (( $+commands[bob] )); then
   path=("${XDG_DATA_HOME}"/bob/nvim-bin $path)
 fi
 
+# Golang
 if (( $+commands[go] )); then
   export GOPATH="$(go env GOPATH)"
   path=("${GOPATH:-$HOME/go}"/bin $path)
 fi
 
+# PHP
 if (( $+commands[composer] )); then
   path=("$XDG_CONFIG_HOME"/composer/vendor/bin $path)
+fi
+
+# Ruby
+if [[ -x "$(brew --prefix)/opt/ruby/bin/ruby" ]]; then
+  path=("$(brew --prefix)/opt/ruby/bin" $path)
 fi
 
 path=(

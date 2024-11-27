@@ -23,7 +23,6 @@
                     },
                     {
                         "description": "right_alt,left_alt to f13 if alone",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": { "key_code": "right_alt" },

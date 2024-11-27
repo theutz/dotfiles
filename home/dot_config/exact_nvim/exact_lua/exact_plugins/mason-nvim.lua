@@ -12,7 +12,6 @@ return {
       "nginx-language-server",
       "php-debug-adapter",
       "phpstan",
-      "phpstan",
       "pint",
       "prettierd",
       "rustywind",

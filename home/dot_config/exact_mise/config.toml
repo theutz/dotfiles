@@ -3,6 +3,7 @@ go = "latest"
 node = "latest"
 just = "latest"
 usage = "latest"
+ruby = "latest"
 
 [settings]
 experimental = true
