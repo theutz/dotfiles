@@ -64,15 +64,12 @@ VISUAL = 'neovide --fork'
 # 'main' binding mode must be always presented
 
 [mode.main.binding]
-
-f13 = [
-  'mode normal',
-  'exec-and-forget {{ includeTemplate "borders/normal.tmpl" . | trim }}'
-]
+f13 = [ 'mode normal', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal' ]
 
 [mode.normal.binding]
-esc = [ 'mode main', 'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}' ]
-f13 = [ 'mode main', 'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}' ]
+{{- range (list "esc" "f13") }}
+{{ . }} = [ 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main' ]
+{{- end }}
 
 {{ range $i, $v := .workspaces }}
 {{ $id := printf "%d-%s" $i $v.name }}
@@ -105,13 +102,13 @@ shift-n = ['move-node-to-workspace next', 'workspace next']
 
 b = "workspace-back-and-forth"
 
-9       = 'focus-monitor prev'
-shift-9 = ['move-node-to-monitor prev', 'focus-monitor prev']
-alt-9   = ['move-workspace-to-monitor prev', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
+leftSquareBracket       = 'focus-monitor prev'
+shift-leftSquareBracket = ['move-node-to-monitor prev', 'focus-monitor prev']
+alt-leftSquareBracket   = ['move-workspace-to-monitor prev', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
 
-0       = 'focus-monitor next'
-shift-0 = ['move-node-to-monitor next', 'focus-monitor next']
-alt-0   = ['move-workspace-to-monitor next', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
+rightSquareBracket       = 'focus-monitor next'
+shift-rightSquareBracket = ['move-node-to-monitor next', 'focus-monitor next']
+alt-rightSquareBracket   = ['move-workspace-to-monitor next', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
 
 m = "fullscreen"
 t = 'layout floating tiling'
@@ -119,6 +116,6 @@ o = 'layout horizontal vertical'
 i = 'layout accordion tiles'
 backtick = 'close --quit-if-last-window'
 
-equal  = 'balance-sizes'
-comma  = 'resize smart +50'
-period = 'resize smart -50'
+0  = 'balance-sizes'
+minus  = 'resize smart +50'
+equal = 'resize smart -50'
