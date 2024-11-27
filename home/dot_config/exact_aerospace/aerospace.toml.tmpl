@@ -2,7 +2,7 @@
 start-at-login                                                  = true
 after-startup-command                                           = [
   'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
-  'exec-and-forget sketchybar --reload'
+  'exec-and-forget sketchybar --reload',
 ]
 exec-on-workspace-change = [
   '/bin/bash',
@@ -15,6 +15,14 @@ accordion-padding                                               = {{ mul $gap 2 
 default-root-container-layout                                   = 'tiles'
 default-root-container-orientation                              = 'auto'
 key-mapping.preset                                              = 'qwerty'
+
+on-focus-changed = [
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change'
+]
+
+[workspace-to-monitor-force-assignment]
+a = 'main'
+v = 'secondary'
 
 [gaps]
 inner.horizontal = {{ $gap }}
@@ -85,16 +93,18 @@ shift-l = 'move right'
 alt-l   = 'join-with right'
 
 p       = 'workspace prev'
-shift-p = [ 'move-node-to-workspace prev', 'workspace prev' ]
+shift-p = ['move-node-to-workspace prev', 'workspace prev']
 
 n       = 'workspace next'
-shift-n = [ 'move-node-to-workspace next', 'workspace next' ]
-
-0       = 'focus-monitor next'
-shift-0 = 'move-node-to-monitor next'
+shift-n = ['move-node-to-workspace next', 'workspace next']
 
 9       = 'focus-monitor prev'
-shift-9 = 'move-node-to-monitor prev'
+shift-9 = ['move-node-to-monitor prev', 'focus-monitor prev']
+alt-9   = ['move-workspace-to-monitor prev', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
+
+0       = 'focus-monitor next'
+shift-0 = ['move-node-to-monitor next', 'focus-monitor next']
+alt-0   = ['move-workspace-to-monitor next', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
 
 b = "workspace-back-and-forth"
 m = "fullscreen"
@@ -102,7 +112,6 @@ o = 'layout horizontal vertical'
 i = 'layout accordion tiles'
 # x = 'close --quit-if-last-window'
 
-equal = 'balance-sizes'
-comma     = 'resize smart +50'
-period     = 'resize smart -50'
-
+equal  = 'balance-sizes'
+comma  = 'resize smart +50'
+period = 'resize smart -50'

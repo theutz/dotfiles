@@ -1,15 +1,15 @@
 return {
   {
     "mikavilpas/yazi.nvim",
-    enabled = false,
+    enabled = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
     event = "VeryLazy",
     config = true,
     keys = {
-      { "<leader>e", function() require("yazi").yazi() end, desc = "Open file explorer" },
-      { "<leader>E", function() require("yazi").yazi() end, desc = "Open file explorer (buffer)" },
+      { "<leader>E", function() require("yazi").yazi() end, desc = "Open file explorer (root)" },
+      { "<leader>e", function() require("yazi").yazi() end, desc = "Open file explorer (buffer)" },
     },
     opts = {
       open_for_directories = true,
