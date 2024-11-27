@@ -1,8 +1,9 @@
 {{ $gap := 16 -}}
 start-at-login                                                  = true
 after-startup-command                                           = [
-  'exec-and-forget {{ (includeTemplate "borders/main.tmpl" .) | trim }}',
   'exec-and-forget sketchybar --reload',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change'
 ]
 exec-on-workspace-change = [
   '/bin/bash',

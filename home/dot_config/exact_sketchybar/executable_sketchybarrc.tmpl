@@ -43,7 +43,14 @@ sketchybar --default \
 ##### Adding AeroSpace Space Indicators #####
 
 sketchybar --add event aerospace_workspace_change \
-           --add event aerospace_mode_change
+           --add event aerospace_mode_change \
+           --add item dude left \
+           --set dude icon="👨🏻‍💻" \
+                 label.drawing=off \
+                 padding_left=0 \
+                 padding_right=12 \
+                 script="$PLUGIN_DIR/aerospace-mode-change.sh" \
+           --subscribe dude aerospace_mode_change
 
 {{ range $i, $v := .workspaces -}}
 sketchybar --add item space.{{ printf "%d-%s" $i $v.name }} left \
