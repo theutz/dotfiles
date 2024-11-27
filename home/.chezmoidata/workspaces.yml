@@ -1,6 +1,7 @@
 workspaces:
   - name: a
     icon: 🥑
+    monitor: main
 
   - name: s
     icon: 🍓
@@ -25,12 +26,16 @@ workspaces:
 
   - name: z
     icon: 🍕
+    monitor: secondary
 
   - name: x
     icon: 🍱
+    monitor: secondary
 
   - name: c
     icon: 🍒
+    monitor: secondary
 
   - name: v
     icon: 🫒
+    monitor: secondary

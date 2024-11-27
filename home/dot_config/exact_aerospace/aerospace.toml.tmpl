@@ -21,8 +21,11 @@ on-focus-changed = [
 ]
 
 [workspace-to-monitor-force-assignment]
-a = 'main'
-v = 'secondary'
+{{- range $i, $v := .workspaces -}}
+{{ if (index $v "monitor") }}
+{{ $i }}-{{ $v.name }} = '{{ $v.monitor }}'
+{{- end }}
+{{- end }}
 
 [gaps]
 inner.horizontal = {{ $gap }}
@@ -72,8 +75,10 @@ esc = [ 'mode main', 'exec-and-forget {{ includeTemplate "borders/main.tmpl" . |
 f13 = [ 'mode main', 'exec-and-forget {{ includeTemplate "borders/main.tmpl" . | trim }}' ]
 
 {{ range $i, $v := .workspaces }}
-{{ $v.name }} = 'summon-workspace {{ $i }}-{{ $v.name }}'
-shift-{{ $v.name }} = ['move-node-to-workspace {{ $i }}-{{ $v.name }}', 'summon-workspace {{ $i }}-{{ $v.name }}']
+{{ $id := printf "%d-%s" $i $v.name }}
+{{ $v.name }} = 'workspace {{ $id }}'
+shift-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}']
+alt-{{ $v.name }} = ['summon-workspace {{ $id }}']
 {{- end }}
 
 h       = 'focus left'
@@ -98,6 +103,8 @@ shift-p = ['move-node-to-workspace prev', 'workspace prev']
 n       = 'workspace next'
 shift-n = ['move-node-to-workspace next', 'workspace next']
 
+b = "workspace-back-and-forth"
+
 9       = 'focus-monitor prev'
 shift-9 = ['move-node-to-monitor prev', 'focus-monitor prev']
 alt-9   = ['move-workspace-to-monitor prev', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
@@ -106,11 +113,11 @@ alt-9   = ['move-workspace-to-monitor prev', 'exec-and-forget sketchybar --trigg
 shift-0 = ['move-node-to-monitor next', 'focus-monitor next']
 alt-0   = ['move-workspace-to-monitor next', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
 
-b = "workspace-back-and-forth"
 m = "fullscreen"
+t = 'layout floating tiling'
 o = 'layout horizontal vertical'
 i = 'layout accordion tiles'
-# x = 'close --quit-if-last-window'
+backtick = 'close --quit-if-last-window'
 
 equal  = 'balance-sizes'
 comma  = 'resize smart +50'
