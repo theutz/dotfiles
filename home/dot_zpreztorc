@@ -17,6 +17,7 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Add additional directories to load prezto modules from
 # zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+zstyle ':prezto:load' pmodule-dirs $HOME/.config/prezto/modules
 
 # Allow module overrides when pmodule-dirs causes module name collisions
 # zstyle ':prezto:load' pmodule-allow-overrides 'yes'
@@ -29,27 +30,43 @@ zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'tmux' \
-  'homebrew' \
-  'archive' \
-  'rsync' \
-  'command-not-found' \
-  'docker' \
-  'osx' \
-  'git' \
-  'utility' \
-  'ssh' \
-  'completion' \
-  'syntax-highlighting' \
-  'history-substring-search' \
+m=(
+  'environment'
+  'terminal'
+  'editor'
+  'history'
+  'directory'
+  'spectrum'
+  'tmux'
+  'tmuxp'
+  'homebrew'
+  'brew'
+  'archive'
+  'rsync'
+  'command-not-found'
+  'docker'
+  'osx'
+  'git'
+  'broot'
+  'zoxide'
+  'fzf'
+  'tz'
+  'chezmoi'
+  'mise'
+  'utility'
+  'atuin'
+  'ssh'
+  'yazi'
+  # 'lf'
+  'completion'
+  'syntax-highlighting'
+  'history-substring-search'
   'autosuggestions'
+  'starship'
+  'aliases'
+)
+zstyle ':prezto:load' pmodule "${m[@]}"
+unset m
 
 #
 # Autosuggestions
