@@ -5,10 +5,10 @@ bind-key -N "Switch pane up" -n C-k if -F "#{@pane-is-vim}" 'send-keys C-k'  'se
 bind-key -N "Switch pane right" -n C-l if -F "#{@pane-is-vim}" 'send-keys C-l'  'select-pane -R'
 
 # Smart pane resizing with awareness of Neovim splits.
-bind-key -N "Resize pane left" -n S-M-h if -F "#{@pane-is-vim}" 'send-keys M-h' 'resize-pane -L 3'
-bind-key -N "Resize pane down" -n S-M-j if -F "#{@pane-is-vim}" 'send-keys M-j' 'resize-pane -D 3'
-bind-key -N "Resize pane up" -n S-M-k if -F "#{@pane-is-vim}" 'send-keys M-k' 'resize-pane -U 3'
-bind-key -N "Resize pane right" -n S-M-l if -F "#{@pane-is-vim}" 'send-keys M-l' 'resize-pane -R 3'
+bind-key -N "Resize pane left" -n M-H if -F "#{@pane-is-vim}" 'send-keys M-H' 'resize-pane -L 3'
+bind-key -N "Resize pane down" -n M-J if -F "#{@pane-is-vim}" 'send-keys M-J' 'resize-pane -D 3'
+bind-key -N "Resize pane up" -n M-K if -F "#{@pane-is-vim}" 'send-keys M-K' 'resize-pane -U 3'
+bind-key -N "Resize pane right" -n M-L if -F "#{@pane-is-vim}" 'send-keys M-L' 'resize-pane -R 3'
 
 # Forward old keys
 bind-key -N "Send C-h" C-h send-keys C-h
