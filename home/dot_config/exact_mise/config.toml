@@ -4,6 +4,7 @@ node = "latest"
 just = "latest"
 usage = "latest"
 ruby = "latest"
+"cargo:pueue" = "latest"
 
 [settings]
 experimental = true
