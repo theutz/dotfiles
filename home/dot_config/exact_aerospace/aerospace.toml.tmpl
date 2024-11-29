@@ -79,19 +79,19 @@ shift-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}'
 alt-{{ $v.name }} = ['summon-workspace {{ $id }}']
 {{- end }}
 
-h       = 'focus left'
+h       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
 shift-h = 'move left'
 alt-h   = 'join-with left'
 
-j       = 'focus down'
+j       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
 shift-j = 'move down'
 alt-j   = 'join-with down'
 
-k       = 'focus up'
+k       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
 shift-k = 'move up'
 alt-k   = 'join-with up'
 
-l       = 'focus right'
+l       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
 shift-l = 'move right'
 alt-l   = 'join-with right'
 
