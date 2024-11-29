@@ -1,30 +1,18 @@
 customCommands:
-- command: aicommits
-  context: files
-  description: aicommits
-  key: b
-  showOutput: true
-  subprocess: true
-- command: git cz c
-  context: files
-  description: commit with commitizen
-  key: z
-  loadingText: opening commitizen commit tool
-  subprocess: true
-- command: '''git commit --allow-empty -m "chore: empty commit"''
-
-    '
-  context: commits
-  description: Add empty commit
-  key: E
-  loadingText: Committing empty commit...
+  - command: oco
+    context: files
+    description: opencommit
+    key: b
+    showOutput: true
+    subprocess: true
 disableStartupPopups: true
 git:
   commit:
     signOff: true
   paging:
     colorArg: always
-    pager: 'delta "$(dark-mode status | grep on && echo "--dark" || echo "--light")"
+    pager:
+      'delta "$(dark-mode status | grep on && echo "--dark" || echo "--light")"
       --paging=never
 
       '
@@ -32,7 +20,7 @@ git:
 gui:
   border: rounded
   expandFocusedSidePanel: true
-  nerdFontsVersion: '3'
+  nerdFontsVersion: "3"
   showBottomLine: false
   showCommandLog: true
   showRandomTip: false
