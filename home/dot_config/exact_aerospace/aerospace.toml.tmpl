@@ -67,6 +67,23 @@ VISUAL = 'neovide --fork'
 [mode.main.binding]
 f13 = [ 'mode normal', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal' ]
 
+{{- range .hjkl }}
+cmd-ctrl-alt-{{ .key }} = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors {{ .dir }}'
+{{- end }}
+
+cmd-ctrl-alt-n = 'workspace next'
+cmd-ctrl-alt-p = 'workspace prev'
+cmd-ctrl-alt-b = 'workspace-back-and-forth'
+
+cmd-ctrl-alt-m = 'fullscreen'
+cmd-ctrl-alt-t = 'layout floating tiling'
+cmd-ctrl-alt-i = 'layout horizontal vertical'
+cmd-ctrl-alt-o = 'layout accordion tiles'
+
+cmd-ctrl-alt-0 = 'balance-sizes'
+cmd-ctrl-alt-equal = 'resize smart +50'
+cmd-ctrl-alt-minus = 'resize smart -50'
+
 [mode.normal.binding]
 {{- range (list "esc" "f13") }}
 {{ . }} = [ 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main' ]
@@ -79,21 +96,11 @@ shift-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}'
 alt-{{ $v.name }} = ['summon-workspace {{ $id }}']
 {{- end }}
 
-h       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
-shift-h = 'move left'
-alt-h   = 'join-with left'
-
-j       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
-shift-j = 'move down'
-alt-j   = 'join-with down'
-
-k       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
-shift-k = 'move up'
-alt-k   = 'join-with up'
-
-l       = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
-shift-l = 'move right'
-alt-l   = 'join-with right'
+{{- range .hjkl }}
+{{ .key }} = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors {{ .dir }}'
+shift-{{ .key }} = 'move {{ .dir }}'
+alt-{{ .key }} = 'join-with {{ .dir }}'
+{{- end }}
 
 p       = 'workspace prev'
 shift-p = ['move-node-to-workspace prev', 'workspace prev']

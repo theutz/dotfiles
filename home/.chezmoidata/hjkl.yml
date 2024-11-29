@@ -1,0 +1,12 @@
+hjkl:
+  - key: h
+    dir: left
+
+  - key: j
+    dir: down
+
+  - key: k
+    dir: up
+
+  - key: l
+    dir: right
