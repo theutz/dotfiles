@@ -85,10 +85,6 @@ cmd-ctrl-alt-t = 'layout floating tiling'
 cmd-ctrl-alt-i = 'layout horizontal vertical'
 cmd-ctrl-alt-o = 'layout accordion tiles'
 
-cmd-ctrl-alt-0 = 'balance-sizes'
-cmd-ctrl-alt-equal = 'resize smart +50'
-cmd-ctrl-alt-minus = 'resize smart -50'
-
 [mode.normal.binding]
 {{- range (list "esc" "f13") }}
 {{ . }} = [ 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main' ]
@@ -127,8 +123,14 @@ o        = 'layout horizontal vertical'
 i        = 'layout accordion tiles'
 backtick = 'close --quit-if-last-window'
 
-equal     = 'balance-sizes'
-shift-equal = 'resize height +50'
-minus = 'resize height -50'
-alt-equal = 'resize width +50'
-alt-minus = 'resize width -50'
+equal                   = 'balance-sizes'
+
+semicolon           = 'resize height +50'
+shift-semicolon     = 'resize height +150'
+alt-semicolon       = 'resize height -50'
+alt-shift-semicolon = 'resize height -150'
+
+comma               = 'resize width +50'
+shift-comma         = 'resize width +150'
+alt-comma           = 'resize width -50'
+alt-shift-comma     = 'resize width -150'
