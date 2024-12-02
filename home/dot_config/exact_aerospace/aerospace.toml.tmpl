@@ -93,27 +93,25 @@ cmd-ctrl-alt-minus = 'resize smart -50'
 {{- range (list "esc" "f13") }}
 {{ . }} = [ 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main' ]
 {{- end }}
-
-{{ range $i, $v := .workspaces }}
-{{ $id := printf "%d-%s" $i $v.name }}
+{{ range $i, $v := .workspaces -}}
+{{- $id := printf "%d-%s" $i $v.name }}
 {{ $v.name }} = 'workspace {{ $id }}'
 shift-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}']
 alt-{{ $v.name }} = ['summon-workspace {{ $id }}']
-{{- end }}
+{{ end }}
 
 {{- range .hjkl }}
 {{ .key }} = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors {{ .dir }}'
 shift-{{ .key }} = 'move {{ .dir }}'
 alt-{{ .key }} = 'join-with {{ .dir }}'
-{{- end }}
-
+{{ end }}
 p       = 'workspace prev'
 shift-p = ['move-node-to-workspace prev', 'workspace prev']
 
 n       = 'workspace next'
 shift-n = ['move-node-to-workspace next', 'workspace next']
 
-b = "workspace-back-and-forth"
+b = 'workspace-back-and-forth'
 
 leftSquareBracket       = 'focus-monitor prev'
 shift-leftSquareBracket = ['move-node-to-monitor prev', 'focus-monitor prev']
