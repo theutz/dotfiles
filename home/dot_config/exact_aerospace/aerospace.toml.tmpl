@@ -51,6 +51,14 @@ PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 
+{{ range (list
+    "com.fivegencare.com.motorola.nursery")
+-}}
+[[on-window-detected]]
+if.app-id = "{{ . }}"
+run = ["layout floating"]
+{{ end }}
+
 # Keybinding Reference
 # All possible keys:
 # - Letters.        a, b, c, ..., z
