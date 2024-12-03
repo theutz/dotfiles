@@ -50,10 +50,12 @@ inherit-env-vars = true
 PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
-
 {{ range (list
-    "com.fivegencare.com.motorola.nursery")
--}}
+    "com.fivegencare.com.motorola.nursery"
+    "net.mullvad.vpn"
+    "app.loshadki.OpenIn-setapp"
+    "com.apple.ScreenContinuity")
+}}
 [[on-window-detected]]
 if.app-id = "{{ . }}"
 run = ["layout floating"]
