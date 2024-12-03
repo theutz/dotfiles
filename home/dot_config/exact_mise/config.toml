@@ -5,6 +5,7 @@ just = "latest"
 ruby = "latest"
 "cargo:pueue" = "latest"
 "npm:opencommit" = "latest"
+"go:github.com/mattn/bsky" = "latest"
 
 [settings]
 experimental = true
