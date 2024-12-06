@@ -26,15 +26,12 @@ workspaces:
 
   - name: z
     icon: 🍕
-    monitor: secondary
 
   - name: x
     icon: 🍱
-    monitor: secondary
 
   - name: c
     icon: 🍒
-    monitor: secondary
 
   - name: v
     icon: 🫒
