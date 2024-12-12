@@ -62,7 +62,7 @@ sketchybar --add item space.{{ printf "%d-%s" $i $v.name }} left \
                  background.color={{ print "0x44" (index $.theme 5 | trimPrefix "#") }} \
                  background.drawing=off \
                  background.corner_radius=5 \
-                 background.border_color={{ print "0xffdd" (index $.theme 4 | trimPrefix "#") }} \
+                 background.border_color={{ print "0xee" (index $.theme 3 | trimPrefix "#") }} \
                  script="$PLUGIN_DIR/aerospace.sh" \
                  click_script="$PLUGIN_DIR/aerospace-switch.sh" \
            --subscribe space.{{ printf "%d-%s" $i $v.name }} aerospace_workspace_change
