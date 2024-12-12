@@ -1,7 +1,6 @@
 workspaces:
   - name: a
     icon: 🥑
-    monitor: main
 
   - name: s
     icon: 🍓

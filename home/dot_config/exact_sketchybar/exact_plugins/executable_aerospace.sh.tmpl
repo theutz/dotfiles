@@ -14,7 +14,7 @@ fi
 sketchybar --set "$NAME" label.color={{ print "0xff" (index .theme 7 | trimPrefix "#") }}
 
 if grep -q "${NAME#space.}" <<<"$current_screen"; then
-  sketchybar --set "$NAME" background.border_width=1
+  sketchybar --set "$NAME" background.border_width=2
 else
   sketchybar --set "$NAME" background.border_width=0
 fi
