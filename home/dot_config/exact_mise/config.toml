@@ -8,6 +8,8 @@ ruby = "latest"
 "go:github.com/mattn/bsky" = "latest"
 usql = "latest"
 "cargo:scooter" = "latest"
+usage = "latest"
+neovim = "latest"
 
 [settings]
 experimental = true
