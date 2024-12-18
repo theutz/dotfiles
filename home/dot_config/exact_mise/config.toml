@@ -10,6 +10,11 @@ usql = "latest"
 "cargo:scooter" = "latest"
 usage = "latest"
 neovim = "latest"
+"cargo:nu" = "latest"
+"npm:zx" = "latest"
+"npm:prettier" = "latest"
 
 [settings]
 experimental = true
+
+[env]
