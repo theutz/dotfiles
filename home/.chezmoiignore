@@ -2,7 +2,7 @@ key.txt.age
 bin/chezmoi
 .config/tmux/plugins
 **/.zsh_history
-.config/nushell/history
+.config/nushell/history.txt
 
 {{ if ne .chezmoi.os "darwin" }}
 Library/
