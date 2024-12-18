@@ -25,6 +25,7 @@ set -g copy-mode-match-style "bg=#{E:@inactive} fg=#{E:@active} underscore"
 set -g cursor-style blinking-block
 set -g default-terminal "xterm-256color"
 set -g default-command "{{ .chezmoi.homeDir }}/.local/bin/mise x cargo:nu@latest -- nu"
+set -g default-shell "{{ .chezmoi.homeDir }}/.local/bin/mise x cargo:nu@latest -- nu"
 set -g destroy-unattached off
 set -g detach-on-destroy off
 set -gF display-panes-active-colour '#{E:@active}'
