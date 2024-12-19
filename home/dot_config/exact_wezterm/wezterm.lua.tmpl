@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 c:set_strict_mode(true)
 
-c.default_prog = { "zsh", "-c", "{{ .chezmoi.homeDir }}/.local/bin/mise exec cargo:nu@latest -- nu" }
+c.default_prog = { "zsh", "-c", "nu" }
 
 c.macos_window_background_blur = 20
 c.window_background_opacity = 0.90
