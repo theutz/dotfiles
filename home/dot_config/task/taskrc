@@ -43,3 +43,5 @@ include no-color.theme
 news.version=3.1.0
 context.work.read=project:delegator or +work
 context.work.write=+work
+context.personal.read=-work
+context.personal.write=+personal
