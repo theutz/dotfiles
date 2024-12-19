@@ -3,17 +3,18 @@ go = "latest"
 node = "latest"
 just = "latest"
 ruby = "latest"
-"cargo:pueue" = "latest"
 "npm:opencommit" = "latest"
 "go:github.com/mattn/bsky" = "latest"
 usql = "latest"
 "cargo:scooter" = "latest"
 usage = "latest"
 neovim = "latest"
-"cargo:nu" = "latest"
 "npm:zx" = "latest"
 "npm:prettier" = "latest"
 chezmoi = "latest"
+"ubi:Nukesor/pueue" = "latest"
+"ubi:nushell/nushell" = { version = "latest", exe = "nu" }
+"ubi:aquaproj/aqua" = "latest"
 
 [settings]
 experimental = true
