@@ -20,3 +20,8 @@ chezmoi = "latest"
 experimental = true
 
 [env]
+
+[tasks]
+
+[tasks.search]
+run = "aqua g"
