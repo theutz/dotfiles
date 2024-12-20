@@ -1,88 +1,59 @@
 # join file paths with XDG bases
 export def main [] {}
 
+def build [] list<string> -> path {
+  compact --empty | path join
+}
+
 # join with XDG_CONFIG_HOME (~/.config)
 export def config [
-  ...paths: string
+  ...args: string
 ] path -> path {
-  [
-    ($env.XDG_CONFIG_HOME? | default
+  let base = ($env.XDG_CONFIG_HOME? | default
       ($env.HOME | path join ".config"))
-    ($in | default "")
-    ...$paths
-  ]
-    | where $it != ""
-    | path join
+  [$base $in ...$args ] | build
 }
 
 # join with XDG_DATA_HOME (~/.local/share)
 export def data [
-  ...paths: string
+  ...args: string
 ] path -> path {
-  [
-    ($env.XDG_DATA_HOME? | default
+  let base = ($env.XDG_DATA_HOME? | default
       ($env.HOME | path join ".local" "share"))
-    ($in | default "")
-    ...$paths
-  ]
-    | where $it != ""
-    | path join
+  [$base $in ...$args] | build
 }
 
 # join with XDG_STATE_HOME (~/.local/state)
 export def state [
-  ...paths: string
+  ...args: string
 ] path -> path {
-  [
-    ($env.XDG_STATE_HOME? | default
+  let base = ($env.XDG_STATE_HOME? | default
       ($env.HOME | path join ".local" "state"))
-    ($in | default "")
-    ...$paths
-  ]
-    | where $it != ""
-  |inspect
-    | path join
+  [$base $in ...$args] | build
 }
 
 # join with XDG_CACHE_HOME (~/.cache)
 export def cache [
-  ...paths: string
+  ...args: string
 ] path -> path {
-  [
-    ($env.XDG_CACHE_HOME? | default
+  let base = ($env.XDG_CACHE_HOME? | default
       ($env.HOME | path join ".cache"))
-    ($in | default "")
-    ...$paths
-  ]
-    | where $it != ""
-    | path join
+  [$base $in ...$args] | build
 }
 
 # join with XDG_RUNTIME_DIR ($TMPDIR)
 export def runtime [
-  ...paths: string
+  ...args: string
 ] path -> path {
-  [
-    ($env.XDG_RUNTIME_DIR? | default $env.TMPDIR)
-    ($in | default "")
-    ...$paths
-  ]
-    | where $it != ""
-    | path join
+  let base = $env.XDG_RUNTIME_DIR? | default $env.TMPDIR
+  [$base $in ...$args] | build
 }
 
 # join with ~/.local/bin
 export def bin [
-  ...paths: string
+  ...args: string
 ] path -> path {
-  [
-    $env.HOME
-    ".local"
-    "bin"
-    ($in | default "")
-    ...$paths
-  ]
-    | where $it != nil
-    | path join
+  let base = $env.HOME | path join ".local" "bin"
+  [$base $in ...$args] | build
 }
 
