@@ -70,3 +70,9 @@ export def "yazi" [] {
   xdg config "yazi"
   | edit
 }
+
+export def "config" [] {
+  xdg config "nushell"
+  | edit
+}
+
