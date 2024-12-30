@@ -243,7 +243,7 @@ load_plugins {
 // Default: default
 // 
 // theme "dracula"
-theme "bluloco-light"
+theme "bluloco-dark"
  
 // Choose the base input mode of zellij.
 // Default: normal
