@@ -2,3 +2,4 @@ command = ~/.local/share/mise/shims/nu --env-config ~/.config/nushell/env.nu --c
 theme = light:BlulocoLight,dark:BlulocoDark
 font-size = 22
 background-opacity = 0.85
+minimum-contrast = 1.1
