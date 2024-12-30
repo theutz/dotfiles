@@ -1,4 +1,4 @@
 command = ~/.local/share/mise/shims/nu --env-config ~/.config/nushell/env.nu --config ~/.config/nushell/config.nu
 theme = rose-pine
 font-size = 16
-
+background-opacity = 0.5
