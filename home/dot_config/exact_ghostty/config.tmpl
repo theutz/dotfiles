@@ -2,6 +2,6 @@ command = ~/.local/share/mise/shims/nu --env-config ~/.config/nushell/env.nu --c
 theme = light:BlulocoLight,dark:BlulocoDark
 font-family = {{ .fonts.mono.family }}
 font-size = {{ .fonts.mono.size }}
-adjust-font-baseline = {{ (print (mul .fonts.mono.height 100) "%") }}
+adjust-font-baseline = {{ (print (mulf .fonts.mono.height 100) "%") }}
 background-opacity = 0.85
 minimum-contrast = 1.4
