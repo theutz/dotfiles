@@ -8,7 +8,7 @@
 	enabled = true
 [merge]
 	autoStash = true
-	conflictStyle = diff3
+	conflictStyle = zdiff3
 	tool = vimdiff
 [rebase]
 	autoStash = true
