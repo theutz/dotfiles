@@ -1,0 +1,13 @@
+# vim: ft=sh.tmpl fdm=marker fdl=1 fmr=\ »»»,\ «««
+
+
+
+
+
+# homebrew »»»
+eval "$(/opt/homebrew/bin/brew shellenv)"
+#  «««
+
+# rust »»»
+. "$HOME/.cargo/env"
+#  «««
