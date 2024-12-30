@@ -73,8 +73,8 @@ local colors = {
     lazy = false,
     name = "rose-pine",
     opts = {
-      variant = "main",
-      dark_variant = "dawn",
+      variant = "dawn",
+      dark_variant = "main",
       styles = {
         transparency = true,
       },
