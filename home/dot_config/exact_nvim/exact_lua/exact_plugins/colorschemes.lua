@@ -27,11 +27,13 @@ local colors = {
   },
   {
     "uloco/bluloco.nvim",
-    enabled = false,
+    enabled = true,
     dependencies = { "rktjmp/lush.nvim" },
+    lazy = false,
+    priority = 1000,
     opts = {
       transparent = true,
-      style = "dark",
+      style = "auto",
       italics = true,
     },
   },
@@ -68,7 +70,7 @@ local colors = {
   },
   {
     "rose-pine/neovim",
-    enabled = true,
+    enabled = false,
     priority = 1000,
     lazy = false,
     name = "rose-pine",
