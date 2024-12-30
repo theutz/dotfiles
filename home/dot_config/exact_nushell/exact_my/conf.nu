@@ -19,20 +19,20 @@ export module nvim {
     | edit
   }
 
-  # Edit neovim keymaps
-  export def "nvim keymaps" [] {
+  # Edit neovim keymap
+  export def keymap [] {
     xdg config "nvim" "lua" "config" "keymaps.lua"
     | edit
   }
 
   # Edit neovim autocommands
-  export def "nvim autocmds" [] {
+  export def autocmds [] {
     xdg config "nvim" "lua" "config" "autocmds.lua"
     | edit
   }
 
   # Edit neovim options
-  export def "nvim options" [] {
+  export def options [] {
     xdg config "nvim" "lua" "config" "options.lua"
     | edit
   }
