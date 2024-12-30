@@ -6,7 +6,8 @@
 # {{ base . | replaceAllRegex "^\\d{3}-(.*?)\\.conf\\.tmpl$" "$1" | title | replace "-" " " }}
 #
 
-{{ includeTemplate . $ }}
+# {{ includeTemplate . $ | sha256sum }}
+source-file {{ .chezmoi.homeDir }}/{{ . }}
 {{- end }}
 
 # vim: ft=tmux.tmpl
