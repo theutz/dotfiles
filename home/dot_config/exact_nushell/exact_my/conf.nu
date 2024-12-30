@@ -11,6 +11,11 @@ def src-edit [file?: path]: path -> nothing {
     | ^$env.EDITOR $file
 }
 
+# Edit this config file
+export def main [] {
+  path self | edit
+}
+
 export module nvim {
 
   # Edit neovim config
