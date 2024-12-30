@@ -13,7 +13,7 @@ def src-edit [file?: path]: path -> nothing {
 
 # Edit this config file
 export def main [] {
-  const here = path self
+  const here = path self .
   $here | edit
 }
 
