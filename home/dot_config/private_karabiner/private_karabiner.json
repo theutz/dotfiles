@@ -8,25 +8,6 @@
                 },
                 "rules": [
                     {
-                        "description": "right_alt to cmd+alt+ctrl if held",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "right_alt",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_control",
-                                        "modifiers": ["left_alt", "left_command"]
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "right_alt" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "caps_lock to escape if alone, left_ctrl if held",
                         "manipulators": [
                             {
@@ -36,6 +17,17 @@
                                 },
                                 "to": [{ "key_code": "left_control" }],
                                 "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_alt to f14 if alone",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "right_alt" },
+                                "to": [{ "key_code": "right_alt" }],
+                                "to_if_alone": [{ "key_code": "f14" }],
                                 "type": "basic"
                             }
                         ]
