@@ -1,13 +1,9 @@
 # Tmux Configuration
 
-{{- range (glob (joinPath .chezmoi.sourceDir "dot_config" "exact_tmux" "*.conf.tmpl")) }}
-{{- if (eq (base .) "tmux.conf.tmpl") }}{{ break }}{{ end }}
-#
-# {{ base . | replaceAllRegex "^\\d{3}-(.*?)\\.conf\\.tmpl$" "$1" | title | replace "-" " " }}
-#
-
-# {{ includeTemplate . $ | sha256sum }}
-source-file {{ joinPath $.chezmoi.homeDir . }}
+{{- range (glob (joinPath .chezmoi.sourceDir "dot_config" "exact_tmux" "*.conf")) }}
+{{- $target_dir := (dir $.chezmoi.targetFile) }}
+# {{ include . $ | sha256sum }}
+source-file {{ joinPath $target_dir . }}
 {{- end }}
 
 # vim: ft=tmux.tmpl
