@@ -84,7 +84,7 @@ local colors = {
   },
 }
 
-local colorscheme = "rose-pine"
+local colorscheme = "bluloco"
 
 local plugins = {
   {
