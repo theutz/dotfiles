@@ -38,6 +38,7 @@ export def "wezterm" [] {
   | edit
 }
 
+# Edit zellij config
 export def "zellij" [] {
   xdg config "zellij" "config.kdl"
   | edit
@@ -56,26 +57,31 @@ export def "chezmoi scripts" [] {
     | ^$env.EDITOR $in
 }
 
+# Edit ghostty config file
 export def "ghostty" [] {
   xdg config "ghostty" "config"
   | edit
 }
 
+# Edit delta diff configuration
 export def "delta" [] {
   xdg config "git" "config"
   | edit
 }
 
+# Edit yazi configuration
 export def "yazi" [] {
   xdg config "yazi"
   | edit
 }
 
+# Edit nushell interactive configuration
 export def "nu" [] {
   xdg config "nushell" "config.nu"
   | edit
 }
 
+# Edit nushell environment
 export def "env" [] {
   xdg config "nushell" "env.nu"
   | edit
