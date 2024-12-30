@@ -5,6 +5,12 @@ def edit []: path -> nothing {
   ^chezmoi edit --watch $in
 }
 
+def src-edit [file?: path]: path -> nothing {
+  ^chezomi source-path $file
+    | complete | get stdout | str trim
+    | ^$env.EDITOR $file
+}
+
 export module nvim {
 
   # Edit neovim config
@@ -13,19 +19,19 @@ export module nvim {
     | edit
   }
 
-# Edit neovim keymaps
+  # Edit neovim keymaps
   export def "nvim keymaps" [] {
     xdg config "nvim" "lua" "config" "keymaps.lua"
     | edit
   }
 
-# Edit neovim autocommands
+  # Edit neovim autocommands
   export def "nvim autocmds" [] {
     xdg config "nvim" "lua" "config" "autocmds.lua"
     | edit
   }
 
-# Edit neovim options
+  # Edit neovim options
   export def "nvim options" [] {
     xdg config "nvim" "lua" "config" "options.lua"
     | edit
@@ -44,17 +50,24 @@ export def "zellij" [] {
   | edit
 }
 
-export def "chezmoi" [] {
-  ^chezmoi source-path
-    | complete | get stdout | str trim
-    | ^$env.EDITOR $in
-}
 
-export def "chezmoi scripts" [] {
-  ^chezmoi source-path
-    | complete | get stdout | str trim
-    | path join ".chezmoiscripts"
-    | ^$env.EDITOR $in
+# Edit chezmoi files
+export module chezmoi {
+
+  # Edit all chezmoi files
+  export def "main" [] {
+    src-edit
+  }
+
+  # Edit files in .chezmoiscripts
+  export def "scripts" [] {
+    src-edit ".chezmoiscripts"
+  }
+
+  # Edit files in .chezmoidata
+  export def "data" [] {
+    src-edit ".chezmoidata"
+  }
 }
 
 # Edit ghostty config file
