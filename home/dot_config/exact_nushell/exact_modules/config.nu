@@ -71,8 +71,12 @@ export def "yazi" [] {
   | edit
 }
 
-export def "config" [] {
-  xdg config "nushell"
+export def "nu" [] {
+  xdg config "nushell" "config.nu"
   | edit
 }
 
+export def "env" [] {
+  xdg config "nushell" "env.nu"
+  | edit
+}
