@@ -2,7 +2,7 @@
 use ./xdg.nu
 
 def edit [] path -> nothing {
-  ^chezmoi edit --apply $in
+  ^chezmoi edit --watch $in
 }
 
 export module nvim {
@@ -54,4 +54,19 @@ export def "chezmoi scripts" [] {
     | complete | get stdout | str trim
     | path join ".chezmoiscripts"
     | ^$env.EDITOR $in
+}
+
+export def "ghostty" [] {
+  xdg config "ghostty" "config"
+  | edit
+}
+
+export def "delta" [] {
+  xdg config "git" "config"
+  | edit
+}
+
+export def "yazi" [] {
+  xdg config "yazi"
+  | edit
 }
