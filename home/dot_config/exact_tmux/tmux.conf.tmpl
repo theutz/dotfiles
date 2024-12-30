@@ -2,6 +2,7 @@
 
 {{- range (glob (joinPath .chezmoi.sourceDir "dot_config" "exact_tmux" "*.conf")) }}
 {{- $target_dir := (dir $.chezmoi.targetFile) }}
+
 # {{ include . | sha256sum }}
 source-file {{ joinPath $target_dir (base .) }}
 {{- end }}
