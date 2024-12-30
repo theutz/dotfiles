@@ -13,7 +13,8 @@ def src-edit [file?: path]: path -> nothing {
 
 # Edit this config file
 export def main [] {
-  path self | edit
+  const here = path self
+  $here | edit
 }
 
 export module nvim {
