@@ -13,3 +13,5 @@ def "config nu" [] {
 def "config env" [] {
   ^chezmoi edit --watch --apply $nu.env-path
 }
+
+use ($nu.default-config-dir | path join config.nu)
