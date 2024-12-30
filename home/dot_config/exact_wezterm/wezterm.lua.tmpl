@@ -7,12 +7,6 @@ if wezterm.config_builder then
 end
 c:set_strict_mode(true)
 
-c.set_environment_variables = {
-  XDG_CONFIG_HOME = "{{ joinPath .chezmoi.homeDir .xdg.config }}",
-  XDG_DATA_HOME = "{{ joinPath .chezmoi.homeDir .xdg.data }}",
-  XDG_STATE_HOME = "{{ joinPath .chezmoi.homeDir .xdg.state }}",
-  XDG_CACHE_HOME = "{{ joinPath .chezmoi.homeDir .xdg.cache }}",
-}
 c.default_prog = { "{{ joinPath .chezmoi.homeDir .xdg.data }}/mise/shims/nu" }
 
 c.macos_window_background_blur = 20
