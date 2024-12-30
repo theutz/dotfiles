@@ -1,0 +1,29 @@
+themes {
+  bluloco-dark {
+    fg "#abb2bf"
+    bg "#636d83"
+ 	black "#282C34"
+ 	red "#ff6480"
+ 	green "#3fc56b"
+ 	yellow "#f9c859"
+ 	blue "#3691ff"
+ 	magenta "#9f7efe"
+ 	cyan "#10b1fe"
+ 	white "#f9f9f9"
+ 	orange "#ff936a"
+  }
+
+  bluloco-light {
+    fg "#a0a1a7"
+    bg "#636d83"
+ 	black "#f9f9f9"
+ 	red "#d52753"
+ 	green "#23974a"
+ 	yellow "#c5a332"
+ 	blue "#275fe4"
+ 	magenta "#823ff1"
+ 	cyan "#0098dd"
+ 	white "#383a42"
+ 	orange "#df631c"
+  }
+}
