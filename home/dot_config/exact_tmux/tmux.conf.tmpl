@@ -7,7 +7,7 @@
 #
 
 # {{ includeTemplate . $ | sha256sum }}
-source-file {{ $.chezmoi.homeDir }}/{{ . }}
+source-file {{ joinPath $.chezmoi.homeDir . }}
 {{- end }}
 
 # vim: ft=tmux.tmpl
