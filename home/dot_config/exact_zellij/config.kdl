@@ -242,8 +242,7 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "dracula"
-theme "bluloco-dark"
+theme "lucario"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -252,7 +251,6 @@ default_mode "locked"
  
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
-// 
 default_shell "nu"
  
 // Choose the path to override cwd that zellij will use for opening new panes
