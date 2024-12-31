@@ -7,5 +7,4 @@ let mise_path = $nu.default-config-dir | path join mise.nu
 
 use my/xdg.nu
 
-^chezmoi completion fish --output 
 
