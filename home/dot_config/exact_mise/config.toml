@@ -15,6 +15,7 @@ zellij = "latest"
 "aqua:nushell/nushell" = "latest"
 "cargo:pueue" = "latest"
 "npm:better-commits" = "latest"
+"ubi:carapace-sh/carapace-bin" = { version = "latest", exe = "carapace" }
 
 [settings]
 experimental = true
