@@ -5,7 +5,7 @@ def --wrapped add-fish-cmp [
   file: string
   ...cmd: string
 ] {
-  use my/xdg.nu
+  use mod/xdg
 
   let file = xdg config fish completions $file
   # let cmd = $cmd | str join ' '
@@ -29,7 +29,7 @@ $env.config.completions.external = {
   completer: $fish_completer
 }
 
-use mise.nu
-use my/xdg.nu
-use my/conf
-use my/yazi.nu y
+use scr/mise.nu
+use mod/xdg
+use mod/conf
+use mod/yazi y

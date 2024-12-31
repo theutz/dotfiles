@@ -1,5 +1,5 @@
 # A collection of shortcuts for quickly editing configuration files
-use my/xdg.nu
+use mod/xdg
 
 def edit []: path -> nothing {
   ^chezmoi edit --watch $in
