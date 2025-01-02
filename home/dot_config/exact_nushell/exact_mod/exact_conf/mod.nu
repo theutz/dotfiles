@@ -7,7 +7,7 @@ def edit []: path -> nothing {
 }
 
 def src-edit [file?: path]: path -> nothing {
-  ^chezomi source-path $file
+  ^chezmoi source-path $file
     | complete | get stdout | str trim
     | ^$env.EDITOR $file
 }
