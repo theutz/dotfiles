@@ -81,6 +81,7 @@ local colors = {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		opts = {
+			transparent_background = true,
 			background = {
 				light = "latte",
 				dark = "mocha",
