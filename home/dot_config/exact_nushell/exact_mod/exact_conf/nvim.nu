@@ -1,3 +1,7 @@
+def edit []: path -> nothing {
+  ^chezmoi edit --apply $in
+}
+
 # Edit neovim config
 export def main [] {
   xdg config "nvim"
@@ -19,5 +23,10 @@ export def autocmds [] {
 # Edit neovim options
 export def options [] {
   xdg config "nvim" "lua" "config" "options.lua"
+  | edit
+}
+
+export def colors [] {
+  xdg config nvim lua plugins colorschemes.lua
   | edit
 }
