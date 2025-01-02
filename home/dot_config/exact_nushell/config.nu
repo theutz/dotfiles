@@ -45,6 +45,7 @@ use mod/xdg
 use mod/conf
 use mod/yazi y
 use mod/chezmoi *
-use mod/fzf
+
+use mod/fzf setup-fzf
 
 setup-fzf
