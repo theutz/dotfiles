@@ -2,15 +2,15 @@
 
 # Edit all chezmoi files
 export def "main" [] {
-  src-edit
+  ^chezmoi source-path | str trim | path join
 }
 
 # Edit files in .chezmoiscripts
 export def "scripts" [] {
-  src-edit ".chezmoiscripts"
+  ^chezmoi source-path | str trim | path join .chezmoiscripts
 }
 
 # Edit files in .chezmoidata
 export def "data" [] {
-  src-edit ".chezmoidata"
+  ^chezmoi source-path | str trim | path join .chezmoidata
 }

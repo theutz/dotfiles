@@ -6,12 +6,6 @@ def edit []: path -> nothing {
   ^chezmoi edit --watch $in
 }
 
-def src-edit [file?: path]: path -> nothing {
-  ^chezmoi source-path $file
-    | complete | get stdout | str trim
-    | ^$env.EDITOR $file
-}
-
 # Edit this config file
 export def main [] {
   const here = path self .
