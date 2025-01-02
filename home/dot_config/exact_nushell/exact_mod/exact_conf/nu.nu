@@ -10,7 +10,7 @@ export def env [] {
 
 # Edit nushell modules
 export def modules [] {
-  xdg config "nushell" "modules" | edit
+  xdg config "nushell" "mod" | edit
 }
 
 export alias mod = modules
