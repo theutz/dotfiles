@@ -1,3 +1,4 @@
+# Tools for working with chezmoi
 
 export alias c     = ^chezmoi
 export alias cma   = ^chezmoi add
@@ -13,9 +14,11 @@ export alias cme   = ^chezmoi edit
 export alias cmea  = ^chezmoi edit --apply
 export alias cmew  = ^chezmoi edit --watch
 export alias cmf   = ^chezmoi forget
+export alias cmgws = ^chezmoi git status --short
 export alias cmm   = ^chezmoi merge
 export alias cmma  = ^chezmoi merge-all
 export alias cmra  = ^chezmoi re-add
-export alias cmrai  = ^chezmoi re-add --interactive
+export alias cmrai = ^chezmoi re-add --interactive
 export alias cms   = ^chezmoi status
+export alias cmx   = ^chezmoi destroy
 export alias cmy   = ^chezmoi apply
