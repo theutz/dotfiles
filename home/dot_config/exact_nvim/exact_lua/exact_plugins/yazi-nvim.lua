@@ -2,10 +2,10 @@ return {
   {
     "mikavilpas/yazi.nvim",
     enabled = true,
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    event = "VeryLazy",
     config = true,
     keys = {
       { "<leader>E", function() require("yazi").yazi() end, desc = "Open file explorer (root)" },
