@@ -16,6 +16,7 @@ zellij = "latest"
 "cargo:pueue" = "latest"
 "npm:better-commits" = "latest"
 "ubi:carapace-sh/carapace-bin" = { version = "latest", exe = "carapace" }
+"aqua:sharkdp/vivid" = "latest"
 
 [settings]
 experimental = true
