@@ -49,3 +49,5 @@ use mod/chezmoi *
 use mod/fzf setup-fzf
 
 setup-fzf
+
+use ~/.cache/starship/init.nu
