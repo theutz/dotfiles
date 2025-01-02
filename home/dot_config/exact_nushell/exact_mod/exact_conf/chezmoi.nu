@@ -23,5 +23,5 @@ export def "data" [] {
 
 # Edit the fonts file
 export def "fonts" [] {
-  edit .chezmoiscripts fonts.yml
+  edit .chezmoidata fonts.yml
 }
