@@ -14,7 +14,6 @@ git:
     pager:
       'delta "$(dark-mode status | grep on && echo "--dark" || echo "--light")"
       --paging=never
-
       '
   parseEmoji: true
 gui:
