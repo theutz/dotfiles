@@ -48,5 +48,6 @@ export def "yazi" [] {
   | edit
 }
 
+export use chezmoi.nu
 export use nvim.nu
 export use nu.nu
