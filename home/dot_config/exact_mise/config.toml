@@ -17,6 +17,7 @@ zellij = "latest"
 "npm:better-commits" = "latest"
 "ubi:carapace-sh/carapace-bin" = { version = "latest", exe = "carapace" }
 "aqua:sharkdp/vivid" = "latest"
+starship = "latest"
 
 [settings]
 experimental = true
