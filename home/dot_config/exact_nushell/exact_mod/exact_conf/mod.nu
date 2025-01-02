@@ -10,6 +10,7 @@ def edit []: path -> nothing {
 export def main [] {
   const here = path self .
   $here | edit
+  exec nu
 }
 
 # Edit wezterm config
