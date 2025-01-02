@@ -9,5 +9,3 @@ def --env setup-fzf []: nothing -> nothing {
 
   $env.FZF_DEFAULT_OPTS = $latte
 }
-
-setup-fzf
