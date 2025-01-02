@@ -8,7 +8,6 @@ def --wrapped add-fish-cmp [
   use mod/xdg
 
   let file = xdg config fish completions $file
-  # let cmd = $cmd | str join ' '
 
   $"^($cmd | first) ($cmd | skip | str join ' ') | save -f ($file)"
   | $"nu -c '($in)'"
@@ -29,7 +28,14 @@ $env.config.completions.external = {
   completer: $fish_completer
 }
 
-$env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
+def --env set-ls-colors []: nothing -> nothing {
+  ^dark-mode status | match $in {
+    on => "catppuccin-mocha",
+    off => "catppuccin-latte"
+  }
+  | ^vivid generate $in | str trim
+  | $env.LS_COLORS = $in
+}
 
 use scr/mise.nu
 use mod/xdg
