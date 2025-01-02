@@ -1,16 +1,27 @@
 # Edit chezmoi files
 
+def edit [...file: string] {
+  ^chezmoi source-path | str trim
+  | path join ...$file
+  | ^$env.EDITOR $in
+}
+
 # Edit all chezmoi files
 export def "main" [] {
-  ^chezmoi source-path | str trim | path join | ^$env.EDITOR $in
+  edit
 }
 
 # Edit files in .chezmoiscripts
 export def "scripts" [] {
-  ^chezmoi source-path | str trim | path join .chezmoiscripts | ^$env.EDITOR $in
+  edit .chezmoiscripts
 }
 
 # Edit files in .chezmoidata
 export def "data" [] {
-  ^chezmoi source-path | str trim | path join .chezmoidata | ^$env.EDITOR $in
+  edit .chezmoidata
+}
+
+# Edit the fonts file
+export def "fonts" [] {
+  edit .chezmoiscripts fonts.yml
 }
