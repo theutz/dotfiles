@@ -2,11 +2,8 @@
 
 def edit [...file: string] {
   let f = ^chezmoi source-path | str trim | path join ...$file
-
-  ^$env.EDITOR $f | complete
-  | if $in.exit_code == 0 { 
-    chezmoi apply $f
-  }
+  ^$env.EDITOR $f
+  chezmoi apply $f
 }
 
 # Edit all chezmoi files
