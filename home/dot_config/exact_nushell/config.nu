@@ -29,7 +29,7 @@ $env.config.completions.external = {
   completer: $fish_completer
 }
 
-$env.LS_COLOR = (vivid generate catppuccin-latte | str trim)
+$env.LS_COLORS = (vivid generate catppuccin-latte | str trim)
 
 use scr/mise.nu
 use mod/xdg
