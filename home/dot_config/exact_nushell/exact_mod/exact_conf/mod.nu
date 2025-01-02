@@ -1,4 +1,5 @@
 # A collection of shortcuts for quickly editing configuration files
+
 use mod/xdg
 
 def edit []: path -> nothing {
@@ -29,26 +30,6 @@ export def "zellij" [] {
   | edit
 }
 
-
-# Edit chezmoi files
-export module chezmoi {
-
-  # Edit all chezmoi files
-  export def "main" [] {
-    src-edit
-  }
-
-  # Edit files in .chezmoiscripts
-  export def "scripts" [] {
-    src-edit ".chezmoiscripts"
-  }
-
-  # Edit files in .chezmoidata
-  export def "data" [] {
-    src-edit ".chezmoidata"
-  }
-}
-
 # Edit ghostty config file
 export def "ghostty" [] {
   xdg config "ghostty" "config"
@@ -67,18 +48,5 @@ export def "yazi" [] {
   | edit
 }
 
-export module nu {
-  # Edit nushell interactive configuration
-  export def main [] {
-    xdg config "nushell" "config.nu"
-    | edit
-  }
-
-  # Edit nushell environment
-  export def "env" [] {
-    xdg config "nushell" "env.nu"
-    | edit
-  }
-}
-
 export use nvim.nu
+export use nu.nu
