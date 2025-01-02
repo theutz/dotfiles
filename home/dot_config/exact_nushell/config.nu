@@ -45,3 +45,4 @@ use mod/xdg
 use mod/conf
 use mod/yazi y
 use mod/chezmoi *
+use mod/fzf

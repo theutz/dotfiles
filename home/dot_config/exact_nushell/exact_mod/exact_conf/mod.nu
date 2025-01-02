@@ -14,33 +14,33 @@ export def main [] {
 }
 
 # Edit wezterm config
-export def "wezterm" [] {
-  xdg config "wezterm" "wezterm.lua"
-  | edit
+export def wezterm [] {
+  xdg config "wezterm" "wezterm.lua" | edit
 }
 
 # Edit zellij config
-export def "zellij" [] {
-  xdg config "zellij" "config.kdl"
-  | edit
+export def zellij [] {
+  xdg config "zellij" "config.kdl" | edit
 }
 
 # Edit ghostty config file
-export def "ghostty" [] {
-  xdg config "ghostty" "config"
-  | edit
+export def ghostty [] {
+  xdg config "ghostty" "config" | edit
 }
 
 # Edit delta diff configuration
-export def "delta" [] {
-  xdg config "git" "config"
-  | edit
+export def delta [] {
+  xdg config "git" "config" | edit
 }
 
 # Edit yazi configuration
-export def "yazi" [] {
-  xdg config "yazi"
-  | edit
+export def yazi [] {
+  xdg config "yazi" | edit
+}
+
+# Edit bat configuration
+export def bat [] {
+  xdg config "bat" | edit
 }
 
 export use chezmoi.nu
