@@ -55,4 +55,4 @@ use ~/.cache/starship/init.nu
 
 # Setup carapace
 source (xdg cache "carapace" "init.nu")
-
+source ~/.cache/carapace/init.nu
