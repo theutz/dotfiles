@@ -1,4 +1,4 @@
-def --env setup-fzf []: nothing -> nothing {
+export def --env setup-fzf []: nothing -> nothing {
   let latte = "
     --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39
     --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78
