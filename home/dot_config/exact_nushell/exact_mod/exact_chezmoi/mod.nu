@@ -18,4 +18,4 @@ export alias cmma  = ^chezmoi merge-all
 export alias cmra  = ^chezmoi re-add
 export alias cmrai  = ^chezmoi re-add --interactive
 export alias cms   = ^chezmoi status
-export alias cmt   = ^chezmoi apply
+export alias cmy   = ^chezmoi apply
