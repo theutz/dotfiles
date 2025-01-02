@@ -1,5 +1,11 @@
 # Edit nushell interactive configuration
 export def main [] {
+  ["init.nu" "config.nu"]
+  | each {|| prepend "nushell" | path join | xdg config }
+  | ^chezmoi edit --watch ...$in
+}
+
+export def config [] {
   xdg config "nushell" "config.nu" | edit
 }
 
