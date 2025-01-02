@@ -4,13 +4,13 @@ use mod/xdg
 
 def edit []: path -> nothing {
   ^chezmoi edit --watch $in
+  exec nu
 }
 
 # Edit this config file
 export def main [] {
   const here = path self .
   $here | edit
-  exec nu
 }
 
 # Edit wezterm config
