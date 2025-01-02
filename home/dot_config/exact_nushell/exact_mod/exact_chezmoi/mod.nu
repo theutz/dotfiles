@@ -1,7 +1,8 @@
 # Tools for working with chezmoi
 
-export alias c     = ^chezmoi
+export alias cm    = ^chezmoi
 export alias cma   = ^chezmoi add
+export alias cmcd  = ^chezmoi cd
 export alias cmch  = ^chezmoi chattr
 export alias cmchd = ^chezmoi chattr -- +exact
 export alias cmchD = ^chezmoi chattr -- -exact
