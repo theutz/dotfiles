@@ -3,7 +3,7 @@
 def edit [...file: string] {
   let f = ^chezmoi source-path | str trim | path join ...$file
   ^$env.EDITOR $f
-  chezmoi apply $f
+  chezmoi apply
 }
 
 # Edit all chezmoi files
