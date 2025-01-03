@@ -13,8 +13,12 @@ mkdir (xdg cache "starship")
 starship init nu | save -f (xdg cache "starship" "init.nu")
 
 # Setup carapace
-## ~/.config/nushell/env.nu
-$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+$env.CARAPACE_BRIDGES = [
+  zsh
+  fish
+  bash
+  inshellisense
+] | str join ","
 mkdir (xdg cache "carapace")
 carapace _carapace nushell | save --force (xdg cache "carapace" "init.nu")
 
