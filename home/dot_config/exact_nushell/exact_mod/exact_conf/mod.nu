@@ -43,8 +43,14 @@ export def bat [] {
   xdg config "bat" | edit
 }
 
+# Edit tmux configuration
 export def tmux [] {
   xdg config "tmux" "tmux.conf" | edit
+}
+
+# Edit starship configuration
+export def starship [] {
+  xdg config "starship.toml" | edit
 }
 
 export use chezmoi.nu
