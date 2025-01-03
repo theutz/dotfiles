@@ -20,6 +20,7 @@ zellij = "latest"
 starship = "latest"
 python = "latest"
 "pipx:jc" = "latest"
+"npm:@microsoft/inshellisense" = "latest"
 
 [settings]
 experimental = true
