@@ -48,3 +48,26 @@ export def kill-session [...name: string]: nothing -> nothing {
 }
 
 export alias ks = kill-session
+
+# Attach to a tmux session or load and attach to a tmuxp session
+export def attach [name?: string]: nothing -> nothing {
+  if ($name | is-empty) {
+    ls | get name | append (
+      ^tmuxp ls | lines
+    )
+    | uniq
+    | sort
+    | input list --fuzzy
+  } else {
+    $name
+  } | do {|session|
+    ^tmux has-session -t $session
+    | complete
+    | match $in.exit_code {
+      0 => { ^tmux switch-client -t $session }
+      _ => { ^tmuxp load --yes $session }
+    }
+  } $in
+}
+
+export alias a = attach
