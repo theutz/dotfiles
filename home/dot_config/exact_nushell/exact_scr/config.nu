@@ -48,3 +48,9 @@ def "config starship" [] { config edit "starship.toml" }
 
 # Edit aerospace configurations.
 def "config aerospace" [] { config edit "aerospace/aerospace.toml" }
+
+# Edit tmux configurations.
+def "config tmux" [] { config edit "tmux/tmux.conf" }
+
+# Edit tmuxp configurations.
+def "config tmuxp" [] { config edit "tmuxp" }
