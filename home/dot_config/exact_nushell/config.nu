@@ -44,6 +44,7 @@ use scr/mise.nu
 use mod/xdg
 use mod/yazi y
 use mod/chezmoi *
+source scr/config.nu
 
 # Setup FZF
 use mod/fzf setup-fzf
