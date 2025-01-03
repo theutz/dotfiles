@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# {{ includeTemplate "dot_config/exact_tmux/tmux.conf.tmpl" . | sha256sum }}
+# {{ includeTemplate "dot_config/exact_tmux/tmux.conf" . | sha256sum }}
 
 tmux source-file ~/.config/tmux/tmux.conf \; \
   display-message "Config reloaded by chezmoi!"

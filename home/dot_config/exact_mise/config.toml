@@ -18,6 +18,8 @@ zellij = "latest"
 "ubi:carapace-sh/carapace-bin" = { version = "latest", exe = "carapace" }
 "aqua:sharkdp/vivid" = "latest"
 starship = "latest"
+python = "latest"
+"pipx:jc" = "latest"
 
 [settings]
 experimental = true
