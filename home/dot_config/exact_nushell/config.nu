@@ -19,5 +19,4 @@ source ~/.cache/carapace/init.nu
 
 use xdg
 use yazi y
-
-source chezmoi.nu
+use chezmoi.nu
