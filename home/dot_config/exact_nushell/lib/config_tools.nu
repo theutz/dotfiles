@@ -1,4 +1,3 @@
-use chezmoi
 use xdg
 
 # Edit a file in XDG_CONFIG_HOME
