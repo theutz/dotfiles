@@ -30,12 +30,12 @@ $env.config.show_banner = false
 # }
 # setup-completions
 
-source scr/ls-colors.nu
-use scr/mise.nu
+source ls-colors.nu
+use mise.nu
 use mod/xdg
 use mod/yazi y
 use mod/chezmoi *
-source scr/config.nu
+source config_1.nu
 
 # Setup FZF
 use mod/fzf setup-fzf
