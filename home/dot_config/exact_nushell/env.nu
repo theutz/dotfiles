@@ -2,7 +2,7 @@ $env.NU_LIB_DIRS = [
   ($nu.default-config-dir | path join "lib")
 ]
 
-use xdg
+use lib/xdg
 
 # Setup mise
 let mise_path = (xdg cache "mise" "init.nu")
