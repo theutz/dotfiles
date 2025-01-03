@@ -1,7 +1,7 @@
 $env.config.edit_mode = "vi"
 $env.config.show_banner = false
 
-source ./lib/config_tools.nu
+source config_tools.nu
 source ./lib/ls-colors.nu
 use ~/.cache/mise/init.nu
 use xdg
