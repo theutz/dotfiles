@@ -19,7 +19,10 @@ $env.CARAPACE_BRIDGES = [
   zsh
   fish
   bash
-  # inshellisense
+  inshellisense
 ] | str join ","
 mkdir (xdg cache "carapace")
 carapace _carapace nushell | save --force (xdg cache "carapace" "init.nu")
+
+# Setup jc
+^jc --zsh-comp | save --force (xdg data "zsh/site-functions/_jc")
