@@ -54,3 +54,6 @@ def "config tmux" [] { config edit "tmux/tmux.conf" }
 
 # Edit tmuxp configurations.
 def "config tmuxp" [] { config edit "tmuxp" }
+
+# Edit mise configurations
+def "config mise" [] { config edit "mise/config.toml" }
