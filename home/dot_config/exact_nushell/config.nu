@@ -42,7 +42,7 @@ set-ls-colors
 
 use scr/mise.nu
 use mod/xdg
-use mod/conf
+use mod/config
 use mod/yazi y
 use mod/chezmoi *
 
