@@ -24,3 +24,5 @@ use chezmoi aliases *
 
 use brew aliases *
 use brew
+
+use tx
