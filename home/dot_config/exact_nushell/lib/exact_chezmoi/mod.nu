@@ -1,6 +1,6 @@
 # Tools for working with chezmoi
 
-dev status [] {
+export def status [] {
   ^chezmoi status
   | parse --regex '(?m)^(?P<last>.)(?P<target>.) (?P<file>.*$)'
 }
