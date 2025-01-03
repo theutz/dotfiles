@@ -1,5 +1,10 @@
 # Tools for working with chezmoi
 
+dev status [] {
+  ^chezmoi status
+  | parse --regex '(?m)^(?P<last>.)(?P<target>.) (?P<file>.*$)'
+}
+
 export module aliases {
   export alias cm    = ^chezmoi
   export alias cma   = ^chezmoi add
@@ -21,7 +26,8 @@ export module aliases {
   export alias cmma  = ^chezmoi merge-all
   export alias cmra  = ^chezmoi re-add
   export alias cmrai = ^chezmoi re-add --interactive
-  export alias cms   = ^chezmoi status
+  export alias cms   = status
   export alias cmx   = ^chezmoi destroy
   export alias cmy   = ^chezmoi apply
 }
+
