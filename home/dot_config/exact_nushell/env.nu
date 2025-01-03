@@ -4,6 +4,7 @@ $env.NU_LIB_DIRS = [
 
 use lib/xdg
 use std
+use lib/task
 
 # Setup mise
 let mise_path = (xdg cache "mise" "init.nu")
@@ -22,9 +23,3 @@ $env.CARAPACE_BRIDGES = [
 ] | str join ","
 mkdir (xdg cache "carapace")
 carapace _carapace nushell | save --force (xdg cache "carapace" "init.nu")
-
-pueue status
-| complete 
-| if $in.exit_code > 0 {
-  pueued --daemonize o+e> (std null-device)
-} 
