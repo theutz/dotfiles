@@ -11,3 +11,8 @@ export path=(
   /opt/homebrew/{,s}bin
   $path
 )
+
+export fpath=(
+  $HOME/.local/share/zsh/site-functions
+  $fpath
+)
