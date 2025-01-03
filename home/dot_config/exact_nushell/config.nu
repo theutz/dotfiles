@@ -3,7 +3,7 @@ $env.config.show_banner = false
 
 source ./lib/config_tools.nu
 source ./lib/ls-colors.nu
-use mise.nu
+use ~/.cache/mise/init.nu
 use xdg
 use yazi y
 use chezmoi *

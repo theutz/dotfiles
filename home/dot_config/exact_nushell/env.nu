@@ -5,7 +5,7 @@ $env.NU_LIB_DIRS = [
 use xdg
 
 # Setup mise
-let mise_path = $nu.default-config-dir | path join "lib" mise.nu
+let mise_path = (xdg cache "mise" "init.nu")
 ^mise activate nu | save $mise_path --force
 
 # Setup starship
