@@ -1,6 +1,6 @@
 # Tools for working with chezmoi
 
-module aliases {
+export module aliases {
   export alias cm    = ^chezmoi
   export alias cma   = ^chezmoi add
   export alias cmcd  = ^chezmoi cd
