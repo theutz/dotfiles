@@ -8,7 +8,7 @@ def edit []: path -> nothing {
 }
 
 # Edit this config file
-export def main [] {
+export def conf [] {
   const here = path self .
   $here | edit
 }
