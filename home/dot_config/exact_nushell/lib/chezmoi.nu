@@ -25,3 +25,5 @@ module aliases {
   export alias cmx   = ^chezmoi destroy
   export alias cmy   = ^chezmoi apply
 }
+
+export use aliases *
