@@ -2,7 +2,7 @@
 
 palette = "catppuccin_latte"
 
-add_newline = false
+add_newline = true
 
 [directory]
 fish_style_pwd_dir_length = 2
