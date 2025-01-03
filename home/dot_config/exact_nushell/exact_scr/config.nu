@@ -25,9 +25,8 @@ def "config nu" [] { config edit $nu.config-path }
 # Edit nu environment configurations.
 def "config env" [] { config edit $nu.env-path }
 
-def "config nushell" [] {
-  ^chezmoi edit --watch --apply $nu.default-config-dir
-}
+# Edit ~/.config/nushell.
+def "config nushell" [] { config edit $nu.default-config-dir }
 
 # Edit neovim confgurations.
 def "config nvim" [] { config edit "nvim" }
