@@ -21,3 +21,5 @@ use xdg
 use yazi y
 
 use chezmoi aliases *
+
+use brew aliases *
