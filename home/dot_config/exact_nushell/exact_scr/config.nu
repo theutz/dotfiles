@@ -20,15 +20,13 @@ def "config config" [] {
 def "config wezterm" [] { config edit "wezterm/wezterm.lua" }
 
 # Edit nu configurations.
-def "config nu" [] {
-  ^chezmoi edit --watch $nu.config-path
-  exec nu
-}
+def "config nu" [] { config edit $nu.config-path }
 
 # Edit nu environment configurations.
-def "config env" [] {
-  ^chezmoi edit --watch $nu.env-path
-  exec nu
+def "config env" [] { config edit $nu.env-path }
+
+def "config nushell" [] {
+  ^chezmoi edit --watch --apply $nu.default-config-dir
 }
 
 # Edit neovim confgurations.
