@@ -1,5 +1,5 @@
-use mod/chezmoi
-use mod/xdg
+use chezmoi
+use xdg
 
 # Edit a file in XDG_CONFIG_HOME
 def "config edit" [...file: string]: nothing -> nothing {
