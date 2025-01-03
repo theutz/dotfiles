@@ -7,6 +7,7 @@ def "config edit" [...file: string]: nothing -> nothing {
     $env.XDG_CONFIG_HOME | default "~/.config"
     | path join ...$file
   )
+  exec nu
 }
 
 # Edit this configuration file.
