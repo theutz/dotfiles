@@ -43,6 +43,10 @@ export def bat [] {
   xdg config "bat" | edit
 }
 
+export def tmux [] {
+  xdg config "tmux" | edit
+}
+
 export use chezmoi.nu
 export use nvim.nu
 export use nu.nu
