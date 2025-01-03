@@ -1,8 +1,8 @@
 $env.config.edit_mode = "vi"
 $env.config.show_banner = false
 
-source config_tools.nu
-source ls-colors.nu
+source ./lib/config_tools.nu
+source ./lib/ls-colors.nu
 use mise.nu
 use xdg
 use yazi y
