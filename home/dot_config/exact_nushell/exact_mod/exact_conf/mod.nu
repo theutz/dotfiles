@@ -44,7 +44,7 @@ export def bat [] {
 }
 
 export def tmux [] {
-  xdg config "tmux" | edit
+  xdg config "tmux" "tmux.conf" | edit
 }
 
 export use chezmoi.nu
