@@ -1,8 +1,14 @@
 # Tools for working with mise-en-place
 
 # Search for packages in mise
-export def search [query: string] {
-  let q = $query | default ""
+export def search [
+  query?: string
+] {
+  let q = if ($query | is-empty) {
+    input "query: "
+  } else {
+    $query
+  }
 
   let aqua = ^aqua list --all
   | lines -s |
@@ -22,11 +28,11 @@ export def search [query: string] {
   ]
 }
 
-# Search within packages
-# export alias s = search
+# Search for packages
+export alias s = search
 
 export module aliases {
   # Search for pacakges in mise
-  # export alias mss = search
+  export alias mss = search
 }
 
