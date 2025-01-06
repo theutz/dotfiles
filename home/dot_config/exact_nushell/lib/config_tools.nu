@@ -67,7 +67,7 @@ def "config mise" [] { config edit "mise/config.toml" }
 def "config tx" [] {
   [
     ["lib" "tx" "mod.nu"]
-    ["lib" "config.nu"]
+    ["config.nu"]
   ] | each {|p|
     $nu.default-config-dir
     | path join ...$p
