@@ -91,4 +91,5 @@ export alias a = attach
 export module aliases {
   export alias txa = attach
   export alias txls = list
+  export alias txks = kill-session
 }
