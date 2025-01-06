@@ -1,6 +1,12 @@
 session_name: hubspot-playcore
+start_directory: $HOME/code/delegator/hubspot-playcore
 windows:
   - window_name: main
+    layout: &layout main-vertical
     panes:
       - blank
+      - blank
+  - window_name: server
+    layout: *layout
+    panes:
       - blank
