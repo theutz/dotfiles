@@ -23,10 +23,10 @@ export def search [query: string] {
 }
 
 # Search within packages
-export alias s = search
+# export alias s = search
 
 export module aliases {
   # Search for pacakges in mise
-  export alias mss = search
+  # export alias mss = search
 }
 
