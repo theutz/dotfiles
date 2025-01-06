@@ -2,12 +2,12 @@ use xdg
 
 # Edit a file in XDG_CONFIG_HOME
 def "config edit" [...files: string]: nothing -> nothing {
-  let paths = $files
-  | each {|file|
+  let paths = $files | each {|file|
     $env.XDG_CONFIG_HOME
     | default ( $env.HOME | path join ".config")
     | path join $file
   }
+
   ^chezmoi edit --apply --watch ...$paths
   exec nu
 }
@@ -67,10 +67,10 @@ def "config mise" [] { config edit "mise/config.toml" }
 def "config nu-mod" [name: string]: nothing -> nothing {
   [
     ["config.nu"]
-    ["lib" name "mod.nu"]
+    ["lib" $name "mod.nu"]
   ] | each {|it|
-    let p = $nu.default-config-dir | path join $it
-    if (not ($p | path exists)) {
+    let p = $nu.default-config-dir | path join ...$it
+    if not ($p | path exists) {
       mkdir ($p | path dirname)
     } 
     $p
