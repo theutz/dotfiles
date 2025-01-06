@@ -12,7 +12,6 @@ neovim = "latest"
 chezmoi = "latest"
 "ubi:aquaproj/aqua" = "latest"
 zellij = "latest"
-"aqua:nushell/nushell" = "latest"
 "cargo:pueue" = "latest"
 "npm:better-commits" = "latest"
 "ubi:carapace-sh/carapace-bin" = { version = "latest", exe = "carapace" }
@@ -20,7 +19,8 @@ zellij = "latest"
 starship = "latest"
 python = "latest"
 "pipx:jc" = "latest"
-"npm:@microsoft/inshellisense" = "latest"
+"aqua:tealdeer-rs/tealdeer" = "latest"
+"aqua:denisidoro/navi" = "latest"
 
 [settings]
 experimental = true
