@@ -27,6 +27,9 @@ def "config env" [] { config edit $nu.env-path }
 # Edit ~/.config/nushell.
 def "config nushell" [] { config edit $nu.default-config-dir }
 
+# Edit homemade notes module
+def "config notes" [] { config edit ($nu.default-config-dir | path join "lib/notes") }
+
 # Edit neovim confgurations.
 def "config nvim" [] { config edit "nvim" }
 
