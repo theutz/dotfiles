@@ -22,12 +22,13 @@ python = "latest"
 "aqua:tealdeer-rs/tealdeer" = "latest"
 "aqua:denisidoro/navi" = "latest"
 
+[tools."ubi:carapace-sh/carapace-bin"]
+version = "latest"
+exe = "carapace"
+
 [settings]
 experimental = true
 
 [env]
 
 [tasks]
-
-[tasks.search]
-run = "aqua g"
