@@ -1,11 +1,14 @@
 use xdg
 
 # Edit a file in XDG_CONFIG_HOME
-def "config edit" [...file: string]: nothing -> nothing {
-  ^chezmoi edit --apply --watch (
-    $env.XDG_CONFIG_HOME | default "~/.config"
-    | path join ...$file
-  )
+def "config edit" [...files: string]: nothing -> nothing {
+  let paths = $files
+  | each {|file|
+    $env.XDG_CONFIG_HOME
+    | default ( $env.HOME | path join ".config")
+    | path join $file
+  }
+  ^chezmoi edit --apply --watch ...$paths
   exec nu
 }
 
@@ -59,3 +62,14 @@ def "config tmuxp" [] { config edit "tmuxp" }
 
 # Edit mise configurations
 def "config mise" [] { config edit "mise/config.toml" }
+
+# Edit tx configurations
+def "config tx" [] {
+  [
+    ["lib" "tx" "mod.nu"]
+    ["lib" "config.nu"]
+  ] | each {|p|
+    $nu.default-config-dir
+    | path join $p
+  } | config edit ...$in
+}
