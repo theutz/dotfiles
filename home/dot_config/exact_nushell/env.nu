@@ -2,7 +2,7 @@ $env.NU_LIB_DIRS = [
   ($nu.default-config-dir | path join "lib")
 ]
 
-$env.MANPAGER = $env.EDITOR? | default "nvim"
+$env.MANPAGER = "nvim +Man!"
 $env.MANWIDTH = 999
 
 use lib/xdg
