@@ -52,10 +52,11 @@ export alias ks = kill-session
 # Attach to a tmux session or load and attach to a tmuxp session
 export def attach [name?: string]: nothing -> nothing {
   if ($name | is-empty) {
-    ls | get name | append (
-      ^tmuxp ls | lines
+    ls | get name 
+    | append (^tmuxp ls 
+      | lines
     )
-    | uniq
+    | uniq 
     | sort
     | input list --fuzzy
   } else {
