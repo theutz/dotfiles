@@ -18,6 +18,7 @@ use ~/.cache/starship/init.nu
 source ~/.cache/carapace/init.nu
 
 use xdg
+
 use yazi y
 
 use chezmoi aliases *
@@ -30,3 +31,5 @@ use tx aliases *
 
 use notes
 use notes aliases *
+
+source ./aliases.nu
