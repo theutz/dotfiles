@@ -70,6 +70,6 @@ def "config tx" [] {
     ["lib" "config.nu"]
   ] | each {|p|
     $nu.default-config-dir
-    | path join $p
+    | path join ...$p
   } | config edit ...$in
 }
