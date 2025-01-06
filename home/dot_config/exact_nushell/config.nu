@@ -26,6 +26,7 @@ use brew aliases *
 use brew
 
 use tx
+use tx aliases *
 
 use notes
 use notes aliases *

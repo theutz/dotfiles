@@ -21,8 +21,8 @@ export def load [...name: string]: nothing -> nothing {
 export alias l = load
 
 # List all active tmux sessions
-export def ls []: nothing -> table {
-  ^tmux ls
+export def list []: nothing -> table {
+  ^tmux ls | complete | get stdout
   | lines
   | split column --regex ':\s+' --number 2 name data
   | insert more {|row|
@@ -36,12 +36,19 @@ export def ls []: nothing -> table {
 
 # Kill an active tmux session
 export def kill-session [...name: string]: nothing -> nothing {
-  use std
   if ($name | is-empty) {
-    ls | get name | input list --multi
-  } else {
-    $name
-  } | par-each {|session|
+    list | get name |
+    | if ($in | is-not-empty) {
+      input list --multi
+    } else {
+      error make {
+        msg: "Could not list killed sessions",
+        label: {
+          span: (metadata $in).span, text: "error occurred here" }
+      }
+    }
+  }
+  | par-each {|session|
     ^tmux kill-session -t $session
     $"killed ($session)..."
   }
@@ -51,8 +58,8 @@ export alias ks = kill-session
 
 # Attach to a tmux session or load and attach to a tmuxp session
 export def attach [name?: string]: nothing -> nothing {
-  if ($name | is-empty) {
-    ls | get name 
+  let session = if ($name | is-empty) {
+    list | get name 
     | append (^tmuxp ls 
       | lines
     )
@@ -61,18 +68,27 @@ export def attach [name?: string]: nothing -> nothing {
     | input list --fuzzy
   } else {
     $name
-  } | do {|session|
-    ^tmux has-session -t $session | complete | get exit_code | match $in {
-      0 => {
-        if ($env.TMUX? | is-not-empty) {
-          ^tmux switch-client -t $session
-        } else {
-          ^tmux attach-session -t $session
-        }
+  }
+
+  ^tmux has-session -t $session | complete | match $in.exit_code {
+    0 => {
+      let cmd = if ($env.TMUX? | is-empty) {
+        "attach"
+      } else {
+        "switch-client"
       }
-      _ => { ^tmuxp load --yes $session }
+      ^tmux $cmd -t $session 
     }
-  } $in
+    _ => {
+      load $session
+      attach $session
+    }
+  }
 }
 
 export alias a = attach
+
+export module aliases {
+  export alias txa = attach
+  export alias txls = list
+}
