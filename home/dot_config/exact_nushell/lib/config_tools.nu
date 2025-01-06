@@ -63,13 +63,26 @@ def "config tmuxp" [] { config edit "tmuxp" }
 # Edit mise configurations
 def "config mise" [] { config edit "mise/config.toml" }
 
+# Edit a nushell module
+def "config nu-mod" [name: string]: nothing -> nothing {
+  [
+    ["config.nu"]
+    ["lib" name "mod.nu"]
+  ] | each {|it|
+    let p = $nu.default-config-dir | path join $it
+    if (not ($p | path exists)) {
+      mkdir ($p | path dirname)
+    } 
+    $p
+  } | config edit ...$in
+}
+
 # Edit tx configurations
 def "config tx" [] {
-  [
-    ["lib" "tx" "mod.nu"]
-    ["config.nu"]
-  ] | each {|p|
-    $nu.default-config-dir
-    | path join ...$p
-  } | config edit ...$in
+  config nu-mod tx
+}
+
+# Edit ms shortcuts for mise
+def "config ms" [] {
+  config nu-mod ms
 }
