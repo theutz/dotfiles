@@ -62,15 +62,13 @@ export def attach [name?: string]: nothing -> nothing {
   } else {
     $name
   } | do {|session|
-    ^tmux has-session -t $session
-    | complete
-    | match $in.exit_code {
+    ^tmux has-session -t $session | complete | get exit_code | match $in {
       0 => {
-      if ($env.TMUX? | is-not-empty) {
-        ^tmux switch-client -t $session
-      } else {
-        ^tmux attach -t $session
-      }
+        if ($env.TMUX? | is-not-empty) {
+          ^tmux switch-client -t $session
+        } else {
+          ^tmux attach-session -t $session
+        }
       }
       _ => { ^tmuxp load --yes $session }
     }
