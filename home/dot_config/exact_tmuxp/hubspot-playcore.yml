@@ -1,0 +1,6 @@
+session_name: hubspot-playcore
+windows:
+  - window_name: main
+    panes:
+      - blank
+      - blank
