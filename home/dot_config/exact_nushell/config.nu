@@ -32,4 +32,7 @@ use tx aliases *
 use notes
 use notes aliases *
 
+use ms
+use ms aliases *
+
 source ./aliases.nu
