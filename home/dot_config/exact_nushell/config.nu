@@ -1,7 +1,7 @@
 $env.config.edit_mode = "vi"
 $env.config.show_banner = false
 
-alias "core config" = config
+alias core-config = config
 use config
 source ls-colors.nu
 

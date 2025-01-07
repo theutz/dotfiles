@@ -13,7 +13,7 @@ export def "edit" [...files: string]: nothing -> nothing {
 }
 
 # Edit this configuration file.
-export def "config" [] {
+export def main [] {
   const here = path self
   [$nu.default-config-dir config.nu]
   | path join
@@ -66,7 +66,7 @@ export def "tmuxp" [] { edit "tmuxp" }
 export def "mise" [] { edit "mise/config.toml" }
 
 # Edit a nushell module
-export def "nu-mod" [name: string]: nothing -> nothing {
+export def "edit-mod" [name: string]: nothing -> nothing {
   [
     ["config.nu"]
     ["lib" $name "mod.nu"]
@@ -81,15 +81,15 @@ export def "nu-mod" [name: string]: nothing -> nothing {
 
 # Edit tx configurations
 export def "tx" [] {
-  config nu-mod tx
+  edit-mod tx
 }
 
 # Edit ms shortcuts for mise
 export def "ms" [] {
-  config nu-mod ms
+  edit-mod ms
 }
 
 # Edit background jobs module
 export def "job" [] {
-  config nu-mod job
+  edit-mod job
 }
