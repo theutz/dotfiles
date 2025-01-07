@@ -35,12 +35,11 @@ use notes aliases *
 use ms
 use ms aliases *
 
-use task
 try {
   use std
-  task status o+e> (std null-device)
+  ^pueue status o+e> (std null-device)
 } catch {
-  pueued -d o+e> (std null-device)
+  ^pueued -d o+e> (std null-device)
 }
 
 source ./aliases.nu
