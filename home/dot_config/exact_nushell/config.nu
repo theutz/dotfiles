@@ -38,4 +38,8 @@ use ms aliases *
 use job
 job launch
 
+# job spawn --label "tmux-reset" {
+#   dark-notify -c '~/.local/bin/tmux-reset'
+# }
+#
 source ./aliases.nu
