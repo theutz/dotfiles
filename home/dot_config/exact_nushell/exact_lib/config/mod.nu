@@ -80,16 +80,13 @@ export def "edit-mod" [name: string]: nothing -> nothing {
 }
 
 # Edit tx configurations
-export def "tx" [] {
-  edit-mod tx
-}
+export def "tx" [] { edit-mod tx }
 
 # Edit ms shortcuts for mise
-export def "ms" [] {
-  edit-mod ms
-}
+export def "ms" [] { edit-mod ms }
 
 # Edit background jobs module
-export def "job" [] {
-  edit-mod job
-}
+export def "job" [] { edit-mod job }
+
+# Edit chezomi module
+export def "cm" [] { edit-mod chezmoi }
