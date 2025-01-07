@@ -36,6 +36,9 @@ use ms aliases *
 use job
 job launch
 
+use opencommit
+use opencommit aliases *
+
 # # job spawn --label "tmux-reset" {
 # #   dark-notify -c '~/.local/bin/tmux-reset'
 # # }
