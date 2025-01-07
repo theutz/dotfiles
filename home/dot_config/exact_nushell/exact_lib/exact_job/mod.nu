@@ -1,5 +1,15 @@
 # Tools for creating background jobs with pueue
 
+# Launch the pueue daemon
+export def launch [] {
+  use std
+  try {
+    ^pueue status o+e> (std null-device)
+  } catch {
+    ^pueued -d o+e> (std null-device)
+  }
+}
+
 # Show the status of the background jobs
 export def main [] {
   status

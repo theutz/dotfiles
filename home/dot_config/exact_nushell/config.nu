@@ -35,12 +35,7 @@ use notes aliases *
 use ms
 use ms aliases *
 
-try {
-  use std
-  ^pueue status o+e> (std null-device)
-} catch {
-  ^pueued -d o+e> (std null-device)
-}
 use job
+job launch
 
 source ./aliases.nu
