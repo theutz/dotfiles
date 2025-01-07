@@ -1,3 +1,9 @@
+# Tools for creating background jobs with pueue
+
+export def main [] {
+  status
+}
+
 # Spawn a task to run in the background, even when the shell is closed.
 #
 # Note that a fresh Nushell interpreter is spawned to execute the
