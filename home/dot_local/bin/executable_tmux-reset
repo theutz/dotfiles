@@ -1,0 +1,9 @@
+#!/usr/bin/env nu
+
+^tmux show -g
+| parse '{name} {value}'
+| where name =~ '^@(catppuccin|batt|thm|cpu)_'
+| each {
+  ^tmux set -Ugq $in.name
+  $in.name
+}
