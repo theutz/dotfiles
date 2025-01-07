@@ -13,7 +13,7 @@ export def "edit" [...files: string]: nothing -> nothing {
 }
 
 # Edit this configuration file.
-export def main [] {
+export def this [] {
   const here = path self
   [
     $nu.config-path
