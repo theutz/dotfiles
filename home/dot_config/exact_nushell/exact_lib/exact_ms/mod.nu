@@ -90,7 +90,7 @@ export def search [
       | url join | http get $in
       | get -i data.downloads | default [0] | math sum
       | {name: $p.name?, points: $in}
-    } | inspect
+    }
     | insert registry pip
   }
 
