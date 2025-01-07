@@ -1,5 +1,6 @@
 # Tools for creating background jobs with pueue
 
+# Show the status of the background jobs
 export def main [] {
   status
 }
