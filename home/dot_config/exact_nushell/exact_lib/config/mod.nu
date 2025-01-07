@@ -96,5 +96,5 @@ export def mod [name?: string] {
   | glob $in
   | each {|| path split | last 2 | get 0 }
   | input list --fuzzy
-  | edit-mod
+  | edit-mod $in
 }
