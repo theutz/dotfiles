@@ -4,7 +4,7 @@ windows:
   - window_name: main
     layout: &layout main-vertical
     panes:
-      - blank
+      - shell_command: nvim
       - blank
   - window_name: server
     layout: *layout
