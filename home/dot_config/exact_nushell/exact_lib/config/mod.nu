@@ -16,9 +16,9 @@ export def "edit" [...files: string]: nothing -> nothing {
 export def main [] {
   const here = path self
   [
-    [here]
-    [$nu.env-path]
-    [$nu.config-path]
+    here
+    $nu.env-path
+    $nu.config-path
   ]
   | edit ...$in
 }
@@ -94,5 +94,7 @@ export def "job" [] { edit-mod job }
 # Edit chezomi module
 export def "cm" [] { edit-mod chezmoi }
 
+# Edit a nushell module
 export def mod [name?: string] {
+  
 }
