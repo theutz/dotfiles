@@ -7,3 +7,4 @@
   ^tmux set -Ugq $in.name
   $in.name
 }
+tmux source ~/.config/tmux/tmux.conf
