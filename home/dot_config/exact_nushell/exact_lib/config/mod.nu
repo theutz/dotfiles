@@ -71,15 +71,10 @@ export def "mise" [] { edit "mise/config.toml" }
 # Edit a nushell module
 export def "edit-mod" [name: string]: nothing -> nothing {
   [
-    ["config.nu"]
-    ["lib" $name "mod.nu"]
-  ] | each {|it|
-    let p = $nu.default-config-dir | path join ...$it
-    if not ($p | path exists) {
-      mkdir ($p | path dirname)
-    } 
-    $p
-  } | edit ...$in
+    $nu.config-path
+    $nu.env-path
+    ($nu.default-config-dir | path join lib $name mod.nu)
+  ] | edit ...$in
 }
 
 # Edit tx configurations
