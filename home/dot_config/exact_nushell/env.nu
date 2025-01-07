@@ -18,7 +18,6 @@ $env.MANWIDTH = 999
 
 use lib/xdg
 use std
-use lib/task
 
 # Setup mise
 let mise_path = (xdg cache "mise" "init.nu")
