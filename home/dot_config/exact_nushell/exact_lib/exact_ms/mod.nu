@@ -2,12 +2,23 @@
 
 # Search for packages in mise
 export def search [
-  query?: string
+  query?: string # The package name to query for
+  --refresh (-r) # Re-retrieve values from remote backends
 ] {
   let q = if ($query | is-empty) {
     input "query: "
   } else {
     $query
+  }
+
+  let cache_file = $env.XDG_DATA_HOME | default ($env.HOME | path join ".cache") | path join "mss" $"($q).yml"
+  mkdir ($cache_file | path dirname)
+  if ($refresh) {
+    rm -rf $cache_file
+  }
+
+  if ($cache_file | path exists) {
+    return (open $cache_file)
   }
 
   let aqua = {|| ^aqua list --all
@@ -110,6 +121,7 @@ export def search [
   }
   | flatten | sort-by points
   | select name points registry
+  | tee { to yaml | save -f $cache_file }
 }
 
 # Search for packages
