@@ -11,8 +11,8 @@ use ~/.cache/mise/init.nu
 use fzf setup-fzf
 setup-fzf
 
-# Setup starship
-use ~/.cache/starship/init.nu
+# # Setup starship
+# use ~/.cache/starship/init.nu
 
 use xdg
 
