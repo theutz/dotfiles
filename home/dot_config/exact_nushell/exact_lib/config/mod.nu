@@ -16,7 +16,7 @@ export def "edit" [...files: string]: nothing -> nothing {
 export def main [] {
   const here = path self
   [
-    here
+    $here
     $nu.env-path
     $nu.config-path
   ]
