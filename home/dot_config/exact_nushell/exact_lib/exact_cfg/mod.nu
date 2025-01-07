@@ -33,7 +33,7 @@ export def "nu" [] { edit $nu.config-path }
 export def "env" [] { edit $nu.env-path }
 
 # Edit ~/.config/nushell.
-export def "nushell" [] { edit $nu.default-config-dir }
+export def all [] { edit $nu.default-config-dir }
 
 # Edit homemade notes module
 export def "notes" [] { edit ($nu.default-config-dir | path join "lib/notes") }
