@@ -88,9 +88,9 @@ export def search [
     | par-each {|p|
       { scheme: https, host: pypistats.org, path: $"api/packages/($p.name | default "")/overall" }
       | url join | http get $in
-      | get data.downloads | math sum
-      | {name: $p.name, points: $in}
-    }
+      | get -i data.downloads | default [0] | math sum
+      | {name: $p.name?, points: $in}
+    } | inspect
     | insert registry pip
   }
 
@@ -102,7 +102,12 @@ export def search [
     $gems
     $go
     $pip
-  ] | par-each {|closure| do $closure}
+  ]
+  | par-each {|closure|
+    try {
+      do $closure
+    } catch { [] }
+  }
   | flatten | sort-by points
   | select name points registry
 }
