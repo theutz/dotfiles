@@ -15,7 +15,9 @@ def "config edit" [...files: string]: nothing -> nothing {
 # Edit this configuration file.
 def "config config" [] {
   const here = path self
-  config edit $here
+  [$nu.default-config-dir config.nu]
+  | path join
+  | config edit $here $in
 }
 
 # Edit wezterm configurations.
