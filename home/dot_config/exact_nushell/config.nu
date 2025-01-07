@@ -41,5 +41,6 @@ try {
 } catch {
   ^pueued -d o+e> (std null-device)
 }
+use job
 
 source ./aliases.nu
