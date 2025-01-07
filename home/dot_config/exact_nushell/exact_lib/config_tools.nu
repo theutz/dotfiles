@@ -93,10 +93,3 @@ def "config ms" [] {
 def "config job" [] {
   config nu-mod job
 }
-
-# Edit bare aliases
-def "config aliases" [] {
-  [$nu.default-config-dir aliases.nu]
-  | path join
-  | config edit $in
-}
