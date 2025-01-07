@@ -96,5 +96,10 @@ export def "cm" [] { edit-mod chezmoi }
 
 # Edit a nushell module
 export def mod [name?: string] {
-  
+  $nu.default-config-dir
+  | path join "lib" "*/mod.nu"
+  | glob $in
+  | each {|| path split | last 2 | get 0 }
+  | input list --fuzzy
+  | edit-mod
 }
