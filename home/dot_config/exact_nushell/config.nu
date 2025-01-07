@@ -16,7 +16,8 @@ use ~/.cache/starship/init.nu
 
 use xdg
 
-use yazi y
+use yazi
+use yazi aliases *
 
 use chezmoi aliases *
 

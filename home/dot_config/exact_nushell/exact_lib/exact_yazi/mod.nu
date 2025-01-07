@@ -9,4 +9,6 @@ export def --env yazi-cwd [...args] {
 	rm -fp $tmp
 }
 
-export alias y = yazi-cwd
+export module aliases {
+  export alias y = yazi-cwd
+}
