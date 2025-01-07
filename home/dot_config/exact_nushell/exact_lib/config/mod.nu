@@ -15,9 +15,12 @@ export def "edit" [...files: string]: nothing -> nothing {
 # Edit this configuration file.
 export def main [] {
   const here = path self
-  [$nu.default-config-dir config.nu]
-  | path join
-  | edit $here $in
+  [
+    [here]
+    [$nu.env-path]
+    [$nu.config-path]
+  ]
+  | edit ...$in
 }
 
 # Edit wezterm configurations.
@@ -90,3 +93,6 @@ export def "job" [] { edit-mod job }
 
 # Edit chezomi module
 export def "cm" [] { edit-mod chezmoi }
+
+export def mod [name?: string] {
+}
