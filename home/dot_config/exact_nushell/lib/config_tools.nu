@@ -86,3 +86,7 @@ def "config tx" [] {
 def "config ms" [] {
   config nu-mod ms
 }
+
+def "config job" [] {
+  config nu-mod job
+}
