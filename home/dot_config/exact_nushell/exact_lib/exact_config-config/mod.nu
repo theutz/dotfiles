@@ -12,7 +12,6 @@ export def main [] {
   const here = path self
   [
     $nu.config-path
-    $nu.env-path
     $here
   ]
   | edit ...$in
