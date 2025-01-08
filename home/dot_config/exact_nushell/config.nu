@@ -1,3 +1,5 @@
+source ./secrets.nu
+
 const NU_LIB_DIRS = [
   ($nu.default-config-dir | path join "lib")
 ]
@@ -7,8 +9,6 @@ $env.PAGER = 'less'
 $env.LANG = 'en_US.UTF-8'
 
 $env.LESS = '-g -i -M -R -S -w -X -z-4'
-
-$env.OPENAI_API_KEY = ^op read --account theutz.1password.com "op://Private/OpenAI API Key/api key"
 
 which lesspipe lesspipe.sh
 | if ($in | is-not-empty) {
