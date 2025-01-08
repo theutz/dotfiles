@@ -8,7 +8,7 @@ export def "edit" [...files: string]: nothing -> nothing {
 }
 
 # Edit this configuration file.
-export def this [] {
+export def main [] {
   const here = path self
   [
     $nu.config-path
@@ -96,8 +96,3 @@ export def mod [name?: string] {
   }
   | edit-mod $in
 }
-
-export module aliases {
-  export alias cfg = this
-}
-
