@@ -8,6 +8,8 @@ $env.LANG = 'en_US.UTF-8'
 
 $env.LESS = '-g -i -M -R -S -w -X -z-4'
 
+$env.OPENAI_API_KEY = ^op read --account theutz.1password.com "op://Private/OpenAI API Key/api key"
+
 which lesspipe lesspipe.sh
 | if ($in | is-not-empty) {
   $env.LESSOPEN = $"| /usr/bin/env ($in.0.command) %s 2>&-"
