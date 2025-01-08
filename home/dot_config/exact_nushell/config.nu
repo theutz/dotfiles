@@ -12,8 +12,12 @@ use ~/.cache/mise/init.nu
 use fzf setup-fzf
 setup-fzf
 
-# # Setup starship
-# use ~/.cache/starship/init.nu
+# Setup starship
+use ~/.cache/starship/init.nu
+
+#
+# Setup custom modules
+#
 
 use xdg
 
@@ -34,14 +38,16 @@ use notes aliases *
 use ms
 use ms aliases *
 
+# Setup background jobs
 use job
 job launch
+if (job status | where group == dark-notify | is-empty) {
+  job spawn --label tmux-reset --group "dark-notify" {
+    dark-notify -c '~/.local/bin/tmux-reset'
+  } o+e> (std null-device)
+}
 
 use opencommit
 use opencommit aliases *
-
-# # job spawn --label "tmux-reset" {
-# #   dark-notify -c '~/.local/bin/tmux-reset'
-# # }
 
 export alias lg = lazygit
