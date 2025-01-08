@@ -15,6 +15,9 @@ setup-fzf
 # Setup starship
 use ~/.cache/starship/init.nu
 
+# Setup carapace
+source ~/.cache/carapace/init.nu
+
 #
 # Setup custom modules
 #
