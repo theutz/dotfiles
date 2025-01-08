@@ -104,6 +104,6 @@ export def mod [name?: string] {
 }
 
 export module aliases {
-  export alias cfg = config-config
+  export alias cfg = main
 }
 
