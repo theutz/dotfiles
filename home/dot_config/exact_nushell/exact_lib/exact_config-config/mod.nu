@@ -1,5 +1,9 @@
 use xdg
 
+export module aliases {
+  export alias cfg = config-config
+}
+
 # Edit a file in XDG_CONFIG_HOME
 export def "edit" [...files: string]: nothing -> nothing {
   let paths = $files | each {|file|
