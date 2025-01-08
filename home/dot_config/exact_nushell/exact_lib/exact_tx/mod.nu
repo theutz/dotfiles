@@ -88,34 +88,48 @@ export def attach [name?: string]: nothing -> nothing {
 
 export alias a = attach
 
-export def edit [
-  name?: string
-  --new (-n) # create a new session file
-]: nothing -> nothing {
-  if ($new == true and ($name | is-not-empty)) {
-    let dir = $env.XDG_CONFIG_HOME | path join "tmuxp"
-    mkdir $dir
-    let file = $dir | path join $"($name).yml"
-    touch $file
-    ^chezmoi add $file
-  }
-
-  let sessions = ^tmuxp ls | lines -s
-
-  let session = if ($name | is-empty) {
-    $sessions | input list --fuzzy
+export def edit [name?: string]: nothing -> nothing {
+  if ($name | is-empty) {
   } else {
-    $name
-  }
-
-  if ($session | is-empty) {
-    error make { msg: "No session specified", label: { span: (metadata $in).span, text: "error occurred here" }}
-  }
-
-  if ($sessions | any {|it| $it == $session}) {
-    ^tmuxp edit $session
+    $env.XDG_CONFIG_HOME
+    | path join "tmuxp" $"($name).yml"
+    | if ($in | path exists) { $in } else {
+      tee {|file|
+        $file | path dirname | mkdir $in
+        touch $file
+        ^chezmoi add $file
+      }
+    }
   }
 }
+# export def edit [
+#   name?: string
+#   --new (-n) # create a new session file
+# ]: nothing -> nothing {
+#   if ($new == true and ($name | is-not-empty)) {
+#     let dir = $env.XDG_CONFIG_HOME | path join "tmuxp"
+#     mkdir $dir
+#     let file = $dir | path join $"($name).yml"
+#     touch $file
+#     ^chezmoi add $file
+#   }
+#
+#   let sessions = ^tmuxp ls | lines -s
+#
+#   let session = if ($name | is-empty) {
+#     $sessions | input list --fuzzy
+#   } else {
+#     $name
+#   }
+#
+#   if ($session | is-empty) {
+#     error make { msg: "No session specified", label: { span: (metadata $in).span, text: "error occurred here" }}
+#   }
+#
+#   if ($sessions | any {|it| $it == $session}) {
+#     ^tmuxp edit $session
+#   }
+# }
 
 export alias e = edit
 

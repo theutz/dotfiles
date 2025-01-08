@@ -1,7 +1,8 @@
 $env.config.edit_mode = "vi"
 $env.config.show_banner = false
 
-use cfg
+use config-config
+use config-config aliases *
 source ls-colors.nu
 
 # Setup mise
