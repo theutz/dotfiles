@@ -2,12 +2,7 @@ use xdg
 
 # Edit a file in XDG_CONFIG_HOME
 export def "edit" [...files: string]: nothing -> nothing {
-  let paths = $files | each {|file|
-    $env.XDG_CONFIG_HOME
-    | default ( $env.HOME | path join ".config")
-    | path join $file
-  }
-
+  let paths = $files | each {|| xdg config }
   ^chezmoi edit --apply --watch ...$paths
   exec nu
 }
