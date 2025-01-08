@@ -1,6 +1,12 @@
 # join file paths with XDG bases
 
-export module constants {}
+export module constants {
+  export const XDG_CONFIG_HOME = "~/.config"
+  export const XDG_STATE_HOME = "~/.local/state"
+  export const XDG_DATA_HOME = "~/.local/share"
+  export const XDG_RUNTIME_DIR = "/tmp"
+  export const XDG_BIN_HOME = "~/.local/bin"
+}
 
 def build []: list<string> -> path {
   compact --empty | path join
