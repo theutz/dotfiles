@@ -35,3 +35,7 @@ carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 # Setup jc
 mkdir ~/.local/share/bash/bash_completion
 ^jc --bash-comp | save --force ~/.local/share/bash/bash_completion/jc
+
+# Setup chezmoi
+mkdir ~/.config/fish/completions
+^chezmoi completion fish | save --force ~/.config/fish/completions/chezmoi.fish
