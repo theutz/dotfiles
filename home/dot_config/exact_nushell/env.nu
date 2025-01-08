@@ -27,15 +27,15 @@ let mise_path = (xdg cache "mise" "init.nu")
 # mkdir (xdg cache "starship")
 # starship init nu | save -f (xdg cache "starship" "init.nu")
 
-# Setup carapace
-$env.CARAPACE_BRIDGES = [
-  zsh
-  fish
-  bash
-  inshellisense
-] | str join ","
-mkdir (xdg cache "carapace")
-carapace _carapace nushell | save --force (xdg cache "carapace" "init.nu")
+# # Setup carapace
+# $env.CARAPACE_BRIDGES = [
+#   zsh
+#   fish
+#   bash
+#   inshellisense
+# ] | str join ","
+# mkdir (xdg cache "carapace")
+# carapace _carapace nushell | save --force (xdg cache "carapace" "init.nu")
 
 # Setup jc
 ^jc --zsh-comp | save --force (xdg data "zsh/site-functions/_jc")
