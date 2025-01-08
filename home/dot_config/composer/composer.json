@@ -2,7 +2,7 @@
     "require": {
         "laravel/forge-cli": "^1.8",
         "laravel/laravel": "^10.2",
-        "statamic/cli": "^3.0",
+        "statamic/cli": "^3.4",
         "beyondcode/expose": "^2.6",
         "laravel/installer": "^5.8",
         "laravel/valet": "dev-master"

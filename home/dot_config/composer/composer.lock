@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed3aa7eb21ece23d5b0b37a39bc7f596",
+    "content-hash": "710a8e2d67856ea344f51c33aa766fec",
     "packages": [
         {
             "name": "beyondcode/expose",
