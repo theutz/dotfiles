@@ -10,6 +10,7 @@ typeset -gU path fpath
 
 export path=(
   $HOME/.local/bin
+  $XDG_CONFIG_HOME/composer/vendor/bin
   /opt/homebrew/{,s}bin
   $path
 )
