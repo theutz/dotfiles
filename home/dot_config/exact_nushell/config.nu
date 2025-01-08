@@ -52,8 +52,7 @@ mkdir ~/.config/fish/completions
 $env.config.edit_mode = "vi"
 $env.config.show_banner = false
 
-use config-config
-use config-config aliases *
+use cfg
 source ls-colors.nu
 
 # Setup mise
