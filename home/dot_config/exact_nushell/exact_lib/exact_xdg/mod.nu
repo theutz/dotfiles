@@ -1,5 +1,7 @@
 # join file paths with XDG bases
 
+export module constants {}
+
 def build []: list<string> -> path {
   compact --empty | path join
 }
