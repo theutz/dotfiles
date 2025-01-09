@@ -66,7 +66,6 @@ export def "mise" [] { edit "mise/config.toml" }
 export def "edit-mod" [name: string]: nothing -> nothing {
   [
     $nu.config-path
-    $nu.env-path
     ($nu.default-config-dir | path join lib $name mod.nu)
   ] | edit ...$in
 }
