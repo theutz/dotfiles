@@ -103,13 +103,16 @@ if (job status | where group == dark-notify | is-empty) {
 use opencommit
 use opencommit aliases *
 
-export alias lg = lazygit
+alias lg = lazygit
 
-export alias gwS = git status
-export alias gws = git status --short
-export alias gco = git checkout
+alias gwS = git status
+alias gws = git status --short
+alias gco = git checkout
 
-export alias ms = mise
-export alias msr = mise run
-export alias msx = mise exec
-export alias mst = mise task
+alias ms = mise
+alias msr = mise run
+alias msx = mise exec
+alias mst = mise task
+
+alias la = ls -la
+alias ll = ls -l
