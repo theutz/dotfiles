@@ -3,8 +3,13 @@
 use xdg
 
 let path = xdg config spotify-player app.toml
-
 let cfg = open $path
 
 $cfg
-
+| upsert theme {||
+  match (dark-mode status | str trim) {
+    off => "Catppuccin-latte",
+    _ => "Catppuccin-mocha",
+  }
+}
+| save -f $path
