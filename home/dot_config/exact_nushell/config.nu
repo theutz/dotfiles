@@ -104,3 +104,12 @@ use opencommit
 use opencommit aliases *
 
 export alias lg = lazygit
+
+export alias gwS = git status
+export alias gws = git status --short
+export alias gco = git checkout
+
+export alias ms = mise
+export alias msr = mise run
+export alias msx = mise exec
+export alias mst = mise task
