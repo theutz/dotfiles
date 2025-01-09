@@ -83,16 +83,29 @@ use ms aliases *
 # Setup background jobs
 use job
 job launch
-job set-parallel-limit -g dark-notify 2
-if (job status | where label == tmux-reset and group == dark-notify | is-empty) {
+job set-parallel-limit -g dark-notify 2 o+e> (std null-device)
+
+if (
+  job status
+  | where label == tmux-reset
+      and group == dark-notify
+  | is-empty
+) {
   job spawn --label tmux-reset --group "dark-notify" {
-    dark-notify -c '~/.local/bin/tmux-reset'
+    dark-notify -c (xdg bin tmux-reset)
   } o+e> (std null-device)
 }
-if (job status | where label == spotify-player-theme and group == dark-notify | is-empty) {
+
+if (
+  job status
+  | where label == spotify-player-theme
+      and group == dark-notify
+      and status == "Running"
+  | is-empty
+) {
   job spawn --label spotify-player-theme --group dark-notify {
-    dark-notify -c '~/.local/bin/spotify-player-theme'
-  }
+    dark-notify -c (xdg bin spotify-player-theme)
+  } o+e> (std null-device)
 }
 
 use opencommit
