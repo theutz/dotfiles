@@ -1,3 +1,10 @@
-#!/usr/bin/env nu
+#!/usr/bin/env -S nu --config ~/.config/nushell/config.nu
 
-print "hello"
+use xdg
+
+let path = xdg config spotify-player app.toml
+
+let cfg = open $path
+
+$cfg
+
