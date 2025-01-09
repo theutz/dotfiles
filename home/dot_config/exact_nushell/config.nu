@@ -83,7 +83,7 @@ use ms aliases *
 # Setup background jobs
 use job
 job launch
-job set-parallel-limit -g dark-notify 2 o+e> (std null-device)
+job set-parallel-limit -g dark-notify 3 o+e> (std null-device)
 
 if (
   job status
@@ -111,10 +111,9 @@ if (
   job status
   | where label == btop-switch-appearance
     and group == dark-notify
-    and status == "Running"
   | is-empty
 ) {
-  job spawn --label spotify-player-theme --group dark-notify {
+  job spawn --label btop-switch-appearance --group dark-notify {
     dark-notify -c (xdg bin btop-switch-appearance)
   } o+e> (std null-device)
 }
