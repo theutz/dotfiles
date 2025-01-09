@@ -449,3 +449,16 @@ export def set-parallel-limit [
 
   pueue parallel ...$args $max
 }
+
+# Kill and clean up all tasks in all groups
+export def reset [
+  --force (-f) # Don't ask for confirmation
+] {
+  let args = if $force {
+    ["--force"]
+  } else {
+    []
+  }
+
+  pueue reset ...$args
+}
