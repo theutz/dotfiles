@@ -13,3 +13,4 @@ $cfg
   }
 }
 | save -f $path
+| chezmoi re-add $path
