@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "710a8e2d67856ea344f51c33aa766fec",
+    "content-hash": "dbfb101beffab363fd17d1076bf4a0d3",
     "packages": [
         {
             "name": "beyondcode/expose",
@@ -1825,16 +1825,16 @@
         },
         {
             "name": "laravel/valet",
-            "version": "dev-master",
+            "version": "v4.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/valet.git",
-                "reference": "c8970c14095678cb56ce9985dc86bfa88d1c7a8b"
+                "reference": "e2d6191446b8f06e32b955e402a2fc6de717fe62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/valet/zipball/c8970c14095678cb56ce9985dc86bfa88d1c7a8b",
-                "reference": "c8970c14095678cb56ce9985dc86bfa88d1c7a8b",
+                "url": "https://api.github.com/repos/laravel/valet/zipball/e2d6191446b8f06e32b955e402a2fc6de717fe62",
+                "reference": "e2d6191446b8f06e32b955e402a2fc6de717fe62",
                 "shasum": ""
             },
             "require": {
@@ -1855,7 +1855,6 @@
                 "mockery/mockery": "^1.2.3",
                 "yoast/phpunit-polyfills": "^0.2.0"
             },
-            "default-branch": true,
             "bin": [
                 "valet"
             ],
@@ -1901,9 +1900,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/valet/issues",
-                "source": "https://github.com/laravel/valet/tree/master"
+                "source": "https://github.com/laravel/valet/tree/v4.8.2"
             },
-            "time": "2024-11-25T17:19:56+00:00"
+            "time": "2024-12-20T21:19:04+00:00"
         },
         {
             "name": "league/commonmark",
@@ -6394,9 +6393,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "laravel/valet": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},
