@@ -108,6 +108,18 @@ if (
   } o+e> (std null-device)
 }
 
+if (
+  job status
+  | where label == btop-switch-appearance
+    and group == dark-notify
+    and status == "Running"
+  | is-empty
+) {
+  job spawn --label spotify-player-theme --group dark-notify {
+    dark-notify -c (xdg bin btop-switch-appearance)
+  } o+e> (std null-device)
+}
+
 use opencommit
 use opencommit aliases *
 
