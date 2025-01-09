@@ -1,16 +1,14 @@
-#!/usr/bin/env -S nu --config ~/.config/nushell/config.nu
+#!/usr/bin/env nu
 
-use xdg
+let path = "~/.config/btop/btop.conf"
 
-let path = xdg config btop btop.conf
-
-let theme = xdg config btop themes (
+let theme = $"~/.config/btop/themes/(
   match (dark-mode status) {
     off => "latte",
     _ => "mocha"
   }
   | $"catppuccin_($in).theme"
-)
+)"
 
 open $path
 | str replace -r '(?m)^(color_theme =).*$' $'$1 "($theme)"'
