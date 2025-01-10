@@ -21,6 +21,7 @@ python = "latest"
 "aqua:tealdeer-rs/tealdeer" = "latest"
 "aqua:denisidoro/navi" = "latest"
 "ubi:oz/tz" = "latest"
+"pipx:linode-cli" = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"
