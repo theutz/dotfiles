@@ -22,6 +22,7 @@ python = "latest"
 "aqua:denisidoro/navi" = "latest"
 "ubi:oz/tz" = "latest"
 "pipx:linode-cli" = "latest"
+opentofu = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"
