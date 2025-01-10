@@ -20,6 +20,7 @@ python = "latest"
 "pipx:jc" = "latest"
 "aqua:tealdeer-rs/tealdeer" = "latest"
 "aqua:denisidoro/navi" = "latest"
+"ubi:oz/tz" = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"

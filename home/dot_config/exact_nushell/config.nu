@@ -7,7 +7,7 @@ const NU_LIB_DIRS = [
   ($nu.default-config-dir | path join "lib")
 ]
 
-$env.BROWSER = '^open'
+$env.BROWSER = 'open'
 $env.PAGER = 'less'
 $env.LANG = 'en_US.UTF-8'
 
