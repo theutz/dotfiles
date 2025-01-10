@@ -1,0 +1,15 @@
+[[zones]]
+id = "UTC"
+name = "UTC"
+
+[[zones]]
+id = "Europe/Istanbul"
+name = "Istanbul"
+
+[[zones]]
+id = "America/New_York"
+name = "Chattanooga"
+
+[[zones]]
+id = "America/Los_Angeles"
+name = "Seattle"
