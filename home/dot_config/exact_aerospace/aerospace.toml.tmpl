@@ -39,7 +39,10 @@ inner.vertical = {{ $gap }}
 outer.left = {{ $gap }}
 outer.bottom = {{ $gap }}
 outer.right = {{ $gap }}
-outer.top = [{ monitor.SAMSUNG = {{ add $gap 40 }} }, {{ $gap }}]
+outer.top = [
+  { monitor.'(samsung|l24q-20)' = {{ add $gap 40 }} },
+  {{ $gap }}
+]
 
 [exec]
 
