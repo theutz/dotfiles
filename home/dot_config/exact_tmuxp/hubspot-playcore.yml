@@ -6,9 +6,8 @@ windows:
   panes:
   - shell_command: nvim
   - blank
-  options: null
-- window_name: server
+  - window_name: server
   layout: main-vertical
   panes:
   - blank
-  options: null
+  

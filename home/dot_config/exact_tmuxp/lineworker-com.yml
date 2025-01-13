@@ -7,10 +7,9 @@ windows:
   - shell_command: nvim
     focus: true
   window_name: main
-  options: null
-- panes:
+  - panes:
   - shell_command: mise run dev
     environment:
       SHELL: /opt/homebrew/bin/zsh
   window_name: servers
-  options: null
+  

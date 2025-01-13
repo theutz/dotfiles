@@ -4,7 +4,6 @@ windows:
 - panes:
   - blank
   window_name: main
-  options: null
-- panes:
+  - panes:
   - sleep 0.3 && exit
-  options: null
+  

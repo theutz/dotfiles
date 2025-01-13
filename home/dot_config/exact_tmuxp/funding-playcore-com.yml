@@ -6,14 +6,12 @@ windows:
   panes:
   - pane
   window_name: main
-  options: null
-- layout: main-vertical
+  - layout: main-vertical
   panes:
   - bin/dev
   window_name: bin/dev
-  options: null
-- layout: main-vertical
+  - layout: main-vertical
   panes:
   - docker compose up
   window_name: docker
-  options: null
+  

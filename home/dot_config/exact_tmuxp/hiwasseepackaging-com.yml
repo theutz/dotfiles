@@ -7,8 +7,7 @@ windows:
   - shell_command: nvim
     focus: true
   window_name: main
-  options: null
-- panes:
+  - panes:
   - just dev
   window_name: servers
-  options: null
+  

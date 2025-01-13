@@ -5,8 +5,7 @@ windows:
   panes:
   - shell_command: nvim
   - blank
-  options: null
-- window_name: server
+  - window_name: server
   panes:
   - blank
-  options: null
+  
