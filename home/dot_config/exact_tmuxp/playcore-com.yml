@@ -6,4 +6,5 @@ windows:
     shell: nvim
   window_name: main
   layout: main-vertical
-  options: {}
+  options:
+    remain-on-exit: true
