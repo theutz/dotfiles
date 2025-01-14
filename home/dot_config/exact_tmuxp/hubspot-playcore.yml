@@ -1,13 +1,12 @@
 session_name: hubspot-playcore
 start_directory: $HOME/code/delegator/hubspot-playcore
 windows:
-- window_name: main
-  layout: main-vertical
-  panes:
-  - shell_command: nvim
-  - blank
+  - window_name: main
+    layout: main-vertical
+    panes:
+      - shell_command: nvim
+      - blank
   - window_name: server
-  layout: main-vertical
-  panes:
-  - blank
-  
+    layout: main-vertical
+    panes:
+      - blank
