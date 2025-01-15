@@ -89,7 +89,7 @@ if (
   job status
   | where label == tmux-reset
       and group == dark-notify
-      and status =~ Running
+      and status == Running
   | is-empty
 ) {
   job spawn --label tmux-reset --group "dark-notify" {
@@ -101,7 +101,7 @@ if (
   job status
   | where label == spotify-player-theme
       and group == dark-notify
-      and status =~ Running
+      and status == Running
   | is-empty
 ) {
   job spawn --label spotify-player-theme --group dark-notify {
@@ -113,7 +113,7 @@ if (
   job status
   | where label == btop-switch-appearance
       and group == dark-notify
-      and status =~ Running
+      and status == Running
   | is-empty
 ) {
   job spawn --label btop-switch-appearance --group dark-notify {
