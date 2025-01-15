@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-let path = "~/.config/spotify-player/app.toml"
+let path = "~/.config/spotify-player/app.toml" | path expand
 let cfg = open $path
 
 $cfg
