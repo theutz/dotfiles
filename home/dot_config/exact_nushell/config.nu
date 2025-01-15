@@ -80,6 +80,8 @@ use notes aliases *
 use ms
 use ms aliases *
 
+use fonts
+
 # Setup background jobs
 use job
 job launch
