@@ -33,19 +33,22 @@ export def all [] { edit $nu.default-config-dir }
 export def "notes" [] { edit ($nu.default-config-dir | path join "lib/notes") }
 
 # Edit neovim confgurations.
-export def "nvim" [] { edit "nvim" }
+export module nvim {
+  # Edit neovim confgurations.
+  export def main [] { edit "nvim" }
 
-# Edit lazyvim config files.
-export def "nvim config" [] { edit "nvim/lua/config" }
+  # Edit lazyvim config files.
+  export def config [] { edit "nvim/lua/config" }
 
-# Edit neovim plugins.
-export def "nvim plugins" [] { edit "nvim/lua/plugins" }
+  # Edit neovim plugins.
+  export def plugins [] { edit "nvim/lua/plugins" }
 
-# Edit neovim keymaps.
-export def "nvim keymaps" [] { edit "nvim/lua/config/keymaps.lua" }
+  # Edit neovim keymaps.
+  export def keymaps [] { edit "nvim/lua/config/keymaps.lua" }
 
-# Edit neovim colors.
-export def "nvim colors" [] { edit "nvim/lua/plugins/colorschemes.lua" }
+  # Edit neovim colors.
+  export def colors [] { edit "nvim/lua/plugins/colorschemes.lua" }
+}
 
 # Edit starship configurations.
 export def "starship" [] { edit "starship.toml" }
@@ -94,4 +97,31 @@ export def mod [name?: string] {
     $name
   }
   | edit-mod $in
+}
+
+# Edit chezmoi configuration
+export module chezmoi {
+  # Edit .chezmoidata
+  export def data [] {
+    chezmoi source-path
+    | str trim
+    | path join .chezmoidata
+    | ^nvim $in
+  }
+
+  # Edit .chezomiscripts
+  export def scripts [] {
+    chezmoi source-path
+    | str trim
+    | path join .chezmoiscripts
+    | ^nvim $in
+  }
+
+  # Edit .chezmoitemplates
+  export def templates [] {
+    chezmoi source-path
+    | str trim
+    | path join .chezmoitemplates
+    | ^nvim $in
+  }
 }
