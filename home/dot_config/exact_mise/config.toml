@@ -23,6 +23,7 @@ python = "latest"
 "ubi:oz/tz" = "latest"
 "pipx:linode-cli" = "latest"
 opentofu = "latest"
+uv = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"
