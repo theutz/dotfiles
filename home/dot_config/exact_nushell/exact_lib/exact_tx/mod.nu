@@ -129,13 +129,10 @@ export def create [name: string]: nothing -> nothing {
   }
 }
 
-export alias c = create
-
 export module aliases {
   export alias txa = attach
   export alias txls = list
   export alias txks = kill-session
   export alias txl = load
   export alias txe = edit
-  export alias txc = create
 }
