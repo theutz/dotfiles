@@ -105,33 +105,6 @@ export def edit [name?: string]: nothing -> nothing {
 
 export alias e = edit
 
-export def create [name?: string]: nothing -> nothing {
-  let file = $env.XDG_CONFIG_HOME
-    | path join tmuxp $"($name).yml"
-
-  if ($file | path exists) {
-    error make --unspanned { msg: $"Session file ($file) exists" }
-  } else {
-    {
-      session_name: (
-        if ($name | is-not-empty) { $name }
-        else { $env.PWD | path basename }
-      ),
-      working_directory: $env.PWD,
-      windows: [
-        {
-          window_name: main
-          panes: [
-            "blank"
-          ]
-        }
-      ]
-    }
-    | to yaml
-    | save $file
-  }
-}
-
 export module aliases {
   export alias txa = attach
   export alias txls = list
