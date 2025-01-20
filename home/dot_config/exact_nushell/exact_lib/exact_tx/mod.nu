@@ -102,36 +102,34 @@ export def edit [name?: string]: nothing -> nothing {
     }
   }
 }
-# export def edit [
-#   name?: string
-#   --new (-n) # create a new session file
-# ]: nothing -> nothing {
-#   if ($new == true and ($name | is-not-empty)) {
-#     let dir = $env.XDG_CONFIG_HOME | path join "tmuxp"
-#     mkdir $dir
-#     let file = $dir | path join $"($name).yml"
-#     touch $file
-#     ^chezmoi add $file
-#   }
-#
-#   let sessions = ^tmuxp ls | lines -s
-#
-#   let session = if ($name | is-empty) {
-#     $sessions | input list --fuzzy
-#   } else {
-#     $name
-#   }
-#
-#   if ($session | is-empty) {
-#     error make { msg: "No session specified", label: { span: (metadata $in).span, text: "error occurred here" }}
-#   }
-#
-#   if ($sessions | any {|it| $it == $session}) {
-#     ^tmuxp edit $session
-#   }
-# }
 
 export alias e = edit
+
+export def create [name: string]: nothing -> nothing {
+  let file = $env.XDG_CONFIG_HOME
+    | path join tmuxp $"($name).yml"
+
+  if ($in | path exists) {
+    error make --unspanned { msg: $"Session file ($file) exists" }
+  } else {
+    {
+      session_name: $name,
+      working_directory: $env.PWD,
+      windows: [
+        {
+          window_name: main
+          panes: [
+            "blank"
+          ]
+        }
+      ]
+    }
+    | to yaml
+    | save $file
+  }
+}
+
+export alias c = create
 
 export module aliases {
   export alias txa = attach
@@ -139,4 +137,5 @@ export module aliases {
   export alias txks = kill-session
   export alias txl = load
   export alias txe = edit
+  export alias txc = create
 }
