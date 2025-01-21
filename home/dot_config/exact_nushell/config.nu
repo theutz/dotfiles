@@ -139,3 +139,12 @@ alias mst = mise task
 
 alias la = ls -la
 alias ll = ls -l
+
+alias gfm = git pull
+alias gf = git fetch
+def gpp [] {
+  git pull
+  git push
+}
+alias gws = git status --short
+alias gwS = git status
