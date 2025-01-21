@@ -1,7 +1,7 @@
 session_name: playcore-brands-infra
-working_directory: /Users/michael/code/delegator/playcore-brands-infra
+start_directory: $HOME/code/delegator/playcore-brands-infra
 windows:
-- window_name: main
-  layout: main-vertical
-  panes:
-  - blank
+  - window_name: main
+    layout: main-vertical
+    panes:
+      - blank
