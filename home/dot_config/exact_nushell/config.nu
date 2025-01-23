@@ -150,3 +150,5 @@ alias gws = git status --short
 alias gwS = git status
 
 alias tf = terraform
+alias tfp = terraform -out tfplan
+alias tfa = terraform apply plan
