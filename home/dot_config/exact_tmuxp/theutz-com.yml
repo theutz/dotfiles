@@ -1,0 +1,8 @@
+session_name: theutz-com
+start_directory: /Users/michael/code/theutz/theutz.com
+windows:
+- window_name: main
+  layout: main-vertical
+  panes:
+  - shell_command: nvim
+  - blank
