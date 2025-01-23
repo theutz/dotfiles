@@ -148,3 +148,5 @@ def gpp [] {
 }
 alias gws = git status --short
 alias gwS = git status
+
+alias tf = terraform
