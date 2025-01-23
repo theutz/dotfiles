@@ -24,6 +24,7 @@ python = "latest"
 "pipx:linode-cli" = "latest"
 opentofu = "latest"
 uv = "latest"
+"npm:gitignore" = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"
@@ -31,6 +32,9 @@ exe = "carapace"
 
 [settings]
 experimental = true
+
+[settings.sops]
+age_key_file = "/Users/michael/.config/sops/age/keys.txt"
 
 [env]
 
