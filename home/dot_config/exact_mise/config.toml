@@ -25,6 +25,7 @@ python = "latest"
 opentofu = "latest"
 uv = "latest"
 "npm:gitignore" = "latest"
+ubi = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"
