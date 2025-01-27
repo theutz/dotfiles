@@ -90,6 +90,18 @@ export alias a = attach
 
 export def edit [name?: string]: nothing -> nothing {
   if ($name | is-empty) {
+    xdg config tmuxp
+    | $"($in)/*.y<a>ml"
+    | glob $in
+    | wrap path
+    | upsert name {|it|
+      $it.path
+      | path basename
+      | split column "." name extension
+      | get name.0
+    }
+    | input list -d name
+    | edit $in
   } else {
     $env.XDG_CONFIG_HOME
     | path join "tmuxp" $"($name).yml"
