@@ -128,10 +128,6 @@ use opencommit aliases *
 
 alias lg = lazygit
 
-alias gwS = git status
-alias gws = git status --short
-alias gco = git checkout
-
 alias ms = mise
 alias msr = mise run
 alias msx = mise exec
@@ -140,16 +136,33 @@ alias mst = mise task
 alias la = ls -la
 alias ll = ls -l
 
-alias gfm = git pull
-alias gf = git fetch
-def gpp [] {
+def git-push-pull [] {
   git pull
   git push
 }
-alias gws = git status --short
+
+alias gco = git checkout
+alias gf = git fetch
+alias gfm = git pull
+alias gpp = git-push-pull
+alias gwd = git diff
 alias gwS = git status
+alias gws = git status --short
 
 alias tf = terraform
 alias tfp = terraform plan -out tfplan
 alias tfa = terraform apply tfplan
 alias tfA = terraform apply -auto-approve
+
+alias brews = brew search
+alias casks = brew --cask search
+alias brewi = brew install
+alias caski = brew --casks install
+alias brewh = brew home
+alias caskh = brew --cask home
+alias brewn = brew info
+alias caskn = brew --cask info
+alias brewu = brew upgrade
+alias casku = brew --cask upgrade
+alias brewx = brew uninstall
+alias caskx = brew --cask uninstall
