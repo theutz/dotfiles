@@ -95,7 +95,6 @@ export def edit [name?: string]: nothing -> nothing {
     $"*($name)*.y<a>ml"
   }
   | glob $"(xdg config tmuxp)/($in)"
-  | inspect
   | wrap path
   | upsert name {|it|
     $it.path
