@@ -125,3 +125,7 @@ export module chezmoi {
     | ^nvim $in
   }
 }
+
+export def sketchybar [] {
+  edit (xdg config sketchybar)
+}
