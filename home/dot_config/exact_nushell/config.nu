@@ -32,12 +32,12 @@ if not ($mise_path | path exists) {
 }
 use ~/.cache/mise/init.nu
 
-# Setup starship
-let starship_path = (xdg cache starship init.nu)
-mkdir (xdg cache "starship")
-starship init nu | save -f (xdg cache "starship" "init.nu")
-use ~/.cache/starship/init.nu
-
+# # Setup starship
+# let starship_path = (xdg cache starship init.nu)
+# mkdir (xdg cache "starship")
+# starship init nu | save -f (xdg cache "starship" "init.nu")
+# use ~/.cache/starship/init.nu
+#
 # Setup carapace
 $env.CARAPACE_BRIDGES = [zsh bash fish] | str join ","
 mkdir ~/.cache/carapace
