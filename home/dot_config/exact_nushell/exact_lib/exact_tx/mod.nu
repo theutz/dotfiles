@@ -90,29 +90,45 @@ export alias a = attach
 
 export def edit [name?: string]: nothing -> nothing {
   if ($name | is-empty) {
-    xdg config tmuxp
-    | $"($in)/*.y<a>ml"
-    | glob $in
-    | wrap path
-    | upsert name {|it|
-      $it.path
-      | path basename
-      | split column "." name extension
-      | get name.0
-    }
-    | input list -d name --fuzzy
-    | edit $in
+    "*.y<a>ml"
   } else {
-    $env.XDG_CONFIG_HOME
-    | path join "tmuxp" $"($name).yml"
-    | if ($in | path exists) { $in } else {
-      tee {|file|
-        $file | path dirname | mkdir $in
-        touch $file
-        ^chezmoi add $file
-      }
-    }
+    $"*($name)*.y<a>ml"
   }
+  | glob $"(xdg config tmuxp)/($in)"
+  | wrap path
+  | upsert name {|it|
+    $it.path
+    | path basename
+    | split column "." name extension
+    | get name.0
+  }
+  | input list -d name --fuzzy
+  | get path
+  | ^chezmoi edit --watch $in
+  # if ($name | is-empty) {
+  #   xdg config tmuxp
+  #   | $"($in)/*.y<a>ml"
+  #   | glob $in
+  #   | wrap path
+  #   | upsert name {|it|
+  #     $it.path
+  #     | path basename
+  #     | split column "." name extension
+  #     | get name.0
+  #   }
+  #   | input list -d name --fuzzy
+  #   | edit $in
+  # } else {
+  #   $env.XDG_CONFIG_HOME
+  #   | path join "tmuxp" $"($name).yml"
+  #   | if ($in | path exists) { $in } else {
+  #     tee {|file|
+  #       $file | path dirname | mkdir $in
+  #       touch $file
+  #       ^chezmoi add $file
+  #     }
+  #   }
+  # }
 }
 
 export alias e = edit
