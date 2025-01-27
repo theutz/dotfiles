@@ -86,7 +86,7 @@ sketchybar --add item clock right \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
-           {{- $aliases := (list "Mullvad VPN" "TextInputMenuAgent" "AeroSpace") }}
+           {{- $aliases := (list "Mullvad VPN" "TextInputMenuAgent" "AeroSpace" "Tailscale") }}
            {{ range $i, $v := $aliases -}}
            --add alias {{ $v | quote }} right \
            --set {{ $v | quote }} \
