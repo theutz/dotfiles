@@ -1,11 +1,10 @@
 session_name: friendzy-co
 start_directory: $HOME/code/delegator/friendzy.co
 windows:
-- window_name: main
-  panes:
-  - shell_command: nvim
-  - blank
+  - window_name: main
+    panes:
+      - shell_command: nvim
+      - blank
   - window_name: server
-  panes:
-  - blank
-  
+    panes:
+      - blank
