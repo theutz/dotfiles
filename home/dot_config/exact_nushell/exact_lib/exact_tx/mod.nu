@@ -100,7 +100,7 @@ export def edit [name?: string]: nothing -> nothing {
       | split column "." name extension
       | get name.0
     }
-    | input list -d name
+    | input list -d name --fuzzy
     | edit $in
   } else {
     $env.XDG_CONFIG_HOME
