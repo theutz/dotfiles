@@ -1,0 +1,44 @@
+- name: Setup system user
+  hosts: production
+  become: true
+  remote_user: root
+  tasks:
+    - name: Create delegator group
+      ansible.builtin.group:
+        name: "{{ admin_group }}"
+
+    - name: Create delegator user
+      ansible.builtin.user:
+        name: "{{ admin_user }}"
+        groups:
+          - sudo
+        append: true
+        password: "{{ admin_password_hashed }}"
+        create_home: true
+
+    - name: Create ssh config dir
+      ansible.builtin.file:
+        path: /home/delegator/.ssh
+        state: directory
+        owner: "{{ admin_user }}"
+        group: "{{ admin_group }}"
+        mode: "0755"
+
+    - name: Copy authorized keys
+      ansible.builtin.copy:
+        src: /root/.ssh/authorized_keys
+        dest: "/home/{{ admin_user }}/.ssh/authorized_keys"
+        remote_src: true
+        owner: "{{ admin_user }}"
+        group: "{{ admin_group }}"
+        mode: "0600"
+
+- name: Setup server
+  hosts: production
+  become: true
+  remote_user: "{{ admin_user }}"
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
