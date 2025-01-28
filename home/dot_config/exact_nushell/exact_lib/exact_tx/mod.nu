@@ -60,7 +60,6 @@ export def attach [name?: string]: nothing -> nothing {
   | $"($in).y<a>ml"
   | [(xdg config tmuxp) $in]
   | path join
-  | inspect
   | glob $in
   | wrap path
   | upsert name {|it| $it.path | path basename | str replace '\.\w+$' '' }
