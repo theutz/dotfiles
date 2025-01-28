@@ -313,7 +313,7 @@ export extern setup []
 
 export module aliases {
   export alias zj = ^zellij
-  export alias zja = main attach
-  export alias zjac = main action
-  export alias zjls = main list-sessions
+  export alias zja = zellij attach
+  export alias zjac = zellij action
+  export alias zjls = zellij list-sessions
 }
