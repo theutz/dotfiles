@@ -56,7 +56,7 @@ export alias ks = kill-session
 
 # Attach to a tmux session or load and attach to a tmuxp session
 export def attach [name?: string]: nothing -> nothing {
-  if ($name | is-empty) {"*"} else {$"*($name)*"}
+  let session = if ($name | is-empty) {"*"} else {$"*($name)*"}
   | $"($in).y<a>ml"
   | [(xdg config tmuxp) $in]
   | path join
@@ -65,9 +65,8 @@ export def attach [name?: string]: nothing -> nothing {
   | wrap path
   | upsert name {|it| $it.path | path basename | str replace '\.\w+$' '' }
   | input list --fuzzy --display name
-  | do {|path|
-    ^tmuxp load -y $path
-  } $in.path
+  | get path
+  ^tmuxp load -y $session
 }
 
 export alias a = attach
