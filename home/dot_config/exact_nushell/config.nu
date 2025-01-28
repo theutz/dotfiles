@@ -133,6 +133,8 @@ use opencommit
 use opencommit aliases *
 
 use tailscale
+use zellij
+use zellij aliases *
 
 alias lg = lazygit
 
@@ -174,6 +176,3 @@ alias brewu = brew upgrade
 alias casku = brew upgrade --cask
 alias brewx = brew uninstall
 alias caskx = brew uninstall --cask
-
-alias zj = zellij
-alias jz = zj
