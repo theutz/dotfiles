@@ -65,26 +65,9 @@ export def attach [name?: string]: nothing -> nothing {
   | wrap path
   | upsert name {|it| $it.path | path basename | str replace '\.\w+$' '' }
   | input list --fuzzy --display name
-  | ^tmuxp load -y $in.path
-  # let session = if ($name | is-empty) {
-  #   list | get name | append (
-  #     ^tmuxp ls | lines
-  #   )
-  #   | uniq | sort
-  #   | input list --fuzzy
-  # } else {$name}
-  #
-  # ^tmux has-session -t $session
-  # | complete
-  # | match $in.exit_code {
-  #   0 => {
-  #     $env.TMUX?
-  #     | is-empty
-  #     | if ($in) {"attach"} else {"switch-client"}
-  #     | do {|cmd| ^tmux $cmd -t $session } $in
-  #   }
-  #   _ => { load $session; attach $session }
-  # }
+  | do {|path|
+    ^tmuxp load -y $path
+  } $in.path
 }
 
 export alias a = attach
