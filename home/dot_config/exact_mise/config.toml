@@ -27,6 +27,7 @@ uv = "latest"
 "npm:gitignore" = "latest"
 ubi = "latest"
 "aqua:mr-karan/doggo" = "latest"
+"ubi:mgdm/htmlq" = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"
