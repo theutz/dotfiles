@@ -129,3 +129,7 @@ export module chezmoi {
 export def sketchybar [] {
   edit (xdg config sketchybar)
 }
+
+export def tailscale [] {
+  edit-mod tailscale
+}
