@@ -69,7 +69,7 @@ export def attach [name?: string]: nothing -> nothing {
       $env.TMUX?
       | is-empty
       | if ($in) {"attach"} else {"switch-client"}
-      | ^tmux $in -t $session 
+      | do {|cmd| ^tmux $cmd -t $session } $in
     }
     _ => { load $session; attach $session }
   }
