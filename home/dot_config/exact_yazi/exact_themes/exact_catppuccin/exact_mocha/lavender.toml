@@ -26,8 +26,8 @@ border_style = { fg = "#7f849c" }
 syntect_theme = "~/.config/yazi/Catppuccin-mocha.tmTheme"
 
 [mode]
-normal_main = { fg = "#1e1e2e", bg = "#b4befe", bold = true }
-normal_alt = { fg = "#b4befe", bg = "#313244" }
+normal_main = { fg = "#1e1e2e", bg = "#8839ef", bold = true }
+normal_alt = { fg = "#8839ef", bg = "#313244" }
 
 select_main = { fg = "#1e1e2e", bg = "#a6e3a1", bold = true }
 select_alt = { fg = "#a6e3a1", bg = "#313244" }
