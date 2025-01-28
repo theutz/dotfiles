@@ -177,3 +177,15 @@ alias brewu = brew upgrade
 alias casku = brew upgrade --cask
 alias brewx = brew uninstall
 alias caskx = brew uninstall --cask
+
+# Search for something on kagi
+def kagi [
+  ...query: string # The search query, appended to the input (if there is any)
+]: string -> nothing {
+  [$in $query]
+  | flatten -a
+  | str join " "
+  | str trim
+  | url encode
+  | start $"https://kagi.com/search?q=($in)"
+}
