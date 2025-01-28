@@ -65,7 +65,7 @@ export def attach [name?: string]: nothing -> nothing {
   | wrap path
   | upsert name {|it| $it.path | path basename | str replace '\.\w+$' '' }
   | input list --fuzzy --display name
-  | ^tmuxp load -y $in
+  | ^tmuxp load -y $in.path
   # let session = if ($name | is-empty) {
   #   list | get name | append (
   #     ^tmuxp ls | lines
