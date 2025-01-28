@@ -6,14 +6,11 @@ export def main [] {
 
 # Load a tmuxp session
 export def load [...name: string]: nothing -> nothing {
-  if ($name | is-empty) {
+  $name | default (
     ^tmuxp ls
-    | lines
-    | where ($it not-in (ls | get name))
+    | lines -s
     | input list --multi
-  } else {
-    $name
-  }
+  )
   | ^tmuxp load -d ...$in
 }
 
@@ -21,8 +18,10 @@ export alias l = load
 
 # List all active tmux sessions
 export def list []: nothing -> table {
-  ^tmux ls | complete | get stdout
-  | lines
+  ^tmux ls
+  | complete
+  | get stdout
+  | lines -s
   | split column --regex ':\s+' --number 2 name data
   | insert more {|row|
     $row.data | parse --regex '(?P<windows>\d+) windows \(created (?P<created>.*?)\) ?(?P<attached>\(attached\))?'

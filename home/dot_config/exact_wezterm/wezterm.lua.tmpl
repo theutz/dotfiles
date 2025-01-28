@@ -9,6 +9,8 @@ c:set_strict_mode(true)
 
 c.default_prog = { "/bin/zsh", "-c", "$HOME/.local/share/mise/shims/nu" }
 
+c.enable_kitty_keyboard = true
+
 c.macos_window_background_blur = 20
 c.window_background_opacity = 0.90
 c.font = wezterm.font("{{ .fonts.mono.family }}", { weight = {{ .fonts.mono.weight }} })

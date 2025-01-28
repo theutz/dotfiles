@@ -1,6 +1,8 @@
 $env.config.edit_mode = "vi"
 $env.config.show_banner = false
 
+$env.config.use_kitty_protocol = true
+
 source ./secrets.nu
 
 const NU_LIB_DIRS = [
