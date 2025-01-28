@@ -11,7 +11,9 @@ export def load [...name: string]: nothing -> nothing {
     ^tmuxp ls | lines -s
     | input list --multi
   } else {$name}
-  | ^tmuxp load -d ...$in
+  | do {|sessions|
+    ^tmuxp load -d ...$sessions
+  } $in
 }
 
 export alias l = load
