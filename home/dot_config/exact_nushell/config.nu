@@ -54,6 +54,10 @@ mkdir ~/.local/share/bash/bash_completion
 mkdir ~/.config/fish/completions
 ^chezmoi completion fish | save --force ~/.config/fish/completions/chezmoi.fish
 
+# Setup zoxide
+zoxide init nushell | save -f ~/.local/share/zoxide/init.nu
+source ~/.local/share/zoxide/init.nu
+
 use cfg
 source ls-colors.nu
 
