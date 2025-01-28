@@ -132,6 +132,8 @@ if (
 use opencommit
 use opencommit aliases *
 
+use tailscale
+
 alias lg = lazygit
 
 alias ms = mise
@@ -173,4 +175,4 @@ alias casku = brew upgrade --cask
 alias brewx = brew uninstall
 alias caskx = brew uninstall --cask
 
-use tailscale
+alias zj = zellij
