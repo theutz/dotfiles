@@ -72,6 +72,7 @@ setup-fzf
 use yazi
 use yazi aliases *
 
+use chezmoi
 use chezmoi aliases *
 
 use brew aliases *

@@ -5,6 +5,14 @@ export def status [] {
   | parse --regex '(?m)^(?P<last>.)(?P<target>.) (?P<file>.*$)'
 }
 
+# Add path(s) to .chezmoiignore
+export def ignore [...path: path]: nothing -> nothing {
+  $path
+  | path relative-to $env.HOME
+  | to text
+  | save -a ~/.local/share/chezmoi/home/.chezmoiignore
+}
+
 export module aliases {
   export alias cm    = ^chezmoi
   export alias cma   = ^chezmoi add
