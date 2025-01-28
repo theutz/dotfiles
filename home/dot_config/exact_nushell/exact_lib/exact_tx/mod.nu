@@ -56,25 +56,34 @@ export alias ks = kill-session
 
 # Attach to a tmux session or load and attach to a tmuxp session
 export def attach [name?: string]: nothing -> nothing {
-  let session = if ($name | is-empty) {
-    list | get name | append (
-      ^tmuxp ls | lines
-    )
-    | uniq | sort
-    | input list --fuzzy
-  } else {$name}
-
-  ^tmux has-session -t $session
-  | complete
-  | match $in.exit_code {
-    0 => {
-      $env.TMUX?
-      | is-empty
-      | if ($in) {"attach"} else {"switch-client"}
-      | do {|cmd| ^tmux $cmd -t $session } $in
-    }
-    _ => { load $session; attach $session }
-  }
+  if ($name | is-empty) {"*"} else {$"*($in)*"}
+  | $"($in).y<a>ml"
+  | [(xdg config tmuxp) $in]
+  | path join
+  | glob $in
+  | wrap path
+  | upsert name {|it| $it.path | path basename | str replace '\.\w+$' '' }
+  | input list --fuzzy --display name
+  | ^tmuxp load -y $in
+  # let session = if ($name | is-empty) {
+  #   list | get name | append (
+  #     ^tmuxp ls | lines
+  #   )
+  #   | uniq | sort
+  #   | input list --fuzzy
+  # } else {$name}
+  #
+  # ^tmux has-session -t $session
+  # | complete
+  # | match $in.exit_code {
+  #   0 => {
+  #     $env.TMUX?
+  #     | is-empty
+  #     | if ($in) {"attach"} else {"switch-client"}
+  #     | do {|cmd| ^tmux $cmd -t $session } $in
+  #   }
+  #   _ => { load $session; attach $session }
+  # }
 }
 
 export alias a = attach
