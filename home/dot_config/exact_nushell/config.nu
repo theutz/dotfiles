@@ -176,3 +176,4 @@ alias brewx = brew uninstall
 alias caskx = brew uninstall --cask
 
 alias zj = zellij
+alias jz = zj
