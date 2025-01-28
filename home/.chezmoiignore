@@ -12,3 +12,4 @@ Library/
 # vim: ft=tmpl.gitignore
 .config/nushell/mise.nu
 .config/yazi/plugins
+.config/yazi/flavors
