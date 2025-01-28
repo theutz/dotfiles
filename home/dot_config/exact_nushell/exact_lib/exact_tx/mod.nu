@@ -13,9 +13,8 @@ export def load [...name: string]: nothing -> nothing {
     | input list --multi
   } else {
     $name
-  } | par-each {|session|
-    ^tmuxp load -d $session
   }
+  | ^tmuxp load -d ...$in
 }
 
 export alias l = load
