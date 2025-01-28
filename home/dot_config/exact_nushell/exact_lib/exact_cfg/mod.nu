@@ -133,3 +133,7 @@ export def sketchybar [] {
 export def tailscale [] {
   edit-mod tailscale
 }
+
+export def zellij [] {
+  edit-mod zellij
+}
