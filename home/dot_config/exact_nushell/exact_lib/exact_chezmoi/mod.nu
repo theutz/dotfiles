@@ -3,6 +3,7 @@
 export def status [] {
   ^chezmoi status
   | parse --regex '(?m)^(?P<last>.)(?P<target>.) (?P<file>.*$)'
+  | upsert path {|it| $it.file | path relative-to $env.HOME }
 }
 
 # Add path(s) to .chezmoiignore
