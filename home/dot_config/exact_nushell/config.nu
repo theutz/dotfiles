@@ -189,3 +189,18 @@ def kagi [
   | url encode
   | start $"https://kagi.com/search?q=($in)"
 }
+
+$env.config.keybindings = [
+  { # Incrementally autocomplete
+    name: complete_word,
+    modifier: control,
+    keycode: char_i,
+    mode: vi_insert,
+    event: {
+      until: [
+        { send: historyhintwordcomplete }
+        { edit: movewordright select: false }
+      ]
+    }
+  }
+]
