@@ -65,7 +65,7 @@ export module aliases {
   export alias cmls  = ls
   export alias cmm   = ^chezmoi merge
   export alias cmma  = ^chezmoi merge-all
-  export alias cmra  = ^chezmoi re-add
+  export alias cmra  = re-add
   export alias cmrai = ^chezmoi re-add --interactive
   export alias cms   = status
   export alias cmx   = ^chezmoi destroy
