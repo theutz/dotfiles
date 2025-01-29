@@ -15,6 +15,24 @@ export def ignore [...path: path]: nothing -> nothing {
   | save -a ~/.local/share/chezmoi/home/.chezmoiignore
 }
 
+# List all managed files
+export def ls [path?: string] {
+  if ($path | is-empty) {
+    $env.PWD
+  } else {
+    if ($path | str starts-with "/") or ($path | str starts-with "~") {
+      $path | path expand
+    } else {
+      [$env.PWD $path] | path join
+    }
+  }
+  | ^chezmoi managed --include "files,symlinks" --path-style all ($in)
+  | from json
+  | transpose
+  | flatten -a
+  | rename target
+}
+
 export module aliases {
   export alias cm    = ^chezmoi
   export alias cma   = ^chezmoi add
@@ -32,6 +50,7 @@ export module aliases {
   export alias cmew  = ^chezmoi edit --watch
   export alias cmf   = ^chezmoi forget
   export alias cmgws = ^chezmoi git status --short
+  export alias cmls  = ls
   export alias cmm   = ^chezmoi merge
   export alias cmma  = ^chezmoi merge-all
   export alias cmra  = ^chezmoi re-add
