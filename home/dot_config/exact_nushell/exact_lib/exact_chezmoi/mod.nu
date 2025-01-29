@@ -15,6 +15,18 @@ export def ignore [...path: path]: nothing -> nothing {
   | save -a ~/.local/share/chezmoi/home/.chezmoiignore
 }
 
+export def --wrapped re-add [...args] {
+  if ($args | is-empty) {
+    status
+    | where last == M and target == M
+    | input list --multi --display file
+    | get file
+    | ^chezmoi re-add ...$in
+  } else {
+    ^chezmoi re-add ...$args
+  }
+}
+
 # List all managed files
 export def ls [path?: string] {
   if ($path | is-empty) {
