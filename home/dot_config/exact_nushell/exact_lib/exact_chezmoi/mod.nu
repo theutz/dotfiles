@@ -4,6 +4,7 @@ export def status [] {
   ^chezmoi status
   | parse --regex '(?m)^(?P<last>.)(?P<target>.) (?P<file>.*$)'
   | upsert file { $"~/($in)" }
+  | upsert source {|it| ^chezmoi source-path $it.file }
 }
 
 # Add path(s) to .chezmoiignore
