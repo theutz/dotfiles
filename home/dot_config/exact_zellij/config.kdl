@@ -147,9 +147,10 @@ keybinds clear-defaults=true {
         bind "Alt =" { Resize "Increase"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
+        bind "Alt b" { ToggleTab; }
         bind "Alt e" { EditScrollback; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt g" { Write 7; }
+        bind "Alt g" { Write 7; } // Pass 'Ctrl-g' along to underlying program
         bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt j" { MoveFocus "down"; }
