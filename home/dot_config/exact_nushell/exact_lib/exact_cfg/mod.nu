@@ -1,7 +1,7 @@
 use xdg
 
 # Edit a file in XDG_CONFIG_HOME
-export def "edit" [...files: string]: nothing -> nothing {
+export def edit [...files: string]: nothing -> nothing {
   let paths = $files | each {|| xdg config }
   ^chezmoi edit --apply --watch ...$paths
   exec nu
@@ -18,19 +18,19 @@ export def main [] {
 }
 
 # Edit wezterm configurations.
-export def "wezterm" [] { edit "wezterm/wezterm.lua" }
+export def wezterm [] { edit "wezterm/wezterm.lua" }
 
 # Edit nu configurations.
-export def "nu" [] { edit $nu.config-path }
+export def nu [] { edit $nu.config-path }
 
 # Edit nu environment configurations.
-export def "env" [] { edit $nu.env-path }
+export def env [] { edit $nu.env-path }
 
 # Edit ~/.config/nushell.
 export def all [] { edit $nu.default-config-dir }
 
 # Edit homemade notes module
-export def "notes" [] { edit ($nu.default-config-dir | path join "lib/notes") }
+export def notes [] { edit ($nu.default-config-dir | path join "lib/notes") }
 
 # Edit neovim confgurations.
 export module nvim {
@@ -51,22 +51,22 @@ export module nvim {
 }
 
 # Edit starship configurations.
-export def "starship" [] { edit "starship.toml" }
+export def starship [] { edit "starship.toml" }
 
 # Edit aerospace configurations.
-export def "aerospace" [] { edit "aerospace/aerospace.toml" }
+export def aerospace [] { edit "aerospace/aerospace.toml" }
 
 # Edit tmux configurations.
-export def "tmux" [] { edit "tmux/tmux.conf" }
+export def tmux [] { edit "tmux/tmux.conf" }
 
 # Edit tmuxp configurations.
-export def "tmuxp" [] { edit "tmuxp" }
+export def tmuxp [] { edit "tmuxp" }
 
 # Edit mise configurations
-export def "mise" [] { edit "mise/config.toml" }
+export def mise [] { edit "mise/config.toml" }
 
 # Edit a nushell module
-export def "edit-mod" [name: string]: nothing -> nothing {
+export def edit-mod [name: string]: nothing -> nothing {
   [
     $nu.config-path
     ($nu.default-config-dir | path join lib $name mod.nu)
@@ -74,16 +74,16 @@ export def "edit-mod" [name: string]: nothing -> nothing {
 }
 
 # Edit tx configurations
-export def "tx" [] { edit-mod tx }
+export def tx [] { edit-mod tx }
 
 # Edit ms shortcuts for mise
-export def "ms" [] { edit-mod ms }
+export def ms [] { edit-mod ms }
 
 # Edit background jobs module
-export def "job" [] { edit-mod job }
+export def job [] { edit-mod job }
 
 # Edit chezomi module
-export def "cm" [] { edit-mod chezmoi }
+export def chezmoi [] { edit-mod chezmoi }
 
 # Edit a nushell module
 export def mod [name?: string] {
@@ -103,7 +103,7 @@ export def mod [name?: string] {
 export module chezmoi {
   # Edit .chezmoidata
   export def data [] {
-    chezmoi source-path
+    ^chezmoi source-path
     | str trim
     | path join .chezmoidata
     | ^nvim $in
@@ -111,7 +111,7 @@ export module chezmoi {
 
   # Edit .chezomiscripts
   export def scripts [] {
-    chezmoi source-path
+    ^chezmoi source-path
     | str trim
     | path join .chezmoiscripts
     | ^nvim $in
@@ -119,7 +119,7 @@ export module chezmoi {
 
   # Edit .chezmoitemplates
   export def templates [] {
-    chezmoi source-path
+    ^chezmoi source-path
     | str trim
     | path join .chezmoitemplates
     | ^nvim $in
