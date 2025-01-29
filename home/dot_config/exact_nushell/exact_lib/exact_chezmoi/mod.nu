@@ -78,7 +78,7 @@ export module aliases {
   export alias cmf   = ^chezmoi forget
   export alias cmgws = ^chezmoi git status --short
   export alias cmls  = ls
-  export alias cmm   = ^chezmoi merge
+  export alias cmm   = merge
   export alias cmma  = ^chezmoi merge-all
   export alias cmra  = re-add
   export alias cmrai = ^chezmoi re-add --interactive
