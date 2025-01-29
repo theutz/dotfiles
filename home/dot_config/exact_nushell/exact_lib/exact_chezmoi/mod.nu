@@ -1,5 +1,6 @@
 # Tools for working with chezmoi
 
+# Output the status of files managed by chezmoi
 export def status [] {
   ^chezmoi status
   | parse --regex '(?m)^(?P<last>.)(?P<target>.) (?P<file>.*$)'
@@ -15,6 +16,7 @@ export def ignore [...path: path]: nothing -> nothing {
   | save -a ~/.local/share/chezmoi/home/.chezmoiignore
 }
 
+# Interactively select files to re-add
 export def --wrapped re-add [...args] {
   if ($args | is-empty) {
     status
@@ -24,6 +26,19 @@ export def --wrapped re-add [...args] {
     | ^chezmoi re-add ...$in
   } else {
     ^chezmoi re-add ...$args
+  }
+}
+
+# Interactively select files to merge
+export def --wrapped merge [...args] {
+  if ($args | is-empty) {
+    status
+    | tee { print }
+    | input list --multi --display file
+    | get file
+    | ^chezmoi merge ...$in
+  } else {
+    ^chezmoi merge ...$args
   }
 }
 
