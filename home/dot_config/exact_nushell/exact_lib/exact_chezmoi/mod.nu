@@ -36,6 +36,7 @@ export def --wrapped merge [...args] {
     | tee { print }
     | input list --multi --display file
     | get file
+    | inspect
     | ^chezmoi merge ...$in
   } else {
     ^chezmoi merge ...$args
