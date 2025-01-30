@@ -50,6 +50,13 @@ autocmd({ "BufNewFile", "BufRead" }, {
   callback = function() vim.bo.filetype = "antlers" end,
 })
 
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.play.yaml", "*.play.yml" },
+  desc = "set filetype for ansible plays",
+  group = augroup("ansible plays", { clear = true }),
+  callback = function() vim.bo.filetype = "yaml.ansible" end,
+})
+
 vim.treesitter.language.register("html", "antlers")
 
 vim.treesitter.language.register("bash", "zsh")
