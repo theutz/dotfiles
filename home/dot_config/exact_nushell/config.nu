@@ -139,10 +139,10 @@ use zellij aliases *
 
 alias lg = lazygit
 
-alias ms = mise
-alias msr = mise run
-alias msx = mise exec
-alias mst = mise task
+alias m = mise
+alias mr = mise run
+alias mx = mise exec
+alias mt = mise task
 
 alias la = ls -la
 alias ll = ls -l
