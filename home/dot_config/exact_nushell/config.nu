@@ -162,7 +162,8 @@ alias gws = git status --short
 
 alias tf = terraform
 alias tfp = terraform plan -out tfplan
-alias tfa = terraform apply tfplan
+alias tfpa = terraform apply tfplan
+alias tfa = terraform apply
 alias tfA = terraform apply -auto-approve
 
 alias brews = brew search
