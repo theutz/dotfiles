@@ -153,6 +153,11 @@ def git-push-pull [] {
 }
 
 alias gco = git checkout
+alias gc = git commit
+alias gcam = git commit --all --message
+alias gia = git add
+alias giaa = git add -A
+alias gcm = git commit --message
 alias gf = git fetch
 alias gfm = git pull
 alias gpp = git-push-pull
