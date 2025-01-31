@@ -165,7 +165,9 @@ alias tfp = terraform plan -out tfplan
 alias tfpa = terraform apply tfplan
 alias tfa = terraform apply
 alias tfA = terraform apply -auto-approve
-alias tfo = terraform output
+def tfo [] {
+  ^terraform output -json | from json | transpose name value | upsert value { get value }
+}
 
 alias brews = brew search
 alias casks = brew search --cask
