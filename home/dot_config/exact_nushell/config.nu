@@ -165,6 +165,7 @@ alias tfp = terraform plan -out tfplan
 alias tfpa = terraform apply tfplan
 alias tfa = terraform apply
 alias tfA = terraform apply -auto-approve
+alias tfo = terraform output
 
 alias brews = brew search
 alias casks = brew search --cask
