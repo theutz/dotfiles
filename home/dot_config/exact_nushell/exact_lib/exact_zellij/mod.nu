@@ -192,13 +192,14 @@ export module action {
   # Write characters to the terminal
   export extern write-chars []
 }
+export use action
 
 export alias ac = action
 
 # Attach to a session
-export use module attach {
+module attach {
   export extern main [
-    name: string              # Name of the session to attach to
+    name: string@cmp-list-sessions              # Name of the session to attach to
     --create-background (-b)  # Create a detached session in the background if one does not exist
     --create (-c)             # Create a session if one does not exist
     --force-run-commands (-f) # If resurrecting a dead session, immediately run all its commands on startup
@@ -209,6 +210,7 @@ export use module attach {
   # Change the behavior of zellij
   export extern options []
 }
+export use attach
 
 export alias a = attach
 
