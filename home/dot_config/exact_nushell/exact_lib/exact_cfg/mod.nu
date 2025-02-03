@@ -135,5 +135,16 @@ export def tailscale [] {
 }
 
 export def zellij [] {
-  edit-mod zellij
+  [
+    [zellij ** *]
+    [nushell config.nu]
+    [nushell lib zellij ** *]
+  ]
+  | each {
+    prepend (xdg config | path split)
+    | path join
+    | glob $in
+  }
+  | flatten
+  | edit $in
 }
