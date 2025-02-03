@@ -196,7 +196,7 @@ export module action {
 export alias ac = action
 
 # Attach to a session
-export module attach {
+export use module attach {
   export extern main [
     name: string              # Name of the session to attach to
     --create-background (-b)  # Create a detached session in the background if one does not exist
