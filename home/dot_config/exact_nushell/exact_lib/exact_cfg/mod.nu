@@ -146,5 +146,5 @@ export def zellij [] {
     | glob $in
   }
   | flatten
-  | edit $in
+  | ^chezmoi edit --watch ...$in
 }
