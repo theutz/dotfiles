@@ -318,4 +318,5 @@ export module aliases {
   export alias zja = zellij attach
   export alias zjac = zellij action
   export alias zjls = zellij list-sessions
+  export alias zjr = zellij run
 }
