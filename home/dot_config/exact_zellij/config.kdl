@@ -163,7 +163,7 @@ keybinds clear-defaults=true {
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { GoToPreviousTab; }
         bind "Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
-        bind "Alt s" { LaunchOrFocusPlugin "session-manager" }
+        bind "Alt s" { LaunchOrFocusPlugin "session-manager"; }
         bind "Alt u" { SwitchToMode "scroll"; }
         bind "Alt v" { NewPane; }
     }
