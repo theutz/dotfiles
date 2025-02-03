@@ -1,0 +1,23 @@
+---
+syntax: markdown
+---
+
+- Fill in the items `<in angle brackets>` with the appropriate value
+
+```terraform
+terraform {
+  backend "s3" {
+    bucket = "<bucket name>"
+    key    = "<object name>"
+    region = "<region>"
+
+    skip_region_validation      = true
+    skip_credentials_validation = true
+    skip_requesting_account_id  = true
+    skip_s3_checksum            = true
+    endpoints = {
+      s3 = "https://<region>.linodeobjects.com"
+    }
+  }
+}
+```

@@ -1,0 +1,5 @@
+---
+syntax: markdown
+---
+
+- `sudo hostnamectl hostname <boo>`
