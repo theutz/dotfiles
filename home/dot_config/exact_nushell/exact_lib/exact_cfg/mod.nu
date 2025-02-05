@@ -141,7 +141,7 @@ export def zellij [] {
     [nushell lib zellij ** *]
   ]
   | each {
-    prepend (xdg config | path split)
+    prepend ($env.XDG_CONFIG_HOME | path split)
     | path join
     | glob --no-dir $in
   }
