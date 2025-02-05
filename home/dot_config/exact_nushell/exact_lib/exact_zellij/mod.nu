@@ -317,6 +317,10 @@ export module aliases {
   export alias zj = ^zellij
   export alias zja = zellij attach
   export alias zjac = zellij action
+  export alias zjd = zellij delete-session
+  export alias zjda = zellij delete-all-sessions
+  export alias zjk = zellij kill-session
+  export alias zjka = zellij kill-all-sessions
   export alias zjls = zellij list-sessions
   export alias zjr = zellij run
 }
