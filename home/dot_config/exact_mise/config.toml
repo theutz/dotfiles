@@ -28,6 +28,7 @@ uv = "latest"
 ubi = "latest"
 "aqua:mr-karan/doggo" = "latest"
 "ubi:mgdm/htmlq" = "latest"
+"aqua:nushell/nushell" = "latest"
 
 [tools."ubi:carapace-sh/carapace-bin"]
 version = "latest"
