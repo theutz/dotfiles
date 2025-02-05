@@ -12,12 +12,6 @@ autoAdd = true
 autoCommit = true
 autoPush = true
 
-{{ if lookPath "nu" }}
-[cd]
-command = "nu"
-args = ["--login"]
-{{- end }}
-
 {{ if lookPath "delta" -}}
 [diff]
 pager = "delta"
