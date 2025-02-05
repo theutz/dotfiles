@@ -143,7 +143,7 @@ export def zellij [] {
   | each {
     prepend (xdg config | path split)
     | path join
-    | glob $in
+    | glob --no-dir $in
   }
   | flatten
   | ^chezmoi edit --watch ...$in
