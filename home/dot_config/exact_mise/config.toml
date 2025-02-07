@@ -1,44 +1,14 @@
-[tools]
-go = "latest"
-node = "latest"
-just = "latest"
-ruby = "latest"
-"npm:opencommit" = "latest"
-"cargo:scooter" = "latest"
-usage = "latest"
-neovim = "latest"
-"npm:zx" = "latest"
-"npm:prettier" = "latest"
-chezmoi = "latest"
-"ubi:aquaproj/aqua" = "latest"
-zellij = "latest"
-"cargo:pueue" = "latest"
-"npm:better-commits" = "latest"
-"aqua:sharkdp/vivid" = "latest"
-starship = "latest"
-python = "latest"
-"pipx:jc" = "latest"
-"aqua:tealdeer-rs/tealdeer" = "latest"
-"aqua:denisidoro/navi" = "latest"
-"ubi:oz/tz" = "latest"
-"pipx:linode-cli" = "latest"
-opentofu = "latest"
-uv = "latest"
-"npm:gitignore" = "latest"
-ubi = "latest"
-"aqua:mr-karan/doggo" = "latest"
-"ubi:mgdm/htmlq" = "latest"
-
-[tools."ubi:carapace-sh/carapace-bin"]
-version = "latest"
-exe = "carapace"
-
 [settings]
 experimental = true
 
-[settings.sops]
-age_key_file = "/Users/michael/.config/sops/age/keys.txt"
-
-[env]
-
-[tasks]
+[tools]
+go = "latest"
+"go:github.com/elliot40404/volgo/cmd/volgo" = "latest"
+neovim = "latest"
+node = "latest"
+"npm:gitignore" = "latest"
+"pipx:linode-cli" = { version = "latest", extras = '"--with boto3"' }
+python = "latest"
+ruby = "latest"
+rust = "latest"
+uv = "latest"

@@ -58,6 +58,7 @@ m=(
   'ssh'
   'yazi'
   # 'lf'
+  'zellij'
   'completion'
   'syntax-highlighting'
   'history-substring-search'
