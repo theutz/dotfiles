@@ -2,6 +2,9 @@
 experimental = true
 
 [tools]
+aqua = "latest"
+"aqua:mr-karan/doggo" = "latest"
+"aqua:tealdeer-rs/tealdeer" = "latest"
 go = "latest"
 "go:github.com/elliot40404/volgo/cmd/volgo" = "latest"
 neovim = "latest"
