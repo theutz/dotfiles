@@ -2,7 +2,9 @@
 
 # {{ includeTemplate "dot_config/exact_tmux/tmux.conf" . | sha256sum }}
 
-tmux source-file ~/.config/tmux/tmux.conf \; \
-  display-message "Config reloaded by chezmoi!"
+if [[ $TMUX != "" ]]; then
+  tmux source-file ~/.config/tmux/tmux.conf \; \
+    display-message "Config reloaded by chezmoi!"
+fi
 
 # vim: ft=sh.tmpl
