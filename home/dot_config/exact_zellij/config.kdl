@@ -86,7 +86,7 @@ keybinds clear-defaults=true {
         bind "p" { MovePaneBackwards; }
         bind "tab" { MovePane; }
     }
-    scroll {
+      scroll {
         bind "Alt left" { MoveFocusOrTab "left"; SwitchToMode "locked"; }
         bind "Alt down" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Alt up" { MoveFocus "up"; SwitchToMode "locked"; }
@@ -99,7 +99,7 @@ keybinds clear-defaults=true {
         bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
         bind "s" { SwitchToMode "normal"; }
     }
-    search {
+      search {
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "n" { Search "down"; }
         bind "o" { SearchToggleOption "WholeWord"; }
@@ -132,43 +132,43 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Alt 1" { GoToTab 1; }
-        bind "Alt 2" { GoToTab 2; }
-        bind "Alt 3" { GoToTab 3; }
-        bind "Alt 4" { GoToTab 4; }
-        bind "Alt 5" { GoToTab 5; }
-        bind "Alt 6" { GoToTab 6; }
-        bind "Alt 7" { GoToTab 7; }
-        bind "Alt 8" { GoToTab 8; }
-        bind "Alt 9" { GoToTab 9; }
-        bind "Alt left" { MoveFocusOrTab "left"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
-        bind "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Alt =" { Resize "Increase"; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
-        bind "Alt b" { ToggleTab; }
-        bind "Alt c" { NewTab; }
-        bind "Alt d" { Detach; }
-        bind "Alt e" { EditScrollback; }
-        bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt g" { Write 7; } // Pass 'Ctrl-g' along to underlying program
-        bind "Alt h" { MoveFocusOrTab "left"; }
-        bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt m" { ToggleFocusFullscreen; }
-        bind "Alt n" { GoToNextTab; }
-        bind "Alt o" { MoveTab "right"; }
-        bind "Alt p" { GoToPreviousTab; }
-        bind "Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
-        bind "Alt s" { LaunchOrFocusPlugin "session-manager"; }
-        bind "Alt u" { SwitchToMode "scroll"; }
-        bind "Alt v" { NewPane; }
+        bind "Ctrl Alt 1" { GoToTab 1; }
+        bind "Ctrl Alt 2" { GoToTab 2; }
+        bind "Ctrl Alt 3" { GoToTab 3; }
+        bind "Ctrl Alt 4" { GoToTab 4; }
+        bind "Ctrl Alt 5" { GoToTab 5; }
+        bind "Ctrl Alt 6" { GoToTab 6; }
+        bind "Ctrl Alt 7" { GoToTab 7; }
+        bind "Ctrl Alt 8" { GoToTab 8; }
+        bind "Ctrl Alt 9" { GoToTab 9; }
+        bind "Ctrl Alt left" { MoveFocusOrTab "left"; }
+        bind "Ctrl Alt down" { MoveFocus "down"; }
+        bind "Ctrl Alt up" { MoveFocus "up"; }
+        bind "Ctrl Alt right" { MoveFocusOrTab "right"; }
+        bind "Ctrl Alt +" { Resize "Increase"; }
+        bind "Ctrl Alt -" { Resize "Decrease"; }
+        bind "Ctrl Alt =" { Resize "Increase"; }
+        bind "Ctrl Alt [" { PreviousSwapLayout; }
+        bind "Ctrl Alt ]" { NextSwapLayout; }
+        bind "Ctrl Alt b" { ToggleTab; }
+        bind "Ctrl Alt c" { NewTab; }
+        bind "Ctrl Alt d" { Detach; }
+        bind "Ctrl Alt e" { EditScrollback; }
+        bind "Ctrl Alt f" { ToggleFloatingPanes; }
+        bind "Ctrl Alt g" { Write 7; } // Pass 'Ctrl-g' along to underlying program
+        bind "Ctrl Alt h" { MoveFocus "left"; }
+        bind "Ctrl Alt i" { MoveTab "left"; }
+        bind "Ctrl Alt j" { MoveFocus "down"; }
+        bind "Ctrl Alt k" { MoveFocus "up"; }
+        bind "Ctrl Alt l" { MoveFocus "right"; }
+        bind "Ctrl Alt m" { ToggleFocusFullscreen; }
+        bind "Ctrl Alt n" { GoToNextTab; }
+        bind "Ctrl Alt o" { MoveTab "right"; }
+        bind "Ctrl Alt p" { GoToPreviousTab; }
+        bind "Ctrl Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "Ctrl Alt s" { LaunchOrFocusPlugin "session-manager"; }
+        bind "Ctrl Alt u" { SwitchToMode "scroll"; }
+        bind "Ctrl Alt v" { NewPane; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
