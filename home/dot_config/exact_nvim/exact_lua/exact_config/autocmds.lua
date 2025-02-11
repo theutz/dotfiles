@@ -44,10 +44,11 @@ autocmd({ "BufNewFile", "BufRead" }, {
 autocmd({ "BufNewFile", "BufRead" }, {
   pattern = {
     "*.antlers.html",
+    "*.antlers.php",
   },
   desc = "set filetype for antlers templates",
   group = augroup("antlers", { clear = true }),
-  callback = function() vim.bo.filetype = "antlers" end,
+  callback = function() vim.bo.filetype = "antlers.html" end,
 })
 
 autocmd({ "BufNewFile", "BufRead" }, {
@@ -58,7 +59,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
 })
 
 vim.treesitter.language.register("html", "antlers")
-
+vim.treesitter.language.register("php", "antlers")
 vim.treesitter.language.register("bash", "zsh")
 
 autocmd({ "BufEnter" }, {
@@ -73,12 +74,6 @@ autocmd({ "BufRead", "BufNewFile" }, {
   desc = "set filetype for terraform variables files",
   group = augroup("terraform_vars", { clear = true }),
   callback = function() vim.bo.filetype = "terraform" end,
-})
-
-autocmd("FileType", {
-  group = augroup("MChat", { clear = true }),
-  pattern = "mchat",
-  callback = function() vim.opt_local.wrap = true end,
 })
 
 autocmd("FileType", {
