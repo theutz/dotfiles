@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+src="$1"
+suffix=".bak"
+
+if [[ "$src" =~ "\\${suffix}$" ]]; then
+  dest="${src%%${suffix}}"
+else
+  dest="${src}${suffix}"
+fi
+
+mv "$src" "$dest"
