@@ -93,13 +93,13 @@ autocmd("FileType", {
   end,
 })
 
-autocmd("FileType", {
-  group = augroup("teraraform", { clear = true }),
-  pattern = "terraform",
-  callback = function()
-    vim.bo.tabstop = 2
-    vim.bo.softtabstop = 2
-    vim.bo.shiftwidth = 2
-    vim.bo.expandtab = true
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = augroup("terraform", { clear = true }),
+  pattern = "*.tf",
+  callback = function(o)
+    vim.bo[o.buf].tabstop = 2
+    vim.bo[o.buf].softtabstop = 2
+    vim.bo[o.buf].shiftwidth = 2
+    vim.bo[o.buf].expandtab = true
   end,
 })
