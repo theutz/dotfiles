@@ -92,3 +92,14 @@ autocmd("FileType", {
     norm zR ]]
   end,
 })
+
+autocmd("FileType", {
+  group = augroup("teraraform", { clear = true }),
+  pattern = "terraform",
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.softtabstop = 2
+    vim.bo.shiftwidth = 2
+    vim.bo.expandtab = true
+  end,
+})
