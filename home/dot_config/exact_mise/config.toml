@@ -32,3 +32,6 @@ uv = "latest"
 vivid = "latest"
 yq = "latest"
 zellij = "latest"
+
+[hooks.enter]
+script = 'eval "$(chezmoi generate zsh)"'

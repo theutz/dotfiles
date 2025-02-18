@@ -1,17 +1,19 @@
 theme = catppuccin-mocha
 font-family = {{ .fonts.mono.family }}
 font-size = {{ .fonts.mono.size }}
-adjust-cell-height = 6
+adjust-cell-height = 12
 background-opacity = 0.85
 #minimum-contrast = 1.2
 macos-option-as-alt = left
-shell-integration = zsh
 
-keybind = super+shift+h=goto_split:left
-keybind = super+shift+j=goto_split:down
-keybind = super+shift+k=goto_split:up
-keybind = super+shift+l=goto_split:right
-keybind = super+shift+alt+h=resize_split:left,20
-keybind = super+shift+alt+j=resize_split:down,20
-keybind = super+shift+alt+k=resize_split:up,20
-keybind = super+shift+alt+l=resize_split:right,20
+keybind = super+h=goto_split:left
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+l=goto_split:right
+keybind = super+z=toggle_split_zoom
+keybind = super+e=equalize_splits
+
+keybind = super+shift+h=resize_split:left,20
+keybind = super+shift+j=resize_split:down,20
+keybind = super+shift+k=resize_split:up,20
+keybind = super+shift+l=resize_split:right,20
