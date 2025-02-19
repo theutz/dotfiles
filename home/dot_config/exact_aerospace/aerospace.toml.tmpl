@@ -101,11 +101,13 @@ cmd-ctrl-alt-{{ .key }} = 'focus --boundaries all-monitors-outer-frame --boundar
 {{ range $i, $v := .workspaces -}}
 {{- $id := printf "%d-%s" $i $v.name }}
 cmd-ctrl-alt-{{ $v.name }} = 'workspace {{ $id }}'
-shift-cmd-ctrl-alt-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}']
+cmd-ctrl-alt-shift-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}']
 {{ end }}
 
 cmd-ctrl-alt-n = 'workspace next'
+cmd-ctrl-alt-shift-n = ['move-node-to-workspace next', 'workspace next']
 cmd-ctrl-alt-p = 'workspace prev'
+cmd-ctrl-alt-shift-p = ['move-node-to-workspace prev', 'workspace prev']
 cmd-ctrl-alt-b = 'workspace-back-and-forth'
 
 cmd-ctrl-alt-m = 'fullscreen'
