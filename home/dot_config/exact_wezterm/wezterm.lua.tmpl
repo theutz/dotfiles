@@ -8,6 +8,15 @@ if w.config_builder then
 end
 c:set_strict_mode(true)
 
+c.default_workspace = 'main'
+
+c.unix_domains = {
+  {
+    name = "unix"
+  }
+}
+c.default_gui_startup_args = {'connect', 'unix'}
+
 c.macos_window_background_blur = 10
 
 c.window_background_opacity = 0.90
