@@ -63,121 +63,121 @@ end)
 -- Keybindings
 c.enable_kitty_keyboard = true
 
-c.leader = { key = 'm', mods = 'META', timeout_milliseconds = 2000 }
+c.leader = { key = "m", mods = "META", timeout_milliseconds = 2000 }
 
 c.keys = {
-  -- Workspaces
-  {
-    mods = "LEADER",
-    key = "s",
-    action = a.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES', title = "Select workspace" }
-  },
-  {
-    mods = "LEADER|SHIFT",
-    key = "c",
-    action = a.PromptInputLine {
-      description = w.format {
-        {Attribute = {Intensity = 'Bold'}},
-        {Foreground = {AnsiColor = 'Fuchsia'}},
-        {Text = 'Enter name for new workspace'},
-      },
-      action = w.action_callback(function (window, pane, line)
-        if line then
-          window:perform_action(a.SwitchToWorkspace { name = line }, pane)
-        end
-      end)
-    }
-  },
-  -- Panes
-  {
-    mods = "LEADER",
-    key = "-",
-    action = a.SplitVertical { domain = 'CurrentPaneDomain' }
-  },
-  {
-    mods = "SUPER|SHIFT",
-    key = "d",
-    action = a.SplitVertical { domain = 'CurrentPaneDomain' }
-  },
-  {
-    mods = "LEADER",
-    key = "v",
-    action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }
-  },
-  {
-    mods = "LEADER",
-    key = "|",
-    action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }
-  },
-  {
-    mods = "SUPER",
-    key = "d",
-    action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }
-  },
-  {
-    mods = "SUPER",
-    key = "w",
-    action = a.CloseCurrentPane { confirm = false }
-  },
-  {
-    mods = "LEADER",
-    key = "z",
-    action = a.TogglePaneZoomState
-  },
-  {
-    mods = "LEADER",
-    key = "o",
-    action = a.RotatePanes "Clockwise"
-  },
-  {
-    mods = "LEADER|SHIFT",
-    key = "o",
-    action = a.PaneSelect { mode = "SwapWithActive" }
-  },
-  -- Changing windows
-  {
-    mods = "SUPER|SHIFT",
-    key = "w",
-    action = a.CloseCurrentTab { confirm = true }
-  },
-  {
-    mods = "LEADER",
-    key = "n",
-    action = a.ActivateTabRelative(1)
-  },
-  {
-    mods = "LEADER",
-    key = "p",
-    action = a.ActivateTabRelative(-1)
-  },
-  {
-    mods = "LEADER",
-    key = "c",
-    action = a.SpawnTab 'CurrentPaneDomain'
-  },
-  -- Copy mode
-  {
-    mods = 'LEADER',
-    key = 'Enter',
-    action = a.ActivateCopyMode
-  },
-  {
-    mods = 'LEADER',
-    key = '[',
-    action = a.ActivateCopyMode
-  },
-  {
-    mods = 'LEADER|CTRL',
-    key = "u",
-    action = a.ActivateCopyMode
-  },
+	-- Workspaces
+	{
+		mods = "LEADER",
+		key = "s",
+		action = a.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES", title = "Select workspace" }),
+	},
+	{
+		mods = "LEADER|SHIFT",
+		key = "c",
+		action = a.PromptInputLine({
+			description = w.format({
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Enter name for new workspace" },
+			}),
+			action = w.action_callback(function(window, pane, line)
+				if line then
+					window:perform_action(a.SwitchToWorkspace({ name = line }), pane)
+				end
+			end),
+		}),
+	},
+	-- Panes
+	{
+		mods = "LEADER",
+		key = "-",
+		action = a.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "SUPER|SHIFT",
+		key = "d",
+		action = a.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "v",
+		action = a.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "|",
+		action = a.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "SUPER",
+		key = "d",
+		action = a.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "SUPER",
+		key = "w",
+		action = a.CloseCurrentPane({ confirm = false }),
+	},
+	{
+		mods = "LEADER",
+		key = "z",
+		action = a.TogglePaneZoomState,
+	},
+	{
+		mods = "LEADER",
+		key = "o",
+		action = a.RotatePanes("Clockwise"),
+	},
+	{
+		mods = "LEADER|SHIFT",
+		key = "o",
+		action = a.PaneSelect({ mode = "SwapWithActive" }),
+	},
+	-- Changing windows
+	{
+		mods = "SUPER|SHIFT",
+		key = "w",
+		action = a.CloseCurrentTab({ confirm = true }),
+	},
+	{
+		mods = "LEADER",
+		key = "n",
+		action = a.ActivateTabRelative(1),
+	},
+	{
+		mods = "LEADER",
+		key = "p",
+		action = a.ActivateTabRelative(-1),
+	},
+	{
+		mods = "LEADER",
+		key = "c",
+		action = a.SpawnTab("CurrentPaneDomain"),
+	},
+	-- Copy mode
+	{
+		mods = "LEADER",
+		key = "Enter",
+		action = a.ActivateCopyMode,
+	},
+	{
+		mods = "LEADER",
+		key = "[",
+		action = a.ActivateCopyMode,
+	},
+	{
+		mods = "LEADER|CTRL",
+		key = "u",
+		action = a.ActivateCopyMode,
+	},
 }
 
-local smart_splits = w.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
+local smart_splits = w.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 smart_splits.apply_to_config(c, {
-  modifiers = {
-    resize = 'META|SHIFT'
-  }
+	modifiers = {
+		resize = "META|SHIFT",
+	},
 })
 
 return c
