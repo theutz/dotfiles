@@ -88,6 +88,16 @@ c.keys = {
 			end),
 		}),
 	},
+  {
+    mods = "LEADER|SHIFT",
+    key = "(",
+    action = a.SwitchWorkspaceRelative(-1)
+  },
+  {
+    mods = "LEADER|SHIFT",
+    key = ")",
+    action = a.SwitchWorkspaceRelative(1)
+  },
 	-- Panes
 	{
 		mods = "LEADER",
@@ -134,6 +144,14 @@ c.keys = {
 		key = "o",
 		action = a.PaneSelect({ mode = "SwapWithActive" }),
 	},
+  {
+    mods = "LEADER | SHIFT",
+    key = "!",
+    action = w.action_callback(function (win, pane)
+      local tab, window = pane:move_to_new_tab()
+      tab:activate()
+    end)
+  },
 	-- Changing windows
 	{
 		mods = "SUPER|SHIFT",
@@ -150,6 +168,16 @@ c.keys = {
 		key = "p",
 		action = a.ActivateTabRelative(-1),
 	},
+  {
+    mods = "LEADER|SHIFT",
+    key = ">",
+    action = a.MoveTabRelative(1)
+  },
+  {
+    mods = "LEADER|SHIFT",
+    key = "<",
+    action = a.MoveTabRelative(-1)
+  },
 	{
 		mods = "LEADER",
 		key = "c",
@@ -172,6 +200,14 @@ c.keys = {
 		action = a.ActivateCopyMode,
 	},
 }
+
+for i = 1, 9 do
+  table.insert(c.keys, {
+    mods = "LEADER",
+    key = tostring(i),
+    action = a.ActivateTab(i - 1)
+  })
+end
 
 local smart_splits = w.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 smart_splits.apply_to_config(c, {
