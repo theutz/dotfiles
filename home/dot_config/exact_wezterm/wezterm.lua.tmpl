@@ -10,12 +10,12 @@ c:set_strict_mode(true)
 
 c.default_workspace = 'main'
 
-c.unix_domains = {
-  {
-    name = "unix"
-  }
-}
-c.default_gui_startup_args = {'connect', 'unix'}
+-- c.unix_domains = {
+--   {
+--     name = "unix"
+--   }
+-- }
+-- c.default_gui_startup_args = {'connect', 'unix'}
 
 c.macos_window_background_blur = 10
 
@@ -122,27 +122,28 @@ c.keys = {
 	{
 		mods = "LEADER",
 		key = "-",
-		action = a.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = a.SplitPane({ direction = "Down" }),
+
 	},
 	{
 		mods = "SUPER|SHIFT",
 		key = "d",
-		action = a.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = a.SplitPane({ direction = "Down" }),
 	},
 	{
 		mods = "LEADER",
 		key = "v",
-		action = a.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = a.SplitPane({ direction = "Right" }),
 	},
 	{
 		mods = "LEADER",
 		key = "|",
-		action = a.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = a.SplitPane({ direction = "Right" }),
 	},
 	{
 		mods = "SUPER",
 		key = "d",
-		action = a.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = a.SplitPane({ direction = "Right" }),
 	},
 	{
 		mods = "SUPER",

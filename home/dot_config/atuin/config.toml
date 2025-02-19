@@ -1,13 +1,14 @@
 auto_sync = true
 dialect = "us"
 enter_accept = false
-filter_mode = "session"
+filter_mode = "workspace"
 filter_mode_shell_up_keybinding = "session"
 inline_height = 10
-keymap_mode = "vim-normal"
+workspaces = true
+keymap_mode = "auto"
 search_mode = "fuzzy"
-style = "compact"
+style = "auto"
 sync_frequency = "1h"
 
 [theme]
-name = "autumn"
+name = ""
