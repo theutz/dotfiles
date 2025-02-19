@@ -7,20 +7,24 @@ if wezterm.config_builder then
 end
 c:set_strict_mode(true)
 
--- c.default_prog = { "/bin/zsh", "-c", "$HOME/.local/share/mise/shims/nu" }
+c.macos_window_background_blur = 10
 
-c.enable_kitty_keyboard = true
-
-c.macos_window_background_blur = 20
 c.window_background_opacity = 0.90
+
 c.font = wezterm.font("{{ .fonts.mono.family }}", { weight = {{ .fonts.mono.weight }} })
 c.font_size = {{ .fonts.mono.size }}
 c.line_height = 1.3
+
 c.bold_brightens_ansi_colors = "BrightAndBold"
-c.window_close_confirmation = "NeverPrompt"
-c.quit_when_all_windows_are_closed = true
+
+-- c.window_close_confirmation = "NeverPrompt"
+
+-- c.quit_when_all_windows_are_closed = true
+
 c.window_decorations = "RESIZE"
+
 c.adjust_window_size_when_changing_font_size = false
+
 c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
 c.window_padding = {
@@ -30,13 +34,15 @@ c.window_padding = {
 	right = "12px",
 }
 
-c.hide_tab_bar_if_only_one_tab = true
+-- Tab Bar
+c.hide_tab_bar_if_only_one_tab = false
 c.tab_bar_at_bottom = true
 c.use_fancy_tab_bar = false
-c.tab_max_width = 80
+c.tab_max_width = 120
 c.show_tab_index_in_tab_bar = true
 c.command_palette_font_size = 18
 
+-- Color scheme
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Catppuccin Mocha"
@@ -53,22 +59,73 @@ wezterm.on("window-config-reloaded", function(window, pane)
 	window:set_config_overrides(overrides)
 end)
 
+-- Keybindings
+c.enable_kitty_keyboard = true
+
+local function is_vim(pane)
+  return pane:get_user_vars().IS_NVIM == 'true'
+end
+
+local direction_keys = {
+  h = 'Left',
+  j = 'Down',
+  k = 'Up',
+  l = 'Right'
+}
+
+local function split_nav(resize_or_move, key)
+  return {
+    key = key,
+    mods = resize_or_move == 'resize' and 'META|SHIFT' or 'CTRL',
+    action = wezterm.action_callback(function (win, pane)
+      if is_vim(pane) then
+        win:perform_action({
+          SendKey = { key = key, mods = resize_or_move == 'resize' and 'META|SHIFT' or 'CTRL' },
+        }, pane)
+      else
+        if resize_or_move == 'resize' then
+          win:perform_action({ AdjustPaneSize = { direction_keys[key], 3}}, pane)
+        else
+          win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+        end
+      end
+    end)
+  }
+end
+
+c.leader = { key = 'm', mods = 'META', timeout_milliseconds = 2000 }
+
 c.keys = {
-	{
-		key = "Escape",
-		mods = "NONE",
-		action = wezterm.action({ SendString = "\x1b" }),
-	},
-	{
-		key = "Enter",
-		mods = "ALT",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
-	{
-		key = "Enter",
-		mods = "SHIFT",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
+  -- Smart Splits
+  split_nav('move', 'h'),
+  split_nav('move', 'j'),
+  split_nav('move', 'k'),
+  split_nav('move', 'l'),
+  split_nav('resize', 'h'),
+  split_nav('resize', 'j'),
+  split_nav('resize', 'k'),
+  split_nav('resize', 'l'),
+  -- Splitting
+  {
+    mods = "LEADER",
+    key = "-",
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
+  },
+  {
+    mods = "LEADER",
+    key = "s",
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
+  },
+  {
+    mods = "LEADER",
+    key = "v",
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
+  },
+  {
+    mods = "LEADER",
+    key = "|",
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
+  }
 }
 
 return c
