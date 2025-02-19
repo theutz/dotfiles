@@ -54,6 +54,9 @@ end
 
 c.color_scheme = scheme_for_appearance(w.gui.get_appearance())
 
+local bar = w.plugin.require('https://github.com/adriankarlen/bar.wezterm')
+bar.apply_to_config(c)
+
 w.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	overrides.color_scheme = scheme_for_appearance(w.gui.get_appearance())
@@ -63,49 +66,35 @@ end)
 -- Keybindings
 c.enable_kitty_keyboard = true
 
-local function is_vim(pane)
-  return pane:get_user_vars().IS_NVIM == 'true'
-end
-
-local direction_keys = {
-  h = 'Left',
-  j = 'Down',
-  k = 'Up',
-  l = 'Right'
-}
-
-local function split_nav(resize_or_move, key)
-  return {
-    key = key,
-    mods = resize_or_move == 'resize' and 'META|SHIFT' or 'CTRL',
-    action = w.action_callback(function (win, pane)
-      if is_vim(pane) then
-        win:perform_action({
-          SendKey = { key = key, mods = resize_or_move == 'resize' and 'META|SHIFT' or 'CTRL' },
-        }, pane)
-      else
-        if resize_or_move == 'resize' then
-          win:perform_action({ AdjustPaneSize = { direction_keys[key], 3}}, pane)
-        else
-          win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-        end
-      end
-    end)
-  }
-end
-
 c.leader = { key = 'm', mods = 'META', timeout_milliseconds = 2000 }
 
+w.on('update-right-status', function (window, pane)
+  window:set_right_status(window:active_workspace() .. "  ")
+end)
+
 c.keys = {
-  -- Smart Splits
-  split_nav('move', 'h'),
-  split_nav('move', 'j'),
-  split_nav('move', 'k'),
-  split_nav('move', 'l'),
-  split_nav('resize', 'h'),
-  split_nav('resize', 'j'),
-  split_nav('resize', 'k'),
-  split_nav('resize', 'l'),
+  -- Workspaces
+  {
+    mods = "LEADER",
+    key = "s",
+    action = a.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES', title = "Select workspace" }
+  },
+  {
+    mods = "LEADER|SHIFT",
+    key = "c",
+    action = a.PromptInputLine {
+      description = w.format {
+        {Attribute = {Intensity = 'Bold'}},
+        {Foreground = {AnsiColor = 'Fuchsia'}},
+        {Text = 'Enter name for new workspace'},
+      },
+      action = w.action_callback(function (window, pane, line)
+        if line then
+          window:perform_action(a.SwitchToWorkspace { name = line }, pane)
+        end
+      end)
+    }
+  },
   -- Panes
   {
     mods = "LEADER",
@@ -178,7 +167,25 @@ c.keys = {
     mods = 'LEADER',
     key = 'Enter',
     action = a.ActivateCopyMode
-  }
+  },
+  {
+    mods = 'LEADER',
+    key = '[',
+    action = a.ActivateCopyMode
+  },
+  {
+    mods = 'LEADER|CTRL',
+    key = "u",
+    action = a.ActivateCopyMode
+  },
 }
+
+local smart_splits = w.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
+smart_splits.apply_to_config(c, {
+  modifiers = {
+    resize = 'META|SHIFT'
+  }
+})
+
 
 return c
