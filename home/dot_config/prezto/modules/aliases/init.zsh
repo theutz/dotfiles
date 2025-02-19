@@ -12,4 +12,4 @@ alias aliases="\${(z)EDITOR} ${0:a}"
 
 # Wezterm
 alias wez='wezterm cli'
-alias sshw='wezterm ssh'
+alias ssw='wezterm ssh'

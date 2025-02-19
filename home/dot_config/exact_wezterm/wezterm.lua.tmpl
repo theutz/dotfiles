@@ -48,7 +48,7 @@ c.window_padding = {
 c.hide_tab_bar_if_only_one_tab = false
 c.tab_bar_at_bottom = true
 c.use_fancy_tab_bar = false
-c.tab_max_width = 120
+c.tab_max_width = 300
 c.show_tab_index_in_tab_bar = true
 c.command_palette_font_size = 16
 
@@ -62,6 +62,17 @@ local function scheme_for_appearance(appearance)
 end
 
 c.color_scheme = scheme_for_appearance(w.gui.get_appearance())
+
+local tabline = w.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+tabline.setup({
+  options = {
+    tab_separators = {
+      left = w.nerdfonts.ple_right_half_circle_thick,
+      right = w.nerdfonts.ple_left_half_circle_thick
+    }
+  },
+})
+tabline.apply_to_config(c)
 
 w.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
