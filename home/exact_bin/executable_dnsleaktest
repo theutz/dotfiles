@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+curl -s https://dnsleaktest.com |
+  mise x go:github.com/ericchiang/pup -- pup '.welcome > p text{}'
