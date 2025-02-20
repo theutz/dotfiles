@@ -16,10 +16,6 @@ c.unix_domains = {
   }
 }
 
-c.macos_window_background_blur = 10
-
-c.window_background_opacity = 0.90
-
 c.font = w.font("{{ .fonts.mono.family }}", { weight = {{ .fonts.mono.weight }} })
 c.font_size = {{ .fonts.mono.size }}
 c.line_height = 1.3
@@ -62,6 +58,44 @@ local function scheme_for_appearance(appearance)
 end
 
 c.color_scheme = scheme_for_appearance(get_appearance())
+c.inactive_pane_hsb = {
+  saturation = 0.5,
+  brightness = 0.5,
+  -- hue = 1.1
+}
+c.background = {
+  {
+    source = {Color="black"},
+    opacity = 0.8,
+    height = "100%",
+    width = "100%",
+  },
+  {
+    source = {Gradient = {
+      preset="Viridis",
+      blend="Oklab",
+      orientation = {
+        Linear = { angle = 90.0 }
+      }
+    }},
+    opacity = 0.3,
+    height = "100%",
+    width = "110%"
+  },
+  {
+    source = {Color="black"},
+    opacity = 0.2,
+    height = "100%",
+    width = "100%"
+  },
+}
+-- c.window_background_gradient = {
+--   orientation = 'Vertical',
+--   preset = 'Plasma',
+--   blend = 'Oklab'
+-- }
+c.macos_window_background_blur = 10
+
 
 local tabline = w.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
