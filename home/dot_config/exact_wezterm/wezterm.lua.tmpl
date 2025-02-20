@@ -54,18 +54,18 @@ local lights = {
 }
 
 local darks = {
-  {"Bim", 0.8, 10},
-  {"Wryan", 0.8, 10},
-  {"VisiBlue (terminal.sexy)", 0.7, 15},
+  {"terafox", 0.7, 5},
   {"ayu", 0.8, 10},
+  {"Wryan", 0.8, 10},
+  {"VisiBlue (terminal.sexy)", 0.7, 20},
+  {"Vice Dark (base16)", 0.8},
+  {"Bim", 0.8, 10},
   {"Belafonte Night", 0.8, 15},
   {"Banana Blueberry", 0.7, 15},
   {"Argonaut", 0.8, 15},
   {"Adventure Time (Gogh)", 0.9, 5},
-  {"terafox", 0.7, 5},
   {"Urple", 0.7, 5},
   {"Woodland (base16)", 0.6},
-  {"Vice Dark (base16)"},
   {"wilmersdorf"},
   {"Website (Gogh)"},
   {"Vacuous 2 (terminal.sexy)"},
@@ -85,7 +85,7 @@ local function scheme_for_appearance(appearance)
 end
 
 c.color_scheme = scheme_for_appearance(get_appearance())[1]
-c.window_background_opacity = scheme_for_appearance(get_appearance())[2] or (90 / 100)
+c.window_background_opacity = scheme_for_appearance(get_appearance())[2] or 1.0
 c.inactive_pane_hsb = {
   -- saturation = 0.5,
   -- brightness = 0.5,
@@ -117,7 +117,7 @@ c.inactive_pane_hsb = {
 --   width = "100%"
 -- },
 -- }
-c.macos_window_background_blur = scheme_for_appearance(get_appearance())[3] or 5
+c.macos_window_background_blur = scheme_for_appearance(get_appearance())[3] or 0
 
 local tabline = w.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
