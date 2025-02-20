@@ -49,21 +49,49 @@ local function get_appearance()
   return 'Dark'
 end
 
+local lights = {
+  {"Catppuccin Latte"}
+}
+
+local darks = {
+  {"Bim", 0.8, 10},
+  {"Wryan", 0.8, 10},
+  {"VisiBlue (terminal.sexy)", 0.7, 15},
+  {"ayu", 0.8, 10},
+  {"Belafonte Night", 0.8, 15},
+  {"Banana Blueberry", 0.7, 15},
+  {"Argonaut", 0.8, 15},
+  {"Adventure Time (Gogh)", 0.9, 5},
+  {"terafox", 0.7, 5},
+  {"Urple", 0.7, 5},
+  {"Woodland (base16)", 0.6},
+  {"Vice Dark (base16)"},
+  {"wilmersdorf"},
+  {"Website (Gogh)"},
+  {"Vacuous 2 (terminal.sexy)"},
+  {"Vice Alt (base16)"},
+  {"Rasi (terminal.sexy)"},
+  {"Molokai"},
+  {"Catppuccin Mocha"},
+  {"UnderTheSea"},
+}
+
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "Catppuccin Mocha"
+		return darks[1]
 	else
-		return "Catppuccin Latte"
+		return lights[1]
 	end
 end
 
-c.color_scheme = scheme_for_appearance(get_appearance())
+c.color_scheme = scheme_for_appearance(get_appearance())[1]
+c.window_background_opacity = scheme_for_appearance(get_appearance())[2] or (90 / 100)
 c.inactive_pane_hsb = {
-  saturation = 0.5,
-  brightness = 0.5,
+  -- saturation = 0.5,
+  -- brightness = 0.5,
   -- hue = 1.1
 }
-c.background = {
+-- c.background = {
 --   {
 --     source = {Color="black"},
 --     opacity = 0.8,
@@ -83,13 +111,13 @@ c.background = {
 --     width = "110%"
 --   },
 -- {
---   source = {Color="black"},
+--   source = {Color="#330000"},
 --   opacity = 0.5,
 --   height = "100%",
 --   width = "100%"
 -- },
-}
-c.macos_window_background_blur = 10
+-- }
+c.macos_window_background_blur = scheme_for_appearance(get_appearance())[3] or 5
 
 local tabline = w.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
@@ -117,7 +145,7 @@ tabline.apply_to_config(c)
 
 w.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
-	overrides.color_scheme = scheme_for_appearance(get_appearance())
+	overrides.color_scheme = scheme_for_appearance(get_appearance())[1]
 	window:set_config_overrides(overrides)
 end)
 
