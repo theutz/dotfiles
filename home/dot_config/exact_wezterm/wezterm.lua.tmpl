@@ -64,36 +64,31 @@ c.inactive_pane_hsb = {
   -- hue = 1.1
 }
 c.background = {
-  {
-    source = {Color="black"},
-    opacity = 0.8,
-    height = "100%",
-    width = "100%",
-  },
-  {
-    source = {Gradient = {
-      preset="Viridis",
-      blend="Oklab",
-      orientation = {
-        Linear = { angle = 90.0 }
-      }
-    }},
-    opacity = 0.3,
-    height = "100%",
-    width = "110%"
-  },
-  {
-    source = {Color="black"},
-    opacity = 0.2,
-    height = "100%",
-    width = "100%"
-  },
+--   {
+--     source = {Color="black"},
+--     opacity = 0.8,
+--     height = "100%",
+--     width = "100%",
+--   },
+--   {
+--     source = {Gradient = {
+--       preset="Viridis",
+--       blend="Oklab",
+--       orientation = {
+--         Linear = { angle = 90.0 }
+--       }
+--     }},
+--     opacity = 0.3,
+--     height = "100%",
+--     width = "110%"
+--   },
+-- {
+--   source = {Color="black"},
+--   opacity = 0.5,
+--   height = "100%",
+--   width = "100%"
+-- },
 }
--- c.window_background_gradient = {
---   orientation = 'Vertical',
---   preset = 'Plasma',
---   blend = 'Oklab'
--- }
 c.macos_window_background_blur = 10
 
 local tabline = w.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
@@ -119,7 +114,6 @@ tabline.setup({
   }
 })
 tabline.apply_to_config(c)
-c.tab_max_width = 60
 
 w.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
