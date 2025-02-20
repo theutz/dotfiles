@@ -96,20 +96,26 @@ c.background = {
 -- }
 c.macos_window_background_blur = 10
 
-
 local tabline = w.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
   options = {
+    theme = 'Catppuccin Mocha',
+    section_separators = {
+      left = w.nerdfonts.ple_right_half_circle_thick,
+      right = w.nerdfonts.ple_left_half_circle_thick
+    },
+    component_separators = {
+      left = w.nerdfonts.ple_right_half_circle_thin,
+      right = w.nerdfonts.ple_left_half_circle_thin
+    },
     tab_separators = {
       left = w.nerdfonts.ple_right_half_circle_thick,
       right = w.nerdfonts.ple_left_half_circle_thick
     }
   },
   sections = {
-    tabline_b = { 'workspace' },
-    tabline_c = { 'window' },
-    tab_active = { 'index', 'tab', ' ', w.nerdfonts.oct_file_directory_fill, ' ', 'cwd', 'zoomed' },
-    tab_inactive = { w.nerdfonts.ple_left_half_circle_thin, 'index', w.nerdfonts.ple_right_half_circle_thin , 'tab', ' ', w.nerdfonts.oct_file_directory_fill, ' ', 'cwd', 'zoomed', }
+    -- tabline_b = { 'workspace' },
+    -- tabline_c = { 'window' },
   }
 })
 tabline.apply_to_config(c)
@@ -124,201 +130,201 @@ end)
 -- Keybindings
 c.enable_kitty_keyboard = true
 
-c.leader = { key = "m", mods = "META", timeout_milliseconds = 2000 }
+-- c.leader = { key = "m", mods = "META", timeout_milliseconds = 2000 }
 
-c.keys = {
-  -- Mux
-  {
-    mods = "LEADER",
-    key = "a",
-    action = a.AttachDomain "unix"
-  },
-  {
-    mods = "LEADER",
-    key = "d",
-    action = a.DetachDomain { DomainName = "unix" }
-  },
-	-- Workspaces
-  {
-    mods = "LEADER|SHIFT",
-    key = "$",
-    action = a.PromptInputLine {
-      description = "Enter a new name for the workspace",
-      action = w.action_callback(function (win, pane, line)
-        if line then
-          local ws = win:mux_window():get_workspace()
-          w.mux.rename_workspace(ws, line)
-        end
-      end)
-    }
-  },
-	{
-		mods = "LEADER",
-		key = "s",
-		action = a.ShowLauncherArgs({ flags = "WORKSPACES", title = "Select workspace" }),
-	},
-  {
-    mods = "LEADER|SHIFT",
-    key = "(",
-    action = a.SwitchWorkspaceRelative(-1)
-  },
-  {
-    mods = "LEADER|SHIFT",
-    key = ")",
-    action = a.SwitchWorkspaceRelative(1)
-  },
-  -- Tabs
-  {
-    mods = "LEADER",
-    key = ",",
-    action = a.PromptInputLine {
-      description = "Enter a new name for the tab",
-      action = w.action_callback(function (win, pane, line)
-        if line then
-          win:mux_window():active_tab():set_title(line)
-        end
-      end)
-    }
-  },
-  -- Windows
-  {
-    mods = "LEADER|SHIFT",
-    key = "#",
-    action = a.PromptInputLine {
-      description = "Enter a new name for the window",
-      action = w.action_callback(function (win, pane, line)
-        if line then
-          win:mux_window():set_title(line)
-        end
-      end)
-    }
-  },
-	{
-		mods = "LEADER",
-		key = "-",
-		action = a.SplitPane({ direction = "Down" }),
+-- c.keys = {
+--   -- Mux
+--   {
+--     mods = "LEADER",
+--     key = "a",
+--     action = a.AttachDomain "unix"
+--   },
+--   {
+--     mods = "LEADER",
+--     key = "d",
+--     action = a.DetachDomain { DomainName = "unix" }
+--   },
+-- 	-- Workspaces
+--   {
+--     mods = "LEADER|SHIFT",
+--     key = "$",
+--     action = a.PromptInputLine {
+--       description = "Enter a new name for the workspace",
+--       action = w.action_callback(function (win, pane, line)
+--         if line then
+--           local ws = win:mux_window():get_workspace()
+--           w.mux.rename_workspace(ws, line)
+--         end
+--       end)
+--     }
+--   },
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "s",
+-- 		action = a.ShowLauncherArgs({ flags = "WORKSPACES", title = "Select workspace" }),
+-- 	},
+--   {
+--     mods = "LEADER|SHIFT",
+--     key = "(",
+--     action = a.SwitchWorkspaceRelative(-1)
+--   },
+--   {
+--     mods = "LEADER|SHIFT",
+--     key = ")",
+--     action = a.SwitchWorkspaceRelative(1)
+--   },
+--   -- Tabs
+--   {
+--     mods = "LEADER",
+--     key = ",",
+--     action = a.PromptInputLine {
+--       description = "Enter a new name for the tab",
+--       action = w.action_callback(function (win, pane, line)
+--         if line then
+--           win:mux_window():active_tab():set_title(line)
+--         end
+--       end)
+--     }
+--   },
+--   -- Windows
+--   {
+--     mods = "LEADER|SHIFT",
+--     key = "#",
+--     action = a.PromptInputLine {
+--       description = "Enter a new name for the window",
+--       action = w.action_callback(function (win, pane, line)
+--         if line then
+--           win:mux_window():set_title(line)
+--         end
+--       end)
+--     }
+--   },
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "-",
+-- 		action = a.SplitPane({ direction = "Down" }),
+--
+-- 	},
+-- 	{
+-- 		mods = "SUPER|SHIFT",
+-- 		key = "d",
+-- 		action = a.SplitPane({ direction = "Down" }),
+-- 	},
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "v",
+-- 		action = a.SplitPane({ direction = "Right" }),
+-- 	},
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "|",
+-- 		action = a.SplitPane({ direction = "Right" }),
+-- 	},
+-- 	{
+-- 		mods = "SUPER",
+-- 		key = "d",
+-- 		action = a.SplitPane({ direction = "Right" }),
+-- 	},
+-- 	{
+-- 		mods = "SUPER",
+-- 		key = "w",
+-- 		action = a.CloseCurrentPane({ confirm = false }),
+-- 	},
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "z",
+-- 		action = a.TogglePaneZoomState,
+-- 	},
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "o",
+-- 		action = a.RotatePanes("Clockwise"),
+-- 	},
+-- 	{
+-- 		mods = "LEADER|SHIFT",
+-- 		key = "o",
+-- 		action = a.PaneSelect({ mode = "SwapWithActive" }),
+-- 	},
+--   {
+--     mods = "LEADER | SHIFT",
+--     key = "!",
+--     action = w.action_callback(function (win, pane)
+--       local tab, window = pane:move_to_new_tab()
+--       tab:activate()
+--     end)
+--   },
+--   {
+--     mods = "SUPER",
+--     key = "]",
+--     action = a.ActivatePaneDirection 'Next'
+--   },
+--   {
+--     mods = "SUPER",
+--     key = "[",
+--     action = a.ActivatePaneDirection 'Prev'
+--   },
+-- 	-- Changing windows
+-- 	{
+-- 		mods = "SUPER|SHIFT",
+-- 		key = "w",
+-- 		action = a.CloseCurrentTab({ confirm = true }),
+-- 	},
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "n",
+-- 		action = a.ActivateTabRelative(1),
+-- 	},
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "p",
+-- 		action = a.ActivateTabRelative(-1),
+-- 	},
+--   {
+--     mods = "LEADER|SHIFT",
+--     key = ">",
+--     action = a.MoveTabRelative(1)
+--   },
+--   {
+--     mods = "LEADER|SHIFT",
+--     key = "<",
+--     action = a.MoveTabRelative(-1)
+--   },
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "c",
+-- 		action = a.SpawnTab("CurrentPaneDomain"),
+-- 	},
+-- 	-- Copy mode
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "Enter",
+-- 		action = a.ActivateCopyMode,
+-- 	},
+-- 	{
+-- 		mods = "LEADER",
+-- 		key = "[",
+-- 		action = a.ActivateCopyMode,
+-- 	},
+-- 	{
+-- 		mods = "LEADER|CTRL",
+-- 		key = "u",
+-- 		action = a.ActivateCopyMode,
+-- 	},
+-- }
 
-	},
-	{
-		mods = "SUPER|SHIFT",
-		key = "d",
-		action = a.SplitPane({ direction = "Down" }),
-	},
-	{
-		mods = "LEADER",
-		key = "v",
-		action = a.SplitPane({ direction = "Right" }),
-	},
-	{
-		mods = "LEADER",
-		key = "|",
-		action = a.SplitPane({ direction = "Right" }),
-	},
-	{
-		mods = "SUPER",
-		key = "d",
-		action = a.SplitPane({ direction = "Right" }),
-	},
-	{
-		mods = "SUPER",
-		key = "w",
-		action = a.CloseCurrentPane({ confirm = false }),
-	},
-	{
-		mods = "LEADER",
-		key = "z",
-		action = a.TogglePaneZoomState,
-	},
-	{
-		mods = "LEADER",
-		key = "o",
-		action = a.RotatePanes("Clockwise"),
-	},
-	{
-		mods = "LEADER|SHIFT",
-		key = "o",
-		action = a.PaneSelect({ mode = "SwapWithActive" }),
-	},
-  {
-    mods = "LEADER | SHIFT",
-    key = "!",
-    action = w.action_callback(function (win, pane)
-      local tab, window = pane:move_to_new_tab()
-      tab:activate()
-    end)
-  },
-  {
-    mods = "SUPER",
-    key = "]",
-    action = a.ActivatePaneDirection 'Next'
-  },
-  {
-    mods = "SUPER",
-    key = "[",
-    action = a.ActivatePaneDirection 'Prev'
-  },
-	-- Changing windows
-	{
-		mods = "SUPER|SHIFT",
-		key = "w",
-		action = a.CloseCurrentTab({ confirm = true }),
-	},
-	{
-		mods = "LEADER",
-		key = "n",
-		action = a.ActivateTabRelative(1),
-	},
-	{
-		mods = "LEADER",
-		key = "p",
-		action = a.ActivateTabRelative(-1),
-	},
-  {
-    mods = "LEADER|SHIFT",
-    key = ">",
-    action = a.MoveTabRelative(1)
-  },
-  {
-    mods = "LEADER|SHIFT",
-    key = "<",
-    action = a.MoveTabRelative(-1)
-  },
-	{
-		mods = "LEADER",
-		key = "c",
-		action = a.SpawnTab("CurrentPaneDomain"),
-	},
-	-- Copy mode
-	{
-		mods = "LEADER",
-		key = "Enter",
-		action = a.ActivateCopyMode,
-	},
-	{
-		mods = "LEADER",
-		key = "[",
-		action = a.ActivateCopyMode,
-	},
-	{
-		mods = "LEADER|CTRL",
-		key = "u",
-		action = a.ActivateCopyMode,
-	},
-}
+-- for i = 1, 9 do
+--   table.insert(c.keys, {
+--     mods = "LEADER",
+--     key = tostring(i),
+--     action = a.ActivateTab(i - 1)
+--   })
+-- end
 
-for i = 1, 9 do
-  table.insert(c.keys, {
-    mods = "LEADER",
-    key = tostring(i),
-    action = a.ActivateTab(i - 1)
-  })
-end
-
-local smart_splits = w.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
-smart_splits.apply_to_config(c, {
-	modifiers = {
-		resize = "META|SHIFT",
-	},
-})
+-- local smart_splits = w.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
+-- smart_splits.apply_to_config(c, {
+-- 	modifiers = {
+-- 		resize = "META|SHIFT",
+-- 	},
+-- })
 
 return c
