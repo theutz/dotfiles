@@ -321,4 +321,25 @@ c.enable_kitty_keyboard = true
 -- 	},
 -- })
 
+c.keys = {
+  {
+    key = "Escape",
+    mods = "NONE",
+    action = w.action({ SendString = "\x1b" }),
+  },
+}
+
+local disable_defaults = {
+  { "Enter", "ALT" },
+  { "Enter", "SHIFT" },
+}
+
+for _, kp in ipairs(disable_defaults) do
+  table.insert(c.keys, {
+    key = kp[1],
+    mods= kp[2],
+    action = a.DisableDefaultAssignment
+  })
+end
+
 return c
