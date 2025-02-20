@@ -74,8 +74,8 @@ tabline.setup({
   sections = {
     tabline_b = { 'workspace' },
     tabline_c = { 'window' },
-    tab_active = { 'index', 'tab', 'process', 'cwd', 'zoomed' },
-    tab_inactive = { w.nerdfonts.ple_left_half_circle_thin, 'index', 'tab', 'process', 'cwd', 'zoomed', w.nerdfonts.ple_right_half_circle_thin }
+    tab_active = { 'index', 'tab', ' ', w.nerdfonts.oct_file_directory_fill, ' ', 'cwd', 'zoomed' },
+    tab_inactive = { w.nerdfonts.ple_left_half_circle_thin, 'index', w.nerdfonts.ple_right_half_circle_thin , 'tab', ' ', w.nerdfonts.oct_file_directory_fill, ' ', 'cwd', 'zoomed', }
   }
 })
 tabline.apply_to_config(c)
