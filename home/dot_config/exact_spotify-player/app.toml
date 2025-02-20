@@ -1,4 +1,4 @@
-theme = "Catppuccin-mocha"
+theme = "default"
 client_id = "515046d5c3e3407d831ba32d01c35e66"
 client_port = 8080
 playback_format = """

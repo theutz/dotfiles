@@ -1,50 +1,34 @@
-local w = require("wezterm")
-local a = w.action
+local wezterm = require("wezterm")
 
 -- Setup config builder
-local c = {}
-if w.config_builder then
-	c = w.config_builder()
+local config = {}
+if wezterm.config_builder then
+	config = wezterm.config_builder()
 end
-c:set_strict_mode(true)
+config:set_strict_mode(true)
 
-c.default_workspace = 'main'
-
-c.unix_domains = {
-  {
-    name = "unix"
-  }
-}
-
-c.font = w.font("{{ .fonts.mono.family }}", { weight = {{ .fonts.mono.weight }} })
-c.font_size = {{ .fonts.mono.size }}
-c.line_height = 1.3
-
-c.bold_brightens_ansi_colors = "BrightAndBold"
-
-c.quit_when_all_windows_are_closed = true
-
-c.window_decorations = "RESIZE"
-
-c.adjust_window_size_when_changing_font_size = false
-
-c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
-
-c.window_padding = {
+config.font = wezterm.font("{{ .fonts.mono.family }}", { weight = {{ .fonts.mono.weight }} })
+config.font_size = {{ .fonts.mono.size }}
+config.line_height = 1.5
+config.bold_brightens_ansi_colors = "BrightAndBold"
+config.hide_tab_bar_if_only_one_tab = true
+config.quit_when_all_windows_are_closed = true
+config.window_close_confirmation = "NeverPrompt"
+config.window_decorations = "RESIZE"
+config.adjust_window_size_when_changing_font_size = false
+config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
+config.window_padding = {
 	top = "16px",
 	bottom = "4px",
 	left = "12px",
 	right = "12px",
 }
-
--- Tab Bar
-c.tab_bar_at_bottom = true
-c.command_palette_font_size = 16
+config.command_palette_font_size = 16
 
 -- Color scheme
 local function get_appearance()
-  if w.gui then
-    return w.gui.get_appearance()
+  if wezterm.gui then
+    return wezterm.gui.get_appearance()
   end
   return 'Dark'
 end
@@ -54,7 +38,7 @@ local lights = {
 }
 
 local darks = {
-  {"terafox", 0.7, 5},
+  {"terafox", 0.75, 14},
   {"ayu", 0.8, 10},
   {"Wryan", 0.8, 10},
   {"VisiBlue (terminal.sexy)", 0.7, 20},
@@ -84,276 +68,24 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-c.color_scheme = scheme_for_appearance(get_appearance())[1]
-c.window_background_opacity = scheme_for_appearance(get_appearance())[2] or 1.0
-c.inactive_pane_hsb = {
-  -- saturation = 0.5,
-  -- brightness = 0.5,
-  -- hue = 1.1
-}
--- c.background = {
---   {
---     source = {Color="black"},
---     opacity = 0.8,
---     height = "100%",
---     width = "100%",
---   },
---   {
---     source = {Gradient = {
---       preset="Viridis",
---       blend="Oklab",
---       orientation = {
---         Linear = { angle = 90.0 }
---       }
---     }},
---     opacity = 0.3,
---     height = "100%",
---     width = "110%"
---   },
--- {
---   source = {Color="#330000"},
---   opacity = 0.5,
---   height = "100%",
---   width = "100%"
--- },
--- }
-c.macos_window_background_blur = scheme_for_appearance(get_appearance())[3] or 0
+config.color_scheme = scheme_for_appearance(get_appearance())[1]
+config.window_background_opacity = scheme_for_appearance(get_appearance())[2] or 1.0
+config.macos_window_background_blur = scheme_for_appearance(get_appearance())[3] or 0
 
-local tabline = w.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-tabline.setup({
-  options = {
-    theme = 'Catppuccin Mocha',
-    section_separators = {
-      left = w.nerdfonts.ple_right_half_circle_thick,
-      right = w.nerdfonts.ple_left_half_circle_thick
-    },
-    component_separators = {
-      left = w.nerdfonts.ple_right_half_circle_thin,
-      right = w.nerdfonts.ple_left_half_circle_thin
-    },
-    tab_separators = {
-      left = w.nerdfonts.ple_right_half_circle_thick,
-      right = w.nerdfonts.ple_left_half_circle_thick
-    }
-  },
-  sections = {
-    -- tabline_b = { 'workspace' },
-    -- tabline_c = { 'window' },
-  }
-})
-tabline.apply_to_config(c)
-
-w.on("window-config-reloaded", function(window, pane)
+wezterm.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	overrides.color_scheme = scheme_for_appearance(get_appearance())[1]
 	window:set_config_overrides(overrides)
 end)
 
 -- Keybindings
-c.enable_kitty_keyboard = true
+config.enable_kitty_keyboard = true
 
--- c.leader = { key = "m", mods = "META", timeout_milliseconds = 2000 }
-
--- c.keys = {
---   -- Mux
---   {
---     mods = "LEADER",
---     key = "a",
---     action = a.AttachDomain "unix"
---   },
---   {
---     mods = "LEADER",
---     key = "d",
---     action = a.DetachDomain { DomainName = "unix" }
---   },
--- 	-- Workspaces
---   {
---     mods = "LEADER|SHIFT",
---     key = "$",
---     action = a.PromptInputLine {
---       description = "Enter a new name for the workspace",
---       action = w.action_callback(function (win, pane, line)
---         if line then
---           local ws = win:mux_window():get_workspace()
---           w.mux.rename_workspace(ws, line)
---         end
---       end)
---     }
---   },
--- 	{
--- 		mods = "LEADER",
--- 		key = "s",
--- 		action = a.ShowLauncherArgs({ flags = "WORKSPACES", title = "Select workspace" }),
--- 	},
---   {
---     mods = "LEADER|SHIFT",
---     key = "(",
---     action = a.SwitchWorkspaceRelative(-1)
---   },
---   {
---     mods = "LEADER|SHIFT",
---     key = ")",
---     action = a.SwitchWorkspaceRelative(1)
---   },
---   -- Tabs
---   {
---     mods = "LEADER",
---     key = ",",
---     action = a.PromptInputLine {
---       description = "Enter a new name for the tab",
---       action = w.action_callback(function (win, pane, line)
---         if line then
---           win:mux_window():active_tab():set_title(line)
---         end
---       end)
---     }
---   },
---   -- Windows
---   {
---     mods = "LEADER|SHIFT",
---     key = "#",
---     action = a.PromptInputLine {
---       description = "Enter a new name for the window",
---       action = w.action_callback(function (win, pane, line)
---         if line then
---           win:mux_window():set_title(line)
---         end
---       end)
---     }
---   },
--- 	{
--- 		mods = "LEADER",
--- 		key = "-",
--- 		action = a.SplitPane({ direction = "Down" }),
---
--- 	},
--- 	{
--- 		mods = "SUPER|SHIFT",
--- 		key = "d",
--- 		action = a.SplitPane({ direction = "Down" }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "v",
--- 		action = a.SplitPane({ direction = "Right" }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "|",
--- 		action = a.SplitPane({ direction = "Right" }),
--- 	},
--- 	{
--- 		mods = "SUPER",
--- 		key = "d",
--- 		action = a.SplitPane({ direction = "Right" }),
--- 	},
--- 	{
--- 		mods = "SUPER",
--- 		key = "w",
--- 		action = a.CloseCurrentPane({ confirm = false }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "z",
--- 		action = a.TogglePaneZoomState,
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "o",
--- 		action = a.RotatePanes("Clockwise"),
--- 	},
--- 	{
--- 		mods = "LEADER|SHIFT",
--- 		key = "o",
--- 		action = a.PaneSelect({ mode = "SwapWithActive" }),
--- 	},
---   {
---     mods = "LEADER | SHIFT",
---     key = "!",
---     action = w.action_callback(function (win, pane)
---       local tab, window = pane:move_to_new_tab()
---       tab:activate()
---     end)
---   },
---   {
---     mods = "SUPER",
---     key = "]",
---     action = a.ActivatePaneDirection 'Next'
---   },
---   {
---     mods = "SUPER",
---     key = "[",
---     action = a.ActivatePaneDirection 'Prev'
---   },
--- 	-- Changing windows
--- 	{
--- 		mods = "SUPER|SHIFT",
--- 		key = "w",
--- 		action = a.CloseCurrentTab({ confirm = true }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "n",
--- 		action = a.ActivateTabRelative(1),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "p",
--- 		action = a.ActivateTabRelative(-1),
--- 	},
---   {
---     mods = "LEADER|SHIFT",
---     key = ">",
---     action = a.MoveTabRelative(1)
---   },
---   {
---     mods = "LEADER|SHIFT",
---     key = "<",
---     action = a.MoveTabRelative(-1)
---   },
--- 	{
--- 		mods = "LEADER",
--- 		key = "c",
--- 		action = a.SpawnTab("CurrentPaneDomain"),
--- 	},
--- 	-- Copy mode
--- 	{
--- 		mods = "LEADER",
--- 		key = "Enter",
--- 		action = a.ActivateCopyMode,
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "[",
--- 		action = a.ActivateCopyMode,
--- 	},
--- 	{
--- 		mods = "LEADER|CTRL",
--- 		key = "u",
--- 		action = a.ActivateCopyMode,
--- 	},
--- }
-
--- for i = 1, 9 do
---   table.insert(c.keys, {
---     mods = "LEADER",
---     key = tostring(i),
---     action = a.ActivateTab(i - 1)
---   })
--- end
-
--- local smart_splits = w.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
--- smart_splits.apply_to_config(c, {
--- 	modifiers = {
--- 		resize = "META|SHIFT",
--- 	},
--- })
-
-c.keys = {
+config.keys = {
   {
     key = "Escape",
     mods = "NONE",
-    action = w.action({ SendString = "\x1b" }),
+    action = wezterm.action({ SendString = "\x1b" }),
   },
 }
 
@@ -363,11 +95,11 @@ local disable_defaults = {
 }
 
 for _, kp in ipairs(disable_defaults) do
-  table.insert(c.keys, {
+  table.insert(config.keys, {
     key = kp[1],
     mods= kp[2],
-    action = a.DisableDefaultAssignment
+    action = wezterm.action.DisableDefaultAssignment
   })
 end
 
-return c
+return config
