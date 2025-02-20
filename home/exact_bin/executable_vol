@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+clear &&
+  mise x go:github.com/elliot40404/volgo/cmd/volgo@latest -- volgo

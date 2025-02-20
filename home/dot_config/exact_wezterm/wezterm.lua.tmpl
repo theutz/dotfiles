@@ -109,7 +109,7 @@ c.keys = {
     mods = "LEADER|SHIFT",
     key = "$",
     action = a.PromptInputLine {
-      description = "Enter a new name for the session",
+      description = "Enter a new name for the workspace",
       action = w.action_callback(function (win, pane, line)
         if line then
           local ws = win:mux_window():get_workspace()
