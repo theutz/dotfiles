@@ -25,6 +25,7 @@ node = "latest"
 "npm:@mermaid-js/mermaid-cli" = "latest"
 "npm:gitignore" = "latest"
 "pipx:linode-cli" = { version = "latest", extras = '"--with boto3"' }
+"pipx:tmuxp" = "latest"
 python = "latest"
 rg = "latest"
 ruby = "latest"
