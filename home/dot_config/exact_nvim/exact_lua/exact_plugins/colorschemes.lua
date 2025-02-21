@@ -16,7 +16,7 @@ local colors = {
   },
   {
     "scottmckendry/cyberdream.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       transparent = true,
       italic_comments = true,
@@ -56,7 +56,7 @@ local colors = {
   },
   {
     "shaunsingh/nord.nvim",
-    enabled = true,
+    enabled = false,
     init = function() vim.g.nord_disable_background = true end,
   },
   {
