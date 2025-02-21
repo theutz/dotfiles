@@ -29,7 +29,7 @@ local colors = {
   },
   {
     "uloco/bluloco.nvim",
-    enabled = true,
+    enabled = false,
     dependencies = { "rktjmp/lush.nvim" },
     name = "bluloco",
     opts = {
@@ -44,10 +44,6 @@ local colors = {
     name = "moonfly",
   },
   {
-    "nyoom-engineering/oxocarbon.nvim",
-    enabled = false,
-  },
-  {
     "austinliuigi/smoke.nvim",
     enabled = false,
   },
@@ -60,7 +56,7 @@ local colors = {
   },
   {
     "shaunsingh/nord.nvim",
-    enabled = false,
+    enabled = true,
     init = function() vim.g.nord_disable_background = true end,
   },
   {

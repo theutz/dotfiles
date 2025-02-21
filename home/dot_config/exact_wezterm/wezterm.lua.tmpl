@@ -27,66 +27,66 @@ config.command_palette_font_size = 16
 
 -- Color scheme
 local function get_appearance()
-  if wezterm.gui then
-    return wezterm.gui.get_appearance()
-  end
-  return 'Dark'
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
 end
 
 local lights = {
-  {"Ef-Day", 0.8, 10},
-  {"Bluloco Light (Gogh)", 0.8, 5},
-  {"Ef-Cyprus", 0.8, 10},
-  {"Ef-Deuteranopia-Light", 0.8, 10},
-  {"Ef-Duo-Light", 0.8, 10},
-  {"Ef-Frost", 0.8, 10},
-  {"Ef-Kassio", 0.8, 10},
-  {"Ef-Light", 0.8, 10},
-  {"Ef-Maris-Light", 0.8, 10},
-  {"Ef-Melissa-Light", 0.8, 10},
-  {"Ef-Trio-Light", 0.8, 10},
-  {"Ef-Tritanopia-Light", 0.8, 10},
-  {"Ef-Spring", 0.8, 10},
-  {"Gruvbox light, soft (base16)", 0.8, 10},
-  {"Harmonic16 Light (base16)", 0.8, 10},
-  {"iceberg-light", 0.8, 10},
-  {"Ef-Summer", 0.8, 10},
-  {"Modus-Operandi", 0.7, 10},
-  {"Modus-Operandi-Tinted", 0.7, 10},
-  {"Selenized Light (Gogh)", 0.8, 10},
-  {"seoulbones_light", 0.8, 10},
-  {"Solarized Light (Gogh)", 0.8, 10},
-  {"tokyonight_day", 0.8, 10},
-  {"Tomorrow (Gogh)", 0.8, 10},
-  {"zenwritten_light", 0.8, 10},
+	{ "Ef-Maris-Light", 0.85, 20 },
+	{ "Ef-Cyprus", 0.85, 20 },
+	{ "Bluloco Light (Gogh)", 0.85, 20 },
+	{ "Ef-Deuteranopia-Light", 0.8, 10 },
+	{ "Ef-Day", 0.8, 10 },
+	{ "Ef-Duo-Light", 0.8, 10 },
+	{ "Ef-Frost", 0.8, 10 },
+	{ "Ef-Kassio", 0.8, 10 },
+	{ "Ef-Light", 0.8, 10 },
+	{ "Ef-Melissa-Light", 0.8, 10 },
+	{ "Ef-Trio-Light", 0.8, 10 },
+	{ "Ef-Tritanopia-Light", 0.8, 10 },
+	{ "Ef-Spring", 0.8, 10 },
+	{ "Gruvbox light, soft (base16)", 0.8, 10 },
+	{ "Harmonic16 Light (base16)", 0.8, 10 },
+	{ "iceberg-light", 0.8, 10 },
+	{ "Ef-Summer", 0.8, 10 },
+	{ "Modus-Operandi", 0.7, 10 },
+	{ "Modus-Operandi-Tinted", 0.7, 10 },
+	{ "Selenized Light (Gogh)", 0.8, 10 },
+	{ "seoulbones_light", 0.8, 10 },
+	{ "Solarized Light (Gogh)", 0.8, 10 },
+	{ "tokyonight_day", 0.8, 10 },
+	{ "Tomorrow (Gogh)", 0.8, 10 },
+	{ "zenwritten_light", 0.8, 10 },
 }
 
 local darks = {
-  {"rose-pine-moon", 0.8, 20},
-  {"rose-pine", 0.8, 20},
-  {"Ef-Winter", 0.7, 15},
-  {"Ef-Autumn", 0.7, 15},
-  {"Jellybeans", 0.8, 10},
-  {"terafox", 0.75, 14},
-  {"ayu", 0.8, 10},
-  {"Wryan", 0.8, 10},
-  {"VisiBlue (terminal.sexy)", 0.7, 20},
-  {"Vice Dark (base16)", 0.8},
-  {"Bim", 0.8, 10},
-  {"Belafonte Night", 0.8, 15},
-  {"Banana Blueberry", 0.7, 15},
-  {"Argonaut", 0.8, 15},
-  {"Adventure Time (Gogh)", 0.9, 5},
-  {"Urple", 0.7, 5},
-  {"Woodland (base16)", 0.6},
-  {"wilmersdorf"},
-  {"Website (Gogh)"},
-  {"Vacuous 2 (terminal.sexy)"},
-  {"Vice Alt (base16)"},
-  {"Rasi (terminal.sexy)"},
-  {"Molokai"},
-  {"Catppuccin Mocha"},
-  {"UnderTheSea"},
+	{ "rose-pine", 0.8, 20 },
+	{ "Ef-Winter", 0.7, 15 },
+	{ "rose-pine-moon", 0.8, 20 },
+	{ "Ef-Autumn", 0.7, 15 },
+	{ "Jellybeans", 0.8, 10 },
+	{ "terafox", 0.75, 14 },
+	{ "ayu", 0.8, 10 },
+	{ "Wryan", 0.8, 10 },
+	{ "VisiBlue (terminal.sexy)", 0.7, 20 },
+	{ "Vice Dark (base16)", 0.8 },
+	{ "Bim", 0.8, 10 },
+	{ "Belafonte Night", 0.8, 15 },
+	{ "Banana Blueberry", 0.7, 15 },
+	{ "Argonaut", 0.8, 15 },
+	{ "Adventure Time (Gogh)", 0.9, 5 },
+	{ "Urple", 0.7, 5 },
+	{ "Woodland (base16)", 0.6 },
+	{ "wilmersdorf" },
+	{ "Website (Gogh)" },
+	{ "Vacuous 2 (terminal.sexy)" },
+	{ "Vice Alt (base16)" },
+	{ "Rasi (terminal.sexy)" },
+	{ "Molokai" },
+	{ "Catppuccin Mocha" },
+	{ "UnderTheSea" },
 }
 
 local function scheme_for_appearance(appearance)
@@ -111,24 +111,24 @@ end)
 config.enable_kitty_keyboard = true
 
 config.keys = {
-  {
-    key = "Escape",
-    mods = "NONE",
-    action = wezterm.action({ SendString = "\x1b" }),
-  },
+	{
+		key = "Escape",
+		mods = "NONE",
+		action = wezterm.action({ SendString = "\x1b" }),
+	},
 }
 
 local disable_defaults = {
-  { "Enter", "ALT" },
-  { "Enter", "SHIFT" },
+	{ "Enter", "ALT" },
+	{ "Enter", "SHIFT" },
 }
 
 for _, kp in ipairs(disable_defaults) do
-  table.insert(config.keys, {
-    key = kp[1],
-    mods= kp[2],
-    action = wezterm.action.DisableDefaultAssignment
-  })
+	table.insert(config.keys, {
+		key = kp[1],
+		mods = kp[2],
+		action = wezterm.action.DisableDefaultAssignment,
+	})
 end
 
 return config
