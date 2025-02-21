@@ -18,3 +18,6 @@ alias ssw='wezterm ssh'
 alias tmux-switch='tmux ls | fzf --tmux | awk -F : '"'"'{ print $1 }'"'"' | xargs tmux switch-client -t'
 alias txs='tmux-switch'
 alias txrl='tmux source-file $XDG_CONFIG_HOME/tmux/tmux.conf'
+
+alias new='tmux new -s'
+alias neww='tmux new-window -n'
