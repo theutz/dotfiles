@@ -91,7 +91,7 @@ local function get_enabled_scheme_name()
   for _, plugin in ipairs(colors) do
     if plugin.enabled then
       local _, repo = plugin[1]:match "([^/]+)/([^/]+)"
-      local name = plugin.name or repo
+      local name = plugin.name or repo:gsub("%.nvim$", "")
       table.insert(enabled, name)
     end
   end
