@@ -29,8 +29,9 @@ local colors = {
   },
   {
     "uloco/bluloco.nvim",
-    enabled = false,
+    enabled = true,
     dependencies = { "rktjmp/lush.nvim" },
+    name = "bluloco",
     opts = {
       transparent = true,
       style = "auto",
@@ -76,7 +77,7 @@ local colors = {
   },
   {
     "catppuccin/nvim",
-    enabled = true,
+    enabled = false,
     name = "catppuccin",
     opts = {
       transparent_background = true,
