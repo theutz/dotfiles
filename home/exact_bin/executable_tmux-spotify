@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+s="spotify"
+
+if tmux has -t $s 2>/dev/null; then
+  cmd="switch-client"
+
+  if [[ -z "$TMUX" ]]; then
+    cmd="attach"
+  fi
+
+  tmux "$cmd" -t "$s"
+else
+  flags=(
+    "-s" "$s"
+    "-n" "main"
+  )
+
+  if [[ -n "$TMUX" ]]; then
+    flags+=("-d")
+  fi
+
+  tmux new "${flags[@]}" spotify_player \; \
+    split-window -t $s -v -l 5 "clear && volgo" \; \
+    switch-client -t $s:1.1
+fi
