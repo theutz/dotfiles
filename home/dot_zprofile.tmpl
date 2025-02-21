@@ -25,11 +25,7 @@ if [[ -z "$EDITOR" ]]; then
   export EDITOR='nvim'
 fi
 if [[ -z "$VISUAL" ]]; then
-  {{ if eq .chezmoi.os "darwin" -}}
-  export VISUAL='neovide --no-fork'
-  {{ else }}
   export VISUAL='${(z)EDITOR}'
-  {{ end }}
 fi
 HOMEBREW_EDITOR=vim
 #  «««
