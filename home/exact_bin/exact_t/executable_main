@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+tmux new -s main -n main -c ~ \; \
+  neww -t main: -n monitoring -c ~ btop \; \
+  splitw -t main:monitoring -v -l 10 gping kagi.com \; \
+  neww -n spotify -c ~ spotify_player \; \
+  splitw -t main:spotify -l 5 -v "clear && volgo" \;
