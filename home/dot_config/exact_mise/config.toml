@@ -25,6 +25,7 @@ neovim = "latest"
 node = "latest"
 "npm:@mermaid-js/mermaid-cli" = "latest"
 "npm:gitignore" = "latest"
+"pipx:httpie" = "latest"
 "pipx:linode-cli" = { version = "latest", extras = '"--with boto3"' }
 "pipx:tmuxp" = "latest"
 python = "latest"
