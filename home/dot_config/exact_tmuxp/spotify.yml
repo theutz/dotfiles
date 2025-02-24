@@ -1,1 +1,8 @@
-
+session_name: spotify
+start_directory: $HOME
+windows:
+  - window_name: spotify
+    layout: main-horizontal
+    panes:
+      - "spotify_player"
+      - "volgo"
