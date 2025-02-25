@@ -16,7 +16,7 @@ local colors = {
   },
   {
     "scottmckendry/cyberdream.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
       transparent = true,
       italic_comments = true,
@@ -49,9 +49,10 @@ local colors = {
   },
   {
     "ellisonleao/gruvbox.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       transparent_mode = true,
+      dim_inactive = false,
     },
   },
   {
