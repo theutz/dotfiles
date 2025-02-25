@@ -1,9 +1,9 @@
 return {
   "folke/snacks.nvim",
   opts = {
-    -- explorer = {
-    --   replace_netrw = true,
-    -- },
+    explorer = {
+      replace_netrw = true,
+    },
     picker = {
       sources = {
         files = {
@@ -11,6 +11,7 @@ return {
         },
         explorer = {
           hidden = true,
+          auto_close = true,
         },
       },
     },
