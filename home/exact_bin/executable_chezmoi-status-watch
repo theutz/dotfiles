@@ -4,19 +4,21 @@ set -euo pipefail
 
 while :; do
   header="$(gum format -- "# Chezmoi")"
+  msg=(
+    "$header"
+  )
   d="$(date +'%H:%M:%S' | gum style --padding="0 3" --faint --italic)"
   cms="$(chezmoi status-all)"
 
   if [[ -n "$cms" ]]; then
-    msg="$(gum join --vertical --align left "$header" "$cms" "$d")"
+    msg+="$(gum join --vertical --align left "$header" "$cms" "$d")"
   else
-    msg=(
-      "$header"
+    msg+=(
       "$(gum format -- "## Everything up to date")"
     )
   fi
 
   clear
-  echo "$msg"
+  echo "$msg[@]"
   sleep 3
 done
