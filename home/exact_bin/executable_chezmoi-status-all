@@ -21,4 +21,18 @@ if [[ -n "$gws" ]]; then
   "
 fi
 
-gum join "$cms" "$gws"
+cols="$(tput cols)"
+flags=()
+if [[ $cols -gt 100 ]]; then
+  flags+=(
+    "--horizontal"
+    "--align middle"
+  )
+else
+  flags+=(
+    "--vertical"
+    "--align left"
+  )
+fi
+
+gum join "${(z)flags[@]}" "$cms" "$gws"
