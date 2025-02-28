@@ -4,7 +4,15 @@ export BORDER="rounded"
 export PADDING="0 2"
 export MARGIN="1 0 0 2"
 
-gum format -- '# Chezmoi Status'
-gum style -- "$(chezmoi status)"
-gum format -- '# Chezmoi Git Status'
-gum style -- "$(chezmoi git -- -c color.status=always status)"
+cms="$(chezmoi status)"
+gws="$(chezmoi git -- -c color.status=always status)"
+
+if [[ -n "$cms" ]]; then
+  gum format -- '# Chezmoi Status'
+  gum style -- "$(chezmoi status)"
+fi
+
+if [[ -n "$gws" ]]; then
+  gum format -- '# Chezmoi Git Status'
+  gum style -- "$(chezmoi git -- -c color.status=always status)"
+fi
