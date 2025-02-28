@@ -16,7 +16,7 @@ while :; do
     )
   else
     msg+=(
-      "$(gum style --padding="2 3" -- "Everything up to date")"
+      "$(gum style --faint --italic --padding="2 3" -- "Everything up to date")"
     )
   fi
 
