@@ -16,7 +16,7 @@ while :; do
     )
   else
     msg+=(
-      "$(gum format --padding="1 0" -- "\n\n## Everything up to date")"
+      "$(gum format --padding="1 0" -- "### Everything up to date")"
     )
   fi
 
