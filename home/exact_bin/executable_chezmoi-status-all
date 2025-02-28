@@ -9,14 +9,14 @@ gws="$(chezmoi git -- -c color.status=always status --short)"
 
 if [[ -n "$cms" ]]; then
   cms="
-  $(gum format -- '# Chezmoi Status')
+  $(gum format -- '## Chezmoi Status')
   $(gum style -- "$cms")
   "
 fi
 
 if [[ -n "$gws" ]]; then
   gws="
-  $(gum format -- '# Git Status')
+  $(gum format -- '## Git Status')
   $(gum style -- "$gws")
   "
 fi
