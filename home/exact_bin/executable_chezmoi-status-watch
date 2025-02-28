@@ -11,7 +11,7 @@ while :; do
   cms="$(chezmoi status-all)"
 
   if [[ -n "$cms" ]]; then
-    msg+="$(gum join --vertical --align left "$header" "$cms" "$d")"
+    msg+="$(gum join --vertical --align left "$cms" "$d")"
   else
     msg+=(
       "$(gum format -- "## Everything up to date")"
@@ -19,6 +19,6 @@ while :; do
   fi
 
   clear
-  echo "$msg[@]"
+  printf "%s\n" "${msg[@]}"
   sleep 3
 done
