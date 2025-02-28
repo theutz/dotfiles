@@ -10,7 +10,10 @@ while :; do
   if [[ -n "$cms" ]]; then
     msg="$(gum join --vertical --align left "$header" "$cms" "$d")"
   else
-    msg="$(gum format -- "# Everything up to date")"
+    msg=(
+      "$header"
+      "$(gum format -- "## Everything up to date")"
+    )
   fi
 
   clear
