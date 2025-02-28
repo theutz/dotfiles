@@ -4,8 +4,12 @@ set -euo pipefail
 
 while :; do
   cms="$(chezmoi status-all)"
-  d="$(date +'%H:%M:%S' | gum style --faint --italic)"
-  msg="$(gum join --vertical --align right "$cms" "$d")"
+  if [[ -n "$cms" ]]; then
+    d="$(date +'%H:%M:%S' | gum style --faint --italic)"
+    msg="$(gum join --vertical --align right "$cms" "$d")"
+  else
+    msg="$(gum format -- "# Everything up to date")"
+  fi
   clear
   echo "$msg"
   sleep 5
