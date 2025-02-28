@@ -4,7 +4,9 @@ set -euo pipefail
 
 while :; do
   cms="$(chezmoi status-all)"
+  d="$(date +'%H:%M:%S' | gum style --faint --italic)"
+  msg="$(gum join --vertical --align right "$cms" "$d")"
   clear
-  gum join --vertical --align right "$cms" "$(date)"
+  echo "$msg"
   sleep 5
 done
