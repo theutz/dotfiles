@@ -8,11 +8,17 @@ cms="$(chezmoi status)"
 gws="$(chezmoi git -- -c color.status=always status)"
 
 if [[ -n "$cms" ]]; then
-  gum format -- '# Chezmoi Status'
-  gum style -- "$(chezmoi status)"
+  cms="
+  $(gum format -- '# Chezmoi Status')
+  $(gum style -- "$cms")
+  "
 fi
 
 if [[ -n "$gws" ]]; then
-  gum format -- '# Git Status'
-  gum style -- "$(chezmoi git -- -c color.status=always status)"
+  gws="
+    $(gum format -- '# Git Status')
+    $(gum style -- "$gws")
+  "
 fi
+
+gum join "$cms" "$gws"
