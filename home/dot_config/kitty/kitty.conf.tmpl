@@ -1,6 +1,6 @@
 # fonts
-font_family      "BlexMono Nerd Font"
-font_size 12.0
+font_family "{{ .fonts.family }}"
+font_size {{ .fonts.size }}
 disable_ligatures never
 adjust_line_height 110%
 
@@ -11,7 +11,7 @@ hide_window_decorations titlebar-only
 confirm_os_window_close 0
 
 # opacity
-background_opacity 0.9
+background_opacity 0.85
 dynamic_background_opacity yes
 
 # advanced
@@ -22,9 +22,3 @@ shell_integration enabled
 # os specific
 macos_option_as_alt left
 macos_quit_when_last_window_closed no
-
-
-# BEGIN_KITTY_THEME
-# Tokyo Night Moon
-include current-theme.conf
-# END_KITTY_THEME
