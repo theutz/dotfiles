@@ -13,6 +13,6 @@ if [[ -n "$cms" ]]; then
 fi
 
 if [[ -n "$gws" ]]; then
-  gum format -- '# Chezmoi Git Status'
+  gum format -- '# Git Status'
   gum style -- "$(chezmoi git -- -c color.status=always status)"
 fi
