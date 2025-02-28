@@ -1,3 +1,7 @@
 #!/usr/bin/env -S mise x go:github.com/elliot40404/volgo/cmd/volgo@latest -- zsh
 
-clear && volgo
+clear
+tmux set-hook -p 'window-resized[62]' "resize-pane -y 5"
+volgo
+
+# vim: ft=zsh

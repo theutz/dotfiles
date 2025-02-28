@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+while :; do
+  cms="$(chezmoi status-all)"
+  clear
+  gum join --vertical --align right "$cms" "$(date)"
+  sleep 5
+done
