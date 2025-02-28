@@ -16,6 +16,7 @@ while :; do
     )
   else
     msg+=(
+      ""
       "$(gum format -- "## Everything up to date")"
     )
   fi
