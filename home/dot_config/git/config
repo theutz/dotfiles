@@ -6,16 +6,23 @@
 	rebase = true
 [rerere]
 	enabled = true
+  autoupdate = true
 [merge]
 	autoStash = true
-	conflictStyle = diff3
+	conflictStyle = zdiff3
 	tool = vimdiff
 [rebase]
 	autoStash = true
+  autoSquash = true
+  updateRefs = true
 [commit]
 	gpgSign = true
+  verbose = true
 [push]
 	gpgSign = false
+  default = simple
+  autoSetupRemote = true
+  followTags = true
 [tag]
 	gpgSign = true
 	sort = version:refname
@@ -63,3 +70,9 @@
 	ui = auto
 [branch]
 	sort = -committerdate
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[help]
+  autocorrect = prompt
