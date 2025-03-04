@@ -54,11 +54,10 @@ PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
 {{ range (list
-    "com.fivegencare.com.motorola.nursery"
     "net.mullvad.vpn"
     "com.xiaomi.mihome"
     "app.loshadki.OpenIn-setapp"
-    "com.apple.ScreenContinuity")
+  )
 }}
 [[on-window-detected]]
 if.app-id = "{{ . }}"
@@ -73,20 +72,46 @@ run = [
 ]
 
 [[on-window-detected]]
-if.app-id = "com.spotify.client"
-run = ["move-node-to-workspace 11-v"]
+if.app-id = "com.figma.Desktop"
+run = ["move-node-to-workspace 4-f"]
+
+[[on-window-detected]]
+if.app-id = "com.fivegencare.com.motorola.nursery"
+run = [
+  "layout floating",
+  "move-node-to-workspace 8-z"
+]
+
+[[on-window-detected]]
+if.app-id = "com.apple.ScreenContinuity"
+run = [
+  "layout floating",
+  "move-node-to-workspace 8-z"
+]
+
+[[on-window-detected]]
+if.app-id = "com.tinyspeck.slackmacgap"
+run = ["move-node-to-workspace 9-x"]
 
 [[on-window-detected]]
 if.app-id = "com.apple.MobileSMS"
 run = ["move-node-to-workspace 10-c"]
 
 [[on-window-detected]]
-if.app-id = "com.figma.Desktop"
-run = ["move-node-to-workspace 4-f"]
+if.app-id = "org.whispersystems.signal-desktop"
+run = ["move-node-to-workspace 10-c"]
 
 [[on-window-detected]]
-if.app-id = "com.tinyspeck.slackmacgap"
-run = ["move-node-to-workspace 9-x"]
+if.app-id = "ru.keepcoder.Telegram"
+run = ["move-node-to-workspace 10-c"]
+
+[[on-window-detected]]
+if.app-id = "net.whatsapp.WhatsApp"
+run = ["move-node-to-workspace 10-c"]
+
+[[on-window-detected]]
+if.app-id = "com.spotify.client"
+run = ["move-node-to-workspace 11-v"]
 
 # Keybinding Reference
 # All possible keys:
@@ -111,6 +136,7 @@ f13 = [ 'mode normal', 'exec-and-forget sketchybar --trigger aerospace_mode_chan
 
 {{- range .hjkl }}
 cmd-ctrl-alt-{{ .key }} = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors {{ .dir }}'
+cmd-ctrl-alt-shift-{{ .key }} = 'join-with {{ .dir }}'
 {{- end }}
 
 {{ range $i, $v := .workspaces -}}
