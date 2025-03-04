@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+status="$(tailscale status | sed -e '/^#/d' -e '/^$/d')"
+gum format -- "# Tailscale Status\n$status"
+
+location="$(gum spin --title "Finding current location..." -- dnsleaktest)"
+gum format -- "# Current location\n$location"
+
+tailscale exit-node list |
+  sed -e '/^#/d' -e '/^$/d' |
+  gum filter |
+  awk '{ print $2 }' |
+  xargs tailscale set --exit-node
+
+location="$(gum spin --title "Testing new location..." --show-output -- zsh -c "sleep 1 && dnsleaktest")"
+gum format -- "# New location\n$location"
