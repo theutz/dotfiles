@@ -156,6 +156,10 @@ cmd-ctrl-alt-t = 'layout floating tiling'
 cmd-ctrl-alt-o = 'layout horizontal vertical'
 cmd-ctrl-alt-i = 'layout accordion tiles'
 
+cmd-ctrl-alt-minus = 'resize smart -50'
+cmd-ctrl-alt-shift-equal = 'resize smart +50'
+cmd-ctrl-alt-equal = 'balance-sizes'
+
 cmd-ctrl-alt-leftSquareBracket = ['move-node-to-monitor prev', 'focus-monitor prev']
 cmd-ctrl-alt-shift-leftSquareBracket   = ['move-workspace-to-monitor --wrap-around prev', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
 
@@ -200,14 +204,6 @@ o        = 'layout horizontal vertical'
 i        = 'layout accordion tiles'
 backtick = 'close --quit-if-last-window'
 
-equal                   = 'balance-sizes'
-
-semicolon       = 'resize height -50'
-shift-semicolon = 'resize height -150'
-quote           = 'resize height +50'
-shift-quote     = 'resize height +150'
-
-comma        = 'resize width -50'
-shift-comma  = 'resize width -150'
-period       = 'resize width +50'
-shift-period = 'resize width +150'
+equal       = 'balance-sizes'
+minus       = ['resize smart -50']
+shift-equal = ['resize smart +50']
