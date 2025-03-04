@@ -2,17 +2,26 @@
 
 set -euo pipefail
 
-status="$(tailscale status | sed -e '/^#/d' -e '/^$/d')"
-gum format -- "# Tailscale Status\n$status"
+stat="$(tailscale status | sed -e '/^#/d' -e '/^$/d')"
+gum format -- "# Tailscale Status
+
+$stat"
 
 location="$(gum spin --title "Finding current location..." -- dnsleaktest)"
-gum format -- "# Current location\n$location"
+gum format -- "# Current location
+
+$location"
+
+echo
 
 tailscale exit-node list |
   sed -e '/^#/d' -e '/^$/d' |
-  gum filter |
+  fzf --header-lines=1 |
   awk '{ print $2 }' |
   xargs tailscale set --exit-node
 
 location="$(gum spin --title "Testing new location..." --show-output -- zsh -c "sleep 1 && dnsleaktest")"
-gum format -- "# New location\n$location"
+tput cuu1
+gum format -- "# New location
+
+$location"
