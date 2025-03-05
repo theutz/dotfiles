@@ -1,5 +1,6 @@
 [settings]
 experimental = true
+shorthands_file = "~/.config/mise/shorthands.toml"
 
 [tools]
 age = "latest"
