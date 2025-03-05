@@ -1,4 +1,48 @@
 #!/usr/bin/env zsh
 
-curl -s https://dnsleaktest.com |
-  mise x go:github.com/ericchiang/pup -- pup '.welcome > p text{}'
+interval=60
+clear=false
+watch=false
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  --watch | -w)
+    watch=true
+    shift
+    ;;
+  --interval | -i)
+    interval=$2
+    shift 2
+    ;;
+  --clear | -c)
+    clear=true
+    shift
+    ;;
+  esac
+done
+
+function run() {
+  res="$(https dnsleaktest.com | pup '.welcome > p text{}')"
+
+  out="$(gum format -- "# Current location
+
+  $res
+
+  _$(date +'%H:%M:%S')_
+  ")"
+
+  if [[ $clear == true ]]; then
+    clear
+  fi
+
+  echo $out
+}
+
+if [[ $watch == true ]]; then
+  while :; do
+    run
+    sleep $interval
+  done
+else
+  run
+fi
