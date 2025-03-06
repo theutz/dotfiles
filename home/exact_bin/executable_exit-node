@@ -8,10 +8,7 @@ gum format -- "# Tailscale Status
 $stat"
 
 location="$(gum spin --title "Finding current location..." -- dnsleaktest)"
-gum format -- "# Current location
-
-$location"
-
+echo $location
 echo
 
 tailscale exit-node list |
@@ -22,6 +19,4 @@ tailscale exit-node list |
 
 location="$(gum spin --title "Testing new location..." --show-output -- zsh -c "sleep 1 && dnsleaktest")"
 tput cuu1
-gum format -- "# New location
-
-$location"
+echo $location

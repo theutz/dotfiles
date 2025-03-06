@@ -7,6 +7,10 @@ id = "Europe/Istanbul"
 name = "Istanbul"
 
 [[zones]]
+id = "America/Chicago"
+name = "Dallas"
+
+[[zones]]
 id = "America/New_York"
 name = "Chattanooga"
 
