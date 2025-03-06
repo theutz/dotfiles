@@ -19,5 +19,6 @@ alias tmux-switch='tmux ls | fzf --tmux | awk -F : '"'"'{ print $1 }'"'"' | xarg
 alias txs='tmux-switch'
 alias txrl='tmux source-file $XDG_CONFIG_HOME/tmux/tmux.conf'
 
-alias new='tmux new -s'
-alias neww='tmux new-window -n'
+# Spotify Player
+alias s='spotify_player'
+alias sp='spotify_player playback'
