@@ -1,48 +1,38 @@
-{{ $gap := 16 -}}
-start-at-login                                                  = true
-after-startup-command                                           = [
+start-at-login = true
+after-startup-command = [
   'exec-and-forget sketchybar --reload',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change'
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
 ]
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE'
+  'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
-enable-normalization-flatten-containers                         = true
+enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-accordion-padding                                               = {{ mul $gap 2 }}
-default-root-container-layout                                   = 'tiles'
-default-root-container-orientation                              = 'auto'
-key-mapping.preset                                              = 'qwerty'
+accordion-padding = 32
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+key-mapping.preset = 'qwerty'
 
-on-focused-monitor-changed = [
-  'move-mouse monitor-lazy-center'
-]
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 on-focus-changed = [
   'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'move-mouse window-lazy-center'
+  'move-mouse window-lazy-center',
 ]
 
 [workspace-to-monitor-force-assignment]
-{{- range $i, $v := .workspaces -}}
-{{ if (index $v "monitor") }}
-{{ $i }}-{{ $v.name }} = '{{ $v.monitor }}'
-{{- end }}
-{{- end }}
+11-v = 'secondary'
 
 [gaps]
-inner.horizontal = {{ $gap }}
-inner.vertical = {{ $gap }}
-outer.left = {{ $gap }}
-outer.bottom = {{ $gap }}
-outer.right = {{ $gap }}
-outer.top = [
-  { monitor.'(samsung|l24q-20)' = {{ add $gap 40 }} },
-  {{ $gap }}
-]
+inner.horizontal = 16
+inner.vertical = 16
+outer.left = 16
+outer.bottom = 16
+outer.right = 16
+outer.top = [{ monitor.'(samsung|l24q-20)' = 56 }, 16]
 
 [exec]
 
@@ -50,27 +40,25 @@ inherit-env-vars = true
 
 [exec.env-vars]
 
-PATH   = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 EDITOR = 'neovide --fork'
 VISUAL = 'neovide --fork'
-{{ range (list
-    "net.mullvad.vpn"
-    "com.xiaomi.mihome"
-    "app.loshadki.OpenIn-setapp"
-    "com.trendyol.go"
-  )
-}}
+
 [[on-window-detected]]
-if.app-id = "{{ . }}"
+if.app-id = "net.mullvad.vpn"
 run = ["layout floating"]
-{{ end }}
+
+[[on-window-detected]]
+if.app-id = "com.xiaomi.mihome"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "app.loshadki.OpenIn-setapp"
+run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = [
-  "layout tiling",
-  "move-node-to-workspace 1-a"
-]
+run = ["layout tiling", "move-node-to-workspace 1-a"]
 
 [[on-window-detected]]
 if.app-id = "com.figma.Desktop"
@@ -82,17 +70,11 @@ run = ["move-node-to-workspace 8-z"]
 
 [[on-window-detected]]
 if.app-id = "com.fivegencare.com.motorola.nursery"
-run = [
-  "layout floating",
-  "move-node-to-workspace 8-z"
-]
+run = ["layout floating", "move-node-to-workspace 8-z"]
 
 [[on-window-detected]]
 if.app-id = "com.apple.ScreenContinuity"
-run = [
-  "layout floating",
-  "move-node-to-workspace 8-z"
-]
+run = ["layout floating", "move-node-to-workspace 8-z"]
 
 [[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
@@ -137,18 +119,56 @@ run = ["move-node-to-workspace 11-v"]
 # 'main' binding mode must be always presented
 
 [mode.main.binding]
-f13 = [ 'mode normal', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal' ]
+f13 = [
+  'mode normal',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
+]
+cmd-ctrl-alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+cmd-ctrl-alt-shift-h = 'join-with left'
+cmd-ctrl-alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+cmd-ctrl-alt-shift-j = 'join-with down'
+cmd-ctrl-alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+cmd-ctrl-alt-shift-k = 'join-with up'
+cmd-ctrl-alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
+cmd-ctrl-alt-shift-l = 'join-with right'
 
-{{- range .hjkl }}
-cmd-ctrl-alt-{{ .key }} = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors {{ .dir }}'
-cmd-ctrl-alt-shift-{{ .key }} = 'join-with {{ .dir }}'
-{{- end }}
 
-{{ range $i, $v := .workspaces -}}
-{{- $id := printf "%d-%s" $i $v.name }}
-cmd-ctrl-alt-{{ $v.name }} = 'workspace {{ $id }}'
-cmd-ctrl-alt-shift-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}']
-{{ end }}
+cmd-ctrl-alt-a = 'workspace 0-a'
+cmd-ctrl-alt-shift-a = ['move-node-to-workspace 0-a', 'workspace 0-a']
+
+cmd-ctrl-alt-s = 'workspace 1-s'
+cmd-ctrl-alt-shift-s = ['move-node-to-workspace 1-s', 'workspace 1-s']
+
+cmd-ctrl-alt-d = 'workspace 2-d'
+cmd-ctrl-alt-shift-d = ['move-node-to-workspace 2-d', 'workspace 2-d']
+
+cmd-ctrl-alt-f = 'workspace 3-f'
+cmd-ctrl-alt-shift-f = ['move-node-to-workspace 3-f', 'workspace 3-f']
+
+cmd-ctrl-alt-q = 'workspace 4-q'
+cmd-ctrl-alt-shift-q = ['move-node-to-workspace 4-q', 'workspace 4-q']
+
+cmd-ctrl-alt-w = 'workspace 5-w'
+cmd-ctrl-alt-shift-w = ['move-node-to-workspace 5-w', 'workspace 5-w']
+
+cmd-ctrl-alt-e = 'workspace 6-e'
+cmd-ctrl-alt-shift-e = ['move-node-to-workspace 6-e', 'workspace 6-e']
+
+cmd-ctrl-alt-r = 'workspace 7-r'
+cmd-ctrl-alt-shift-r = ['move-node-to-workspace 7-r', 'workspace 7-r']
+
+cmd-ctrl-alt-z = 'workspace 8-z'
+cmd-ctrl-alt-shift-z = ['move-node-to-workspace 8-z', 'workspace 8-z']
+
+cmd-ctrl-alt-x = 'workspace 9-x'
+cmd-ctrl-alt-shift-x = ['move-node-to-workspace 9-x', 'workspace 9-x']
+
+cmd-ctrl-alt-c = 'workspace 10-c'
+cmd-ctrl-alt-shift-c = ['move-node-to-workspace 10-c', 'workspace 10-c']
+
+cmd-ctrl-alt-v = 'workspace 11-v'
+cmd-ctrl-alt-shift-v = ['move-node-to-workspace 11-v', 'workspace 11-v']
+
 
 cmd-ctrl-alt-n = 'workspace next'
 cmd-ctrl-alt-shift-n = ['move-node-to-workspace next', 'workspace next']
@@ -165,50 +185,126 @@ cmd-ctrl-alt-minus = 'resize smart -50'
 cmd-ctrl-alt-shift-equal = 'resize smart +50'
 cmd-ctrl-alt-equal = 'balance-sizes'
 
-cmd-ctrl-alt-leftSquareBracket = ['move-node-to-monitor prev', 'focus-monitor prev']
-cmd-ctrl-alt-shift-leftSquareBracket   = ['move-workspace-to-monitor --wrap-around prev', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
+cmd-ctrl-alt-leftSquareBracket = [
+  'move-node-to-monitor prev',
+  'focus-monitor prev',
+]
+cmd-ctrl-alt-shift-leftSquareBracket = [
+  'move-workspace-to-monitor --wrap-around prev',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
 
-cmd-ctrl-alt-rightSquareBracket = ['move-node-to-monitor next', 'focus-monitor next']
-cmd-ctrl-alt-shift-rightSquareBracket   = ['move-workspace-to-monitor --wrap-around next', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
+cmd-ctrl-alt-rightSquareBracket = [
+  'move-node-to-monitor next',
+  'focus-monitor next',
+]
+cmd-ctrl-alt-shift-rightSquareBracket = [
+  'move-workspace-to-monitor --wrap-around next',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
 
 [mode.normal.binding]
-{{- range (list "esc" "f13") }}
-{{ . }} = [ 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main' ]
-{{- end }}
-{{ range $i, $v := .workspaces -}}
-{{- $id := printf "%d-%s" $i $v.name }}
-{{ $v.name }} = 'workspace {{ $id }}'
-shift-{{ $v.name }} = ['move-node-to-workspace {{ $id }}', 'workspace {{ $id }}']
-alt-{{ $v.name }} = ['summon-workspace {{ $id }}']
-{{ end }}
+esc = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+f13 = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 
-{{- range .hjkl }}
-{{ .key }} = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors {{ .dir }}'
-shift-{{ .key }} = 'move {{ .dir }}'
-alt-{{ .key }} = 'join-with {{ .dir }}'
-{{ end }}
-p       = 'workspace prev'
+a = 'workspace 0-a'
+shift-a = ['move-node-to-workspace 0-a', 'workspace 0-a']
+alt-a = ['summon-workspace 0-a']
+
+s = 'workspace 1-s'
+shift-s = ['move-node-to-workspace 1-s', 'workspace 1-s']
+alt-s = ['summon-workspace 1-s']
+
+d = 'workspace 2-d'
+shift-d = ['move-node-to-workspace 2-d', 'workspace 2-d']
+alt-d = ['summon-workspace 2-d']
+
+f = 'workspace 3-f'
+shift-f = ['move-node-to-workspace 3-f', 'workspace 3-f']
+alt-f = ['summon-workspace 3-f']
+
+q = 'workspace 4-q'
+shift-q = ['move-node-to-workspace 4-q', 'workspace 4-q']
+alt-q = ['summon-workspace 4-q']
+
+w = 'workspace 5-w'
+shift-w = ['move-node-to-workspace 5-w', 'workspace 5-w']
+alt-w = ['summon-workspace 5-w']
+
+e = 'workspace 6-e'
+shift-e = ['move-node-to-workspace 6-e', 'workspace 6-e']
+alt-e = ['summon-workspace 6-e']
+
+r = 'workspace 7-r'
+shift-r = ['move-node-to-workspace 7-r', 'workspace 7-r']
+alt-r = ['summon-workspace 7-r']
+
+z = 'workspace 8-z'
+shift-z = ['move-node-to-workspace 8-z', 'workspace 8-z']
+alt-z = ['summon-workspace 8-z']
+
+x = 'workspace 9-x'
+shift-x = ['move-node-to-workspace 9-x', 'workspace 9-x']
+alt-x = ['summon-workspace 9-x']
+
+c = 'workspace 10-c'
+shift-c = ['move-node-to-workspace 10-c', 'workspace 10-c']
+alt-c = ['summon-workspace 10-c']
+
+v = 'workspace 11-v'
+shift-v = ['move-node-to-workspace 11-v', 'workspace 11-v']
+alt-v = ['summon-workspace 11-v']
+
+h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+shift-h = 'move left'
+alt-h = 'join-with left'
+
+j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+shift-j = 'move down'
+alt-j = 'join-with down'
+
+k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+shift-k = 'move up'
+alt-k = 'join-with up'
+
+l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
+shift-l = 'move right'
+alt-l = 'join-with right'
+
+p = 'workspace prev'
 shift-p = ['move-node-to-workspace prev', 'workspace prev']
 
-n       = 'workspace next'
+n = 'workspace next'
 shift-n = ['move-node-to-workspace next', 'workspace next']
 
 b = 'workspace-back-and-forth'
 
-leftSquareBracket       = 'focus-monitor prev'
+leftSquareBracket = 'focus-monitor prev'
 shift-leftSquareBracket = ['move-node-to-monitor prev', 'focus-monitor prev']
-alt-leftSquareBracket   = ['move-workspace-to-monitor prev', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
+alt-leftSquareBracket = [
+  'move-workspace-to-monitor prev',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
 
-rightSquareBracket       = 'focus-monitor next'
+rightSquareBracket = 'focus-monitor next'
 shift-rightSquareBracket = ['move-node-to-monitor next', 'focus-monitor next']
-alt-rightSquareBracket   = ['move-workspace-to-monitor next', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
+alt-rightSquareBracket = [
+  'move-workspace-to-monitor next',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
 
-m        = 'fullscreen'
-t        = 'layout floating tiling'
-o        = 'layout horizontal vertical'
-i        = 'layout accordion tiles'
+m = 'fullscreen'
+t = 'layout floating tiling'
+o = 'layout horizontal vertical'
+i = 'layout accordion tiles'
 backtick = 'close --quit-if-last-window'
 
-equal       = 'balance-sizes'
-minus       = ['resize smart -50']
+equal = 'balance-sizes'
+minus = ['resize smart -50']
 shift-equal = ['resize smart +50']
