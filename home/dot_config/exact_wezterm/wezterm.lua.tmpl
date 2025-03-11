@@ -7,6 +7,8 @@ if wezterm.config_builder then
 end
 config:set_strict_mode(true)
 
+config.default_prog = { "/opt/homebrew/bin/fish" }
+
 config.font = wezterm.font("{{ .fonts.mono.family }}", { weight = {{ .fonts.mono.weight }} })
 config.font_size = {{ .fonts.mono.size }}
 config.line_height = 1.5
@@ -34,7 +36,9 @@ local function get_appearance()
 end
 
 local lights = {
-  { "Gruvbox light, soft (base16)", 0.8, 10 },
+	{ "Gruvbox light, hard (base16)", 0.85, 15 },
+	{ "Gruvbox light, soft (base16)", 0.90, 10 },
+	{ "Gruvbox light, medium (base16)", 0.8, 10 },
 	{ "Ef-Maris-Light", 0.85, 20 },
 	{ "Ef-Cyprus", 0.85, 20 },
 	{ "Bluloco Light (Gogh)", 0.85, 20 },
@@ -62,7 +66,10 @@ local lights = {
 }
 
 local darks = {
-  { "Gruvbox Dark (Gogh)", 0.85, 15 },
+	{ "Gruvbox dark, hard (base16)", 0.85, 15 },
+	{ "Gruvbox dark, pale (base16)", 0.85, 15 },
+	{ "Gruvbox dark, medium (base16)", 0.85, 15 },
+	{ "Gruvbox dark, soft (base16)", 0.85, 15 },
 	{ "Woodland (base16)", 0.7, 15 },
 	{ "Bim", 0.8, 10 },
 	{ "Wryan", 0.8, 10 },
