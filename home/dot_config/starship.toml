@@ -3,15 +3,23 @@
 format = """
 [](color_orange)\
 $os\
+$shell\
+[](bg:color_purple fg:color_orange)\
 $username\
-[](bg:color_yellow fg:color_orange)\
+$hostname\
+$sudo\
+[](bg:color_yellow fg:color_purple)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
 $git_status\
 [](fg:color_aqua bg:color_blue)\
+$package\
+$lua\
 $c\
 $rust\
+$ruby\
+$terraform\
 $golang\
 $nodejs\
 $php\
@@ -25,7 +33,9 @@ $conda\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
-$line_break$character"""
+$status$jobs\
+$line_break\
+$character"""
 
 palette = 'gruvbox_dark'
 
@@ -67,12 +77,6 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 Pop = ""
-
-[username]
-show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user ]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
@@ -170,5 +174,28 @@ vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
 [shell]
 disabled = false
-zsh_indicator = 'z'
-style = "bg:color_red"
+format = "[ $indicator ]($style)"
+style = "bg:color_orange fg:color_fg0"
+
+[shlvl]
+disabled = false
+
+[status]
+disabled = false
+
+[username]
+show_always = true
+style_user = "bg:color_purple fg:color_fg0"
+style_root = "bg:color_purple fg:color_fg0"
+format = '[ $user]($style)'
+
+[sudo]
+disabled = false
+format = "[as $symbol ](bg:color_purple fg:color_fg0)"
+symbol = "🧙"
+
+[hostname]
+disabled = false
+ssh_only = false
+style = "bg:color_purple"
+format = '[@$hostname( $ssh_symbol) ](bg:color_purple fg:color_fg0)'
