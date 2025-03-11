@@ -25,7 +25,8 @@ if [[ -z "$EDITOR" ]]; then
   export EDITOR='nvim'
 fi
 if [[ -z "$VISUAL" ]]; then
-  export VISUAL='neovide --no-fork'
+  # export VISUAL='neovide --no-fork'
+  export VISUAL='nvim'
 fi
 HOMEBREW_EDITOR=vim
 #  «««
@@ -43,17 +44,7 @@ export DELTA_PAGER='less'
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
-#  «««
-
-{{- if eq .chezmoi.os "linux" }}
-
-# homebrew »»»
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-#  «««
-
-{{ end -}}
-
-# Paths »»»
+#  «««# Paths »»»
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
