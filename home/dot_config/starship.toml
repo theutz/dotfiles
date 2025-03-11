@@ -170,3 +170,5 @@ vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
 [shell]
 disabled = false
+zsh_indicator = 'z'
+style = "bg:color_red"
