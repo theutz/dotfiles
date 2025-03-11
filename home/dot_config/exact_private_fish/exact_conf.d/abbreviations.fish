@@ -14,3 +14,4 @@ abbr -a -- cmea 'chezmoi edit --apply'
 abbr -a -- cmap 'chezmoi apply'
 abbr -a -- cmma 'chezmoi merge-all'
 abbr -a -- cmfzfa 'cmfzf | xargs chezmoi add'
+abbr -a -- lg lazygit
