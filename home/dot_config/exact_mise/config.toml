@@ -34,7 +34,9 @@ node = "latest"
 "pipx:httpie" = "latest"
 "pipx:linode-cli" = { version = "latest", extras = '"--with boto3"' }
 "pipx:posting" = "latest"
+"pipx:rich-cli" = "latest"
 "pipx:tmuxp" = "latest"
+"pipx:xonsh" = { version = "latest", uvx_args = "--with gnureadline" }
 pup = "latest"
 python = "3.12"
 rg = "latest"
@@ -44,6 +46,7 @@ tz = "latest"
 uv = "latest"
 vivid = "latest"
 volgo = "latest"
+wrk = "latest"
 yq = "latest"
 zellij = "latest"
 
