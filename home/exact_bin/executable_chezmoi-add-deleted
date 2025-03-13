@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+
+set -l files $(chezmoi status | awk '$1 == "D" { print $2 }')
+
+for file in $files
+    chezmoi add $HOME/$file
+end
