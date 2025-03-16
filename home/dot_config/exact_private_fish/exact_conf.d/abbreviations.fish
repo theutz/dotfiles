@@ -17,3 +17,4 @@ abbr -a -- cmfzfa 'cmfzf | xargs chezmoi add'
 abbr -a -- lg lazygit
 abbr -a -- cma 'chezmoi add'
 abbr -a -- md 'mkdir -p'
+abbr -a -- gfm 'git pull'
