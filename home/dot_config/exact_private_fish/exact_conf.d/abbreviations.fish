@@ -18,3 +18,4 @@ abbr -a -- lg lazygit
 abbr -a -- cma 'chezmoi add'
 abbr -a -- md 'mkdir -p'
 abbr -a -- gfm 'git pull'
+abbr -a -- gpp 'git push && git pull'
