@@ -1,0 +1,7 @@
+## Don't require a password
+
+Replace `username` with the actual username
+
+```
+username ALL=(ALL) NOPASSWD: ALL
+```
