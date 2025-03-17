@@ -12,6 +12,11 @@ autoAdd = true
 autoCommit = true
 autoPush = true
 
+{{ if lookPath "fish" -}}
+[cd]
+command = "fish"
+{{- end }}
+
 {{ if lookPath "delta" -}}
 [diff]
 pager = "delta"
