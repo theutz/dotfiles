@@ -1,6 +1,6 @@
 theme = dark:GruvboxDark,light:GruvboxLight
-font-family = {{ .fonts.mono.family }}
-font-size = {{ .fonts.mono.size }}
+font-family = MartianMono Nerd Font Propo
+font-size = 16
 adjust-cell-height = 24
 background-opacity = 0.85
 #minimum-contrast = 1.2

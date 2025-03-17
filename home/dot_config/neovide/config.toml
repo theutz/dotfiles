@@ -3,6 +3,6 @@ maximized = false
 title-hidden = false
 
 [font]
-normal = { family = "{{ .fonts.mono.family }}", style = "Regular" }
-bold = { family = "{{ .fonts.mono.family }}", style = "Medium" }
-size = {{ .fonts.mono.size }}
+normal = { family = "MartianMono Nerd Font Propo", style = "Regular" }
+bold = { family = "MartianMono Nerd Font Propo", style = "Medium" }
+size = 16
