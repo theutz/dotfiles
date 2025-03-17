@@ -37,6 +37,7 @@ node = "latest"
 "pipx:linode-cli" = { version = "latest", extras = '"--with boto3"' }
 "pipx:posting" = "latest"
 "pipx:rich-cli" = "latest"
+"pipx:terminal-colors" = "latest"
 "pipx:tmuxp" = "latest"
 "pipx:xonsh" = { version = "latest", uvx_args = "--with gnureadline" }
 pup = "latest"

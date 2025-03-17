@@ -1,9 +1,9 @@
-# Plugin checksums (DO NOT REMOVE - used for template regeneration):
-{{- range (glob (joinPath .chezmoi.sourceDir "dot_config" "exact_sketchybar" "exact_plugins" "*")) }}
-# {{ base . }}: {{ includeTemplate . $ | sha256sum }}
-{{- end }}
+#!/usr/bin/env fish
 
-PLUGIN_DIR="$CONFIG_DIR/plugins"
+set -lx PLUGIN_DIR "$CONFIG_DIR/plugins"
+set -lx FONT "RecMonoDuotone Nerd Font Mono:Regular:24.0"
+
+source "$CONFIG_DIR/colors.fish"
 
 # Setup the bar
 
@@ -11,7 +11,7 @@ sketchybar --bar \
       position=top \
       height=40 \
       blur_radius=10 \
-      color={{ print "0x80" (index .theme 2 | trimPrefix "#") }} \
+      color=$BAR_COLOR \
       display=all \
       shadow=off
 
@@ -21,16 +21,14 @@ sketchybar --default \
     background.height=24 \
     background.padding_left=4 \
     background.padding_right=4 \
-    icon.color={{ print "0xff" (index .theme 3 | trimPrefix "#") }} \
-    icon.font.family={{ .fonts.mono.family | quote }} \
-    icon.font.size=18 \
+    icon.color=$COLORS[5] \
+    icon.font=$FONT \
     icon.padding_left=4 \
     icon.padding_right=4 \
-    label.color={{ print "0xff" (index .theme 7 | trimPrefix "#") }} \
-    label.font.family={{ .fonts.mono.family | quote }} \
-    label.font.size=16 \
+    label.color=$TEXT_COLOR \
+    label.font=$FONT \
     label.padding_left=0 \
-    label.padding_right=6
+    label.padding_right=0
 
 # Setup the dude
 
@@ -99,6 +97,8 @@ sketchybar --add item clock right \
                  background.padding_right=0
                  {{- if lt (add 1 $i) (len $aliases) }} \{{end}}
            {{ end }}
+
+echo $(date) sketchybar reloaded
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

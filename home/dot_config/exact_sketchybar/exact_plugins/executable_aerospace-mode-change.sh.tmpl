@@ -1,29 +1,28 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env fish
 
-curve="quadratic"
-duration="10"
+source "$CONFIG_DIR/colors.fish"
 
-case "$MODE" in
-  normal)
-    borders blur_radius=16.0 \
-      width=12.0 \
-      hidpi=on \
-      style=round \
-      active_color={{ print "0xff" (index .theme 3 | trimPrefix "#") }} \
-      inactive_color={{ print "0xaa" (index .theme 0 | trimPrefix "#") }}
+set -lx curve "quadratic"
+set -lx duration 10
+set -lx width 12.0
 
-    sketchybar --animate $curve $duration \
-      --bar color={{ print "0xff" (index .theme 1 | trimPrefix "#") }}
-    ;;
-  main)
-    borders blur_radius=12.0 \
-      width=8.0 \
-      hidpi=on \
-      style=round \
-      active_color={{ print "0xff" (index .theme 7 | trimPrefix "#") }} \
-      inactive_color={{ print "0x88" (index .theme 8 | trimPrefix "#") }}
+switch $MODE
+  case normal
+      borders \
+        width=$width \
+        style=round \
+        active_color=$COLORS[2] \
+        inactive_color=$BAR_COLOR
 
-    sketchybar --animate $curve $duration \
-      --bar color={{ print "0x80" (index .theme 2 | trimPrefix "#") }} \
-    ;;
-esac
+      sketchybar --animate $curve $duration \
+        --bar color=$COLORS[2]
+  case main
+      borders \
+        width=$width \
+        style=round \
+        active_color=$COLORS[3] \
+        inactive_color=$BAR_COLOR
+
+      sketchybar --animate $curve $duration \
+        --bar color=$BAR_COLOR
+end
