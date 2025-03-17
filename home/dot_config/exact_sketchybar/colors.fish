@@ -48,5 +48,5 @@ if test (dark-mode status) = on
     set -x TEXT_COLOR $COLORS[16]
 else
     set -x BAR_COLOR (string replace "0xFF" "0xCC" $COLORS[16])
-    set -x TEXT_COLOR $COLORS[16]
+    set -x TEXT_COLOR $COLORS[1]
 end
