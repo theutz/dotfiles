@@ -3,6 +3,6 @@ maximized = false
 title-hidden = false
 
 [font]
-normal = { family = "MartianMono Nerd Font Propo", style = "Regular" }
-bold = { family = "MartianMono Nerd Font Propo", style = "Medium" }
+normal = { family = "Berkeley Mono", style = "Regular" }
+bold = { family = "Berkeley Mono", style = "Medium" }
 size = 16

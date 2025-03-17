@@ -1,5 +1,5 @@
 theme = dark:GruvboxDark,light:GruvboxLight
-font-family = MartianMono Nerd Font Propo
+font-family = Berkeley Mono
 font-size = 16
 adjust-cell-height = 24
 background-opacity = 0.85
