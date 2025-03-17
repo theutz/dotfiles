@@ -4,25 +4,12 @@ source "$CONFIG_DIR/colors.fish"
 
 set -lx curve "quadratic"
 set -lx duration 10
-set -lx width 12.0
 
 switch $MODE
   case normal
-      borders \
-        width=$width \
-        style=round \
-        active_color=$COLORS[2] \
-        inactive_color=$BAR_COLOR
-
-      sketchybar --animate $curve $duration \
-        --bar color=$COLORS[2]
+      borders active_color=$COLORS[2] inactive_color=$BAR_COLOR
+      sketchybar --animate $curve $duration --bar color=$COLORS[2]
   case main
-      borders \
-        width=$width \
-        style=round \
-        active_color=$COLORS[3] \
-        inactive_color=$BAR_COLOR
-
-      sketchybar --animate $curve $duration \
-        --bar color=$BAR_COLOR
+      borders active_color=$COLORS[3] inactive_color=$BAR_COLOR
+      sketchybar --animate $curve $duration --bar color=$BAR_COLOR
 end
