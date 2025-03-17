@@ -7,9 +7,9 @@ set -lx duration 10
 
 switch $MODE
   case normal
-      borders active_color=$COLORS[2] inactive_color=$BAR_COLOR
-      sketchybar --animate $curve $duration --bar color=$COLORS[2]
+    sketchybar --animate $curve $duration --bar color=$COLORS[2]
+    borders active_color=$COLORS[2] inactive_color=$BAR_COLOR
   case main
-      borders active_color=$COLORS[3] inactive_color=$BAR_COLOR
-      sketchybar --animate $curve $duration --bar color=$BAR_COLOR
+    sketchybar --animate $curve $duration --bar color=$BAR_COLOR
+    borders active_color=$COLORS[3] inactive_color=$BAR_COLOR
 end

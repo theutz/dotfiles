@@ -3,7 +3,7 @@
 source "$HOME/.config/sketchybar/colors.fish"
 
 borders style=round \
-    width=6.0 \
+    width=8.0 \
     hidpi=off \
     active_color=$COLORS[3] \
     inactive_color=$BAR_COLOR
