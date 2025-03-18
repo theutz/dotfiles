@@ -18,7 +18,7 @@ abbr -a -- lg lazygit
 abbr -a -- cma 'chezmoi add'
 abbr -a -- md 'mkdir -p'
 abbr -a -- gfm 'git pull'
-abbr -a -- gpp 'git push && git pull'
+abbr -a -- gpp 'git pull && git push'
 abbr -a -- brews 'brew search'
 abbr -a -- cmad 'chezmoi add-deleted'
 abbr -a -- brewi 'brew install'
