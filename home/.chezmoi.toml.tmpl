@@ -12,28 +12,33 @@ autoAdd = true
 autoCommit = true
 autoPush = true
 
-{{ if lookPath "fish" -}}
 [cd]
+{{ if lookPath "fish" -}}
 command = "fish"
 {{- end }}
 
-{{ if lookPath "delta" -}}
 [diff]
+{{ if lookPath "delta" -}}
 pager = "delta"
 args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
-exclude = ["scripts"]
 {{- end }}
+exclude = ["scripts"]
 
-{{ if lookPath "nvim" }}
 [merge]
+{{ if lookPath "nvim" }}
 command = "nvim"
 args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+{{ end }}
 
 [edit]
+{{ if lookPath "nvim" }}
 command = "nvim"
 args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
 watch = false
 apply = false
 {{ end }}
+
+[status]
+exclude = ["scripts"]
 
 # vim: ft=tmpl.toml
