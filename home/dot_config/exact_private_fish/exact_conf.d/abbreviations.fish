@@ -29,3 +29,4 @@ abbr -a -- mr 'mise run'
 abbr -a -- mt 'mise tasks'
 abbr -a -- mu 'mise use'
 abbr -a -- mug 'mise use -g'
+abbr -a -- m mise
