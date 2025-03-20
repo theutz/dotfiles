@@ -16,6 +16,7 @@ git:
       --paging=never
       '
   parseEmoji: true
+  overrideGpg: true
 gui:
   border: rounded
   expandFocusedSidePanel: true
