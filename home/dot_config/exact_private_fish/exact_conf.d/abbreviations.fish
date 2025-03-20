@@ -30,3 +30,4 @@ abbr -a -- mt 'mise tasks'
 abbr -a -- mu 'mise use'
 abbr -a -- mug 'mise use -g'
 abbr -a -- m mise
+abbr -a -- mtaf 'mise tasks add --file'
