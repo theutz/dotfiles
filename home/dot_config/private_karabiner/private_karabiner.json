@@ -9,6 +9,17 @@
                 },
                 "rules": [
                     {
+                        "description": "Change right_option to f13 if alone, right_option otherwise",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "right_alt" },
+                                "to": [{ "key_code": "right_alt" }],
+                                "to_if_alone": [{ "key_code": "f13" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "caps_lock to escape if alone, left_ctrl if held",
                         "manipulators": [
                             {
