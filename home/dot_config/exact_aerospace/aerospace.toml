@@ -123,10 +123,6 @@ f13 = [
   'mode normal',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
 ]
-cmd-ctrl-alt-space = [
-  'mode normal',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
-]
 cmd-ctrl-alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
 cmd-ctrl-alt-shift-h = 'join-with left'
 cmd-ctrl-alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
