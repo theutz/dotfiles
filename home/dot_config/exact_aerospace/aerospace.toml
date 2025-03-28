@@ -58,7 +58,23 @@ run = ["layout floating"]
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = ["layout tiling", "move-node-to-workspace 1-a"]
+run = ["layout tiling", "move-node-to-workspace 0-a"]
+
+[[on-window-detected]]
+if.app-id = "org.chromium.Chromium"
+run = ["layout tiling", "move-node-to-workspace 0-a"]
+
+[[on-window-detected]]
+if.app-id = "com.github.wez.wezterm"
+run = ["layout tiling", "move-node-to-workspace 0-a"]
+
+[[on-window-detected]]
+if.app-id = "com.vivaldi.Vivaldi"
+run = ["layout tiling", "move-node-to-workspace 1-s"]
+
+[[on-window-detected]]
+if.app-id = "com.macpaw.clearvpn.macos-setapp"
+run = ["layout tiling", "move-node-to-workspace 7-r"]
 
 [[on-window-detected]]
 if.app-id = "com.figma.Desktop"
