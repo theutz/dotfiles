@@ -5,6 +5,7 @@ experimental = true
 age = "latest"
 aqua = "latest"
 "aqua:YS-L/csvlens" = "latest"
+"aqua:charmbracelet/mods" = "latest"
 "aqua:chmln/sd" = "latest"
 "aqua:hatoo/oha" = "latest"
 "aqua:mr-karan/doggo" = "latest"
