@@ -1,0 +1,21 @@
+OPENAI_API_KEY: ENC[AES256_GCM,data:18ToB0crouZVz7V99nBf6NTy1LXJGw2F07eA15SlS9FwnkRIfPfm5d7k67alskHv1T9m28WjQP5+H+FoddcZ1rHxI1X34I+1LgpUmzMknudadiVafP+IqhEPF5PJSbx/LuxrRZzhLCdXWEngybjZYn5RJAyNhS6kBDiym255KkH+Ox4o+AxDArb1f2fKvO/b0UnA82CVJ8g9tljgcTH3AgGhyz4=,iv:Wt2wbcxGM07AsepgbL9uLQzwAbvyWO0QYR3au5nfETs=,tag:bxXMHyqgtnsk1/VGY2uW3w==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1vlk29wfkfqff0c9yky2kwhp4c6zdwuzc7xd5xc8ydsldc9ulf99spwq9x2
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBYnhHREV4QkYrR3UxOEl2
+            RUJVb0dMV09WNG5VZitKbTRuQ0NsM0E3ZUdBCjlRTGRGWXpsM2VuVEUyZ2UwR056
+            Z01kWVFNUzByVHZJU0VOWEJYQ1JDdUkKLS0tIDhvczZYYTVzNUY5d3h6c1JrZmVW
+            NDFPR3dKODM5c2tRZzN6QXZPU2RtS1kKPFWoyR4EFB0CXg6FzWGlvoqBrfpe0KXw
+            hfxWYL4QsvYzh3cCCcrHWHn044JUjkJweuRrC7usHTWyIOVOUGuekQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-04-03T07:38:48Z"
+    mac: ENC[AES256_GCM,data:CNhlheO2Sv4esUlPAJYwYX2MjebdKBjpCiMRWsRE8t9TCL4UvNmAOw+3Shib7w90F+QkEJEZoAr2ePF0wALTApSFpIRfNZ+JyjdK/WWOh/Q3VmfsLSBvUqzlvM5zq9avpuRMSgagnfjho+gSwtbEjhV3dp0fi30T3AoxHXAJd7A=,iv:rLs1987fQSVZQDUeiwX6DuEFS7df2WLZOuxPRD8v/8o=,tag:RxznEsx8lF9je+cMvobwOw==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.9.4
