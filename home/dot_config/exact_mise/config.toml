@@ -69,4 +69,5 @@ tz = "go:github.com/oz/tz"
 macchina = "aqua:Macchina-CLI/macchina"
 
 [env]
+_.file = "~/.config/mise/.env.sops.yaml"
 IS_FAST_CONFIG_PATH = "~/.config/is-fast/config.toml"
