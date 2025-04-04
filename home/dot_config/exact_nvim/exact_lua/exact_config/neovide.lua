@@ -1,5 +1,5 @@
-vim.o.linespace = {{ mul .fonts.mono.size 1.8 }}
-vim.o.guifont = "{{ .fonts.mono.family }}:h{{ .fonts.mono.size }}"
+vim.o.linespace = 16
+vim.o.guifont = "Berkeley Mono:h16"
 
 local padding = 20
 vim.g.neovide_padding_top = padding
