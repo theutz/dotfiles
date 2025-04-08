@@ -2,31 +2,35 @@ local wez = require("wezterm")
 local act = wez.action
 
 -- Setup config builder
-local config = {}
+local cfg = {}
 if wez.config_builder then
-	config = wez.config_builder()
+	cfg = wez.config_builder()
 end
-config:set_strict_mode(true)
+cfg:set_strict_mode(true)
 
-config.default_prog = { "/opt/homebrew/bin/fish" }
+cfg.default_prog = { "/opt/homebrew/bin/fish" }
 
-config.font = wez.font("Berkeley Mono", { weight = 400 })
-config.font_size = 16
-config.line_height = 1.4
-config.bold_brightens_ansi_colors = "BrightAndBold"
-config.hide_tab_bar_if_only_one_tab = false
-config.quit_when_all_windows_are_closed = false
-config.window_close_confirmation = "NeverPrompt"
-config.window_decorations = "RESIZE"
-config.adjust_window_size_when_changing_font_size = false
-config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
-config.window_padding = {
+cfg.font = wez.font("Berkeley Mono", { weight = 400 })
+cfg.font_size = 16
+cfg.line_height = 1.4
+cfg.bold_brightens_ansi_colors = "BrightAndBold"
+
+cfg.hide_tab_bar_if_only_one_tab = false
+
+cfg.quit_when_all_windows_are_closed = false
+
+cfg.window_close_confirmation = "AlwaysPrompt"
+-- config.window_decorations = "RESIZE"
+cfg.adjust_window_size_when_changing_font_size = false
+cfg.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
+
+cfg.window_padding = {
 	top = "16px",
 	bottom = "4px",
 	left = "12px",
 	right = "12px",
 }
-config.command_palette_font_size = 16
+cfg.command_palette_font_size = 16
 
 -- Color scheme
 local function get_appearance()
@@ -106,9 +110,9 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-config.color_scheme = scheme_for_appearance(get_appearance())[1]
-config.window_background_opacity = scheme_for_appearance(get_appearance())[2] or 1.0
-config.macos_window_background_blur = scheme_for_appearance(get_appearance())[3] or 0
+cfg.color_scheme = scheme_for_appearance(get_appearance())[1]
+cfg.window_background_opacity = scheme_for_appearance(get_appearance())[2] or 1.0
+cfg.macos_window_background_blur = scheme_for_appearance(get_appearance())[3] or 0
 
 wez.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
@@ -117,10 +121,10 @@ wez.on("window-config-reloaded", function(window, pane)
 end)
 
 -- Keybindings
-config.enable_kitty_keyboard = true
+cfg.enable_kitty_keyboard = true
 
-config.leader = { key = "m", mods = "META", timeout_milliseconds = 1000 }
-config.keys = {
+cfg.leader = { key = "m", mods = "META", timeout_milliseconds = 1000 }
+cfg.keys = {
 	{
 		key = "Escape",
 		mods = "NONE",
@@ -189,11 +193,11 @@ local disable_defaults = {
 }
 
 for _, kp in ipairs(disable_defaults) do
-	table.insert(config.keys, {
+	table.insert(cfg.keys, {
 		key = kp[1],
 		mods = kp[2],
 		action = act.DisableDefaultAssignment,
 	})
 end
 
-return config
+return cfg
