@@ -1825,22 +1825,22 @@
         },
         {
             "name": "laravel/valet",
-            "version": "v4.8.2",
+            "version": "v4.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/valet.git",
-                "reference": "e2d6191446b8f06e32b955e402a2fc6de717fe62"
+                "reference": "e436e1781e02f3c2508a4850482fb68b385907b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/valet/zipball/e2d6191446b8f06e32b955e402a2fc6de717fe62",
-                "reference": "e2d6191446b8f06e32b955e402a2fc6de717fe62",
+                "url": "https://api.github.com/repos/laravel/valet/zipball/e436e1781e02f3c2508a4850482fb68b385907b7",
+                "reference": "e436e1781e02f3c2508a4850482fb68b385907b7",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0|^7.4",
-                "illuminate/collections": "^8.0|^9.0|^10.0|^11.0",
-                "illuminate/container": "~5.1|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "illuminate/collections": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/container": "~5.1|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
                 "mnapoli/silly": "^1.5",
                 "php": "^7.1|^8.0",
                 "symfony/console": "^3.0|^4.0|^5.0|^6.0|^7.0",
@@ -1853,7 +1853,7 @@
             "require-dev": {
                 "laravel/pint": "^1.4",
                 "mockery/mockery": "^1.2.3",
-                "yoast/phpunit-polyfills": "^0.2.0"
+                "yoast/phpunit-polyfills": "^0.2.0|^4.0"
             },
             "bin": [
                 "valet"
@@ -1900,9 +1900,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/valet/issues",
-                "source": "https://github.com/laravel/valet/tree/v4.8.2"
+                "source": "https://github.com/laravel/valet/tree/v4.8.4"
             },
-            "time": "2024-12-20T21:19:04+00:00"
+            "time": "2025-03-04T16:29:15+00:00"
         },
         {
             "name": "league/commonmark",
