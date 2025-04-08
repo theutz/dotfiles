@@ -32,3 +32,4 @@ abbr -a -- mug 'mise use -g'
 abbr -a -- m mise
 abbr -a -- mtaf 'mise tasks add --file'
 abbr -a -- mtx 'mise tasks -x'
+abbr -a -- service 'brew services'
