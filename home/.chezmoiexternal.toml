@@ -23,3 +23,15 @@ type = "git-repo"
 url = "git@github.com:theutz/.hammerspoon"
 refreshPeriod = "168h"
 exact = false
+
+[".config/nvim"]
+type = "git-repo"
+url = "git@github.com:theutz/nvim"
+refreshPeriod = "168h"
+exact = false
+
+[".config/wezterm"]
+type = "git-repo"
+url = "git@github.com:theutz/wezterm"
+refreshPeriod = "168h"
+exact = false
