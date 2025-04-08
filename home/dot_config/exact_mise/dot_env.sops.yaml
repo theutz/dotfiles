@@ -1,12 +1,7 @@
 OPENAI_API_KEY: ENC[AES256_GCM,data:18ToB0crouZVz7V99nBf6NTy1LXJGw2F07eA15SlS9FwnkRIfPfm5d7k67alskHv1T9m28WjQP5+H+FoddcZ1rHxI1X34I+1LgpUmzMknudadiVafP+IqhEPF5PJSbx/LuxrRZzhLCdXWEngybjZYn5RJAyNhS6kBDiym255KkH+Ox4o+AxDArb1f2fKvO/b0UnA82CVJ8g9tljgcTH3AgGhyz4=,iv:Wt2wbcxGM07AsepgbL9uLQzwAbvyWO0QYR3au5nfETs=,tag:bxXMHyqgtnsk1/VGY2uW3w==,type:str]
 ANTHROPIC_API_KEY: ENC[AES256_GCM,data:b1WS8Lf+kXhI6+bdinxbPblCedr5kq5V8jw8P5Us7FtREj34+wGajCogUodohSkmkLk9eyU7M/+yZyREc9rW6SCGgpjzGN0mVqmTJX4p2zpT7qTxT8XY4WOVL4ALj6wQ2LGe6tgPXOenhVEN,iv:8UbZDW3ZNJ4wfiwEpzU3qU2W+EZyF2EKnRTOax37jvo=,tag:TL1dHJLkf7uXZ84RH7LMoQ==,type:str]
 GEMINI_API_KEY: ENC[AES256_GCM,data:9ZI5kNsVwAxkYydoDT6FncG7gO13oXzE3my27uPyIw19/mzKw8sl,iv:Zka3ZcVBNQj5EQLELQYGYusDIIrUYNpWSriZqQZ3htk=,tag:EGpyRjChzGvaIs4HwbQLGA==,type:str]
-GITHUB_TOKEN: ENC[AES256_GCM,data:ujek8NzSYvys8NZWYIUaUEc8rip6tJOjsfXXAehADw+vdv+yb6kiHw==,iv:TBiUgTRf7NgM31gSV8g6euThJE6ZF6SzsdAguaefIDg=,tag:G5uVrtVHrAVrlHn0KklROQ==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
     age:
         - recipient: age1vlk29wfkfqff0c9yky2kwhp4c6zdwuzc7xd5xc8ydsldc9ulf99spwq9x2
           enc: |
@@ -17,8 +12,7 @@ sops:
             NDFPR3dKODM5c2tRZzN6QXZPU2RtS1kKPFWoyR4EFB0CXg6FzWGlvoqBrfpe0KXw
             hfxWYL4QsvYzh3cCCcrHWHn044JUjkJweuRrC7usHTWyIOVOUGuekQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-04-04T11:13:02Z"
-    mac: ENC[AES256_GCM,data:8GdHi/FvPJdRmErH2RteFywJ8SEgymMzxF6AkFIsYBnemGCjv3GQctelgezujqfArXa2uFA4GZYL3ROyeqyi/9TKSiUA/SOLNGYQ1mxwpH3kASwLcS/3o0OXfUp8TfpMQVyXquxnL/kkYWASyPiIuagYKc6OFzYrbS4xSAhQwms=,iv:j0PzXsX8FaH5ut/oFPeqWmtG6EF2akOqmvvegxJWGSs=,tag:jSzzPfl5tXCTTmSvvfQ3qA==,type:str]
-    pgp: []
+    lastmodified: "2025-04-08T19:41:16Z"
+    mac: ENC[AES256_GCM,data:0okhLF+2hZQLlmiWEQkR9CHk7zkgQkwZW3Y14N9y6JiyCI3ATyapBSJbJJT8UrW1o8rwbVTseNVsB21bxJ/G8YtdAgtewiU349gYnnLUkfTnb0fNyhtQYF2fI1DeTC6ARVVlMy0QddzPLFBE+guJ0pC+um+ZEGa57ylH/rzeZCw=,iv:/SAnW6ICXhmn0NbdKW0IwBGO5TmljjtzbSnaDuAxMkk=,tag:uORl6SyoFYr9v2qb+YB3Rg==,type:str]
     unencrypted_suffix: _unencrypted
-    version: 3.9.4
+    version: 3.10.1
