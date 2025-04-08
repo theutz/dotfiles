@@ -36,8 +36,8 @@ url = "git@github.com:theutz/wezterm"
 refreshPeriod = "168h"
 exact = false
 
-[".config/fish"]
-type = "git-repo"
-url = "git@github.com:theutz/fish"
-refreshPeriod = "168h"
-exact = false
+# [".config/fish"]
+# type = "git-repo"
+# url = "git@github.com:theutz/fish"
+# refreshPeriod = "168h"
+# exact = false
