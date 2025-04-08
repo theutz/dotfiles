@@ -35,6 +35,7 @@ neovim = "latest"
 node = "latest"
 "npm:@mermaid-js/mermaid-cli" = "latest"
 "npm:gitignore" = "latest"
+"npm:opencommit" = "latest"
 "pipx:harlequin" = "latest"
 "pipx:httpie" = "latest"
 "pipx:linode-cli" = { version = "latest", extras = '"--with boto3"' }
@@ -73,3 +74,4 @@ macchina = "aqua:Macchina-CLI/macchina"
 [env]
 _.file = "~/.config/mise/.env.sops.yaml"
 IS_FAST_CONFIG_PATH = "~/.config/is-fast/config.toml"
+OCO_ONE_LINE_COMMIT = "true"
