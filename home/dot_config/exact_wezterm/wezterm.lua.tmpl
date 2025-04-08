@@ -9,9 +9,9 @@ config:set_strict_mode(true)
 
 config.default_prog = { "/opt/homebrew/bin/fish" }
 
-config.font = wezterm.font("Berkeley Mono", { weight = 500 })
-config.font_size = 14
-config.line_height = 1.0
+config.font = wezterm.font("Berkeley Mono", { weight = 400 })
+config.font_size = 16
+config.line_height = 1.3
 config.bold_brightens_ansi_colors = "BrightAndBold"
 config.hide_tab_bar_if_only_one_tab = true
 config.quit_when_all_windows_are_closed = true
@@ -36,15 +36,15 @@ local function get_appearance()
 end
 
 local lights = {
-	{ "GruvboxLight", 0.85, 15 },
+	{ "Bluloco Light (Gogh)", 0.85, 20 },
+	{ "Ef-Cyprus", 0.85, 20 },
+	{ "Ef-Deuteranopia-Light", 0.8, 10 },
+	{ "Ef-Tritanopia-Light", 0.8, 10 },
+	{ "GruvboxLight", 0.95, 15 },
 	{ "Gruvbox light, hard (base16)", 0.85, 15 },
 	{ "Gruvbox light, medium (base16)", 0.8, 10 },
 	{ "Gruvbox light, soft (base16)", 0.90, 10 },
-	{ "Ef-Tritanopia-Light", 0.8, 10 },
-	{ "Ef-Deuteranopia-Light", 0.8, 10 },
-	{ "Ef-Cyprus", 0.85, 20 },
 	{ "Ef-Maris-Light", 0.85, 20 },
-	{ "Bluloco Light (Gogh)", 0.85, 20 },
 	{ "Ef-Day", 0.8, 10 },
 	{ "Ef-Duo-Light", 0.8, 10 },
 	{ "Ef-Frost", 0.8, 10 },
