@@ -41,3 +41,9 @@ type = "git-repo"
 url = "git@github.com:theutz/fish"
 refreshPeriod = "168h"
 exact = false
+
+[".config/sketchybar"]
+type = "git-repo"
+url = "git@github.com:theutz/sketchybar"
+refreshPeriod = "168h"
+exact = false
