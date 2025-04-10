@@ -9,7 +9,7 @@ customCommands:
     context: files
     description: opencommit
     key: B
-    showOutput: false
+    showOutput: true
     subprocess: false
 disableStartupPopups: true
 git:
