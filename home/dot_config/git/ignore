@@ -6,3 +6,5 @@ tinkeray.php
 .dir-locals.el
 .direnv
 result
+.mise.local.toml
+mise.local.toml
