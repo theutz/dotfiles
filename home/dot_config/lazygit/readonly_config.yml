@@ -1,16 +1,16 @@
 customCommands:
-  - command: oco --fgm
-    context: files
-    description: opencommit
-    key: b
-    showOutput: true
-    subprocess: true
-  - command: oco --fgm --yes
-    context: files
-    description: opencommit
-    key: B
-    showOutput: true
-    subprocess: false
+  # - command: oco --fgm
+  #   context: files
+  #   description: opencommit
+  #   key: b
+  #   showOutput: true
+  #   subprocess: true
+  # - command: oco --fgm --yes
+  #   context: files
+  #   description: opencommit
+  #   key: B
+  #   showOutput: true
+  #   subprocess: true
 disableStartupPopups: true
 git:
   commit:
