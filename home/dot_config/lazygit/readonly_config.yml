@@ -1,5 +1,12 @@
 customCommands:
+  - key: b
+    context: files
+    command: HK_PROFILE=ai git commit
+    showOutput: true
+    description: generate commit message with ai
+    subprocess: true
   # - command: oco --fgm
+  #
   #   context: files
   #   description: opencommit
   #   key: b
