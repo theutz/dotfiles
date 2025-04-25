@@ -1,6 +1,6 @@
 #!/usr/bin/env -S mise x python@latest uv@latest -- uv run --script
 # /// script
-#  dependencies = ["requests", "beautifulsoup4"]
+#  dependencies = ["requests", "beautifulsoup4", "rich"]
 # ///
 
 import argparse
@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup
 import time
 import os
 import datetime
+from rich import print
+from rich.padding import Padding
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Check DNS leak information')
@@ -18,18 +20,13 @@ def parse_arguments():
     return parser.parse_args()
 
 def run(clear=False):
-    # Fetch data from dnsleaktest.com
     response = requests.get('https://dnsleaktest.com')
     soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Extract the location information (equivalent to pup '.welcome > p text{}')
-    res = soup.select_one('.welcome > p').get_text(strip=True)
-
-    # Format the output (similar to gum format)
+    res = soup.select_one('.welcome').get_text(strip=False)
     current_time = datetime.datetime.now().strftime('%H:%M:%S')
-    out = f"# Current location\n\n  {res}\n\n  _{current_time}_\n"
 
-    # Clear screen if requested
+    out = Padding(f'[bold]Current location[/bold]\n\n{res}\n{current_time}', (1, 4))
+
     if clear:
         os.system('clear')
 
