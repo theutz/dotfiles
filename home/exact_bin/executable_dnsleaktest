@@ -1,48 +1,49 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env -S mise x python@latest uv@latest -- uv run --script
+# /// script
+#  dependencies = ["requests", "beautifulsoup4"]
+# ///
 
-interval=60
-clear=false
-watch=false
+import argparse
+import requests
+from bs4 import BeautifulSoup
+import time
+import os
+import datetime
 
-while [[ $# -gt 0 ]]; do
-  case $1 in
-  --watch | -w)
-    watch=true
-    shift
-    ;;
-  --interval | -i)
-    interval=$2
-    shift 2
-    ;;
-  --clear | -c)
-    clear=true
-    shift
-    ;;
-  esac
-done
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Check DNS leak information')
+    parser.add_argument('--watch', '-w', action='store_true', help='Watch mode - continuously check')
+    parser.add_argument('--interval', '-i', type=int, default=60, help='Interval between checks in seconds (default: 60)')
+    parser.add_argument('--clear', '-c', action='store_true', help='Clear screen before each output')
+    return parser.parse_args()
 
-function run() {
-  res="$(https dnsleaktest.com | pup '.welcome > p text{}')"
+def run(clear=False):
+    # Fetch data from dnsleaktest.com
+    response = requests.get('https://dnsleaktest.com')
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-  out="$(gum format -- "# Current location
+    # Extract the location information (equivalent to pup '.welcome > p text{}')
+    res = soup.select_one('.welcome > p').get_text(strip=True)
 
-  $res
+    # Format the output (similar to gum format)
+    current_time = datetime.datetime.now().strftime('%H:%M:%S')
+    out = f"# Current location\n\n  {res}\n\n  _{current_time}_\n"
 
-  _$(date +'%H:%M:%S')_
-  ")"
+    # Clear screen if requested
+    if clear:
+        os.system('clear')
 
-  if [[ $clear == true ]]; then
-    clear
-  fi
+    print(out)
 
-  echo $out
-}
+def main():
+    args = parse_arguments()
 
-if [[ $watch == true ]]; then
-  while :; do
-    run
-    sleep $interval
-  done
-else
-  run
-fi
+    if args.watch:
+        while True:
+            run(args.clear)
+            time.sleep(args.interval)
+    else:
+        run(args.clear)
+
+if __name__ == "__main__":
+    main()
