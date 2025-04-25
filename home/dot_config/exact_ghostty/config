@@ -1,22 +1,32 @@
-theme = dark:GruvboxDark,light:GruvboxLight
+adjust-cell-height = 16
+background-opacity = 0.75
+command = /opt/homebrew/bin/fish
 font-family = Berkeley Mono
 font-size = 16
-adjust-cell-height = 24
-background-opacity = 0.85
-#minimum-contrast = 1.2
-macos-option-as-alt = left
-# command = /opt/homebrew/bin/fish
-
+font-thicken = true
+keybind = global:shift+f13=toggle_quick_terminal
+keybind = super+e=equalize_splits
+keybind = super+g>super+g=scroll_to_top
 keybind = super+h=goto_split:left
 keybind = super+j=goto_split:down
 keybind = super+k=goto_split:up
 keybind = super+l=goto_split:right
-keybind = super+z=toggle_split_zoom
-keybind = super+e=equalize_splits
-
+keybind = super+n=jump_to_prompt:1
+keybind = super+p=jump_to_prompt:-1
+keybind = super+shift+g=scroll_to_bottom
+keybind = super+shift+g=scroll_to_bottom
 keybind = super+shift+h=resize_split:left,20
 keybind = super+shift+j=resize_split:down,20
 keybind = super+shift+k=resize_split:up,20
 keybind = super+shift+l=resize_split:right,20
-
-keybind = global:f14=toggle_quick_terminal
+keybind = super+t=new_tab
+keybind = super+]=next_tab
+keybind = super+[=previous_tab
+keybind = super+z=toggle_split_zoom
+macos-option-as-alt = left
+macos-titlebar-style = transparent
+theme = dark:rose-pine-moon,light:rose-pine-dawn
+window-padding-balance = true
+window-padding-x = 8
+window-padding-y = 2
+window-title-font-family = Berkeley Mono

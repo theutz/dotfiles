@@ -23,6 +23,7 @@ type = "git-repo"
 url = "git@github.com:theutz/.hammerspoon"
 refreshPeriod = "168h"
 exact = false
+stripComponents = 1
 
 [".config/nvim"]
 type = "git-repo"
