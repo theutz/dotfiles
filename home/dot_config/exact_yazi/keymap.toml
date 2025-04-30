@@ -63,3 +63,14 @@ desc = "Recursively enter child directory, skipping children with only a single 
 [[manager.prepend_keymap]]
 on = ["c", "h", "a"]
 run = 'shell "chezmoi add $@" --block'
+desc = "Add file to chezmoi"
+
+[[manager.prepend_keymap]]
+on = ["c", "h", "f"]
+run = 'shell "chezmoi forget $@" --block'
+desc = "Forget file in chezmoi"
+
+[[manager.prepend_keymap]]
+on = ["c", "h", "e"]
+run = 'shell "chezmoi edit --watch $@" --block'
+desc = "Edit file in chezmoi"
