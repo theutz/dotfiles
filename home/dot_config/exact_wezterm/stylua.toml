@@ -1,0 +1,10 @@
+#:schema https://raw.githubusercontent.com/theutz/schemastore/refs/heads/master/src/schemas/json/stylua.json
+
+syntax = "Lua54"
+column_width = 80
+space_after_function_names = "Never"
+call_parentheses = "None"
+collapse_simple_statement = "Always"
+
+[sort_requires]
+enabled = true
