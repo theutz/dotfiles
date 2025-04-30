@@ -1,11 +1,29 @@
 #!/usr/bin/env zsh
+set -euo pipefail
+
+setopt monitor
+
+tmpdir="$(mktemp -d -t cms)"
+cms_path="${tmpdir}/cms"
+gws_path="${tmpdir}/gws"
+
+# TRAPEXIT() {
+#   if [[ -d $tmpdir ]]; then
+#     rm -r $tmpdir
+#   fi
+# }
 
 export BORDER="rounded"
 export PADDING="0 2"
 export MARGIN="1 0 0 2"
 
-cms="$(chezmoi status)"
-gws="$(chezmoi git -- -c color.status=always status --short)"
+mkfifo $cms_path $gws_path
+
+chezmoi status > $cms_path &!
+chezmoi git -- -c color.status=always status --short > $gws_path &!
+
+cms="$(cat $cms_path)"
+gws="$(cat $gws_path)"
 
 if [[ -n "$cms" ]]; then
   cms="
