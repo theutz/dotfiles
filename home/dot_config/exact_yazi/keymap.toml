@@ -94,5 +94,5 @@ desc = "Re-add files in chezmoi"
 on = ["c", "m", "s"]
 desc = "Show chezmoi status"
 run = '''
-shell "chezmoi status-all; gum confirm 'We done here?'" --block
+shell "chezmoi status .; gum confirm 'We done here?'" --block
 '''
