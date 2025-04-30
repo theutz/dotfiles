@@ -1,0 +1,8 @@
+# history
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+
+# mise
+eval "$(~/.local/bin/mise activate bash)"
+
+# starship
+eval "$(starship init bash)"
