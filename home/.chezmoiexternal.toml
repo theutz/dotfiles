@@ -12,13 +12,6 @@ url = "git@github.com:cheat/cheatsheets"
 refreshPeriod = "24h"
 exact = false
 
-[".hammerspoon"]
-type = "git-repo"
-url = "git@github.com:theutz/.hammerspoon"
-refreshPeriod = "168h"
-exact = false
-stripComponents = 1
-
 [".config/nvim"]
 type = "git-repo"
 url = "git@github.com:theutz/nvim"

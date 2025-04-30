@@ -1,0 +1,4 @@
+#:schema https://raw.githubusercontent.com/SchemaStore/schemastore/refs/heads/master/src/schemas/json/stylua.json
+syntax = "Lua53"
+call_parentheses = "None"
+collapse_simple_statement = "Never"

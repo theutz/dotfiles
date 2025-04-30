@@ -1,0 +1,32 @@
+[tools]
+hk = "latest"
+mods = "latest"
+overmind = "latest"
+pkl = "latest"
+stylua = "latest"
+
+[tasks.dev]
+run = """
+#!/usr/bin/env bash
+set -euxo pipefail
+if [[ -S .overmind.sock ]]; then
+  if ! overmind quit; then
+    rm -rf .overmind.sock
+  fi
+fi
+overmind start
+"""
+
+[tasks."log:sketchybar:err"]
+run = "tail -n0 -f /opt/homebrew/var/log/sketchybar/sketchybar.err.log"
+
+[tasks."log:sketchybar:out"]
+run = "tail -n0 -f /opt/homebrew/var/log/sketchybar/sketchybar.out.log"
+
+[tasks.reload]
+description = "Reload hammerspoon config"
+run = "hs -c 'hs.console.clearConsole()' -c 'hs.reload()'"
+
+[tasks.prelint]
+
+[tasks.postlint]
