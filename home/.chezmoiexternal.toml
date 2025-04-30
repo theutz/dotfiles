@@ -1,9 +1,3 @@
-[".config/tmux/plugins/tpm"]
-type = "git-repo"
-url = "git@github.com:tmux-plugins/tpm"
-refreshPeriod = "24h"
-exact = false
-
 [".zprezto"]
 type = "git-repo"
 url = "git@github.com:sorin-ionescu/prezto"
@@ -28,12 +22,6 @@ stripComponents = 1
 [".config/nvim"]
 type = "git-repo"
 url = "git@github.com:theutz/nvim"
-refreshPeriod = "168h"
-exact = false
-
-[".config/wezterm"]
-type = "git-repo"
-url = "git@github.com:theutz/wezterm"
 refreshPeriod = "168h"
 exact = false
 

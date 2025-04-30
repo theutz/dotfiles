@@ -2,8 +2,8 @@ local wezterm = require "wezterm"
 
 local M = {}
 
-local dark = "rose-pine"
-local light = "rose-pine-dawn"
+local dark = "Dracula"
+local light = "Dracula"
 
 local function scheme_for_appearance(appearance)
 	if appearance:find "Dark" then
