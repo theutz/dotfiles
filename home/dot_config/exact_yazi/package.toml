@@ -23,6 +23,31 @@ use = "wylie102/duckdb"
 rev = "02f902d"
 hash = "9893839d5134aaecf6fafbeff6cac18e"
 
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "2496cd9"
+hash = "5b9dea47776a30946cfbf83232d18fb1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "864a021"
+hash = "2f1053f89d1a301a648ab181d0948e38"
+
+[[plugin.deps]]
+use = "AnirudhG07/plugins-yazi:copy-file-contents"
+rev = "524c52c"
+hash = "27c50e6bc15c09096505b805b238ade0"
+
+[[plugin.deps]]
+use = "aresler/path-from-root"
+rev = "7d05b87"
+hash = "46977a29d4349d11465af1817f17d414"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "864a021"
+hash = "f0c4b41b5d19a3144958383333eff6e7"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
 rev = "fd85060"
