@@ -3,7 +3,10 @@ show_hidden = true
 
 [plugin]
 prepend_previewers = [
+  # Markdown
   { name = "*.md", run = "glow" },
+
+  # Structured data
   { name = "*.csv", run = "duckdb" },
   { name = "*.tsv", run = "duckdb" },
   { name = "*.json", run = "duckdb" },
@@ -12,6 +15,15 @@ prepend_previewers = [
   { name = "*.xlsx", run = "duckdb" },
   { name = "*.db", run = "duckdb" },
   { name = "*.duckdb", run = "duckdb" },
+
+  # Archives
+  { mime = "application/*zip", run = "ouch" },
+  { mime = "application/x-tar", run = "ouch" },
+  { mime = "application/x-bzip2", run = "ouch" },
+  { mime = "application/x-7z-compressed", run = "ouch" },
+  { mime = "application/x-rar", run = "ouch" },
+  { mime = "application/x-xz", run = "ouch" },
+  { mime = "application/xz", run = "ouch" },
 ]
 
 prepend_preloaders = [
