@@ -36,7 +36,7 @@ run = "plugin ouch"
 desc = "Compress with ouch"
 
 [[manager.prepend_keymap]]
-on = ["c", "m"]
+on = ["c", "h", "m"]
 run = "plugin chmod"
 desc = "Chmod on selected files"
 
@@ -61,31 +61,38 @@ run = "plugin bypass"
 desc = "Recursively enter child directory, skipping children with only a single subdirectory"
 
 [[manager.prepend_keymap]]
-on = ["c", "h", "a"]
+on = ["c", "m", "a"]
 run = 'shell "chezmoi add $@" --block'
 desc = "Add files to chezmoi"
 
 [[manager.prepend_keymap]]
-on = ["c", "h", "f"]
+on = ["c", "m", "f"]
 run = 'shell "chezmoi forget $@" --block'
 desc = "Forget files in chezmoi"
 
 [[manager.prepend_keymap]]
-on = ["c", "h", "x"]
+on = ["c", "m", "x"]
 run = 'shell "chezmoi destroy $@" --block'
 desc = "Destroy files in chezmoi and home"
 
 [[manager.prepend_keymap]]
-on = ["c", "h", "e"]
+on = ["c", "m", "e"]
 run = 'shell "chezmoi edit --watch $@" --block'
 desc = "Edit files in chezmoi"
 
 [[manager.prepend_keymap]]
-on = ["c", "h", "r"]
+on = ["c", "m", "m"]
+run = 'shell "chezmoi merge $@" --block'
+desc = "Merge files in chezmoi"
+
+[[manager.prepend_keymap]]
+on = ["c", "m", "r"]
 run = 'shell "chezmoi re-add $@" --block'
 desc = "Re-add files in chezmoi"
 
 [[manager.prepend_keymap]]
-on = ["c", "h", "s"]
-run = 'shell "chezmoi status-all" --block'
+on = ["c", "m", "s"]
 desc = "Show chezmoi status"
+run = '''
+shell "chezmoi status-all; gum confirm 'We done here?'" --block
+'''
