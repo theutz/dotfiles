@@ -5,7 +5,9 @@ files="$(chezmoi status |
   rg '^ D' |
   choose 1 |
   sd '^.+$' '~/$0' |
-  fzf --multi --bind='ctrl-a:toggle-all')"
+  fzf --multi \
+      --bind='ctrl-a:toggle-all' \
+      --prompt='Add deleted: ')"
 
 if [[ -n "$files" ]]; then
   chezmoi add "${(f)files[@]}"
