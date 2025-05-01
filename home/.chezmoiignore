@@ -1,14 +1,15 @@
+{{/*
+vim: ft=gotmpl.gitignore
+*/ -}}
+
 key.txt.age
 bin/chezmoi
 **/.zsh_history
 .config/nushell/history.txt
+.config/nushell/mise.nu
 .config/carapace/bridge
 
 {{ if ne .chezmoi.os "darwin" }}
 Library/
 {{ end }}
 
-# vim: ft=tmpl.gitignore
-.config/nushell/mise.nu
-.config/yazi/plugins
-.config/yazi/flavors
