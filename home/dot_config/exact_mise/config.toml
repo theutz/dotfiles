@@ -14,7 +14,6 @@ aqua = "latest"
 "aqua:tealdeer-rs/tealdeer" = "latest"
 ast-grep = "latest"
 bat = "latest"
-bsky = "latest"
 cargo-binstall = "latest"
 "cargo:hanshuaikang/nping" = "latest"
 "cargo:https://github.com/Magic-JD/is-fast" = "latest"
@@ -53,31 +52,28 @@ node = "latest"
 "pipx:terminal-colors" = "latest"
 "pipx:tmuxp" = "latest"
 "pipx:xonsh" = { version = "latest", uvx_args = "--with gnureadline" }
-pup = "latest"
+"go:github.com/ericchiang/pup" = "latest"
+"aqua:Macchina-CLI/macchina" = "latest"
 python = "3.12"
 rg = "latest"
 ruby = "latest"
 rust = "latest"
 sops = "latest"
-tz = "latest"
 "ubi:Slackadays/Clipboard" = { version = "latest", exe = "cb" }
 "ubi:sinclairtarget/git-who" = "latest"
 uv = "latest"
 vivid = "latest"
-volgo = "latest"
+"go:github.com/elliot40404/volgo/cmd/volgo" = "latest"
 wrk = "latest"
 yq = "latest"
 zellij = "latest"
+"go:github.com/oz/tz" = "latest"
+choose = "latest"
 
 [hooks.enter]
 script = 'eval "$(chezmoi generate zsh)"'
 
 [alias]
-pup = "go:github.com/ericchiang/pup"
-bsky = "go:github.com/mattn/bsky"
-volgo = "go:github.com/elliot40404/volgo/cmd/volgo"
-tz = "go:github.com/oz/tz"
-macchina = "aqua:Macchina-CLI/macchina"
 
 [env]
 _.file = "~/.config/mise/env.sops.yaml"
