@@ -1,0 +1,119 @@
+#!/usr/bin/env -S mise x jc jq fzf gum -- bash
+# vim: ft=bash
+#
+# Dracula Color Palette Explorer
+#
+# This script provides an interactive way to explore and select colors from
+# the Dracula theme palette. It displays color names with previews and allows
+# copying hex codes for use in other applications.
+#
+set -euo pipefail
+
+# Define the Dracula color palette with names and hex codes
+colors="$(
+  cat <<'txt'
+Name               Hex Code
+Background         #282A36
+Foreground         #F8F8F2
+Selection          #44475A
+Comment            #6272A4
+Red                #FF5555
+Orange             #FFB86C
+Yellow             #F1FA8C
+Green              #50FA7B
+Purple             #BD93F9
+Cyan               #8BE9FD
+Pink               #FF79C6
+AnsiBlack          #21222C
+AnsiRed            #FF5555
+AnsiGreen          #50FA7B
+AnsiYellow         #F1FA8C
+AnsiBlue           #BD93F9
+AnsiMagenta        #FF79C6
+AnsiCyan           #8BE9FD
+AnsiWhite          #F8F8F2
+AnsiBrightBlack    #6272A4
+AnsiBrightRed      #FF6E6E
+AnsiBrightGreen    #69FF94
+AnsiBrightYellow   #FFFFA5
+AnsiBrightBlue     #D6ACFF
+AnsiBrightMagenta  #FF92DF
+AnsiBrightCyan     #A4FFFF
+AnsiBrightWhite    #FFFFFF
+txt
+)"
+
+# Creates an interactive fuzzy finder with color previews
+# Parameters:
+#   $@ - Additional arguments to pass to fzf
+function _fzf() {
+  echo "$colors" |
+    fzf --preview '\
+      gum join \
+      "$(CLICOLOR_FORCE=1 gum style --foreground={2} --padding="1 2" --margin="1" {1} {2})" \
+      "$(CLICOLOR_FORCE=1 gum style --background={2} --padding="1 2" --margin="1" {1} {2})" \
+    ' \
+      --bind 'ctrl-o:change-nth(1|2)' \
+      --header-lines=1 \
+      --layout reverse \
+      --preview-window down \
+      "$@"
+}
+
+# Get color information by name
+# Parameters:
+#   $1 - Color name to search for (case-insensitive)
+# Returns:
+#   JSON object with color information or error
+function _get_by_name() {
+  echo "$colors" |
+    jc --asciitable |
+    jq --raw-output --arg name "$1" '
+      map(select(.name | test("^" + $name + "$"; "i"))) |
+      if (length == 1) then
+        (first)
+      elif (length < 1) then
+        error("match not found")
+      else
+        error("mutliple matches")
+      end'
+}
+
+# Main execution logic
+# With no arguments: Launch interactive color selector, returning hex code
+# --name/-n: Get hex code by name or select name interactively
+# --code/-c: Get name by color name or select hex code interactively
+function main() {
+  if [[ $# -eq 0 ]]; then
+    _fzf --accept-nth 2
+    exit
+  fi
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+    --name | -n)
+      # Get hex code by name if provided, otherwise interactive selection
+      if [[ -v "2" && -n "$2" ]]; then
+        _get_by_name "$2" | jq -r '.hex_code'
+        exit
+      fi
+      _fzf --accept-nth 1
+      exit
+      ;;
+    --code | -c)
+      # Get name by color name if provided, otherwise interactive selection
+      if [[ -v "2" && -n "$2" ]]; then
+        _get_by_name "$2" | jq -r '.name'
+        exit
+      fi
+      _fzf --accept-nth 2
+      exit
+      ;;
+    default)
+      shift
+      ;;
+    esac
+  done
+}
+
+main "$@"
