@@ -1,7 +1,17 @@
-#!/usr/bin/env -S mise x fzf -- zsh
+#!/usr/bin/env -S mise x fzf ripgrep -- zsh
 # vim: ft=zsh
 
-chezmoi status |
-  awk '/^DA/ { print "~/" $2 }' |
-  fzf --multi --bind='ctrl-a:toggle-all' --print0 |
-  xargs -0 chezmoi forget
+files="$(
+  chezmoi status |
+    rg '^DA' |
+    fzf --multi \
+        --bind='ctrl-a:toggle-all' \
+        --prompt='Forget missing: ' \
+        --nth='2..' \
+        --accept-nth='~/{2}' \
+        --preview='chezmoi diff ~/{2}' \
+  )"
+
+if [[ -n "$files" ]]; then
+  chezmoi forget "${(f)files[@]}"
+fi

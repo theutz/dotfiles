@@ -1,13 +1,14 @@
-#!/usr/bin/env -S mise x choose@latest fzf@latest ripgrep@latest sd@latest -- zsh
+#!/usr/bin/env -S mise x fzf ripgrep -- zsh
 # vim: ft=zsh
 
 files="$(chezmoi status |
   rg '^ D' |
-  choose 1 |
-  sd '^.+$' '~/$0' |
   fzf --multi \
       --bind='ctrl-a:toggle-all' \
-      --prompt='Add deleted: ')"
+      --prompt='Add deleted: ' \
+      --nth='2..' \
+      --accept-nth='~/{2}' \
+      --preview='chezmoi diff ~/{2}')"
 
 if [[ -n "$files" ]]; then
   chezmoi add "${(f)files[@]}"
