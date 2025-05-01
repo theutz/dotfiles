@@ -1,4 +1,3 @@
 source ~/.config/tig/vim.tig
+source ~/.config/tig/dracula.tig
 
-color cursor black cyan
-color title-focus black magenta
