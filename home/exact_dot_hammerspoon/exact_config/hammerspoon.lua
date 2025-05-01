@@ -7,6 +7,7 @@ function M:init()
 	hs.consoleOnTop(false)
 	hs.openConsoleOnDockClick(true)
 	hs.window.animationDuration = 0
+	hs.dockIcon(false)
 
 	local dark_mode = hs.host.interfaceStyle() == "Dark"
 	hs.preferencesDarkMode(dark_mode)

@@ -15,7 +15,6 @@ end
 function M:pre_spoons()
 	self.logger.i "Loading pre-spoon scripts..."
 	require("config.hammerspoon"):init()
-	require("config.screens"):init()
 	require("config.alert"):init()
 	require("config.hints"):init()
 	require("config.grid"):init()
@@ -26,13 +25,16 @@ function M:spoons()
 	self.logger.i "Loading spoons..."
 	require "config.spoons.spoon-install"
 	require "config.spoons.url-dispatcher"
+	require "config.spoons.miro"
+	require "config.spoons.reload-config"
+	require "config.spoons.window-screen-left-and-right"
+	require "config.spoons.recursive-binder"
 end
 
 ---Scripts to load only after spoons are loaded
 function M:post_spoons()
 	self.logger.i "Loading post-spoons scripts..."
-	require("config.keys"):init()
-	require("config.window-filters"):init():start()
+	-- require("config.window-filters"):init():start()
 end
 
 ---Scripts to run after all other setup tasks are completed

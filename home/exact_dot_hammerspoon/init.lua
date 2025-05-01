@@ -5,10 +5,4 @@ require "hs.ipc"
 local config = require "config"
 config:load()
 
-hs.task
-	.new("/opt/homebrew/bin/sketchybar", function()
-		local sb = require "modules.sketchybar"
-		sb:hs "Hammerspoon reloaded!"
-		config:deferred()
-	end, { "--reload" })
-	:start()
+hs.notify.show("Hammerspoon", "", "Config reloaded!")

@@ -15,6 +15,10 @@ M.cols = 12
 ---@private
 M.margins = 12
 
+---Top bar gap
+---@private
+M.top_bar = 0
+
 function M:init()
 	self:setup_grid()
 end
@@ -28,10 +32,9 @@ end
 function M:setup_grid()
 	for _, screen in ipairs(hs.screen.allScreens() or {}) do
 		local name, frame = screen:name() or "", screen:frame()
-		local bar = 40
 
 		if not name:match "^Built%-in" then
-			frame.y, frame.h = frame.y + bar, frame.h - bar
+			frame.y, frame.h = frame.y + self.top_bar, frame.h - self.top_bar
 		end
 
 		hs.grid
