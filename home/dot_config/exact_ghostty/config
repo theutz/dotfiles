@@ -25,7 +25,7 @@ keybind = super+[=previous_tab
 keybind = super+z=toggle_split_zoom
 macos-option-as-alt = left
 macos-titlebar-style = transparent
-theme = dark:rose-pine-moon,light:rose-pine-dawn
+theme = dracula
 window-padding-balance = true
 window-padding-x = 8
 window-padding-y = 2
