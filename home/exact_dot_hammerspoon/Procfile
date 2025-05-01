@@ -1,3 +1,0 @@
-reload: mise watch reload
-sketchybar: mise run log:sketchybar:*
-hs: hs -C
