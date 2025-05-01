@@ -99,7 +99,7 @@ desc = "Re-add files in chezmoi"
 on = ["c", "m", "s"]
 desc = "Show chezmoi status"
 run = '''
-shell "chezmoi status .; gum confirm 'We done here?'" --block
+shell "chezmoi status .; sleep 30s" --block
 '''
 
 [[manager.prepend_keymap]]
