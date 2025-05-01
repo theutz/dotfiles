@@ -1,0 +1,18 @@
+[tasks.restart]
+run = "sketchybar --reload"
+
+[tasks.prelint]
+
+[tasks.postlint]
+
+[tools]
+overmind = "latest"
+
+[tasks."log:err"]
+run = "tail -n0 -f /opt/homebrew/var/log/sketchybar/sketchybar.err.log"
+
+[tasks."log:out"]
+run = "tail -n0 -f /opt/homebrew/var/log/sketchybar/sketchybar.out.log"
+
+[tasks.dev]
+run = "overmind start"
