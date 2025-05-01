@@ -6,12 +6,6 @@ exact = false
 clone.args = ['--recursive']
 pull.args = ['--recurse-submodules']
 
-[".local/share/cheat/cheatsheets/community"]
-type = "git-repo"
-url = "git@github.com:cheat/cheatsheets"
-refreshPeriod = "24h"
-exact = false
-
 [".config/nvim"]
 type = "git-repo"
 url = "git@github.com:theutz/nvim"
