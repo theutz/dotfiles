@@ -6,12 +6,6 @@ exact = false
 clone.args = ['--recursive']
 pull.args = ['--recurse-submodules']
 
-[".config/nvim"]
-type = "git-repo"
-url = "git@github.com:theutz/nvim"
-refreshPeriod = "168h"
-exact = false
-
 [".config/fish"]
 type = "git-repo"
 url = "git@github.com:theutz/fish"

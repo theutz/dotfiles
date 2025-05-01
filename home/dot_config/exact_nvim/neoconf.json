@@ -1,0 +1,22 @@
+{
+  "lspconfig": {
+    "tailwindcss": {
+      "tailwindCSS.includeLanguages": {
+        "antlers": "html",
+        "htmlhugo": "html"
+      }
+    },
+    "emmet_ls": {
+      "filetypes": ["blade", "css", "html"]
+    },
+    "intelephense": {
+      "settings": {
+        "intelephense": {
+          "diagnostics": {
+            "enable": true
+          }
+        }
+      }
+    }
+  }
+}
