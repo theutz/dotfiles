@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-local result=$(command tere "$@")
-[ -n "$result" ] && cd -- "$result"

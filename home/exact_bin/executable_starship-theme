@@ -1,7 +1,0 @@
-#!/opt/homebrew/bin/fish
-
-set -l theme $argv[1]
-
-echo "$theme"
-
-ln -sf $HOME/.config/starship/$theme.toml $HOME/.config/starship.toml
