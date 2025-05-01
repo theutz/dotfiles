@@ -1,6 +1,5 @@
 key.txt.age
 bin/chezmoi
-.config/tmux/plugins
 **/.zsh_history
 .config/nushell/history.txt
 .config/carapace/bridge
