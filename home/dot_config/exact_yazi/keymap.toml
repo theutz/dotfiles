@@ -66,19 +66,19 @@ run = 'shell "chezmoi add $@" --block'
 desc = "Add files to chezmoi"
 
 [[manager.prepend_keymap]]
-on = ["c", "m", "f"]
-run = 'shell "chezmoi forget $@" --block'
-desc = "Forget files in chezmoi"
-
-[[manager.prepend_keymap]]
-on = ["c", "m", "x"]
-run = 'shell "chezmoi destroy $@" --block'
-desc = "Destroy files in chezmoi and home"
+on = ["c", "m", "c"]
+run = 'shell "chezmoi  $@" --interactive --cursor=8'
+desc = "Re-add files in chezmoi"
 
 [[manager.prepend_keymap]]
 on = ["c", "m", "e"]
 run = 'shell "chezmoi edit --watch $@" --block'
 desc = "Edit files in chezmoi"
+
+[[manager.prepend_keymap]]
+on = ["c", "m", "f"]
+run = 'shell "chezmoi forget $@" --block'
+desc = "Forget files in chezmoi"
 
 [[manager.prepend_keymap]]
 on = ["c", "m", "m"]
@@ -96,3 +96,8 @@ desc = "Show chezmoi status"
 run = '''
 shell "chezmoi status .; gum confirm 'We done here?'" --block
 '''
+
+[[manager.prepend_keymap]]
+on = ["c", "m", "x"]
+run = 'shell "chezmoi destroy $@" --block'
+desc = "Destroy files in chezmoi and home"
