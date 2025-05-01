@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 if [[ -x artisan && -x please ]]; then
-    php please $@
+  php please $@
 elif [[ -x artisan ]]; then
   php please $@
 elif [[ -x vendor/bin/wp ]]; then
