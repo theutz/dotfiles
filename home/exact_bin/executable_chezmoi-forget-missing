@@ -9,8 +9,8 @@ files="$(
         --prompt='Forget missing: ' \
         --nth='2..' \
         --accept-nth='~/{2}' \
-        --preview='chezmoi diff ~/{2}' \
-  )"
+        --preview='chezmoi diff ~/{2}'
+)"
 
 if [[ -n "$files" ]]; then
   chezmoi forget "${(f)files[@]}"

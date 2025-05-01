@@ -8,7 +8,8 @@ files="$(chezmoi status |
       --prompt='Add deleted: ' \
       --nth='2..' \
       --accept-nth='~/{2}' \
-      --preview='chezmoi diff ~/{2}')"
+      --preview='chezmoi diff ~/{2}'
+)"
 
 if [[ -n "$files" ]]; then
   chezmoi add "${(f)files[@]}"
