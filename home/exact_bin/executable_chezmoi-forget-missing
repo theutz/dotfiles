@@ -1,0 +1,7 @@
+#!/usr/bin/env -S mise x fzf -- zsh
+# vim: ft=zsh
+
+chezmoi status |
+  awk '/^DA/ { print "~/" $2 }' |
+  fzf --multi --bind='ctrl-a:toggle-all' --print0 |
+  xargs -0 chezmoi forget
