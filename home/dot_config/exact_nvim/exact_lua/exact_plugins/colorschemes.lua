@@ -1,121 +1,126 @@
-local colors = {
-  {
-    "folke/tokyonight.nvim",
-    name = "tokyonight",
-    enabled = false,
-    opts = {
-      transparent = true,
-      style = "moon",
-      light_style = "moon",
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-      on_colors = function(c) c.border = c.blue0 end,
-    },
-  },
-  {
-    "scottmckendry/cyberdream.nvim",
-    enabled = false,
-    opts = {
-      transparent = true,
-      italic_comments = true,
-    },
-  },
-  {
-    "echasnovski/mini.base16",
-    enabled = false,
-    version = false,
-  },
-  {
-    "uloco/bluloco.nvim",
-    enabled = false,
-    dependencies = { "rktjmp/lush.nvim" },
-    name = "bluloco",
-    opts = {
-      transparent = true,
-      style = "auto",
-      italics = true,
-    },
-  },
-  {
-    "bluz71/vim-moonfly-colors",
-    enabled = false,
-    name = "moonfly",
-  },
-  {
-    "austinliuigi/smoke.nvim",
-    enabled = false,
-  },
-  {
-    "ellisonleao/gruvbox.nvim",
-    enabled = false,
-    opts = {
-      transparent_mode = true,
-      dim_inactive = false,
-    },
-  },
-  {
-    "shaunsingh/nord.nvim",
-    enabled = false,
-    init = function() vim.g.nord_disable_background = true end,
-  },
-  {
-    "rose-pine/neovim",
-    enabled = true,
-    name = "rose-pine",
-    opts = {
-      variant = "auto",
-      styles = {
-        transparency = true,
-      },
-    },
-  },
-  {
-    "catppuccin/nvim",
-    enabled = false,
-    name = "catppuccin",
-    opts = {
-      transparent_background = true,
-      background = {
-        light = "latte",
-        dark = "mocha",
-      },
-    },
-  },
+-- vim: fdm=indent
+---@diagnostic disable: unused-local
+
+local tokyonight = {
+	"folke/tokyonight.nvim",
+	name = "tokyonight",
+	opts = {
+		transparent = true,
+		style = "moon",
+		light_style = "moon",
+		styles = {
+			sidebars = "transparent",
+			floats = "transparent",
+		},
+		on_colors = function(c)
+			c.border = c.blue0
+		end,
+	},
 }
 
-local function get_enabled_scheme_name()
-  local enabled = {}
-
-  for _, plugin in ipairs(colors) do
-    if plugin.enabled then
-      local _, repo = plugin[1]:match "([^/]+)/([^/]+)"
-      local name = plugin.name or repo:gsub("%.nvim$", "")
-      table.insert(enabled, name)
-    end
-  end
-
-  if #enabled > 1 then
-    return "tokyonight"
-  else
-    return enabled[1]
-  end
-end
-
-local plugins = {
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = get_enabled_scheme_name(),
-    },
-  },
+local cyberdream = {
+	"scottmckendry/cyberdream.nvim",
+	opts = {
+		transparent = true,
+		italic_comments = true,
+	},
 }
 
-for _, color in pairs(colors) do
-  color.priority = 1000
-  color.lazy = false
-  table.insert(plugins, color)
+local base16 = {
+	"echasnovski/mini.base16",
+	version = false,
+}
+
+local bluloco = {
+	"uloco/bluloco.nvim",
+	dependencies = { "rktjmp/lush.nvim" },
+	name = "bluloco",
+	opts = {
+		transparent = true,
+		style = "auto",
+		italics = true,
+	},
+}
+
+local moonfly = {
+	"bluz71/vim-moonfly-colors",
+	name = "moonfly",
+}
+
+local smoke = {
+	"austinliuigi/smoke.nvim",
+}
+
+local gruvbox = {
+
+	"ellisonleao/gruvbox.nvim",
+	opts = {
+		transparent_mode = true,
+		dim_inactive = false,
+	},
+}
+
+local nord = {
+	"shaunsingh/nord.nvim",
+	init = function()
+		vim.g.nord_disable_background = true
+	end,
+}
+
+local rose_pine = {
+
+	"rose-pine/neovim",
+	name = "rose-pine",
+	opts = {
+		variant = "dawn",
+		dark_variant = "main",
+		styles = {
+			transparency = true,
+		},
+	},
+}
+
+local catpuccin = {
+	"catppuccin/nvim",
+	name = "catppuccin",
+	opts = {
+		transparent_background = true,
+		background = {
+			light = "latte",
+			dark = "mocha",
+		},
+	},
+}
+
+local dracula = {
+	"Mofiqul/dracula.nvim",
+	scheme_name = "dracula",
+	opts = {
+		transparent_bg = true,
+		italic_comment = true,
+	},
+}
+
+local function get_scheme_name(scheme)
+	local _, repo = scheme[1]:match("([^/]+)/([^/]+)")
+	local name = scheme.name or repo:gsub("%.nvim$", "")
+	return name
 end
 
-return plugins
+local function high_priority(scheme)
+	scheme.priority = 1000
+	scheme.lazy = false
+	return scheme
+end
+
+local active = dracula
+
+return {
+	high_priority(active),
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = get_scheme_name(active),
+		},
+	},
+}
