@@ -13,3 +13,4 @@ bin/chezmoi
 Library/
 {{ end }}
 
+**/.DS_Store
