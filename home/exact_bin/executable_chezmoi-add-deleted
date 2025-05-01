@@ -1,0 +1,12 @@
+#!/usr/bin/env -S mise x choose@latest fzf@latest ripgrep@latest sd@latest -- zsh
+# vim: ft=zsh
+
+files="$(chezmoi status |
+  rg '^ D' |
+  choose 1 |
+  sd '^.+$' '~/$0' |
+  fzf --multi --bind='ctrl-a:toggle-all')"
+
+if [[ -n "$files" ]]; then
+  chezmoi add "${(f)files[@]}"
+fi
