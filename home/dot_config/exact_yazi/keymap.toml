@@ -15,10 +15,10 @@ run = '''
 '''
 desc = "Jump to repo root"
 
-# [[manager.prepend_keymap]]
-# on = ["l"]
-# run = "plugin smart-enter"
-# desc = "Enter the child directory, or open the file"
+[[manager.prepend_keymap]]
+on = ["l"]
+run = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
 
 [[manager.prepend_keymap]]
 on = "p"
@@ -66,9 +66,14 @@ run = 'shell "chezmoi add $@" --block'
 desc = "Add files to chezmoi"
 
 [[manager.prepend_keymap]]
+on = ["c", "m", "A"]
+run = 'shell "chezmoi apply --interactive $@" --block'
+desc = "Apply files from chezmoi"
+
+[[manager.prepend_keymap]]
 on = ["c", "m", "c"]
-run = 'shell "chezmoi  $@" --interactive --cursor=8'
-desc = "Re-add files in chezmoi"
+run = 'shell "chezmoi  $@" --interactive --cursor=8; sleep 1h'
+desc = "Run a chezmoi command on files"
 
 [[manager.prepend_keymap]]
 on = ["c", "m", "e"]
