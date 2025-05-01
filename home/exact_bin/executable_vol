@@ -1,6 +1,6 @@
 #!/usr/bin/env -S mise x go:github.com/elliot40404/volgo/cmd/volgo@latest -- zsh
 
-wezterm -e volgo
+wezterm start volgo
 # volgo
 
 # vim: ft=zsh
