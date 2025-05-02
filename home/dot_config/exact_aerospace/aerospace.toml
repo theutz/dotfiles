@@ -33,6 +33,7 @@ start-at-login = true
   9 = ["secondary", "main"]
 
 [mode.main.binding]
+  # spellcheck:ignore
   # All possible keys:
   # - Letters.        a, b, c, ..., z
   # - Numbers.        0, 1, 2, ..., 9
@@ -45,20 +46,7 @@ start-at-login = true
   # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
   #                   keypadMinus, keypadMultiply, keypadPlus
   # - Arrows.         left, down, up, right
-
   # All possible modifiers: cmd, alt, ctrl, shift
-
-  # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-
-  # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-  # You can uncomment the following lines to open up terminal with alt + enter shortcut
-  # (like in i3)
-  # alt-enter = '''exec-and-forget osascript -e '
-  # tell application "Terminal"
-  #     do script
-  #     activate
-  # end tell'
-  # '''
 
   cmd-ctrl-alt-h = 'focus left'
   cmd-ctrl-alt-i = [
@@ -123,8 +111,7 @@ start-at-login = true
   p = 'workspace prev'
   r = [
     'reload-config',
-    'mode main',
-    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+    'exec-and-forget sketchybar --reload',
     'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
   ]
   shift-1 = ['move-node-to-workspace 1', 'workspace 1']

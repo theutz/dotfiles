@@ -1,33 +1,22 @@
 #!/usr/bin/env bash
 
-# This is a demo config to showcase some of the most important commands.
-# It is meant to be changed and configured, as it is intentionally kept sparse.
-# For a (much) more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
-
 PATH="$HOME/bin:$PATH" # Append path so I can use dracula colors
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 FONT="BlexMono Nerd Font Propo"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+# Setup bar
+args=(
+	--bar
+	position=top
+	height=40
+	blur_radius=30
+	color="$(dracula -s -a 88 background)"
+)
+sketchybar "${args[@]}"
 
-sketchybar --bar \
-	position=top \
-	height=40 \
-	blur_radius=30 \
-	"color=$(dracula -s -a 88 background)"
-
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
-
-default=(
+# Setup defaults
+args=(
+	--default
 	padding_left=5
 	padding_right=5
 	icon.font="${FONT}:Normal:18.0"
@@ -41,80 +30,104 @@ default=(
 	alias.color="$(dracula -s cyan)"
 	alias.scale=1.0
 )
-sketchybar --default "${default[@]}"
 
-### Aerospace spaces
-sketchybar --add event aerospace_workspace_change
-
+# Setup  AeroSpace spaces
+args+=(
+	--add event aerospace_workspace_change
+	--add item aerospace left
+	--set aerospace
+	script="$PLUGIN_DIR/aerospace.sh"
+	drawing=off
+	--subscribe aerospace aerospace_workspace_change
+)
 for sid in $(aerospace list-workspaces --all); do
-	sketchybar --add item space."$sid" left \
-		--subscribe space."$sid" aerospace_workspace_change \
-		--set space."$sid" \
-		background.color="$(dracula -s green)" \
-		label.color="$(dracula -s foreground)" \
-		icon.color="$(dracula -s comment)" \
-		background.corner_radius=5 \
-		background.height=20 \
-		background.drawing=off \
-		label="$sid" \
-		click_script="aerospace workspace $sid" \
-		script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+	args+=(
+		--add item space."$sid" left
+		--set space."$sid"
+		background.color="$(dracula -s -a 88 green)"
+		label.color="$(dracula -s comment)"
+		icon.color="$(dracula -s comment)"
+		background.corner_radius=5
+		background.height=24
+		background.drawing=off
+		label="$sid"
+		click_script="aerospace workspace $sid"
+	)
 done
 
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
+# Setup chevron
+args+=(
+	--add item chevron left
+	--set chevron icon=""
+	label.drawing=off
+	icon.color="$(dracula -s red)"
+	icon.padding_left=12
+)
 
-sketchybar --add item chevron left \
-	--set chevron icon="" label.drawing=off icon.color="$(dracula -s red)" icon.padding_left=12 \
-	--add item front_app left \
-	--set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" label.color="$(dracula -s pink)" \
+# Setup front app
+args+=(
+	--add item front_app left
+	--set front_app
+	icon.drawing=off
+	script="$PLUGIN_DIR/front_app.sh"
+	label.color="$(dracula -s pink)"
 	--subscribe front_app front_app_switched
+)
 
-#### Aerospace Modes
-sketchybar --add event aerospace_mode_change \
-	--add item aerospace.mode left \
-	--subscribe aerospace.mode aerospace_mode_change \
-	--set aerospace.mode \
-	drawing=off \
-	icon="" \
-	icon.color="$(dracula -s cyan)" \
-	label.color="$(dracula -s yellow)" \
-	script="$CONFIG_DIR/plugins/aerospace_mode.sh"
+# Setup AeroSpace Modes
+args+=(
+	--add event aerospace_mode_change
+	--add item aerospace.mode left
+	--subscribe aerospace.mode aerospace_mode_change
+	--set aerospace.mode
+	drawing=off
+	icon=""
+	icon.color="$(dracula -s cyan)"
+	label.color="$(dracula -s yellow)"
+	script="$PLUGIN_DIR/aerospace_mode.sh"
+)
 
-##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
+# Setup clock
+args+=(
+	--add item clock right
+	--set clock
+	update_freq=10
+	icon= script="$PLUGIN_DIR/clock.sh"
+)
 
-# Some items refresh on a fixed cycle, e.g. the clock runs its script once
-# every 10s. Other items respond to events they subscribe to, e.g. the
-# volume.sh script is only executed once an actual change in system audio
-# volume is registered. More info about the event system can be found here:
-# https://felixkratz.github.io/SketchyBar/config/events
+# Setup volume
+args+=(
+	--add item volume right
+	--set volume script="$PLUGIN_DIR/volume.sh"
+	--subscribe volume volume_change
+)
 
-sketchybar --add item clock right \
-	--set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
-	--add item volume right \
-	--set volume script="$PLUGIN_DIR/volume.sh" \
-	--subscribe volume volume_change \
-	--add item battery right \
-	--set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+# Setup battery
+args+=(
+	--add item battery right
+	--set battery
+	update_freq=120
+	script="$PLUGIN_DIR/battery.sh"
 	--subscribe battery system_woke power_source_change
+)
 
-ALIASES=(
+aliases=(
 	"Tailscale,Item-0"
 	"TextInputMenuAgent,Item-0"
 	"Control Center,FocusModes"
 	"AeroSpace,Item-0"
 )
-for i in "${ALIASES[@]}"; do
-	sketchybar --add alias "$i" right \
-		--set "$i" background.padding_left=0 \
-		background.padding_right=8 \
-		label.drawing=off \
+for alias in "${aliases[@]}"; do
+	args+=(
+		--add alias "$alias" right
+		--set "$alias"
+		background.padding_left=0
+		background.padding_right=8
+		label.drawing=off
 		icon.drawing=off
+	)
 done
+sketchybar "${args[@]}"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

@@ -1,39 +1,78 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 PATH="$HOME/bin:$PATH"
 
-if [[ -z "$FOCUSED_WORKSPACE" ]]; then
-    FOCUSED_WORKSPACE="$(aerospace list-workspaces --focused)"
-fi
+focused_workspace="$(aerospace list-workspaces --focused)"
+all_workspaces="$(aerospace list-workspaces --all)"
+workspaces_on_focused_monitor="$(
+    aerospace list-workspaces --monitor focused --json |
+        jq 'map(.workspace)'
+)"
 
-args=("--set" "$NAME")
+function is_on_focused_monitor() {
+    echo "$workspaces_on_focused_monitor" |
+        jq --exit-status --arg w "$1" 'any(. == $w)' >/dev/null
+    return $?
+}
 
-if [[ $(aerospace list-workspaces --monitor focused) =~ $1 ]]; then
-    args+=(icon="•")
-else
-    args+=(icon=" ")
-fi
+function workspace_has_windows() {
+    count="$(aerospace list-windows --workspace "$1" --count)"
+    if [[ "$count" -gt 0 ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
 
-if [[ "$1" = "$FOCUSED_WORKSPACE" ]]; then
+fg="$(dracula -s foreground)"
+green="$(dracula -s green)"
+comment="$(dracula -s comment)"
+
+args=()
+
+for workspace in $all_workspaces; do
     args+=(
-        background.drawing=on
-        icon.drawing=off
-        label.color="$(dracula -s background)"
+        --set
+        space."$workspace"
     )
-else
+
+    if [[ "$workspace" == "$focused_workspace" ]]; then
+        args+=(
+            background.drawing=on
+            icon="•"
+            label.color="$fg"
+            icon.color="$green"
+        )
+        continue
+    fi
+
     args+=(
         background.drawing=off
-        icon.drawing=on
+        icon.color="$comment"
     )
-    if [[ "$(aerospace list-windows --workspace "$1" --count)" -gt 0 ]]; then
+
+    if is_on_focused_monitor "$workspace"; then
         args+=(
-            label.color="$(dracula -s foreground)"
+            label.color="$fg"
+            icon.color="$comment"
         )
     else
         args+=(
-            label.color="$(dracula -s comment)"
+            label.color="$comment"
         )
     fi
-fi
+
+    if workspace_has_windows "$workspace"; then
+        args+=(
+            icon="•"
+        )
+    else
+        args+=(
+            icon=" "
+        )
+    fi
+done
 
 sketchybar "${args[@]}"
