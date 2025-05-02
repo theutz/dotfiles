@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
-PATH="$HOME/bin:$PATH"
+. "$CONFIG_DIR/colors.sh"
 
 focused_workspace="$(aerospace list-workspaces --focused)"
 all_workspaces="$(aerospace list-workspaces --all)"
@@ -26,10 +25,6 @@ function workspace_has_windows() {
     fi
 }
 
-fg="$(dracula -s foreground)"
-green="$(dracula -s green)"
-comment="$(dracula -s comment)"
-
 args=()
 
 for workspace in $all_workspaces; do
@@ -41,36 +36,32 @@ for workspace in $all_workspaces; do
     if [[ "$workspace" == "$focused_workspace" ]]; then
         args+=(
             background.drawing=on
-            icon="•"
-            label.color="$fg"
-            icon.color="$green"
-        )
-        continue
-    fi
-
-    args+=(
-        background.drawing=off
-        icon.color="$comment"
-    )
-
-    if is_on_focused_monitor "$workspace"; then
-        args+=(
-            label.color="$fg"
-            icon.color="$comment"
+            # label.highlight=on
+            # icon.highlight=on
         )
     else
         args+=(
-            label.color="$comment"
+            background.drawing=off
+        )
+    fi
+
+    if is_on_focused_monitor "$workspace"; then
+        args+=(
+            label.highlight=on
+        )
+    else
+        args+=(
+            label.highlight=off
         )
     fi
 
     if workspace_has_windows "$workspace"; then
         args+=(
-            icon="•"
+            icon.highlight=on
         )
     else
         args+=(
-            icon=" "
+            icon.highlight=off
         )
     fi
 done

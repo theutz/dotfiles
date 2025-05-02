@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-PATH="$HOME/bin:$PATH" # Append path so I can use dracula colors
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 FONT="BlexMono Nerd Font Propo"
+
+source ./colors.sh
 
 # Setup bar
 args=(
@@ -10,8 +11,9 @@ args=(
 	position=top
 	height=40
 	blur_radius=30
-	color="$(dracula -s -a 88 background)"
+	color="$(color -a 88 background)"
 )
+
 sketchybar "${args[@]}"
 
 # Setup defaults
@@ -21,13 +23,13 @@ args=(
 	padding_right=5
 	icon.font="${FONT}:Normal:18.0"
 	label.font="${FONT}:Normal:16.0"
-	icon.color="$(dracula -s purple)"
-	label.color="$(dracula -s foreground)"
-	icon.padding_left=4
+	icon.color="$(color purple)"
+	label.color="$(color foreground)"
+	icon.padding_left=8
 	icon.padding_right=4
 	label.padding_left=4
-	label.padding_right=4
-	alias.color="$(dracula -s cyan)"
+	label.padding_right=8
+	alias.color="$(color cyan)"
 	alias.scale=1.0
 )
 
@@ -44,9 +46,13 @@ for sid in $(aerospace list-workspaces --all); do
 	args+=(
 		--add item space."$sid" left
 		--set space."$sid"
-		background.color="$(dracula -s -a 88 green)"
-		label.color="$(dracula -s comment)"
-		icon.color="$(dracula -s comment)"
+		icon=•
+		icon.color="$(color selection)"
+		icon.highlight_color="$(color green)"
+		label.color="$(color comment)"
+		label.highlight_color="$(color green)"
+		background.color="$(color -a 33 green)"
+		label.font.size=14.0
 		background.corner_radius=5
 		background.height=24
 		background.drawing=off
@@ -60,7 +66,7 @@ args+=(
 	--add item chevron left
 	--set chevron icon=""
 	label.drawing=off
-	icon.color="$(dracula -s red)"
+	icon.color="$(color red)"
 	icon.padding_left=12
 )
 
@@ -70,7 +76,7 @@ args+=(
 	--set front_app
 	icon.drawing=off
 	script="$PLUGIN_DIR/front_app.sh"
-	label.color="$(dracula -s pink)"
+	label.color="$(color pink)"
 	--subscribe front_app front_app_switched
 )
 
@@ -82,8 +88,8 @@ args+=(
 	--set aerospace.mode
 	drawing=off
 	icon=""
-	icon.color="$(dracula -s cyan)"
-	label.color="$(dracula -s yellow)"
+	icon.color="$(color cyan)"
+	label.color="$(color yellow)"
 	script="$PLUGIN_DIR/aerospace_mode.sh"
 	click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
 )
@@ -92,6 +98,7 @@ args+=(
 args+=(
 	--add item clock right
 	--set clock
+	display=active
 	update_freq=10
 	icon= script="$PLUGIN_DIR/clock.sh"
 )
@@ -100,6 +107,7 @@ args+=(
 args+=(
 	--add item volume right
 	--set volume script="$PLUGIN_DIR/volume.sh"
+	display=active
 	--subscribe volume volume_change
 )
 
@@ -107,6 +115,7 @@ args+=(
 args+=(
 	--add item battery right
 	--set battery
+	display=active
 	update_freq=120
 	script="$PLUGIN_DIR/battery.sh"
 	--subscribe battery system_woke power_source_change
@@ -124,10 +133,31 @@ for alias in "${aliases[@]}"; do
 		--set "$alias"
 		background.padding_left=0
 		background.padding_right=8
+		display=active
 		label.drawing=off
 		icon.drawing=off
 	)
 done
+
+args+=(
+	--add item spotify center
+	--set spotify
+	display=1
+	drawing=off
+	label.font.size=12.0
+	icon=""
+	icon.color="$(color green)"
+	label.color="$(color yellow)"
+	background.corner_radius=4
+	background.height=24
+	label.padding_right=8
+	icon.padding_left=8
+	background.color="$(color -a 33 green)"
+	script="$PLUGIN_DIR/spotify.sh"
+	update_freq=5
+	click_script="wezterm start --domain unix --attach --workspace spotify spotify_player"
+)
+
 sketchybar "${args[@]}"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
