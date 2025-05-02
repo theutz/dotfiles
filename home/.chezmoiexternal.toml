@@ -5,9 +5,3 @@ refreshPeriod = "24h"
 exact = false
 clone.args = ['--recursive']
 pull.args = ['--recurse-submodules']
-
-[".config/fish"]
-type = "git-repo"
-url = "git@github.com:theutz/fish"
-refreshPeriod = "168h"
-exact = false
