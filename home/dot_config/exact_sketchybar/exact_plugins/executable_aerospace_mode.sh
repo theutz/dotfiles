@@ -1,31 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PATH="$HOME/bin:$PATH"
+. "$CONFIG_DIR/colors.sh"
 
-if [[ ! -v MODE || -z "$MODE" ]]; then
-    MODE="$(aerospace list-modes --current)"
-fi
+MODE="$(aerospace list-modes --current)"
 
-args=(
-    "--set"
-    "aerospace.mode"
-    "label=${MODE^^}"
-)
+args=("--set" "aerospace.mode" "label=${MODE^^}")
 
 case "$MODE" in
-power)
+focus | move)
     args+=(
-        "icon.color=$(dracula -s red)"
-        "label.color=$(dracula -s orange)"
+        icon.color="$(color red)"
+        label.color="$(color orange)"
     )
-    borders active_color="$(dracula -s red)" inactive_color="$(dracula -s orange)"
+    borders active_color="$(color red)" inactive_color="$(color red -a 33)"
     ;;
 esac
 
 if [[ "$MODE" == main ]]; then
     args+=("drawing=off")
-    source "$HOME/.config/borders/bordersrc"
+    borders active_color="$(color cyan)" inactive_color="$(color -a 88 background)"
 else
     args+=("drawing=on")
 fi

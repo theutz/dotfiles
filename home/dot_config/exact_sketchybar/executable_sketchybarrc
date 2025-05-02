@@ -90,6 +90,7 @@ args+=(
 	icon=""
 	icon.color="$(color cyan)"
 	label.color="$(color yellow)"
+	update_freq=1
 	script="$PLUGIN_DIR/aerospace_mode.sh"
 	click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
 )

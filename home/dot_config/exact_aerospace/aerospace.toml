@@ -65,16 +65,10 @@ start-at-login = true
   cmd-ctrl-alt-o = 'focus-monitor --wrap-around next'
   cmd-ctrl-alt-p = 'workspace prev'
   cmd-ctrl-alt-slash = 'layout accordion tiles'
-  cmd-ctrl-alt-space = [
-    'mode power',
-    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=power',
-  ]
-  f13 = [
-    'mode power',
-    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=power',
-  ]
+  cmd-ctrl-alt-space = ['mode focus']
+  f13 = ['mode focus']
 
-[mode.power.binding]
+[mode.focus.binding]
   1 = 'workspace 1'
   2 = 'workspace 2'
   3 = 'workspace 3'
@@ -94,22 +88,17 @@ start-at-login = true
   alt-7 = 'summon-workspace 7'
   alt-8 = 'summon-workspace 8'
   alt-9 = 'summon-workspace 9'
-  alt-h = 'join-with left'
-  alt-j = 'join-with down'
-  alt-k = 'join-with up'
-  alt-l = 'join-with right'
   comma = 'layout horizontal vertical'
+  enter = "fullscreen"
   equal = 'resize smart +50'
-  esc = [
-    'mode main',
-    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
-  ]
+  esc = ['mode main']
+  f = 'layout floating tiling'
   h = 'focus left'
   i = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
   j = 'focus down'
   k = 'focus up'
   l = 'focus right'
-  m = "fullscreen"
+  m = ['mode move']
   minus = 'resize smart -50'
   n = 'workspace next'
   o = 'focus-monitor --wrap-around next'
@@ -119,28 +108,33 @@ start-at-login = true
     'exec-and-forget sketchybar --reload',
     'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
   ]
-  shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-  shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-  shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-  shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-  shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-  shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-  shift-7 = ['move-node-to-workspace 7', 'workspace 7']
-  shift-8 = ['move-node-to-workspace 8', 'workspace 8']
-  shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-  shift-h = 'move left'
-  shift-j = 'move down'
-  shift-k = 'move up'
-  shift-l = 'move right'
-  shift-n = "move-node-to-workspace next"
-  shift-o = 'move-workspace-to-monitor --wrap-around next'
-  shift-p = "move-node-to-workspace prev"
   slash = 'layout accordion tiles'
   t = 'layout tiles'
   tab = 'workspace-back-and-forth'
 
-[mode.launch.binding]
-  esc = [
-    'mode main',
-    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
-  ]
+[mode.move.binding]
+  1       = ['move-node-to-workspace 1', 'workspace 1', 'mode focus']
+  2       = ['move-node-to-workspace 2', 'workspace 2', 'mode focus']
+  3       = ['move-node-to-workspace 3', 'workspace 3', 'mode focus']
+  4       = ['move-node-to-workspace 4', 'workspace 4', 'mode focus']
+  5       = ['move-node-to-workspace 5', 'workspace 5', 'mode focus']
+  6       = ['move-node-to-workspace 6', 'workspace 6', 'mode focus']
+  7       = ['move-node-to-workspace 7', 'workspace 7', 'mode focus']
+  8       = ['move-node-to-workspace 8', 'workspace 8', 'mode focus']
+  9       = ['move-node-to-workspace 9', 'workspace 9', 'mode focus']
+  a       = 'move left'
+  d       = 'move right'
+  esc     = 'mode focus'
+  h       = 'focus left'
+  j       = 'focus down'
+  k       = 'focus up'
+  l       = 'focus right'
+  n       = "move-node-to-workspace next"
+  o       = 'move-workspace-to-monitor --wrap-around next'
+  p       = "move-node-to-workspace prev"
+  s       = 'move down'
+  shift-h = 'join-with left'
+  shift-j = 'join-with down'
+  shift-k = 'join-with up'
+  shift-l = 'join-with right'
+  w       = 'move up'
