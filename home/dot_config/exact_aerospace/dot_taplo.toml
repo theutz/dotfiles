@@ -1,0 +1,4 @@
+[formatting]
+  indent_tables  = true
+  indent_entries = true
+  align_entries  = true
