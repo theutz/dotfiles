@@ -1,15 +1,9 @@
-#!/usr/bin/env -S mise x jc jq fzf gum -- bash
+#!/usr/bin/env -S mise x jc jq fzf gum sd choose -- bash
 # vim: ft=bash
-#
-# Dracula Color Palette Explorer
-#
-# This script provides an interactive way to explore and select colors from
-# the Dracula theme palette. It displays color names with previews and allows
-# copying hex codes for use in other applications.
-#
+
 set -euo pipefail
 
-# Define the Dracula color palette with names and hex codes
+format="hex"
 colors="$(
   cat <<'txt'
 Name               Hex Code
@@ -43,9 +37,6 @@ AnsiBrightWhite    #FFFFFF
 txt
 )"
 
-# Creates an interactive fuzzy finder with color previews
-# Parameters:
-#   $@ - Additional arguments to pass to fzf
 function _fzf() {
   echo "$colors" |
     fzf --preview '\
@@ -60,60 +51,70 @@ function _fzf() {
       "$@"
 }
 
-# Get color information by name
-# Parameters:
-#   $1 - Color name to search for (case-insensitive)
-# Returns:
-#   JSON object with color information or error
-function _get_by_name() {
+function _get_code_by_name() {
   echo "$colors" |
     jc --asciitable |
     jq --raw-output --arg name "$1" '
       map(select(.name | test("^" + $name + "$"; "i"))) |
       if (length == 1) then
-        (first)
+        (first | .hex_code)
       elif (length < 1) then
-        error("match not found")
-      else
-        error("mutliple matches")
+        error($name + " is not a valid color name.")
       end'
 }
 
-# Main execution logic
-# With no arguments: Launch interactive color selector, returning hex code
-# --name/-n: Get hex code by name or select name interactively
-# --code/-c: Get name by color name or select hex code interactively
+function _apply_format() {
+  code="$1"
+  case "$format" in
+  argb | sketchybar)
+    echo "$code" | sd '#(.*)' '0xFF$1'
+    ;;
+  *)
+    echo "$code"
+    ;;
+  esac
+}
+
+positional=()
+
 function main() {
-  if [[ $# -eq 0 ]]; then
-    _fzf --accept-nth 2
-    exit
-  fi
 
   while [[ $# -gt 0 ]]; do
     case $1 in
-    --name | -n)
-      # Get hex code by name if provided, otherwise interactive selection
-      if [[ -v "2" && -n "$2" ]]; then
-        _get_by_name "$2" | jq -r '.hex_code'
-        exit
+    --format | -f)
+      if [[ ! -v 2 || -z "$2" ]]; then
+        >&2 echo "Please provide a format type"
+        exit 1
       fi
-      _fzf --accept-nth 1
-      exit
+      format="$2"
+      shift 2
       ;;
-    --code | -c)
-      # Get name by color name if provided, otherwise interactive selection
-      if [[ -v "2" && -n "$2" ]]; then
-        _get_by_name "$2" | jq -r '.name'
-        exit
-      fi
-      _fzf --accept-nth 2
-      exit
-      ;;
-    default)
+    *)
+      positional+=("$1")
       shift
       ;;
     esac
   done
+
+  set -- "${positional[@]}"
+
+  code=""
+
+  if [[ $# -gt 1 ]]; then
+    >&2 echo "Please enter one color at a time"
+    exit 1
+  elif [[ $# -eq 0 ]]; then
+    code="$(_fzf --accept-nth 2)"
+  else
+    code="$(_get_code_by_name "$1")"
+    if [[ $? -gt 0 ]]; then
+      >&2 echo "Valid color names: "
+      echo "$colors" | tail -n +2 | choose 0 | column >&2
+      exit 1
+    fi
+  fi
+
+  _apply_format "$code"
 }
 
 main "$@"

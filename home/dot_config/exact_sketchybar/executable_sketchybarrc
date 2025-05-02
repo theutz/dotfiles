@@ -78,21 +78,12 @@ sketchybar --add item chevron left \
 	--add item front_app left \
 	--set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" label.color="$(color 5)" \
 	--subscribe front_app front_app_switched \
-	--add event hammerspoon \
-	--add item hammerspoon left \
-	--subscribe hammerspoon hammerspoon \
-	--set hammerspoon icon="" \
 	background.height=28 \
 	background.padding_left=8 \
 	background.corner_radius=8 \
 	icon.padding_left=8 \
 	label.padding_right=8 \
 	drawing=off \
-	script="$PLUGIN_DIR/hammerspoon.sh" \
-	--add event hs_hud \
-	--add item hs_hud left \
-	--subscribe hs_hud hs_hud \
-	--set hs_hud icon=󰚽 \
 	background.color=0x44000000 \
 	background.height=28 \
 	background.padding_left=8 \
