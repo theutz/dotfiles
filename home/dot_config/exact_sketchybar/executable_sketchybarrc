@@ -5,9 +5,8 @@
 # For a (much) more advanced configuration example see my dotfiles:
 # https://github.com/FelixKratz/dotfiles
 
+PATH="$HOME/bin:$PATH" # Append path so I can use dracula colors
 PLUGIN_DIR="$CONFIG_DIR/plugins"
-
-source "$CONFIG_DIR/colors.sh"
 FONT="GeistMono Nerd Font Propo"
 
 ##### Bar Appearance #####
@@ -21,7 +20,7 @@ sketchybar --bar \
 	position=top \
 	height=40 \
 	blur_radius=30 \
-	"color=$(color 0 55)"
+	"color=$(dracula -s -a 88 background)"
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -33,40 +32,33 @@ default=(
 	padding_right=5
 	icon.font="${FONT}:Normal:18.0"
 	label.font="${FONT}:Normal:16.0"
-	"icon.color=$(color 16)"
-	"label.color=$(color 16)"
+	"icon.color=$(dracula -s purple)"
+	"label.color=$(dracula -s foreground)"
 	icon.padding_left=4
 	icon.padding_right=4
 	label.padding_left=4
 	label.padding_right=4
-	"alias.color=$(color 16)"
+	"alias.color=$(dracula -s cyan)"
 	alias.scale=1.0
 )
 sketchybar --default "${default[@]}"
 
-##### Adding Mission Control Space Indicators #####
-# Let's add some mission control spaces:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces.
+### Aerospace spaces
+sketchybar --add event aerospace_workspace_change
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
-for i in "${!SPACE_ICONS[@]}"; do
-	sid="$(($i + 1))"
-	space=(
-		space="$sid"
-		icon="${SPACE_ICONS[i]}"
-		icon.font.size="16.0"
-		icon.padding_left=8
-		icon.padding_right=8
-		"icon.color=$(color 8)"
-		"background.color=$(color 4 44)"
-		background.corner_radius=5
-		background.height=25
-		label.drawing=off
-		script="$PLUGIN_DIR/space.sh"
-		click_script="hs -c 'hs.spaces.gotoSpace(hs.spaces.spacesForScreen()[$sid])'"
-	)
-	sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
+for sid in $(aerospace list-workspaces --all); do
+	sketchybar --add item space.$sid left \
+		--subscribe space.$sid aerospace_workspace_change \
+		--set space.$sid \
+		"background.color=$(dracula -s green)" \
+		"label.color=$(dracula -s foreground)" \
+		icon.drawing=off \
+		background.corner_radius=5 \
+		background.height=20 \
+		background.drawing=off \
+		label="$sid" \
+		click_script="aerospace workspace $sid" \
+		script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
 ##### Adding Left Items #####
@@ -74,9 +66,9 @@ done
 # only the properties deviating from the current defaults need to be set
 
 sketchybar --add item chevron left \
-	--set chevron icon="" label.drawing=off icon.color="$(color 5)" \
+	--set chevron icon="" label.drawing=off icon.color="$(dracula -s red)" \
 	--add item front_app left \
-	--set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" label.color="$(color 5)" \
+	--set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" label.color="$(dracula -s pink)" \
 	--subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
@@ -103,6 +95,7 @@ ALIASES=(
 	"Tailscale,Item-0"
 	"TextInputMenuAgent,Item-0"
 	"Control Center,FocusModes"
+	"AeroSpace,Item-0"
 )
 for i in "${ALIASES[@]}"; do
 	sketchybar --add alias "$i" right \
