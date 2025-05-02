@@ -7,7 +7,7 @@
 
 PATH="$HOME/bin:$PATH" # Append path so I can use dracula colors
 PLUGIN_DIR="$CONFIG_DIR/plugins"
-FONT="GeistMono Nerd Font Propo"
+FONT="BlexMono Nerd Font Propo"
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
@@ -32,13 +32,13 @@ default=(
 	padding_right=5
 	icon.font="${FONT}:Normal:18.0"
 	label.font="${FONT}:Normal:16.0"
-	"icon.color=$(dracula -s purple)"
-	"label.color=$(dracula -s foreground)"
-	icon.padding_left=4
+	icon.color="$(dracula -s purple)"
+	label.color="$(dracula -s foreground)"
+	icon.padding_left=3
 	icon.padding_right=4
 	label.padding_left=4
 	label.padding_right=4
-	"alias.color=$(dracula -s cyan)"
+	alias.color="$(dracula -s cyan)"
 	alias.scale=1.0
 )
 sketchybar --default "${default[@]}"
@@ -47,9 +47,9 @@ sketchybar --default "${default[@]}"
 sketchybar --add event aerospace_workspace_change
 
 for sid in $(aerospace list-workspaces --all); do
-	sketchybar --add item space.$sid left \
-		--subscribe space.$sid aerospace_workspace_change \
-		--set space.$sid \
+	sketchybar --add item space."$sid" left \
+		--subscribe space."$sid" aerospace_workspace_change \
+		--set space."$sid" \
 		"background.color=$(dracula -s green)" \
 		"label.color=$(dracula -s foreground)" \
 		icon.drawing=off \
@@ -57,6 +57,8 @@ for sid in $(aerospace list-workspaces --all); do
 		background.height=20 \
 		background.drawing=off \
 		label="$sid" \
+		label.padding_left=0 \
+		label.padding_right=0 \
 		click_script="aerospace workspace $sid" \
 		script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
@@ -66,10 +68,21 @@ done
 # only the properties deviating from the current defaults need to be set
 
 sketchybar --add item chevron left \
-	--set chevron icon="" label.drawing=off icon.color="$(dracula -s red)" \
+	--set chevron icon="" label.drawing=off icon.color="$(dracula -s red)" icon.padding_left=12 \
 	--add item front_app left \
 	--set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" label.color="$(dracula -s pink)" \
 	--subscribe front_app front_app_switched
+
+#### Aerospace Modes
+sketchybar --add event aerospace_mode_change \
+	--add item aerospace.mode left \
+	--subscribe aerospace.mode aerospace_mode_change \
+	--set aerospace.mode \
+	drawing=off \
+	icon="" \
+	icon.color="$(dracula -s cyan)" \
+	label.color="$(dracula -s yellow)" \
+	script="$CONFIG_DIR/plugins/aerospace_mode.sh"
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.

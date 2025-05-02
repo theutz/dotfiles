@@ -53,6 +53,7 @@ open_ref() {
 cfg_table() {
   cfg |
     jq -r '.refs | to_entries[] | [.key, .value] | @csv' |
+    sort |
     gum table --columns "name,url" "$@"
 }
 

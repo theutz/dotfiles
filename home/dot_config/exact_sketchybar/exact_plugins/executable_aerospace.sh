@@ -9,8 +9,12 @@ fi
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
     sketchybar --set $NAME \
         background.drawing=on \
-        "label.color=$(dracula -s background)"
+        label.color="$(dracula -s background)" \
+        label.padding_left=8 \
+        label.padding_right=8
 else
     sketchybar --set $NAME background.drawing=off \
-        "label.color=$(dracula -s foreground)"
+        label.color="$(dracula -s foreground)" \
+        label.padding_left=0 \
+        label.padding_right=0
 fi

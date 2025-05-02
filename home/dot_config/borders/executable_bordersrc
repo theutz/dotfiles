@@ -1,9 +1,9 @@
-#!/usr/bin/env fish
+#!/usr/bin/env bash
 
-source "$HOME/.config/sketchybar/colors.fish"
+PATH="$HOME/bin:$PATH"
 
 borders style=round \
-    width=8.0 \
-    hidpi=off \
-    active_color=$COLORS[3] \
-    inactive_color=$BAR_COLOR
+  width=8.0 \
+  hidpi=on \
+  "active_color=$(dracula -s -a dd cyan)" \
+  "inactive_color=$(dracula -s -a 88 background)"
