@@ -85,6 +85,7 @@ args+=(
 	icon.color="$(dracula -s cyan)"
 	label.color="$(dracula -s yellow)"
 	script="$PLUGIN_DIR/aerospace_mode.sh"
+	click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
 )
 
 # Setup clock
