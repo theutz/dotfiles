@@ -67,7 +67,8 @@ function _apply_format() {
   code="$1"
   case "$format" in
   argb | sketchybar)
-    echo "$code" | sd '#(.*)' '0xFF$1'
+    local c="0xFF${code//#/}"
+    echo "${c,,}"
     ;;
   *)
     echo "$code"
