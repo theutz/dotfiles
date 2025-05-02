@@ -13,5 +13,5 @@ files="$(
 )"
 
 if [[ -n "$files" ]]; then
-  chezmoi forget "${(f)files[@]}"
+  chezmoi forget --force "${(f)files[@]}"
 fi
