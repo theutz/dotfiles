@@ -1,0 +1,8 @@
+[tools]
+  overmind = "latest"
+
+[tasks.dev]
+  run = "overmind start"
+
+[tasks.reload]
+  run = ["aerospace reload-config", "noti -t 'AeroSpace' -m 'Config reloaded'"]
