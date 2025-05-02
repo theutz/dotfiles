@@ -74,3 +74,4 @@ abbr -a -- idea eureka
 abbr -a -- bbgx 'brew bundle --global remove'
 abbr -a -- a aichat
 abbr -a -- ae 'aichat -e'
+abbr -a -- cmam 'chezmoi add-missing'
