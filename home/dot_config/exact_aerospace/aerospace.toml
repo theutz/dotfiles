@@ -1,314 +1,212 @@
-start-at-login = true
-after-startup-command = [
-  'exec-and-forget sketchybar --reload',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-]
-exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE',
-]
+# Place a copy of this config to ~/.aerospace.toml
+# After that, you can edit ~/.aerospace.toml to your liking
+
+# You can use it to add commands that run after login to macOS user session.
+# 'start-at-login' needs to be 'true' for 'after-login-command' to work
+# Available commands: https://nikitabobko.github.io/AeroSpace/commands
+after-login-command = []
+
+# You can use it to add commands that run after AeroSpace startup.
+# 'after-startup-command' is run after 'after-login-command'
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = []
+
+# Start AeroSpace at login
+start-at-login = false
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-accordion-padding = 32
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
-key-mapping.preset = 'qwerty'
 
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+accordion-padding = 30
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-on-focus-changed = [
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'move-mouse window-lazy-center',
-]
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = false
 
-[workspace-to-monitor-force-assignment]
-11-v = 'secondary'
+# Possible values: (qwerty|dvorak|colemak)
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+[key-mapping]
+    preset = 'qwerty'
 
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See:
+#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 16
-inner.vertical = 16
-outer.left = 16
-outer.bottom = 16
-outer.right = 16
-outer.top = [{ monitor.'(samsung|l24q-20)' = 56 }, 16]
-
-[exec]
-
-inherit-env-vars = true
-
-[exec.env-vars]
-
-PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
-EDITOR = 'neovide --fork'
-VISUAL = 'neovide --fork'
-
-[[on-window-detected]]
-if.app-id = "net.mullvad.vpn"
-run = ["layout floating"]
-
-[[on-window-detected]]
-if.app-id = "com.xiaomi.mihome"
-run = ["layout floating"]
-
-[[on-window-detected]]
-if.app-id = "app.loshadki.OpenIn-setapp"
-run = ["layout floating"]
-
-[[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = ["layout tiling", "move-node-to-workspace 1-a"]
-
-[[on-window-detected]]
-if.app-id = "com.figma.Desktop"
-run = ["move-node-to-workspace 4-f"]
-
-[[on-window-detected]]
-if.app-id = "us.zoom.xos"
-run = ["move-node-to-workspace 8-z"]
-
-[[on-window-detected]]
-if.app-id = "com.fivegencare.com.motorola.nursery"
-run = ["layout floating", "move-node-to-workspace 8-z"]
-
-[[on-window-detected]]
-if.app-id = "com.apple.ScreenContinuity"
-run = ["layout floating", "move-node-to-workspace 8-z"]
-
-[[on-window-detected]]
-if.app-id = "com.tinyspeck.slackmacgap"
-run = ["move-node-to-workspace 9-x"]
-
-[[on-window-detected]]
-if.app-id = "com.apple.MobileSMS"
-run = ["move-node-to-workspace 10-c"]
-
-[[on-window-detected]]
-if.app-id = "org.whispersystems.signal-desktop"
-run = ["move-node-to-workspace 10-c"]
-
-[[on-window-detected]]
-if.app-id = "ru.keepcoder.Telegram"
-run = ["move-node-to-workspace 10-c"]
-
-[[on-window-detected]]
-if.app-id = "net.whatsapp.WhatsApp"
-run = ["move-node-to-workspace 10-c"]
-
-[[on-window-detected]]
-if.app-id = "com.spotify.client"
-run = ["move-node-to-workspace 11-v"]
-
-# Keybinding Reference
-# All possible keys:
-# - Letters.        a, b, c, ..., z
-# - Numbers.        0, 1, 2, ..., 9
-# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-# - F-keys.         f1, f2, ..., f20
-# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
-#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
-# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-#                   keypadMinus, keypadMultiply, keypadPlus
-# - Arrows.         left, down, up, right
-
-# All possible modifiers: cmd, alt, ctrl, shift
+    inner.horizontal = 0
+    inner.vertical =   0
+    outer.left =       0
+    outer.bottom =     0
+    outer.top =        0
+    outer.right =      0
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
-
+# Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
-f13 = [
-  'mode normal',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
-]
-cmd-ctrl-alt-space = [
-  'mode normal',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=normal',
-]
-cmd-ctrl-alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
-cmd-ctrl-alt-shift-h = 'join-with left'
-cmd-ctrl-alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
-cmd-ctrl-alt-shift-j = 'join-with down'
-cmd-ctrl-alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
-cmd-ctrl-alt-shift-k = 'join-with up'
-cmd-ctrl-alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
-cmd-ctrl-alt-shift-l = 'join-with right'
 
+    # All possible keys:
+    # - Letters.        a, b, c, ..., z
+    # - Numbers.        0, 1, 2, ..., 9
+    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+    # - F-keys.         f1, f2, ..., f20
+    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+    #                   sectionSign (ISO keyboards only, european keyboards only)
+    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+    #                   keypadMinus, keypadMultiply, keypadPlus
+    # - Arrows.         left, down, up, right
 
-cmd-ctrl-alt-a = 'workspace 0-a'
-cmd-ctrl-alt-shift-a = ['move-node-to-workspace 0-a', 'workspace 0-a']
+    # All possible modifiers: cmd, alt, ctrl, shift
 
-cmd-ctrl-alt-s = 'workspace 1-s'
-cmd-ctrl-alt-shift-s = ['move-node-to-workspace 1-s', 'workspace 1-s']
+    # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
-cmd-ctrl-alt-d = 'workspace 2-d'
-cmd-ctrl-alt-shift-d = ['move-node-to-workspace 2-d', 'workspace 2-d']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+    # You can uncomment the following lines to open up terminal with alt + enter shortcut
+    # (like in i3)
+    # alt-enter = '''exec-and-forget osascript -e '
+    # tell application "Terminal"
+    #     do script
+    #     activate
+    # end tell'
+    # '''
 
-cmd-ctrl-alt-f = 'workspace 3-f'
-cmd-ctrl-alt-shift-f = ['move-node-to-workspace 3-f', 'workspace 3-f']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+    alt-slash = 'layout tiles horizontal vertical'
+    alt-comma = 'layout accordion horizontal vertical'
 
-cmd-ctrl-alt-q = 'workspace 4-q'
-cmd-ctrl-alt-shift-q = ['move-node-to-workspace 4-q', 'workspace 4-q']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#focus
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
 
-cmd-ctrl-alt-w = 'workspace 5-w'
-cmd-ctrl-alt-shift-w = ['move-node-to-workspace 5-w', 'workspace 5-w']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
 
-cmd-ctrl-alt-e = 'workspace 6-e'
-cmd-ctrl-alt-shift-e = ['move-node-to-workspace 6-e', 'workspace 6-e']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#resize
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
 
-cmd-ctrl-alt-r = 'workspace 7-r'
-cmd-ctrl-alt-shift-r = ['move-node-to-workspace 7-r', 'workspace 7-r']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+    alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
+    alt-b = 'workspace B'
+    alt-c = 'workspace C'
+    alt-d = 'workspace D'
+    alt-e = 'workspace E'
+    alt-f = 'workspace F'
+    alt-g = 'workspace G'
+    alt-i = 'workspace I'
+    alt-m = 'workspace M'
+    alt-n = 'workspace N'
+    alt-o = 'workspace O'
+    alt-p = 'workspace P'
+    alt-q = 'workspace Q'
+    alt-r = 'workspace R'
+    alt-s = 'workspace S'
+    alt-t = 'workspace T'
+    alt-u = 'workspace U'
+    alt-v = 'workspace V'
+    alt-w = 'workspace W'
+    alt-x = 'workspace X'
+    alt-y = 'workspace Y'
+    alt-z = 'workspace Z'
 
-cmd-ctrl-alt-z = 'workspace 8-z'
-cmd-ctrl-alt-shift-z = ['move-node-to-workspace 8-z', 'workspace 8-z']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    alt-shift-1 = 'move-node-to-workspace 1'
+    alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
+    alt-shift-4 = 'move-node-to-workspace 4'
+    alt-shift-5 = 'move-node-to-workspace 5'
+    alt-shift-6 = 'move-node-to-workspace 6'
+    alt-shift-7 = 'move-node-to-workspace 7'
+    alt-shift-8 = 'move-node-to-workspace 8'
+    alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-a = 'move-node-to-workspace A'
+    alt-shift-b = 'move-node-to-workspace B'
+    alt-shift-c = 'move-node-to-workspace C'
+    alt-shift-d = 'move-node-to-workspace D'
+    alt-shift-e = 'move-node-to-workspace E'
+    alt-shift-f = 'move-node-to-workspace F'
+    alt-shift-g = 'move-node-to-workspace G'
+    alt-shift-i = 'move-node-to-workspace I'
+    alt-shift-m = 'move-node-to-workspace M'
+    alt-shift-n = 'move-node-to-workspace N'
+    alt-shift-o = 'move-node-to-workspace O'
+    alt-shift-p = 'move-node-to-workspace P'
+    alt-shift-q = 'move-node-to-workspace Q'
+    alt-shift-r = 'move-node-to-workspace R'
+    alt-shift-s = 'move-node-to-workspace S'
+    alt-shift-t = 'move-node-to-workspace T'
+    alt-shift-u = 'move-node-to-workspace U'
+    alt-shift-v = 'move-node-to-workspace V'
+    alt-shift-w = 'move-node-to-workspace W'
+    alt-shift-x = 'move-node-to-workspace X'
+    alt-shift-y = 'move-node-to-workspace Y'
+    alt-shift-z = 'move-node-to-workspace Z'
 
-cmd-ctrl-alt-x = 'workspace 9-x'
-cmd-ctrl-alt-shift-x = ['move-node-to-workspace 9-x', 'workspace 9-x']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+    alt-tab = 'workspace-back-and-forth'
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-cmd-ctrl-alt-c = 'workspace 10-c'
-cmd-ctrl-alt-shift-c = ['move-node-to-workspace 10-c', 'workspace 10-c']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#mode
+    alt-shift-semicolon = 'mode service'
 
-cmd-ctrl-alt-v = 'workspace 11-v'
-cmd-ctrl-alt-shift-v = ['move-node-to-workspace 11-v', 'workspace 11-v']
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+    backspace = ['close-all-windows-but-current', 'mode main']
 
+    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+    #s = ['layout sticky tiling', 'mode main']
 
-cmd-ctrl-alt-n = 'workspace next'
-cmd-ctrl-alt-shift-n = ['move-node-to-workspace next', 'workspace next']
-cmd-ctrl-alt-p = 'workspace prev'
-cmd-ctrl-alt-shift-p = ['move-node-to-workspace prev', 'workspace prev']
-cmd-ctrl-alt-b = 'workspace-back-and-forth'
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
 
-cmd-ctrl-alt-m = 'fullscreen'
-cmd-ctrl-alt-t = 'layout floating tiling'
-cmd-ctrl-alt-o = 'layout horizontal vertical'
-cmd-ctrl-alt-i = 'layout accordion tiles'
-
-cmd-ctrl-alt-minus = 'resize smart -50'
-cmd-ctrl-alt-shift-equal = 'resize smart +50'
-cmd-ctrl-alt-equal = 'balance-sizes'
-
-cmd-ctrl-alt-leftSquareBracket = [
-  'move-node-to-monitor prev',
-  'focus-monitor prev',
-]
-cmd-ctrl-alt-shift-leftSquareBracket = [
-  'move-workspace-to-monitor --wrap-around prev',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-]
-
-cmd-ctrl-alt-rightSquareBracket = [
-  'move-node-to-monitor next',
-  'focus-monitor next',
-]
-cmd-ctrl-alt-shift-rightSquareBracket = [
-  'move-workspace-to-monitor --wrap-around next',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-]
-
-[mode.normal.binding]
-esc = [
-  'mode main',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
-]
-f13 = [
-  'mode main',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
-]
-
-a = 'workspace 0-a'
-shift-a = ['move-node-to-workspace 0-a', 'workspace 0-a']
-alt-a = ['summon-workspace 0-a']
-
-s = 'workspace 1-s'
-shift-s = ['move-node-to-workspace 1-s', 'workspace 1-s']
-alt-s = ['summon-workspace 1-s']
-
-d = 'workspace 2-d'
-shift-d = ['move-node-to-workspace 2-d', 'workspace 2-d']
-alt-d = ['summon-workspace 2-d']
-
-f = 'workspace 3-f'
-shift-f = ['move-node-to-workspace 3-f', 'workspace 3-f']
-alt-f = ['summon-workspace 3-f']
-
-q = 'workspace 4-q'
-shift-q = ['move-node-to-workspace 4-q', 'workspace 4-q']
-alt-q = ['summon-workspace 4-q']
-
-w = 'workspace 5-w'
-shift-w = ['move-node-to-workspace 5-w', 'workspace 5-w']
-alt-w = ['summon-workspace 5-w']
-
-e = 'workspace 6-e'
-shift-e = ['move-node-to-workspace 6-e', 'workspace 6-e']
-alt-e = ['summon-workspace 6-e']
-
-r = 'workspace 7-r'
-shift-r = ['move-node-to-workspace 7-r', 'workspace 7-r']
-alt-r = ['summon-workspace 7-r']
-
-z = 'workspace 8-z'
-shift-z = ['move-node-to-workspace 8-z', 'workspace 8-z']
-alt-z = ['summon-workspace 8-z']
-
-x = 'workspace 9-x'
-shift-x = ['move-node-to-workspace 9-x', 'workspace 9-x']
-alt-x = ['summon-workspace 9-x']
-
-c = 'workspace 10-c'
-shift-c = ['move-node-to-workspace 10-c', 'workspace 10-c']
-alt-c = ['summon-workspace 10-c']
-
-v = 'workspace 11-v'
-shift-v = ['move-node-to-workspace 11-v', 'workspace 11-v']
-alt-v = ['summon-workspace 11-v']
-
-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
-shift-h = 'move left'
-alt-h = 'join-with left'
-
-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
-shift-j = 'move down'
-alt-j = 'join-with down'
-
-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
-shift-k = 'move up'
-alt-k = 'join-with up'
-
-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
-shift-l = 'move right'
-alt-l = 'join-with right'
-
-p = 'workspace prev'
-shift-p = ['move-node-to-workspace prev', 'workspace prev']
-
-n = 'workspace next'
-shift-n = ['move-node-to-workspace next', 'workspace next']
-
-b = 'workspace-back-and-forth'
-
-leftSquareBracket = 'focus-monitor prev'
-shift-leftSquareBracket = ['move-node-to-monitor prev', 'focus-monitor prev']
-alt-leftSquareBracket = [
-  'move-workspace-to-monitor prev',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-]
-
-rightSquareBracket = 'focus-monitor next'
-shift-rightSquareBracket = ['move-node-to-monitor next', 'focus-monitor next']
-alt-rightSquareBracket = [
-  'move-workspace-to-monitor next',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-]
-
-m = 'fullscreen'
-t = 'layout floating tiling'
-o = 'layout horizontal vertical'
-i = 'layout accordion tiles'
-backtick = 'close --quit-if-last-window'
-
-equal = 'balance-sizes'
-minus = ['resize smart -50']
-shift-equal = ['resize smart +50']
+    down = 'volume down'
+    up = 'volume up'
+    shift-down = ['volume set 0', 'mode main']
