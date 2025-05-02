@@ -77,21 +77,7 @@ sketchybar --add item chevron left \
 	--set chevron icon="" label.drawing=off icon.color="$(color 5)" \
 	--add item front_app left \
 	--set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" label.color="$(color 5)" \
-	--subscribe front_app front_app_switched \
-	background.height=28 \
-	background.padding_left=8 \
-	background.corner_radius=8 \
-	icon.padding_left=8 \
-	label.padding_right=8 \
-	drawing=off \
-	background.color=0x44000000 \
-	background.height=28 \
-	background.padding_left=8 \
-	background.corner_radius=8 \
-	icon.padding_left=8 \
-	label.padding_right=8 \
-	drawing=off \
-	script="$PLUGIN_DIR/hs_hud.sh"
+	--subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
