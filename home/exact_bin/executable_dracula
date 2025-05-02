@@ -38,6 +38,10 @@ AnsiBrightWhite    #FFFFFF
 txt
 )"
 
+function _json() {
+  echo "$colors" | jc --asciitable
+}
+
 function _fzf() {
   echo "$colors" |
     fzf --preview '\
@@ -53,8 +57,7 @@ function _fzf() {
 }
 
 function _get_code_by_name() {
-  echo "$colors" |
-    jc --asciitable |
+  _json |
     jq --raw-output --arg name "$1" '
       map(select(.name | test("^" + $name + "$"; "i"))) |
       if (length == 1) then
@@ -83,6 +86,10 @@ function main() {
 
   while [[ $# -gt 0 ]]; do
     case $1 in
+    --json)
+      _json
+      exit 1
+      ;;
     --sketchybar | -s)
       format="argb"
       shift
