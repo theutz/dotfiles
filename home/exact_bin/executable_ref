@@ -1,0 +1,104 @@
+#!/usr/bin/env -S ${HOME}/.local/bin/mise x jq jc gum -- bash
+# vim: ft=bash
+
+set -euo pipefail
+
+# Default values
+config_file="$HOME/.config/ref/config.toml"
+show_help=false
+only_print=false
+only_list=false
+
+show_help() {
+  echo "
+  View or visit commonly used references online
+
+  USAGE:
+
+    ref [flags] [name]
+
+  FLAGS:
+    -h, --help          show this help
+    -c, --config <file> set config file location
+    -p, --print         do not open reference, only print the url
+    -l, --list          list all references
+  "
+}
+
+cfg() {
+  jc --toml <"$config_file"
+}
+
+get_url() {
+  local url
+  url="$(cfg | jq -r --arg ref "$1" '.refs[$ref]')"
+  echo "$url"
+}
+
+interactive() {
+  local url
+  url="$(cfg_table --return-column=2)"
+  gum log -sl info opening url "$url"
+  open_ref "$url"
+}
+
+open_ref() {
+  open "$1"
+}
+
+cfg_table() {
+  cfg |
+    jq -r '.refs | to_entries[] | [.key, .value] | @csv' |
+    gum table --columns "name,url" "$@"
+}
+
+main() {
+  positional=()
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --help | -h)
+      show_help=true
+      shift
+      ;;
+    --config | -c)
+      if [[ ! -v 2 || ! -f "$2" ]]; then
+        gum log -sl error "File doesn't exist" file "$2"
+        exit 1
+      fi
+      config_file="$2"
+      shift 2
+      ;;
+    --print | -p)
+      only_print=true
+      shift
+      ;;
+    --list | -l)
+      only_list=true
+      shift
+      ;;
+    *)
+      positional+=("$1")
+      shift
+      ;;
+    esac
+  done
+
+  set -- "${positional[@]}"
+
+  if $show_help; then
+    show_help
+    exit 1
+  elif $only_list; then
+    cfg_table --print
+  elif $only_print; then
+    get_url "$1"
+  else
+    if [[ $# -eq 1 ]]; then
+      open_ref "$1"
+    else
+      interactive
+    fi
+  fi
+}
+
+main "$@"
