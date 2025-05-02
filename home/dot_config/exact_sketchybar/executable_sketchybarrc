@@ -155,7 +155,16 @@ args+=(
 	background.color="$(color -a 33 green)"
 	script="$PLUGIN_DIR/spotify.sh"
 	update_freq=5
-	click_script="wezterm start --domain unix --attach --workspace spotify spotify_player"
+	click_script="\
+    wezterm \
+      --config window_close_confirmation=\'NeverPrompt\' \
+      --config window_decorations=\'RESIZE\' \
+      --config enable_tab_bar=false \
+      start \
+      --domain unix \
+      --attach \
+      --workspace spotify \
+      spotify_player"
 )
 
 sketchybar "${args[@]}"
