@@ -98,14 +98,14 @@ automatically-unhide-macos-hidden-apps = true
   # '''
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-  alt-comma = 'layout accordion horizontal vertical'
-  alt-slash = 'layout tiles horizontal vertical'
+  cmd-ctrl-alt-comma = 'layout accordion horizontal vertical'
+  cmd-ctrl-alt-slash = 'layout tiles horizontal vertical'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-  alt-h = 'focus left'
-  alt-j = 'focus down'
-  alt-k = 'focus up'
-  alt-l = 'focus right'
+  cmd-ctrl-alt-h = 'focus left'
+  cmd-ctrl-alt-j = 'focus down'
+  cmd-ctrl-alt-k = 'focus up'
+  cmd-ctrl-alt-l = 'focus right'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#move
   alt-shift-h = 'move left'
