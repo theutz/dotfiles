@@ -18,8 +18,8 @@ main)
         drawing=off
     )
     borders+=(
-        active_color="$(color cyan)"
-        inactive_color="$(color -a 88 background)"
+        active_color="$(color pink)"
+        inactive_color="$(color -a 88 purple)"
     )
     ;;
 *)
