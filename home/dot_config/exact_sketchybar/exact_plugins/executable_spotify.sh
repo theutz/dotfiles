@@ -20,9 +20,9 @@ if $is_multi; then
     )
 else
     args+=(
-        position=e
-        label.max_chars=50
-        padding_left=16
+        position=q
+        label.max_chars=20
+        padding_right=16
     )
 fi
 

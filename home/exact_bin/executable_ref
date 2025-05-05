@@ -8,6 +8,7 @@ config_file="$HOME/.config/ref/config.toml"
 show_help=false
 only_print=false
 only_list=false
+do_edit=false
 
 show_help() {
   echo "
@@ -22,6 +23,7 @@ show_help() {
     -c, --config <file> set config file location
     -p, --print         do not open reference, only print the url
     -l, --list          list all references
+    -e, --edit          open ref file
   "
 }
 
@@ -37,7 +39,7 @@ get_url() {
 
 interactive() {
   local url
-  url="$(cfg_table --return-column=2)"
+  url="$(cfg | jq -r '.refs | to_entries[] | .key + "   " + .value' | fzf --ansi --preview='gum format "# {2}"; curl -sSL {2} | pandoc -f html -t gfm | glow' --with-nth=1 --accept-nth=2)"
   if [[ -z "$url" ]]; then
     gum log -sl info "Sorry we couldn't help you"
     exit 1
@@ -63,6 +65,10 @@ main() {
     case "$1" in
     --help | -h)
       show_help=true
+      shift
+      ;;
+    --edit | -e)
+      do_edit=true
       shift
       ;;
     --config | -c)
@@ -93,6 +99,9 @@ main() {
   if $show_help; then
     show_help
     exit 1
+  elif $do_edit; then
+    $EDITOR $config_file
+    exit 0
   elif $only_list; then
     cfg_table --print
   elif $only_print; then

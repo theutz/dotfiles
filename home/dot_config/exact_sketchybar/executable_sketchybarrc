@@ -19,8 +19,8 @@ sketchybar "${args[@]}"
 # Setup defaults
 args=(
 	--default
-	padding_left=5
-	padding_right=5
+	padding_left=3
+	padding_right=3
 	icon.font="${FONT}:Normal:18.0"
 	label.font="${FONT}:Normal:16.0"
 	icon.color="$(color purple)"
