@@ -66,10 +66,10 @@ start-at-login = true
   cmd-ctrl-alt-o = 'focus-monitor --wrap-around next'
   cmd-ctrl-alt-p = 'workspace prev'
   cmd-ctrl-alt-slash = 'layout accordion tiles'
-  cmd-ctrl-alt-space = 'mode focus'
-  f13 = 'mode focus'
+  cmd-ctrl-alt-space = 'mode aero'
+  f13 = 'mode aero'
 
-[mode.focus.binding]
+[mode.aero.binding]
   1 = 'workspace 1'
   2 = 'workspace 2'
   3 = 'workspace 3'
@@ -79,22 +79,71 @@ start-at-login = true
   7 = 'workspace 7'
   8 = 'workspace 8'
   9 = 'workspace 9'
-  alt-h = ['join-with left']
-  alt-j = ['join-with down']
-  alt-k = ['join-with up']
-  alt-l = ['join-with right']
+  a = 'layout accordion tiles'
+  alt-1 = [
+    'summon-workspace 1',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-2 = [
+    'summon-workspace 2',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-3 = [
+    'summon-workspace 3',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-4 = [
+    'summon-workspace 4',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-5 = [
+    'summon-workspace 5',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-6 = [
+    'summon-workspace 6',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-7 = [
+    'summon-workspace 7',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-8 = [
+    'summon-workspace 8',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-9 = [
+    'summon-workspace 9',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-h = [
+    'join-with left',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-j = [
+    'join-with down',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-k = [
+    'join-with up',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  alt-l = [
+    'join-with right',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
   b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
   e = 'balance-sizes'
   enter = "fullscreen"
   equal = 'resize smart +50'
   esc = 'mode main'
-  f = 'mode layout'
+  f = 'layout floating tiling'
+  f13 = 'mode main'
   h = 'focus left'
-  i = 'mode join'
   j = 'focus down'
   k = 'focus up'
   l = 'focus right'
-  m = 'mode move'
+  leftSquareBracket = 'focus-monitor --wrap-around prev'
   minus = 'resize smart -50'
   n = 'workspace next'
   o = 'focus-monitor --wrap-around next'
@@ -104,184 +153,79 @@ start-at-login = true
     'exec-and-forget sketchybar --reload',
     'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
   ]
-  shift-h = ['move left']
-  shift-j = ['move down']
-  shift-k = ['move up']
-  shift-l = ['move right']
-  shift-n = ['move-node-to-workspace --wrap-around next']
-  shift-p = ['move-node-to-workspace --wrap-around prev']
-  tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
-
-[mode.layout.binding]
-  a         = ['layout accordion tiles', 'mode focus']
-  backspace = 'mode focus'
-  esc       = 'mode main'
-  f         = ['layout floating tiling', 'mode focus']
-  h         = ['layout horizontal vertical', 'mode focus']
-  t         = ['layout tiles accordion', 'mode focus']
-  v         = ['layout vertical horizontal', 'mode focus']
-
-[mode.move.binding]
-  1 = [
+  rightSquareBracket = 'focus-monitor --wrap-around next'
+  shift-1 = [
     'move-node-to-workspace 1',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  2 = [
+  shift-2 = [
     'move-node-to-workspace 2',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  3 = [
+  shift-3 = [
     'move-node-to-workspace 3',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  4 = [
+  shift-4 = [
     'move-node-to-workspace 4',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  5 = [
+  shift-5 = [
     'move-node-to-workspace 5',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  6 = [
+  shift-6 = [
     'move-node-to-workspace 6',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  7 = [
+  shift-7 = [
     'move-node-to-workspace 7',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  8 = [
+  shift-8 = [
     'move-node-to-workspace 8',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  9 = [
+  shift-9 = [
     'move-node-to-workspace 9',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  backspace = [
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  esc = [
-    'mode main',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  h = [
+  shift-h = [
     'move left',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  j = [
+  shift-j = [
     'move down',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  k = [
+  shift-k = [
     'move up',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  l = [
+  shift-l = [
     'move right',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  n = [
-    "move-node-to-workspace next",
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  o = [
+  shift-leftSquareBracket = [
     'move-workspace-to-monitor --wrap-around next',
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  p = [
+  shift-n = [
+    "move-node-to-workspace next",
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  shift-o = [
+    'move-workspace-to-monitor --wrap-around next',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  ]
+  shift-p = [
     "move-node-to-workspace prev",
-    'mode focus',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-
-[mode.join.binding]
-  1 = [
-    'summon-workspace 1',
-    'mode focus',
+  shift-rightSquareBracket = [
+    'move-workspace-to-monitor --wrap-around prev',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
-  2 = [
-    'summon-workspace 2',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  3 = [
-    'summon-workspace 3',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  4 = [
-    'summon-workspace 4',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  5 = [
-    'summon-workspace 5',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  6 = [
-    'summon-workspace 6',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  7 = [
-    'summon-workspace 7',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  8 = [
-    'summon-workspace 8',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  9 = [
-    'summon-workspace 9',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  backspace = [
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  esc = [
-    'mode main',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  h = [
-    'join-with left',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  j = [
-    'join-with down',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  k = [
-    'join-with up',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  l = [
-    'join-with right',
-    'mode focus',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
+  shift-v = 'layout horizontal vertical'
+  tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+  v = 'layout vertical horizontal'
