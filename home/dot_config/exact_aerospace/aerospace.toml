@@ -33,8 +33,9 @@ start-at-login = true
   9 = ["secondary", "main"]
 
 [[on-window-detected]]
-  if.app-id = "wezterm-gui"
-  run       = ['layout tiling']
+  if.app-id                       = "wezterm-gui"
+  if.window-title-regex-substring = "spotify_player"
+  run                             = ['layout tiling', 'move-node-to-workspace 9']
 
 [[on-window-detected]]
   if.app-id = "ru.keepcoder.Telegram"

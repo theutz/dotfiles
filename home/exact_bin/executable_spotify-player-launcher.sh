@@ -15,13 +15,9 @@
 # @raycast.authorURL https://raycast.com/theutz
 
 args=(
-  --config 'window_decorations="NONE"'
   --config 'enable_tab_bar=false'
 
-  connect
-
-  unix
-  --workspace spotify
+  start
 )
 
 echo "Opening spotify_player..."
