@@ -53,7 +53,9 @@ start-at-login = true
   # - Arrows.         left, down, up, right
   # All possible modifiers: cmd, alt, ctrl, shift
 
+  cmd-ctrl-alt-e = 'balance-sizes'
   cmd-ctrl-alt-enter = 'fullscreen'
+  cmd-ctrl-alt-equal = 'resize smart +50'
   cmd-ctrl-alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail left'
   cmd-ctrl-alt-i = [
     'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
@@ -63,6 +65,7 @@ start-at-login = true
   cmd-ctrl-alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
   cmd-ctrl-alt-leftSquareBracket = 'focus-monitor --wrap-around next'
   cmd-ctrl-alt-m = 'fullscreen'
+  cmd-ctrl-alt-minus = 'resize smart -50'
   cmd-ctrl-alt-n = 'workspace next'
   cmd-ctrl-alt-o = 'focus-monitor --wrap-around next'
   cmd-ctrl-alt-p = 'workspace prev'
@@ -134,6 +137,7 @@ start-at-login = true
     'join-with right',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
+  alt-x = 'close-all-windows-but-current --quit-if-last-window'
   b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
   e = 'balance-sizes'
   enter = "fullscreen"
@@ -231,3 +235,4 @@ start-at-login = true
   shift-v = 'layout horizontal vertical'
   tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
   v = 'layout vertical horizontal'
+  x = 'close --quit-if-last-window'
