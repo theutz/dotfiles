@@ -56,13 +56,13 @@ for sid in $(aerospace list-workspaces --all); do
 		background.padding_right=0
 		click_script="aerospace workspace $sid"
 		icon.color="$(color -a 00 selection)"
-		icon.highlight_color="$(color -a 44 green)"
+		icon.highlight_color="$(color purple)"
 		icon.padding_left=4
 		icon.padding_right=0
 		icon=•
 		label.color="$(color comment)"
 		label.font.size=14.0
-		label.highlight_color="$(color green)"
+		label.highlight_color="$(color pink)"
 		label.padding_left=8
 		label.padding_right=6
 		label="$sid"

@@ -33,9 +33,45 @@ start-at-login = true
   9 = ["secondary", "main"]
 
 [[on-window-detected]]
-  if.app-id                       = "wezterm-gui"
-  if.window-title-regex-substring = "spotify_player"
-  run                             = ['layout floating']
+  if.app-id = "wezterm-gui"
+  run       = ['layout tiling']
+
+[[on-window-detected]]
+  if.app-id = "ru.keepcoder.Telegram"
+  run       = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+  if.app-id = "com.apple.MobileSMS"
+  run       = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+  if.app-id = "net.whatsapp.WhatsApp"
+  run       = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+  if.app-id = "org.whispersystems.signal-desktop"
+  run       = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+  if.app-id                   = "com.github.wez.wezterm"
+  if.during-aerospace-startup = true
+  run                         = ["move-node-to-workspace 1"]
+
+[[on-window-detected]]
+  if.app-id = "com.spotify.client"
+  run       = ["move-node-to-workspace 9"]
+
+[[on-window-detected]]
+  if.app-id = "com.tinyspeck.slackmacgap"
+  run       = ["move-node-to-workspace 7"]
+
+[[on-window-detected]] # gmail
+  if.app-id = "com.vivaldi.Vivaldi.app.fmgjjmmmlfnkbppncabfkddbjimcfncm"
+  run       = ["move-node-to-workspace 7"]
+
+[[on-window-detected]]
+  if.app-id = "com.figma.Desktop"
+  run       = ["move-node-to-workspace 5"]
 
 [mode.main.binding]
   # spellcheck:ignore
@@ -66,24 +102,24 @@ start-at-login = true
   cmd-ctrl-alt-leftSquareBracket = 'focus-monitor --wrap-around next'
   cmd-ctrl-alt-m = 'fullscreen'
   cmd-ctrl-alt-minus = 'resize smart -50'
-  cmd-ctrl-alt-n = 'workspace next'
+  cmd-ctrl-alt-n = 'workspace --wrap-around next'
   cmd-ctrl-alt-o = 'focus-monitor --wrap-around next'
-  cmd-ctrl-alt-p = 'workspace prev'
+  cmd-ctrl-alt-p = 'workspace --wrap-around prev'
   cmd-ctrl-alt-rightSquareBracket = 'focus-monitor --wrap-around prev'
   cmd-ctrl-alt-slash = 'layout accordion tiles'
   cmd-ctrl-alt-space = 'mode aero'
   f13 = 'mode aero'
 
 [mode.aero.binding]
-  1 = 'workspace 1'
-  2 = 'workspace 2'
-  3 = 'workspace 3'
-  4 = 'workspace 4'
-  5 = 'workspace 5'
-  6 = 'workspace 6'
-  7 = 'workspace 7'
-  8 = 'workspace 8'
-  9 = 'workspace 9'
+  1 = 'workspace --auto-back-and-forth 1'
+  2 = 'workspace --auto-back-and-forth 2'
+  3 = 'workspace --auto-back-and-forth 3'
+  4 = 'workspace --auto-back-and-forth 4'
+  5 = 'workspace --auto-back-and-forth 5'
+  6 = 'workspace --auto-back-and-forth 6'
+  7 = 'workspace --auto-back-and-forth 7'
+  8 = 'workspace --auto-back-and-forth 8'
+  9 = 'workspace --auto-back-and-forth 9'
   a = 'layout accordion tiles'
   alt-1 = [
     'summon-workspace 1',
@@ -151,9 +187,9 @@ start-at-login = true
   l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
   leftSquareBracket = 'focus-monitor --wrap-around prev'
   minus = 'resize smart -50'
-  n = 'workspace next'
+  n = 'workspace --wrap-around next'
   o = 'focus-monitor --wrap-around next'
-  p = 'workspace prev'
+  p = 'workspace --wrap-around prev'
   r = [
     'reload-config',
     'exec-and-forget sketchybar --reload',

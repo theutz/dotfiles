@@ -15,17 +15,15 @@
 # @raycast.authorURL https://raycast.com/theutz
 
 args=(
-  # --config 'window_decorations=\"NONE\"'
+  --config 'window_decorations="NONE"'
   --config 'enable_tab_bar=false'
 
-  start
+  connect
 
-  --domain unix
+  unix
   --workspace spotify
-
-  --attach
 )
 
 echo "Opening spotify_player..."
-wezterm "${args[@]}" -- spotify_player &
+nohup wezterm "${args[@]}" -- spotify_player >/dev/null 2>&1 &
 disown
