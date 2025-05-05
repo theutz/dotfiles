@@ -36,6 +36,13 @@ M.key_tables = {
 ---@type [([string?, string][]), Wezterm.Action][]
 M.keys = {
 	{
+		{ { "LEADER|SHIFT", "!" } },
+		wezterm.action_callback(function(win, pane)
+			local tab, window = pane:move_to_new_tab()
+			pane:activate()
+		end),
+	},
+	{
 		{ { "LEADER", "c" }, { "SUPER", "n" }, { "SUPER", "t" } },
 		a.SpawnTab "CurrentPaneDomain",
 	},
