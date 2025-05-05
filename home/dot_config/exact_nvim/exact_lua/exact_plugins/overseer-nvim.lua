@@ -31,6 +31,11 @@ return {
 				"<Cmd>OverseerQuickAction open float<cr>",
 				desc = "Open last output in float",
 			},
+			{
+				"<leader>oe",
+				"<Cmd>OverseerQuickAction edit<cr>",
+				desc = "Edit most recent overseer task",
+			},
 		},
 		-- ISSUE:: Won't work unless [this is accepted](https://github.com/stevearc/overseer.nvim/pull/417)
 		-- opts = {
