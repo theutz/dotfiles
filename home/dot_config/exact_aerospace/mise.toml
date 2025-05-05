@@ -4,7 +4,7 @@
 [tasks.dev]
   run = [
     '[[ -S .overmind.sock ]] && overmind quit || true',
-    '[[ -S .overmind.sock ]] && rm -rf .overmind.sock',
+    '[[ -S .overmind.sock ]] && rm -rf .overmind.sock || true',
     "overmind start",
   ]
 

@@ -54,17 +54,19 @@ start-at-login = true
   # All possible modifiers: cmd, alt, ctrl, shift
 
   cmd-ctrl-alt-enter = 'fullscreen'
-  cmd-ctrl-alt-h = 'focus left'
+  cmd-ctrl-alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail left'
   cmd-ctrl-alt-i = [
     'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
   ]
-  cmd-ctrl-alt-j = 'focus down'
-  cmd-ctrl-alt-k = 'focus up'
-  cmd-ctrl-alt-l = 'focus right'
+  cmd-ctrl-alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail down'
+  cmd-ctrl-alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail up'
+  cmd-ctrl-alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
+  cmd-ctrl-alt-leftSquareBracket = 'focus-monitor --wrap-around next'
   cmd-ctrl-alt-m = 'fullscreen'
   cmd-ctrl-alt-n = 'workspace next'
   cmd-ctrl-alt-o = 'focus-monitor --wrap-around next'
   cmd-ctrl-alt-p = 'workspace prev'
+  cmd-ctrl-alt-rightSquareBracket = 'focus-monitor --wrap-around prev'
   cmd-ctrl-alt-slash = 'layout accordion tiles'
   cmd-ctrl-alt-space = 'mode aero'
   f13 = 'mode aero'
@@ -139,10 +141,10 @@ start-at-login = true
   esc = 'mode main'
   f = 'layout floating tiling'
   f13 = 'mode main'
-  h = 'focus left'
-  j = 'focus down'
-  k = 'focus up'
-  l = 'focus right'
+  h = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail left'
+  j = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail down'
+  k = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail up'
+  l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
   leftSquareBracket = 'focus-monitor --wrap-around prev'
   minus = 'resize smart -50'
   n = 'workspace next'

@@ -21,7 +21,7 @@
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gist.nvim": { "branch": "main", "commit": "23440bad0427d2bc39d7827ae34f3a813af5e051" },
-  "gitsigns.nvim": { "branch": "main", "commit": "ab9e05d1cd5b372d4d443fa5c8e0e334232f2c77" },
+  "gitsigns.nvim": { "branch": "main", "commit": "dc10a490d056f5593b01c17bb172599ba244d65c" },
   "grug-far.nvim": { "branch": "main", "commit": "6ff8a205a29db3a9b08e5debe09452b4d6fd6591" },
   "hurl.nvim": { "branch": "main", "commit": "c02e58be1e3941c1ee06c8cf15affaf3f740a26e" },
   "inc-rename.nvim": { "branch": "main", "commit": "726d28468e900e1172a04faeb7af0b18acd609e7" },
@@ -99,5 +99,5 @@
   "vim-kitty": { "branch": "main", "commit": "fd6df8b8396ffb7ea099dc6aecfbc7cf2bab0b2f" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
-  "yazi.nvim": { "branch": "main", "commit": "8dbc4121898dfec7982d95e85e60785ea7af4202" }
+  "yazi.nvim": { "branch": "main", "commit": "d12336f6c78f561792f4a957ac07dce50eb19d80" }
 }

@@ -151,7 +151,7 @@ for alias in "${aliases[@]}"; do
 done
 
 args+=(
-	--add item spotify q
+	--add item spotify center
 	--set spotify
 	display=1
 	drawing=off

@@ -14,6 +14,7 @@ args=(--set "$NAME")
 
 if $is_multi; then
     args+=(
+        position=center
         label.max_chars=0
         padding_left=0
     )
