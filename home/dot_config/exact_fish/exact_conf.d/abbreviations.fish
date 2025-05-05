@@ -76,3 +76,5 @@ abbr -a -- a aichat
 abbr -a -- ae 'aichat -e'
 abbr -a -- cmam 'chezmoi add-missing'
 abbr -a -- cmls 'chezmoi managed'
+abbr -a -- we wezterm
+abbr -a -- wels 'wezterm cli list'

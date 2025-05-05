@@ -25,9 +25,9 @@ function M.apply_to_config(cfg)
 	cfg.show_tab_index_in_tab_bar = true
 	cfg.tab_max_width = 120
 
-	cfg.hide_tab_bar_if_only_one_tab = false
+	cfg.hide_tab_bar_if_only_one_tab = true
 	cfg.quit_when_all_windows_are_closed = true
-	-- cfg.window_decorations = "RESIZE"
+	cfg.window_decorations = "RESIZE"
 	cfg.adjust_window_size_when_changing_font_size = false
 	cfg.window_close_confirmation = "AlwaysPrompt"
 	cfg.window_padding = {

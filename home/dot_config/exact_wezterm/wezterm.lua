@@ -5,6 +5,7 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 config:set_strict_mode(true)
 
+require("config.launch-menu").apply_to_config(config)
 require("config.shell").apply_to_config(config)
 require("config.gui").apply_to_config(config)
 require("config.colors").apply_to_config(config)

@@ -74,6 +74,15 @@ start-at-login = true
   if.app-id = "com.figma.Desktop"
   run       = ["move-node-to-workspace 5"]
 
+[[on-window-detected]]
+  if.app-id                       = "com.chromium.Chromium"
+  if.window-title-regex-substring = "Playwright"
+  run                             = ["move-node-to-workspace 6"]
+
+[[on-window-detected]]
+  if.app-id = "us.zoom.xos"
+  run       = ["move-node-to-workspace 4"]
+
 [mode.main.binding]
   # spellcheck:ignore
   # All possible keys:
@@ -90,6 +99,7 @@ start-at-login = true
   # - Arrows.         left, down, up, right
   # All possible modifiers: cmd, alt, ctrl, shift
 
+  alt-semicolon = 'mode aero'
   cmd-ctrl-alt-e = 'balance-sizes'
   cmd-ctrl-alt-enter = 'fullscreen'
   cmd-ctrl-alt-equal = 'resize smart +50'
@@ -158,6 +168,7 @@ start-at-login = true
     'summon-workspace 9',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
+  alt-equal = 'resize smart-opposite +50'
   alt-h = [
     'join-with left',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
@@ -174,6 +185,8 @@ start-at-login = true
     'join-with right',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
+  alt-minus = 'resize smart-opposite -50'
+  alt-semicolon = 'mode main'
   alt-x = 'close-all-windows-but-current --quit-if-last-window'
   b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
   e = 'balance-sizes'
