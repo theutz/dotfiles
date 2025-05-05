@@ -11,7 +11,10 @@ exec-on-workspace-change = [
   '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focused-monitor-changed = [
+  'move-mouse monitor-lazy-center',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
 start-at-login = true
 
 [exec.env-vars]
@@ -103,20 +106,28 @@ start-at-login = true
   cmd-ctrl-alt-e = 'balance-sizes'
   cmd-ctrl-alt-enter = 'fullscreen'
   cmd-ctrl-alt-equal = 'resize smart +50'
-  cmd-ctrl-alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail left'
+  cmd-ctrl-alt-h = [
+    'focus --boundaries all-monitors-outer-frame --boundaries-action fail left',
+  ]
   cmd-ctrl-alt-i = [
     'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
   ]
-  cmd-ctrl-alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail down'
-  cmd-ctrl-alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail up'
-  cmd-ctrl-alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
-  cmd-ctrl-alt-leftSquareBracket = 'focus-monitor --wrap-around next'
+  cmd-ctrl-alt-j = [
+    'focus --boundaries all-monitors-outer-frame --boundaries-action fail down',
+  ]
+  cmd-ctrl-alt-k = [
+    'focus --boundaries all-monitors-outer-frame --boundaries-action fail up',
+  ]
+  cmd-ctrl-alt-l = [
+    'focus --boundaries all-monitors-outer-frame --boundaries-action fail right',
+  ]
+  cmd-ctrl-alt-leftSquareBracket = ['focus-monitor --wrap-around next']
   cmd-ctrl-alt-m = 'fullscreen'
   cmd-ctrl-alt-minus = 'resize smart -50'
-  cmd-ctrl-alt-n = 'workspace --wrap-around next'
-  cmd-ctrl-alt-o = 'focus-monitor --wrap-around next'
-  cmd-ctrl-alt-p = 'workspace --wrap-around prev'
-  cmd-ctrl-alt-rightSquareBracket = 'focus-monitor --wrap-around prev'
+  cmd-ctrl-alt-n = ['workspace --wrap-around next']
+  cmd-ctrl-alt-o = ['focus-monitor --wrap-around next']
+  cmd-ctrl-alt-p = ['workspace --wrap-around prev']
+  cmd-ctrl-alt-rightSquareBracket = ['focus-monitor --wrap-around prev']
   cmd-ctrl-alt-slash = 'layout accordion tiles'
   cmd-ctrl-alt-space = 'mode aero'
   f13 = 'mode aero'
