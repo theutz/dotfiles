@@ -79,6 +79,10 @@ start-at-login = true
   7 = 'workspace 7'
   8 = 'workspace 8'
   9 = 'workspace 9'
+  alt-h = ['join-with left']
+  alt-j = ['join-with down']
+  alt-k = ['join-with up']
+  alt-l = ['join-with right']
   b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
   e = 'balance-sizes'
   enter = "fullscreen"
@@ -100,6 +104,12 @@ start-at-login = true
     'exec-and-forget sketchybar --reload',
     'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
   ]
+  shift-h = ['move left']
+  shift-j = ['move down']
+  shift-k = ['move up']
+  shift-l = ['move right']
+  shift-n = ['move-node-to-workspace --wrap-around next']
+  shift-p = ['move-node-to-workspace --wrap-around prev']
   tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
 
 [mode.layout.binding]
