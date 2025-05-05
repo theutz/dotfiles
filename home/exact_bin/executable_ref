@@ -39,10 +39,27 @@ get_url() {
 
 interactive() {
   local url
-  url="$(cfg | jq -r '.refs | to_entries[] | .key + "   " + .value' | fzf --ansi --preview='gum format "# {2}"; curl -sSL {2} | pandoc -f html -t gfm | glow' --with-nth=1 --accept-nth=2)"
+  local q=""
+  if [[ -v 1 ]]; then
+    q="$1"
+  fi
+  url="$(
+    cfg |
+      jq -r '.refs | to_entries[] | .key + "   " + .value' |
+      fzf --ansi \
+        --query="$q" \
+        --select-1 \
+        --preview='gum format "# {2}"; curl -sSL {2} | pandoc -f html -t gfm | glow' \
+        --with-nth=1 \
+        --accept-nth=2
+  )"
   if [[ -z "$url" ]]; then
     gum log -sl info "Sorry we couldn't help you"
     exit 1
+  fi
+  if $only_print; then
+    echo "$url"
+    exit 0
   fi
   gum log -sl info opening url "$url"
   open_ref "$url"
@@ -104,14 +121,8 @@ main() {
     exit 0
   elif $only_list; then
     cfg_table --print
-  elif $only_print; then
-    get_url "$1"
   else
-    if [[ $# -eq 1 ]]; then
-      open_ref "$(get_url "$1")"
-    else
-      interactive
-    fi
+    interactive "$@"
   fi
 }
 
