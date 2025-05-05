@@ -9,6 +9,7 @@ sketchybar=(
     --set aerospace.mode
     label="${MODE^^}"
 )
+
 borders=()
 
 case "$MODE" in
