@@ -141,7 +141,7 @@ for alias in "${aliases[@]}"; do
 done
 
 args+=(
-	--add item spotify center
+	--add item spotify q
 	--set spotify
 	display=1
 	drawing=off
@@ -152,6 +152,8 @@ args+=(
 	background.corner_radius=4
 	background.height=24
 	label.padding_right=8
+	scroll_texts=on
+	label.scroll_duration=300
 	icon.padding_left=8
 	background.color="$(color -a 33 green)"
 	script="$PLUGIN_DIR/spotify.sh"

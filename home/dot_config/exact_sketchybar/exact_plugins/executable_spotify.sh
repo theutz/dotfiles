@@ -14,14 +14,12 @@ args=(--set "$NAME")
 
 if $is_multi; then
     args+=(
-        position=center
         label.max_chars=0
         padding_left=0
     )
 else
     args+=(
-        position=q
-        label.max_chars=20
+        label.max_chars=40
         padding_right=16
     )
 fi
