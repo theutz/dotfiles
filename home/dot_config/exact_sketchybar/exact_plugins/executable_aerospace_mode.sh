@@ -5,23 +5,34 @@ set -euo pipefail
 
 MODE="$(aerospace list-modes --current)"
 
-args=("--set" "aerospace.mode" "label=${MODE^^}")
+sketchybar=(
+    --set aerospace.mode
+    label="${MODE^^}"
+)
+borders=()
 
 case "$MODE" in
-focus | move)
-    args+=(
+main)
+    sketchybar+=(
+        drawing=off
+    )
+    borders+=(
+        active_color="$(color cyan)"
+        inactive_color="$(color -a 88 background)"
+    )
+    ;;
+*)
+    sketchybar+=(
+        drawing=on
         icon.color="$(color red)"
         label.color="$(color orange)"
     )
-    borders active_color="$(color red)" inactive_color="$(color red -a 33)"
+    borders+=(
+        active_color="$(color red)"
+        inactive_color="$(color red -a 33)"
+    )
     ;;
 esac
 
-if [[ "$MODE" == main ]]; then
-    args+=("drawing=off")
-    borders active_color="$(color cyan)" inactive_color="$(color -a 88 background)"
-else
-    args+=("drawing=on")
-fi
-
-sketchybar "${args[@]}"
+borders "${borders[@]}" &
+sketchybar "${sketchybar[@]}" &

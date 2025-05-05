@@ -2,7 +2,11 @@
   overmind = "latest"
 
 [tasks.dev]
-  run = "overmind start"
+  run = [
+    '[[ -S .overmind.sock ]] && overmind quit || true',
+    '[[ -S .overmind.sock ]] && rm -rf .overmind.sock',
+    "overmind start",
+  ]
 
 [tasks.reload]
   run = ["aerospace reload-config", "noti -t 'AeroSpace' -m 'Config reloaded'"]
