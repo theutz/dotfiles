@@ -2,15 +2,26 @@ local M = {}
 
 local launch_menu = {
 	{
-		label = "Spotify Player",
-		args = { "spotify_player" },
-		domain = { DomainName = "unix" },
+		label = "Btop",
+		args = { "btop" },
 	},
 	{
-		label = "Neovide",
-		args = { "neovide", "--fork" },
+		label = "Spotify Player",
+		args = { "spotify_player" },
+	},
+	{
+		label = "Volgo",
+		args = { "mise", "x", "volgo", "--", "volgo" },
 	},
 }
+
+for _, v in ipairs(launch_menu) do
+	v["set_environment_variables"] = {
+		PATH = os.getenv "HOME"
+			.. "/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:"
+			.. os.getenv "PATH",
+	}
+end
 
 function M.apply_to_config(config)
 	local lm = config.launch_menu or {}
