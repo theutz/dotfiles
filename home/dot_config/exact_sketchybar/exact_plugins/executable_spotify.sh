@@ -10,19 +10,18 @@ track="$(jq -r '.item.name' <<<"$info")"
 artist="$(jq -r '.item.artists | map(.name) | join(", ")' <<<"$info")"
 is_multi="$(sketchybar --query displays | jq -r 'length | . > 1')"
 
-args=(--set "$NAME")
+args=(
+    --animate quadratic 30
+    --set "$NAME"
+)
 
 if $is_multi; then
     args+=(
-        position=center
         label.max_chars=0
-        padding_left=0
     )
 else
     args+=(
-        position=q
         label.max_chars=40
-        padding_right=16
     )
 fi
 

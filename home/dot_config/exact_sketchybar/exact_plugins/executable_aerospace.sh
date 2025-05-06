@@ -4,7 +4,6 @@ set -euo pipefail
 . "$CONFIG_DIR/colors.sh"
 
 focused_workspace="$(aerospace list-workspaces --focused)"
-all_workspaces="$(aerospace list-workspaces --all)"
 workspaces_on_focused_monitor="$(
     aerospace list-workspaces --monitor focused --json |
         jq 'map(.workspace)'
@@ -23,49 +22,27 @@ function workspace_has_windows() {
 
 args=()
 
-default_background="$(color -a 88 background)"
-default_label="$(color pink)"
-default_icon="$(color purple)"
-
-for workspace in $all_workspaces; do
-    args+=(--set space."$workspace")
+for workspace in $(aerospace list-workspaces --all); do
+    args+=(
+        --animate quadratic 15
+        --set space."$workspace"
+    )
 
     if [[ "$workspace" == "$focused_workspace" ]]; then
         args+=(
-            background.color="$(color -a 66 green)"
-            label.highlight_color="$(color green)"
+            icon.highlight=on
             label.highlight=on
             background.drawing=on
         )
-        if workspace_has_windows "$workspace"; then
-            args+=(
-                icon.highlight_color="$(color green)"
-                icon.highlight=on
-            )
-        fi
-        continue
     else
         args+=(
-            background.color="$default_background"
-            label.highlight_color="$default_label"
-            icon.highlight_color="$default_icon"
+            icon.highlight=off
             background.drawing=off
+            label.highlight=off
         )
     fi
 
     if is_on_focused_monitor "$workspace"; then
-        args+=(
-            label.highlight=on
-            icon.highlight_color="$default_icon"
-        )
-    else
-        args+=(
-            label.highlight=off
-            icon.highlight_color="$(color -a 66 purple)"
-        )
-    fi
-
-    if workspace_has_windows "$workspace"; then
         args+=(
             icon.highlight=on
         )
@@ -74,6 +51,33 @@ for workspace in $all_workspaces; do
             icon.highlight=off
         )
     fi
+
+    if workspace_has_windows "$workspace"; then
+        args+=(
+            label.drawing=on
+            icon.padding_right="$(sketchybar --query defaults |
+                jq -r '.icon.padding_right')"
+        )
+    else
+        args+=(
+            label.drawing=off
+            icon.padding_right=12
+        )
+    fi
 done
+
+if [[ "$(aerospace list-monitors --count)" -gt 1 ]]; then
+    args+=(
+        --set spotify position=center
+        --set ipaddress position=center
+        --set iplocation position=center
+    )
+else
+    args+=(
+        --set spotify position=q
+        --set ipaddress position=e
+        --set iplocation position=e
+    )
+fi
 
 sketchybar "${args[@]}"

@@ -5,6 +5,15 @@
 # focused application in the $INFO variable:
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
+args=(
+    --animate quadratic 30
+    --set "$NAME"
+)
+
 if [[ "$SENDER" = "front_app_switched" ]]; then
-    sketchybar --set "$NAME" label="$INFO"
+    args+=(
+        label="$INFO"
+    )
 fi
+
+sketchybar "${args[@]}"
