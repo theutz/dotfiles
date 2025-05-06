@@ -192,6 +192,8 @@ args+=(
 	icon=󰩟
 	label.color="$(color yellow)"
 	label.font.size=12.0
+	label.highlight=on
+	label.highlight_color="$(color -a 88 yellow)"
 	label.padding_right=8
 	padding_left=12
 	padding_right=4
@@ -209,6 +211,8 @@ args+=(
 	icon=
 	label.color="$(color yellow)"
 	label.font.size=12.0
+	label.highlight=on
+	label.highlight_color="$(color -a 88 yellow)"
 )
 
 sketchybar "${args[@]}"
