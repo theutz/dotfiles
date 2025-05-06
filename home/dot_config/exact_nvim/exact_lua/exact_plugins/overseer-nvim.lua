@@ -36,6 +36,21 @@ return {
 				"<Cmd>OverseerQuickAction edit<cr>",
 				desc = "Edit most recent overseer task",
 			},
+			{
+				"<leader>ov",
+				"<Cmd>OverseerQuickAction open vsplit<cr>",
+				desc = "Open last output in vertical split",
+			},
+			{
+				"<leader>os",
+				"<Cmd>OverseerQuickAction open hsplit<cr>",
+				desc = "Open last output in horizontal split",
+			},
+			{
+				"<leader>o<tab>",
+				"<Cmd>OverseerQuickAction open tab<cr>",
+				desc = "Open last output in new tab",
+			},
 		},
 		-- ISSUE:: Won't work unless [this is accepted](https://github.com/stevearc/overseer.nvim/pull/417)
 		-- opts = {
