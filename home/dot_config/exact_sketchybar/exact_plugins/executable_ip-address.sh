@@ -34,7 +34,7 @@ data="$(
 )"
 set -eo pipefail
 
-ip="$(echo "$data" | jq -r '.ip')"
+ip="$(jq -r '.ip' <<<"$data")"
 
 args+=(
     --animate "$curve" "$duration"
@@ -55,7 +55,7 @@ else
     )
 fi
 
-location="$(echo "$data" | jq -r '.location')"
+location="$(jq -r '.location' <<<"$data")"
 
 args+=(
     --animate "$curve" "$duration"
