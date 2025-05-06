@@ -15,4 +15,8 @@ run = "tail -n0 -f /opt/homebrew/var/log/sketchybar/sketchybar.err.log"
 run = "tail -n0 -f /opt/homebrew/var/log/sketchybar/sketchybar.out.log"
 
 [tasks.dev]
-run = "overmind start"
+run = [
+  "[[ -S .overmind.sock ]] && overmind quit || true",
+  "[[ -S .overmind.sock ]] && rm -f .overmind.sock || true",
+  "overmind start",
+]
