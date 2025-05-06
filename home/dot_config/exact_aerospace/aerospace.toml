@@ -103,6 +103,7 @@ start-at-login = true
   # All possible modifiers: cmd, alt, ctrl, shift
 
   alt-semicolon = 'mode aero'
+  cmd-ctrl-alt-a = 'layout accordion tiles'
   cmd-ctrl-alt-e = 'balance-sizes'
   cmd-ctrl-alt-enter = 'fullscreen'
   cmd-ctrl-alt-equal = 'resize smart +50'
