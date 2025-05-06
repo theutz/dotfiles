@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl https://v2d.wttr.in/Golcuk
