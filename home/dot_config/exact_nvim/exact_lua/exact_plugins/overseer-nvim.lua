@@ -42,7 +42,7 @@ return {
 				desc = "Open last output in vertical split",
 			},
 			{
-				"<leader>os",
+				"<leader>ox",
 				"<Cmd>OverseerQuickAction open hsplit<cr>",
 				desc = "Open last output in horizontal split",
 			},
