@@ -5,9 +5,17 @@ set -euo pipefail
 PATH="$HOME/bin:$PATH"
 
 info="$(spotify_player get key playback)"
-is_playing="$(jq -r '.is_playing' <<<"$info")"
-track="$(jq -r '.item.name' <<<"$info")"
-artist="$(jq -r '.item.artists | map(.name) | join(", ")' <<<"$info")"
+
+if [[ -n "$info" && "$info" != "null" ]]; then
+    is_playing="$(jq -r '.is_playing' <<<"$info")"
+    track="$(jq -r '.item.name' <<<"$info")"
+    artist="$(jq -r '.item.artists | map(.name) | join(", ")' <<<"$info")"
+else
+    is_playing=false
+    track=""
+    artist=""
+fi
+
 is_multi="$(sketchybar --query displays | jq -r 'length | . > 1')"
 
 args=(
