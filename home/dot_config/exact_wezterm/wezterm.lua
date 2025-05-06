@@ -12,6 +12,7 @@ require("config.colors").apply_to_config(config)
 require("config.keys").apply_to_config(config)
 require("config.plugins").apply_to_config(config)
 require("config.command-palette").apply_to_config(config)
+require("config.tab-bar").apply_to_config(config)
 
 wezterm.on(
 	"window-config-reloaded",

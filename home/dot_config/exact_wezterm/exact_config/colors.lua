@@ -18,20 +18,24 @@ local function get_appearance()
 	return "Dark"
 end
 
-function M.apply_to_config(cfg)
-	cfg.color_scheme = scheme_for_appearance(get_appearance())
-	cfg.window_background_opacity = 0.8
-	cfg.macos_window_background_blur = 20
+function M.apply_to_config(config)
+	config.color_scheme = scheme_for_appearance(get_appearance())
 
-	wezterm.on("window-config-reloaded", function(window, pane)
-		local overrides = window:get_config_overrides() or {}
-		local appearance = window:get_appearance()
-		local scheme = scheme_for_appearance(appearance)
-		if overrides.color_scheme ~= scheme then
-			overrides.color_scheme = scheme
-			window:set_config_overrides(overrides)
-		end
-	end)
+	config.window_background_opacity = 0.8
+
+	config.macos_window_background_blur = 20
+
+	wezterm.on("window-config-reloaded", M.window_config_reloaded)
+end
+
+function M.window_config_reloaded(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local appearance = window:get_appearance()
+	local scheme = scheme_for_appearance(appearance)
+	if overrides.color_scheme ~= scheme then
+		overrides.color_scheme = scheme
+		window:set_config_overrides(overrides)
+	end
 end
 
 return M
