@@ -33,14 +33,10 @@ M.key_tables = {
 	},
 }
 
----@type [([string?, string][]), Wezterm.Action][]
 M.keys = {
 	{
 		{ { "LEADER|SHIFT", "!" } },
-		wezterm.action_callback(function(win, pane)
-			local tab, window = pane:move_to_new_tab()
-			pane:activate()
-		end),
+		require "actions.break-pane",
 	},
 	{
 		{ { "LEADER", "c" }, { "SUPER", "n" }, { "SUPER", "t" } },
@@ -144,9 +140,7 @@ M.keys = {
 	},
 	{
 		{ { "SUPER|SHIFT", "P" }, { "CTRL|SHIFT", "P" }, { "LEADER", ":" } },
-		a.ShowLauncherArgs {
-			flags = "LAUNCH_MENU_ITEMS|TABS|DOMAINS|KEY_ASSIGNMENTS|WORKSPACES|COMMANDS|FUZZY",
-		},
+		a.ActivateCommandPalette,
 	},
 	{
 		{ { "SUPER", "q" } },
@@ -247,15 +241,7 @@ M.keys = {
 	},
 	{
 		{ { "LEADER|SHIFT", "$" } },
-		a.PromptInputLine {
-			description = "Rename workspace...",
-			action = wezterm.action_callback(function(win, pane, line)
-				if line then
-					local old = win:mux_window():get_workspace()
-					wezterm.mux.rename_workspace(old, line)
-				end
-			end),
-		},
+		require "actions.rename-workspace",
 	},
 	{
 		{ { "LEADER", "," } },
