@@ -150,8 +150,9 @@ for alias in "${aliases[@]}"; do
 	)
 done
 
+# Setup spotify
 args+=(
-	--add item spotify center
+	--add item spotify q
 	--set spotify
 	display=1
 	drawing=off
@@ -178,6 +179,36 @@ args+=(
       --attach \
       --workspace spotify \
       spotify_player"
+)
+
+# Setup IP Address check
+args+=(
+	--add item ipaddress e
+	--set ipaddress
+	click_script="open https://dnsleaktest.com"
+	icon.color="$(color green)"
+	icon.highlight=on
+	icon.highlight_color="$(color red)"
+	icon=󰩟
+	label.color="$(color yellow)"
+	label.font.size=12.0
+	label.padding_right=8
+	padding_left=12
+	padding_right=4
+	script="$PLUGIN_DIR/ip-address.sh"
+	update_freq=5
+
+	--add item iplocation e
+	--set iplocation
+	click_script="open https://dnsleaktest.com"
+	drawing=off
+	icon.color="$(color green)"
+	icon.font.size=14.0
+	icon.highlight=on
+	icon.padding_left=0
+	icon=
+	label.color="$(color yellow)"
+	label.font.size=12.0
 )
 
 sketchybar "${args[@]}"
