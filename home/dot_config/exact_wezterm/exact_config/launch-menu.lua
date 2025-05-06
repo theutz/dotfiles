@@ -13,12 +13,26 @@ local launch_menu = {
 		label = "Volgo",
 		args = { "mise", "x", "volgo", "--", "volgo" },
 	},
+	{
+		label = "Tickers",
+		args = { "tickrs" },
+	},
+	{
+		label = "Chezmoi",
+		args = { "chezmoi", "cd" },
+	},
+	{
+		label = "Weather",
+		args = { "weather" },
+	},
 }
 
 for _, v in ipairs(launch_menu) do
 	v["set_environment_variables"] = {
 		PATH = os.getenv "HOME"
-			.. "/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:"
+			.. "/.local/bin:"
+			.. os.getenv "HOME"
+			.. "/bin:/opt/homebrew/bin:/opt/homebrew/sbin:"
 			.. os.getenv "PATH",
 	}
 end
