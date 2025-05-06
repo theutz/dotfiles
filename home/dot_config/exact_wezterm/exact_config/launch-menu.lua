@@ -25,6 +25,10 @@ local launch_menu = {
 		label = "Weather",
 		args = { "weather" },
 	},
+	{
+		label = "Sunset",
+		args = { "fish", "-lc", "sunset; sleep 1h" },
+	},
 }
 
 for _, v in ipairs(launch_menu) do
