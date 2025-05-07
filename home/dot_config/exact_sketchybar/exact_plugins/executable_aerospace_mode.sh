@@ -16,6 +16,10 @@ case "$MODE" in
 main)
     sketchybar+=(
         drawing=off
+
+        --animate quadratic 5
+        --bar
+        color="$(color -a 88 background)"
     )
     borders+=(
         active_color="$(color pink)"
@@ -27,6 +31,10 @@ main)
         drawing=on
         icon.color="$(color red)"
         label.color="$(color orange)"
+
+        --animate quadratic 5
+        --bar
+        color="$(color -a 88 red)"
     )
     borders+=(
         active_color="$(color red)"
