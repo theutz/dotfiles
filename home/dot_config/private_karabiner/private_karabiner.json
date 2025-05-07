@@ -9,7 +9,26 @@
                 },
                 "rules": [
                     {
+                        "description": "Right Option Key → Hyper Key (⌃⌥⌘)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_option",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "modifiers": ["left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change right_option to f13 if alone, right_option otherwise",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": { "key_code": "right_alt" },

@@ -103,6 +103,15 @@ start-at-login = true
   # All possible modifiers: cmd, alt, ctrl, shift
 
   alt-semicolon = 'mode aero'
+  cmd-ctrl-alt-1 = 'workspace --auto-back-and-forth 1'
+  cmd-ctrl-alt-2 = 'workspace --auto-back-and-forth 2'
+  cmd-ctrl-alt-3 = 'workspace --auto-back-and-forth 3'
+  cmd-ctrl-alt-4 = 'workspace --auto-back-and-forth 4'
+  cmd-ctrl-alt-5 = 'workspace --auto-back-and-forth 5'
+  cmd-ctrl-alt-6 = 'workspace --auto-back-and-forth 6'
+  cmd-ctrl-alt-7 = 'workspace --auto-back-and-forth 7'
+  cmd-ctrl-alt-8 = 'workspace --auto-back-and-forth 8'
+  cmd-ctrl-alt-9 = 'workspace --auto-back-and-forth 9'
   cmd-ctrl-alt-a = 'layout accordion tiles'
   cmd-ctrl-alt-e = 'balance-sizes'
   cmd-ctrl-alt-enter = 'fullscreen'

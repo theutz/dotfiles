@@ -2,5 +2,8 @@
 
 set -euo pipefail
 
-wezterm start ${1:+--workspace="$1"} >/dev/null 2>&1 &
+wezterm \
+  --config quit_when_all_windows_are_closed=true \
+  start \
+  ${1:+--workspace="$1"} >/dev/null 2>&1 &
 disown
