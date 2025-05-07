@@ -24,6 +24,7 @@ function main() {
         pueue add -- chezmoi merge
   then
     gum spin --title "Merging..." -- pueue wait
+    gum log -l info "Templates merged."
   else
     gum log -l info "No templates to merge."
   fi
@@ -37,6 +38,7 @@ function main() {
         pueue add -- chezmoi re-add
   then
     gum spin --title "Re-adding..." -- pueue wait
+    gum log -l info "Files re-added."
   else
     gum log -l info "No files to re-add."
   fi
@@ -50,6 +52,7 @@ function main() {
         pueue add -- chezmoi forget --force
   then
     gum spin --title "Forgetting..." -- pueue wait
+    gum log -l info "Files forgotten."
   else
     gum log -l info "No files to forget."
   fi
@@ -63,6 +66,7 @@ function main() {
         pueue add -- chezmoi add
   then
     gum spin --title "Adding..." -- pueue wait
+    gum log -l info "Files added."
   else
     gum log -l info "No files to add."
   fi
