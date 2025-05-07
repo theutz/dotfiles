@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if ! pgrep aichat &>/dev/null; then
+  aichat --serve &>/dev/null &
+  disown
+fi
+
+url="http://127.0.0.1:8000/arena?num=3&models=claude%3Aclaude-3-7-sonnet-20250219%2Cgemini%3Agemini-2.5-pro-exp-03-25%2Copenai%3Achatgpt-4o-latest"
+
+open "$url"
