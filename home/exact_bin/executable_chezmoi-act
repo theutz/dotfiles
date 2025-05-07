@@ -21,6 +21,7 @@ function main() {
     xargs --null \
       --no-run-if-empty \
       pueue add -- chezmoi merge || true
+  gum spin -- pueue wait
 
   chezmoi status --exclude templates |
     rg '^MM' |
@@ -28,6 +29,7 @@ function main() {
     xargs --null \
       --no-run-if-empty \
       pueue add -- chezmoi re-add || true
+  gum spin -- pueue wait
 
   chezmoi status --exclude templates |
     rg '^DA' |
