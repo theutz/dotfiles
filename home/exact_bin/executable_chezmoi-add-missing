@@ -4,6 +4,8 @@
 files="$(chezmoi status |
   rg '^ D' |
   fzf --multi \
+      --query="${1:-}" \
+      --select-1 \
       --bind='ctrl-a:toggle-all' \
       --prompt='Add deleted: ' \
       --nth='2..' \

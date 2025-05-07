@@ -5,7 +5,7 @@ files="$(
   chezmoi status |
     rg '^DA' |
     fzf --multi \
-        --query="${1:-''}" \
+        --query="${1:-}" \
         --select-1 \
         --bind='ctrl-a:toggle-all' \
         --prompt='Forget missing: ' \
