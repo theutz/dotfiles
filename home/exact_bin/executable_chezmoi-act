@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 function choose() {
   fzf --multi \
@@ -8,10 +8,10 @@ function choose() {
     --bind 'ctrl-a:toggle-all' \
     --bind 'start:select-all' \
     --prompt "$1" \
-    --accept-nth '~/{2}' \
+    --accept-nth "$HOME/{2}" \
     --nth '2..' \
     --print0 \
-    --preview 'chezmoi diff ~/{2}'
+    --preview "chezmoi diff $HOME/{2}"
 }
 
 function main() {
