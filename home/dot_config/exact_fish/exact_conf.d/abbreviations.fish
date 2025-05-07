@@ -3,7 +3,7 @@ abbr -a -- brewin 'brew info'
 abbr -a -- brewl 'brew list'
 abbr -a -- brews 'brew search'
 abbr -a -- brewx 'brew uninstall'
-abbr -a -- c chezmoi
+abbr -a -- cm chezmoi
 abbr -a -- caski 'brew install --cask'
 abbr -a -- caskx 'brew uninstall --cask'
 abbr -a -- cat bat
