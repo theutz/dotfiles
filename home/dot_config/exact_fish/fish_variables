@@ -2,6 +2,7 @@
 # VERSION: 3.0
 SETUVAR --export BROWSER:open
 SETUVAR --export EDITOR:nvim
+SETUVAR --export EZA_COLORS:uu\x3d36\x3auR\x3d31\x3aun\x3d35\x3agu\x3d37\x3ada\x3d2\x3b34\x3aur\x3d34\x3auw\x3d95\x3aux\x3d36\x3aue\x3d36\x3agr\x3d34\x3agw\x3d35\x3agx\x3d36\x3atr\x3d34\x3atw\x3d35\x3atx\x3d36\x3axx\x3d95\x3a
 SETUVAR --export LESS:\x2dg\x20\x2di\x20\x2dM\x20\x2dR\x20\x2dS\x20\x2dw\x20\x2dX\x20\x2dz\x2d4
 SETUVAR --export LESSKEY:\x7e/\x2econfig/less/lesskey
 SETUVAR --export LESSOPEN:\x7c\x20/usr/bin/env\x20lesspipe\x2esh\x20\x25s\x202\x3e\x26\x2d
@@ -10,6 +11,10 @@ SETUVAR --export MANWIDTH:999
 SETUVAR --export VISUAL:neovide\x20\x2d\x2dno\x2dfork
 SETUVAR --export XDG_CONFIG_HOME:/Users/michael/\x2econfig
 SETUVAR __fish_initialized:3800
+SETUVAR _fisher_dracula_2F_fish_files:\x7e/\x2econfig/fish/themes/Dracula\x20Official\x2etheme\x1e\x7e/\x2econfig/fish/conf\x2ed/dracula\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1edracula/fish
+SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR --export fish_abbr_file:/Users/michael/\x2econfig/fish/conf\x2ed/abbreviations\x2efish
 SETUVAR fish_color_autosuggestion:6272a4
 SETUVAR fish_color_cancel:ff5555\x1e\x2d\x2dreverse
