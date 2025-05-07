@@ -15,40 +15,58 @@ function choose() {
 }
 
 function main() {
-  chezmoi status --include templates |
-    rg '^MM' |
-    choose "Merge templates: " |
-    xargs --null \
-      --no-run-if-empty \
-      pueue add -- chezmoi merge || true
+  if
+    chezmoi status --include templates |
+      rg '^MM' |
+      choose "Merge templates: " |
+      xargs --null \
+        --no-run-if-empty \
+        pueue add -- chezmoi merge
+  then
+    gum spin --title "Merging..." -- pueue wait
+  else
+    gum log -l info "No templates to merge."
+  fi
 
-  gum spin --title "Merging..." -- pueue wait
+  if
+    chezmoi status --exclude templates |
+      rg '^MM' |
+      choose "Re-add: " |
+      xargs --null \
+        --no-run-if-empty \
+        pueue add -- chezmoi re-add
+  then
+    gum log -l info "No files to re-add."
+  else
+    gum spin --title "Re-adding..." -- pueue wait
+  fi
 
-  chezmoi status --exclude templates |
-    rg '^MM' |
-    choose "Re-add: " |
-    xargs --null \
-      --no-run-if-empty \
-      pueue add -- chezmoi re-add || true
-  gum spin --title "Re-adding..." -- pueue wait
+  if
+    chezmoi status --exclude templates |
+      rg '^DA' |
+      choose "Forget missing: " |
+      xargs --null \
+        --no-run-if-empty \
+        pueue add -- chezmoi forget --force
+  then
+    gum spin --title "Forgetting..." -- pueue wait
+  else
+    gum log -l info "No files to forget."
+  fi
 
-  chezmoi status --exclude templates |
-    rg '^DA' |
-    choose "Forget missing: " |
-    xargs --null \
-      --no-run-if-empty \
-      pueue add -- chezmoi forget --force || true
+  if
+    chezmoi status --exclude templates |
+      rg '^ D' |
+      choose "Add deleted: " |
+      xargs --null \
+        --no-run-if-empty \
+        pueue add -- chezmoi add
+  then
+    gum spin --title "Adding..." -- pueue wait
+  else
+    gum log -l info "No files to add."
+  fi
 
-  gum spin --title "Forgetting..." -- pueue wait
-
-  chezmoi status --exclude templates |
-    rg '^ D' |
-    choose "Add deleted: " |
-    xargs --null \
-      --no-run-if-empty \
-      pueue add -- chezmoi add || true
-
-  gum spin --title "Adding..." -- pueue wait
 }
 
 main
