@@ -3,35 +3,60 @@
 set -euo pipefail
 
 function choose() {
+  pos=()
+  reverse_diff=0
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --reverse-diff | -r)
+      reverse_diff=1
+      shift
+      ;;
+    --* | -*)
+      gum log -l error "$1 is not a valid flag"
+      exit 1
+      ;;
+    *)
+      pos+=("$1")
+      shift
+      ;;
+    esac
+  done
+
+  set -- "${pos[@]}"
+
   fzf --multi \
     --exit-0 \
     --bind 'ctrl-a:toggle-all' \
-    --prompt "$1" \
-    --accept-nth "$HOME/{2}" \
+    --border "rounded" \
+    --border-label "$1" \
     --nth '2..' \
+    --accept-nth "$HOME/{2}" \
     --print0 \
-    --preview "chezmoi diff $HOME/{2}"
+    --preview "chezmoi diff $(test $reverse_diff && echo "--reverse ")$HOME/{2}"
 }
 
-function main() {
+function merge() {
   if
     chezmoi status --include templates |
       rg '^MM' |
       choose "Merge templates: " |
       xargs --null \
         --no-run-if-empty \
-        pueue add -- chezmoi merge &>/dev/null
+        pueue add -- chezmoi merge \
+        &>/dev/null
   then
     gum spin --title "Merging..." -- pueue wait
     gum log -l info "Templates merged."
   else
     gum log -l warn "No templates to merge."
   fi
+}
 
+function readd() {
   if
     chezmoi status --exclude templates |
       rg '^MM' |
-      choose "Re-add: " |
+      choose --reverse-diff "Re-add modified files" |
       xargs --null \
         --no-run-if-empty \
         pueue add -- chezmoi re-add &>/dev/null
@@ -41,11 +66,13 @@ function main() {
   else
     gum log -l warn "No files to re-add."
   fi
+}
 
+function forget() {
   if
     chezmoi status --exclude templates |
       rg '^DA' |
-      choose "Forget missing: " |
+      choose "Forget missing files" |
       xargs --null \
         --no-run-if-empty \
         pueue add -- chezmoi forget --force &>/dev/null
@@ -55,11 +82,13 @@ function main() {
   else
     gum log -l warn "No files to forget."
   fi
+}
 
+function add() {
   if
     chezmoi status --exclude templates |
       rg '^ D' |
-      choose "Add deleted: " |
+      choose "Add deleted files" |
       xargs --null \
         --no-run-if-empty \
         pueue add -- chezmoi add &>/dev/null
@@ -69,7 +98,13 @@ function main() {
   else
     gum log -l warn "No files to add."
   fi
+}
 
+function main() {
+  merge
+  readd
+  add
+  forget
 }
 
 main
