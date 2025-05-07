@@ -26,7 +26,7 @@ function main() {
     gum spin --title "Merging..." -- pueue wait
     gum log -l info "Templates merged."
   else
-    gum log -l info "No templates to merge."
+    gum log -l warn "No templates to merge."
   fi
 
   if
@@ -40,7 +40,7 @@ function main() {
     gum spin --title "Re-adding..." -- pueue wait
     gum log -l info "Files re-added."
   else
-    gum log -l info "No files to re-add."
+    gum log -l warn "No files to re-add."
   fi
 
   if
@@ -54,7 +54,7 @@ function main() {
     gum spin --title "Forgetting..." -- pueue wait
     gum log -l info "Files forgotten."
   else
-    gum log -l info "No files to forget."
+    gum log -l warn "No files to forget."
   fi
 
   if
@@ -68,7 +68,7 @@ function main() {
     gum spin --title "Adding..." -- pueue wait
     gum log -l info "Files added."
   else
-    gum log -l info "No files to add."
+    gum log -l warn "No files to add."
   fi
 
 }
