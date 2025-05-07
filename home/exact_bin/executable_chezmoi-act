@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+function choose() {
+  fzf --multi \
+    --exit-0 \
+    --bind 'ctrl-a:toggle-all' \
+    --bind 'start:select-all' \
+    --prompt "$1" \
+    --accept-nth '~/{2}' \
+    --nth '2..' \
+    --print0 \
+    --preview 'chezmoi diff ~/{2}'
+}
+
+function main() {
+  chezmoi status --include templates |
+    rg '^MM' |
+    choose "Merge templates: " |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi merge || true
+
+  chezmoi status --exclude templates |
+    rg '^MM' |
+    choose "Re-add: " |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi re-add || true
+
+  chezmoi status --exclude templates |
+    rg '^DA' |
+    choose "Forget missing: " |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi forget --force || true
+
+  chezmoi status --exclude templates |
+    rg '^ D' |
+    choose "Add deleted: " |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi add
+}
+
+main
