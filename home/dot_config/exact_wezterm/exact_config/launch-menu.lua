@@ -8,10 +8,12 @@ local launch_menu = {
 	{
 		label = "Spotify Player",
 		args = { "spotify_player" },
+		domain = { DomainName = "unix" },
 	},
 	{
 		label = "Volgo",
 		args = { "mise", "x", "volgo", "--", "volgo" },
+		domain = { DomainName = "unix" },
 	},
 	{
 		label = "Tickers",
@@ -28,6 +30,10 @@ local launch_menu = {
 	{
 		label = "Sunset",
 		args = { "fish", "-lc", "sunset; sleep 1h" },
+	},
+	{
+		label = "Ping Google",
+		args = { "gping", "google.com" },
 	},
 }
 

@@ -2,7 +2,7 @@ local wezterm = require "wezterm"
 
 local M = {}
 
-function ansi(index)
+local function ansi(index)
 	local c = {
 		"Black",
 		"Maroon",
@@ -24,6 +24,10 @@ function ansi(index)
 	return { AnsiColor = c[index + 1] }
 end
 
+local function bg(index) return { Background = ansi(index) } end
+
+local function fg(index) return { Foreground = ansi(index) } end
+
 function M.apply_to_config(config)
 	local color = require "util.color"(config)
 
@@ -36,8 +40,8 @@ function M.apply_to_config(config)
 	config.window_frame = {
 		font = config.font,
 		font_size = 14,
-		active_titlebar_bg = color "selection_bg",
-		inactive_titlebar_bg = color "background",
+		active_titlebar_bg = color("ansi", 0),
+		inactive_titlebar_bg = color("ansi", 0),
 	}
 
 	wezterm.on("update-status", M.update_status)
@@ -45,9 +49,29 @@ function M.apply_to_config(config)
 end
 
 function M.format_tab_title(tab, tabs, panes, config, hover, max_width)
-	local title = M.tab_title(tab)
+	local color = 7
+	local index = tab.tab_index + 1
+	local icon = wezterm.nerdfonts["md_numeric_" .. index .. "_box_outline"]
+
+	if tab.is_active then
+		icon = wezterm.nerdfonts["md_numeric_" .. index .. "_circle"]
+		color = 4
+	elseif hover then
+		color = 5
+		icon = wezterm.nerdfonts["md_numeric_" .. index .. "_box"]
+	end
+	local title = icon .. " " .. M.tab_title(tab)
+
 	return {
+		bg(0),
+		fg(color),
+		{ Text = wezterm.nerdfonts.ple_left_half_circle_thick },
+		bg(color),
+		fg(0),
 		{ Text = title },
+		fg(color),
+		bg(0),
+		{ Text = wezterm.nerdfonts.ple_right_half_circle_thick },
 	}
 end
 
@@ -63,17 +87,36 @@ function M.update_status(win, pane)
 end
 
 function M.left_status(win, pane)
+	local ws = win:mux_window():get_workspace()
+	local color = 6
+	if not win:is_focused() then color = 7 end
 	return wezterm.format {
-		{ Background = ansi(0) },
-		{ Text = " blue " },
+		fg(color),
+		bg(0),
+		{ Text = wezterm.nerdfonts.ple_left_half_circle_thick },
+		bg(color),
+		fg(0),
+		{ Text = wezterm.nerdfonts.cod_layers .. " " .. ws .. " " },
+		fg(color),
+		bg(0),
+		{ Text = wezterm.nerdfonts.pl_left_hard_divider },
 	}
 end
 
 function M.right_status(win, pane)
+	local domain = pane:get_domain_name()
+	local color = 6
+	if not win:is_focused() then color = 7 end
 	return wezterm.format {
-		{ Background = ansi(1) },
-		{ Text = " meh " },
-		{ Background = ansi(1) },
+		fg(color),
+		bg(0),
+		{ Text = wezterm.nerdfonts.pl_right_hard_divider },
+		bg(color),
+		fg(0),
+		{ Text = " " .. wezterm.nerdfonts.cod_archive .. " " .. domain },
+		fg(color),
+		bg(0),
+		{ Text = wezterm.nerdfonts.ple_right_half_circle_thick },
 	}
 end
 

@@ -236,8 +236,16 @@ M.keys = {
 		a.ActivateWindowRelative(-1),
 	},
 	{
-		{ { "LEADER", "g" } },
-		a.ShowLauncherArgs { flags = "WORKSPACES|FUZZY" },
+		{ { "LEADER", "g" }, { "SUPER", "g" } },
+		a.ShowLauncherArgs { flags = "WORKSPACES|DOMAINS|FUZZY" },
+	},
+	{
+		{ { "SUPER", "p" } },
+		a.ShowLauncherArgs { flags = "LAUNCH_MENU_ITEMS|FUZZY" },
+	},
+	{
+		{ { "SUPER", "r" } },
+		a.ReloadConfiguration,
 	},
 	{
 		{ { "LEADER|SHIFT", "$" } },
