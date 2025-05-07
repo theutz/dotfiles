@@ -36,9 +36,9 @@ function main() {
         --no-run-if-empty \
         pueue add -- chezmoi re-add
   then
-    gum log -l info "No files to re-add."
-  else
     gum spin --title "Re-adding..." -- pueue wait
+  else
+    gum log -l info "No files to re-add."
   fi
 
   if
