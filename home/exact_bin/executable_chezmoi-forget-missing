@@ -1,20 +1,28 @@
-#!/usr/bin/env -S mise x fzf ripgrep -- zsh
-# vim: ft=zsh
+#!/usr/bin/env -S mise x fzf ripgrep -- bash
+# vim: ft=bash
 
 files="$(
   chezmoi status |
     rg '^DA' |
     fzf --multi \
-        --query="${1:-}" \
-        --select-1 \
-        --bind='ctrl-a:toggle-all' \
-        --bind='start:select-all' \
-        --prompt='Forget missing: ' \
-        --nth='2..' \
-        --accept-nth='~/{2}' \
-        --preview='chezmoi diff ~/{2}'
+      --query="${1:-}" \
+      --select-1 \
+      --bind='ctrl-a:toggle-all' \
+      --bind='start:select-all' \
+      --prompt='Forget missing: ' \
+      --nth='2..' \
+      --accept-nth='~/{2}' \
+      --preview='chezmoi diff ~/{2}'
 )"
 
-if [[ -n "$files" ]]; then
-  chezmoi forget --force "${(f)files[@]}"
+IFS=$'\n' read -ra files <<<"$files"
+
+if [[ ${#files[@]} -gt 0 ]]; then
+  cmd=(chezmoi forget --force "${files[@]}")
+
+  if pueue status >/dev/null 2>&1; then
+    pueue add -- "${cmd[@]}"
+  else
+    "${cmd[@]}"
+  fi
 fi

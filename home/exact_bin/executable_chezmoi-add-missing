@@ -1,9 +1,10 @@
-#!/usr/bin/env -S mise x fzf ripgrep -- zsh
-# vim: ft=zsh
+#!/usr/bin/env -S mise x fzf ripgrep -- bash
+# vim: ft=bash
 
-files="$(chezmoi status |
-  rg '^ D' |
-  fzf --multi \
+files="$(
+  chezmoi status |
+    rg '^ D' |
+    fzf --multi \
       --query="${1:-}" \
       --select-1 \
       --bind='ctrl-a:toggle-all' \
@@ -14,6 +15,14 @@ files="$(chezmoi status |
       --preview='chezmoi diff ~/{2}'
 )"
 
-if [[ -n "$files" ]]; then
-  chezmoi add "${(f)files[@]}"
+IFS=$'\n' read -ra files <<<"$files"
+
+if [[ "${#files[@]}" -gt 0 ]]; then
+  cmd=(chezmoi add "${files[@]}")
+
+  if pueue status >/dev/null 2>&1; then
+    pueue add -- "${cmd[@]}"
+  else
+    "${cmd[@]}"
+  fi
 fi

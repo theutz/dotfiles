@@ -79,3 +79,8 @@ abbr -a -- cmls 'chezmoi managed'
 abbr -a -- we wezterm
 abbr -a -- wels 'wezterm cli list'
 abbr -a -- ws workspace
+abbr -a -- pu pueue
+abbr -a -- pua 'pueue add'
+abbr -a -- puf 'pueue follow'
+abbr -a -- pul 'pueue log'
+abbr -a -- puw 'pueue wait'
