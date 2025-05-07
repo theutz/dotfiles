@@ -7,6 +7,7 @@ files="$(chezmoi status |
       --query="${1:-}" \
       --select-1 \
       --bind='ctrl-a:toggle-all' \
+      --bind='start:select-all' \
       --prompt='Add deleted: ' \
       --nth='2..' \
       --accept-nth='~/{2}' \

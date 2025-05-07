@@ -8,6 +8,7 @@ files="$(
         --query="${1:-}" \
         --select-1 \
         --bind='ctrl-a:toggle-all' \
+        --bind='start:select-all' \
         --prompt='Forget missing: ' \
         --nth='2..' \
         --accept-nth='~/{2}' \
