@@ -18,7 +18,7 @@ args=(
 # Setup defaults
 args+=(
 	--default
-	alias.color="$(color cyan)"
+	alias.color="$(color orange)"
 	alias.scale=1.0
 	background.color="$(color -a 44 green)"
 	background.corner_radius=5
@@ -127,6 +127,7 @@ args+=(
 
 aliases=(
 	"Tailscale,Item-0"
+	"Control Center,WiFi"
 	"TextInputMenuAgent,Item-0"
 	"Control Center,FocusModes"
 	"AeroSpace,Item-0"
@@ -135,9 +136,10 @@ for alias in "${aliases[@]}"; do
 	args+=(
 		--add alias "$alias" right
 		--set "$alias"
-		display=active
 		label.drawing=off
 		icon.drawing=off
+		padding_left=0
+		padding_right=0
 	)
 done
 
