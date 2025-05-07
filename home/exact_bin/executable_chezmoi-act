@@ -21,7 +21,7 @@ function main() {
       choose "Merge templates: " |
       xargs --null \
         --no-run-if-empty \
-        pueue add -- chezmoi merge
+        pueue add -- chezmoi merge &>/dev/null
   then
     gum spin --title "Merging..." -- pueue wait
     gum log -l info "Templates merged."
@@ -35,7 +35,7 @@ function main() {
       choose "Re-add: " |
       xargs --null \
         --no-run-if-empty \
-        pueue add -- chezmoi re-add
+        pueue add -- chezmoi re-add &>/dev/null
   then
     gum spin --title "Re-adding..." -- pueue wait
     gum log -l info "Files re-added."
@@ -49,7 +49,7 @@ function main() {
       choose "Forget missing: " |
       xargs --null \
         --no-run-if-empty \
-        pueue add -- chezmoi forget --force
+        pueue add -- chezmoi forget --force &>/dev/null
   then
     gum spin --title "Forgetting..." -- pueue wait
     gum log -l info "Files forgotten."
@@ -63,7 +63,7 @@ function main() {
       choose "Add deleted: " |
       xargs --null \
         --no-run-if-empty \
-        pueue add -- chezmoi add
+        pueue add -- chezmoi add &>/dev/null
   then
     gum spin --title "Adding..." -- pueue wait
     gum log -l info "Files added."
