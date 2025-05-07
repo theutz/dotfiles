@@ -6,8 +6,6 @@ function choose() {
   fzf --multi \
     --exit-0 \
     --bind 'ctrl-a:toggle-all' \
-    --bind 'enter:accept-non-empty' \
-    --bind 'start:select-all' \
     --prompt "$1" \
     --accept-nth "$HOME/{2}" \
     --nth '2..' \
