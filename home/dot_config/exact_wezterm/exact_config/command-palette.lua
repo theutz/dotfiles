@@ -15,6 +15,20 @@ function M.augment_command_palette(window, pane)
 			doc = "Promote current pane to a new tab",
 			action = require "actions.break-pane",
 		},
+		{
+			brief = "Spotify Player",
+			doc = "Open Spotify Player in a new process",
+			icon = "md_spotify",
+			action = wezterm.action_callback(
+				function()
+					wezterm.run_child_process {
+						"/opt/homebrew/bin/wezterm",
+						"start",
+						"/opt/homebrew/bin/spotify_player",
+					}
+				end
+			),
+		},
 	}
 end
 
