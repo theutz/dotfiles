@@ -39,7 +39,7 @@ function main() {
       --no-run-if-empty \
       pueue add -- chezmoi forget --force || true
 
-  gum spin "Forgetting..." -- pueue wait
+  gum spin --title "Forgetting..." -- pueue wait
 
   chezmoi status --exclude templates |
     rg '^ D' |
