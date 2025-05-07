@@ -6,6 +6,5 @@ wezterm \
   --config quit_when_all_windows_are_closed=true \
   start \
   --config quit_when_all_windows_are_closed=true \
-  --config quit_when_all_windows_are_closed=true \
   ${1:+--workspace="$1"} >/dev/null 2>&1 &
 disown
