@@ -20,28 +20,28 @@ function main() {
     choose "Merge templates: " |
     xargs --null \
       --no-run-if-empty \
-      chezmoi merge || true
+      pueue add -- chezmoi merge || true
 
   chezmoi status --exclude templates |
     rg '^MM' |
     choose "Re-add: " |
     xargs --null \
       --no-run-if-empty \
-      chezmoi re-add || true
+      pueue add -- chezmoi re-add || true
 
   chezmoi status --exclude templates |
     rg '^DA' |
     choose "Forget missing: " |
     xargs --null \
       --no-run-if-empty \
-      chezmoi forget --force || true
+      pueue add -- chezmoi forget --force || true
 
   chezmoi status --exclude templates |
     rg '^ D' |
     choose "Add deleted: " |
     xargs --null \
       --no-run-if-empty \
-      chezmoi add
+      pueue add -- chezmoi add || true
 }
 
 main
