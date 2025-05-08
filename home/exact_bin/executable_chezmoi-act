@@ -121,7 +121,7 @@ function readd() {
 
 function forget() {
   chezmoi status --exclude templates |
-    rg '^DA' |
+    rg '^(DA| D)' |
     choose "Forget missing files" |
     xargs --null \
       --no-run-if-empty \
