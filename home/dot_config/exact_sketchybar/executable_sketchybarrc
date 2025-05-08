@@ -147,16 +147,7 @@ done
 args+=(
 	--add item spotify q
 	--set spotify
-	click_script="\
-    wezterm \
-      --config window_close_confirmation=\'NeverPrompt\' \
-      --config window_decorations=\'RESIZE\' \
-      --config enable_tab_bar=false \
-      start \
-      --domain unix \
-      --attach \
-      --workspace spotify \
-      spotify_player"
+	click_script="spotify_player playback play-pause"
 	display=1
 	drawing=off
 	icon.color="$(color green)"

@@ -10,9 +10,11 @@ local function create_restart_command()
 	end, {})
 end
 
-local function get_cwd_as_name()
-	local dir = vim.fn.getcwd(0)
-	return dir:gsub("[^A-Za-z0-9]", "_")
+local function run_action(action)
+	return function()
+		local sidebar = require("overseer.task_list.sidebar").get()
+		sidebar:run_action(action)
+	end
 end
 
 return {
@@ -53,45 +55,20 @@ return {
 			},
 		},
 		opts = {
+			bundles = {
+				autostart_on_load = false,
+			},
 			task_list = {
 				bindings = {
-					["r"] = function()
-						local sidebar = require("overseer.task_list.sidebar").get()
-						sidebar:run_action("restart")
-					end,
+					["r"] = run_action("restart"),
+					["s"] = run_action("start"),
+					["S"] = run_action("stop"),
 				},
 			},
 		},
 		config = function(_, opts)
 			create_restart_command()
-			local overseer = require("overseer")
-			overseer.setup(opts)
-
-			vim.api.nvim_create_autocmd("User", {
-				desc = "Save overseer.nvim tasks on persistence.nvim session save",
-				pattern = "PersistenceSavePre",
-				callback = function()
-					overseer.save_task_bundle(get_cwd_as_name(), nil, { on_conflict = "overwrite" })
-				end,
-			})
-
-			vim.api.nvim_create_autocmd("User", {
-				desc = "Remove all previous overseer.nvim tasks on persistence.nvim session load",
-				pattern = "PersistenceLoadPre",
-				callback = function()
-					for _, task in ipairs(overseer.list_tasks({})) do
-						task:dispose(true)
-					end
-				end,
-			})
-
-			vim.api.nvim_create_autocmd("User", {
-				desc = "Load overseer.nvim tasks on persistence.nvim session load",
-				pattern = "PersistenceLoadPost",
-				callback = function()
-					overseer.load_task_bundle(get_cwd_as_name(), { ignore_missing = true })
-				end,
-			})
+			require("overseer").setup(opts)
 		end,
 	},
 }
