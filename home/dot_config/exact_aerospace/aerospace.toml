@@ -140,6 +140,7 @@ start-at-login = true
   cmd-ctrl-alt-rightSquareBracket = ['focus-monitor --wrap-around prev']
   cmd-ctrl-alt-slash = 'layout accordion tiles'
   cmd-ctrl-alt-space = 'mode aero'
+  cmd-ctrl-alt-v = 'layout horizontal vertical'
   f13 = 'mode aero'
 
 [mode.aero.binding]

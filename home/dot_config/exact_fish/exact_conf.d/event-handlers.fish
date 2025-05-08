@@ -1,5 +1,6 @@
 function readd_abbr --on-event fish_postexec
     if string match -rq "^abbr (-a|--add)\b" $argv[1]
         abbr >$fish_abbr_file
+        cat $fish_abbr_file | sort >$fish_abbr_file
     end
 end
