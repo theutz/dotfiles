@@ -102,7 +102,9 @@ start-at-login = true
   # - Arrows.         left, down, up, right
   # All possible modifiers: cmd, alt, ctrl, shift
 
+  alt-quote = 'mode join'
   alt-semicolon = 'mode aero'
+  alt-shift-quote = 'mode move'
   cmd-ctrl-alt-1 = 'workspace --auto-back-and-forth 1'
   cmd-ctrl-alt-2 = 'workspace --auto-back-and-forth 2'
   cmd-ctrl-alt-3 = 'workspace --auto-back-and-forth 3'
@@ -142,6 +144,53 @@ start-at-login = true
   cmd-ctrl-alt-space = 'mode aero'
   cmd-ctrl-alt-v = 'layout horizontal vertical'
   f13 = 'mode aero'
+
+[mode.move.binding]
+  esc = 'mode main'
+  h = [
+    'move left',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+  j = [
+    'move down',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+  k = [
+    'move up',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+  l = [
+    'move right',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+
+[mode.join.binding]
+  esc = 'mode main'
+  h = [
+    'join-with left',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+  j = [
+    'join-with down',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+  k = [
+    'join-with up',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+  l = [
+    'join-with right',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'mode main',
+  ]
+
 
 [mode.aero.binding]
   1 = 'workspace --auto-back-and-forth 1'
