@@ -103,7 +103,7 @@ function merge() {
 
 function apply() {
   chezmoi status |
-    rg '^MM' |
+    rg '^(MM| A)' |
     choose "Apply changes to target" |
     xargs --null \
       --no-run-if-empty \
