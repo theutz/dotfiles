@@ -105,45 +105,45 @@ start-at-login = true
   alt-quote = 'mode join'
   alt-semicolon = 'mode aero'
   alt-shift-quote = 'mode move'
-  cmd-ctrl-alt-1 = 'workspace --auto-back-and-forth 1'
-  cmd-ctrl-alt-2 = 'workspace --auto-back-and-forth 2'
-  cmd-ctrl-alt-3 = 'workspace --auto-back-and-forth 3'
-  cmd-ctrl-alt-4 = 'workspace --auto-back-and-forth 4'
-  cmd-ctrl-alt-5 = 'workspace --auto-back-and-forth 5'
-  cmd-ctrl-alt-6 = 'workspace --auto-back-and-forth 6'
-  cmd-ctrl-alt-7 = 'workspace --auto-back-and-forth 7'
-  cmd-ctrl-alt-8 = 'workspace --auto-back-and-forth 8'
-  cmd-ctrl-alt-9 = 'workspace --auto-back-and-forth 9'
-  cmd-ctrl-alt-a = 'layout accordion tiles'
-  cmd-ctrl-alt-e = 'balance-sizes'
-  cmd-ctrl-alt-enter = 'fullscreen'
-  cmd-ctrl-alt-equal = 'resize smart +50'
-  cmd-ctrl-alt-h = [
+  cmd-ctrl-alt-shift-1 = 'workspace --auto-back-and-forth 1'
+  cmd-ctrl-alt-shift-2 = 'workspace --auto-back-and-forth 2'
+  cmd-ctrl-alt-shift-3 = 'workspace --auto-back-and-forth 3'
+  cmd-ctrl-alt-shift-4 = 'workspace --auto-back-and-forth 4'
+  cmd-ctrl-alt-shift-5 = 'workspace --auto-back-and-forth 5'
+  cmd-ctrl-alt-shift-6 = 'workspace --auto-back-and-forth 6'
+  cmd-ctrl-alt-shift-7 = 'workspace --auto-back-and-forth 7'
+  cmd-ctrl-alt-shift-8 = 'workspace --auto-back-and-forth 8'
+  cmd-ctrl-alt-shift-9 = 'workspace --auto-back-and-forth 9'
+  cmd-ctrl-alt-shift-a = 'layout accordion tiles'
+  cmd-ctrl-alt-shift-e = 'balance-sizes'
+  cmd-ctrl-alt-shift-equal = 'resize smart +50'
+  cmd-ctrl-alt-shift-f = 'fullscreen'
+  cmd-ctrl-alt-shift-h = [
     'focus --boundaries all-monitors-outer-frame --boundaries-action fail left',
   ]
-  cmd-ctrl-alt-i = [
+  cmd-ctrl-alt-shift-i = [
     'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
   ]
-  cmd-ctrl-alt-j = [
+  cmd-ctrl-alt-shift-j = [
     'focus --boundaries all-monitors-outer-frame --boundaries-action fail down',
   ]
-  cmd-ctrl-alt-k = [
+  cmd-ctrl-alt-shift-k = [
     'focus --boundaries all-monitors-outer-frame --boundaries-action fail up',
   ]
-  cmd-ctrl-alt-l = [
+  cmd-ctrl-alt-shift-l = [
     'focus --boundaries all-monitors-outer-frame --boundaries-action fail right',
   ]
-  cmd-ctrl-alt-leftSquareBracket = ['focus-monitor --wrap-around next']
-  cmd-ctrl-alt-m = 'fullscreen'
-  cmd-ctrl-alt-minus = 'resize smart -50'
-  cmd-ctrl-alt-n = ['workspace --wrap-around next']
-  cmd-ctrl-alt-o = ['focus-monitor --wrap-around next']
-  cmd-ctrl-alt-p = ['workspace --wrap-around prev']
-  cmd-ctrl-alt-rightSquareBracket = ['focus-monitor --wrap-around prev']
-  cmd-ctrl-alt-slash = 'layout accordion tiles'
-  cmd-ctrl-alt-space = 'mode aero'
-  cmd-ctrl-alt-v = 'layout horizontal vertical'
+  cmd-ctrl-alt-shift-leftSquareBracket = ['focus-monitor --wrap-around next']
+  cmd-ctrl-alt-shift-minus = 'resize smart -50'
+  cmd-ctrl-alt-shift-n = ['workspace --wrap-around next']
+  cmd-ctrl-alt-shift-o = ['focus-monitor --wrap-around next']
+  cmd-ctrl-alt-shift-p = ['workspace --wrap-around prev']
+  cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
+  cmd-ctrl-alt-shift-space = 'mode aero'
+  cmd-ctrl-alt-shift-v = 'layout horizontal vertical'
   f13 = 'mode aero'
+  f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
+  f20 = 'resize smart-opposite -50' # cmd-ctrl-alt-shift-comma remapped via karabiner
 
 [mode.move.binding]
   esc = 'mode main'

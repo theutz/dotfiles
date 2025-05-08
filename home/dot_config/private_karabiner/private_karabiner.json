@@ -9,7 +9,71 @@
                 },
                 "rules": [
                     {
-                        "description": "Right Option Key → Hyper Key (⌃⌥⌘)",
+                        "description": "Remap command+control+option+shift+. to avoid sysdiagnose",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
+                                "to": [{ "key_code": "f20" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Remap command+control+option+shift+, to avoid sysdiagnose",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
+                                "to": [{ "key_code": "f19" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Left Contrl Key → Hyper Key (⌃⌥⌘⇧), f13 if alone",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_control",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "modifiers": ["left_control", "left_option", "left_shift"]
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "f13" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Escape → Hyper Key (⌃⌥⌘⇧), f13 if alone",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "modifiers": ["left_control", "left_option", "left_shift"]
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "f13" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Right Option Key → Hyper Key (⌃⌥⌘⇧), f13 if alone",
                         "manipulators": [
                             {
                                 "from": {
@@ -19,9 +83,10 @@
                                 "to": [
                                     {
                                         "key_code": "left_command",
-                                        "modifiers": ["left_control", "left_option"]
+                                        "modifiers": ["left_control", "left_option", "left_shift"]
                                     }
                                 ],
+                                "to_if_alone": [{ "key_code": "f13" }],
                                 "type": "basic"
                             }
                         ]
@@ -201,12 +266,6 @@
             ],
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "escape" },
-                    "to": [{ "key_code": "f13" }]
-                }
-            ],
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
