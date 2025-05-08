@@ -35,7 +35,8 @@
                         ]
                     },
                     {
-                        "description": "Left Contrl Key → Hyper Key (⌃⌥⌘⇧), f13 if alone",
+                        "description": "Left Control Key → Hyper Key (⌃⌥⌘⇧), f13 if alone",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
