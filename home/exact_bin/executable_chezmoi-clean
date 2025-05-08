@@ -1,0 +1,190 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+trap 'exit 1' SIGINT
+
+function usage() {
+  cat <<EOF
+    use fzf to merge, re-add, add, forget, or apply any outstanding changes
+
+    USAGE:
+
+    chezmoi act [flags]
+
+    FLAGS:
+      -h, --help     Show this help
+EOF
+}
+
+function log() {
+  gum log --prefix "act" "$@"
+}
+
+function debug() {
+  log -l debug "$@"
+}
+
+function info() {
+  log -l info "$@"
+}
+
+function warn() {
+  log -l warn "$@"
+}
+
+function error() {
+  log -l error "$@"
+}
+
+function choose() {
+  pos=()
+  reverse_diff=0
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --reverse-diff | -r)
+      reverse_diff=1
+      shift
+      ;;
+    --* | -*)
+      error "$1 is not a valid flag"
+      return 1
+      ;;
+    *)
+      pos+=("$1")
+      shift
+      ;;
+    esac
+  done
+
+  set -- "${pos[@]}"
+
+  set +e
+  fzf --multi \
+    --exit-0 \
+    --bind 'ctrl-a:toggle-all,tab:toggle-out' \
+    --input-border rounded \
+    --input-label "$1" \
+    --nth '2..' \
+    --accept-nth "$HOME/{2}" \
+    --print0 \
+    --preview "chezmoi diff $(test $reverse_diff && echo "--reverse ")$HOME/{2}"
+  code=$?
+  case "$code" in
+  130)
+    log "User cancelled search"
+    code=130
+    ;;
+  1)
+    log "No selection(s) made."
+    code=0
+    ;;
+  0)
+    log "Selection(s) made"
+    code=0
+    ;;
+  *)
+    error "An error occurred"
+    ;;
+  esac
+
+  return $code
+}
+
+function merge() {
+  chezmoi status --include templates |
+    rg '^MM' |
+    choose "Merge templates" |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi merge
+}
+
+function apply() {
+  chezmoi status |
+    rg '^(MM| A)' |
+    choose "Apply changes to target" |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi apply --force
+}
+
+function readd() {
+  chezmoi status --exclude templates |
+    rg '^MM' |
+    choose --reverse-diff "Re-add modified files" |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi re-add
+}
+
+function forget() {
+  chezmoi status --exclude templates |
+    rg '^(DA| D)' |
+    choose "Forget missing files" |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi forget --force
+}
+
+function add() {
+  chezmoi status --exclude templates |
+    rg '^ D' |
+    choose "Add deleted files" |
+    xargs --null \
+      --no-run-if-empty \
+      chezmoi add
+}
+
+function main() {
+  pos=()
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --help | -h)
+      usage
+      exit
+      ;;
+    --* | -*)
+      gum log -l error "$1 is not a known option"
+      exit 1
+      ;;
+    *)
+      pos+=("$1")
+      ;;
+    esac
+    set -- "${pos[@]}"
+  done
+
+  trap 'gum log -l warn "Interrupted by user"; exit 1' SIGINT
+
+  set +o pipefail
+  info "Checking for merged..."
+  if ! merge; then
+    error -s "Error while merging" code $?
+  fi
+
+  info "Checking for modifications to re-add..."
+  if ! readd; then
+    error -s "Error while re-adding" code $?
+  fi
+
+  info "Checking for files to add..."
+  if ! add; then
+    error -s "Error while adding" code $?
+  fi
+
+  info "Checking for files to forget..."
+  if ! forget; then
+    error -s "Error while forgetting" code $?
+  fi
+
+  info "Checking for modifications to apply"
+  if ! apply; then
+    error -s "Error while applying" code $?
+  fi
+  set -o pipefail
+
+  info "Actions complete"
+}
+
+main "$@"
