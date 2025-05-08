@@ -107,7 +107,7 @@ function apply() {
     choose "Apply changes to target" |
     xargs --null \
       --no-run-if-empty \
-      chezmoi apply
+      chezmoi apply --force
 }
 
 function readd() {
