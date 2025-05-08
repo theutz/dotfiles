@@ -68,6 +68,7 @@ yq = "latest"
 zellij = "latest"
 "go:github.com/oz/tz" = "latest"
 choose = "latest"
+aichat = "latest"
 
 [hooks.enter]
 script = 'eval "$(chezmoi generate zsh)"'

@@ -52,14 +52,16 @@ return {
 				desc = "Open last output in new tab",
 			},
 		},
-		-- ISSUE:: Won't work unless [this is accepted](https://github.com/stevearc/overseer.nvim/pull/417)
-		-- opts = {
-		--   task_list = {
-		--     bindings = {
-		--       ["r"] = "Restart",
-		--     },
-		--   },
-		-- },
+		opts = {
+			task_list = {
+				bindings = {
+					["r"] = function()
+						local sidebar = require("overseer.task_list.sidebar").get()
+						sidebar:run_action("restart")
+					end,
+				},
+			},
+		},
 		config = function(_, opts)
 			create_restart_command()
 			local overseer = require("overseer")
