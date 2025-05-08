@@ -17,8 +17,8 @@ abbr -a -- cmc 'chezmoi clean'
 abbr -a -- cmcd 'chezmoi cd'
 abbr -a -- cmd 'chezmoi diff'
 abbr -a -- cmls 'chezmoi managed'
-abbr -a -- cmS 'chezmoi status'
 abbr -a -- cms 'chezmoi status-all'
+abbr -a -- cmS 'chezmoi status'
 abbr -a -- cmsw 'chezmoi status-watch'
 abbr -a -- gc 'git commit'
 abbr -a -- gca 'git add -A; and git commit'
@@ -52,6 +52,7 @@ abbr -a -- n 'neovide --no-fork'
 abbr -a -- newt 'wezterm cli spawn'
 abbr -a -- neww 'wezterm cli spawn --new-window'
 abbr -a -- nf 'neovide --fork'
+abbr -a -- om overmind
 abbr -a -- p pueue
 abbr -a -- pbc pbcopy
 abbr -a -- pbp pbpaste
