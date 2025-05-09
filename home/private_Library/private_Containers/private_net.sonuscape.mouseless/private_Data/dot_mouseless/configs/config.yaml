@@ -286,19 +286,19 @@ keymaps:
     forward mouse button (w/o overlay): null
     hide overlay: Escape
     hold for back button: null
-    hold for drag: CommandLeft
+    hold for drag: ShiftLeft
     hold for forward button: null
     hold for middle button: null
-    hold for move: OptionLeft
-    hold for right button: null
-    hold for speed decrease: ShiftLeft
-    hold for speed increase: ControlLeft
+    hold for move: CommandLeft
+    hold for right button: ControlLeft
+    hold for speed decrease: CommandLeft
+    hold for speed increase: ShiftLeft
     increase overlay opacity: ArrowUp
     jump to bottom: G
     jump to left edge: null
     jump to right edge: null
     jump to top: g
-    left mouse button: ;
+    left mouse button: space
     left mouse button (w/o overlay): null
     middle mouse button: null
     middle mouse button (w/o overlay): null
@@ -308,7 +308,7 @@ keymaps:
     move up: k
     release hold/drag: Escape
     repeat last mouse action: '`'
-    right mouse button: a
+    right mouse button: ;
     right mouse button (w/o overlay): null
     show overlay: CommandLeft tap
     subgrid nudge down:
