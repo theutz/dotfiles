@@ -71,6 +71,7 @@ args+=(
 	icon.color="$(color green)"
 	label.drawing=off
 	icon=""
+	click_script="open -a 'Mission Control'"
 )
 
 # Setup front app

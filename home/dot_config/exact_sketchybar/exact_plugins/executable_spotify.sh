@@ -7,11 +7,11 @@ PATH="$HOME/bin:$PATH"
 info="$(spotify_player get key playback)"
 
 if [[ -n "$info" && "$info" != "null" ]]; then
-    is_playing="$(jq -r '.is_playing' <<<"$info")"
+    is_active="$(jq -r '.device.is_active' <<<"$info")"
     track="$(jq -r '.item.name' <<<"$info")"
     artist="$(jq -r '.item.artists | map(.name) | join(", ")' <<<"$info")"
 else
-    is_playing=false
+    is_active=false
     track=""
     artist=""
 fi
@@ -21,10 +21,21 @@ args=(
     --set "$NAME"
 )
 
-if $is_playing; then
+if $is_active; then
+    if [[ -z "$artist" && -z "$track" ]]; then
+        : "No track info available..."
+    elif [[ -z "$artist" ]]; then
+        : "$track"
+    elif [[ -z "$track" ]]; then
+        : "$artist"
+    else
+        : "$track - $artist"
+    fi
+    label="$_"
+
     args+=(
         drawing=on
-        label="$track - $artist"
+        label="$label"
     )
 else
     args+=(
