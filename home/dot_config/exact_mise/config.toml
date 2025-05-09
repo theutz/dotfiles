@@ -18,6 +18,7 @@
   bat                                         = "latest"
   cargo-binstall                              = "latest"
   "cargo:hanshuaikang/nping"                  = "latest"
+"cargo:snipt" = "latest"
   "cargo:tock"                                = "latest"
   "cargo:yshavit/mdq"                         = "latest"
   chezmoi                                     = "latest"
