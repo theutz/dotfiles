@@ -39,11 +39,10 @@ function error() {
 
 function choose() {
   pos=()
-  reverse_diff=0
   while [[ $# -gt 0 ]]; do
     case "$1" in
     --reverse-diff | -r)
-      reverse_diff=1
+      reverse_diff=true
       shift
       ;;
     --* | -*)
@@ -67,7 +66,7 @@ function choose() {
     --nth '2..' \
     --accept-nth "$HOME/{2}" \
     --print0 \
-    --preview "chezmoi diff $(test $reverse_diff && echo "--reverse ")$HOME/{2}"
+    --preview "chezmoi diff ${reverse_diff:+--reverse }$HOME/{2}"
   code=$?
   case "$code" in
   130)
@@ -102,7 +101,7 @@ function merge() {
 function apply() {
   chezmoi status |
     rg '^(MM| A)' |
-    choose --reverse-diff "Apply changes to target" |
+    choose "Apply changes to target" |
     xargs --null \
       --no-run-if-empty \
       chezmoi apply --force
@@ -120,7 +119,7 @@ function readd() {
 function forget() {
   chezmoi status --exclude templates |
     rg '^(DA| D)' |
-    choose "Forget missing files" |
+    choose --reverse-diff "Forget missing files" |
     xargs --null \
       --no-run-if-empty \
       chezmoi forget --force
@@ -129,7 +128,7 @@ function forget() {
 function add() {
   chezmoi status --exclude templates |
     rg '^ D' |
-    choose "Add deleted files" |
+    choose --reverse-diff "Add deleted files" |
     xargs --null \
       --no-run-if-empty \
       chezmoi add
