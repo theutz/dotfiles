@@ -62,7 +62,6 @@ function choose() {
   set +e
   fzf --multi \
     --exit-0 \
-    --bind 'ctrl-a:toggle-all,tab:toggle-out' \
     --input-border rounded \
     --input-label "$1" \
     --nth '2..' \

@@ -118,19 +118,19 @@ start-at-login = true
   cmd-ctrl-alt-shift-a = 'layout accordion tiles'
   cmd-ctrl-alt-shift-equal = 'resize smart +50'
   cmd-ctrl-alt-shift-h = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action fail left',
+    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left',
   ]
   cmd-ctrl-alt-shift-i = [
     'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
   ]
   cmd-ctrl-alt-shift-j = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action fail down',
+    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down',
   ]
   cmd-ctrl-alt-shift-k = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action fail up',
+    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up',
   ]
   cmd-ctrl-alt-shift-l = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action fail right',
+    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right',
   ]
   cmd-ctrl-alt-shift-leftSquareBracket = ['focus-monitor --wrap-around next']
   cmd-ctrl-alt-shift-m = 'fullscreen'
