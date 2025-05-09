@@ -1,10 +1,22 @@
 [[keymaps]]
-command = "None"
+command = "Queue"
 key_sequence = "q"
 
 [[keymaps]]
 command = "None"
 key_sequence = "C-s"
+
+[[keymaps]]
+command = "FocusPreviousWindow"
+key_sequence = "h"
+
+[[keymaps]]
+command = "FocusNextWindow"
+key_sequence = "l"
+
+[[keymaps]]
+command = "PreviousPage"
+key_sequence = "H"
 
 [[actions]]
 action = "ToggleLiked"
