@@ -291,8 +291,8 @@ keymaps:
     hold for middle button: null
     hold for move: OptionLeft
     hold for right button: null
-    hold for speed decrease: null
-    hold for speed increase: CommandLeft
+    hold for speed decrease: ShiftLeft
+    hold for speed increase: ControlLeft
     increase overlay opacity: ArrowUp
     jump to bottom: G
     jump to left edge: null
@@ -331,11 +331,11 @@ keymaps:
     toggle overlay: null
     toggle overlay lock: null
     undo last key: Backspace
-    wheel down: d
-    wheel down fast: null
-    wheel left: b
+    wheel down: f
+    wheel down fast: n
+    wheel left: s
     wheel left fast: null
-    wheel right: f
+    wheel right: g
     wheel right fast: null
     wheel step down: null
     wheel step down large: null
@@ -345,8 +345,8 @@ keymaps:
     wheel step right large: null
     wheel step up: null
     wheel step up large: null
-    wheel up: u
-    wheel up fast: null
+    wheel up: d
+    wheel up fast: p
   name: mac
 monitor_assignment_mode: auto
 name: ''
