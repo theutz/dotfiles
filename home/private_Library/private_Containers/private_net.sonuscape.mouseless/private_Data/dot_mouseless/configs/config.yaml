@@ -274,7 +274,7 @@ keymaps:
     cycle font: null
     cycle font reverse: null
     cycle grid action level: null
-    cycle mouse action type: CommandLeft tap
+    cycle mouse action type: null
     cycle mouse button: null
     decrease overlay opacity: '-'
     edit config: Tab
@@ -286,10 +286,10 @@ keymaps:
     forward mouse button (w/o overlay): null
     hide overlay: Escape
     hold for back button: null
-    hold for drag: null
+    hold for drag: ShiftRight
     hold for forward button: null
     hold for middle button: null
-    hold for move: null
+    hold for move: CommandRight
     hold for right button: null
     hold for speed decrease: Command
     hold for speed increase: Shift
