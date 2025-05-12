@@ -25,6 +25,11 @@ function M.apply_to_config(config)
 
 	config.macos_window_background_blur = 20
 
+	config.inactive_pane_hsb = {
+		saturation = 0.2,
+		brightness = 0.3,
+	}
+
 	wezterm.on("window-config-reloaded", M.window_config_reloaded)
 end
 

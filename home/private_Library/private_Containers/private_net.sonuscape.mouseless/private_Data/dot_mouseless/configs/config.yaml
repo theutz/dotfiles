@@ -1,6 +1,6 @@
 app_version: 0.4.0-preview.2
 behavior_configs:
-- base_move_speed: 5
+- base_move_speed: 5.0
   base_wheel_speed: 16.0
   free_mode_auto_off_s: 30
   grid_action_level: subgrid
@@ -10,14 +10,14 @@ behavior_configs:
   initial_overlay_monitor: with_mouse
   move_duration_ms: 100
   move_real_cursor_with_virtual: true
-  move_speed_multiplier: 4
+  move_speed_multiplier: 4.0
   movement_easing: 0.1
   multi_action_timeout_ms: 400
   name: main_behavior
   send_escape_after_global_alt_tap__windows: true
   tap_threshold_ms: 200
   wheel_easing: 0.1
-  wheel_speed_multiplier: 4
+  wheel_speed_multiplier: 4.0
   wheel_step_size: 20.0
   wheel_step_size_large: 500.0
 classname: AppConfig
@@ -282,7 +282,7 @@ keymaps:
     execute mouse action: Space
     execute mouse move: OptionLeft tap
     exit free mode: Escape
-    forward mouse button: i
+    forward mouse button: null
     forward mouse button (w/o overlay): null
     hide overlay: Escape
     hold for back button: null
@@ -291,8 +291,8 @@ keymaps:
     hold for middle button: null
     hold for move: CommandLeft
     hold for right button: ControlLeft
-    hold for speed decrease: CommandLeft
-    hold for speed increase: ShiftLeft
+    hold for speed decrease: Command
+    hold for speed increase: Shift
     increase overlay opacity: +
     jump to bottom: G
     jump to left edge: null
@@ -348,7 +348,9 @@ keymaps:
     wheel down:
     - n
     - v
-    wheel down fast: null
+    wheel down fast:
+    - c
+    - m
     wheel left:
     - ','
     - z
@@ -366,9 +368,11 @@ keymaps:
     wheel step up: null
     wheel step up large: null
     wheel up:
-    - p
     - r
-    wheel up fast: null
+    - u
+    wheel up fast:
+    - e
+    - i
   name: mac
 monitor_assignment_mode: auto
 name: ''

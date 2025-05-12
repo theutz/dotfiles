@@ -54,20 +54,14 @@
                         ]
                     },
                     {
-                        "description": "Left Control Key → Hyper Key (⌃⌥⌘⇧), f13 if alone",
-                        "enabled": false,
+                        "description": "Left Control Key if held, f13 if alone",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "left_control",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "modifiers": ["left_control", "left_option", "left_shift"]
-                                    }
-                                ],
+                                "to": [{ "key_code": "left_control" }],
                                 "to_if_alone": [{ "key_code": "f13" }],
                                 "type": "basic"
                             }
@@ -106,18 +100,6 @@
                                         "modifiers": ["left_control", "left_option", "left_shift"]
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "f13" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change right_option to f13 if alone, right_option otherwise",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "right_alt" },
-                                "to": [{ "key_code": "right_alt" }],
                                 "to_if_alone": [{ "key_code": "f13" }],
                                 "type": "basic"
                             }
