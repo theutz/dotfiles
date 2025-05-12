@@ -9,15 +9,15 @@ behavior_configs:
   initial_action_location: system_cursor
   initial_overlay_monitor: with_mouse
   move_duration_ms: 100
-  move_real_cursor_with_virtual: false
-  move_speed_multiplier: 3
+  move_real_cursor_with_virtual: true
+  move_speed_multiplier: 4
   movement_easing: 0.1
   multi_action_timeout_ms: 400
   name: main_behavior
   send_escape_after_global_alt_tap__windows: true
   tap_threshold_ms: 200
   wheel_easing: 0.1
-  wheel_speed_multiplier: 2.0
+  wheel_speed_multiplier: 4
   wheel_step_size: 20.0
   wheel_step_size_large: 500.0
 classname: AppConfig
@@ -49,7 +49,7 @@ grid_configs:
   subgrid_dims:
   - 8
   - 3
-  subgrid_mouse_action_keys: QWER UIOP ASDF JKL; ZXCV M,./
+  subgrid_mouse_action_keys: QWER UIOP ASDF JKL; ZXCV NM,.
 keyboard_layout:
   id: com.apple.keylayout.USExtended
   name: "ABC \u2013 Extended"
@@ -276,7 +276,7 @@ keymaps:
     cycle grid action level: null
     cycle mouse action type: null
     cycle mouse button: null
-    decrease overlay opacity: ArrowDown
+    decrease overlay opacity: '-'
     edit config: Tab
     enter free mode: null
     execute mouse action: Space
@@ -293,7 +293,7 @@ keymaps:
     hold for right button: ControlLeft
     hold for speed decrease: CommandLeft
     hold for speed increase: ShiftLeft
-    increase overlay opacity: ArrowUp
+    increase overlay opacity: +
     jump to bottom: G
     jump to left edge: null
     jump to right edge: null
@@ -302,18 +302,30 @@ keymaps:
     left mouse button (w/o overlay): null
     middle mouse button: null
     middle mouse button (w/o overlay): null
-    move down: j
-    move left: h
-    move right: l
-    move up: k
+    move down:
+    - j
+    - f
+    move left:
+    - h
+    - s
+    move right:
+    - l
+    - g
+    move up:
+    - k
+    - d
     release hold/drag: Escape
     repeat last mouse action: '`'
-    right mouse button: ;
+    right mouse button:
+    - ;
+    - a
     right mouse button (w/o overlay): null
-    show overlay: CommandLeft tap
+    show overlay:
+    - CommandLeft tap
+    - f15
     subgrid nudge down:
     - j
-    - d
+    - f
     subgrid nudge left:
     - h
     - s
@@ -322,20 +334,28 @@ keymaps:
     - g
     subgrid nudge up:
     - k
-    - f
+    - d
     switch monitor left: ShiftLeft tap
     switch monitor right: ShiftRight tap
-    toggle continuous mode: null
-    toggle continuous mode until closed: CommandLeft tap
+    toggle continuous mode:
+    - CommandLeft tap
+    - f15
+    toggle continuous mode until closed: null
     toggle free mode: OptionLeft tap
     toggle overlay: null
     toggle overlay lock: null
     undo last key: Backspace
-    wheel down: f
-    wheel down fast: n
-    wheel left: s
+    wheel down:
+    - n
+    - v
+    wheel down fast: null
+    wheel left:
+    - ','
+    - z
     wheel left fast: null
-    wheel right: g
+    wheel right:
+    - .
+    - x
     wheel right fast: null
     wheel step down: null
     wheel step down large: null
@@ -345,8 +365,10 @@ keymaps:
     wheel step right large: null
     wheel step up: null
     wheel step up large: null
-    wheel up: d
-    wheel up fast: p
+    wheel up:
+    - p
+    - r
+    wheel up fast: null
   name: mac
 monitor_assignment_mode: auto
 name: ''
@@ -433,4 +455,4 @@ style_configs:
   - 0.00392156862745098
   - 1.0
   text_y_offset: 0.0
-  window_opacity: 0.8
+  window_opacity: 0.7

@@ -7,6 +7,10 @@ command = "None"
 key_sequence = "C-s"
 
 [[keymaps]]
+command = "None"
+key_sequence = "C-r"
+
+[[keymaps]]
 command = "FocusPreviousWindow"
 key_sequence = "h"
 
@@ -21,4 +25,9 @@ key_sequence = "H"
 [[actions]]
 action = "ToggleLiked"
 key_sequence = "C-s"
+target = "SelectedItem"
+
+[[actions]]
+action = "GoToRadio"
+key_sequence = "C-r"
 target = "SelectedItem"

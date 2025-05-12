@@ -9,6 +9,25 @@
                 },
                 "rules": [
                     {
+                        "description": "Tab → Hyper Key (⌃⌥⌘⇧), Tab if alone",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command",
+                                        "modifiers": ["left_control", "left_option", "left_shift"]
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Remap command+control+option+shift+. to avoid sysdiagnose",
                         "manipulators": [
                             {
@@ -55,7 +74,7 @@
                         ]
                     },
                     {
-                        "description": "Escape → Hyper Key (⌃⌥⌘⇧), f13 if alone",
+                        "description": "Escape → Hyper Key (⌃⌥⌘⇧), f15 if alone",
                         "manipulators": [
                             {
                                 "from": {
@@ -68,7 +87,7 @@
                                         "modifiers": ["left_control", "left_option", "left_shift"]
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "f13" }],
+                                "to_if_alone": [{ "key_code": "f15" }],
                                 "type": "basic"
                             }
                         ]
