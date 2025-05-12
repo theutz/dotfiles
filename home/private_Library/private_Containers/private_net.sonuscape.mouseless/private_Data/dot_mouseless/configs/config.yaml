@@ -337,8 +337,8 @@ keymaps:
     - d
     switch monitor left: ShiftLeft tap
     switch monitor right: ShiftRight tap
-    toggle continuous mode: CommandLeft tap
-    toggle continuous mode until closed: null
+    toggle continuous mode: null
+    toggle continuous mode until closed: CommandLeft tap
     toggle free mode: OptionLeft tap
     toggle overlay: null
     toggle overlay lock: null
