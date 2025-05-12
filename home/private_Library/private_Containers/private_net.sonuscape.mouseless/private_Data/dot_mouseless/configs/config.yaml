@@ -337,9 +337,7 @@ keymaps:
     - d
     switch monitor left: ShiftLeft tap
     switch monitor right: ShiftRight tap
-    toggle continuous mode:
-    - CommandLeft tap
-    - f15
+    toggle continuous mode: CommandLeft tap
     toggle continuous mode until closed: null
     toggle free mode: OptionLeft tap
     toggle overlay: null
@@ -368,8 +366,8 @@ keymaps:
     wheel step up: null
     wheel step up large: null
     wheel up:
-    - r
-    - u
+    - p
+    - q
     wheel up fast:
     - e
     - i
