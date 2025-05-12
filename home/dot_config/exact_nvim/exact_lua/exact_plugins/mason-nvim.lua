@@ -1,9 +1,6 @@
 return {
 	{
 		"mason-org/mason.nvim",
-		-- ISSUE: Breaking changes with lazyvim
-		-- https://github.com/mason-org/mason-lspconfig.nvim/issues/545
-		version = "1.11.0",
 		opts = {
 			ensure_installed = {
 				"actionlint",
@@ -22,11 +19,5 @@ return {
 				"tailwindcss-language-server",
 			},
 		},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		-- ISSUE: Breaking changes with lazyvim
-		-- https://github.com/mason-org/mason-lspconfig.nvim/issues/545
-		version = "1.32.0",
 	},
 }
