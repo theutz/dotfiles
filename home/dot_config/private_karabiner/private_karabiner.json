@@ -9,11 +9,11 @@
                 },
                 "rules": [
                     {
-                        "description": "Tab → Hyper Key (⌃⌥⌘⇧), Tab if alone",
+                        "description": "Space → Hyper Key (⌃⌥⌘⇧), Space if alone",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "tab",
+                                    "key_code": "spacebar",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
@@ -22,7 +22,7 @@
                                         "modifiers": ["left_control", "left_option", "left_shift"]
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "tab" }],
+                                "to_if_alone": [{ "key_code": "spacebar" }],
                                 "type": "basic"
                             }
                         ]
