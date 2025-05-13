@@ -192,39 +192,39 @@ M.keys = {
 		a.ActivateCopyMode,
 	},
 	{
-		{ { "LEADER", "1" } },
+		{ { "LEADER", "1" }, { "SUPER", "1" } },
 		a.ActivateTab(0),
 	},
 	{
-		{ { "LEADER", "2" } },
+		{ { "LEADER", "2" }, { "SUPER", "2" } },
 		a.ActivateTab(1),
 	},
 	{
-		{ { "LEADER", "3" } },
+		{ { "LEADER", "3" }, { "SUPER", "3" } },
 		a.ActivateTab(2),
 	},
 	{
-		{ { "LEADER", "4" } },
+		{ { "LEADER", "4" }, { "SUPER", "4" } },
 		a.ActivateTab(3),
 	},
 	{
-		{ { "LEADER", "5" } },
+		{ { "LEADER", "5" }, { "SUPER", "5" } },
 		a.ActivateTab(4),
 	},
 	{
-		{ { "LEADER", "6" } },
+		{ { "LEADER", "6" }, { "SUPER", "6" } },
 		a.ActivateTab(5),
 	},
 	{
-		{ { "LEADER", "7" } },
+		{ { "LEADER", "7" }, { "SUPER", "7" } },
 		a.ActivateTab(6),
 	},
 	{
-		{ { "LEADER", "8" } },
+		{ { "LEADER", "8" }, { "SUPER", "8" } },
 		a.ActivateTab(7),
 	},
 	{
-		{ { "LEADER", "9" } },
+		{ { "LEADER", "9" }, { "SUPER", "9" } },
 		a.ActivateTab(-1),
 	},
 	{

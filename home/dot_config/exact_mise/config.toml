@@ -84,5 +84,5 @@
 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4 \
 --bind=ctrl-a:toggle-all,tab:toggle-out,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down \
 """
-  VISUAL = "neovide"
+  VISUAL = "nvim"
   _.file = "~/.config/mise/env.sops.yaml"
