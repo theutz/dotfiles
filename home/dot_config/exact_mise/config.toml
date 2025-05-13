@@ -18,7 +18,7 @@
   bat                                         = "latest"
   cargo-binstall                              = "latest"
   "cargo:hanshuaikang/nping"                  = "latest"
-"cargo:snipt" = "latest"
+  "cargo:snipt"                               = "latest"
   "cargo:tock"                                = "latest"
   "cargo:yshavit/mdq"                         = "latest"
   chezmoi                                     = "latest"
@@ -76,6 +76,7 @@
 
 [env]
   BARTIB_FILE = "/Users/michael/time.txt"
+  EDITOR = "nvim"
   FZF_DEFAULT_OPTS = """\
 --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 \
 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 \
@@ -83,4 +84,5 @@
 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4 \
 --bind=ctrl-a:toggle-all,tab:toggle-out,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down \
 """
+  VISUAL = "neovide --no-fork"
   _.file = "~/.config/mise/env.sops.yaml"
