@@ -106,6 +106,10 @@ start-at-login = true
   alt-quote = 'mode join'
   alt-semicolon = 'mode aero'
   alt-shift-quote = 'mode move'
+  cmd-ctrl-alt-h = 'move left'
+  cmd-ctrl-alt-j = 'move down'
+  cmd-ctrl-alt-k = 'move up'
+  cmd-ctrl-alt-l = 'move right'
   cmd-ctrl-alt-shift-0 = 'balance-sizes'
   cmd-ctrl-alt-shift-1 = 'workspace --auto-back-and-forth 1'
   cmd-ctrl-alt-shift-2 = 'workspace --auto-back-and-forth 2'
@@ -116,12 +120,9 @@ start-at-login = true
   cmd-ctrl-alt-shift-7 = 'workspace --auto-back-and-forth 7'
   cmd-ctrl-alt-shift-8 = 'workspace --auto-back-and-forth 8'
   cmd-ctrl-alt-shift-9 = 'workspace --auto-back-and-forth 9'
-  cmd-ctrl-alt-shift-a = [
-    'exec-and-forget aerospace join-with left || aerospace move left',
-  ]
-  cmd-ctrl-alt-shift-d = [
-    'exec-and-forget aerospace join-with right || aerospace move right',
-  ]
+  cmd-ctrl-alt-shift-a = ['exec-and-forget aerospace join-with left']
+  cmd-ctrl-alt-shift-b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+  cmd-ctrl-alt-shift-d = ['exec-and-forget aerospace join-with right']
   cmd-ctrl-alt-shift-equal = 'resize smart +50'
   cmd-ctrl-alt-shift-h = [
     'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left',
@@ -145,15 +146,11 @@ start-at-login = true
   cmd-ctrl-alt-shift-o = ['focus-monitor --wrap-around next']
   cmd-ctrl-alt-shift-p = ['workspace --wrap-around prev']
   cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
-  cmd-ctrl-alt-shift-s = [
-    'exec-and-forget aerospace join-with down || aerospace move down',
-  ]
+  cmd-ctrl-alt-shift-s = ['exec-and-forget aerospace join-with down']
   cmd-ctrl-alt-shift-space = 'mode aero'
   cmd-ctrl-alt-shift-t = 'layout accordion tiles'
   cmd-ctrl-alt-shift-v = 'layout horizontal vertical'
-  cmd-ctrl-alt-shift-w = [
-    'exec-and-forget aerospace join-with up || aerospace move up',
-  ]
+  cmd-ctrl-alt-shift-w = ['exec-and-forget aerospace join-with up']
   f13 = 'mode aero'
   f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
   f20 = 'resize smart-opposite -50' # cmd-ctrl-alt-shift-comma remapped via karabiner
@@ -215,7 +212,7 @@ start-at-login = true
   7 = 'workspace --auto-back-and-forth 7'
   8 = 'workspace --auto-back-and-forth 8'
   9 = 'workspace --auto-back-and-forth 9'
-  a = 'layout accordion tiles'
+  a = 'join-with left'
   alt-1 = [
     'summon-workspace 1',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
@@ -271,6 +268,7 @@ start-at-login = true
   alt-semicolon = 'mode main'
   alt-x = 'close-all-windows-but-current --quit-if-last-window'
   b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+  d = 'join-with right'
   e = 'balance-sizes'
   enter = "fullscreen"
   equal = 'resize smart +50'
@@ -292,6 +290,7 @@ start-at-login = true
     'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
   ]
   rightSquareBracket = 'focus-monitor --wrap-around next'
+  s = 'join-with down'
   shift-1 = [
     'move-node-to-workspace 1',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
@@ -367,6 +366,8 @@ start-at-login = true
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
   shift-v = 'layout horizontal vertical'
+  t = 'layout accordion tiles'
   tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
   v = 'layout vertical horizontal'
+  w = 'join-with up'
   x = 'close --quit-if-last-window'

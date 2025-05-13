@@ -13,5 +13,6 @@ vim.g.neovide_opacity = 0.85
 vim.g.neovide_normal_opacity = 0.5
 
 vim.g.neovide_window_blurred = true
+
 vim.g.neovide_input_macos_option_key_is_meta = "both"
-vim.g.neovide_cursor_vfx_mode = { "pixiedust", "sonicboom" }
+vim.g.neovide_cursor_vfx_mode = { "pixiedust" }

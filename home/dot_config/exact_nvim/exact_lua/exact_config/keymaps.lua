@@ -16,3 +16,14 @@ set("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
 
 set("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
 set("n", "<leader><tab>n", "<cmd>tabnext<cr>", { desc = "Next tab" })
+
+if vim.g.neovide then
+	set({ "n", "v" }, "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
+	set({ "n", "v" }, "<D-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
+
+	set({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
+	set({ "n", "v" }, "<D-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
+
+	set({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor 1<CR>")
+	set({ "n", "v" }, "<D-0>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor 1<CR>")
+end

@@ -73,7 +73,7 @@
   "nvim-notify": { "branch": "master", "commit": "b5825cf9ee881dd8e43309c93374ed5b87b7a896" },
   "nvim-treesitter": { "branch": "master", "commit": "066fd6505377e3fd4aa219e61ce94c2b8bdb0b79" },
   "nvim-treesitter-context": { "branch": "master", "commit": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4" },
-  "nvim-treesitter-textobjects": { "branch": "master", "commit": "0e3be38005e9673d044e994b1e4b123adb040179" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "b0debd5c424969b4baeabdc8f54db3036c691732" },
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
   "one-small-step-for-vimkind": { "branch": "main", "commit": "ab74e741bc96e69f9c9bb67a6450dc7679ce62b9" },
   "otter.nvim": { "branch": "main", "commit": "84639ced48b202c65b6938ae6a875a64c0c6eca0" },
@@ -102,8 +102,8 @@
   "vim-illuminate": { "branch": "master", "commit": "fbc16dee336d8cc0d3d2382ea4a53f4a29725abf" },
   "vim-jinja2-syntax": { "branch": "master", "commit": "2c17843b074b06a835f88587e1023ceff7e2c7d1" },
   "vim-just": { "branch": "main", "commit": "b7f9505f93ede57c4ec011405592280b3f1755ec" },
-  "vim-kitty": { "branch": "main", "commit": "fd6df8b8396ffb7ea099dc6aecfbc7cf2bab0b2f" },
+  "vim-kitty": { "branch": "main", "commit": "309b8451cff8ad77a24ee332b5d9db4162f1655d" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
-  "yazi.nvim": { "branch": "main", "commit": "75766fab481fd8b7877c460dd3ed02e78adc2c24" }
+  "yazi.nvim": { "branch": "main", "commit": "82873628a2b78dce48b5bcf8d1d8ed14f0ee985f" }
 }
