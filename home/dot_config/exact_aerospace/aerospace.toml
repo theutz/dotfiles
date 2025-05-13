@@ -116,7 +116,12 @@ start-at-login = true
   cmd-ctrl-alt-shift-7 = 'workspace --auto-back-and-forth 7'
   cmd-ctrl-alt-shift-8 = 'workspace --auto-back-and-forth 8'
   cmd-ctrl-alt-shift-9 = 'workspace --auto-back-and-forth 9'
-  cmd-ctrl-alt-shift-a = 'layout accordion tiles'
+  cmd-ctrl-alt-shift-a = [
+    'exec-and-forget aerospace join-with left || aerospace move left',
+  ]
+  cmd-ctrl-alt-shift-d = [
+    'exec-and-forget aerospace join-with right || aerospace move right',
+  ]
   cmd-ctrl-alt-shift-equal = 'resize smart +50'
   cmd-ctrl-alt-shift-h = [
     'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left',
@@ -140,8 +145,15 @@ start-at-login = true
   cmd-ctrl-alt-shift-o = ['focus-monitor --wrap-around next']
   cmd-ctrl-alt-shift-p = ['workspace --wrap-around prev']
   cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
+  cmd-ctrl-alt-shift-s = [
+    'exec-and-forget aerospace join-with down || aerospace move down',
+  ]
   cmd-ctrl-alt-shift-space = 'mode aero'
+  cmd-ctrl-alt-shift-t = 'layout accordion tiles'
   cmd-ctrl-alt-shift-v = 'layout horizontal vertical'
+  cmd-ctrl-alt-shift-w = [
+    'exec-and-forget aerospace join-with up || aerospace move up',
+  ]
   f13 = 'mode aero'
   f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
   f20 = 'resize smart-opposite -50' # cmd-ctrl-alt-shift-comma remapped via karabiner
@@ -172,22 +184,22 @@ start-at-login = true
 [mode.join.binding]
   esc = 'mode main'
   h = [
-    'join-with left',
+    'exec-and-forget aerospace join-with left || aerospace move left',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode aero',
   ]
   j = [
-    'join-with down',
+    'exec-and-forget aerospace join-with down || aerospace move down',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode aero',
   ]
   k = [
-    'join-with up',
+    'exec-and-forget aerospace join-with up || aerospace move up',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode aero',
   ]
   l = [
-    'join-with right',
+    'exec-and-forget aerospace join-with right || aerospace move right',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode aero',
   ]
@@ -241,19 +253,19 @@ start-at-login = true
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
   alt-h = [
-    'join-with left',
+    'exec-and-forget aerospace join-with left || aerospace move left',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
   alt-j = [
-    'join-with down',
+    'exec-and-forget aerospace join-with down || aerospace move down',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
   alt-k = [
-    'join-with up',
+    'exec-and-forget aerospace join-with up || aerospace move up',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
   alt-l = [
-    'join-with right',
+    'exec-and-forget aerospace join-with right || aerospace move right',
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
   ]
   alt-semicolon = 'mode main'

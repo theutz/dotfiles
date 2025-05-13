@@ -1,6 +1,12 @@
 [manager]
 show_hidden = true
 
+[opener]
+edit = [{ run = '${VISUAL:-neovide} "$@"', orphan = true, for = "unix" }]
+
+[open]
+prepend_rules = [{ name = "*.html", use = ["edit"] }]
+
 [plugin]
 prepend_previewers = [
   # Markdown
