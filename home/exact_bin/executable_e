@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if
+  [[ -n "$VISUAL" ]] && command -v "$VISUAL" &>/dev/null
+then
+  "$VISUAL" "$@"
+elif
+  [[ -n "$EDITOR" ]] && command -v "$EDITOR" &>/dev/null
+then
+  "$EDITOR" "$@"
+else
+  vim "$@"
+fi
