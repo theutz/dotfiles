@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-trap 'exit 1' SIGINT
+trap 'gum log -l warn "Interrupted by user"; exit 1' SIGINT
 
 function usage() {
   cat <<EOF
@@ -140,11 +140,11 @@ function main() {
     case "$1" in
     --help | -h)
       usage
-      exit
+      return
       ;;
     --* | -*)
       gum log -l error "$1 is not a known option"
-      exit 1
+      return 1
       ;;
     *)
       pos+=("$1")
@@ -152,8 +152,6 @@ function main() {
     esac
     set -- "${pos[@]}"
   done
-
-  trap 'gum log -l warn "Interrupted by user"; exit 1' SIGINT
 
   set +o pipefail
   info "Checking for merged..."
