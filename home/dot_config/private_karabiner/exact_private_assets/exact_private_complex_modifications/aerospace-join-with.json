@@ -1,0 +1,129 @@
+{
+  "title": "Aerospace move Commands",
+  "rules": [
+    {
+      "description": "⌘ + Tab + hjkl to Aerospace move in directions",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": ["left_command"],
+              "optional": ["any"]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "tab_key_pressed",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "/opt/homebrew/bin/aerospace move left"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": ["left_command"],
+              "optional": ["any"]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "tab_key_pressed",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "/opt/homebrew/bin/aerospace move down"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": ["left_command"],
+              "optional": ["any"]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "tab_key_pressed",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "/opt/homebrew/bin/aerospace move up"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["left_command"],
+              "optional": ["any"]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "tab_key_pressed",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "/opt/homebrew/bin/aerospace move right"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "tab_key_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "tab_key_pressed",
+                "value": 0
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "tab",
+              "modifiers": ["left_command"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
