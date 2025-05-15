@@ -1,13 +1,13 @@
 return {
 	{
 		"johmsalas/text-case.nvim",
-		enabled = false,
+		enabled = true,
 		event = "VeryLazy",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 		},
-		config = function()
-			require("textcase").setup({})
+		config = function(_, opts)
+			require("textcase").setup(opts)
 			require("telescope").load_extension("textcase")
 		end,
 		keys = {

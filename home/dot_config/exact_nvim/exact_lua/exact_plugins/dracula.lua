@@ -6,7 +6,7 @@ return {
 		overrides = function(colors)
 			return {
 				NonText = { fg = colors.white },
-				StatusLIne = { bg = "none" },
+				StatusLine = { bg = "none" },
 				WinSeparator = { fg = colors.pink },
 			}
 		end,

@@ -274,7 +274,7 @@ keymaps:
     cycle font: null
     cycle font reverse: null
     cycle grid action level: null
-    cycle mouse action type: null
+    cycle mouse action type: ShiftRight tap
     cycle mouse button: null
     decrease overlay opacity: '-'
     edit config: Tab
@@ -286,10 +286,10 @@ keymaps:
     forward mouse button (w/o overlay): null
     hide overlay: Escape
     hold for back button: null
-    hold for drag: ShiftRight
+    hold for drag: CommandRight
     hold for forward button: null
     hold for middle button: null
-    hold for move: CommandRight
+    hold for move: null
     hold for right button: null
     hold for speed decrease: Command
     hold for speed increase: Shift
@@ -320,9 +320,7 @@ keymaps:
     - ;
     - a
     right mouse button (w/o overlay): null
-    show overlay:
-    - CommandLeft tap
-    - f15
+    show overlay: CommandLeft tap
     subgrid nudge down:
     - j
     - f
@@ -336,7 +334,7 @@ keymaps:
     - k
     - d
     switch monitor left: ShiftLeft tap
-    switch monitor right: ShiftRight tap
+    switch monitor right: null
     toggle continuous mode: null
     toggle continuous mode until closed: null
     toggle free mode: OptionLeft tap
