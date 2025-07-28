@@ -1,6 +1,6 @@
 ["community"]
 type = "git-repo"
-url = "git@github.com:cheat/cheatsheets"
+url = "https://github.com/cheat/cheatsheets"
 refreshPeriod = "24h"
 exact = false
 
