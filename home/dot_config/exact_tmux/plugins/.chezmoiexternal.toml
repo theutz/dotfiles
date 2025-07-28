@@ -1,5 +1,5 @@
 ["tpm"]
 type = "git-repo"
-url = "git@github.com:tmux-plugins/tpm"
+url = "https://github.com/tmux-plugins/tpm"
 refreshPeriod = "24h"
 exact = false
