@@ -28,6 +28,7 @@ surface0 = "#414559"
 base = "#303446"
 mantle = "#292c3c"
 crust = "#232634"
+
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
 flamingo = "#f0c6c6"
@@ -144,6 +145,7 @@ bash_indicator = "󰫯"
 fish_indicator = "󰫳"
 nu_indicator = "󰫻"
 disabled = false
+style = "bold mauve"
 
 [mise]
 disabled = false
