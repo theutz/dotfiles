@@ -1,8 +1,10 @@
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
 
 -- Setup config builder
 local config = {}
-if wezterm.config_builder then config = wezterm.config_builder() end
+if wezterm.config_builder then
+	config = wezterm.config_builder()
+end
 config:set_strict_mode(true)
 
 config.font = wezterm.font("Berkeley Mono", { weight = 500 })
@@ -10,8 +12,7 @@ config.font_size = 16
 config.line_height = 1.0
 config.bold_brightens_ansi_colors = "BrightAndBold"
 config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
-config.default_prog =
-	{ "/opt/homebrew/bin/zsh", "-c", "exec $(/opt/homebrew/bin/mise which nu)" }
+config.default_prog = { "{{ .chezmoi.homeDir }}/.local/share/mise/shims/nu" }
 config.quit_when_all_windows_are_closed = false
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
@@ -37,16 +38,8 @@ config.enable_tab_bar = false
 config.tab_bar_at_bottom = false
 config.enable_kitty_keyboard = true
 
-wezterm.on(
-	"window-config-reloaded",
-	function(window, _)
-		window:toast_notification(
-			"wezterm",
-			"configuration reloaded!",
-			nil,
-			4000
-		)
-	end
-)
+wezterm.on("window-config-reloaded", function(window, _)
+	window:toast_notification("wezterm", "configuration reloaded!", nil, 4000)
+end)
 
 return config
