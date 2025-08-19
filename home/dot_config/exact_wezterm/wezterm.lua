@@ -10,7 +10,8 @@ config.font_size = 16
 config.line_height = 1.0
 config.bold_brightens_ansi_colors = "BrightAndBold"
 config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
-config.default_prog = { "/opt/homebrew/bin/fish" }
+config.default_prog =
+	{ "/opt/homebrew/bin/zsh", "-c", "exec $(/opt/homebrew/bin/mise which nu)" }
 config.quit_when_all_windows_are_closed = false
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false

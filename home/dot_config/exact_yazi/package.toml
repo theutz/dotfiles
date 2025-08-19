@@ -1,67 +1,67 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "4b027c7"
-hash = "7918aab6a71caf31b58411f789195677"
+rev = "e95c7b3"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "864a021"
-hash = "1f3dad061209081a6b04dd6ff2cb06c7"
+rev = "e95c7b3"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-paste"
-rev = "864a021"
-hash = "104fa2ce07d8890b07fcff68b0aaf923"
+rev = "e95c7b3"
+hash = "a8050052e59f3952abe0b3e27a5843de"
 
 [[plugin.deps]]
 use = "Reledia/glow"
-rev = "2da96e3"
-hash = "f9ee1436e3b853508d87f7d49dce56e6"
+rev = "bd3eaa5"
+hash = "92b5c58159a51c567f82b618cee2b78"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
-rev = "02f902d"
-hash = "9893839d5134aaecf6fafbeff6cac18e"
+rev = "3f8c863"
+hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "2496cd9"
-hash = "5b9dea47776a30946cfbf83232d18fb1"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "864a021"
-hash = "2f1053f89d1a301a648ab181d0948e38"
+rev = "e95c7b3"
+hash = "1adc12c2b2b025411ab61eb8f0879574"
 
 [[plugin.deps]]
 use = "AnirudhG07/plugins-yazi:copy-file-contents"
-rev = "524c52c"
-hash = "27c50e6bc15c09096505b805b238ade0"
+rev = "71545f4"
+hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
 
 [[plugin.deps]]
 use = "aresler/path-from-root"
-rev = "7d05b87"
-hash = "46977a29d4349d11465af1817f17d414"
+rev = "c4f03df"
+hash = "5022fdb08fcb05c10eb59b63663edb10"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "864a021"
-hash = "f0c4b41b5d19a3144958383333eff6e7"
+rev = "e95c7b3"
+hash = "e56b7abf3c06e8ce496eadcca168c093"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "fd85060"
-hash = "c40e434318a8ceffd01842f8dfb2390e"
+rev = "9cd2ac4"
+hash = "f54b45bdd33f607ddde47f0afad96142"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-latte"
-rev = "fd85060"
-hash = "8c24a91f7e6abb2a9ac268bfbd356e77"
+rev = "9cd2ac4"
+hash = "e03f3cc1dc61e84a501134784ca4ba57"
 
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
-rev = "31167ed"
-hash = "a04e157148549bacbb2831aab0e6e8cb"
+rev = "1f3b3c7"
+hash = "16ea0ff3583131788d57d5f7d34d0f61"
 
 [[flavor.deps]]
 use = "jamylak/rose-pine"
@@ -70,5 +70,5 @@ hash = "ba1044bd0ba76ba42395bb5136ad34bf"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
-rev = "68326b4"
-hash = "53e1f10ae0f6abd406e463fceca8622a"
+rev = "9cd2ac4"
+hash = "c0bfefbff165007a76c0933ed0432e3f"
