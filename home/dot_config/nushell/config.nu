@@ -1,7 +1,6 @@
 # Basic settings
 $env.config.show_banner = false
 $env.config.edit_mode = "vi"
-$env.config.buffer_editor = ["chezmoi", "edit", "--watch", "--force"]
 
 # Initialize starship
 mkdir ($nu.data-dir | path join "vendor/autoload")
