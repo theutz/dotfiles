@@ -145,7 +145,7 @@ bash_indicator = "󰫯"
 fish_indicator = "󰫳"
 nu_indicator = "󰫻"
 disabled = false
-style = "bold mauve"
+style = "bold lavender"
 
 [mise]
 disabled = false
