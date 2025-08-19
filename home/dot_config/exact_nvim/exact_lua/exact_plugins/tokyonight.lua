@@ -6,7 +6,7 @@ return {
 	opts = {
 		transparent = true,
 		style = "moon",
-		light_style = "moon",
+		light_style = "day",
 		styles = {
 			sidebars = "transparent",
 			floats = "transparent",
