@@ -140,9 +140,9 @@ style_user = "bold cyan"
 
 [shell]
 zsh_indicator = "󰬇"
-bash_indicator = ""
-fish_indicator = "󰈺"
-nu_indicator = ""
+bash_indicator = "󰫯"
+fish_indicator = "󰫳"
+nu_indicator = "󰫻"
 disabled = false
 
 [mise]
