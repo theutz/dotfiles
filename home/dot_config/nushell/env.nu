@@ -33,7 +33,19 @@ let mise_path = $nu.default-config-dir | path join mise.nu
 
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
-$env.LS_COLORS = (vivid generate rose-pine)
+$env.LS_COLORS = (
+  dark-mode status
+  | complete | get stdout
+  | str trim
+  | match $in {
+    off => "catppuccin-latte"
+    on => "catppuccin-mocha"
+    _ => {
+      error make {msg: "Unknown appearance"}
+    }
+  }
+  | run-external vivid generate $in
+)
 
 # Setup zoxide
 zoxide init nushell | save -f ($nu.default-config-dir | path join zoxide.nu)
