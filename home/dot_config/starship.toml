@@ -139,9 +139,11 @@ format = "[$user]($style) on "
 style_user = "bold cyan"
 
 [shell]
+zsh_indicator = "󰬇"
+bash_indicator = ""
+fish_indicator = "󰈺"
+nu_indicator = ""
 disabled = false
-bash_indicator = ''
-fish_indicator = '󰈺'
 
 [mise]
 disabled = false
