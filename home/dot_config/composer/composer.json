@@ -5,6 +5,6 @@
         "statamic/cli": "^3.4",
         "beyondcode/expose": "^2.6",
         "laravel/installer": "^5.8",
-        "laravel/valet": "^4.8"
+        "laravel/valet": "^4.9"
     }
 }

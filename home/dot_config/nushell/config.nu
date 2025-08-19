@@ -1,3 +1,4 @@
+# Basic settings
 $env.config.show_banner = false
 $env.config.edit_mode = "vi"
 
@@ -19,5 +20,8 @@ def --env y [...args] {
   rm -fp $tmp
 }
 
+# Setup chezmoi
 alias cm = chezmoi
-alias cms = chezmoi status
+
+# Setup zoxide
+source ($nu.default-config-dir | path join zoxide.nu)

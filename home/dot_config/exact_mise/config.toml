@@ -78,6 +78,7 @@ starship = "latest"
 yazi = "latest"
   yq                                          = "latest"
   zellij                                      = "latest"
+zoxide = "latest"
 
 [hooks.enter]
   script = 'eval "$(chezmoi generate zsh)"'

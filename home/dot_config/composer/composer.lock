@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbfb101beffab363fd17d1076bf4a0d3",
+    "content-hash": "14379f307f9667d97798840ece425ef5",
     "packages": [
         {
             "name": "beyondcode/expose",
@@ -1825,16 +1825,16 @@
         },
         {
             "name": "laravel/valet",
-            "version": "v4.8.4",
+            "version": "v4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/valet.git",
-                "reference": "e436e1781e02f3c2508a4850482fb68b385907b7"
+                "reference": "18439215b6be1118c8b496604e5cd2d5aafddaad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/valet/zipball/e436e1781e02f3c2508a4850482fb68b385907b7",
-                "reference": "e436e1781e02f3c2508a4850482fb68b385907b7",
+                "url": "https://api.github.com/repos/laravel/valet/zipball/18439215b6be1118c8b496604e5cd2d5aafddaad",
+                "reference": "18439215b6be1118c8b496604e5cd2d5aafddaad",
                 "shasum": ""
             },
             "require": {
@@ -1900,9 +1900,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/valet/issues",
-                "source": "https://github.com/laravel/valet/tree/v4.8.4"
+                "source": "https://github.com/laravel/valet/tree/v4.9.1"
             },
-            "time": "2025-03-04T16:29:15+00:00"
+            "time": "2025-08-19T02:12:10+00:00"
         },
         {
             "name": "league/commonmark",
