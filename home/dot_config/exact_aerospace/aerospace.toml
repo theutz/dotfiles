@@ -19,355 +19,368 @@ on-focused-monitor-changed = [
 start-at-login = true
 
 [exec.env-vars]
-  PATH = '${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+PATH = '${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 [key-mapping]
-  preset = 'qwerty'
+preset = 'qwerty'
 
 [gaps]
-  inner.horizontal = 16
-  inner.vertical   = 16
-  outer.bottom     = 16
-  outer.left       = 16
-  outer.right      = 16
-  outer.top        = [{ monitor."SAMSUNG" = 56 }, 16]
+inner.horizontal = 16
+inner.vertical = 16
+outer.bottom = 16
+outer.left = 16
+outer.right = 16
+outer.top = [{ monitor."SAMSUNG" = 56 }, 16]
 
 [workspace-to-monitor-force-assignment]
-  1 = "main"
-  9 = ["secondary", "main"]
+1 = "main"
+9 = ["secondary", "main"]
 
 [[on-window-detected]]
-  if.app-id                       = "wezterm-gui"
-  if.window-title-regex-substring = "spotify_player"
-  run                             = ['layout tiling', 'move-node-to-workspace 9']
+if.app-id = "wezterm-gui"
+if.window-title-regex-substring = "spotify_player"
+run = ['layout tiling', 'move-node-to-workspace 9']
 
 [[on-window-detected]]
-  if.app-id = "ru.keepcoder.Telegram"
-  run       = ['move-node-to-workspace 8']
+if.app-id = "ru.keepcoder.Telegram"
+run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
-  if.app-id = "com.apple.MobileSMS"
-  run       = ['move-node-to-workspace 8']
+if.app-id = "com.apple.MobileSMS"
+run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
-  if.app-id = "net.whatsapp.WhatsApp"
-  run       = ['move-node-to-workspace 8']
+if.app-id = "net.whatsapp.WhatsApp"
+run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
-  if.app-id = "org.whispersystems.signal-desktop"
-  run       = ['move-node-to-workspace 8']
+if.app-id = "org.whispersystems.signal-desktop"
+run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
-  if.app-id                   = "com.github.wez.wezterm"
-  if.during-aerospace-startup = true
-  run                         = ["move-node-to-workspace 1"]
+if.app-id = "com.github.wez.wezterm"
+if.during-aerospace-startup = true
+run = ["move-node-to-workspace 1"]
 
 [[on-window-detected]]
-  if.app-id = "com.spotify.client"
-  run       = ["move-node-to-workspace 9"]
+if.app-id = "com.spotify.client"
+run = ["move-node-to-workspace 9"]
 
 [[on-window-detected]]
-  if.app-id = "com.tinyspeck.slackmacgap"
-  run       = ["move-node-to-workspace 7"]
-
-[[on-window-detected]] # gmail
-  if.app-id = "com.vivaldi.Vivaldi.app.fmgjjmmmlfnkbppncabfkddbjimcfncm"
-  run       = ["move-node-to-workspace 7"]
+if.app-id = "com.tinyspeck.slackmacgap"
+run = ["move-node-to-workspace 7"]
 
 [[on-window-detected]]
-  if.app-id = "com.figma.Desktop"
-  run       = ["move-node-to-workspace 5"]
+if.app-id = "com.vivaldi.Vivaldi.app.fmgjjmmmlfnkbppncabfkddbjimcfncm"
+run = ["move-node-to-workspace 7"]
 
 [[on-window-detected]]
-  if.app-id                       = "com.chromium.Chromium"
-  if.window-title-regex-substring = "Playwright"
-  run                             = ["move-node-to-workspace 6"]
+if.app-id = "com.figma.Desktop"
+run = ["move-node-to-workspace 5"]
 
 [[on-window-detected]]
-  if.app-id = "us.zoom.xos"
-  run       = ["move-node-to-workspace 4"]
+if.app-id = "com.chromium.Chromium"
+if.window-title-regex-substring = "Playwright"
+run = ["move-node-to-workspace 6"]
+
+[[on-window-detected]]
+if.app-id = "us.zoom.xos"
+run = ["move-node-to-workspace 4"]
 
 [mode.main.binding]
-  # spellcheck:ignore
-  # All possible keys:
-  # - Letters.        a, b, c, ..., z
-  # - Numbers.        0, 1, 2, ..., 9
-  # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-  # - F-keys.         f1, f2, ..., f20
-  # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
-  #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
-  #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
-  #                   sectionSign (ISO keyboards only, european keyboards only)
-  # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-  #                   keypadMinus, keypadMultiply, keypadPlus
-  # - Arrows.         left, down, up, right
-  # All possible modifiers: cmd, alt, ctrl, shift
+# spellcheck:ignore
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+#                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+#                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+#                   sectionSign (ISO keyboards only, european keyboards only)
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+# - Arrows.         left, down, up, right
+# All possible modifiers: cmd, alt, ctrl, shift
 
-  alt-quote = 'mode join'
-  alt-semicolon = 'mode aero'
-  alt-shift-quote = 'mode move'
-  cmd-ctrl-alt-h = 'move left'
-  cmd-ctrl-alt-j = 'move down'
-  cmd-ctrl-alt-k = 'move up'
-  cmd-ctrl-alt-l = 'move right'
-  cmd-ctrl-alt-shift-0 = 'balance-sizes'
-  cmd-ctrl-alt-shift-1 = 'workspace --auto-back-and-forth 1'
-  cmd-ctrl-alt-shift-2 = 'workspace --auto-back-and-forth 2'
-  cmd-ctrl-alt-shift-3 = 'workspace --auto-back-and-forth 3'
-  cmd-ctrl-alt-shift-4 = 'workspace --auto-back-and-forth 4'
-  cmd-ctrl-alt-shift-5 = 'workspace --auto-back-and-forth 5'
-  cmd-ctrl-alt-shift-6 = 'workspace --auto-back-and-forth 6'
-  cmd-ctrl-alt-shift-7 = 'workspace --auto-back-and-forth 7'
-  cmd-ctrl-alt-shift-8 = 'workspace --auto-back-and-forth 8'
-  cmd-ctrl-alt-shift-9 = 'workspace --auto-back-and-forth 9'
-  cmd-ctrl-alt-shift-a = ['exec-and-forget aerospace join-with left']
-  cmd-ctrl-alt-shift-b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
-  cmd-ctrl-alt-shift-d = ['exec-and-forget aerospace join-with right']
-  cmd-ctrl-alt-shift-equal = 'resize smart +50'
-  cmd-ctrl-alt-shift-h = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left',
-  ]
-  cmd-ctrl-alt-shift-i = [
-    'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
-  ]
-  cmd-ctrl-alt-shift-j = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down',
-  ]
-  cmd-ctrl-alt-shift-k = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up',
-  ]
-  cmd-ctrl-alt-shift-l = [
-    'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right',
-  ]
-  cmd-ctrl-alt-shift-leftSquareBracket = ['focus-monitor --wrap-around next']
-  cmd-ctrl-alt-shift-m = 'fullscreen'
-  cmd-ctrl-alt-shift-minus = 'resize smart -50'
-  cmd-ctrl-alt-shift-n = ['workspace --wrap-around next']
-  cmd-ctrl-alt-shift-o = ['focus-monitor --wrap-around next']
-  cmd-ctrl-alt-shift-p = ['workspace --wrap-around prev']
-  cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
-  cmd-ctrl-alt-shift-s = ['exec-and-forget aerospace join-with down']
-  cmd-ctrl-alt-shift-space = 'mode aero'
-  cmd-ctrl-alt-shift-t = 'layout accordion tiles'
-  cmd-ctrl-alt-shift-v = 'layout horizontal vertical'
-  cmd-ctrl-alt-shift-w = ['exec-and-forget aerospace join-with up']
-  f13 = 'mode aero'
-  f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
-  f20 = 'resize smart-opposite -50' # cmd-ctrl-alt-shift-comma remapped via karabiner
+alt-quote = 'mode join'
+alt-semicolon = 'mode aero'
+alt-shift-quote = 'mode move'
+
+cmd-ctrl-alt-h = 'move left'
+cmd-ctrl-alt-j = 'move down'
+cmd-ctrl-alt-k = 'move up'
+cmd-ctrl-alt-l = 'move right'
+cmd-ctrl-alt-shift-0 = 'balance-sizes'
+cmd-ctrl-alt-shift-1 = 'workspace --auto-back-and-forth 1'
+cmd-ctrl-alt-shift-2 = 'workspace --auto-back-and-forth 2'
+cmd-ctrl-alt-shift-3 = 'workspace --auto-back-and-forth 3'
+cmd-ctrl-alt-shift-4 = 'workspace --auto-back-and-forth 4'
+cmd-ctrl-alt-shift-5 = 'workspace --auto-back-and-forth 5'
+cmd-ctrl-alt-shift-6 = 'workspace --auto-back-and-forth 6'
+cmd-ctrl-alt-shift-7 = 'workspace --auto-back-and-forth 7'
+cmd-ctrl-alt-shift-8 = 'workspace --auto-back-and-forth 8'
+cmd-ctrl-alt-shift-9 = 'workspace --auto-back-and-forth 9'
+cmd-ctrl-alt-shift-a = ['exec-and-forget aerospace join-with left']
+cmd-ctrl-alt-shift-b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+cmd-ctrl-alt-shift-d = ['exec-and-forget aerospace join-with right']
+cmd-ctrl-alt-shift-h = [
+  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left',
+]
+cmd-ctrl-alt-shift-i = [
+  'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
+]
+cmd-ctrl-alt-shift-j = [
+  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down',
+]
+cmd-ctrl-alt-shift-k = [
+  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up',
+]
+cmd-ctrl-alt-shift-l = [
+  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right',
+]
+cmd-ctrl-alt-shift-m = 'fullscreen'
+cmd-ctrl-alt-shift-n = ['workspace --wrap-around next']
+cmd-ctrl-alt-shift-o = ['focus-monitor --wrap-around next']
+cmd-ctrl-alt-shift-p = ['workspace --wrap-around prev']
+cmd-ctrl-alt-shift-s = ['exec-and-forget aerospace join-with down']
+cmd-ctrl-alt-shift-t = 'layout accordion tiles'
+cmd-ctrl-alt-shift-v = 'layout horizontal vertical'
+cmd-ctrl-alt-shift-w = ['exec-and-forget aerospace join-with up']
+
+cmd-ctrl-alt-shift-equal = 'resize smart +50'
+cmd-ctrl-alt-shift-leftSquareBracket = ['focus-monitor --wrap-around next']
+cmd-ctrl-alt-shift-minus = 'resize smart -50'
+cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
+cmd-ctrl-alt-shift-space = 'mode aero'
+
+f13 = 'mode aero'
+f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
+f20 = 'resize smart-opposite -50' # cmd-ctrl-alt-shift-comma remapped via karabiner
 
 [mode.move.binding]
-  esc = 'mode main'
-  h = [
-    'move left',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
-  j = [
-    'move down',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
-  k = [
-    'move up',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
-  l = [
-    'move right',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
+h = [
+  'move left',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
+j = [
+  'move down',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
+k = [
+  'move up',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
+l = [
+  'move right',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
+
+esc = 'mode main'
 
 [mode.join.binding]
-  esc = 'mode main'
-  h = [
-    'exec-and-forget aerospace join-with left || aerospace move left',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
-  j = [
-    'exec-and-forget aerospace join-with down || aerospace move down',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
-  k = [
-    'exec-and-forget aerospace join-with up || aerospace move up',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
-  l = [
-    'exec-and-forget aerospace join-with right || aerospace move right',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-    'mode aero',
-  ]
+h = [
+  'exec-and-forget aerospace join-with left || aerospace move left',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
+j = [
+  'exec-and-forget aerospace join-with down || aerospace move down',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
+k = [
+  'exec-and-forget aerospace join-with up || aerospace move up',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
+l = [
+  'exec-and-forget aerospace join-with right || aerospace move right',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+  'mode aero',
+]
 
+esc = 'mode main'
 
 [mode.aero.binding]
-  1 = 'workspace --auto-back-and-forth 1'
-  2 = 'workspace --auto-back-and-forth 2'
-  3 = 'workspace --auto-back-and-forth 3'
-  4 = 'workspace --auto-back-and-forth 4'
-  5 = 'workspace --auto-back-and-forth 5'
-  6 = 'workspace --auto-back-and-forth 6'
-  7 = 'workspace --auto-back-and-forth 7'
-  8 = 'workspace --auto-back-and-forth 8'
-  9 = 'workspace --auto-back-and-forth 9'
-  a = 'join-with left'
-  alt-1 = [
-    'summon-workspace 1',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-2 = [
-    'summon-workspace 2',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-3 = [
-    'summon-workspace 3',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-4 = [
-    'summon-workspace 4',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-5 = [
-    'summon-workspace 5',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-6 = [
-    'summon-workspace 6',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-7 = [
-    'summon-workspace 7',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-8 = [
-    'summon-workspace 8',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-9 = [
-    'summon-workspace 9',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-h = [
-    'exec-and-forget aerospace join-with left || aerospace move left',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-j = [
-    'exec-and-forget aerospace join-with down || aerospace move down',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-k = [
-    'exec-and-forget aerospace join-with up || aerospace move up',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-l = [
-    'exec-and-forget aerospace join-with right || aerospace move right',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  alt-semicolon = 'mode main'
-  alt-x = 'close-all-windows-but-current --quit-if-last-window'
-  b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
-  d = 'join-with right'
-  e = 'balance-sizes'
-  enter = "fullscreen"
-  equal = 'resize smart +50'
-  esc = 'mode main'
-  f = 'layout floating tiling'
-  f13 = 'mode main'
-  h = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail left'
-  j = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail down'
-  k = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail up'
-  l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
-  leftSquareBracket = 'focus-monitor --wrap-around prev'
-  minus = 'resize smart -50'
-  n = 'workspace --wrap-around next'
-  o = 'focus-monitor --wrap-around next'
-  p = 'workspace --wrap-around prev'
-  r = [
-    'reload-config',
-    'exec-and-forget sketchybar --reload',
-    'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
-  ]
-  rightSquareBracket = 'focus-monitor --wrap-around next'
-  s = 'join-with down'
-  shift-1 = [
-    'move-node-to-workspace 1',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-2 = [
-    'move-node-to-workspace 2',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-3 = [
-    'move-node-to-workspace 3',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-4 = [
-    'move-node-to-workspace 4',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-5 = [
-    'move-node-to-workspace 5',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-6 = [
-    'move-node-to-workspace 6',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-7 = [
-    'move-node-to-workspace 7',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-8 = [
-    'move-node-to-workspace 8',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-9 = [
-    'move-node-to-workspace 9',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-equal = 'resize smart-opposite +50'
-  shift-h = [
-    'move left',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-j = [
-    'move down',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-k = [
-    'move up',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-l = [
-    'move right',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-leftSquareBracket = [
-    'move-workspace-to-monitor --wrap-around next',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-minus = 'resize smart-opposite -50'
-  shift-n = [
-    "move-node-to-workspace --wrap-around next",
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-o = [
-    'move-node-to-monitor --focus-follows-window --wrap-around next',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-p = [
-    "move-node-to-workspace --wrap-around prev",
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-rightSquareBracket = [
-    'move-workspace-to-monitor --wrap-around prev',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  ]
-  shift-v = 'layout horizontal vertical'
-  t = 'layout accordion tiles'
-  tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
-  v = 'layout vertical horizontal'
-  w = 'join-with up'
-  x = 'close --quit-if-last-window'
+1 = 'workspace --auto-back-and-forth 1'
+2 = 'workspace --auto-back-and-forth 2'
+3 = 'workspace --auto-back-and-forth 3'
+4 = 'workspace --auto-back-and-forth 4'
+5 = 'workspace --auto-back-and-forth 5'
+6 = 'workspace --auto-back-and-forth 6'
+7 = 'workspace --auto-back-and-forth 7'
+8 = 'workspace --auto-back-and-forth 8'
+9 = 'workspace --auto-back-and-forth 9'
+
+a = 'join-with left'
+b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+d = 'join-with right'
+e = 'balance-sizes'
+f = 'layout floating tiling'
+h = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail left'
+j = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail down'
+k = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail up'
+l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
+n = 'workspace --wrap-around next'
+o = 'focus-monitor --wrap-around next'
+p = 'workspace --wrap-around prev'
+r = [
+  'reload-config',
+  'exec-and-forget sketchybar --reload',
+  'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
+]
+s = 'join-with down'
+t = 'layout accordion tiles'
+v = 'layout vertical horizontal'
+w = 'join-with up'
+x = 'close --quit-if-last-window'
+
+leftSquareBracket = 'focus-monitor --wrap-around prev'
+minus = 'resize smart -50'
+rightSquareBracket = 'focus-monitor --wrap-around next'
+tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+enter = "fullscreen"
+equal = 'resize smart +50'
+esc = 'mode main'
+
+f13 = 'mode main'
+
+shift-1 = [
+  'move-node-to-workspace 1',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-2 = [
+  'move-node-to-workspace 2',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-3 = [
+  'move-node-to-workspace 3',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-4 = [
+  'move-node-to-workspace 4',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-5 = [
+  'move-node-to-workspace 5',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-6 = [
+  'move-node-to-workspace 6',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-7 = [
+  'move-node-to-workspace 7',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-8 = [
+  'move-node-to-workspace 8',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-9 = [
+  'move-node-to-workspace 9',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+
+shift-h = [
+  'move left',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-j = [
+  'move down',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-k = [
+  'move up',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-l = [
+  'move right',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-n = [
+  "move-node-to-workspace --wrap-around next",
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-o = [
+  'move-node-to-monitor --focus-follows-window --wrap-around next',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-p = [
+  "move-node-to-workspace --wrap-around prev",
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-v = 'layout horizontal vertical'
+
+shift-equal = 'resize smart-opposite +50'
+shift-leftSquareBracket = [
+  'move-workspace-to-monitor --wrap-around next',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+shift-minus = 'resize smart-opposite -50'
+shift-rightSquareBracket = [
+  'move-workspace-to-monitor --wrap-around prev',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+
+alt-1 = [
+  'summon-workspace 1',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-2 = [
+  'summon-workspace 2',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-3 = [
+  'summon-workspace 3',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-4 = [
+  'summon-workspace 4',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-5 = [
+  'summon-workspace 5',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-6 = [
+  'summon-workspace 6',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-7 = [
+  'summon-workspace 7',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-8 = [
+  'summon-workspace 8',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-9 = [
+  'summon-workspace 9',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+
+alt-h = [
+  'exec-and-forget aerospace join-with left || aerospace move left',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-j = [
+  'exec-and-forget aerospace join-with down || aerospace move down',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-k = [
+  'exec-and-forget aerospace join-with up || aerospace move up',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-l = [
+  'exec-and-forget aerospace join-with right || aerospace move right',
+  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
+alt-x = 'close-all-windows-but-current --quit-if-last-window'
+
+alt-semicolon = 'mode main'
