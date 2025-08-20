@@ -1,4 +1,6 @@
 # Setup chezmoi
+
+alias chezomi = chezmoi
 alias cm = chezmoi
 alias cms = if (which chezmoi-stat | is-not-empty) { cm stat } else { cm status }
 alias cmad = cm add
