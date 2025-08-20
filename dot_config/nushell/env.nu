@@ -25,27 +25,23 @@ $env.PATH = [
   /opt/homebrew/sbin
 ] ++ $env.PATH
 
+$env.EDITOR = "nvim"
+$env.VISUAL = $env.EDITOR
+$env.BROWSER = which -a open | last | get path
+$env.PAGER = "less"
+$env.LESS = "-F -g -i -M -R -S -w -X -z-4"
+$env.MANPAGER = "nvim -C +Man!"
+$env.MANWIDTH = "999"
+
+use with-appearance.nu
+$env.LS_COLORS = with-appearance { "catppuccin-latte" } { "catppuccin-mocha" }
+| run-external vivid generate $in
+
 # Activate Mise
 let mise_path = $nu.data-dir | path join mise.nu
 ^mise activate nu
 | str replace "--ignore-errors" "--optional"
 | save $mise_path --force
-
-$env.EDITOR = "nvim"
-$env.VISUAL = "nvim"
-$env.LS_COLORS = (
-  dark-mode status
-  | complete | get stdout
-  | str trim
-  | match $in {
-    off => "catppuccin-latte"
-    on => "catppuccin-mocha"
-    _ => {
-      error make {msg: "Unknown appearance"}
-    }
-  }
-  | run-external vivid generate $in
-)
 
 # Setup zoxide
 zoxide init nushell
