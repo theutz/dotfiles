@@ -57,7 +57,7 @@ def main [
     to json | ansi strip
   } else {
     if (is-terminal --stdout) { $in } else {
-      $in | to text | ansi strip
+      $in | table --theme=none --index=false
     }
   }
 }
