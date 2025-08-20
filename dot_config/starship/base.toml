@@ -1,0 +1,42 @@
+add_newline = true
+light_palette = "catppuccin_latte"
+dark_palette = "catppuccin_mocha"
+# format = """$shell"""
+# right_format = """$character"""
+
+[aws]
+style = "bold orange"
+
+[character]
+error_symbol = "[](bold red)"
+success_symbol = "[](bold sapphire)"
+
+[cmd_duration]
+style = "bold yellow"
+
+[directory]
+style = "bold green"
+
+[git_branch]
+style = "bold pink"
+
+[git_status]
+style = "bold red"
+
+[hostname]
+style = "bold purple"
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold cyan"
+
+[shell]
+zsh_indicator = " "
+bash_indicator = " "
+fish_indicator = "󰈺 "
+nu_indicator = "󰫻󰬂"
+disabled = false
+style = "rosewater"
+
+[mise]
+disabled = false

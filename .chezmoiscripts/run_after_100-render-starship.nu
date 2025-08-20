@@ -1,4 +1,5 @@
 #!/usr/bin/env -S mise x aqua:nushell/nushell@latest -- nu
 # vim: ft=nu
 
-[(ansi pink) "Loves ya" (ansi reset)]
+use starship.nu
+starship render
