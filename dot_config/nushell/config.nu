@@ -25,7 +25,7 @@ use ($nu.data-dir | path join mise.nu)
 source ($nu.data-dir | path join zoxide.nu)
 
 source yazi.nu
-source chezmoi.nu
+use chezmoi *
 
 module "brew extern" {
   def services [] {

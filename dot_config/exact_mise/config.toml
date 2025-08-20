@@ -16,6 +16,7 @@
   "aqua:ouch-org/ouch"                        = "latest"
 "aqua:showwin/speedtest-go" = "latest"
   "aqua:tealdeer-rs/tealdeer"                 = "latest"
+"aqua:timothyye/skm" = "latest"
   ast-grep                                    = "latest"
 atuin = "latest"
   bat                                         = "latest"
