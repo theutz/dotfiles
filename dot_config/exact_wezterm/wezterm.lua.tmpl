@@ -8,7 +8,7 @@ end
 config:set_strict_mode(true)
 
 -- Color scheme & colors
-function get_appearance()
+local function get_appearance()
 	if wezterm.gui then
 		return wezterm.gui.get_appearance()
 	end
@@ -45,11 +45,6 @@ config.font_size = 16
 config.line_height = 1.6
 
 -- UI
-config.quit_when_all_windows_are_closed = false
-config.window_decorations = "RESIZE"
-config.adjust_window_size_when_changing_font_size = false
--- config.window_close_confirmation = "AlwaysPrompt"
-config.window_padding = {
 config.quit_when_all_windows_are_closed = false
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false

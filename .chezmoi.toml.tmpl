@@ -13,16 +13,24 @@ autoCommit = true
 autoPush = true
 
 [cd]
-{{ if lookPath "fish" -}}
+{{ if lookPath "nu" -}}
+command = "nu"
+{{ else if lookPath "fish" -}}
 command = "fish"
 {{- end }}
 
 [diff]
-{{ if lookPath "delta" -}}
-pager = "delta"
+{{ if lookPath "difft" -}}
+command = "difft"
+args = ["--color", "always", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+{{ else if lookPath "delta" -}}
+command = "delta"
+args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+{{ else -}}
+command = "diff"
 args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 {{- end }}
-exclude = ["scripts"]
+pager = "less -FR"
 
 [merge]
 {{ if lookPath "nvim" }}
@@ -38,7 +46,7 @@ watch = false
 apply = false
 {{ end }}
 
-[status]
-exclude = ["scripts"]
+# [status]
+# exclude = ["scripts"]
 
 # vim: ft=tmpl.toml

@@ -1,6 +1,4 @@
-{{/*
-vim: ft=gotmpl.gitignore
-*/ -}}
+README.md
 
 key.txt.age
 bin/chezmoi
