@@ -1,42 +1,31 @@
 # Basic settings
 $env.config.show_banner = false
 $env.config.edit_mode = "vi"
+$env.config.use_kitty_protocol = true
+$env.config.render_right_prompt_on_last_line = false
+$env.config.history.max_size = 10000
+$env.PROMPT_INDICATOR_VI_NORMAL = $"(ansi magenta)  (ansi reset)"
+$env.PROMPT_INDICATOR_VI_INSERT = $"(ansi green)  (ansi reset)"
 
+use with-appearance.nu
 use std/config [light-theme, dark-theme]
-$env.config.color_config = (
-  dark-mode status
-  | complete
-  | get stdout
-  | str trim
-  | match $in {
-    on => (dark-theme)
-    off => (light-theme)
-  }
-)
+$env.config.color_config = with-appearance { light-theme } { dark-theme }
+hide std/config
 
 # Initialize starship
-mkdir ($nu.data-dir | path join "vendor/autoload")
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-use starship.nu
-starship set-config-path
-hide strsh
+use starship.nu [init, set-config-path]
+init
+set-config-path
+hide starship.nu
 
 # Initialize mise
 use ($nu.default-config-dir | path join mise.nu)
 
-# Setup yazi wrapper
-def --env y [...args] {
-  let tmp = (mktemp -t "yazi-cwd.XXXXXX")
-  yazi ...$args --cwd-file $tmp
-  let cwd = (open $tmp)
-  if $cwd != "" and $cwd != $env.PWD {
-    cd $cwd
-  }
-  rm -fp $tmp
-}
+# Setup zoxide
+source ($nu.default-config-dir | path join zoxide.nu)
 
-# Setup chezmoi
-alias cm = chezmoi
+source yazi.nu
+source chezmoi.nu
 
 # Setup zoxide
 source ($nu.default-config-dir | path join zoxide.nu)
