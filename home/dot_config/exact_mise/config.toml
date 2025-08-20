@@ -64,7 +64,7 @@ lazygit = "latest"
   "pipx:terminal-colors"                      = "latest"
   "pipx:tmuxp"                                = "latest"
   "pipx:xonsh"                                = { version = "latest", uvx_args = "--with gnureadline" }
-  python                                      = "3.12"
+  python                                      = "latest"
   rg                                          = "latest"
   ruby                                        = "latest"
   rust                                        = "latest"

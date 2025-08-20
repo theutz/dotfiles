@@ -2,19 +2,15 @@ customCommands:
   - key: b
     context: files
     command: HK_PROFILE=ai git commit
-    showOutput: true
     description: generate commit message with ai
-    subprocess: true
+    output: terminal
 disableStartupPopups: true
 git:
   commit:
     signOff: true
   paging:
     colorArg: always
-    pager:
-      'delta "$(dark-mode status | grep on && echo "--dark" || echo "--light")"
-      --paging=never
-      '
+    pager: 'delta "$(dark-mode status | grep on && echo "--dark" || echo "--light")" --paging=never '
   parseEmoji: true
   overrideGpg: true
 gui:
@@ -26,7 +22,6 @@ gui:
   showRandomTip: false
 notARepository: skip
 promptToReturnFromSubprocess: false
-
 # DRACULA
 theme:
   activeBorderColor:
@@ -34,34 +29,24 @@ theme:
     - bold
   inactiveBorderColor:
     - "#BD93F9"
-
   searchingActiveBorderColor:
     - "#8BE9FD"
     - bold
-
   optionsTextColor:
     - "#6272A4"
-
   selectedLineBgColor:
     - "#6272A4"
-
   inactiveViewSelectedLineBgColor:
     - bold
-
   cherryPickedCommitFgColor:
     - "#6272A4"
-
   cherryPickedCommitBgColor:
     - "#8BE9FD"
-
   markedBaseCommitFgColor:
     - "#8BE9FD"
-
   markedBaseCommitBgColor:
     - "#F1FA8C"
-
   unstagedChangesColor:
     - "#FF5555"
-
   defaultFgColor:
     - "#F8F8F2"
