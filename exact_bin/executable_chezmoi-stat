@@ -56,8 +56,10 @@ def main [
   | if ($json) {
     to json | ansi strip
   } else {
-    if (is-terminal --stdout) { $in } else {
-      $in | table --theme=none --index=false
+    if (is-terminal --stdout) {
+      $in
+    } else {
+      $in | to nuon
     }
   }
 }
