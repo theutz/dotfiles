@@ -56,10 +56,8 @@ def main [
   | if ($json) {
     to json | ansi strip
   } else {
-    if (is-terminal --stdout) {
-      $in
-    } else {
-      $in | to nuon
+    if (is-terminal --stdout) { $in } else {
+      $in | to text | ansi strip
     }
   }
 }
