@@ -19,13 +19,11 @@ set-config-path
 hide starship.nu
 
 # Initialize mise
-use ($nu.default-config-dir | path join mise.nu)
+use ($nu.data-dir | path join mise.nu)
 
 # Setup zoxide
-source ($nu.default-config-dir | path join zoxide.nu)
+source ($nu.data-dir | path join zoxide.nu)
 
 source yazi.nu
 source chezmoi.nu
 
-# Setup zoxide
-source ($nu.default-config-dir | path join zoxide.nu)

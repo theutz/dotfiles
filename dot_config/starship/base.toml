@@ -1,8 +1,6 @@
 add_newline = true
 light_palette = "catppuccin_latte"
 dark_palette = "catppuccin_mocha"
-# format = """$shell"""
-right_format = """$character"""
 
 [aws]
 style = "bold orange"

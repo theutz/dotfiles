@@ -26,7 +26,7 @@ $env.PATH = [
 ] ++ $env.PATH
 
 # Activate Mise
-let mise_path = $nu.default-config-dir | path join mise.nu
+let mise_path = $nu.data-dir | path join mise.nu
 ^mise activate nu
 | str replace "--ignore-errors" "--optional"
 | save $mise_path --force
@@ -48,4 +48,5 @@ $env.LS_COLORS = (
 )
 
 # Setup zoxide
-zoxide init nushell | save -f ($nu.default-config-dir | path join zoxide.nu)
+zoxide init nushell
+| save -f ($nu.data-dir | path join zoxide.nu)
