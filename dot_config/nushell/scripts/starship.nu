@@ -53,7 +53,7 @@ def make-dark []: record -> record {
 }
 
 # Render and save the starship config for light and dark modes
-export def render []: nothing -> string {
+export def render []: nothing -> nothing {
   construct
   | tee { make-light | save --force (light-path) }
   | tee { make-dark | save --force (dark-path) }
