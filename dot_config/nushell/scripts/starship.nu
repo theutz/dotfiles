@@ -57,6 +57,7 @@ export def render []: nothing -> string {
   construct
   | tee { make-light | save --force (light-path) }
   | tee { make-dark | save --force (dark-path) }
+  | ignore
 }
 
 # Based on the current system appearance, output the path
