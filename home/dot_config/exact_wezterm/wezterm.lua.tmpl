@@ -1,39 +1,55 @@
 local wezterm = require("wezterm")
 
--- Setup config builder
+-- Config builder
 local config = {}
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 config:set_strict_mode(true)
 
+-- Color scheme & colors
 function get_appearance()
 	if wezterm.gui then
 		return wezterm.gui.get_appearance()
 	end
 	return "Dark"
 end
-
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "catppuccin-mocha"
+		return "Catppuccin Mocha"
 	else
-		return "catppuccin-latte"
+		return "Catppuccin Latte"
 	end
 end
+config.color_scheme = scheme_for_appearance(get_appearance())
+config.bold_brightens_ansi_colors = "BrightAndBold"
+config.window_background_opacity = 0.8
+config.text_background_opacity = 1.0
+config.macos_window_background_blur = 40
+config.inactive_pane_hsb = {
+	saturation = 0.7,
+	brightness = 0.2,
+}
+local function contrast_ratio_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return 4.5
+	else
+		return 1.0
+	end
+end
+config.text_min_contrast_ratio = contrast_ratio_for_appearance(get_appearance())
 
+-- Fonts
 config.font = wezterm.font("Berkeley Mono", { weight = 400 })
 config.font_size = 16
 config.line_height = 1.6
-config.bold_brightens_ansi_colors = "BrightAndBold"
-config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
-config.default_prog = { "{{ .chezmoi.homeDir }}/.local/share/mise/shims/nu" }
-config.set_environment_variables = {
-	XDG_CONFIG_HOME = "{{ .chezmoi.homeDir }}/.config",
-	XDG_DATA_HOME = "{{ .chezmoi.homeDir }}/.local/share",
-	XDG_STATE_HOME = "{{ .chezmoi.homeDir }}/.local/state",
-	XDG_CACHE_HOME = "{{ .chezmoi.homeDir }}/.cache",
-}
+
+-- UI
+config.quit_when_all_windows_are_closed = false
+config.window_decorations = "RESIZE"
+config.adjust_window_size_when_changing_font_size = false
+-- config.window_close_confirmation = "AlwaysPrompt"
+config.window_padding = {
 config.quit_when_all_windows_are_closed = false
 config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
@@ -44,15 +60,6 @@ config.window_padding = {
 	left = "8px",
 	right = "0px",
 }
-config.color_scheme = scheme_for_appearance(get_appearance())
-config.text_min_contrast_ratio = 4.5
-config.window_background_opacity = 0.8
-config.text_background_opacity = 1.0
-config.macos_window_background_blur = 40
-config.inactive_pane_hsb = {
-	saturation = 0.7,
-	brightness = 0.2,
-}
 config.use_fancy_tab_bar = false
 config.show_tab_index_in_tab_bar = true
 config.tab_max_width = 120
@@ -60,6 +67,19 @@ config.hide_tab_bar_if_only_one_tab = false
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
 
+-- Environment
+config.default_prog = { "/Users/michael/.local/share/mise/shims/nu" }
+config.set_environment_variables = {
+	XDG_CONFIG_HOME = "{{ .chezmoi.homeDir }}/.config",
+	XDG_DATA_HOME = "{{ .chezmoi.homeDir }}/.local/share",
+	XDG_STATE_HOME = "{{ .chezmoi.homeDir }}/.local/state",
+	XDG_CACHE_HOME = "{{ .chezmoi.homeDir }}/.cache",
+}
+
+-- Text rendering
+config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
+
+-- Keyboard
 config.enable_kitty_keyboard = true
 
 wezterm.on("window-config-reloaded", function(window, _)
