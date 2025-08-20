@@ -2,7 +2,7 @@ add_newline = true
 light_palette = "catppuccin_latte"
 dark_palette = "catppuccin_mocha"
 # format = """$shell"""
-# right_format = """$character"""
+right_format = """$character"""
 
 [aws]
 style = "bold orange"
@@ -36,7 +36,7 @@ bash_indicator = " "
 fish_indicator = "󰈺 "
 nu_indicator = "󰫻󰬂"
 disabled = false
-style = "rosewater"
+style = "mauve"
 
 [mise]
 disabled = false
