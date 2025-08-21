@@ -97,31 +97,31 @@ def clr [name: string, alpha: string = "FF"]: nothing -> string {
 #  click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
 #)
 
-[
+let clock = [
   --add item clock right
   --set clock
   update_freq=10
   icon=󱑀
   script=($env.PLUGIN_DIR)/clock
-] | sketchybar ...$in
+]
 
-[
+let volume = [
   --add item volume right
   --set volume script=($env.PLUGIN_DIR)/volume
   display=active
   --subscribe volume volume_change
-] | sketchybar ...$in
+]
 
-[
+let battery = [
   --add item battery right
   --set battery
   display=active
   update_freq=120
   script=($env.PLUGIN_DIR)/battery
   --subscribe battery system_woke power_source_change
-] | sketchybar ...$in
+]
 
-[
+let aliases = [
   "Tailscale,Item-0"
   "Control Center,WiFi"
   "TextInputMenuAgent,Item-0"
@@ -136,11 +136,9 @@ def clr [name: string, alpha: string = "FF"]: nothing -> string {
     padding_left=0
     padding_right=0
   ]
-}
-| flatten
-| run-external sketchybar ...$in
+} | flatten
 
-[
+let spotify = [
   --add item spotify q
   --set spotify
   "click_script=spotify_player playback play-pause"
@@ -156,9 +154,8 @@ def clr [name: string, alpha: string = "FF"]: nothing -> string {
   scroll_texts=on
   update_freq=3
 ]
-| run-external sketchybar ...$in
 
-[
+let ip = [
   --add item ipaddress e
   --set ipaddress
   script=($env.PLUGIN_DIR)/ip-address
@@ -184,7 +181,17 @@ def clr [name: string, alpha: string = "FF"]: nothing -> string {
   icon=
   label.color=(clr sky)
   label.font.size=12.0
-] | sketchybar ...$in
+]
+
+[
+  $clock
+  $volume
+  $battery
+  $aliases
+  $spotify
+  $ip
+] | flatten | sketchybar ...$in
+
 
 ###### Force all scripts to run the first time (never do this in a script) #####
 ^sketchybar --update
