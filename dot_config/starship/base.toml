@@ -29,12 +29,12 @@ format = "[$user]($style) on "
 style_user = "bold cyan"
 
 [shell]
-zsh_indicator = " "
+zsh_indicator = "󰰸 "
 bash_indicator = " "
 fish_indicator = "󰈺 "
-nu_indicator = "󰫻󰬂"
+nu_indicator = "󰬕 "
 disabled = false
-style = "mauve"
+style = "rosewater"
 
 [mise]
 disabled = false

@@ -52,6 +52,22 @@ def make-dark []: record -> record {
   | remove-invalid
 }
 
+# Edit the base configuration
+export def "edit base" []: nothing -> nothing {
+  base-path | run-external $env.EDITOR $in
+  if ($env.LAST_EXIT_CODE == 0) {
+    render
+  }
+}
+
+# Edit the palettes file
+export def "edit palettes" [] {
+  base-path | run-external $env.EDITOR $in
+  if ($env.LAST_EXIT_CODE == 0) {
+    render
+  }
+}
+
 # Render and save the starship config for light and dark modes
 export def render []: nothing -> nothing {
   construct
