@@ -2,6 +2,8 @@ export-env {
   $env.CATPPUCCIN_CONFIG_DIR = $env.XDG_CONFIG_HOME?
   | default ($env.HOME | path join .config)
   | path join catppuccin
+  $env.CATPPUCCIN_LIGHT_THEME = "latte"
+  $env.CATPPUCCIN_DARK_THEME = "mocha"
 }
 
 # List all of the themes
@@ -19,13 +21,47 @@ export def themes []: nothing -> table<name: string style: string> {
   | select name style description
 }
 
-def "complete names" []: nothing -> list<string> {
+# Get the color names and values for a given palette
+export def palette [
+  theme: string@"complete theme names" # The name of the theme
+]: nothing -> table<name: string color: string preview: string> {
+  [$env.CATPPUCCIN_CONFIG_DIR $"($theme).toml"]
+  | path join
+  | path expand
+  | open $in
+  | transpose name color
+  | upsert preview {|it| [(ansi $it.color) $it.name (ansi reset)] | str join}
+}
+
+def "complete theme names" []: nothing -> list<string> {
   themes | each {|it| select name description | rename -c {name: value} }
+}
+
+def "complete color names" []: nothing -> list<string> {
+  themes | get 0.name | palette $in | get name
+}
+
+def hex-to-argb [alpha: string]: string -> string {
+  str replace "#" "" | $"($alpha)($in)" | str upcase | $"0x($in)"
+}
+
+# Get a color value from a palette
+export def color [
+  color: string@"complete color names" # The color name to get
+  --alpha (-a): string = "ff" # If using a format with alpha, use this value
+  --argb (-o) # Print in 0xAARRGGBB format
+]: nothing -> string {
+  use with-appearance.nu
+  with-appearance { $env.CATPPUCCIN_LIGHT_THEME } { $env.CATPPUCCIN_DARK_THEME }
+  | palette $in
+  | where name == $color
+  | get 0.color
+  | if ($argb) { hex-to-argb $alpha } else { $in }
 }
 
 # Show colors for a theme
 export def main [
-  theme: string@"complete names"
+  theme: string@"complete theme names"
 ]: nothing -> string {
   $env.CATPPUCCIN_CONFIG_DIR
   | path join $"($theme).toml"
