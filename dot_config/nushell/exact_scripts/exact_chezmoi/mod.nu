@@ -13,7 +13,7 @@ export alias chezomi = chezmoi
 
 # Shortcuts
 export alias cm = chezmoi
-export alias cms = if (which chezmoi-stat | is-not-empty) { cm stat } else { cm status }
+export alias cms = chezmoi stat
 export alias cmad = cm add
 export alias cmap = cm apply
 export alias cmca = cm cat

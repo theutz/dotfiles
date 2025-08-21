@@ -13,7 +13,8 @@ $env.config.color_config = with-appearance { light-theme } { dark-theme }
 hide std/config
 
 # Initialize starship
-use starship.nu [init, set-config-path]
+use starship.nu [init, set-config-path, render]
+job spawn { render }
 init
 set-config-path
 hide starship.nu
@@ -26,6 +27,10 @@ source ($nu.data-dir | path join zoxide.nu)
 
 source yazi.nu
 use chezmoi *
+
+use catppuccin.nu
+
+alias sp = if (which -a spotify_player | is-not-empty) { spotify_player } else { run-external ...[open -a Spotify] }
 
 module "brew extern" {
   def services [] {
