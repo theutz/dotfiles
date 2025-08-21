@@ -1,0 +1,5 @@
+[tasks.reload]
+run = "sketchybar --reload"
+
+[tools]
+watchexec = "latest"
