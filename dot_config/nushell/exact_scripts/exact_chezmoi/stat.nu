@@ -1,5 +1,7 @@
-def parse-status []: nothing -> table {
-  run-external chezmoi status 
+def parse-status [
+  ...args
+]: nothing -> table {
+  run-external chezmoi status ...$args
   | parse --regex r#'(?<was>[ ADMR])(?<will>[ ADMR]) (?<file>.*$)'#
   | insert status { get was will | str join }
   | select file status was will
@@ -47,8 +49,9 @@ def color-filename []: table -> table {
 # A nu-friendly version of chezmoi status
 export def main [
   --json # Output as json
+  ...args
 ]: nothing -> table {
-  parse-status
+  parse-status ...$args
   | translate-first-column
   | translate-second-column
   | color-filename
