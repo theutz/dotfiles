@@ -1,51 +1,42 @@
 #!/usr/bin/env -S mise x aqua:nushell/nushell@0.106.1 -- nu
 # vim: ft=nu
 
-# PERCENTAGE="$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)"
-# CHARGING="$(pmset -g batt | grep 'AC Power')"
-#
-# if [ "$PERCENTAGE" = "" ]; then
-#   exit 0
-# fi
-#
-# case "${PERCENTAGE}" in
-# [9][0-9] | 100)
-#   if [[ "$CHARGING" != "" ]]; then
-#     ICON="󱊦"
-#   else
-#     ICON="󱊣"
-#   fi
-#   ;;
-#
-# [3-8][0-9])
-#   if [[ "$CHARGING" != "" ]]; then
-#     ICON="󱊥"
-#   else
-#     ICON="󱊢"
-#   fi
-#   ;;
-#
-# [1-2][0-9])
-#   if [[ "$CHARGING" != "" ]]; then
-#     ICON="󱊤"
-#   else
-#     ICON="󱊡"
-#   fi
-#   ;;
-#
-# [0-9])
-#   if [[ "$CHARGING" != "" ]]; then
-#     ICON="󰢟"
-#   else
-#     ICON="󱃍"
-#   fi
-#   ;;
-#
-# *)
-#   ICON="󰂑"
-#   ;;
-# esac
-#
-# # The item invoking this script (name $NAME) will get its icon and label
-# # updated with the current battery status
-# sketchybar --set "$NAME" icon="$ICON" label="${PERCENTAGE}%"
+let data = pmset -g batt
+| parse --regex r#'(?m).+?(?<level>\d{1,3})%'#
+| update level { into int }
+| insert is-charging {
+  pmset -g batt
+  | find "AC Power"
+  | is-not-empty
+}
+| into record
+
+let icon = match $data {
+  {level: 0..9, is-charging: false} => "󰁺 "
+  {level: 10..19, is-charging: false} => "󰁻 "
+  {level: 20..29, is-charging: false} => "󰁼 "
+  {level: 30..39, is-charging: false} => "󰁽 "
+  {level: 40..49, is-charging: false} => "󰁾 "
+  {level: 50..59, is-charging: false} => "󰁿 "
+  {level: 60..69, is-charging: false} => "󰂀 "
+  {level: 70..79, is-charging: false} => "󰂁 "
+  {level: 80..89, is-charging: false} => "󰂂 "
+  {level: 90..100, is-charging: false} => "󰁹 "
+  {level: 0..9, is-charging: true} => "󰢜 "
+  {level: 10..19, is-charging: true} => "󰂆 "
+  {level: 20..29, is-charging: true} => "󰂇 "
+  {level: 30..39, is-charging: true} => "󰂈 "
+  {level: 40..49, is-charging: true} => "󰢝 "
+  {level: 50..59, is-charging: true} => "󰂉 "
+  {level: 60..69, is-charging: true} => "󰢞 "
+  {level: 70..79, is-charging: true} => "󰂊 "
+  {level: 80..89, is-charging: true} => "󰂋 "
+  {level: 90..100, is-charging: true} => "󰂅 "
+  _ => "󱉝 "
+}
+
+[
+  --set $env.NAME
+  icon=($icon)
+  label=($data.level)%
+] | sketchybar ...$in
