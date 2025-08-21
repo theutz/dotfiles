@@ -27,7 +27,7 @@ source ($nu.data-dir | path join zoxide.nu)
 
 source yazi.nu
 use chezmoi *
-
+use git-aliases.nu *
 use catppuccin.nu
 
 alias sp = if (which -a spotify_player | is-not-empty) { spotify_player } else { run-external ...[open -a Spotify] }
