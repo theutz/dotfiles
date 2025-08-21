@@ -30,7 +30,7 @@ $env.VISUAL = $env.EDITOR
 $env.BROWSER = which -a open | last | get path
 $env.PAGER = "less"
 $env.LESS = "-F -g -i -M -R -S -w -X -z-4"
-$env.MANPAGER = "nvim -C +Man!"
+$env.MANPAGER = "nvim -c +Man!"
 $env.MANWIDTH = "999"
 
 use with-appearance.nu

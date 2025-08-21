@@ -1,197 +1,197 @@
 #!/usr/bin/env bash
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
-FONT="BlexMono Nerd Font Propo"
+FONT="Berkeley Mono"
 
 source ./colors.sh
 
 # Setup bar
 args=(
-	--bar
-	blur_radius=30
-	color="$(color -a cc background)"
-	height=40
-	notch_width=216
-	position=top
+  --bar
+  blur_radius=30
+  color="$(color -a cc background)"
+  height=40
+  notch_width=216
+  position=top
 )
 
 # Setup defaults
 args+=(
-	--default
-	alias.color="$(color orange)"
-	alias.scale=1.0
-	background.color="$(color -a 44 green)"
-	background.corner_radius=5
-	background.drawing=off
-	background.height=24
-	icon.color="$(color pink)"
-	icon.font="${FONT}:Normal:18.0"
-	icon.highlight_color="$(color green)"
-	icon.padding_left=6
-	icon.padding_right=0
-	label.color="$(color yellow)"
-	label.font="${FONT}:Normal:16.0"
-	label.highlight_color="$(color green)"
-	label.padding_left=4
-	label.padding_right=6
-	padding_left=4
-	padding_right=4
+  --default
+  alias.color="$(color orange)"
+  alias.scale=1.0
+  background.color="$(color -a 44 green)"
+  background.corner_radius=5
+  background.drawing=off
+  background.height=24
+  icon.color="$(color pink)"
+  icon.font="${FONT}:Normal:18.0"
+  icon.highlight_color="$(color green)"
+  icon.padding_left=6
+  icon.padding_right=0
+  label.color="$(color yellow)"
+  label.font="${FONT}:Normal:16.0"
+  label.highlight_color="$(color green)"
+  label.padding_left=4
+  label.padding_right=6
+  padding_left=4
+  padding_right=4
 )
 
 sketchybar "${args[@]}"
 
 # Setup  AeroSpace spaces
 args=(
-	--add event aerospace_workspace_change
-	--add item aerospace left
-	--set aerospace
-	script="$PLUGIN_DIR/aerospace.sh"
-	drawing=off
-	--subscribe aerospace aerospace_workspace_change
+  --add event aerospace_workspace_change
+  --add item aerospace left
+  --set aerospace
+  script="$PLUGIN_DIR/aerospace.sh"
+  drawing=off
+  --subscribe aerospace aerospace_workspace_change
 )
 for sid in $(aerospace list-workspaces --all); do
-	args+=(
-		--add item space."$sid" left
-		--set space."$sid"
-		background.drawing=off
-		click_script="aerospace workspace $sid"
-		icon.color="$(sketchybar --query defaults | jq -r '.label.color')"
-		icon.font.size=12.0
-		icon="$sid"
-		label.color="$(sketchybar --query defaults | jq -r '.icon.color')"
-		label.font.size=12.0
-		label=•
-	)
+  args+=(
+    --add item space."$sid" left
+    --set space."$sid"
+    background.drawing=off
+    click_script="aerospace workspace $sid"
+    icon.color="$(sketchybar --query defaults | jq -r '.label.color')"
+    icon.font.size=12.0
+    icon="$sid"
+    label.color="$(sketchybar --query defaults | jq -r '.icon.color')"
+    label.font.size=12.0
+    label=•
+  )
 done
 
 # Setup chevron
 args+=(
-	--add item chevron left
-	--set chevron
-	icon.color="$(color green)"
-	label.drawing=off
-	icon=""
-	click_script="open -a 'Mission Control'"
+  --add item chevron left
+  --set chevron
+  icon.color="$(color green)"
+  label.drawing=off
+  icon=""
+  click_script="open -a 'Mission Control'"
 )
 
 # Setup front app
 args+=(
-	--add item front_app left
-	--set front_app
-	icon.drawing=off
-	script="$PLUGIN_DIR/front_app.sh"
-	label.color="$(color pink)"
-	--subscribe front_app front_app_switched
+  --add item front_app left
+  --set front_app
+  icon.drawing=off
+  script="$PLUGIN_DIR/front_app.sh"
+  label.color="$(color pink)"
+  --subscribe front_app front_app_switched
 )
 
 # Setup AeroSpace Modes
 args+=(
-	--add event aerospace_mode_change
-	--add item aerospace.mode left
-	--subscribe aerospace.mode aerospace_mode_change
-	--set aerospace.mode
-	drawing=off
-	icon=""
-	icon.color="$(color cyan)"
-	label.color="$(color yellow)"
-	update_freq=1
-	script="$PLUGIN_DIR/aerospace_mode.sh"
-	click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
+  --add event aerospace_mode_change
+  --add item aerospace.mode left
+  --subscribe aerospace.mode aerospace_mode_change
+  --set aerospace.mode
+  drawing=off
+  icon=""
+  icon.color="$(color cyan)"
+  label.color="$(color yellow)"
+  update_freq=1
+  script="$PLUGIN_DIR/aerospace_mode.sh"
+  click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
 )
 
 # Setup clock
 args+=(
-	--add item clock right
-	--set clock
-	update_freq=10
-	icon=
-	script="$PLUGIN_DIR/clock.sh"
+  --add item clock right
+  --set clock
+  update_freq=10
+  icon=
+  script="$PLUGIN_DIR/clock.sh"
 )
 
 # Setup volume
 args+=(
-	--add item volume right
-	--set volume script="$PLUGIN_DIR/volume.sh"
-	display=active
-	--subscribe volume volume_change
+  --add item volume right
+  --set volume script="$PLUGIN_DIR/volume.sh"
+  display=active
+  --subscribe volume volume_change
 )
 
 # Setup battery
 args+=(
-	--add item battery right
-	--set battery
-	display=active
-	update_freq=120
-	script="$PLUGIN_DIR/battery.sh"
-	--subscribe battery system_woke power_source_change
+  --add item battery right
+  --set battery
+  display=active
+  update_freq=120
+  script="$PLUGIN_DIR/battery.sh"
+  --subscribe battery system_woke power_source_change
 )
 
 aliases=(
-	"Tailscale,Item-0"
-	"Control Center,WiFi"
-	"TextInputMenuAgent,Item-0"
-	"Control Center,FocusModes"
-	"AeroSpace,Item-0"
+  "Tailscale,Item-0"
+  "Control Center,WiFi"
+  "TextInputMenuAgent,Item-0"
+  "Control Center,FocusModes"
+  "AeroSpace,Item-0"
 )
 for alias in "${aliases[@]}"; do
-	args+=(
-		--add alias "$alias" right
-		--set "$alias"
-		label.drawing=off
-		icon.drawing=off
-		padding_left=0
-		padding_right=0
-	)
+  args+=(
+    --add alias "$alias" right
+    --set "$alias"
+    label.drawing=off
+    icon.drawing=off
+    padding_left=0
+    padding_right=0
+  )
 done
 
 # Setup spotify
 args+=(
-	--add item spotify q
-	--set spotify
-	click_script="spotify_player playback play-pause"
-	display=1
-	drawing=off
-	icon.color="$(color green)"
-	icon=""
-	label.color="$(color yellow)"
-	label.font.size=12.0
-	label.max_chars=40
-	label.scroll_duration=300
-	script="$PLUGIN_DIR/spotify.sh"
-	scroll_texts=on
-	update_freq=3
+  --add item spotify q
+  --set spotify
+  click_script="spotify_player playback play-pause"
+  display=1
+  drawing=off
+  icon.color="$(color green)"
+  icon=""
+  label.color="$(color yellow)"
+  label.font.size=12.0
+  label.max_chars=40
+  label.scroll_duration=300
+  script="$PLUGIN_DIR/spotify.sh"
+  scroll_texts=on
+  update_freq=3
 )
 
 # Setup IP Address check
 args+=(
-	--add item ipaddress e
-	--set ipaddress
-	click_script="open https://dnsleaktest.com"
-	display=1
-	icon.color="$(color green)"
-	icon.highlight=on
-	icon.highlight_color="$(color red)"
-	icon=󰩟
-	label.color="$(color yellow)"
-	label.font.size=12.0
-	label.highlight=on
-	label.highlight_color="$(color -a cc yellow)"
-	script="$PLUGIN_DIR/ip-address.sh"
-	update_freq=3
+  --add item ipaddress e
+  --set ipaddress
+  click_script="open https://dnsleaktest.com"
+  display=1
+  icon.color="$(color green)"
+  icon.highlight=on
+  icon.highlight_color="$(color red)"
+  icon=󰩟
+  label.color="$(color yellow)"
+  label.font.size=12.0
+  label.highlight=on
+  label.highlight_color="$(color -a cc yellow)"
+  script="$PLUGIN_DIR/ip-address.sh"
+  update_freq=3
 
-	--add item iplocation e
-	--set iplocation
-	click_script="open https://dnsleaktest.com"
-	display=1
-	drawing=off
-	icon.color="$(color green)"
-	icon.font.size=14.0
-	icon.highlight=on
-	icon=
-	label.color="$(color yellow)"
-	label.font.size=12.0
-	label.highlight=on
-	label.highlight_color="$(color -a cc yellow)"
+  --add item iplocation e
+  --set iplocation
+  click_script="open https://dnsleaktest.com"
+  display=1
+  drawing=off
+  icon.color="$(color green)"
+  icon.font.size=14.0
+  icon.highlight=on
+  icon=
+  label.color="$(color yellow)"
+  label.font.size=12.0
+  label.highlight=on
+  label.highlight_color="$(color -a cc yellow)"
 )
 
 sketchybar "${args[@]}"
