@@ -96,34 +96,30 @@ def clr [name: string, alpha: string = "FF"]: nothing -> string {
 #  script="$PLUGIN_DIR/aerospace_mode.sh"
 #  click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
 #)
-#
-## Setup clock
-#args+=(
-#  --add item clock right
-#  --set clock
-#  update_freq=10
-#  icon=
-#  script="$PLUGIN_DIR/clock.sh"
-#)
-#
-## Setup volume
-#args+=(
-#  --add item volume right
-#  --set volume script="$PLUGIN_DIR/volume.sh"
-#  display=active
-#  --subscribe volume volume_change
-#)
-#
 
-## Setup battery
-#args+=(
-#  --add item battery right
-#  --set battery
-#  display=active
-#  update_freq=120
-#  script="$PLUGIN_DIR/battery.sh"
-#  --subscribe battery system_woke power_source_change
-#)
+[
+  --add item clock right
+  --set clock
+  update_freq=10
+  icon=󱑀
+  script=($env.PLUGIN_DIR)/clock
+] | sketchybar ...$in
+
+[
+  --add item volume right
+  --set volume script=($env.PLUGIN_DIR)/volume
+  display=active
+  --subscribe volume volume_change
+] | sketchybar ...$in
+
+[
+  --add item battery right
+  --set battery
+  display=active
+  update_freq=120
+  script=($env.PLUGIN_DIR)/battery
+  --subscribe battery system_woke power_source_change
+] | sketchybar ...$in
 
 [
   "Tailscale,Item-0"
@@ -162,40 +158,34 @@ def clr [name: string, alpha: string = "FF"]: nothing -> string {
 ]
 | run-external sketchybar ...$in
 
-## Setup IP Address check
-#args+=(
-#  --add item ipaddress e
-#  --set ipaddress
-#  click_script="open https://dnsleaktest.com"
-#  display=1
-#  icon.color="$(color green)"
-#  icon.highlight=on
-#  icon.highlight_color="$(color red)"
-#  icon=󰩟
-#  label.color="$(color yellow)"
-#  label.font.size=12.0
-#  label.highlight=on
-#  label.highlight_color="$(color -a cc yellow)"
-#  script="$PLUGIN_DIR/ip-address.sh"
-#  update_freq=3
-#
-#  --add item iplocation e
-#  --set iplocation
-#  click_script="open https://dnsleaktest.com"
-#  display=1
-#  drawing=off
-#  icon.color="$(color green)"
-#  icon.font.size=14.0
-#  icon.highlight=on
-#  icon=
-#  label.color="$(color yellow)"
-#  label.font.size=12.0
-#  label.highlight=on
-#  label.highlight_color="$(color -a cc yellow)"
-#)
-#
-#sketchybar "${args[@]}"
-#
+[
+  --add item ipaddress e
+  --set ipaddress
+  script=($env.PLUGIN_DIR)/ip-address
+  "click_script=open https://browserleaks.com/ip"
+  display=1
+  icon.color=(clr green)
+  icon.highlight=on
+  icon.highlight_color=(clr red)
+  icon=󰩟 
+  label.color=(clr sky)
+  label.font.size=12.0
+  script=($env.PLUGIN_DIR)/ip-address
+  update_freq=3
+
+  --add item iplocation e
+  --set iplocation
+  "click_script=open https://browserleaks.com/ip"
+  display=1
+  drawing=off
+  icon.color=(clr green)
+  icon.font.size=14.0
+  icon.highlight=on
+  icon=
+  label.color=(clr sky)
+  label.font.size=12.0
+] | sketchybar ...$in
+
 ###### Force all scripts to run the first time (never do this in a script) #####
 ^sketchybar --update
 print -e "Sketchybar updated!"
