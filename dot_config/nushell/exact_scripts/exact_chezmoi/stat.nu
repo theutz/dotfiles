@@ -1,0 +1,62 @@
+def parse-status []: nothing -> table {
+  run-external chezmoi status 
+  | parse --regex r#'(?<was>[ ADMR])(?<will>[ ADMR]) (?<file>.*$)'#
+  | insert status { get was will | str join }
+  | select file status was will
+}
+
+def translate-first-column []: table -> table {
+  upsert since_last_write {|row|
+    match $row.was {
+      " " => "No change"
+      A => "Entry was created"
+      M => "Entry was modified"
+      D => "Entry was removed"
+    }
+  }
+}
+
+def translate-second-column []: table -> table {
+  upsert with_next_apply {|row|
+    match $row.will {
+      " " => "No change"
+      A => "Entry will be created"
+      M => "Entry will be modified"
+      D => "Entry will be deleted"
+      R => "Script will be run"
+    }
+  }
+}
+
+def color-filename []: table -> table {
+  update file {|row|
+    match [$row.was $row.will] {
+      [M M] => [(ansi cyan)]
+      [A D] => [(ansi red)]
+      [D A] => [(ansi green)]
+      [" " D] => [(ansi red)]
+      [" " R] => [(ansi yellow)]
+      _ => []
+    }
+    | append $row.file
+    | append (ansi reset)
+    | str join
+  }
+}
+
+# A nu-friendly version of chezmoi status
+export def main [
+  --json # Output as json
+]: nothing -> table {
+  parse-status
+  | translate-first-column
+  | translate-second-column
+  | color-filename
+  | if ($json) {
+    to json | ansi strip
+  } else {
+    if (is-terminal --stdout) { $in } else {
+      $in | table --theme=none --index=false
+    }
+  }
+}
