@@ -1,3 +1,0 @@
-error: mise run log:err
-out: mise run log:out
-reload: mise watch restart
