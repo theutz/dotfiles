@@ -38,3 +38,7 @@ style = "rosewater"
 
 [mise]
 disabled = true
+format = 'with [$symbol$health]($style)'
+healthy_symbol = " "
+unhealthy_symbol = " "
+style = "sky"

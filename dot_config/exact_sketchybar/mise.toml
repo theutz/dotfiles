@@ -2,4 +2,5 @@
 run = "sketchybar --reload"
 
 [tools]
+overmind = "latest"
 watchexec = "latest"
