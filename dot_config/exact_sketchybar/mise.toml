@@ -2,5 +2,8 @@
 run = "sketchybar --reload"
 
 [tools]
+"aqua:zyedidia/eget" = "latest"
+hivemind = "latest"
 overmind = "latest"
+"pipx:jc" = "latest"
 watchexec = "latest"
