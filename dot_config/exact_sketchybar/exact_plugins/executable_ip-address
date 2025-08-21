@@ -1,0 +1,35 @@
+#!/usr/bin/env -S mise x aqua:nushell/nushell@0.106.1 -- nu
+# vim: ft=nu
+
+let data = http get https://browserleaks.com/ip
+  | query web --query 'table.wb tbody:first-of-type tr:has(> td + td) td:nth-child(2)'
+  | flatten
+  | get 0 2 6 7
+  | rotate --ccw ip country state city
+  | into record
+  | default {}
+
+let ip = $data.ip? | ""
+
+let location = $data
+| reject ip
+| values
+| reverse
+| str trim
+| str join ', '
+| default ""
+
+[
+  --animate sin 10
+] | if ($data | is-not-empty) {
+  append [
+    --set ipaddress
+    icon.highlight=off
+    label=($data.ip)
+    --set iplocation
+    drawing=on
+    label=($location)
+  ]
+}
+| sketchybar ...$in
+
