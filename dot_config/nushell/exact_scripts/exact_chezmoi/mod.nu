@@ -1,7 +1,6 @@
-
-export def "chezmoi stat" [] {
+export def "chezmoi stat" [...args] {
   use ./stat.nu
-  stat
+  stat ...$args
 }
 
 # ╭─────────╮
