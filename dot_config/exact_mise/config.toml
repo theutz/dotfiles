@@ -6,6 +6,7 @@
   aichat                                      = "latest"
   aqua                                        = "latest"
   "aqua:Macchina-CLI/macchina"                = "latest"
+"aqua:TimothyYe/skm" = "0.8.6"
   "aqua:YS-L/csvlens"                         = "latest"
   "aqua:charmbracelet/mods"                   = "latest"
   "aqua:chmln/sd"                             = "latest"
