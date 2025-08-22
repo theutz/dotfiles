@@ -1,0 +1,20 @@
+#!/usr/bin/env ./nu-wrapper
+# vim: ft=nu
+
+use catppuccin.nu color
+
+aerospace list-modes --current
+| [
+  --animate quadratic 10
+  --bar color=(color --argb --alpha 88 (match ($in) {
+      main => "surface0"
+      _ => "sky"
+    }
+  ))
+  --set aerospace.mode
+  icon.highlight=(match ($in) { main => "off", _ => "on" })
+  label.drawing=(match ($in) { main => "off", _ => "on" })
+  label=($in)
+]
+| each { into string }
+| run-external sketchybar ...$in

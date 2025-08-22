@@ -1,0 +1,14 @@
+#!/usr/bin/env ./nu-wrapper
+# vim: ft=nu
+
+[
+  --animate quadratic 30
+  --set $env.NAME
+]
+| if $env.SENDER == front_app_switched {
+  append [
+    $"label=($env.INFO)"
+  ]
+  | run-external sketchybar ...$in
+}
+| ignore
