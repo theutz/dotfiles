@@ -35,7 +35,7 @@ pager = "less -FR"
 [merge]
 {{ if lookPath "nvim" }}
 command = "nvim"
-args = [ "-c", "+norm gg", "-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+args = [ "-c", "'+norm gg'", "-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 {{ end }}
 
 [edit]
@@ -45,6 +45,10 @@ args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
 watch = false
 apply = false
 {{ end }}
+
+[data.mise]
+config = "{{ .chezmoi.homeDir }}/.config/mise"
+shims = "{{ .chezmoi.homeDir }}/.local/share/mise/shims"
 
 # [status]
 # exclude = ["scripts"]
