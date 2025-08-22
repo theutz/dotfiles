@@ -1,4 +1,4 @@
-#!/usr/bin/env -S mise x aqua:nushell/nushell@0.106.1 -- nu
+#!/usr/bin/env ./nu-wrapper
 # vim: ft=nu
 
 # The $NAME variable is passed from sketchybar and holds the name of
@@ -7,6 +7,6 @@
 
 [
   --set $env.NAME
-  label=(date now | format date '%a %d %R')
+  label=(date now | format date '%a %d %T')
 ]
 | sketchybar ...$in

@@ -1,4 +1,4 @@
-#!/usr/bin/env -S mise x aqua:nushell/nushell@0.106.1 -- nu
+#!/usr/bin/env ./nu-wrapper
 # vim: ft=nu
 
 # The volume_change event supplies a $INFO variable in which the current volume

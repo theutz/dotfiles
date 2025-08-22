@@ -1,2 +1,3 @@
 reload: mise watch reload
-sketchybar: sketchybar
+out: mise run tail:out
+err: mise run tail:err

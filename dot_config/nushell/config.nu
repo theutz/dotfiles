@@ -7,6 +7,30 @@ $env.config.history.max_size = 10000
 $env.PROMPT_INDICATOR_VI_NORMAL = $"(ansi magenta)  (ansi reset)"
 $env.PROMPT_INDICATOR_VI_INSERT = $"(ansi green)  (ansi reset)"
 
+# Keybindings
+$env.config.keybindings ++= [
+  {
+    name: add_pager
+    modifier: alt
+    keycode: char_p
+    mode: [emacs vi_insert vi_normal]
+    event: {
+      send: executehostcommand
+      cmd: "commandline | if (($in | str length) == 0) { history | last | get command } else { $in } | $'($in) | ($env.PAGER)' | commandline edit $in"
+    }
+  }
+  {
+    name: add_sudo
+    modifier: alt
+    keycode: char_s
+    mode: [emacs vi_insert vi_normal]
+    event: {
+      send: executehostcommand
+      cmd: "commandline | if (($in | str length) == 0) { history | last | get command } else { $in } | $'sudo ($in)' | commandline edit $in"
+    }
+  }
+]
+
 use with-appearance.nu
 use std/config [light-theme, dark-theme]
 $env.config.color_config = with-appearance { light-theme } { dark-theme }
@@ -29,6 +53,9 @@ source yazi.nu
 use chezmoi *
 use git-aliases.nu *
 use catppuccin.nu
+plugin use emoji
+plugin use gstat
+plugin use query
 
 alias sp = if (which -a spotify_player | is-not-empty) { spotify_player } else { run-external ...[open -a Spotify] }
 

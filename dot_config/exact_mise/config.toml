@@ -23,6 +23,9 @@
   bob                                         = "latest"
   cargo-binstall                              = "latest"
   "cargo:hanshuaikang/nping"                  = "latest"
+"cargo:http-nu" = "latest"
+"cargo:nu_plugin_dns" = "latest"
+"cargo:nu_plugin_emoji" = "latest"
   "cargo:snipt"                               = "latest"
   "cargo:tock"                                = "latest"
   "cargo:yshavit/mdq"                         = "latest"
@@ -47,6 +50,7 @@
   jq                                          = "latest"
   jqp                                         = "latest"
   lazygit                                     = "latest"
+lnav = "latest"
   ls-lint                                     = "latest"
   macchina                                    = "latest"
   neovim                                      = "latest"
@@ -56,6 +60,7 @@
   "npm:@openai/codex"                         = "latest"
   "npm:gitignore"                             = "latest"
   "npm:opencommit"                            = "latest"
+nu = "latest"
   "pipx:harlequin"                            = "latest"
   "pipx:httpie"                               = "latest"
   "pipx:linode-cli"                           = { version = "latest", uvx_args = '--with boto3' }
@@ -96,3 +101,7 @@
 """
   VISUAL = "nvim"
   _.file = "~/.config/mise/env.sops.yaml"
+
+[alias]
+nu = "aqua:nushell/nushell"
+macchina = "cargo:macchina"

@@ -1,5 +1,11 @@
-[tasks.reload]
-run = "sketchybar --reload"
+[task_config]
+includes = ["mise-tasks.toml"]
+
+[vars]
+plist = "~/Library/LaunchAgents/homebrew.mxcl.sketchybar.plist"
+
+[hooks]
+enter = "mise install"
 
 [tools]
 "aqua:zyedidia/eget" = "latest"

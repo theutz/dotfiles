@@ -1,23 +1,29 @@
 #!/usr/bin/env -S mise x aqua:nushell/nushell@0.106.1 -- nu
 # vim: ft=nu
 
-let data = http get https://browserleaks.com/ip
+let data = try {
+  http get --allow-errors https://browserleaks.com/ip
   | query web --query 'table.wb tbody:first-of-type tr:has(> td + td) td:nth-child(2)'
   | flatten
   | get 0 2 6 7
+  | each {
+    str replace --regex r#' \(.*$'# ""
+  }
   | rotate --ccw ip country state city
   | into record
-  | default {}
+} catch { null }
 
 let ip = $data.ip? | ""
 
 let location = $data
-| reject ip
-| values
-| reverse
-| str trim
-| str join ', '
-| default ""
+| if ($in | is-not-empty) {
+  reject --optional ip state
+  | values
+  | reverse
+  | str trim
+  | str join ', '
+  | default ""
+} else { "" }
 
 [
   --animate sin 10
@@ -26,9 +32,20 @@ let location = $data
     --set ipaddress
     icon.highlight=off
     label=($data.ip)
+    label.drawing=on
+
     --set iplocation
+    icon.highlight=off
     drawing=on
     label=($location)
+  ]
+} else {
+  [
+    --set ipaddress
+    icon.highlight=on
+    
+    --set iplocation
+    drawing=off
   ]
 }
 | sketchybar ...$in

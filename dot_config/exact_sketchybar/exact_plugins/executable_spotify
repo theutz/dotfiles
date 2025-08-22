@@ -1,23 +1,68 @@
 #!/usr/bin/env -S mise x aqua:nushell/nushell@0.106.1 -- nu
 # vim: ft=nu
 
-let info = ( spotify_player get key playback | from json)
-let is_active = $info | get device?.is_active? | default false
-let track = $info | get item?.name? | default ""
-let artists = $info | get item?.artists?.name? | default [] | str join ", "
+def --env get-info [
+  path?: cell-path
+]: nothing -> record {
+  $env.spotify_info = $env.spotify_info?
+  | default (^spotify_player get key playback | from json)
 
-[
+  $env.spotify_info
+  | if ($path | is-not-empty) { get $path } else { $in }
+}
+
+def is-active []: nothing -> bool {
+  get-info device?.is_active? | default false
+}
+
+def is-playing []: nothing -> bool {
+  get-info is_playing? | default false
+}
+
+def track []: nothing -> string {
+  get-info item?.name? | default ""
+}
+
+def artist []: nothing -> string {
+  get-info item?.artists?.name? | default []
+  | str join ", "
+}
+
+match [(is-active) (is-playing)] {
+  [true true] => [
+    --set spotify
+    drawing=on
+    icon.highlight=off
+
+    --set artist
+    drawing=on
+    label=(artist)
+
+    --set track
+    drawing=on
+    label=(track)
+  ]
+  [true false] => [
+    --set spotify
+    drawing=on
+    icon.highlight=on
+
+    --set artist
+    drawing=off
+
+    --set track
+    drawing=off
+  ]
+  _ => [
+    --set spotify
+    drawing=off
+    --set artist
+    drawing=off
+    --set track
+    drawing=off
+  ]
+}
+| prepend [
   --animate quadratic 30
-  --set $env.NAME
-] ++ (if ($is_active) {
-  match [$artists $track] {
-    [$a ""] if $a != "" => $a
-    ["" $t] if $t != "" => $t
-    [$a $t] => $"($a) - ($t)"
-    _ => "No track info available..."
-  }
-  | [drawing=on $"label=($in)"]
-} else {
-  [drawing=off]
-})
+]
 | run-external sketchybar ...$in
