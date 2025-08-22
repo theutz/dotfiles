@@ -64,7 +64,7 @@ c.enable_tab_bar = true
 c.tab_bar_at_bottom = true
 
 -- Environment
-c.default_prog = { "{{ .chezmoi.homeDir }}/.local/share/mise/shims/nu", "--login" }
+c.default_prog = { "{{ .mise.shimsDir }}/nu", "--login" }
 c.set_environment_variables = {
 	XDG_CONFIG_HOME = "{{ .chezmoi.homeDir }}/.config",
 	XDG_DATA_HOME = "{{ .chezmoi.homeDir }}/.local/share",
@@ -77,14 +77,14 @@ c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
 -- Keyboard
 c.enable_kitty_keyboard = true
-c.leader = { key = "m", mods = "ALT" }
+c.leader = { key = "m", mods = "ALT|CTRL", timeout_milliseconds = 2000 }
 c.keys = {
 	{ key = "\\", mods = "LEADER", action = a.SplitPane({ direction = "Right" }) },
 	{ key = "|", mods = "LEADER|SHIFT", action = a.SplitPane({ direction = "Right", top_level = true }) },
 	{ key = "-", mods = "LEADER", action = a.SplitPane({ direction = "Down" }) },
 	{ key = "_", mods = "LEADER", action = a.SplitPane({ direction = "Down", top_level = true }) },
-	{ key = "v", mods = "LEADER", action = a.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "s", mods = "LEADER", action = a.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "v", mods = "LEADER", action = a.SplitPane({ direction = "Right" }) },
+	{ key = "s", mods = "LEADER", action = a.SplitPane({ direction = "Down" }) },
 	{ key = "h", mods = "LEADER", action = a.ActivatePaneDirection("Left") },
 	{ key = "j", mods = "LEADER", action = a.ActivatePaneDirection("Down") },
 	{ key = "k", mods = "LEADER", action = a.ActivatePaneDirection("Up") },
