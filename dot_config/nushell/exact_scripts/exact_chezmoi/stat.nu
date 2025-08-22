@@ -33,28 +33,37 @@ def translate-second-column []: table -> table {
 def color-filename []: table -> table {
   update file {|row|
     match [$row.was $row.will] {
-      [M M] => [(ansi cyan)]
+      [M M] => [(ansi default_bold)]
       [A D] => [(ansi red)]
-      [D A] => [(ansi green)]
-      [" " D] => [(ansi red)]
-      [" " R] => [(ansi yellow)]
+      [D A] => [(ansi yellow)]
+      [" " D] => [(ansi green)]
+      [" " R] => [(ansi default_dimmed)]
       _ => []
     }
-    | append $row.file
-    | append (ansi reset)
+    | append [$row.file (ansi reset)]
     | str join
+  }
+}
+
+def color-scripts []: table -> table {
+  each {|row|
+    if ($row.will =~ R) {
+      $row | update cells { [(ansi default_italic) $in (ansi reset)] | str join }
+    } else { $row }
   }
 }
 
 # A nu-friendly version of chezmoi status
 export def main [
   --json # Output as json
-  ...args
+  --global (-g) # Run at $HOME (instead of $PWD)
 ]: nothing -> table {
-  parse-status ...$args
+  if ($global) { [] } else { [$env.PWD] }
+  | parse-status ...$in
   | translate-first-column
   | translate-second-column
   | color-filename
+  | color-scripts
   | if ($json) {
     to json | ansi strip
   } else {

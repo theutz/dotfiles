@@ -1,3 +1,5 @@
+use stat.nu
+
 export alias chezomi = chezmoi
 export alias cm = ^chezmoi
 export alias cmad = cm add
@@ -18,11 +20,7 @@ export alias cmls = cm managed
 export alias cmma = cm merge-all
 export alias cmme = cm merge
 export alias cmra = cm re-add
+export alias cms = stat
 export alias cmsp = cm source-path
 export alias cmst = cm status
 export alias cmtp = cm target-path
-
-export def --wrapped cms [...args] {
-  use stat.nu
-  stat ...$args
-}
