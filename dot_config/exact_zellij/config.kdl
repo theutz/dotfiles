@@ -132,43 +132,43 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Ctrl Alt 1" { GoToTab 1; }
-        bind "Ctrl Alt 2" { GoToTab 2; }
-        bind "Ctrl Alt 3" { GoToTab 3; }
-        bind "Ctrl Alt 4" { GoToTab 4; }
-        bind "Ctrl Alt 5" { GoToTab 5; }
-        bind "Ctrl Alt 6" { GoToTab 6; }
-        bind "Ctrl Alt 7" { GoToTab 7; }
-        bind "Ctrl Alt 8" { GoToTab 8; }
-        bind "Ctrl Alt 9" { GoToTab 9; }
-        bind "Ctrl Alt left" { MoveFocusOrTab "left"; }
-        bind "Ctrl Alt down" { MoveFocus "down"; }
-        bind "Ctrl Alt up" { MoveFocus "up"; }
-        bind "Ctrl Alt right" { MoveFocusOrTab "right"; }
-        bind "Ctrl Alt +" { Resize "Increase"; }
-        bind "Ctrl Alt -" { Resize "Decrease"; }
-        bind "Ctrl Alt =" { Resize "Increase"; }
-        bind "Ctrl Alt [" { PreviousSwapLayout; }
-        bind "Ctrl Alt ]" { NextSwapLayout; }
-        bind "Ctrl Alt b" { ToggleTab; }
-        bind "Ctrl Alt c" { NewTab; }
-        bind "Ctrl Alt d" { Detach; }
-        bind "Ctrl Alt e" { EditScrollback; }
-        bind "Ctrl Alt f" { ToggleFloatingPanes; }
-        bind "Ctrl Alt g" { Write 7; } // Pass 'Ctrl-g' along to underlying program
-        bind "Ctrl Alt h" { MoveFocus "left"; }
-        bind "Ctrl Alt i" { MoveTab "left"; }
-        bind "Ctrl Alt j" { MoveFocus "down"; }
-        bind "Ctrl Alt k" { MoveFocus "up"; }
-        bind "Ctrl Alt l" { MoveFocus "right"; }
-        bind "Ctrl Alt m" { ToggleFocusFullscreen; }
-        bind "Ctrl Alt n" { GoToNextTab; }
-        bind "Ctrl Alt o" { MoveTab "right"; }
-        bind "Ctrl Alt p" { GoToPreviousTab; }
-        bind "Ctrl Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
-        bind "Ctrl Alt s" { LaunchOrFocusPlugin "session-manager"; }
-        bind "Ctrl Alt u" { SwitchToMode "scroll"; }
-        bind "Ctrl Alt v" { NewPane; }
+        // bind "Ctrl Alt 1" { GoToTab 1; }
+        // bind "Ctrl Alt 2" { GoToTab 2; }
+        // bind "Ctrl Alt 3" { GoToTab 3; }
+        // bind "Ctrl Alt 4" { GoToTab 4; }
+        // bind "Ctrl Alt 5" { GoToTab 5; }
+        // bind "Ctrl Alt 6" { GoToTab 6; }
+        // bind "Ctrl Alt 7" { GoToTab 7; }
+        // bind "Ctrl Alt 8" { GoToTab 8; }
+        // bind "Ctrl Alt 9" { GoToTab 9; }
+        // bind "Ctrl Alt left" { MoveFocusOrTab "left"; }
+        // bind "Ctrl Alt down" { MoveFocus "down"; }
+        // bind "Ctrl Alt up" { MoveFocus "up"; }
+        // bind "Ctrl Alt right" { MoveFocusOrTab "right"; }
+        // bind "Ctrl Alt +" { Resize "Increase"; }
+        // bind "Ctrl Alt -" { Resize "Decrease"; }
+        // bind "Ctrl Alt =" { Resize "Increase"; }
+        // bind "Ctrl Alt [" { PreviousSwapLayout; }
+        // bind "Ctrl Alt ]" { NextSwapLayout; }
+        // bind "Ctrl Alt b" { ToggleTab; }
+        // bind "Ctrl Alt c" { NewTab; }
+        // bind "Ctrl Alt d" { Detach; }
+        // bind "Ctrl Alt e" { EditScrollback; }
+        // bind "Ctrl Alt f" { ToggleFloatingPanes; }
+        // bind "Ctrl Alt g" { Write 7; } // Pass 'Ctrl-g' along to underlying program
+        // bind "Ctrl Alt h" { MoveFocus "left"; }
+        // bind "Ctrl Alt i" { MoveTab "left"; }
+        // bind "Ctrl Alt j" { MoveFocus "down"; }
+        // bind "Ctrl Alt k" { MoveFocus "up"; }
+        // bind "Ctrl Alt l" { MoveFocus "right"; }
+        // bind "Ctrl Alt m" { ToggleFocusFullscreen; }
+        // bind "Ctrl Alt n" { GoToNextTab; }
+        // bind "Ctrl Alt o" { MoveTab "right"; }
+        // bind "Ctrl Alt p" { GoToPreviousTab; }
+        // bind "Ctrl Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
+        // bind "Ctrl Alt s" { LaunchOrFocusPlugin "session-manager"; }
+        // bind "Ctrl Alt u" { SwitchToMode "scroll"; }
+        // bind "Ctrl Alt v" { NewPane; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
