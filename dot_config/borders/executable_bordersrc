@@ -1,9 +1,10 @@
-#!/usr/bin/env bash
+#!./nu-wrapper
+# vim: ft=nu
 
-PATH="$HOME/bin:$PATH"
-
-borders style=round \
-  width=8.0 \
-  hidpi=on \
-  "active_color=$(dracula -s -a dd cyan)" \
-  "inactive_color=$(dracula -s -a 88 background)"
+# PATH="$HOME/bin:$PATH"
+#
+# borders style=round \
+#   width=8.0 \
+#   hidpi=on \
+#   "active_color=$(dracula -s -a dd cyan)" \
+#   "inactive_color=$(dracula -s -a 88 background)"
