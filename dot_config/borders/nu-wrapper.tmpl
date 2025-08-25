@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+{{ .mise.shimsDir }}/nu \
+  --include {{ .nushell.libDir }} \
+  --env-config {{ .nushell.envConfig }} \
+  --config {{ .nushell.config }}

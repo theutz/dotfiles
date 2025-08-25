@@ -33,22 +33,43 @@ args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 pager = "less -FR"
 
 [merge]
-{{ if lookPath "nvim" }}
+{{- if lookPath "nvim" }}
 command = "nvim"
 args = [ "-c", "'+norm gg'", "-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 {{ end }}
 
 [edit]
-{{ if lookPath "nvim" }}
+{{- if lookPath "nvim" }}
 command = "nvim"
 args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
 watch = false
 apply = false
 {{ end }}
 
+{{ $xdg := (dict
+  "configDir" (joinPath .chezmoi.homeDir ".config")
+  "dataDir" (joinPath .chezmoi.homeDir ".local" "share")
+  "stateDir" (joinPath .chezmoi.homeDir ".local" "state")
+  "cacheDir" (joinPath .chezmoi.homeDir ".cache")
+  )
+-}}
+[data.xdg]
+configDir = "{{ $xdg.configDir }}"
+dataDir = "{{ $xdg.dataDir }}"
+stateDir = "{{ $xdg.stateDir }}"
+cacheDir = "{{ $xdg.cacheDir }}"
+
 [data.mise]
-configDir = "{{ .chezmoi.homeDir }}/.config/mise"
-shimsDir = "{{ .chezmoi.homeDir }}/.local/share/mise/shims"
+configDir = "{{ $xdg.configDir }}/mise"
+shimsDir = "{{ $xdg.dataDir }}/mise/shims"
+
+[data.nushell]
+{{ with $dir := (joinPath $xdg.configDir "nushell") -}}
+configDir = "{{ $dir }}"
+configFile = "{{ joinPath $dir "config.nu" }}"
+envFile = "{{ joinPath $dir "env.nu" }}"
+libDir = "{{ joinPath $dir "scripts" }}"
+{{- end }}
 
 # [status]
 # exclude = ["scripts"]
