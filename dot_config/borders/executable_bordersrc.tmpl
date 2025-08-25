@@ -10,5 +10,5 @@ use catppuccin.nu
   active_color: (catppuccin color --argb pink)
   inactive_color: (catppuccin color --argb surface0)
 }
-| items {|k, v| [$k $k] | str join "="}
+| items {|k, v| [$k $v] | str join "="}
 | run-external borders ...$in
