@@ -60,6 +60,7 @@ stateDir = "{{ $xdg.stateDir }}"
 cacheDir = "{{ $xdg.cacheDir }}"
 
 [data.mise]
+exe = "{{ .chezmoi.homeDir }}/.local/bin/mise"
 configDir = "{{ $xdg.configDir }}/mise"
 shimsDir = "{{ $xdg.dataDir }}/mise/shims"
 

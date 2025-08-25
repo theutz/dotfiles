@@ -1,13 +1,13 @@
-#!/usr/bin/env -S {{ .chezmoi.homeDir }}/.local/bin/mise aqua:nushell/nushell@0.106.1 -- nu
+#!/usr/bin/env -S {{ .mise.exe }} exec aqua:nushell/nushell@0.106.1 -- nu
 # vim: ft=nu
 
-use catppuccin.nu
+use {{ .nushell.libDir }}/catppuccin.nu
 
 {
   style: round
   width: 8.0
   hidpi: on
-  active_color: (catppuccin color --argb pink)
+  active_color: (catppuccin color --argb green)
   inactive_color: (catppuccin color --argb surface0)
 }
 | items {|k, v| [$k $v] | str join "="}
