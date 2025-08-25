@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
+# vim: ft=nu.tmpl
 
-{{ joinPath .chezmoi.homeDir ".local" "bin" "mise" }} exec aqua:nushell/nushell@0.106.1 -- nu --include-path {{ .nushell.libDir }} \
+{{ joinPath .chezmoi.homeDir ".local" "bin" "mise" }}
+exec aqua:nushell/nushell@0.106.1 -- nu \
+  --include-path {{ .nushell.libDir }} \
   --env-config {{ .nushell.envFile }} \
   --config {{ .nushell.configFile }}
