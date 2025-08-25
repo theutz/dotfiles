@@ -59,7 +59,7 @@ dataDir = "{{ $xdg.dataDir }}"
 stateDir = "{{ $xdg.stateDir }}"
 cacheDir = "{{ $xdg.cacheDir }}"
 
-{{ with $mise = (dict
+{{ with $mise := (dict
   "exe" (joinPath .chezmoi.homeDir ".local" "bin" "mise")
   "configDir" (joinPath .xdg.configDir "mise")
   "shimsDir" (joinPath .xdg.dataDir "mise" "shims")
@@ -70,7 +70,7 @@ configDir = "{{ $mise.configDir }}"
 shimsDir = "{{ $mise.shimsDir }}"
 
 [data.nushell]
-{{ with $nu = (dict
+{{ with $nu := (dict
   "dir" (joinPath $xdg.configDir "nushell")
   "envFile" (joinPath $nu.dir "env.nu")
   "configFile" (joinPath $nu.dir "config.nu")
