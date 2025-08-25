@@ -1,4 +1,4 @@
-#!./nu-wrapper
+#!/usr/bin/env ./nu-wrapper
 # vim: ft=nu
 
 use catppuccin.nu
