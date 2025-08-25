@@ -15,8 +15,8 @@ $env.config.keybindings ++= [
     keycode: char_p
     mode: [emacs vi_insert vi_normal]
     event: {
-      send: executehostcommand
-      cmd: "commandline | if (($in | str length) == 0) { history | last | get command } else { $in } | $'($in) | ($env.PAGER)' | commandline edit $in"
+      send: ExecuteHostCommand
+      cmd: "commandline | if (($in | str length) == 0) { history | last | get command } else { $in } | str trim | $'($in) | ($env.PAGER)' | commandline edit $in"
     }
   }
   {
@@ -25,8 +25,18 @@ $env.config.keybindings ++= [
     keycode: char_s
     mode: [emacs vi_insert vi_normal]
     event: {
-      send: executehostcommand
-      cmd: "commandline | if (($in | str length) == 0) { history | last | get command } else { $in } | $'sudo ($in)' | commandline edit $in"
+      send: ExecuteHostCommand
+      cmd: "commandline | if (($in | str length) == 0) { history | last | get command } else { $in } | str trim | $'sudo ($in)' | commandline edit $in"
+    }
+  }
+  {
+    name: add_help
+    modifier: alt
+    keycode: char_h
+    mode: [emacs vi_insert vi_normal]
+    event: {
+      send: ExecuteHostCommand
+      cmd: "commandline | if (($in | str length) == 0) { history | last | get command } else { $in } | str trim | $'($in) --help | ($env.PAGER)' | commandline edit $in"
     }
   }
 ]
@@ -50,7 +60,11 @@ use ($nu.data-dir | path join mise.nu)
 source ($nu.data-dir | path join zoxide.nu)
 
 source yazi.nu
-use chezmoi *
+
+use chezmoi
+use chezmoi/externals.nu *
+use chezmoi/aliases.nu *
+
 use git-aliases.nu *
 use catppuccin.nu
 plugin use emoji
