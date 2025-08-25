@@ -2,5 +2,5 @@
 
 {{ .mise.shimsDir }}/nu \
   --include {{ .nushell.libDir }} \
-  --env-config {{ .nushell.envConfig }} \
-  --config {{ .nushell.config }}
+  --env-config {{ .nushell.envFile }} \
+  --config {{ .nushell.configFile }}
