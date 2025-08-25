@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-{{ pathJoin .chezmoi.homeDir ".local" "bin" "mise" }} exec aqua:nushell/nushell@0.106.1 \
+{{ joinPath .chezmoi.homeDir ".local" "bin" "mise" }} exec aqua:nushell/nushell@0.106.1 \
   --include-path {{ .nushell.libDir }} \
   --env-config {{ .nushell.envFile }} \
   --config {{ .nushell.configFile }}
