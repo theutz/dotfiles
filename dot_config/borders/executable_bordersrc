@@ -1,10 +1,14 @@
 #!./nu-wrapper
 # vim: ft=nu
 
-# PATH="$HOME/bin:$PATH"
-#
-# borders style=round \
-#   width=8.0 \
-#   hidpi=on \
-#   "active_color=$(dracula -s -a dd cyan)" \
-#   "inactive_color=$(dracula -s -a 88 background)"
+use catppuccin.nu
+
+{
+  style: round
+  width: 8.0
+  hidpi: on
+  active_color: (catppuccin color --argb pink)
+  inactive_color: (catppuccin color --argb surface0)
+}
+| items {|k, v| [$k $k] | str join "="}
+| run-external borders ...$in
