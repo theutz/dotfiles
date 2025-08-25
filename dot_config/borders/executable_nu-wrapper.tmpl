@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-{{ .mise.shimsDir }}/nu \
-  --include {{ .nushell.libDir }} \
+{{ pathJoin .chezmoi.homeDir ".local" "bin" "mise" }} exec aqua:nushell/nushell@0.106.1 \
+  --include-path {{ .nushell.libDir }} \
   --env-config {{ .nushell.envFile }} \
   --config {{ .nushell.configFile }}
