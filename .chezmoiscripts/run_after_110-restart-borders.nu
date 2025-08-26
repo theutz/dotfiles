@@ -1,3 +1,0 @@
-{{ .nushell.shebang }}
-
-echo hello

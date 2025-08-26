@@ -79,10 +79,10 @@ configFile = "{{ $nu.configFile }}"
 envFile = "{{ $nu.envFile }}"
 libDir = "{{ $nu.libDir }}"
 shebang = """\
-#!{{ $mise.exe }} exec nushell -- \
+#!/usr/bin/env -S {{ $mise.exe }} exec aqua:nushell/nushell -- \
 nu --include-path {{ $nu.libDir }} \
 --env-config {{ $nu.envFile }} \
---config {{ $nu.configFile }}
+--config {{ $nu.configFile }} \
 """
 
 # [status]
