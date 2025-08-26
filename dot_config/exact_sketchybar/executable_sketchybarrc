@@ -1,4 +1,4 @@
-#!/usr/bin/env ./nu-wrapper
+{{- .nushell.shebang }}
 # vim: ft=nu
 
 $env.PLUGIN_DIR = $env.CONFIG_DIR | path join plugins
