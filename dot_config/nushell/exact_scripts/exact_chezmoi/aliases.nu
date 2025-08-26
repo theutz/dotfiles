@@ -40,6 +40,6 @@ export alias cmsp = cm source-path
 export alias cmst = cm status
 export alias cmtp = cm target-path
 
-def --wrapped chezmoi-cat-config [...args] {
+export def --wrapped chezmoi-cat-config [...args] {
   chezmoi cat-config ...$args | from toml | explore
 }
