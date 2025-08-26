@@ -1,15 +1,13 @@
 {{- .nushell.shebang }}
 
 {{- $file := "glance.ini" }}
-{{- $src := joinPath .xdg.configDir "glance" $file }}
+{{- $src := joinPath .chezmoi.sourceDir "dot_config" "glance" (print $file ".tmpl") }}
 {{- $dest := joinPath "/opt" "homebrew" "etc" "supervisor.d" $file }}
-
-# src hash: {{ $src | sha256sum }}
-# dest hash: {{ joinPath $dest $file | sha256sum }}
 
 $env.PATH ++= [/opt/homebrew/bin]
 
 mkdir {{ $dest | dir }}
-cp -f {{ $src }} {{ $dest }}
+{{ .chezmoi.executable }} execute-template --file {{ $src }} --output {{ $dest }}
+supervisorctl update glance
 supervisorctl restart glance
 
