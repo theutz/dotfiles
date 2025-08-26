@@ -1,0 +1,8 @@
+{{- .nushell.shebang }}
+
+# base.toml hash: {{ joinPath .xdg.configDir "starship" "base.toml" | sha256sum }}
+# palettes.toml hash: {{ joinPath .xdg.configDir "starship" "palettes.toml" | sha256sum }}
+# render script hash: {{ joinPath .nushell.libDir "starship.nu" | sha256sum }}
+
+use starship.nu
+starship render
