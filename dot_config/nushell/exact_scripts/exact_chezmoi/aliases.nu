@@ -1,9 +1,5 @@
 use stat.nu
 
-export def --wrapped chezmoi-cat-config [...args] {
-  chezmoi cat-config ...$args | from toml | explore
-}
-
 export alias chezomi = chezmoi
 export alias cm = ^chezmoi
 export alias cmS = stat -g
@@ -12,7 +8,7 @@ export alias cmap = cm apply --interactive .
 export alias cmaP = cm apply --interactive
 export alias cmcD = cm cd
 export alias cmca = cm cat
-export alias cmcc = chezmoi-cat-config
+export alias cmcc = cm cat-config
 export alias cmcd = cm cd .
 export alias cmce = cm edit-config-template
 export alias cmch = cm chattr
