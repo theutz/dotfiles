@@ -1,21 +1,3 @@
-# Setup XDG
-[
-  [name            value                               ];
-  [XDG_CONFIG_HOME ($env.HOME | path join .config)     ]
-  [XDG_DATA_HOME   ($env.HOME | path join .local share)]
-  [XDG_STATE_HOME  ($env.HOME | path join .local state)]
-  [XDG_CACHE_HOME  ($env.HOME | path join .cache)      ]
-] | each {|it|
-  let cp = $it.name
-  | str replace "XDG_" ""
-  | str replace "_HOME" ""
-  | str downcase
-
-  $env
-  | upsert $it.name $it.value
-  | upsert xdg {|row| $row | upsert $cp $it.value }
-}
-
 # Setup path variable
 $env.PATH = [
   ($env.HOME | path join bin)
