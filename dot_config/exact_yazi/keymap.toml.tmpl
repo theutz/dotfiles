@@ -10,7 +10,7 @@ desc = "Open shell here"
 
 [[mgr.prepend_keymap]]
 on = ["g", "l"]
-run = 'shell "lazygit" --block --confirm'
+run = 'shell "{{ .mise.exe }} exec lazygit" --block --confirm'
 desc = "Open lazygit here"
 
 [[mgr.prepend_keymap]]
