@@ -8,7 +8,7 @@ export alias cmap = cm apply --interactive .
 export alias cmaP = cm apply --interactive
 export alias cmcD = cm cd
 export alias cmca = cm cat
-export alias cmcc = (cm cat-config | from toml | explore)
+export alias cmcc = chezmoi-cat-config
 export alias cmcd = cm cd .
 export alias cmce = cm edit-config-template
 export alias cmch = cm chattr
@@ -39,3 +39,7 @@ export alias cms = stat
 export alias cmsp = cm source-path
 export alias cmst = cm status
 export alias cmtp = cm target-path
+
+def --wrapped chezmoi-cat-config [...args] {
+  chezmoi cat-config ...$args | from toml | explore
+}
