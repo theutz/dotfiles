@@ -1,3 +1,5 @@
+# vim: ft=tmpl.toml
+
 encryption = "age"
 
 [gpg]
@@ -61,7 +63,7 @@ cacheDir = "{{ $xdg.cacheDir }}"
 
 {{
   $mise := (dict
-    "exe" (joinPath $.chezmoi.homeDir ".local" "bin" "mise")
+    "exe" (joinPath .chezmoi.homeDir ".local" "bin" "mise")
     "configDir" (joinPath $xdg.configDir "mise")
     "shimsDir" (joinPath $xdg.dataDir "mise" "shims")
   )
@@ -89,4 +91,3 @@ shebang = """\
 # [status]
 # exclude = ["scripts"]
 
-# vim: ft=tmpl.toml
