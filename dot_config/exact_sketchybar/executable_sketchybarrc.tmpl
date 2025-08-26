@@ -1,4 +1,4 @@
-{{- .nushell.shebang }}
+#!/usr/bin/env XDG_CONFIG_HOME=/Users/michael/.config XDG_DATA_HOME=/Users/michael/.local/share -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell@0.106.1 -- nu
 # vim: ft=nu
 
 $env.PLUGIN_DIR = $env.CONFIG_DIR | path join plugins

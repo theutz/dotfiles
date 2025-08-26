@@ -45,5 +45,8 @@ use catppuccin.nu
 # Setup homebrew aliases
 use brew.nu *
 
+# Setup sketchybar helpers
+use sketchybar.nu *
+
 # Setup aliases
 source aliases.nu
