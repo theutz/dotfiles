@@ -72,7 +72,6 @@ plugin use gstat
 plugin use query
 
 alias sp = if (which -a spotify_player | is-not-empty) { spotify_player } else { run-external ...[open -a Spotify] }
-alias mx = mise exec
 
 module "brew extern" {
   def services [] {

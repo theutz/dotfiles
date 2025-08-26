@@ -8,6 +8,7 @@
   "aqua:Macchina-CLI/macchina"                = "latest"
   "aqua:TimothyYe/skm"                        = "0.8.6"
   "aqua:YS-L/csvlens"                         = "latest"
+"aqua:charmbracelet/crush" = "latest"
   "aqua:charmbracelet/mods"                   = "latest"
   "aqua:chmln/sd"                             = "latest"
   "aqua:hatoo/oha"                            = "latest"
