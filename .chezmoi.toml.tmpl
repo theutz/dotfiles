@@ -35,7 +35,7 @@ pager = "less -FR"
 [merge]
 {{- if lookPath "nvim" }}
 command = "nvim"
-args = [ "-c", "'+norm gg'", "-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+args = [ "-c", "':norm gg'", "-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 {{ end }}
 
 [edit]
