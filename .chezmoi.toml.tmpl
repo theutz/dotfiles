@@ -80,13 +80,11 @@ shimsDir = "{{ $mise.shimsDir }}"
 {{ $_ := (set $nu "libDir" (joinPath $nu.dir "scripts")) }}
 {{- $_ := (set $nu "exe" (cat $mise.exe "exec" "aqua:nushell/nushell@0.106.1" "--" "nu")) }}
 configDir = "{{ $nu.dir }}"
-{{/*}}
 configFile = "{{ $nu.configFile }}"
 envFile = "{{ $nu.envFile }}"
 libDir = "{{ $nu.libDir }}"
 exe = "{{ $nu.exe }}"
 shebang = "#!/usr/bin/env XDG_CONFIG_HOME={{ $xdg.configDir }} XDG_DATA_HOME={{ $xdg.dataDir }} -S {{ $nu.exe }}"
-{{*/}}
 
 # [status]
 # exclude = ["scripts"]
