@@ -1,3 +1,0 @@
-reload: mise watch reload
-out: mise run tail:out
-err: mise run tail:err
