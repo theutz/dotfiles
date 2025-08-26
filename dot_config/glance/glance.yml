@@ -1,0 +1,97 @@
+pages:
+  - columns:
+      - size: small
+        widgets:
+          - first-day-of-week: monday
+            type: calendar
+          - cache: 12h
+            collapse-after: 3
+            feeds:
+              - limit: 4
+                title: selfh.st
+                url: https://selfh.st/rss/
+              - url: https://ciechanow.ski/atom.xml
+              - title: Josh Comeau
+                url: https://www.joshwcomeau.com/rss.xml
+              - url: https://samwho.dev/rss.xml
+              - title: Ahmad Shadeed
+                url: https://ishadeed.com/feed.xml
+            limit: 10
+            type: rss
+      - size: full
+        widgets:
+          - type: group
+            widgets:
+              - type: hacker-news
+              - type: lobsters
+          - channels:
+              - UCXuqSBlHAE6Xw-yeJA0Tunw
+              - UCR-DXc1voovS8nhAvccRZhg
+              - UCsBjURrPoezykLs9EqgamOA
+              - UCBJycsmduvYEL83R_U4JriQ
+              - UCHnyfMqiRRG1u-2MsSQLbXA
+            type: videos
+          - type: group
+            widgets:
+              - show-thumbnails: true
+                subreddit: technology
+                type: reddit
+              - show-thumbnails: true
+                subreddit: selfhosted
+                type: reddit
+      - size: small
+        widgets:
+          - hour-format: 12h
+            location: London, United Kingdom
+            type: weather
+            units: metric
+          - markets:
+              - name: Dow Jones
+                symbol: DJIA
+              - name: S&P 500
+                symbol: SPY
+              - name: EUR / TRY
+                symbol: EURTRY=X
+              - name: Apple
+                symbol: AAPL
+              - name: Microsoft
+                symbol: MSFT
+            type: markets
+          - cache: 1d
+            repositories:
+              - glanceapp/glance
+              - go-gitea/gitea
+              - immich-app/immich
+              - syncthing/syncthing
+            type: releases
+    name: Home
+server:
+  port: 5143
+theme:
+  disable-picker: false
+  presets:
+    catppuccin-frappe:
+      background-color: 229 19 23
+      contrast-multiplier: 1.2
+      primary-color: 222 74 74
+      positive-color: 96 44 68
+      negative-color: 359 68 71
+    catppuccin-macchiato:
+      background-color: 232 23 18
+      contrast-multiplier: 1.2
+      primary-color: 220 83 75
+      positive-color: 105 48 72
+      negative-color: 351 74 73
+    catppuccin-mocha:
+      background-color: 240 21 15
+      contrast-multiplier: 1.2
+      primary-color: 217 92 83
+      positive-color: 115 54 76
+      negative-color: 347 70 65
+    catppuccin-latte:
+      light: true
+      background-color: 220 23 95
+      contrast-multiplier: 1.0
+      primary-color: 220 91 54
+      positive-color: 109 58 40
+      negative-color: 347 87 44
