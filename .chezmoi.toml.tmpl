@@ -59,11 +59,13 @@ dataDir = "{{ $xdg.dataDir }}"
 stateDir = "{{ $xdg.stateDir }}"
 cacheDir = "{{ $xdg.cacheDir }}"
 
-{{ $mise := (dict
-  "exe" (joinPath $.chezmoi.homeDir ".local" "bin" "mise")
-  "configDir" (joinPath $xdg.configDir "mise")
-  "shimsDir" (joinPath $xdg.dataDir "mise" "shims")
-) -}}
+{{
+  $mise := (dict
+    "exe" (joinPath $.chezmoi.homeDir ".local" "bin" "mise")
+    "configDir" (joinPath $xdg.configDir "mise")
+    "shimsDir" (joinPath $xdg.dataDir "mise" "shims")
+  )
+-}}
 [data.mise]
 exe = "{{ $mise.exe }}"
 configDir = "{{ $mise.configDir }}"
@@ -74,10 +76,20 @@ shimsDir = "{{ $mise.shimsDir }}"
 {{ $_ := (set $nu "envFile" (joinPath $nu.dir "env.nu")) }}
 {{ $_ := (set $nu "configFile" (joinPath $nu.dir "config.nu")) }}
 {{ $_ := (set $nu "libDir" (joinPath $nu.dir "scripts")) }}
+{{ $_ := (set $nu "exe" (cat
+      $mise.exe "exec" "aqua:nushell/nushell" "--"
+      "nu"
+      "--include-path" $nu.libDir
+      "--env-config" $nu.envFile
+      "--config" $nu.configFile
+    )
+  )
+}}
 configDir = "{{ $nu.dir }}"
 configFile = "{{ $nu.configFile }}"
 envFile = "{{ $nu.envFile }}"
 libDir = "{{ $nu.libDir }}"
+exe = "{{ $nu.exe }}"
 shebang = """\
 #!/usr/bin/env -S {{ $mise.exe }} exec aqua:nushell/nushell -- \
 nu --include-path {{ $nu.libDir }} \

@@ -5,7 +5,7 @@ desc = "Close the current tab, or quit yazi"
 
 [[mgr.prepend_keymap]]
 on = "!"
-run = 'shell "/opt/homebrew/bin/fish" --block --confirm'
+run = 'shell "{{ .nushell.exe }}" --block --confirm'
 desc = "Open shell here"
 
 [[mgr.prepend_keymap]]
