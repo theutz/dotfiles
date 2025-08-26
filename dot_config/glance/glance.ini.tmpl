@@ -1,9 +1,9 @@
 [program:glance]
-command=/Users/michael/.local/bin/mise exec go:github.com/glanceapp/glance -- glance --config /Users/michael/.config/glance/glance.yml
-user=michael
+command={{ .mise.exe }} exec go:github.com/glanceapp/glance -- glance --config (joinPath .xdg.configDir "glance" "glance.yml")
+user={{ .chezmoi.username }}
 autostart=true
 autorestart=true
 redirect_stderr=true
-stdout_logfile=/Users/michael/.local/share/glance/glance.out.log
+stdout_logfile={{ joinPath .xdg.dataDir "glance" "glance.log" }}
 stdout_logfile_maxbytes=50MB
 stdout_logfile_backups=1
