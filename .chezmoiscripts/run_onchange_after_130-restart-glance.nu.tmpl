@@ -1,0 +1,15 @@
+{{- .nushell.shebang }}
+
+{{- $file := "glance.ini" }}
+{{- $src := joinPath .xdg.configDir "glance" $file }}
+{{- $dest := joinPath "/opt" "homebrew" "etc" "supervisor.d" $file }}
+
+# src hash: {{ $src | sha256sum }}
+# dest hash: {{ joinPath $dest $file | sha256sum }}
+
+$env.PATH ++= [/opt/homebrew/bin]
+
+mkdir {{ $dest | dir }}
+cp -f {{ $src }} {{ $dest }}
+supervisorctl restart glance
+
