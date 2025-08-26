@@ -82,7 +82,9 @@ configFile = "{{ $nu.configFile }}"
 envFile = "{{ $nu.envFile }}"
 libDir = "{{ $nu.libDir }}"
 exe = "{{ $nu.exe }}"
-shebang = "#!/usr/bin/env XDG_CONFIG_HOME={{ $xdg.configDir }} XDG_DATA_HOME={{ $xdg.dataDir }} -S {{ $nu.exe }}"
+shebang = """\
+#!/usr/bin/env XDG_CONFIG_HOME={{ $xdg.configDir }} XDG_DATA_HOME={{ $xdg.dataDir }} -S {{ $nu.exe }}\
+"""
 
 # [status]
 # exclude = ["scripts"]
