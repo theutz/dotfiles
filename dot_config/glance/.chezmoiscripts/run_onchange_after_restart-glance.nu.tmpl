@@ -1,10 +1,15 @@
 {{- .nushell.shebang }}
+# vim: ft=nu.tmpl
 
 {{- $file := "glance.ini" }}
 {{- $src := joinPath .chezmoi.sourceDir "dot_config" "glance" (print $file ".tmpl") }}
 {{- $dest := joinPath "/opt" "homebrew" "etc" "supervisor.d" $file }}
 
-$env.PATH ++= [/opt/homebrew/bin]
+{{ range $_, $file := (list $src (joinPath .xdg.configDir "glance" "glance.yml")) }}
+# {{ $file }} hash: {{ $file | sha256sum }}
+{{- end }}
+
+# $env.PATH ++= [/opt/homebrew/bin]
 
 mkdir {{ $dest | dir }}
 {{ .chezmoi.executable }} execute-template --file {{ $src }} --output {{ $dest }}
