@@ -7,7 +7,11 @@
 		<key>LANG</key>
 		<string>en_US.UTF-8</string>
 		<key>PATH</key>
-		<string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <string>{{ joinPath .chezmoi.homeDir ".local" "bin" }}:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>XDG_CONFIG_HOME</key>
+    <string>{{ .xdg.configDir }}</string>
+    <key>XDG_DATA_HOME</key>
+    <string>{{ .xdg.dataDir }}</string>
 	</dict>
 	<key>KeepAlive</key>
 	<true/>
