@@ -64,7 +64,7 @@ pages:
               - immich-app/immich
               - syncthing/syncthing
             type: releases
-    name: Home
+    name: Homeie
 server:
   port: 5143
 theme:
