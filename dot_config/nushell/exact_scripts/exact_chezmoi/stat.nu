@@ -40,7 +40,15 @@ def color-filename []: table -> table {
       [D A] => [(ansi yello)]
       [" " D] => [(ansi green)]
       [" " R] => [(ansi default_dimmed)]
-      _ => []
+      _ => {
+        error make {
+          msg: $"Unknown status ($row.status)"
+          label: {
+            text: "This row"
+            span: (metadata $row.status).span
+          }
+        }
+      }
     }
     | append [$row.file (ansi reset)]
     | str join
