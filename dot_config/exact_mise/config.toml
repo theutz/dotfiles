@@ -8,7 +8,7 @@
   "aqua:Macchina-CLI/macchina"                = "latest"
   "aqua:TimothyYe/skm"                        = "0.8.6"
   "aqua:YS-L/csvlens"                         = "latest"
-"aqua:charmbracelet/crush" = "latest"
+  "aqua:charmbracelet/crush"                  = "latest"
   "aqua:charmbracelet/mods"                   = "latest"
   "aqua:chmln/sd"                             = "latest"
   "aqua:hatoo/oha"                            = "latest"
@@ -24,9 +24,9 @@
   bob                                         = "latest"
   cargo-binstall                              = "latest"
   "cargo:hanshuaikang/nping"                  = "latest"
-"cargo:http-nu" = "latest"
-"cargo:nu_plugin_dns" = "latest"
-"cargo:nu_plugin_emoji" = "latest"
+  "cargo:http-nu"                             = "latest"
+  "cargo:nu_plugin_dns"                       = "latest"
+  "cargo:nu_plugin_emoji"                     = "latest"
   "cargo:snipt"                               = "latest"
   "cargo:tock"                                = "latest"
   "cargo:yshavit/mdq"                         = "latest"
@@ -51,7 +51,7 @@
   jq                                          = "latest"
   jqp                                         = "latest"
   lazygit                                     = "latest"
-lnav = "latest"
+  lnav                                        = "latest"
   ls-lint                                     = "latest"
   macchina                                    = "latest"
   neovim                                      = "latest"
@@ -61,7 +61,7 @@ lnav = "latest"
   "npm:@openai/codex"                         = "latest"
   "npm:gitignore"                             = "latest"
   "npm:opencommit"                            = "latest"
-nu = "latest"
+  nu                                          = "latest"
   "pipx:harlequin"                            = "latest"
   "pipx:httpie"                               = "latest"
   "pipx:linode-cli"                           = { version = "latest", uvx_args = '--with boto3' }
@@ -91,7 +91,6 @@ nu = "latest"
   script = 'eval "$(chezmoi generate zsh)"'
 
 [env]
-  BARTIB_FILE = "/Users/michael/time.txt"
   EDITOR = "nvim"
   FZF_DEFAULT_OPTS = """\
 --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 \
@@ -101,8 +100,12 @@ nu = "latest"
 --bind=ctrl-a:toggle-all,tab:toggle-out,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down \
 """
   VISUAL = "nvim"
+  XDG_CACHE_HOME = "{{ xdg_cache_home }}"
+  XDG_CONFIG_HOME = "{{ xdg_config_home }}"
+  XDG_DATA_HOME = "{{ xdg_data_home }}"
+  XDG_STATE_HOME = "{{ xdg_state_home }}"
   _.file = "~/.config/mise/env.sops.yaml"
 
 [alias]
-nu = "aqua:nushell/nushell"
-macchina = "cargo:macchina"
+  macchina = "cargo:macchina"
+  nu       = "aqua:nushell/nushell"
