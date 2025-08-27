@@ -50,6 +50,24 @@ c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 c.enable_kitty_keyboard = true
 c.leader = { key = "m", mods = "CTRL|ALT", timeout_milliseconds = 2000 }
 c.keys = {
+	{ key = "d", mods = "SUPER", action = a.SplitPane({ direction = "Right" }) },
+	{ key = "D", mods = "SUPER|SHIFT", action = a.SplitPane({ direction = "Down" }) },
+	{ key = "h", mods = "SUPER", action = a.ActivatePaneDirection("Left") },
+	{ key = "j", mods = "SUPER", action = a.ActivatePaneDirection("Down") },
+	{ key = "k", mods = "SUPER", action = a.ActivatePaneDirection("Up") },
+	{ key = "l", mods = "SUPER", action = a.ActivatePaneDirection("Right") },
+	{ key = "n", mods = "SUPER", action = a.SpawnTab("CurrentPaneDomain") },
+	{ key = "N", mods = "SUPER|SHIFT", action = a.SpawnWindow },
+	{ key = "o", mods = "SUPER", action = a.RotatePanes("Clockwise") },
+	{ key = "O", mods = "SUPER|SHIFT", action = a.RotatePanes("CounterClockwise") },
+	{ key = "[", mods = "SUPER", action = a.ActivateCopyMode },
+	{ key = "]", mods = "SUPER", action = a.QuickSelect },
+	{ key = "z", mods = "SUPER", action = a.TogglePaneZoomState },
+	{ key = "H", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Left", 5 }) },
+	{ key = "J", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Down", 5 }) },
+	{ key = "K", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Up", 5 }) },
+	{ key = "L", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Right", 5 }) },
+
 	{ key = "\\", mods = "LEADER", action = a.SplitPane({ direction = "Right" }) },
 	{ key = "|", mods = "LEADER|SHIFT", action = a.SplitPane({ direction = "Right", top_level = true }) },
 	{ key = "-", mods = "LEADER", action = a.SplitPane({ direction = "Down" }) },
