@@ -55,5 +55,6 @@ export def --wrapped cmfz [
     error make { msg: "fzf finished with non-zero exit code" }
   } else { $in.stdout }
   | lines
+  | each { [$env.HOME $in] | path join }
   | chezmoi edit ...$in
 }
