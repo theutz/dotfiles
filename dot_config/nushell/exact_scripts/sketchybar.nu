@@ -1,3 +1,4 @@
+# Tail logs from the brew service
 export def "sketchybar tail" [] {
   brew services info sketchybar --json
   | from json
@@ -5,4 +6,8 @@ export def "sketchybar tail" [] {
   | get 0
   | values
   | tail -f ...$in
+}
+
+export def "sketchybar reload" [] {
+  ^brew services restart sketchybar
 }
