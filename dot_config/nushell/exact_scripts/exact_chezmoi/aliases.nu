@@ -50,9 +50,10 @@ export def --wrapped cmfz [
   } else { }
 
   chezmoi managed ...$args
-  | run-external ...$cmd
-  | complete
-  | if $in.exit_code > 0 { error make {msg: "fzf finished with non-zero exit code"} } else { $in.stdout }
+  | run-external ...$cmd | complete
+  | if $in.exit_code > 0 {
+    error make { msg: "fzf finished with non-zero exit code" }
+  } else { $in.stdout }
   | lines
   | chezmoi edit ...$in
 }
