@@ -34,10 +34,10 @@ def color-filename []: table -> table {
   update file {|row|
     match [$row.was $row.will] {
       [M M] => [(ansi default_bold)]
-      [" " M] => [(ansi yellow)]
-      [M " "] => [(ansi yellow)]
+      [" " M] => [(ansi magenta)]
+      [M " "] => [(ansi cyan)]
       [A D] => [(ansi red)]
-      [D A] => [(ansi magenta)]
+      [D A] => [(ansi yello)]
       [" " D] => [(ansi green)]
       [" " R] => [(ansi default_dimmed)]
       _ => []
