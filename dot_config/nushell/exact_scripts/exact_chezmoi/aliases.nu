@@ -45,7 +45,9 @@ export def --wrapped cmfz [
   ...args
 ] {
   chezmoi managed ...$args
-  | fzf --multi --query=$query
+  | if ($query) { [$"--query=($query)"] } else { [] }
+  | [fzf --multi] ++ $in
+  | run-external ...$in
   | lines
   | chezmoi edit ...$in
 }
