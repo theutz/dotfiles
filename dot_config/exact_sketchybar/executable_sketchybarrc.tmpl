@@ -1,262 +1,261 @@
-#!/usr/bin/env -S {{.nushell.exe }}
+{{- .nushell.shebang }}
 # vim: ft=nu
 
 $env.FONT = "BlexMono Nerd Font Propo"
-print -e $nu.default-config-dir
-# use catppuccin.nu
+use catppuccin.nu
+
+def clr [name: string, alpha: string = "FF"]: nothing -> string {
+  catppuccin color $name --argb --alpha=$alpha
+}
+
+def "font size" [multiplier: float = 1.0]: nothing -> float {
+  12 * $multiplier | math round | into float
+}
+
+def "icon color" [
+  --highlight (-h)
+]: nothing -> string {
+  if ($highlight) { clr red } else { clr green }
+}
+
+def "label color" [
+  --highlight (-h)
+]: nothing -> string {
+  if ($highlight) { clr peach } else { clr text }
+}
+
+def "background color" []: nothing -> string {
+  clr surface0 88
+}
+
+def "setup bar" [] {
+  [
+    --bar
+    blur_radius=20
+    color=(background color)
+    height=(height)
+    notch_width=216
+    position=top
+  ]
+}
+
+def height [multiplier: float = 1.0]: nothing -> int {
+  40 * $multiplier | math round
+}
+
+def padding [multiplier: float = 1.0]: nothing -> int {
+  6 * $multiplier | math round
+}
+
+def "setup defaults" [] {
+  [
+    --default
+    alias.color=(icon color)
+    alias.scale=0.9
+    background.color=(background color)
+    background.corner_radius=6
+    background.drawing=on
+    background.height=(height 0.68)
+    background.padding_left=(padding)
+    background.padding_right=(padding)
+    icon.color=(icon color)
+    icon.font=($env.FONT):Normal:(font size 1.4)
+    icon.highlight_color=(icon color --highlight)
+    icon.padding_left=(padding)
+    icon.padding_right=(padding 0.5)
+    label.color=(label color)
+    label.font=($env.FONT):Normal:(font size)
+    label.highlight_color=(label color --highlight)
+    label.max_chars=16
+    label.padding_left=(padding 0.5)
+    label.padding_right=(padding)
+    label.scroll_duration=100
+    padding_left=(padding 0.5)
+    padding_right=(padding 0.5)
+    scroll_texts=on
+  ]
+}
+
+## Setup  AeroSpace spaces
+#args=(
+#  --add event aerospace_workspace_change
+#  --add item aerospace left
+#  --set aerospace
+#  script="$PLUGIN_DIR/aerospace.sh"
+#  drawing=off
+#  --subscribe aerospace aerospace_workspace_change
+#)
+#for sid in $(aerospace list-workspaces --all); do
+#  args+=(
+#    --add item space."$sid" left
+#    --set space."$sid"
+#    background.drawing=off
+#    click_script="aerospace workspace $sid"
+#    icon.color="$(sketchybar --query defaults | jq -r '.label.color')"
+#    icon.font.size=12.0
+#    icon="$sid"
+#    label.color="$(sketchybar --query defaults | jq -r '.icon.color')"
+#    label.font.size=12.0
+#    label=•
+#  )
+#done
 #
-# def clr [name: string, alpha: string = "FF"]: nothing -> string {
-#   catppuccin color $name --argb --alpha=$alpha
-# }
+## Setup chevron
+#args+=(
+#  --add item chevron left
+#  --set chevron
+#  icon.color="$(color green)"
+#  label.drawing=off
+#  icon=""
+#  click_script="open -a 'Mission Control'"
+#)
 #
-# def "font size" [multiplier: float = 1.0]: nothing -> float {
-#   12 * $multiplier | math round | into float
-# }
+## Setup front app
+#args+=(
+#  --add item front_app left
+#  --set front_app
+#  icon.drawing=off
+#  script="$PLUGIN_DIR/front_app.sh"
+#  label.color="$(color pink)"
+#  --subscribe front_app front_app_switched
+#)
 #
-# def "icon color" [
-#   --highlight (-h)
-# ]: nothing -> string {
-#   if ($highlight) { clr red } else { clr green }
-# }
-#
-# def "label color" [
-#   --highlight (-h)
-# ]: nothing -> string {
-#   if ($highlight) { clr peach } else { clr text }
-# }
-#
-# def "background color" []: nothing -> string {
-#   clr surface0 88
-# }
-#
-# def "setup bar" [] {
-#   [
-#     --bar
-#     blur_radius=20
-#     color=(background color)
-#     height=(height)
-#     notch_width=216
-#     position=top
-#   ]
-# }
-#
-# def height [multiplier: float = 1.0]: nothing -> int {
-#   40 * $multiplier | math round
-# }
-#
-# def padding [multiplier: float = 1.0]: nothing -> int {
-#   6 * $multiplier | math round
-# }
-#
-# def "setup defaults" [] {
-#   [
-#     --default
-#     alias.color=(icon color)
-#     alias.scale=0.9
-#     background.color=(background color)
-#     background.corner_radius=6
-#     background.drawing=on
-#     background.height=(height 0.68)
-#     background.padding_left=(padding)
-#     background.padding_right=(padding)
-#     icon.color=(icon color)
-#     icon.font=($env.FONT):Normal:(font size 1.4)
-#     icon.highlight_color=(icon color --highlight)
-#     icon.padding_left=(padding)
-#     icon.padding_right=(padding 0.5)
-#     label.color=(label color)
-#     label.font=($env.FONT):Normal:(font size)
-#     label.highlight_color=(label color --highlight)
-#     label.max_chars=16
-#     label.padding_left=(padding 0.5)
-#     label.padding_right=(padding)
-#     label.scroll_duration=100
-#     padding_left=(padding 0.5)
-#     padding_right=(padding 0.5)
-#     scroll_texts=on
-#   ]
-# }
-#
-# ## Setup  AeroSpace spaces
-# #args=(
-# #  --add event aerospace_workspace_change
-# #  --add item aerospace left
-# #  --set aerospace
-# #  script="$PLUGIN_DIR/aerospace.sh"
-# #  drawing=off
-# #  --subscribe aerospace aerospace_workspace_change
-# #)
-# #for sid in $(aerospace list-workspaces --all); do
-# #  args+=(
-# #    --add item space."$sid" left
-# #    --set space."$sid"
-# #    background.drawing=off
-# #    click_script="aerospace workspace $sid"
-# #    icon.color="$(sketchybar --query defaults | jq -r '.label.color')"
-# #    icon.font.size=12.0
-# #    icon="$sid"
-# #    label.color="$(sketchybar --query defaults | jq -r '.icon.color')"
-# #    label.font.size=12.0
-# #    label=•
-# #  )
-# #done
-# #
-# ## Setup chevron
-# #args+=(
-# #  --add item chevron left
-# #  --set chevron
-# #  icon.color="$(color green)"
-# #  label.drawing=off
-# #  icon=""
-# #  click_script="open -a 'Mission Control'"
-# #)
-# #
-# ## Setup front app
-# #args+=(
-# #  --add item front_app left
-# #  --set front_app
-# #  icon.drawing=off
-# #  script="$PLUGIN_DIR/front_app.sh"
-# #  label.color="$(color pink)"
-# #  --subscribe front_app front_app_switched
-# #)
-# #
-# ## Setup AeroSpace Modes
-# #args+=(
-# #  --add event aerospace_mode_change
-# #  --add item aerospace.mode left
-# #  --subscribe aerospace.mode aerospace_mode_change
-# #  --set aerospace.mode
-# #  drawing=off
-# #  icon=""
-# #  icon.color="$(color cyan)"
-# #  label.color="$(color yellow)"
-# #  update_freq=1
-# #  script="$PLUGIN_DIR/aerospace_mode.sh"
-# #  click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
-# #)
-#
-# def "setup clock" []: nothing -> list<string> {
-#   [
-#     --add item clock right
-#     --set clock
-#     update_freq=1
-#     icon=󱑀
-#     script=($env.PLUGIN_DIR)/clock
-#   ]
-# }
-#
-# def "setup volume" []: nothing -> list<string> {
-#   [
-#     --add item volume right
-#     --set volume script=($env.PLUGIN_DIR)/volume
-#     display=active
-#     --subscribe volume volume_change
-#   ]
-# }
-#
-# def "setup battery" []: nothing -> list<string> {
-#   [
-#     --add item battery right
-#     --set battery
-#     display=active
-#     update_freq=120
-#     script=($env.PLUGIN_DIR)/battery
-#     --subscribe battery system_woke power_source_change
-#   ]
-# }
-#
-# def "setup aliases" []: nothing -> list<string> {
-#   [
-#     "Tailscale,Item-0"
-#     "Control Center,WiFi"
-#     "TextInputMenuAgent,Item-0"
-#     "Control Center,FocusModes"
-#     "AeroSpace,Item-0"
-#   ] | each {|it|
-#     [
-#       --add alias $it right
-#       --set $it
-#       label.drawing=off
-#       icon.drawing=off
-#     ]
-#   }
-#   | flatten
-# }
-#
-# def "setup spotify" []: nothing -> list<string> {
-#   let click = "click_script=spotify_player playback play-pause"
-#   [
-#     --add item track q
-#     --add item artist q
-#     --add item spotify q
-#
-#     --set spotify
-#     $click
-#     display=1
-#     drawing=on
-#     icon=
-#     script="($env.PLUGIN_DIR)/spotify"
-#     update_freq=10
-#     label.drawing=off
-#
-#     --set track
-#     $click
-#     display=1
-#     drawing=off
-#     icon=󰎄 
-#
-#     --set artist
-#     $click
-#     display=1
-#     drawing=off
-#     icon=󰠃
-#   ]
-# }
-#
-# def "setup ip" []: nothing -> list<string> {
-#   let click = "click_script=open raycast://extensions/tailscale/tailscale/exit"
-#   [
-#     --add item ipaddress e
-#     --add item iplocation e
-#
-#     --set ipaddress
-#     $click
-#     display=1
-#     icon.highlight=on
-#     icon=󰩟 
-#     script=($env.PLUGIN_DIR)/ip-address
-#     update_freq=3
-#     label.drawing=off
-#
-#     --set iplocation
-#     $click
-#     display=1
-#     drawing=off
-#     icon.highlight=on
-#     icon=
-#     label.max_chars=16
-#   ]
-# }
-#
-# def "run stack" [stack: list<list<string>>]: nothing -> nothing {
-#   $stack | flatten | run-external sketchybar ...$in
-# }
-#
-# run stack [
-#   (setup bar)
-#   (setup defaults)
-# ]
-#
-# run stack [
-#   (setup clock)
-#   (setup volume)
-#   (setup battery)
-#   (setup aliases)
-#   (setup spotify )
-#   (setup ip)
-# ]
-#
-# ###### Force all scripts to run the first time (never do this in a script) #####
-# ^sketchybar --update
-# print -e "Sketchybar updated!"
+## Setup AeroSpace Modes
+#args+=(
+#  --add event aerospace_mode_change
+#  --add item aerospace.mode left
+#  --subscribe aerospace.mode aerospace_mode_change
+#  --set aerospace.mode
+#  drawing=off
+#  icon=""
+#  icon.color="$(color cyan)"
+#  label.color="$(color yellow)"
+#  update_freq=1
+#  script="$PLUGIN_DIR/aerospace_mode.sh"
+#  click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
+#)
+
+def "setup clock" []: nothing -> list<string> {
+  [
+    --add item clock right
+    --set clock
+    update_freq=1
+    icon=󱑀
+    script=($env.PLUGIN_DIR)/clock
+  ]
+}
+
+def "setup volume" []: nothing -> list<string> {
+  [
+    --add item volume right
+    --set volume script=($env.PLUGIN_DIR)/volume
+    display=active
+    --subscribe volume volume_change
+  ]
+}
+
+def "setup battery" []: nothing -> list<string> {
+  [
+    --add item battery right
+    --set battery
+    display=active
+    update_freq=120
+    script=($env.PLUGIN_DIR)/battery
+    --subscribe battery system_woke power_source_change
+  ]
+}
+
+def "setup aliases" []: nothing -> list<string> {
+  [
+    "Tailscale,Item-0"
+    "Control Center,WiFi"
+    "TextInputMenuAgent,Item-0"
+    "Control Center,FocusModes"
+    "AeroSpace,Item-0"
+  ] | each {|it|
+    [
+      --add alias $it right
+      --set $it
+      label.drawing=off
+      icon.drawing=off
+    ]
+  }
+  | flatten
+}
+
+def "setup spotify" []: nothing -> list<string> {
+  let click = "click_script=spotify_player playback play-pause"
+  [
+    --add item track q
+    --add item artist q
+    --add item spotify q
+
+    --set spotify
+    $click
+    display=1
+    drawing=on
+    icon=
+    script="($env.PLUGIN_DIR)/spotify"
+    update_freq=10
+    label.drawing=off
+
+    --set track
+    $click
+    display=1
+    drawing=off
+    icon=󰎄 
+
+    --set artist
+    $click
+    display=1
+    drawing=off
+    icon=󰠃
+  ]
+}
+
+def "setup ip" []: nothing -> list<string> {
+  let click = "click_script=open raycast://extensions/tailscale/tailscale/exit"
+  [
+    --add item ipaddress e
+    --add item iplocation e
+
+    --set ipaddress
+    $click
+    display=1
+    icon.highlight=on
+    icon=󰩟 
+    script=($env.PLUGIN_DIR)/ip-address
+    update_freq=3
+    label.drawing=off
+
+    --set iplocation
+    $click
+    display=1
+    drawing=off
+    icon.highlight=on
+    icon=
+    label.max_chars=16
+  ]
+}
+
+def "run stack" [stack: list<list<string>>]: nothing -> nothing {
+  $stack | flatten | run-external sketchybar ...$in
+}
+
+run stack [
+  (setup bar)
+  (setup defaults)
+]
+
+run stack [
+  (setup clock)
+  (setup volume)
+  (setup battery)
+  (setup aliases)
+  (setup spotify )
+  (setup ip)
+]
+
+###### Force all scripts to run the first time (never do this in a script) #####
+^sketchybar --update
+print -e "Sketchybar updated!"
