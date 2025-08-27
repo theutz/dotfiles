@@ -124,6 +124,17 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
     drawing=off
     --subscribe aerospace aerospace_workspace_change
   ]
+  | append (
+    ^aerospace list-workspaces --all
+    | each {|id|
+      [
+        --add item aerospace.($id) left
+        --set aerospace.($id)
+        click_script=(aerospace workspace $id)
+      ]
+    }
+  )
+  | flatten
 }
 
 def "setup symbol" []: nothing -> list<string> {
