@@ -37,7 +37,7 @@ def color-filename []: table -> table {
       [" " M] => [(ansi magenta)]
       [M " "] => [(ansi cyan)]
       [A D] => [(ansi red)]
-      [D A] => [(ansi yello)]
+      [D A] => [(ansi yellow)]
       [" " D] => [(ansi green)]
       [" " R] => [(ansi default_dimmed)]
       _ => {
