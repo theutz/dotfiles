@@ -122,7 +122,7 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
     --set aerospace_spaces
     script=($env.PLUGIN_DIR)/aerospace_spaces
     drawing=off
-    --subscribe aerospace aerospace_workspace_change
+    --subscribe aerospace_spaces aerospace_workspace_change
   ]
   | append (
     ^aerospace list-workspaces --all
@@ -132,7 +132,7 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
         --add item aerospace.($id) left
         --set aerospace.($id)
         label=($id)
-        click_script=(aerospace workspace $id)
+        $"click_script=aerospace workspace ($id)"
       ]
     }
   )
@@ -145,7 +145,7 @@ def "setup symbol" []: nothing -> list<string> {
     --set symbol
     label.drawing=off
     icon=
-    "click_script=open -a 'Missoin Control'"
+    "click_script=open -a 'Mission Control'"
   ]
 }
 
