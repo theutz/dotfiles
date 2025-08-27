@@ -1,6 +1,7 @@
 {{- .nushell.shebang }}
 # vim: ft=nu
 
+$env.PLUGIN_DIR = [$env.PWD plugins] | path join
 $env.FONT = "BlexMono Nerd Font Propo"
 use catppuccin.nu
 
