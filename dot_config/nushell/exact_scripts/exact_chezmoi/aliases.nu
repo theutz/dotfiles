@@ -41,7 +41,7 @@ export alias cmst = cm status
 export alias cmtp = cm target-path
 
 export def --wrapped cmfz [
-  --query (-q)?: string
+  --query (-q): string = ""
   ...args
 ] {
   chezmoi managed ...$args
