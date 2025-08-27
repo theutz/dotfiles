@@ -1,6 +1,6 @@
 use stat.nu
 
-export def --wrapped "chezomi fuzzy" [
+export def --wrapped "chezmoi fuzzy" [
   --query (-q): string
   ...args
 ] {
@@ -34,7 +34,7 @@ export alias cmea = cm edit --init --apply
 export alias cmet = cm execute-template
 export alias cmew = cm edit --init --watch
 export alias cmfo = cm forget
-export alias cmfz = chezmoi-fuzzy
+export alias cmfz = chezmoi fuzzy
 export alias cmg = cm git
 export alias cmgs = cm git status
 export alias cmin = cm init
