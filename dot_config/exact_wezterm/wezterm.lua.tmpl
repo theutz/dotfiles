@@ -36,12 +36,12 @@ c.tab_bar_at_bottom = true
 
 -- Environment
 c.default_prog = { "{{ .mise.shimsDir }}/nu", "--login" }
-c.set_environment_variables = {
-	XDG_CONFIG_HOME = "{{ .chezmoi.homeDir }}/.config",
-	XDG_DATA_HOME = "{{ .chezmoi.homeDir }}/.local/share",
-	XDG_STATE_HOME = "{{ .chezmoi.homeDir }}/.local/state",
-	XDG_CACHE_HOME = "{{ .chezmoi.homeDir }}/.cache",
-}
+-- c.set_environment_variables = {
+-- 	XDG_CONFIG_HOME = "{{ .chezmoi.homeDir }}/.config",
+-- 	XDG_DATA_HOME = "{{ .chezmoi.homeDir }}/.local/share",
+-- 	XDG_STATE_HOME = "{{ .chezmoi.homeDir }}/.local/state",
+-- 	XDG_CACHE_HOME = "{{ .chezmoi.homeDir }}/.cache",
+-- }
 
 -- Text rendering
 c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
