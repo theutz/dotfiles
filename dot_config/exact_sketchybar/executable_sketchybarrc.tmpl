@@ -125,18 +125,8 @@ def "setup defaults" [] {
 #  click_script="open -a 'Mission Control'"
 #)
 #
-## Setup front app
-#args+=(
-#  --add item front_app left
-#  --set front_app
-#  icon.drawing=off
-#  script="$PLUGIN_DIR/front_app.sh"
-#  label.color="$(color pink)"
-#  --subscribe front_app front_app_switched
-#)
-#
 
-def "setup frontapp" []: nothing -> list<string> {
+def "setup front_app" []: nothing -> list<string> {
   [
     --add item front_app left
     --set front_app
@@ -254,7 +244,7 @@ def "run stack" [stack: list<list<string>>]: nothing -> nothing {
 }
 
 run stack [
-  (setup frontapp)
+  (setup front_app)
   (setup bar)
   (setup defaults)
 ]
