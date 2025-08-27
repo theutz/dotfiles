@@ -40,9 +40,12 @@ export alias cmsp = cm source-path
 export alias cmst = cm status
 export alias cmtp = cm target-path
 
-export def --wrapped cmfz [...args] {
+export def --wrapped cmfz [
+  --query (-q)?: string
+  ...args
+] {
   chezmoi managed ...$args
-  | fzf --multi
+  | fzf --multi --query=$query
   | lines
   | chezmoi edit ...$in
 }
