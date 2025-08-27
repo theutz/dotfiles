@@ -32,14 +32,14 @@ def translate-second-column []: table -> table {
 
 def color-filename []: table -> table {
   update file {|row|
-    match $row.status {
-      MM => [(ansi default_bold)]
-      " M" => [(ansi yellow)]
-      "M " => [(ansi yellow)]
-      AD => [(ansi red)]
-      DA => [(ansi magenta)]
-      " D" => [(ansi green)]
-      " R" => [(ansi default_dimmed)]
+    match [$row.was $row.will] {
+      [M M] => [(ansi default_bold)]
+      [" " M] => [(ansi yellow)]
+      [M " "] => [(ansi yellow)]
+      [A D] => [(ansi red)]
+      [D A] => [(ansi magenta)]
+      [" " D] => [(ansi green)]
+      [" " R] => [(ansi default_dimmed)]
       _ => []
     }
     | append [$row.file (ansi reset)]
