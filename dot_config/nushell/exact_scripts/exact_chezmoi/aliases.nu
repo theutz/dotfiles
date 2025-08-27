@@ -51,6 +51,8 @@ export def --wrapped cmfz [
 
   chezmoi managed ...$args
   | run-external ...$cmd
+  | complete
+  | if $in.exit_code > 0 { error make {msg: $in.stderr} } else { $in.stdout }
   | lines
   | chezmoi edit ...$in
 }
