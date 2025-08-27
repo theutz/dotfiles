@@ -126,10 +126,12 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
   ]
   | append (
     ^aerospace list-workspaces --all
+    | lines
     | each {|id|
       [
         --add item aerospace.($id) left
         --set aerospace.($id)
+        label=($id)
         click_script=(aerospace workspace $id)
       ]
     }
