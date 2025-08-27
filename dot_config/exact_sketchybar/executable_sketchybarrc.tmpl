@@ -114,17 +114,27 @@ def "setup defaults" [] {
 #    label=•
 #  )
 #done
-#
-## Setup chevron
-#args+=(
-#  --add item chevron left
-#  --set chevron
-#  icon.color="$(color green)"
-#  label.drawing=off
-#  icon=""
-#  click_script="open -a 'Mission Control'"
-#)
-#
+
+def "setup aerospace_spaces" []: nothing -> list<string> {
+  [
+    --add event aerospace_workspace_change
+    --add item aerospace_spaces left
+    --set aerospace_spaces
+    script=($env.PLUGIN_DIR)/aerospace_spaces
+    drawing=off
+    --subscribe aerospace aerospace_workspace_change
+  ]
+}
+
+def "setup symbol" []: nothing -> list<string> {
+  [
+    --add item symbol left
+    --set symbol
+    label.drawing=off
+    icon=
+    "click_script=open -a 'Missoin Control'"
+  ]
+}
 
 def "setup front_app" []: nothing -> list<string> {
   [
@@ -244,12 +254,14 @@ def "run stack" [stack: list<list<string>>]: nothing -> nothing {
 }
 
 run stack [
-  (setup front_app)
   (setup bar)
   (setup defaults)
 ]
 
 run stack [
+  (setup aerospace_workspaces)
+  (setup symbol)
+  (setup front_app)
   (setup clock)
   (setup volume)
   (setup battery)
