@@ -77,6 +77,20 @@ def "setup defaults" [] {
   ]
 }
 
+## Setup AeroSpace Modes
+#args+=(
+#  --add event aerospace_mode_change
+#  --add item aerospace.mode left
+#  --subscribe aerospace.mode aerospace_mode_change
+#  --set aerospace.mode
+#  drawing=off
+#  icon=""
+#  icon.color="$(color cyan)"
+#  label.color="$(color yellow)"
+#  update_freq=1
+#  script="$PLUGIN_DIR/aerospace_mode.sh"
+#  click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
+#)
 ## Setup  AeroSpace spaces
 #args=(
 #  --add event aerospace_workspace_change
@@ -121,20 +135,16 @@ def "setup defaults" [] {
 #  --subscribe front_app front_app_switched
 #)
 #
-## Setup AeroSpace Modes
-#args+=(
-#  --add event aerospace_mode_change
-#  --add item aerospace.mode left
-#  --subscribe aerospace.mode aerospace_mode_change
-#  --set aerospace.mode
-#  drawing=off
-#  icon=""
-#  icon.color="$(color cyan)"
-#  label.color="$(color yellow)"
-#  update_freq=1
-#  script="$PLUGIN_DIR/aerospace_mode.sh"
-#  click_script="aerospace mode main; sketchybar --trigger aerospace_mode_change MODE=main"
-#)
+
+def "setup frontapp" []: nothing -> list<string> {
+  [
+    --add item front_app left
+    --set front_app
+    icon.drawing=off
+    script=($env.PLUGIN_DIR)/front_app
+    --subscribe front_app front_app_switched
+  ]
+}
 
 def "setup clock" []: nothing -> list<string> {
   [
@@ -244,6 +254,7 @@ def "run stack" [stack: list<list<string>>]: nothing -> nothing {
 }
 
 run stack [
+  (setup frontapp)
   (setup bar)
   (setup defaults)
 ]
