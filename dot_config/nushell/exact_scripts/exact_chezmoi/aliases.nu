@@ -15,9 +15,9 @@ export alias cmch = cm chattr
 export alias cmdF = cm diff
 export alias cmde = cm destroy
 export alias cmdf = cm diff .
-export alias cmea = cm edit --apply
+export alias cmea = cm edit --init --apply
 export alias cmet = cm execute-template
-export alias cmew = cm edit --watch
+export alias cmew = cm edit --init --watch
 export alias cmfo = cm forget
 export alias cmg = cm git
 export alias cmgs = cm git status
@@ -56,5 +56,5 @@ export def --wrapped cmfz [
   } else { $in.stdout }
   | lines
   | each { [$env.HOME $in] | path join }
-  | chezmoi edit ...$in
+  | chezmoi edit --init --watch ...$in
 }
