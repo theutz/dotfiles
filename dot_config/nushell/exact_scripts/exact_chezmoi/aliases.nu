@@ -44,10 +44,13 @@ export def --wrapped cmfz [
   --query (-q): string
   ...args
 ] {
+  let cmd = [fzf --multi]
+  | if ($query | is-not-empty) {
+    append [$"--query=($query)"]
+  } else { }
+
   chezmoi managed ...$args
-  | if ($query | is-not-empty) { [$"--query=($query)"] } else { [] }
-  | [fzf --multi] ++ $in
-  | run-external ...$in
+  | run-external ...$cmd
   | lines
   | chezmoi edit ...$in
 }
