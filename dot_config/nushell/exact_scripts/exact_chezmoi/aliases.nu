@@ -17,6 +17,8 @@ export def --wrapped "chezmoi fuzzy" [
   | lines
   | each { [$env.HOME $in] | path join }
   | chezmoi edit --init --watch ...$in
+
+  exec nu
 }
 
 export alias chezomi = chezmoi
