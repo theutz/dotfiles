@@ -104,18 +104,18 @@ pages:
           - type: repository
             title: Main Repo
             repository: delegator/hubspot-playcore
-            token:
+            token: {{ include "github_token" | decrypt }}
           - type: custom-api
             title: Plants
             url: https://pchdb.playcore.com/plants
             template: |
               <div class="flex justify-evenly text-center">
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Int "total" | formatNumber }}</div>
+                  <div class="color-highlight size-h3">{{"{{"}} .JSON.Int "total" | formatNumber {{"}}"}}</div>
                   <div class="size-h6">plants</div>
                 </div>
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Int "results.#" | formatNumber }}</div>
+                  <div class="color-highlight size-h3">{{"{{"}} .JSON.Int "results.#" | formatNumber {{"}}"}}</div>
                   <div class="size-h6">results</div>
                 </div>
               </div>
