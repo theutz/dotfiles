@@ -1,4 +1,4 @@
-def parse-status [
+def --wrapped parse-status [
   ...args
 ]: nothing -> table {
   run-external chezmoi status ...$args
@@ -67,12 +67,11 @@ def color-scripts []: table -> table {
 }
 
 # A nu-friendly version of chezmoi status
-export def main [
+export def --wrapped main [
   --json # Output as json
-  --global (-g) # Run at $HOME (instead of $PWD)
+  ...args
 ]: nothing -> table {
-  if ($global) { [] } else { [$env.PWD] }
-  | parse-status ...$in
+  parse-status ...$args
   | translate-first-column
   | translate-second-column
   | color-filename
