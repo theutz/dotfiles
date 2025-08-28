@@ -38,6 +38,7 @@ def color-filename []: table -> table {
       [M " "] => [(ansi cyan)]
       [A D] => [(ansi red)]
       [D A] => [(ansi yellow)]
+      [" " A] => [(ansi green)]
       [" " D] => [(ansi green)]
       [" " R] => [(ansi default_dimmed)]
       _ => {
@@ -50,7 +51,9 @@ def color-filename []: table -> table {
         }
       }
     }
-    | append [$row.file (ansi reset)]
+    | if $nu.is-terminal {
+      append [$row.file (ansi reset)]
+    } else { $row.file }
     | str join
   }
 }
