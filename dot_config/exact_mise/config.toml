@@ -99,13 +99,15 @@ FZF_DEFAULT_OPTS = """\
 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4 \
 --bind=ctrl-a:toggle-all,tab:toggle-out,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down \
 """
-VISUAL = "nvim"
-XDG_CACHE_HOME = "{{ xdg_cache_home }}"
-XDG_CONFIG_HOME = "{{ xdg_config_home }}"
-XDG_DATA_HOME = "{{ xdg_data_home }}"
-XDG_STATE_HOME = "{{ xdg_state_home }}"
-_.file = "~/.config/mise/env.sops.yaml"
-_.path = ["/run/current-system/sw/bin"]
+  NH_FLAKE = "{{ exec(command=`zsh -c 'echo $NH_FLAKE'`) }}"
+  NIX_PATH = "{{ exec (command=`zsh -c 'echo $NIX_PATH'`) }}"
+  VISUAL = "nvim"
+  XDG_CACHE_HOME = "{{ xdg_cache_home }}"
+  XDG_CONFIG_HOME = "{{ xdg_config_home }}"
+  XDG_DATA_HOME = "{{ xdg_data_home }}"
+  XDG_STATE_HOME = "{{ xdg_state_home }}"
+  _.file = "~/.config/mise/env.sops.yaml"
+  _.path = ["/run/current-system/sw/bin"]
 
 [alias]
 macchina = "cargo:macchina"
