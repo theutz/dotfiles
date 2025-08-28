@@ -104,7 +104,7 @@ pages:
           - type: repository
             title: Main Repo
             repository: delegator/hubspot-playcore
-            token: {{ include "github_token" | decrypt }}
+            token: {{ joinPath .chezmoi.sourcePath "dot_config" "glance" "github_token" | include | decrypt }}
           - type: custom-api
             title: Plants
             url: https://pchdb.playcore.com/plants
