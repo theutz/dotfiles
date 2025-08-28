@@ -1,4 +1,0 @@
-["git-aliases.nu"]
-type = "file"
-refreshPeriod = "168h"
-url = "https://github.com/KamilKleina/git-aliases.nu/raw/refs/heads/main/git-aliases.nu"

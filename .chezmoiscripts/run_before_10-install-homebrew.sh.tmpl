@@ -1,0 +1,16 @@
+{{- .nushell.shebang }}
+
+if (which brew | is-empty) {
+  run-external curl "-fsSL" https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+  | run-external /bin/bash "-c" $in
+}
+
+if (which pueue | is-empty) {
+  brew bundle --global --no-upgrade
+} else {
+  pueue add brew bundle --global --no-upgrade
+}
+
+# if ! command -v brew >/dev/null; then
+#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# fi
