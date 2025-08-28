@@ -56,6 +56,8 @@ c.keys = {
 	{ key = "j", mods = "SUPER", action = a.ActivatePaneDirection("Down") },
 	{ key = "k", mods = "SUPER", action = a.ActivatePaneDirection("Up") },
 	{ key = "l", mods = "SUPER", action = a.ActivatePaneDirection("Right") },
+	{ key = "i", mods = "SUPER", action = a.ScrollToPrompt(-1) },
+	{ key = "I", mods = "SUPER|SHIFT", action = a.ScrollToPrompt(1) },
 	{ key = "n", mods = "SUPER", action = a.SpawnTab("CurrentPaneDomain") },
 	{ key = "N", mods = "SUPER|SHIFT", action = a.SpawnWindow },
 	{ key = "o", mods = "SUPER", action = a.RotatePanes("Clockwise") },
@@ -146,7 +148,14 @@ c.keys = {
 		}),
 	},
 }
+local copy_mode = nil
+if w.gui then
+  copy_mode = w.gui.default_key_tables().copy_mode
+  table.insert(copy_mode, { key = "p", mods = "CTRL", action = a.CopyMode 'MoveBackwardsSemanticZone' })
+  table.insert(copy_mode, { key = "n", mods = "CTRL", action = a.CopyMode 'MoveForwardsSemanticZone' })
+end
 c.key_tables = {
+  copy_mode = copy_mode
 	resize_pane = {
 		{ key = "H", mods = "SHIFT", action = a.AdjustPaneSize({ "Left", 1 }) },
 		{ key = "h", action = a.AdjustPaneSize({ "Left", 1 }) },
