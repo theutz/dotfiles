@@ -1,5 +1,6 @@
 pages:
-  - columns:
+  - name: Home
+    columns:
       - size: small
         widgets:
           - first-day-of-week: monday
@@ -64,8 +65,62 @@ pages:
               - immich-app/immich
               - syncthing/syncthing
             type: releases
-    name: Homeie
+  - name: Delegator
+    columns:
+      - size: full
+        widgets:
+          - type: monitor
+            title: Sites
+            style: compact
+            sites:
+              - title: SLTC
+                url: https://www.lineworker.com
+              - title: Impact Electronics
+                url: https://www.impactelectronics.com
+              - &monitor-playcore
+                title: PlayCore
+                url: https://www.playcore.com
+                allow-insecure: true
+  - name: PlayCore
+    columns:
+      - size: full
+        widgets:
+          - type: iframe
+            title: Home Page
+            source: https://www.playcore.com
+            height: 800
+      - size: small
+        widgets:
+          - type: monitor
+            title: Pages
+            sites:
+              - <<: *monitor-playcore
+                title: Home
+              - <<: *monitor-playcore
+                title: Contact
+                url: https://www.playcore.com/contact
+              - title: Funding
+                url: https://funding.playcore.com
+          - type: repository
+            title: Main Repo
+            repository: delegator/hubspot-playcore
+            token:
+          - type: custom-api
+            title: Plants
+            url: https://pchdb.playcore.com/plants
+            template: |
+              <div class="flex justify-evenly text-center">
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Int "total" | formatNumber }}</div>
+                  <div class="size-h6">plants</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Int "results.#" | formatNumber }}</div>
+                  <div class="size-h6">results</div>
+                </div>
+              </div>
 server:
+  host: glance.local
   port: 5143
 theme:
   disable-picker: false
