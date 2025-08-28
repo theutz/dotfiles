@@ -150,12 +150,12 @@ c.keys = {
 }
 local copy_mode = nil
 if w.gui then
-  copy_mode = w.gui.default_key_tables().copy_mode
-  table.insert(copy_mode, { key = "p", mods = "CTRL", action = a.CopyMode 'MoveBackwardsSemanticZone' })
-  table.insert(copy_mode, { key = "n", mods = "CTRL", action = a.CopyMode 'MoveForwardsSemanticZone' })
+	copy_mode = w.gui.default_key_tables().copy_mode
+	table.insert(copy_mode, { key = "p", mods = "CTRL", action = a.CopyMode("MoveBackwardSemanticZone") })
+	table.insert(copy_mode, { key = "n", mods = "CTRL", action = a.CopyMode("MoveForwardSemanticZone") })
 end
 c.key_tables = {
-  copy_mode = copy_mode
+	copy_mode = copy_mode,
 	resize_pane = {
 		{ key = "H", mods = "SHIFT", action = a.AdjustPaneSize({ "Left", 1 }) },
 		{ key = "h", action = a.AdjustPaneSize({ "Left", 1 }) },
