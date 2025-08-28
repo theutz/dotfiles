@@ -51,7 +51,7 @@ def color-filename []: table -> table {
         }
       }
     }
-    | if $nu.is-terminal {
+    | if $nu.is-interactive {
       append [$row.file (ansi reset)]
     } else { $row.file }
     | str join
