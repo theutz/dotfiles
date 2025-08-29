@@ -7,6 +7,7 @@ export def "chezmoi fuzzy" [
   | if ($args | is-not-empty) {
     append [$"--query='($args | str join " ")'"]
   } else { }
+  | tee { debug | print -e }
 
   chezmoi managed
   | run-external ...$cmd | complete
