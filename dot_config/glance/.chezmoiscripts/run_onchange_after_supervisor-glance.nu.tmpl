@@ -1,7 +1,0 @@
-{{- .nushell.shebang }}
-{{/* vim: ft=nu.tmpl */}}
-
-{{- $src := joinPath .chezmoi.sourceDir "dot_config" "glance" "glance.ini.tmpl" }}
-# hash: {{ $src | include | sha256sum }}
-
-{{ .chezmoi.executable }} execute-template --file {{ $src }} --output /opt/homebrew/etc/supervisor.d/glance.ini

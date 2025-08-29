@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+{{ $src := joinPath .xdg.configDir "glance" "glance.ini" -}}
+# hash: {{ $src | include | sha256sum }}
+
+ln -sf "{{ $src }}" /opt/homebrew/etc/supervisor.d/glance.ini
+{{ if not (lookPath "supervisorctl") }}
+{{ if eq .chezmoi.os "darwin" }}
+brew install supervisor
+brew bundle --global dump --force
+{{ end }}
+{{ end }}
+
+{{- /* vim: ft=tmpl.bash
+*/ -}}
