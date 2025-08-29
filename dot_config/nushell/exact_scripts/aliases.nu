@@ -22,8 +22,18 @@ alias la = ls -la
 alias lg = lazygit
 alias ll = ls -l
 alias m = ~/.local/bin/mise
-alias mx = mise exec
+alias mX = mise exec
 alias pu = pueue
 alias sa = search-aliases
 alias sp = spotify_player
 alias sup = supervisorctl
+
+# Execute a program with mise
+def mx [
+  --package (-p): string # Optionally, the name of the package
+  program: string # The name of the package and program to run
+  ...args: string # Any additional args
+] {
+  if ($package | is-empty) { $program } else { $package }
+  | ^mise exec $in -- $in ...$args
+}
