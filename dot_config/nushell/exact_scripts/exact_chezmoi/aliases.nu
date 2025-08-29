@@ -117,3 +117,5 @@ export alias cms = chezmoi stat
 export alias cmsp = chezmoi source-path
 export alias cmst = chezmoi status
 export alias cmtp = chezmoi target-path
+export alias cmup = chezmoi update --init
+export alias cmupa = chezmoi update --init --apply
