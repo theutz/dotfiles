@@ -1,3 +1,6 @@
+server:
+  host: {{ .glance.domain }}
+  port: {{ .glance.port }}
 pages:
   - name: Home
     columns:
@@ -123,9 +126,6 @@ pages:
                   <div class="size-h6">results</div>
                 </div>
               </div>
-server:
-  host: glance.local
-  port: 5143
 theme:
   disable-picker: false
   presets:
