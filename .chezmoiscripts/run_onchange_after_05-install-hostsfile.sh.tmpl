@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+{{- /* vim: ft=tmpl.bash */}}
+
+{{- $path := "" }}
+{{- if eq .chezmoi.hostname "kocaeli" }}
+{{- $path = joinPath .xdg.cacheDir "chezmoi" "hosts-darwin" }}
+{{- end }}
+
+# hosts hash: {{ $path | include | sha256sum }}
+
+{{ if ne $path "" -}}
+sudo {{.chezmoi.executable}} execute-template \
+  --file {{ $path }} \
+  --output /etc/hosts
+{{- end -}}
