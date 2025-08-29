@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# vim: ft=bash.tmpl
+
+{{ $base := joinPath (.chezmoi.configFile | dir) "keys" -}}
+
+{{ $personal := (dict
+  "path" (joinPath $base "personal.txt")
+  "account" "michael@theutz.com"
+  "url" "op://Private/plrhs2knixqwasquy2ixo7cwma/private_key.txt"
+) -}}
+
+{{ $delegator := (dict
+    "path" (joinPath $base "delegator.txt")
+    "account" "mike.u@delegator.com"
+    "url" "op://Employee/a7tx2egayr73jcbfijhl2x4oze/key.txt"
+) -}}
+
+mkdir -p {{ $base }}
+
+{{ range $_, $item := (list $personal $delegator) -}}
+  {{- if lstat $item.path -}}
+    echo "key already exists at {{ $item.path }}"
+  {{- else -}}
+    chezmoi execute-template \
+      '{{ "{{" }} onepasswordRead "{{ $item.url }}" "{{ $item.account }}" {{ "}}" }}' \
+      --output "{{ $item.path }}"
+  {{- end }}
+{{ end -}}

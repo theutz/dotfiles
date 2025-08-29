@@ -2,6 +2,7 @@
   experimental = true
 
 [tools]
+1password-cli = "latest"
   age                                         = "latest"
   aichat                                      = "latest"
   aqua                                        = "latest"
