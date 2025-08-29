@@ -1,18 +1,16 @@
-# vim: ft=sh.tmpl fdm=marker fdl=1 fmr=\ »»»,\ «««
+# vim: ft=sh.tmpl
 
-# Secrets »»»
+# Secrets
 if [[ -f "${ZDOTDIR:-$HOME}"/.zsecrets ]]; then
   source "${ZDOTDIR:-$HOME}"/.zsecrets
 fi
-#  «««
 
-# Browser »»»
+# Browser
 if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
-#  «««
 
-# Editors »»»
+# Editors
 if [[ -z "$EDITOR" ]]; then
   export EDITOR='nvim'
 fi
@@ -21,7 +19,6 @@ if [[ -z "$VISUAL" ]]; then
   export VISUAL='nvim'
 fi
 HOMEBREW_EDITOR=vim
-#  «««
 
 # Pagers
 if [[ -z "$PAGER" ]]; then
@@ -32,11 +29,12 @@ export MANWIDTH='999'
 export BAT_PAGER='less'
 export DELTA_PAGER='less'
 
-# Language »»»
+# Language
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
-#  «««# Paths »»»
+
+# Paths
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -53,10 +51,12 @@ path=(
   $path
 )
 
+{{- if eq .chezmoi.os "darwin" }}
 # Python
 if (( $+commands[python3] )); then
   path=("$(brew --prefix)"/opt/python@3.12/libexec/bin $path)
 fi
+{{- end }}
 
 # Neovim
 if (( $+commands[bob] )); then
@@ -90,9 +90,8 @@ fpath=(
   /opt/homebrew/share/zsh/site-functions
   $fpath
 )
-#  «««
 
-# Less »»»
+# Less
 
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
@@ -107,11 +106,9 @@ fi
 if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
-#  «««
 
-# Rust »»»
-. "$HOME/.cargo/env"
-#  «««
+# Rust
+[[ -d "$HOME/.cargo" && -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 # tmux
 TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux"
