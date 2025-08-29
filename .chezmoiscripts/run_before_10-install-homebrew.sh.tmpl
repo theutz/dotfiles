@@ -2,6 +2,11 @@
 
 # brewfile hash: {{ joinPath .chezmoi.sourceDir "dot_config" "homebrew" "Brewfile" | include | sha256sum }}
 
+{{ if ne .chezmoi.os "darwin" }}
+echo "Not installing homebrew unless we're on a mac"
+exit 0
+{{ end }}
+
 {{ if lookPath "brew" | not -}}
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 {{- end -}}
