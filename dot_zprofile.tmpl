@@ -74,10 +74,12 @@ if (( $+commands[composer] )); then
   path=("$XDG_CONFIG_HOME"/composer/vendor/bin $path)
 fi
 
+{{ if eq .chezmoi.os "darwin" }}
 # Ruby
 if [[ -x "$(brew --prefix)/opt/ruby/bin/ruby" ]]; then
   path=("$(brew --prefix)/opt/ruby/bin" $path)
 fi
+{{ end }}
 
 path=(
   $HOME/.local/bin
