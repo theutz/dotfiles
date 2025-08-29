@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# vim: ft=bash.tmpl
+
+chezmoi execute-template \
+  '{{ onepasswordRead
+      "op://Employee/a7tx2egayr73jcbfijhl2x4oze/key.txt"
+      "mike.u@delegator.com" }}' \
+  --output "{{ joinPath .chezmoi.configDir "keys" "delegator.txt" }}"
+
+chezmoi execute-template \
+  '{{ onepasswordRead 
+      "op://Private/plrhs2knixqwasquy2ixo7cwma/private_key.txt"
+      "michael@theutz.com" }}' \
+  --output "{{ joinPath .chezmoi.configDir "keys" "personal.txt" }}"
