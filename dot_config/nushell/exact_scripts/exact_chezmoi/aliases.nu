@@ -1,13 +1,15 @@
 use stat.nu
 
+# Use FZF to search for managed files
 export def "chezmoi fuzzy" [
+  --debug (-d) # Enable debug logging
   ...args: string
 ] {
   let cmd = [fzf --multi]
   | if ($args | is-not-empty) {
     append [$"--query=($args | str join ' ')"]
   } else { }
-  | tee { debug | print -e }
+  | tee { if ($debug) { debug | print -e } }
 
   chezmoi managed
   | run-external ...$cmd | complete
