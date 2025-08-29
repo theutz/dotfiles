@@ -7,8 +7,14 @@ sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
 recipient = "FD235DFD"
 
 [age]
-identities = ["{{ joinPath .xdg.configDir "chezmoi" "key.txt" }}"]
-recipients = "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa"
+identities = [
+  '{{ joinPath .xdg.configDir "chezmoi" "key.txt" }}',
+  '{{ joinPath .xdg.configDir "chezmoi" "keys" "delegator.txt" }}'
+]
+recipients = [
+  "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa",
+  "age12kvky80hkmhhftqxwhytkte6vfus7yy9n2uay3kt3zs7yp9pt4rsf6q2qp"
+]
 
 [git]
 autoAdd = true
