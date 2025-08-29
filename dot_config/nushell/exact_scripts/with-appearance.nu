@@ -5,7 +5,11 @@ export def main [
   dark: closure # Block to run when in light mode
   ...args # Pass any remaining args to the closure
 ]: nothing -> any {
-  run-external dark-mode status | str trim
+  if (which dark-mode | is-empty) {
+    "on"
+  } else {
+    ^dark-mode status | str trim
+  }
   | match $in {
     on => $dark
     off => $light

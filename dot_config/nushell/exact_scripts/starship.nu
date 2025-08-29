@@ -79,18 +79,8 @@ export def render []: nothing -> nothing {
 # Based on the current system appearance, output the path
 # to be used for $env.STARSHIP_CONFIG
 export def config-path []: nothing -> path {
-  run-external dark-mode status
-  | complete | get stdout | str trim
-  | match $in {
-    on => (dark-path)
-    off => (light-path)
-    _ => {
-      error make {
-        msg: "Unknown appearance"
-        label: { text: "This value", span: (metadata $in).span }
-      }
-    }
-  }
+  use with-appearance.nu
+  with-appearance { light-path } { dark-path }
 }
 
 # Set the starship config path based on current system appearance.
