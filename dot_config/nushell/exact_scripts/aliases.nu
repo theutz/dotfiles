@@ -1,4 +1,10 @@
 # search for aliases in scope by name
+@example "search for an alias starting with 'm'" {
+  sa ^m
+}
+@example "search for an alias with the word 'mise' in it" {
+  sa -a mise
+}
 def search-aliases [
   --all (-a) # Search in all fields, not just name
   term: string # The term to search for
