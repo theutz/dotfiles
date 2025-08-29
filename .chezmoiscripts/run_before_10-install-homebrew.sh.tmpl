@@ -1,17 +1,13 @@
-{{- .nushell.shebang }}
+#!/usr/bin/env bash
 
-if (which brew | is-empty) {
-  run-external curl "-fsSL" https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-  | run-external /bin/bash "-c" $in
-  error make { msg: "Probably need to restart your terminal to enjoy this" }
-}
+# brewfile hash: {{ joinPath .chezmoi.sourceDir "dot_config" "homebrew" "Brewfile" | include | sha256sum }}
 
-if (which pueue | is-empty) {
-  brew bundle --global --no-upgrade
-} else {
-  pueue add brew bundle --global --no-upgrade
-}
+{{ if lookPath "brew" | not -}}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+{{- end -}}
 
-# if ! command -v brew >/dev/null; then
-#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# fi
+{{ if lookPath "pueue" -}}
+pueue add brew bundle --global --no-upgrade
+{{ else -}}
+brew bundle --global --no-upgrade
+{{ end -}}

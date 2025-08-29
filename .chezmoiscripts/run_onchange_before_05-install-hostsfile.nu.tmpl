@@ -1,0 +1,8 @@
+{{- .nushell.shebang }}
+
+{{ $tmpl := joinPath .chezmoi.sourceDir ".chezmoitemplates" "hosts-darwin.tmpl" -}}
+# hosts hash: {{ $tmpl | includeTemplate | sha256sum }}
+
+{{ if eq .chezmoi.hostname "kocaeli" -}}
+sudo {{ .chezmoi.executable }} execute-template --file {{ joinPath .chezmoi.sourceDir ".chezmoitemplates" "hosts-darwin.tmpl" }} --output /etc/hosts
+{{- end -}}
