@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-{{/* vim: ft=zsh.tmpl */}}
-
-# rc hash: {{ include (joinPath .xdg.configDir "sketchybar" "sketchybarrc") | sha256sum -}}
-{{ range $_, $file := (glob (joinPath .xdg.configDir "sketchybar" "plugins" "*")) }}
-# {{ (base $file) }} plugin hash: {{ include $file | sha256sum -}}
-{{ end }}
-
-/opt/homebrew/bin/brew services restart sketchybar

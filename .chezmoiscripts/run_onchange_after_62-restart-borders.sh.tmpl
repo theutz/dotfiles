@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# vim: ft=bash.tmpl
+
+{{ $rc := joinPath .xdg.configDir "borders" "bordersrc" -}}
+# {{ $rc }} hash: {{ $rc | include | sha256sum }}
+
+{{ if eq .chezmoi.os "darwin" -}}
+brew services restart borders
+{{ end -}}

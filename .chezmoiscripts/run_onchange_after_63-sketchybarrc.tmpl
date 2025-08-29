@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+{{- /* vim: ft=zsh.tmpl
+*/ -}}
+
+{{- $base := joinPath .xdg.configDir "sketchybar" -}}
+{{- $plugins := joinPath $base "plugins" "*" | glob }}
+{{- $files := joinPath $base "sketchybarrc" | prepend $plugins }}
+{{ range $_, $file := $files }}
+# {{ $file }} hash: {{ $file | include | sha256sum -}}
+{{ end }}
+
+{{ if ne .chezmoi.os "darwin" }}
+brew services restart sketchybar
+{{ end }}

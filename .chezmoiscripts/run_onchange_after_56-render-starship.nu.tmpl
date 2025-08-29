@@ -1,0 +1,13 @@
+{{- .nushell.shebang }}
+# vim: ft=nu.tmpl
+
+{{ range $_, $file := (list
+  (joinPath .xdg.configDir "starship" "base.toml")
+  (joinPath .xdg.configDir "starship" "palettes.toml")
+  (joinPath .nushell.libDir "starship.nu")
+)}}
+# {{ $file }} hash: {{ $file | include | sha256sum }}
+{{ end }}
+
+use starship.nu
+starship render

@@ -1,5 +1,0 @@
-{{- .nushell.shebang }}
-
-# bordersrc hash: {{ include (joinPath .xdg.configDir "borders" "bordersrc") | sha256sum }}
-
-/opt/homebrew/bin/brew services restart borders
