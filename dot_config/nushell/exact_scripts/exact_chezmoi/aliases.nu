@@ -21,10 +21,16 @@ export def --wrapped "chezmoi fuzzy" [
   exec nu
 }
 
+export def --wrapped "chezmoi status-apply" [...args] {
+  use stat.nu
+  stat ...$args
+  chezmoi apply --init --interactive ...$args
+}
+
 export alias chezomi = chezmoi
 export alias cm = ^chezmoi
 export alias cmad = cm add
-export alias cmap = cm apply --init --interactive
+export alias cmap = chezmoi status-apply
 export alias cmca = cm cat
 export alias cmcc = cm cat-config
 export alias cmcd = cm cd
