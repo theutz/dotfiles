@@ -87,6 +87,6 @@ libDir = "{{ $nu.libDir }}"
 exe = "{{ $nu.exe }}"
 shebang = "#!/usr/bin/env -S {{ $nu.exe }}"
 
-# [status]
-# exclude = ["scripts"]
-
+[data.glance]
+domain = "glance.local"
+port = "5143"
