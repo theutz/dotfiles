@@ -1,0 +1,12 @@
+server {
+  listen 127.0.0.1:80;
+  server_name {{ .glance.domain }};
+
+  location / {
+    proxy_pass http://127.0.0.1:{{ .glance.port }}/;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header Host $host;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "Upgrade";
+  }
+}
