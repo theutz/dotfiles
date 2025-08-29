@@ -1,15 +1,5 @@
-# vim: ft=sh.tmpl fdm=marker fdl=1 fmr=\ »»»,\ «««
+# vim: ft=sh.tmpl
 
-{{ $brew := "" }}
-{{ if eq .chezmoi.os "linux" }}
-{{ $brew = "/home/linuxbrew/.linuxbrew/bin/brew" }}
-{{ else }}
-{{ $brew = "/opt/homebrew/bin/brew" }}
+{{ if lookPath "brew" }}
+eval "$(brew shellenv)"
 {{ end }}
-# homebrew »»»
-eval "$({{ $brew }} shellenv)"
-#  «««
-
-# rust »»»
-. "$HOME/.cargo/env"
-#  «««
