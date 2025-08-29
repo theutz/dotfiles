@@ -1,5 +1,5 @@
 [mgr]
-show_hidden = true
+show_hidden = false
 
 [opener]
 visual = [{ run = '${VISUAL:-neovide} "$@"', orphan = true, for = "unix" }]

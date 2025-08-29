@@ -65,7 +65,6 @@
   "pipx:harlequin"                            = "latest"
   "pipx:httpie"                               = "latest"
   "pipx:linode-cli"                           = { version = "latest", uvx_args = '--with boto3' }
-  "pipx:open-interpreter"                     = "latest"
   "pipx:posting"                              = "latest"
   "pipx:rich-cli"                             = "latest"
   "pipx:terminal-colors"                      = "latest"
