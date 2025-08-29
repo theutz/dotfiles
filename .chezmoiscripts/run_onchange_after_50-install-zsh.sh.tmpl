@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+{{- /* # vim: ft=tmpl.bash
+*/ -}}
+
+{{- define "add-to-etc" -}}
+  {{- if not (include "/etc/shells" | contains .shell) -}}
+    echo "{{ .shell }}" | sudo tee -a /etc/shells
+  {{- end }}
+  sudo chsh -s "{{ .shell }}" "{{ .user }}"
+{{- end -}}
+
+{{ if eq .chezmoi.os "darwin" }}
+  {{ if not (output "which" "zsh" | contains "homebrew") -}}
+    brew install zsh
+  {{ end }}
+  {{ template "add-to-etc" (dict "shell" "/opt/homebrew/bin/zsh" "user" .chezmoi.username) }}
+{{ else if (eq .chezmoi.os "linux") }}
+  {{ if not (lookPath "zsh") }}
+    sudo apt install zsh -y
+  {{ end }}
+  {{ template "add-to-etc" (dict "shell" "/usr/bin/zsh" "user" .chezmoi.username) }}
+{{ end }}
