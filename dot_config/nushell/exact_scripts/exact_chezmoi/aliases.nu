@@ -5,7 +5,7 @@ export def "chezmoi fuzzy" [
 ] {
   let cmd = [fzf --multi]
   | if ($args | is-not-empty) {
-    append [$"--query=($args | str join `'`)"]
+    append [$"--query='($args | str join " ")'"]
   } else { }
 
   chezmoi managed
