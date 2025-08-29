@@ -70,6 +70,15 @@ export def --wrapped "chezmoi status-apply" [...args] {
   chezmoi apply --init --interactive ...$args
 }
 
+export def "chezmoi auto-commit" [] {
+  chezmoi git add -- -A | print -e
+  chezmoi generate git-commit-message
+  | chezmoi git commit -- -m $in
+  | print -e
+  chezmoi git pull | print -e
+  chezmoi git push | print -e
+}
+
 export alias chezomi = chezmoi
 export alias cm = ^chezmoi
 export alias cmad = chezmoi add
@@ -83,13 +92,18 @@ export alias cmdc = chezmoi decrypt
 export alias cmde = chezmoi destroy
 export alias cmdf = chezmoi diff
 export alias cmea = chezmoi edit --init --apply
-export alias cmec = chezomi encrypt
+export alias cmec = chezmoi encrypt
 export alias cmed = chezmoi edit --init
 export alias cmet = chezmoi execute-template
 export alias cmew = chezmoi edit --init --watch
 export alias cmfo = chezmoi forget
 export alias cmfz = chezmoi fuzzy
 export alias cmg = chezmoi git
+export alias cmgac = chezmoi auto-commit
+export alias cmgen = chezmoi generate
+export alias cmgencm = chezmoi generate git-commit-message
+export alias cmgfm = chezmoi git pull
+export alias cmgp = chezmoi git push
 export alias cmgs = chezmoi git status
 export alias cmin = chezmoi init
 export alias cmls = chezmoi managed
