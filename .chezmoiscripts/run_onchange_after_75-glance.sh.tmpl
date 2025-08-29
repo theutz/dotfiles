@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+{{ if ne .chezmoi.hostname "kocaeli" }}
+echo "not installing personal glance here"
+exit 0
+{{ end }}
+
 {{ $src := joinPath .xdg.configDir "glance" "glance.ini" -}}
 {{ $nginx := joinPath .xdg.configDir "glance" "nginx.conf" -}}
 # ini hash: {{ $src | include | sha256sum }}
