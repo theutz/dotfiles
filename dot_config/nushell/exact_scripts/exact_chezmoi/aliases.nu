@@ -23,7 +23,7 @@ export def --wrapped "chezmoi fuzzy" [
 
 export def --wrapped "chezmoi status-apply" [...args] {
   use stat.nu
-  stat ...$args
+  stat ...$args | print -e
   chezmoi apply --init --interactive ...$args
 }
 
