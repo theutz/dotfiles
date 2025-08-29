@@ -1,7 +1,7 @@
 # search for aliases in scope by name
 def search-aliases [
   --all (-a) # Search in all fields, not just name
-  term: string
+  term: string # The term to search for
 ]: nothing -> table<name: string expansion: string description: string> {
   scope aliases
   | if ($all) {
