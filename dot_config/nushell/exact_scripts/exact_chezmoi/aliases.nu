@@ -1,15 +1,14 @@
 use stat.nu
 
-export def --wrapped "chezmoi fuzzy" [
-  --query (-q): string
-  ...args
+export def "chezmoi fuzzy" [
+  ...args: list<string>
 ] {
   let cmd = [fzf --multi]
-  | if ($query | is-not-empty) {
-    append [$"--query=($query)"]
+  | if ($args | is-not-empty) {
+    append [$"--query=($args | str join `'`)"]
   } else { }
 
-  chezmoi managed ...$args
+  chezmoi managed
   | run-external ...$cmd | complete
   | if $in.exit_code > 0 {
     error make { msg: "fzf finished with non-zero exit code" }
