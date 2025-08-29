@@ -9,6 +9,6 @@
 # {{ $file }} hash: {{ $file | include | sha256sum -}}
 {{ end }}
 
-{{ if ne .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 brew services restart sketchybar
 {{ end }}
