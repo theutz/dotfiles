@@ -1,7 +1,7 @@
 use stat.nu
 
 export def "chezmoi fuzzy" [
-  ...args: list<string>
+  ...args: string
 ] {
   let cmd = [fzf --multi]
   | if ($args | is-not-empty) {
