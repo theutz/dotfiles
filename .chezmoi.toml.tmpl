@@ -7,7 +7,7 @@ sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
 recipient = "FD235DFD"
 
 [age]
-identity = "~/.config/chezmoi/key.txt"
+identity = ["{{ joinPath .xdg.configDir 'chezmoi' 'key.txt' "]
 recipient = "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa"
 
 [git]
