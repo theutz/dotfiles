@@ -34,7 +34,6 @@ source ($nu.data-dir | path join zoxide.nu)
 source yazi.nu
 
 # Setup chezmoi
-use chezmoi
 use chezmoi/externals.nu *
 use chezmoi/aliases.nu *
 
