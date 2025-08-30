@@ -1,0 +1,12 @@
+#!/usr/bin/env -S mise exec aqua:charmbracelet/gum@latest -- bash
+# vim: ft=bash.toml
+
+# {{ $path := joinPath .xdg.configDir "yazi" "package.toml" }}{{ $path }} hash: {{ $path | include | sha256sum }}
+
+if ! command -v ya &>/dev/null; then
+  gum log --level error "Yazi package manager not found"
+  gum log --level fatal Exiting...
+fi
+
+ya pkg install
+
