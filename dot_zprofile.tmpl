@@ -1,5 +1,10 @@
 # vim: ft=sh.tmpl
 
+# Source shared profile between zsh && bash
+if [[ -r "${HOME}"/.profile ]]; then
+  source "${HOME}/.profile"
+fi
+
 # Secrets
 if [[ -f "${ZDOTDIR:-$HOME}"/.zsecrets ]]; then
   source "${ZDOTDIR:-$HOME}"/.zsecrets
