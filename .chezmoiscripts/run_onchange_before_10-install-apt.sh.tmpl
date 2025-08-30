@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+# vim: ft=sh.tmpl
+
+{{ if ne .chezmoi.os "linux" }}
+>&2 echo "Non-linux system. Not installing with apt"
+exit 0
+{{ end }}
+
+{{ if not (lookPath "apt") }}
+>&2 echo "apt package manager not found"
+exit 0
+{{ end }}
+
+sudo apt update &&
+  sudo apt upgrade -y &&
+  sudo apt install -y \
+  gcc \
+  zsh \
+  bash
