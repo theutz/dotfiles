@@ -23,9 +23,6 @@ pages:
           - type: search
             search-engine: kagi
             bangs:
-              - title: Noogle
-                shortcut: "!noogle"
-                url: https://noogle.dev/q?term={QUERY}
               - title: Simple Icons
                 shortcut: "!si"
                 url: https://simpleicons.org/?q={QUERY}
@@ -35,6 +32,9 @@ pages:
               - title: Material Design Icons
                 shortcut: "!mdi"
                 url: https://pictogrammers.com/library/mdi/?q={QUERY}
+              - title: Noogle
+                shortcut: "!noogle"
+                url: https://noogle.dev/q?term={QUERY}
           - type: clock
             hour-format: 24h
             timezones:
@@ -51,20 +51,6 @@ pages:
           - type: bookmarks
             name: Links
             groups:
-              - title: Nix
-                links:
-                  - title: Searchix
-                    url: https://searchix.ovh
-                    icon: si:nixos
-                  - title: Noogle
-                    url: https://noogle.dev
-                    icon: si:nixos
-                  - title: NixOS Manual
-                    url: https://nixos.org/manual/nixos/stable
-                    icon: si:nixos
-                  - title: Home Manager Manual
-                    url: https://nix-community.github.io/home-manager/
-                    icon: si:nixos
               - title: Glance
                 links:
                   - title: Glance Config
@@ -96,6 +82,20 @@ pages:
                   - title: Tasks
                     url: https://mise.jdx.dev/tasks/
                     icon: *mise-icon
+              - title: Nix
+                links:
+                  - title: Searchix
+                    url: https://searchix.ovh
+                    icon: si:nixos
+                  - title: Noogle
+                    url: https://noogle.dev
+                    icon: si:nixos
+                  - title: NixOS Manual
+                    url: https://nixos.org/manual/nixos/stable
+                    icon: si:nixos
+                  - title: Home Manager Manual
+                    url: https://nix-community.github.io/home-manager/
+                    icon: si:nixos
           - type: releases
             cache: 1h
             show-source-icon: true
