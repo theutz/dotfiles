@@ -1,3 +1,9 @@
+# Setup XDG
+$env.XDG_CONFIG_HOME = $env.XDG_CONFIG_HOME? | default ($env.HOME | path join .config)
+$env.XDG_DATA_HOME = $env.XDG_DATA_HOME? | default ($env.HOME | path join .local share)
+$env.XDG_STATE_HOME = $env.XDG_STATE_HOME? | default ($env.HOME | path join .local state)
+$env.XDG_CACHE_HOME = $env.XDG_CACHE_HOME? | default ($env.HOME | path join .cache)
+
 # Setup Nushell Plugins
 const NU_PLUGIN_DIRS = [
   ($nu.current-exe | path dirname)

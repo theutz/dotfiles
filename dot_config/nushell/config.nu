@@ -8,7 +8,6 @@ $env.PROMPT_INDICATOR_VI_NORMAL = $"(ansi magenta)  (ansi reset)"
 $env.PROMPT_INDICATOR_VI_INSERT = $"(ansi green)  (ansi reset)"
 
 # Load plugins
-plugin use emoji
 plugin use gstat
 plugin use query
 
