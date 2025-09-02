@@ -1,156 +1,115 @@
+# vim: ft=yaml.tmpl
 server:
   host: {{ .glance.domain }}
   port: {{ .glance.port }}
 pages:
   - name: Home
+    head-widgets:
+      - type: markets
+        markets:
+          - name: USD / TRY
+            symbol: USDTRY=X
+          - name: EUR / TRY
+            symbol: EURTRY=X
+          - name: USD / EUR
+            symbol: USDEUR=X
+          - name: Dow Jones
+            symbol: DJIA
+          - name: S&P 500
+            symbol: SPY
     columns:
       - size: small
         widgets:
+          - type: search
+            search-engine: kagi
+            bangs:
+              - title: Noogle
+                shortcut: "!noogle"
+                url: https://noogle.dev/q?term={QUERY}
+              - title: Simple Icons
+                shortcut: "!si"
+                url: https://simpleicons.org/?q={QUERY}
+              - title: Dashboard Icons
+                shortcut: "!di"
+                url: https://dashboardicons.com/icons?q={QUERY}
+              - title: Material Design Icons
+                shortcut: "!mdi"
+                url: https://pictogrammers.com/library/mdi/?q={QUERY}
+          - type: clock
+            hour-format: 24h
+            timezones:
+              - timezone: America/New_York
+                label: Chattannooga
+              - timezone: America/Chicago
+                label: Dallas
+              - timezone: America/Los_Angeles
+                label: Seattle
           - first-day-of-week: monday
             type: calendar
-          - cache: 12h
-            collapse-after: 3
-            feeds:
-              - limit: 4
-                title: selfh.st
-                url: https://selfh.st/rss/
-              - url: https://ciechanow.ski/atom.xml
-              - title: Josh Comeau
-                url: https://www.joshwcomeau.com/rss.xml
-              - url: https://samwho.dev/rss.xml
-              - title: Ahmad Shadeed
-                url: https://ishadeed.com/feed.xml
-            limit: 10
-            type: rss
       - size: full
         widgets:
-          - type: group
-            widgets:
-              - type: hacker-news
-              - type: lobsters
-          - channels:
-              - UCXuqSBlHAE6Xw-yeJA0Tunw
-              - UCR-DXc1voovS8nhAvccRZhg
-              - UCsBjURrPoezykLs9EqgamOA
-              - UCBJycsmduvYEL83R_U4JriQ
-              - UCHnyfMqiRRG1u-2MsSQLbXA
-            type: videos
-          - type: group
-            widgets:
-              - show-thumbnails: true
-                subreddit: technology
-                type: reddit
-              - show-thumbnails: true
-                subreddit: selfhosted
-                type: reddit
+          - type: bookmarks
+            name: Links
+            groups:
+              - title: Nix
+                links:
+                  - title: Searchix
+                    url: https://searchix.ovh
+                    icon: si:nixos
+                  - title: Noogle
+                    url: https://noogle.dev
+                    icon: si:nixos
+                  - title: NixOS Manual
+                    url: https://nixos.org/manual/nixos/stable
+                    icon: si:nixos
+                  - title: Home Manager Manual
+                    url: https://nix-community.github.io/home-manager/
+                    icon: si:nixos
+              - title: Glance
+                links:
+                  - title: Glance Config
+                    url: https://github.com/glanceapp/glance/blob/main/docs/configuration.md
+                    icon: si:github
+                  - title: Simple Icons (si)
+                    url: https://simpleicons.org/
+                    icon: si:simpleicons
+                  - title: Material Design Icons (mdi)
+                    url: https://pictogrammers.com/library/mdi/
+                    icon: mdi:material-design
+                  - title: Dashboard Icons (di)
+                    url: https://dashboardicons.com/
+                    icon: di:homarr
+                  - title: Self-Hosted Dashboard Icons
+                    url: https://selfh.st/icons/
+                    icon: sh:selfh-st
+              - title: Mise
+                links:
+                  - title: Home
+                    url: https://mise.jdx.dev/
+                    icon: &mise-icon mdi:silverware-fork-knife
+                  - title: Tools
+                    url: https://mise.jdx.dev/dev-tools/
+                    icon: *mise-icon
+                  - title: Environments
+                    url: https://mise.jdx.dev/environments/
+                    icon: *mise-icon
+                  - title: Tasks
+                    url: https://mise.jdx.dev/tasks/
+                    icon: *mise-icon
+          - type: releases
+            cache: 1h
+            show-source-icon: true
+            token: &github_token {{ joinPath .chezmoi.sourceDir "dot_config" "glance" "github_token" | include | decrypt }}
+            repositories:
+              - jdx/mise
+              - jdx/hk
+              - glanceapp/glance
       - size: small
         widgets:
-          - hour-format: 12h
-            location: London, United Kingdom
+          - hour-format: 24h
+            location: Golcuk, Turkiye
             type: weather
             units: metric
-          - markets:
-              - name: Dow Jones
-                symbol: DJIA
-              - name: S&P 500
-                symbol: SPY
-              - name: EUR / TRY
-                symbol: EURTRY=X
-              - name: Apple
-                symbol: AAPL
-              - name: Microsoft
-                symbol: MSFT
-            type: markets
-          - cache: 1d
-            repositories:
-              - glanceapp/glance
-              - go-gitea/gitea
-              - immich-app/immich
-              - syncthing/syncthing
-            type: releases
-  - name: Delegator
-    columns:
-      - size: full
-        widgets:
-          - type: monitor
-            title: Sites
-            style: compact
-            sites:
-              - title: SLTC
-                url: https://www.lineworker.com
-              - title: Impact Electronics
-                url: https://www.impactelectronics.com
-              - &monitor-playcore
-                title: PlayCore
-                url: https://www.playcore.com
-                allow-insecure: true
-  - name: PlayCore
-    columns:
-      - size: full
-        widgets:
-          - type: iframe
-            title: Home Page
-            source: https://www.playcore.com
-            height: 800
-      - size: small
-        widgets:
-          - type: monitor
-            title: Pages
-            sites:
-              - <<: *monitor-playcore
-                title: Home
-              - <<: *monitor-playcore
-                title: Contact
-                url: https://www.playcore.com/contact
-              - title: Funding
-                url: https://funding.playcore.com
-          - type: repository
-            title: Main Repo
-            repository: delegator/hubspot-playcore
-            token: &github_token {{ joinPath .chezmoi.sourceDir "dot_config" "glance" "github_token" | include | decrypt }}
-          - type: repository
-            title: Funding tool
-            repository: delegator/funding-tool
-            token: &github_token {{ joinPath .chezmoi.sourceDir "dot_config" "glance" "github_token" | include | decrypt }}
-          - type: custom-api
-            title: Plants
-            url: https://pchdb.playcore.com/plants
-            template: |
-              <div class="flex justify-evenly text-center">
-                <div>
-                  <div class="color-highlight size-h3">{{"{{"}} .JSON.Int "total" | formatNumber {{"}}"}}</div>
-                  <div class="size-h6">plants</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{"{{"}} .JSON.Int "results.#" | formatNumber {{"}}"}}</div>
-                  <div class="size-h6">results</div>
-                </div>
-              </div>
+          - type: server-stats
 theme:
-  disable-picker: false
-  presets:
-    catppuccin-frappe:
-      background-color: 229 19 23
-      contrast-multiplier: 1.2
-      primary-color: 222 74 74
-      positive-color: 96 44 68
-      negative-color: 359 68 71
-    catppuccin-macchiato:
-      background-color: 232 23 18
-      contrast-multiplier: 1.2
-      primary-color: 220 83 75
-      positive-color: 105 48 72
-      negative-color: 351 74 73
-    catppuccin-mocha:
-      background-color: 240 21 15
-      contrast-multiplier: 1.2
-      primary-color: 217 92 83
-      positive-color: 115 54 76
-      negative-color: 347 70 65
-    catppuccin-latte:
-      light: true
-      background-color: 220 23 95
-      contrast-multiplier: 1.0
-      primary-color: 220 91 54
-      positive-color: 109 58 40
-      negative-color: 347 87 44
+  $include: theme.yml
