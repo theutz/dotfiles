@@ -1,3 +1,9 @@
+# Setup Nushell Plugins
+const NU_PLUGIN_DIRS = [
+  ($nu.current-exe | path dirname)
+  ...$NU_PLUGIN_DIRS
+]
+
 # Setup path variable
 $env.PATH = [
   ($env.HOME | path join bin)
