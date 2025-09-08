@@ -1,8 +1,9 @@
 return {
-  {
-    "jsongerber/thanks.nvim",
-    opts = {
-      plugin_manager = "lazy",
-    },
-  },
+	{
+		"jsongerber/thanks.nvim",
+		enabled = false,
+		opts = {
+			plugin_manager = "lazy",
+		},
+	},
 }
