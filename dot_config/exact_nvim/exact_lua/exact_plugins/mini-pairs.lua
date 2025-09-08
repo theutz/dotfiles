@@ -1,6 +1,6 @@
 return {
-  "echasnovski/mini.pairs",
-  opts = {
-    modes = { command = false },
-  },
+	"nvim-mini/mini.pairs",
+	opts = {
+		modes = { command = false },
+	},
 }

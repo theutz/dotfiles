@@ -1,6 +1,6 @@
 return {
-  "echasnovski/mini.splitjoin",
-  enabled = true,
-  version = "*",
-  config = true,
+	"nvim-mini/mini.splitjoin",
+	enabled = true,
+	version = "*",
+	config = true,
 }
