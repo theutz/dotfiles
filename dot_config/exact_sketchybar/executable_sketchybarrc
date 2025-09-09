@@ -1,4 +1,4 @@
-#!/usr/bin/env nu
+#!/usr/bin/env nu --stdin
 # vim: ft=nu.tmpl
 
 $env.PLUGIN_DIR = [$env.PWD plugins] | path join
