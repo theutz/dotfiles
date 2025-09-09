@@ -10,6 +10,7 @@ $env.PROMPT_INDICATOR_VI_INSERT = $"(ansi green)  (ansi reset)"
 # Load plugins
 plugin use gstat
 plugin use query
+plugin use formats
 
 # Setup appearance
 use with-appearance.nu
