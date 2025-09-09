@@ -16,9 +16,9 @@ return function(c, w)
 	c.bold_brightens_ansi_colors = "BrightAndBold"
 	local function background_opacity_for_appearance(appearance)
 		if appearance:find("Dark") then
-			return 0.8
+			return 1.0
 		else
-			return 0.9
+			return 1.0
 		end
 	end
 	c.window_background_opacity = background_opacity_for_appearance(get_appearance())
@@ -30,7 +30,7 @@ return function(c, w)
 	c.text_background_opacity = 1.0
 	local function contrast_ratio_for_appearance(appearance)
 		if appearance:find("Dark") then
-			return 4.5
+			return 1.0
 		else
 			return 1.0
 		end
