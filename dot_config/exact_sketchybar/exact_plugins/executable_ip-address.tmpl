@@ -1,29 +1,23 @@
 {{- .nushell.shebang }}
 # vim: ft=nu
 
-let data = try {
-  http get --allow-errors https://browserleaks.com/ip
-  | query web --query 'table.wb tbody:first-of-type tr:has(> td + td) td:nth-child(2)'
-  | flatten
-  | get 0 2 6 7
-  | each {
-    str replace --regex r#' \(.*$'# ""
-  }
-  | rotate --ccw ip country state city
-  | into record
-} catch { null }
-
-let ip = $data.ip? | ""
-
-let location = $data
-| if ($in | is-not-empty) {
-  reject --optional ip state
-  | values
-  | reverse
-  | str trim
-  | str join ', '
-  | default ""
-} else { "" }
+# let data = try {
+#   http get --allow-errors https://browserleaks.com/ip
+#   | query web --query 'table.wb tbody:first-of-type tr:has(> td + td) td:nth-child(2)'
+#   | flatten
+#   | get 0 2 6 7
+#   | each {
+#     str replace --regex r#' \(.*$'# ""
+#   }
+#   | rotate --ccw ip country state city
+#   | into record
+# } catch { null }
+let data = http get https://am.i.mullvad.net
+| query web --query '.results p:nth-child(2)'
+| flatten
+| get 0
+| parse --regex r#'IP address: (?<ip>.*?), (?<location.*)'#
+| update cells { str trim }
 
 [
   --animate sin 10
@@ -37,7 +31,7 @@ let location = $data
     --set iplocation
     icon.highlight=off
     drawing=on
-    label=($location)
+    label=($data.location)
   ]
 } else {
   [
