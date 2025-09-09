@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 {{ $filename := "sketchybar.ini" -}}
-{{ $filepath := .xdg.configDir | joinPath "sketchybar" $filename -}}
+{{ $filepath := joinPath .xdg.configDir "sketchybar" $filename -}}
 # ini hash: {{ $filepath | include | sha256sum }}
 
-{{ if eq .os.arch "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 mkdir -p /opt/homebrew/etc/supervisor.d
 rm -rf /opt/homebrew/etc/supervisor.d/sketchybar.ini
 cp {{ $filepath }} /opt/homebrew/etc/supervisor.d/{{ $filename }}
