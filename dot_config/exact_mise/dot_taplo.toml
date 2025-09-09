@@ -1,5 +1,5 @@
 [formatting]
-align_entries  = false
+align_entries = false
 indent_entries = false
 indent_tables = false
 reorder_arrays = true
