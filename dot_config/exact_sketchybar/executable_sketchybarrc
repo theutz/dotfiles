@@ -1,6 +1,8 @@
 #!/usr/bin/env nu
 # vim: ft=nu.tmpl
 
+echo "boo"
+
 $env.PLUGIN_DIR = [$env.PWD plugins] | path join
 $env.FONT = "BlexMono Nerd Font Propo"
 use catppuccin.nu
