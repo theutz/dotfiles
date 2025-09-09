@@ -105,7 +105,7 @@ def "setup aerospace_modes" []: nothing -> list<string> {
   [
     --add event aerospace_mode_change
     --add item aerospace_mode left
-    --subscribe aerospace_mode left
+    --subscribe aerospace_mode
     --set aerospace_mode
     icon=
     update_freq=1

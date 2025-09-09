@@ -9,6 +9,7 @@ let data = http get https://am.i.mullvad.net
 | get 0
 | parse --regex r#'IP address: (?<ip>.*?), (?<location>.*)'#
 | update cells { str trim }
+| first
 
 [
   --animate sin 10
