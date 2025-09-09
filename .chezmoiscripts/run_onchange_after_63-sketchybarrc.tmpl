@@ -8,4 +8,6 @@
 mkdir -p /opt/homebrew/etc/supervisor.d
 rm -rf /opt/homebrew/etc/supervisor.d/sketchybar.ini
 cp {{ $filepath }} /opt/homebrew/etc/supervisor.d/{{ $filename }}
+supervisorctl reread
+supervisorctl update sketchybar
 {{ end }}
