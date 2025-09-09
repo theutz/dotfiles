@@ -7,7 +7,7 @@ let data = http get https://am.i.mullvad.net
 | query web --query '.results p:nth-child(2)'
 | flatten
 | get 0
-| parse --regex r#'IP address: (?<ip>.*?), (?<location.*)'#
+| parse --regex r#'IP address: (?<ip>.*?), (?<location>.*)'#
 | update cells { str trim }
 
 [
