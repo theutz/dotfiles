@@ -99,4 +99,5 @@ _.file = "~/.config/mise/env.sops.yaml"
 
 [alias]
 macchina = "cargo:macchina"
+nu = "aqua:nushell/nushell"
 nushell = "aqua:nushell/nushell"
