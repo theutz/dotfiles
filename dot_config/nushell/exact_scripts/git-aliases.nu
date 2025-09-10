@@ -37,7 +37,10 @@ export alias g = git
 # Branch (b)
 
 export def git-branch-create-ai [] {
-  git diff | mods -R branch --no-cache | str trim
+  git diff
+  | mods -R branch --no-cache err> (use std; std null-device)
+  | str trim
+  | git checkout -b $in
 }
 
 export alias gb = git branch
@@ -65,7 +68,7 @@ export def --wrapped git-commit-message-ai [
   ...args
 ] {
   git diff --cached
-  | mods -R commit --no-cache
+  | mods -R commit --no-cache err> (use std; std null-device)
   | str trim
   | git commit --message $in ...$args
 }
