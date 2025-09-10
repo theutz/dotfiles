@@ -36,10 +36,14 @@ export alias g = git
 
 # Branch (b)
 
+export def git-branch-create-ai [] {
+  git diff | mods -R branch --no-cache | str trim
+}
+
 export alias gb = git branch
 export alias gba = git branch --all --verbose
-export alias gbai = git diff | mods -R branch --no-cache | str trim
 export alias gbc = git checkout -b
+export alias gbcai = git-branch-create-ai
 export alias gbd = git branch --delete
 export alias gbD = git branch --delete --force
 export alias gbl = git branch --verbose
@@ -57,10 +61,19 @@ export alias gbX = git branch --delete --force
 
 # Commit (c)
 
+export def --wrapped git-commit-message-ai [
+  ...args
+] {
+  git diff --cached
+  | mods -R commit --no-cache
+  | str trim
+  | git commit --message $in ...$args
+}
+
 export alias gc = git commit --verbose
 export alias gcS = git commit --verbose --gpg-sign
 export alias gca = git commit --verbose --all
-export alias gcai = git diff --cached | mods -R commit --no-cache | str trim
+export alias gcai = git-commit-message-ai
 export alias gcaS = git commit --verbose --all --gpg-sign
 export alias gcm = git commit --message
 export alias gcmS = git commit --message --gpg-sign
