@@ -38,6 +38,7 @@ export alias g = git
 
 export alias gb = git branch
 export alias gba = git branch --all --verbose
+export alias gbai = git diff | mods -R branch --no-cache | str trim
 export alias gbc = git checkout -b
 export alias gbd = git branch --delete
 export alias gbD = git branch --delete --force
@@ -59,6 +60,7 @@ export alias gbX = git branch --delete --force
 export alias gc = git commit --verbose
 export alias gcS = git commit --verbose --gpg-sign
 export alias gca = git commit --verbose --all
+export alias gcai = git diff --cached | mods -R commit --no-cache | str trim
 export alias gcaS = git commit --verbose --all --gpg-sign
 export alias gcm = git commit --message
 export alias gcmS = git commit --message --gpg-sign
