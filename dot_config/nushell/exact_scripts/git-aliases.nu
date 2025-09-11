@@ -243,12 +243,10 @@ export alias gpa = git push --all
 export def gpA [] {
   git push --all; git push --tags
 }
-
 export alias gpt = git push --tags
 export def gpc [] {
   git push --set-upstream origin (git-branch-current)
 }
-
 export def gpp [] {
   let curr = git-branch-current
   git pull origin $curr
