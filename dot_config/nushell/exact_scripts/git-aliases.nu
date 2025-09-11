@@ -236,27 +236,24 @@ export alias gmt = git mergetool
 
 # Push (p)
 
-export def git-push-all-with-tags [] {
-  git push --all; git push --tags
-}
-
-export def git-push-set-upstream [] {
-  git push --set-upstream origin (git-branch-current)
-}
-
-export def git-pull-then-push [] {
-  git pull origin (git-branch-current)
-  git push origin (git-branch-current)
-}
-
 export alias gp = git push
 export alias gpf = git push --force-with-lease
 export alias gpF = git push --force
 export alias gpa = git push --all
-export alias gpA = git-push-all-with-tags
+export def gpA [] {
+  git push --all; git push --tags
+}
+
 export alias gpt = git push --tags
-export alias gpc = git-push-set-upstream
-export alias gpp = git-pull-then-push
+export def gpc [] {
+  git push --set-upstream origin (git-branch-current)
+}
+
+export def gpp [] {
+  let curr = git-branch-current
+  git pull origin $curr
+  git push origin $curr
+}
 
 # Rebase (r)
 
