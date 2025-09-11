@@ -1,0 +1,32 @@
+amends "package://github.com/jdx/hk/releases/download/v1.2.0/hk@1.2.0#/Config.pkl"
+
+hooks {
+  ["prepare-commit-msg"] {
+    steps {
+      ["render-commit-msg"] {
+        shell = "nu -c"
+        check = #"""
+          let file = "{{commit_msg_file}}"
+          let source = "{{ source }}"
+          match ($source) {
+            "" => {
+              git diff --cached
+              | ^mods --role prepare-commit-msg --no-cache --quiet
+              | str trim
+              | str trim --char "`"
+              | str trim
+              | [$in (open $file)]
+              | str join "\n"
+              | save --force $file
+            }
+            _ => {
+              print -e $"not generating commit message for source: ($source)"
+              exit
+            }
+          }
+        """#
+      }
+    }
+  } 
+}
+
