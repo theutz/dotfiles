@@ -1,5 +1,3 @@
-let file = "{{commit_msg_file}}"
-let source = "{{ source }}"
 def main [
   file: path
   source: string = ""
