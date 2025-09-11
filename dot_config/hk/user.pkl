@@ -4,8 +4,8 @@ hooks {
   ["prepare-commit-msg"] {
     steps {
       ["render-commit-msg"] {
-        check = let (file = read("./prepare-commit-msg.nu"))
-          #"nu \#(file.uri) "{{commit_msg_file}}" "{{source}}""#
+        check = let (file = read("./prepare-commit-msg.nu").uri)
+          #"nu \#(file) "{{commit_msg_file}}" "{{source}}""#
       }
     }
   } 
