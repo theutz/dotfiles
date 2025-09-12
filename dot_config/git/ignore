@@ -8,3 +8,5 @@ tinkeray.php
 result
 .mise.local.toml
 mise.local.toml
+nohup.out
+*.log
