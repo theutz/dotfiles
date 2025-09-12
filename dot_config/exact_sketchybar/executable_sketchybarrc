@@ -57,6 +57,7 @@ def "setup defaults" [] {
     --default
     alias.color=(icon color)
     alias.scale=0.9
+    alias.shadow.drawing=off
     background.color=(background color)
     background.corner_radius=6
     background.drawing=on
@@ -70,6 +71,7 @@ def "setup defaults" [] {
     icon.padding_left=(padding)
     icon.padding_right=(padding 0.5)
     icon.shadow.drawing=off
+    image.shadow.drawing=off
     label.color=(label color)
     label.font=($env.FONT):Normal:(font size)
     label.highlight_color=(label color --highlight)
@@ -81,6 +83,7 @@ def "setup defaults" [] {
     padding_left=(padding 0.5)
     padding_right=(padding 0.5)
     scroll_texts=on
+    text.shadow.drawing=off
   ]
 }
 
