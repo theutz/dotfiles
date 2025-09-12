@@ -6,6 +6,7 @@ echo "boo"
 $env.PLUGIN_DIR = [$env.PWD plugins] | path join
 $env.FONT = "BlexMono Nerd Font Propo"
 use catppuccin.nu
+use with-appearance.nu
 
 def clr [name: string, alpha: string = "FF"]: nothing -> string {
   catppuccin color $name --argb --alpha=$alpha
@@ -21,6 +22,11 @@ def "icon color" [
   if ($highlight) { clr yellow } else { clr sapphire }
 }
 
+def "icon alias color" [] {
+  with-appearance { "mauve" } { "lavender" }
+  | clr $in
+}
+
 def "label color" [
   --highlight (-h)
 ]: nothing -> string {
@@ -28,7 +34,6 @@ def "label color" [
 }
 
 def "background color" []: nothing -> string {
-  use with-appearance.nu
   with-appearance  { [base AA] } { [surface0 88] }
   | clr $in.0 ($in.1 | into string)
 }
@@ -55,8 +60,8 @@ def padding [multiplier: float = 1.0]: nothing -> int {
 def "setup defaults" [] {
   [
     --default
-    alias.color=(icon color)
-    alias.scale=0.9
+    alias.color=(icon alias color)
+    alias.scale=0.8
     alias.shadow.drawing=off
     background.color=(background color)
     background.corner_radius=6
@@ -71,7 +76,6 @@ def "setup defaults" [] {
     icon.padding_left=(padding)
     icon.padding_right=(padding 0.5)
     icon.shadow.drawing=off
-    image.shadow.drawing=off
     label.color=(label color)
     label.font=($env.FONT):Normal:(font size)
     label.highlight_color=(label color --highlight)
@@ -83,7 +87,6 @@ def "setup defaults" [] {
     padding_left=(padding 0.5)
     padding_right=(padding 0.5)
     scroll_texts=on
-    text.shadow.drawing=off
   ]
 }
 
