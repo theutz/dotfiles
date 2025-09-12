@@ -28,7 +28,9 @@ def "label color" [
 }
 
 def "background color" []: nothing -> string {
-  clr surface0 88
+  use with-appearance.nu
+  with-appearance  { echo text } { echo surface0 }
+  | clr $in 88
 }
 
 def "setup bar" [] {
