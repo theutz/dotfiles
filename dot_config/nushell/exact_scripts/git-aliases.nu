@@ -37,8 +37,9 @@ export alias g = git
 # Branch (b)
 
 export def git-branch-create-ai [] {
-  git diff
-  | mods -R branch --no-cache err> (use std; std null-device)
+  use std null-device
+  git diff HEAD origin/HEAD
+  | mods -R branch --no-cache --quiet --raw err> (null-device)
   | str trim
   | git checkout -b $in
 }
