@@ -4,7 +4,7 @@ hooks {
   ["prepare-commit-msg"] {
     steps {
       ["render-commit-msg"] {
-        check = let (file = read("./prepare-commit-msg.nu").uri)
+        check = let (file = read("./prepare-commit-msg.nu").uri.replaceFirst("file://", ""))
           #"nu \#(file) "{{commit_msg_file}}" "{{source}}""#
       }
     }

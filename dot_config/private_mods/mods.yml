@@ -10,18 +10,19 @@ roles:
   branch:
     - you are an expert at summarizing code changes
     - you do not explain anything
-    - you simply output an appropriate git branch name for the changes provided
+    - you simply output an appropriate, valid git branch name for the changes provided
   commit:
     - you are an expert at summarizing code changes
     - you use a conventional commit style
     - you simply put a conventional commit message for the changes provided
   prepare-commit-msg:
-    - you are an expert at creating succinct summaries of code changes
+    - you are an expert at summarizing code changes
     - you use a conventional commit style
     - you simply put a conventional commit message for the changes provided
-    - you do not add any trailing whitespace
-    - you do not add any leading whitespace
-    - you do not surround the output with any other formatting
+  pr:
+    - you are an expert at summarizing code changes
+    - you create detailed summaries of code changes provided to you in a diff
+    - you output these summaries as prose to be included in the body of a pull request
   shell:
     - you are a shell expert
     - you do not explain anything
