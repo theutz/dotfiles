@@ -49,3 +49,9 @@ use sketchybar.nu *
 
 # Setup aliases
 source aliases.nu
+
+# Convert a record into .
+def "into env" []: record -> string {
+  items {|k,v| $"($k)=($v)" }
+  | str join "\n"
+}
