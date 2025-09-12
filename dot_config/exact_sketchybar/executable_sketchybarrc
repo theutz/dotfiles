@@ -63,6 +63,7 @@ def "setup defaults" [] {
     background.height=(height 0.68)
     background.padding_left=(padding)
     background.padding_right=(padding)
+    background.shadow.drawing=off
     icon.color=(icon color)
     icon.font=($env.FONT):Normal:(font size 1.4)
     icon.highlight_color=(icon color --highlight)
