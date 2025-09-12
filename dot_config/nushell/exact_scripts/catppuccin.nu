@@ -45,10 +45,14 @@ def hex-to-argb [alpha: string]: string -> string {
   str replace "#" "" | $"($alpha)($in)" | str upcase | $"0x($in)"
 }
 
+def "complete modes" [] {
+  [light dark system]
+}
+
 # Get a color value from a palette
 export def color [
   color: string@"complete color names" # The color name to get
-  --mode (-m): string = system # Dark mode, light mode, or system mode
+  --mode (-m): string@"complete modes" = system # Dark mode, light mode, or system mode
   --alpha (-a): string # If using a format with alpha, use this value
   --argb (-o) # Print in 0xAARRGGBB format
 ]: nothing -> string {
@@ -59,7 +63,14 @@ export def color [
       use with-appearance.nu
       with-appearance { $env.CATPPUCCIN_LIGHT_THEME } { $env.CATPPUCCIN_DARK_THEME }
     }
-    _ => { error make {msg: $"Invalid mode: ($mode)" label: { text: "Value should be dark, light, or system", span: (metadata $mode).span }}}
+    _ => {
+      error make {
+        msg: $"Invalid mode: ($mode)"
+        label: {
+          text: $"Value should be one of: (complete modes | str join ', ')"
+          span: (metadata $mode).span }
+      }
+    }
   }
   | palette $in
   | where name == $color

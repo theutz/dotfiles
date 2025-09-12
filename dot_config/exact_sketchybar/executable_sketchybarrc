@@ -18,7 +18,7 @@ def "font size" [multiplier: float = 1.0]: nothing -> float {
 def "icon color" [
   --highlight (-h)
 ]: nothing -> string {
-  if ($highlight) { clr red } else { clr green }
+  if ($highlight) { clr yellow } else { clr sapphire }
 }
 
 def "label color" [
@@ -29,8 +29,8 @@ def "label color" [
 
 def "background color" []: nothing -> string {
   use with-appearance.nu
-  with-appearance  { echo text } { echo surface0 }
-  | clr $in 88
+  with-appearance  { [base AA] } { [surface0 88] }
+  | clr $in.0 ($in.1 | into string)
 }
 
 def "setup bar" [] {

@@ -1,12 +1,12 @@
 README.md
 CRUSH.md
-
 key.txt.age
 bin/chezmoi
 **/.zsh_history
 .config/nushell/history.txt
 .config/nushell/mise.nu
 .config/carapace/bridge
+**/*.log
 
 {{ if ne .chezmoi.os "darwin" }}
 Library/
