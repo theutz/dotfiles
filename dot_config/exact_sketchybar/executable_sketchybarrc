@@ -68,6 +68,7 @@ def "setup defaults" [] {
     icon.highlight_color=(icon color --highlight)
     icon.padding_left=(padding)
     icon.padding_right=(padding 0.5)
+    label.shadow.drawing=off
     label.color=(label color)
     label.font=($env.FONT):Normal:(font size)
     label.highlight_color=(label color --highlight)
@@ -75,6 +76,7 @@ def "setup defaults" [] {
     label.padding_left=(padding 0.5)
     label.padding_right=(padding)
     label.scroll_duration=100
+    label.shadow.drawing=off
     padding_left=(padding 0.5)
     padding_right=(padding 0.5)
     scroll_texts=on
