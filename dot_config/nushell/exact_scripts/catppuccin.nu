@@ -48,15 +48,27 @@ def hex-to-argb [alpha: string]: string -> string {
 # Get a color value from a palette
 export def color [
   color: string@"complete color names" # The color name to get
-  --alpha (-a): string = "ff" # If using a format with alpha, use this value
+  --mode (-m): string = system # Dark mode, light mode, or system mode
+  --alpha (-a): string # If using a format with alpha, use this value
   --argb (-o) # Print in 0xAARRGGBB format
 ]: nothing -> string {
-  use with-appearance.nu
-  with-appearance { $env.CATPPUCCIN_LIGHT_THEME } { $env.CATPPUCCIN_DARK_THEME }
+  match ($mode) {
+    dark => $env.CATPPUCCIN_DARK_THEME
+    light => $env.CATPPUCCIN_LIGHT_THEME
+    system => {
+      use with-appearance.nu
+      with-appearance { $env.CATPPUCCIN_LIGHT_THEME } { $env.CATPPUCCIN_DARK_THEME }
+    }
+    _ => { error make {msg: $"Invalid mode: ($mode)" label: { text: "Value should be dark, light, or system", span: (metadata $mode).span }}}
+  }
   | palette $in
   | where name == $color
   | get 0.color
-  | if ($argb) { hex-to-argb $alpha } else { $in }
+  | if ($argb) {
+    hex-to-argb ($alpha | default "FF")
+  } else {
+    $"($in)($alpha | default "")"
+  }
 }
 
 # Show colors for a theme
