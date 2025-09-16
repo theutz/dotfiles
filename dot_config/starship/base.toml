@@ -6,14 +6,14 @@ dark_palette = "catppuccin_mocha"
 style = "bold orange"
 
 [character]
-error_symbol = "[](bold red)"
+error_symbol = "[](bold maroon)"
 success_symbol = "[](bold sapphire)"
 
 [cmd_duration]
 style = "bold yellow"
 
 [directory]
-style = "bold green"
+style = "bold mauve"
 
 [git_branch]
 style = "bold pink"
@@ -34,7 +34,7 @@ bash_indicator = " "
 fish_indicator = "󰈺 "
 nu_indicator = "󰬕 "
 disabled = false
-style = "rosewater"
+style = "pink"
 
 [mise]
 disabled = true
