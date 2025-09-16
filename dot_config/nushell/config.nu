@@ -5,7 +5,7 @@ $env.config.use_kitty_protocol = true
 $env.config.render_right_prompt_on_last_line = false
 $env.config.history.max_size = 10000
 $env.PROMPT_INDICATOR_VI_NORMAL = $"(ansi magenta)  (ansi reset)"
-$env.PROMPT_INDICATOR_VI_INSERT = $"(ansi green)  (ansi reset)"
+$env.PROMPT_INDICATOR_VI_INSERT = $"(ansi blue)  (ansi reset)"
 
 # Load plugins
 plugin use gstat
