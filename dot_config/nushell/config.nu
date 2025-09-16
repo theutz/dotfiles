@@ -48,7 +48,16 @@ use brew.nu *
 use sketchybar.nu *
 
 # Setup aliases
-source aliases.nu
+const NU_ALIASES_FILENAME = "aliases.nu"
+source $NU_ALIASES_FILENAME
+
+# Edit general nu aliases.
+def "config aliases" [] {
+  $NU_LIB_DIRS
+  | first
+  | path join $NU_ALIASES_FILENAME
+  | ^chezmoi edit --apply $in
+}
 
 # Convert a record into .
 def "into env" []: record -> string {
