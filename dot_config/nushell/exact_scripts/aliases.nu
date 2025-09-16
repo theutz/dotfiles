@@ -29,3 +29,6 @@ alias pu = pueue
 alias sa = search-aliases
 alias sp = spotify_player
 alias sup = supervisorctl
+
+alias dk = docker
+alias dkc = docker compose
