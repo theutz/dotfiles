@@ -7,8 +7,8 @@ use {{ .nushell.libDir }}/catppuccin.nu
   style: round
   width: 8.0
   hidpi: on
-  active_color: (catppuccin color --argb green)
-  inactive_color: (catppuccin color --argb surface0)
+  active_color: (catppuccin color --argb mauve)
+  inactive_color: (catppuccin color --argb base --alpha 88)
 }
 | items {|k, v| [$k $v] | str join "="}
 | run-external borders ...$in
