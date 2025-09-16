@@ -5,6 +5,7 @@ return function(c, w)
 		end
 		return "Dark"
 	end
+
 	local function scheme_for_appearance(appearance)
 		if appearance:find("Dark") then
 			return "Catppuccin Mocha"
@@ -14,11 +15,12 @@ return function(c, w)
 	end
 	c.color_scheme = scheme_for_appearance(get_appearance())
 	c.bold_brightens_ansi_colors = "BrightAndBold"
+
 	local function background_opacity_for_appearance(appearance)
 		if appearance:find("Dark") then
-			return 1.0
+			return 0.9
 		else
-			return 1.0
+			return 0.9
 		end
 	end
 	c.window_background_opacity = background_opacity_for_appearance(get_appearance())
@@ -27,7 +29,8 @@ return function(c, w)
 		saturation = 0.9,
 		brightness = 0.8,
 	}
-	c.text_background_opacity = 1.0
+	c.text_background_opacity = 0.8
+
 	local function contrast_ratio_for_appearance(appearance)
 		if appearance:find("Dark") then
 			return 1.0
