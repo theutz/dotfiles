@@ -1,0 +1,15 @@
+#!/usr/bin/env -S mise exec aqua:nushell/nushell@0.107.0 -- nu
+# vim:ft=nu
+
+match ($nu.os-info.name) {
+  macos => {
+    which -a dark-mode | if ($in | is-empty) {
+      "on"
+    } else {
+      get 0.path | run-external $in status
+    }
+  }
+  _ => {
+    "on"
+  }
+}
