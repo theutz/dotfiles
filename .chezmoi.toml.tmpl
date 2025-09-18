@@ -1,5 +1,11 @@
 # vim: ft=tmpl.toml
-
+{{ $xdg := (dict
+  "configDir" (joinPath .chezmoi.homeDir ".config")
+  "dataDir" (joinPath .chezmoi.homeDir ".local" "share")
+  "stateDir" (joinPath .chezmoi.homeDir ".local" "state")
+  "cacheDir" (joinPath .chezmoi.homeDir ".cache")
+  )
+-}}
 encryption = "age"
 sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
 
@@ -8,8 +14,8 @@ recipient = "FD235DFD"
 
 [age]
 identities = [
-  '{{ joinPath .xdg.configDir "chezmoi" "keys" "personal.txt" }}',
-  '{{ joinPath .xdg.configDir "chezmoi" "keys" "delegator.txt" }}'
+  '{{ joinPath $xdg.configDir "chezmoi" "keys" "personal.txt" }}',
+  '{{ joinPath $xdg.configDir "chezmoi" "keys" "delegator.txt" }}'
 ]
 recipients = [
   "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa",
@@ -55,13 +61,6 @@ watch = false
 apply = false
 {{ end }}
 
-{{ $xdg := (dict
-  "configDir" (joinPath .chezmoi.homeDir ".config")
-  "dataDir" (joinPath .chezmoi.homeDir ".local" "share")
-  "stateDir" (joinPath .chezmoi.homeDir ".local" "state")
-  "cacheDir" (joinPath .chezmoi.homeDir ".cache")
-  )
--}}
 [data.xdg]
 configDir = "{{ $xdg.configDir }}"
 dataDir = "{{ $xdg.dataDir }}"
