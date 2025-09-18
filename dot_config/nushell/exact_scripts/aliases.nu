@@ -1,12 +1,4 @@
-# search for aliases in scope by name
-@example "search for an alias starting with 'm'" {
-  sa ^m
-}
-@example "search for an alias with the word 'mise' in it" {
-  sa -a mise
-}
-def search-aliases [
-  --all (-a) # Search in all fields, not just name
+a
   term: string # The term to search for
 ]: nothing -> table<name: string expansion: string description: string> {
   scope aliases
@@ -18,17 +10,27 @@ def search-aliases [
   | select name expansion description
 }
 
+# List files
 alias la = ls -la
+alias ll = ls -l
+alias lag = ls -a | grid
+
+# Lazy
 alias lg = lazygit
 alias ldk = lazydocker
-alias ll = ls -l
+
+# Mise
 alias m = ^mise
 alias mx = ^mise exec
 alias mr = ^mise run
+
+# Docker
+alias dk = docker
+alias dkc = docker compose
+
+# Misc
 alias pu = pueue
 alias sa = search-aliases
 alias sp = spotify_player
 alias sup = supervisorctl
 
-alias dk = docker
-alias dkc = docker compose
