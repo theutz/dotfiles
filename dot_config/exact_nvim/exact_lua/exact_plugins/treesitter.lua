@@ -13,6 +13,7 @@ return {
 				"awk",
 				"bash",
 				"c",
+				"caddy",
 				"css",
 				"diff",
 				"dockerfile",
@@ -28,6 +29,7 @@ return {
 				"lua",
 				"luadoc",
 				"luap",
+				"nu",
 				"markdown",
 				"markdown_inline",
 				"php",
@@ -43,10 +45,10 @@ return {
 				"xml",
 				"yaml",
 			},
-			indent = {
-				enable = true,
-				disable = { "yaml", "php" },
-			},
+			-- indent = {
+			-- enable = true,
+			-- disable = { "yaml", "php" },
+			-- },
 		},
 	},
 }
