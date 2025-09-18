@@ -18,17 +18,25 @@ def search-aliases [
   | select name expansion description
 }
 
+# LS
 alias la = ls -la
+alias ll = ls -l
+
+# Lazy
 alias lg = lazygit
 alias ldk = lazydocker
-alias ll = ls -l
+
+# Mise
 alias m = ^mise
 alias mx = ^mise exec
 alias mr = ^mise run
+
+# Docker
+alias dk = docker
+alias dkc = docker compose
+
+# Miscellaneous
 alias pu = pueue
 alias sa = search-aliases
 alias sp = spotify_player
 alias sup = supervisorctl
-
-alias dk = docker
-alias dkc = docker compose
