@@ -22,7 +22,7 @@ def search-aliases [
 alias la = ls -la
 alias ll = ls -l
 def ls-all-grid [] {
-  ls --all | grid
+  ls --all | grid --icons --color
 }
 alias l = ls-all-grid
 
