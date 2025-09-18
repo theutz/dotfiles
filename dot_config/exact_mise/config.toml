@@ -1,5 +1,6 @@
 [vars]
-is_dark = "{{ (exec(command='~/bin/is-dark',cache_key='dark-mode',cache_duration='30s') | trim) == 'on' }}"
+dark_mode_status = "{{ exec(command='dark-mode status',cache_key='dark-mode',cache_duration='1s') | trim }}"
+is_dark = "{{ vars.dark_mode_status == 'on' }}"
 catppuccin_theme = "{% if vars.is_dark == 'true' %}mocha{% else %}latte{% endif %}"
 
 [settings]
