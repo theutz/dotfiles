@@ -21,7 +21,10 @@ def search-aliases [
 # LS
 alias la = ls -la
 alias ll = ls -l
-alias lag = ls -a | grid
+def ls-all-grid [] {
+  ls --all | grid
+}
+alias lag = ls-all-grid
 
 # Lazy
 alias lg = lazygit
