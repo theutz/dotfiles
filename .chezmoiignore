@@ -11,6 +11,7 @@ bin/chezmoi
 
 {{ if ne .chezmoi.os "darwin" }}
 Library/
+.config/finicky
 {{ end }}
 
 **/.DS_Store
