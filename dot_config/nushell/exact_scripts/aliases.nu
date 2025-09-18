@@ -24,7 +24,7 @@ alias ll = ls -l
 def ls-all-grid [] {
   ls --all | grid
 }
-alias lag = ls-all-grid
+alias l = ls-all-grid
 
 # Lazy
 alias lg = lazygit
