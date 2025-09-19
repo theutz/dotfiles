@@ -94,7 +94,7 @@ script = 'eval "$(chezmoi generate zsh)"'
 
 [env]
 EDITOR = "nvim"
-FZF_DEFAULT_OPTS = """--bind=ctrl-a:toggle-all,tab:toggle-out,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down"""
+FZF_DEFAULT_OPTS = """--bind=ctrl-a:toggle-all,tab:toggle-out,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down {{env | get(key="FZF_DEFAULT_OPTS",default="")}}"""
 VISUAL = "nvim"
 XDG_CACHE_HOME = "{{ xdg_cache_home }}"
 XDG_CONFIG_HOME = "{{ xdg_config_home }}"

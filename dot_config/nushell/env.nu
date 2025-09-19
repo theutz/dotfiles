@@ -53,7 +53,7 @@ zoxide init nushell
 | save -f ($nu.data-dir | path join zoxide.nu)
 
 # Setup FZF
-{
+$env.FZF_DEFAULT_OPTS = {
   latte: "--color=bg+:#CCD0DA,bg:#EFF1F5,spinner:#DC8A78,hl:#D20F39
     --color=fg:#4C4F69,header:#D20F39,info:#8839EF,pointer:#DC8A78
     --color=marker:#7287FD,fg+:#4C4F69,prompt:#8839EF,hl+:#D20F39
@@ -66,6 +66,3 @@ zoxide init nushell
     --color=border:#6C7086,label:#CDD6F4"
 }
 | with-appearance {|theme| $theme.latte } {|theme| $theme.mocha }
-| [($env.FZF_DEFAULT_OPTS? | default '') $in]
-| str join
-| $env.FZF_DEFAULT_OPTS = $in
