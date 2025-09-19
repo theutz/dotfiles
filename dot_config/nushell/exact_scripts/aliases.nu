@@ -78,7 +78,7 @@ def txl [] {
 # Create new tmux session
 def --wrapped txn [
   session: string # Name of the session
-  window: string = "main" # Name of the first window
+  --window (-n): string = "main" # Name of the first window
   ...args
 ] {
   tmux new -s $session -n $window ...$args
