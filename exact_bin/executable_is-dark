@@ -1,4 +1,4 @@
-#!/usr/bin/env -S mise exec aqua:nushell/nushell@0.107.0 -- nu
+#!/usr/bin/env -S mise exec aqua:nushell/nushell@0.107.0 -- nu --stdin
 # vim:ft=nu
 
 match ($nu.os-info.name) {
@@ -13,3 +13,4 @@ match ($nu.os-info.name) {
     "on"
   }
 }
+| str trim
