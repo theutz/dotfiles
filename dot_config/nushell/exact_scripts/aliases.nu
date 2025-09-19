@@ -57,7 +57,7 @@ alias puw = pueue wait
 def pug [] { pueue group --json | from json | transpose name | flatten }
 
 # pueue task status
-def pus [] { pueue status --json | from json | get tasks }
+def pus [] { pueue status --json | from json | get tasks | flatten }
 
 # Miscellaneous
 alias sa = search-aliases
