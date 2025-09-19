@@ -61,8 +61,10 @@ def pus [] { pueue status --json | from json | get tasks | flatten }
 
 # tmux
 
+alias tx = tmux
+
 # List tmux sessions
-def txls [] {
+def txl [] {
   tmux ls -F '#{session_id} #{session_name} #{?session_attached,true,false}'
   | detect columns --no-headers
   | rename id name attached
