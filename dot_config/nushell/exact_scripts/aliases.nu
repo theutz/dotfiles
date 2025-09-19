@@ -59,6 +59,17 @@ def pug [] { pueue group --json | from json | transpose name | flatten }
 # pueue task status
 def pus [] { pueue status --json | from json | get tasks | flatten }
 
+# tmux
+
+# List sessions
+def txls [] {
+  tmux ls -F '#{session_id} #{session_name} #{?session_attached,true,false}'
+  | detect columns --no-headers
+  | rename id name attached
+  | update attached { into bool }
+  | sort-by id
+}
+
 # Miscellaneous
 alias sa = search-aliases
 alias sp = spotify_player
