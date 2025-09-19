@@ -39,9 +39,21 @@ alias mr = ^mise run
 alias dk = docker
 alias dkc = docker compose
 
-# Miscellaneous
+# Pueue
 alias pu = pueue
+alias pua = pueue add
+alias puag = pueue add --group
+alias pucl = pueue clean
+alias puf = pueue follow
+alias puga = pueue group add
+alias pugr = pueue group remove
+alias pupa = pueue parallel
+alias pupag = pueue parallel --group
+alias puw = pueue wait
+
+# Miscellaneous
 alias sa = search-aliases
 alias sp = spotify_player
 alias sup = supervisorctl
 alias ze = zoxide edit
+
