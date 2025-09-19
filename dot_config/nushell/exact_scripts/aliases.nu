@@ -65,11 +65,14 @@ alias tx = tmux
 
 # List tmux sessions
 def txl [] {
-  tmux ls -F '#{session_id} #{session_name} #{?session_attached,true,false}'
-  | detect columns --no-headers
-  | rename id name attached
-  | update attached { into bool }
-  | sort-by id
+  use std null-device
+  tmux ls -F '#{session_id} #{session_name} #{?session_attached,true,false}' e> (null-device)
+  | if (is-empty) { [] } else {
+    detect columns --no-headers
+    | rename id name attached
+    | update attached { into bool }
+    | sort-by id
+  }
 }
 
 # Create new tmux session
