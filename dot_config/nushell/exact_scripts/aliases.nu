@@ -40,7 +40,9 @@ alias dk = docker
 alias dkc = docker compose
 
 # Pueue
+
 alias pu = pueue
+alias puG = pueue group
 alias pua = pueue add
 alias puag = pueue add --group
 alias pucl = pueue clean
@@ -50,6 +52,12 @@ alias pugr = pueue group remove
 alias pupa = pueue parallel
 alias pupag = pueue parallel --group
 alias puw = pueue wait
+
+# pueue group status
+def pug [] { pueue group --json | from json | transpose name | flatten }
+
+# pueue task status
+def pus [] { pueue status --json | from json | get tasks }
 
 # Miscellaneous
 alias sa = search-aliases
