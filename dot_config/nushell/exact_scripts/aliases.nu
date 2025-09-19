@@ -44,3 +44,4 @@ alias pu = pueue
 alias sa = search-aliases
 alias sp = spotify_player
 alias sup = supervisorctl
+alias ze = zoxide edit
