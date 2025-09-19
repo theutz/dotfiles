@@ -3,7 +3,6 @@
 export def main [
   light: closure # Block to run when in light mode
   dark: closure # Block to run when in light mode
-  ...args # Pass any remaining args to the closure
 ]: any -> any {
   let stdin = $in
   if (which dark-mode | is-empty) {
