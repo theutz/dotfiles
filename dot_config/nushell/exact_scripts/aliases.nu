@@ -67,7 +67,7 @@ alias tx = tmux
 def txl [] {
   use std null-device
   tmux ls -F '#{session_id} #{session_name} #{?session_attached,true,false}' e> (null-device)
-  | if (is-empty) { [] } else {
+  | if ($in | is-empty) { [] } else {
     detect columns --no-headers
     | rename id name attached
     | update attached { into bool }
