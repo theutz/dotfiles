@@ -61,13 +61,22 @@ def pus [] { pueue status --json | from json | get tasks | flatten }
 
 # tmux
 
-# List sessions
+# List tmux sessions
 def txls [] {
   tmux ls -F '#{session_id} #{session_name} #{?session_attached,true,false}'
   | detect columns --no-headers
   | rename id name attached
   | update attached { into bool }
   | sort-by id
+}
+
+# Create new tmux session
+def --wrapped txn [
+  session: string # Name of the session
+  window: string = "main" # Name of the first window
+  ...args
+] {
+  tmux new -s $session -n $window ...$args
 }
 
 # Miscellaneous
