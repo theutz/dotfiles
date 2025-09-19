@@ -105,5 +105,5 @@
   "vim-kitty": { "branch": "main", "commit": "5c3efc79af70dc2c22cad03e6a7374a5f81205d9" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
-  "yazi.nvim": { "branch": "main", "commit": "acd50311d83e0332dad4a2c172de00359b647d6a" }
+  "yazi.nvim": { "branch": "main", "commit": "7cb4053f0bd815fb42f81ec3c3b9770a31b75bf3" }
 }
