@@ -93,10 +93,12 @@ def txa [
   | if ($in | is-empty) {
     txn $session
   } else {
-    if ($env.TMUX? | is-empty) {
-      echo "" | tmux attach-session -t $session
+    lines
+    | take until { is-empty }
+    | if ($env.TMUX? | is-empty) {
+      tmux attach-session -t $session
     } else {
-      echo "" | tmux switch-client -t $session
+      tmux switch-client -t $session
     }
   }
 }
