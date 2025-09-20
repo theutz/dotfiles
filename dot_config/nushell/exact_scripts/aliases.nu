@@ -88,17 +88,18 @@ def --wrapped txn [
 def txa [
   session: string # the session name to connect with
 ] {
-  mut cmd = "switch-client"
+  mut args = ["switch-client"]
   txl
   | where name =~ $session
   | if ($in | is-empty) {
+    $args = ["new-session" "-s" $session]
     txn $session
   } else {
     if ($env.TMUX? | is-empty) {
-      $cmd = "attach-session"
+      $args = ["attach-session" "-t" $session]
     }
   }
-  ^tmux $cmd -t $session
+  tmux ...$args
 }
 
 # Miscellaneous
