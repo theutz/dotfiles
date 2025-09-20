@@ -88,13 +88,13 @@ def --wrapped txn [
 def txa [
   session: string # the session name to connect with
 ] {
+  let stdin = $in
   txl
   | where name =~ $session
   | if ($in | is-empty) {
     txn $session
   } else {
-    lines
-    | take until { is-empty }
+    $in
     | if ($env.TMUX? | is-empty) {
       tmux attach-session -t $session
     } else {
