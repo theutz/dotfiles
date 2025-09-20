@@ -96,7 +96,7 @@ def txa [
   } else {
     $in
     | if ($env.TMUX? | is-empty) {
-      tmux attach-session -t $session
+      zsh -c $"tmux attach-session -t ($session)"
     } else {
       tmux switch-client -t $session
     }
