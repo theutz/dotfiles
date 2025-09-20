@@ -94,9 +94,9 @@ def txa [
     txn $session
   } else {
     if ($env.TMUX? | is-empty) {
-      tmux attach-session -t $session
+      echo "" | tmux attach-session -t $session
     } else {
-      tmux switch-client -t $session
+      echo "" | tmux switch-client -t $session
     }
   }
 }
