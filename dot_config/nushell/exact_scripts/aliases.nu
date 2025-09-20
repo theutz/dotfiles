@@ -98,7 +98,7 @@ def txa [
       $cmd = "attach-session"
     }
   }
-  run-external tmux $cmd "-t" $session
+  ^tmux $cmd -t $session
 }
 
 # Miscellaneous
