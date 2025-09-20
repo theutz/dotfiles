@@ -88,19 +88,17 @@ def --wrapped txn [
 def txa [
   session: string # the session name to connect with
 ] {
-  let stdin = $in
+  mut cmd = "switch-client"
   txl
   | where name =~ $session
   | if ($in | is-empty) {
     txn $session
   } else {
-    $in
-    | if ($env.TMUX? | is-empty) {
-      nu --stdin -c $"tmux attach-session -t ($session)"
-    } else {
-      tmux switch-client -t $session
+    if ($env.TMUX? | is-empty) {
+      $cmd = "attach-session"
     }
   }
+  run-external tmux $cmd "-t" $session
 }
 
 # Miscellaneous
