@@ -84,6 +84,23 @@ def --wrapped txn [
   tmux new -s $session -n $window ...$args
 }
 
+# Attach to a tmux session
+def txa [
+  session: string # the session name to connect with
+] {
+  txl
+  | where name =~ $session
+  | if ($in | is-empty) {
+    txn $session
+  } else {
+    if ($env.TMUX | is-empty) {
+      tmux attach-session -t $session
+    } else {
+      tmux switch-client -t $session
+    }
+  }
+}
+
 # Miscellaneous
 alias sa = search-aliases
 alias sp = spotify_player
