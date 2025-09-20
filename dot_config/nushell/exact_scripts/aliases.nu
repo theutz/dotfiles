@@ -88,12 +88,11 @@ def --wrapped txn [
 def txa [
   session: string # the session name to connect with
 ] {
-  mut args = ["switch-client"]
+  mut args = ["switch-client" "-t" $session]
   txl
   | where name =~ $session
   | if ($in | is-empty) {
     $args = ["new-session" "-s" $session]
-    txn $session
   } else {
     if ($env.TMUX? | is-empty) {
       $args = ["attach-session" "-t" $session]
