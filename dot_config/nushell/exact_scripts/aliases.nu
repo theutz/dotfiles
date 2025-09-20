@@ -93,7 +93,7 @@ def txa [
   | if ($in | is-empty) {
     txn $session
   } else {
-    if ($env.TMUX | is-empty) {
+    if ($env.TMUX? | is-empty) {
       tmux attach-session -t $session
     } else {
       tmux switch-client -t $session
