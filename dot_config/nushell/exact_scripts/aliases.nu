@@ -96,9 +96,9 @@ def txa [
   } else {
     $in
     | if ($env.TMUX? | is-empty) {
-      nu -c $"tmux attach-session -t ($session)"
+      tmux attach-session -t $session
     } else {
-      nu -c $"tmux switch-client -t ($session)"
+      tmux switch-client -t $session
     }
   }
 }
