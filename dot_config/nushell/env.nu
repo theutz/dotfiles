@@ -66,3 +66,5 @@ $env.FZF_DEFAULT_OPTS = {
     --color=border:#6C7086,label:#CDD6F4"
 }
 | with-appearance {|theme| $theme.latte } {|theme| $theme.mocha }
+| ["--bind=ctrl-a:toggle-all,tab:toggle-out,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" $in]
+| str join "\n"

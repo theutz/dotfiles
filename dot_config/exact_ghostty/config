@@ -1,5 +1,5 @@
 adjust-cell-height = 16
-background-opacity = 0.75
+background-opacity = 0.95
 command = /opt/homebrew/bin/zsh -c nu
 font-family = Berkeley Mono
 font-size = 16
