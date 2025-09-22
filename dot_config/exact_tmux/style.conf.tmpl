@@ -14,31 +14,30 @@ if-shell "/Users/michael/bin/is-dark | grep on" {
 } {
   set-option -gF @utz-is-dark 0
 }
-set-option -gF @utz-bg "#{?@utz-is-dark,colour16,colour0}"
-set-option -gF @utz-fg "#{?@utz-is-dark,colour12,colour13}"
+set-option -gF @utz-bg "#{?@utz-is-dark,#{E:@cat-mocha-base},#{E:@cat-latte-base}}"
+set-option -gF @utz-fg "#{?@utz-is-dark,#{E:@cat-mocha-mauve},#{E:@cat-latte-mauve}}"
 set-option -g @utz-normal "bg=terminal,fg=#{E:@utz-fg}"
 set-option -g @utz-inverse "bg=#{E:@utz-fg},fg=#{E:@utz-bg}"
 
 set-option -g status-justify absolute-centre
 set-option -g status-position bottom
 
+set-option -g status-style "#{E:@utz-normal}"
+set-option -g status-left-style "#{E:@utz-inverse}"
+set-option -g status-right-style "#{E:@utz-inverse}"
 set-option -g status-left ' 󰸳 #S #[bg=terminal,fg=#{@utz-fg}]'
 set-option -g status-left-length 120
-set-option -g status-left-style "#{E:@utz-inverse}"
-
 set-option -g status-right '#[#{E:@utz-normal}]#[default] #P #T '
-set-option -g status-right-style "#{E:@utz-inverse}"
-set-option -g status-style "#{E:@utz-normal}"
 
 set-option -g message-style "#{E:@utz-inverse}"
-set-option -g message-command-style "bg=colour15,fg=colour8"
+set-option -g message-command-style "bg=#{E:@cat-latte-lavender},fg=#{E:@cat-latte-text}"
 
 set-option -g pane-border-indicators both
 set-option -g pane-border-lines single
 set-option -g pane-active-border-style "fg=#{@utz-fg}"
 set-option -g pane-border-status top
 set-option -g pane-border-format ' #{?pane_active,,} #P #T '
-set-option -g pane-border-style 'fg=#{?@utz-is-dark,colour7,colour7}'
+set-option -g pane-border-style 'fg=#{?@utz-is-dark,#{E:@cat-mocha-overlay1},#{E:@cat-latte-pink}}'
 
 set-option -g window-status-current-style "#{E:@utz-inverse}"
 set-option -g window-status-style "#{E:@utz-normal}"
