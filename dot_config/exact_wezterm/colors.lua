@@ -29,7 +29,7 @@ return function(c, w)
 		saturation = 0.9,
 		brightness = 0.8,
 	}
-	c.text_background_opacity = 0.8
+	c.text_background_opacity = 1.0
 
 	local function contrast_ratio_for_appearance(appearance)
 		if appearance:find("Dark") then
