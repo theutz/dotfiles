@@ -30,7 +30,7 @@ c.window_padding = {
 c.use_fancy_tab_bar = false
 c.show_tab_index_in_tab_bar = true
 c.tab_max_width = 120
-c.hide_tab_bar_if_only_one_tab = false
+c.hide_tab_bar_if_only_one_tab = true
 c.enable_tab_bar = true
 c.tab_bar_at_bottom = true
 
@@ -42,7 +42,6 @@ c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
 -- Keyboard
 c.enable_kitty_keyboard = true
-c.leader = { key = "m", mods = "ALT", timeout_milliseconds = 2000 }
 c.keys = {
 	{ key = "d", mods = "SUPER", action = a.SplitPane({ direction = "Right" }) },
 	{ key = "D", mods = "SUPER|SHIFT", action = a.SplitPane({ direction = "Down" }) },
@@ -63,109 +62,6 @@ c.keys = {
 	{ key = "J", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Down", 5 }) },
 	{ key = "K", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Up", 5 }) },
 	{ key = "L", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Right", 5 }) },
-
-	{ key = "\\", mods = "LEADER", action = a.SplitPane({ direction = "Right" }) },
-	{ key = "|", mods = "LEADER|SHIFT", action = a.SplitPane({ direction = "Right", top_level = true }) },
-	{ key = "-", mods = "LEADER", action = a.SplitPane({ direction = "Down" }) },
-	{ key = "_", mods = "LEADER", action = a.SplitPane({ direction = "Down", top_level = true }) },
-	{ key = "v", mods = "LEADER", action = a.SplitPane({ direction = "Right" }) },
-	{ key = "s", mods = "LEADER", action = a.SplitPane({ direction = "Down" }) },
-	{ key = "h", mods = "LEADER", action = a.ActivatePaneDirection("Left") },
-	{ key = "j", mods = "LEADER", action = a.ActivatePaneDirection("Down") },
-	{ key = "k", mods = "LEADER", action = a.ActivatePaneDirection("Up") },
-	{ key = "l", mods = "LEADER", action = a.ActivatePaneDirection("Right") },
-	{ key = "c", mods = "LEADER", action = a.SpawnTab("CurrentPaneDomain") },
-	{ key = "n", mods = "LEADER", action = a.ActivateTabRelative(1) },
-	{ key = "p", mods = "LEADER", action = a.ActivateTabRelative(-1) },
-	{ key = "x", mods = "LEADER", action = a.CloseCurrentPane({ confirm = true }) },
-	{ key = "C", mods = "LEADER|SHIFT", action = a.SpawnWindow },
-	{ key = "N", mods = "LEADER|SHIFT", action = a.ActivateWindowRelative(1) },
-	{ key = "P", mods = "LEADER|SHIFT", action = a.ActivateWindowRelative(-1) },
-	{ key = "X", mods = "LEADER|SHIFT", action = a.CloseCurrentTab({ confirm = true }) },
-	{ key = "r", mods = "LEADER", action = a.RotatePanes("Clockwise") },
-	{ key = "R", mods = "LEADER|SHIFT", action = a.RotatePanes("CounterClockwise") },
-	{ key = " ", mods = "LEADER", action = a.QuickSelect },
-	{ key = "<", mods = "LEADER", action = a.MoveTabRelative(-1) },
-	{ key = ">", mods = "LEADER", action = a.MoveTabRelative(1) },
-	{ key = "z", mods = "LEADER", action = a.TogglePaneZoomState },
-	{ key = "[", mods = "LEADER", action = a.ActivateCopyMode },
-	{
-		key = "H",
-		mods = "LEADER|SHIFT",
-		action = a.Multiple({
-			a.AdjustPaneSize({ "Left", 1 }),
-			a.ActivateKeyTable({
-				name = "resize_pane",
-				one_shot = false,
-				until_unknown = true,
-				timeout_milliseconds = 1000,
-			}),
-		}),
-	},
-	{
-		key = "J",
-		mods = "LEADER|SHIFT",
-		action = a.Multiple({
-			a.AdjustPaneSize({ "Down", 1 }),
-			a.ActivateKeyTable({
-				name = "resize_pane",
-				one_shot = false,
-				until_unknown = true,
-				timeout_milliseconds = 1000,
-			}),
-		}),
-	},
-	{
-		key = "K",
-		mods = "LEADER|SHIFT",
-		action = a.Multiple({
-			a.AdjustPaneSize({ "Up", 1 }),
-			a.ActivateKeyTable({
-				name = "resize_pane",
-				one_shot = false,
-				until_unknown = true,
-				timeout_milliseconds = 1000,
-			}),
-		}),
-	},
-	{
-		key = "L",
-		mods = "LEADER|SHIFT",
-		action = a.Multiple({
-			a.AdjustPaneSize({ "Right", 1 }),
-			a.ActivateKeyTable({
-				name = "resize_pane",
-				one_shot = false,
-				until_unknown = true,
-				timeout_milliseconds = 1000,
-			}),
-		}),
-	},
-}
-local copy_mode = nil
-if w.gui then
-	copy_mode = w.gui.default_key_tables().copy_mode
-	table.insert(copy_mode, { key = "p", mods = "CTRL", action = a.CopyMode({ MoveBackwardZoneOfType = "Prompt" }) })
-	table.insert(copy_mode, { key = "n", mods = "CTRL", action = a.CopyMode({ MoveForwardZoneOfType = "Prompt" }) })
-end
-c.key_tables = {
-	copy_mode = copy_mode,
-	resize_pane = {
-		{ key = "H", mods = "SHIFT", action = a.AdjustPaneSize({ "Left", 1 }) },
-		{ key = "h", action = a.AdjustPaneSize({ "Left", 1 }) },
-
-		{ key = "J", mods = "SHIFT", action = a.AdjustPaneSize({ "Down", 1 }) },
-		{ key = "j", action = a.AdjustPaneSize({ "Down", 1 }) },
-
-		{ key = "K", mods = "SHIFT", action = a.AdjustPaneSize({ "Up", 1 }) },
-		{ key = "k", action = a.AdjustPaneSize({ "Up", 1 }) },
-
-		{ key = "L", mods = "SHIFT", action = a.AdjustPaneSize({ "Right", 1 }) },
-		{ key = "l", action = a.AdjustPaneSize({ "Right", 1 }) },
-
-		-- Cancel the mode by pressing escape
-		{ key = "Escape", action = "PopKeyTable" },
-	},
 }
 
 w.on("update-right-status", function(window, pane)
