@@ -2,11 +2,11 @@
 
 {{ $mocha := joinPath .xdg.configDir "catppuccin" "mocha.toml" | include | fromToml }}
 {{ range $key, $val := $mocha -}}
-set-option -g @cat-mocha-{{ $key }} "$val"
+set-option -g @cat-mocha-{{ $key }} "{{ $val }}"
 {{ end }}
 {{ $latte := joinPath .xdg.configDir "catppuccin" "latte.toml" | include | fromToml }}
 {{ range $key, $val := $latte -}}
-set-option -g @cat-latte-{{ $key }} "$val"
+set-option -g @cat-latte-{{ $key }} "{{ $val }}"
 {{ end }}
 
 if-shell "/Users/michael/bin/is-dark | grep on" {
