@@ -1,7 +1,7 @@
 # vim: ft=tmux
 
-{{ mocha := joinPath .xdg.configDir "catppuccin" "mocha.toml" | include | fromToml }}
-{{ range key, val := mocha }}
+{{ $mocha := joinPath .xdg.configDir "catppuccin" "mocha.toml" | include | fromToml }}
+{{ range key, val := $mocha }}
 # {{ key }}, {{ val }}
 # boo
 {{ end }}
