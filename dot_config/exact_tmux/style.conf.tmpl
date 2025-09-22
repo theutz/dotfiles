@@ -3,6 +3,7 @@
 {{ mocha := joinPath .xdg.configDir "catppuccin" "mocha.toml" | include | fromToml }}
 {{ range key, val := mocha }}
 # {{ key }}, {{ val }}
+# boo
 {{ end }}
 
 if-shell "/Users/michael/bin/is-dark | grep on" {
