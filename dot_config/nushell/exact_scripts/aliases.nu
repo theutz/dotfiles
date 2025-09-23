@@ -147,17 +147,35 @@ alias dkYpr = docker system prune
 
 # Clean up exited containers
 def dkrmC [] {
-  docker container ls -qaf status=exited | lines | docker rm ...$in
+  docker container ls -qaf status=exited
+  | lines
+  | if ($in | is-empty) {
+    $in
+  } else {
+    docker rm ...$in
+  }
 }
 
 # Clean up dangling images
 def dkrmI [] {
-  docker image ls -qf dangling=true | lines | docker image rm ...$in
+  docker image ls -qf dangling=true
+  | lines
+  | if ($in | is-empty) {
+    $in
+  } else {
+    docker image rm ...$in
+  }
 }
 
 # Cleanup dangling volumes
 def dkrmV [] {
-  docker volume ls -qf dangling=true | lines | docker volume rm ...$in
+  docker volume ls -qf dangling=true
+  | lines
+  | if ($in | is-empty) {
+    $in
+  } else {
+    docker volume rm ...$in
+  }
 }
 
 # Docker Compose
