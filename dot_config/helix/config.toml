@@ -20,7 +20,10 @@ focus-lost = true
 render = true
 
 [keys.normal]
-space.l = [
+X = "extend_line_above"
+
+[keys.normal.space]
+l = [
     ":write-all",
     ":new",
     ":insert-output lazygit",
@@ -29,4 +32,4 @@ space.l = [
     ":reload-all",
 ]
 
-space.q = ":write-quit-all"
+q = ":write-quit-all"
