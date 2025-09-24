@@ -28,3 +28,5 @@ C-g = [
     ":redraw",
     ":reload-all",
 ]
+
+space.q = ":write-quit-all"
