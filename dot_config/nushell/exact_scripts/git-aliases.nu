@@ -68,8 +68,9 @@ export alias gbX = git branch --delete --force
 export def --wrapped git-commit-message-ai [
   ...args
 ] {
+  use std null-device
   git diff --cached
-  | mods -R commit --no-cache err> (use std; std null-device)
+  | mods -R commit --no-cache --raw err> (null-device)
   | str trim
   | git commit --message $in ...$args
 }
