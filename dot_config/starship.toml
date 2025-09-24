@@ -5,8 +5,8 @@ palette = "catppuccin_mocha"
 style = "bold orange"
 
 [character]
-error_symbol = "[](bold maroon)"
-success_symbol = "[](bold sapphire)"
+error_symbol = "[ ](bold maroon)"
+success_symbol = "[ ](bold sapphire)"
 
 [cmd_duration]
 style = "bold yellow"
