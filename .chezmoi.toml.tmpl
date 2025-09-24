@@ -54,12 +54,15 @@ args = [ "-c", "+':norm gg'", "-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{
 {{ end }}
 
 [edit]
-{{- if lookPath "nvim" }}
+{{- if lookPath "hx" }}
+command = "hx"
+args = ["-w", "{{ .chezmoi.sourceDir }}"]
+{{- else if lookPath "nvim" }}
 command = "nvim"
 args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
-watch = false
-apply = false
 {{ end }}
+watch = false
+apply = true
 
 [data.xdg]
 configDir = "{{ $xdg.configDir }}"
