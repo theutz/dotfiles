@@ -1,11 +1,13 @@
 keybinds clear-defaults=true {
-    locked {
-        bind "Alt m" { SwitchToMode "normal"; }
+    normal {
         bind "Alt h" { MoveFocus "Left"; }
         bind "Alt j" { MoveFocus "Down"; }
         bind "Alt k" { MoveFocus "Up"; }
         bind "Alt l" { MoveFocus "Right"; }
         bind "Alt n" { NewPane; }
+    }
+    locked {
+        bind "Alt m" { SwitchToMode "normal"; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
