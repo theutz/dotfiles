@@ -21,9 +21,6 @@ hide std/config
 # Setup keybindings
 source custom-bindings.nu
 
-# Setup starship prompt
-source init-starship.nu
-
 # Initialize mise
 use ($nu.data-dir | path join mise.nu)
 
