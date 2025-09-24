@@ -1,23 +1,30 @@
-theme = "catppuccin_latte"
+theme = "catppuccin_mocha"
 
 [editor]
 line-number = "relative"
 mouse = false
-shell = ["nu", "-c"]
+shell = [
+    "nu",
+    "-c",
+]
 cursorline = true
 cursorcolumn = true
 rulers = [120]
 bufferline = "always"
 text-width = 120
-auto-save.focus-lost = true
-indent-guides.render = true
+
+[editor.auto-save]
+focus-lost = true
+
+[editor.indent-guides]
+render = true
 
 [keys.normal]
 C-g = [
-  ":write-all",
-  ":new",
-  ":insert-output lazygit",
-  ":buffer-close!",
-  ":redraw",
-  ":reload-all"
+    ":write-all",
+    ":new",
+    ":insert-output lazygit",
+    ":buffer-close!",
+    ":redraw",
+    ":reload-all",
 ]
