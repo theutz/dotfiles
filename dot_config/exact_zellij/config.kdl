@@ -7,13 +7,6 @@ keybinds clear-defaults=true {
         bind "Alt l" { MoveFocus "Right"; SwitchToMode "locked"; }
         bind "Alt n" { GoToNextTab; SwitchToMode "locked";       }
         bind "Alt p" { GoToPreviousTab; SwitchToMode "locked";   }
-        bind "c"     { NewPane; SwitchToMode "locked";           }
-        bind "h"     { MoveFocus "Left"; SwitchToMode "locked";  }
-        bind "j"     { MoveFocus "Down"; SwitchToMode "locked";  }
-        bind "k"     { MoveFocus "Up"; SwitchToMode "locked";    }
-        bind "l"     { MoveFocus "Right"; SwitchToMode "locked"; }
-        bind "n"     { GoToNextTab; SwitchToMode "locked";       }
-        bind "p"     { GoToPreviousTab; SwitchToMode "locked";   }
     }
     locked {
         bind "Alt m" { SwitchToMode "normal"; }
