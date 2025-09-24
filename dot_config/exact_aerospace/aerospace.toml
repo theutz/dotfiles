@@ -103,9 +103,9 @@ run = ["move-node-to-workspace 4"]
 # - Arrows.         left, down, up, right
 # All possible modifiers: cmd, alt, ctrl, shift
 
-alt-quote = 'mode join'
-alt-semicolon = 'mode aero'
-alt-shift-quote = 'mode move'
+cmd-ctrl-alt-space = 'mode aero'
+cmd-ctrl-alt-quote = 'mode join'
+cmd-ctrl-alt-semicolon = 'mode move'
 
 cmd-ctrl-alt-h = 'move left'
 cmd-ctrl-alt-j = 'move down'
