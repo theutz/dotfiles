@@ -1,6 +1,20 @@
 #!/usr/bin/env nu
 
-def change-starship-palette [mode: string] {
+def change-zellij-theme [mode: string] {
+  let theme = match ($mode) {
+    light => "catppuccin-latte"
+    dark => "catppuccin-mocha"
+  }
+
+  let file = $env.XDG_CONFIG_HOME | path join zellij config.kdl
+  open $file
+  | str replace --regex 'theme ".*?"' $'theme "($theme)"'
+  | save --force $file
+   
+  $file
+}
+
+def change-starship-palette [mode: string]: nothing -> string {
   let theme = match ($mode) {
     light => "catppuccin_latte"
     dark  => "catppuccin_mocha"
@@ -10,10 +24,11 @@ def change-starship-palette [mode: string] {
   let file = $env.XDG_CONFIG_HOME | path join starship.toml
 
   open $file | upsert palette $theme | save --force $file
-  chezmoi re-add $file
+
+  $file
 }
 
-def change-helix-theme [mode: string] {
+def change-helix-theme [mode: string]: nothing -> string {
   let theme = match ($mode) {
     light => "catppuccin_latte"
     dark => "catppuccin_mocha"
@@ -23,7 +38,8 @@ def change-helix-theme [mode: string] {
 
   open $file | upsert theme $theme | save --force $file
   pkill -USR1 hx # Reload helix config
-  chezmoi re-add $file
+
+  $file
 }
 
 def reload-sketchybar [] {
@@ -31,8 +47,13 @@ def reload-sketchybar [] {
 }
 
 def main [mode: string] {
-  change-helix-theme $mode
-  change-starship-palette $mode
   reload-sketchybar
+  [
+    {|| change-helix-theme $mode }
+    {|| change-starship-palette $mode }
+    {|| change-zellij-theme $mode }
+  ]
+  | par-each {|fn| do $fn }
+  | chezmoi re-add ...$in
 }
 
