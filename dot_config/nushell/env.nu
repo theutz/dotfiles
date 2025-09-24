@@ -26,7 +26,7 @@ $env.PATH = [
   /opt/homebrew/sbin
 ] ++ $env.PATH
 
-$env.EDITOR = "nvim"
+$env.EDITOR = "hx"
 $env.VISUAL = $env.EDITOR
 $env.BROWSER = which -a open | last | get path
 $env.PAGER = "less"
