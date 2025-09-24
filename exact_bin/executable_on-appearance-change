@@ -1,3 +1,38 @@
 #!/usr/bin/env nu
 
-sketchybar --reload
+def change-starship-palette [mode: string] {
+  let theme = match ($mode) {
+    light => "catppuccin_latte"
+    dark  => "catppuccin_mocha"
+    _ => "catppuccin_frappe"
+  }
+
+  let file = $env.XDG_CONFIG_HOME | path join starship.toml
+
+  open $file | upsert palette $theme | save --force $file
+  chezmoi re-add $file
+}
+
+def change-helix-theme [mode: string] {
+  let theme = match ($mode) {
+    light => "catppuccin_latte"
+    dark => "catppuccin_mocha"
+  }
+
+  let file = $env.XDG_CONFIG_HOME | path join helix config.toml
+
+  open $file | upsert theme $theme | save --force $file
+  pkill -USR1 hx # Reload helix config
+  chezmoi re-add $file
+}
+
+def reload-sketchybar [] {
+  sketchybar --reload
+}
+
+def main [mode: string] {
+  change-helix-theme $mode
+  change-starship-palette $mode
+  reload-sketchybar
+}
+
