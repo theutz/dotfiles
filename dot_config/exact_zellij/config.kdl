@@ -332,6 +332,11 @@ default_shell "nu"
 //   - false
 // 
 // pane_frames false
+ui {
+    pane_frames {
+        rounded_corners true
+    }
+}
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
