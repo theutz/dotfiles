@@ -1,19 +1,19 @@
 keybinds clear-defaults=true {
     normal {
-        bind "Alt c" { NewPane; SwitchToMode "locked"; }
-        bind "Alt h" { MoveFocus "Left";               }
-        bind "Alt j" { MoveFocus "Down";               }
-        bind "Alt k" { MoveFocus "Up";                 }
-        bind "Alt l" { MoveFocus "Right";              }
-        bind "Alt n" { GoToNextTab;                    }
-        bind "Alt p" { GoToPrevTab;                    }
-        bind "c"     { NewPane; SwitchToMode "locked"; }
-        bind "h"     { MoveFocus "Left";               }
-        bind "j"     { MoveFocus "Down";               }
-        bind "k"     { MoveFocus "Up";                 }
-        bind "l"     { MoveFocus "Right";              }
-        bind "n"     { GoToNextTab;                    }
-        bind "p"     { GoToPrevTab;                    }
+        bind "Alt c" { NewPane; SwitchToMode "locked";           }
+        bind "Alt h" { MoveFocus "Left"; SwitchToMode "locked";  }
+        bind "Alt j" { MoveFocus "Down"; SwitchToMode "locked";  }
+        bind "Alt k" { MoveFocus "Up"; SwitchToMode "locked";    }
+        bind "Alt l" { MoveFocus "Right"; SwitchToMode "locked"; }
+        bind "Alt n" { GoToNextTab; SwitchToMode "locked";       }
+        bind "Alt p" { GoToPreviousTab; SwitchToMode "locked";   }
+        bind "c"     { NewPane; SwitchToMode "locked";           }
+        bind "h"     { MoveFocus "Left"; SwitchToMode "locked";  }
+        bind "j"     { MoveFocus "Down"; SwitchToMode "locked";  }
+        bind "k"     { MoveFocus "Up"; SwitchToMode "locked";    }
+        bind "l"     { MoveFocus "Right"; SwitchToMode "locked"; }
+        bind "n"     { GoToNextTab; SwitchToMode "locked";       }
+        bind "p"     { GoToPreviousTab; SwitchToMode "locked";   }
     }
     locked {
         bind "Alt m" { SwitchToMode "normal"; }
