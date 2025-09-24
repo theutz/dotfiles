@@ -266,6 +266,10 @@ def txa [
   tmux ...$args
 }
 
+# Zellij
+
+alias zj = zellij
+
 # Miscellaneous
 alias sa = search-aliases
 alias sp = spotify_player
