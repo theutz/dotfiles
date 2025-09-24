@@ -20,7 +20,7 @@ focus-lost = true
 render = true
 
 [keys.normal]
-C-g = [
+space.l = [
     ":write-all",
     ":new",
     ":insert-output lazygit",
