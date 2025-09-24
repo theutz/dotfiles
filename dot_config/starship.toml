@@ -1,5 +1,5 @@
 add_newline = true
-palette = "catppuccin_latte"
+palette = "catppuccin_frappe"
 
 [aws]
 style = "bold orange"
