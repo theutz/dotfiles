@@ -1,19 +1,19 @@
 keybinds clear-defaults=true {
     normal {
-        bind "Alt c" { NewPane;           }
-        bind "Alt h" { MoveFocus "Left";  }
-        bind "Alt j" { MoveFocus "Down";  }
-        bind "Alt k" { MoveFocus "Up";    }
-        bind "Alt l" { MoveFocus "Right"; }
-        bind "Alt n" { GoToNextTab;       }
-        bind "Alt p" { GoToPrevTab;       }
-        bind "c"     { NewPane;           }
-        bind "h"     { MoveFocus "Left";  }
-        bind "j"     { MoveFocus "Down";  }
-        bind "k"     { MoveFocus "Up";    }
-        bind "l"     { MoveFocus "Right"; }
-        bind "n"     { GoToNextTab;       }
-        bind "p"     { GoToPrevTab;       }
+        bind "Alt c" { NewPane; SwitchToMode "locked"; }
+        bind "Alt h" { MoveFocus "Left";               }
+        bind "Alt j" { MoveFocus "Down";               }
+        bind "Alt k" { MoveFocus "Up";                 }
+        bind "Alt l" { MoveFocus "Right";              }
+        bind "Alt n" { GoToNextTab;                    }
+        bind "Alt p" { GoToPrevTab;                    }
+        bind "c"     { NewPane; SwitchToMode "locked"; }
+        bind "h"     { MoveFocus "Left";               }
+        bind "j"     { MoveFocus "Down";               }
+        bind "k"     { MoveFocus "Up";                 }
+        bind "l"     { MoveFocus "Right";              }
+        bind "n"     { GoToNextTab;                    }
+        bind "p"     { GoToPrevTab;                    }
     }
     locked {
         bind "Alt m" { SwitchToMode "normal"; }
