@@ -27,8 +27,16 @@ use ($nu.data-dir | path join mise.nu)
 # Setup zoxide
 source ($nu.data-dir | path join zoxide.nu)
 
-# Setup yazi
-source yazi.nu
+# Setup yazi wrapper
+def --env y [...args] {
+  let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+  ^yazi ...$args --cwd-file $tmp
+  let cwd = (open $tmp)
+  if $cwd != "" and $cwd != $env.PWD {
+    cd $cwd
+  }
+  rm -fp $tmp
+}
 
 # Setup chezmoi
 use chezmoi/externals.nu *
