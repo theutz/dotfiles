@@ -19,7 +19,11 @@ focus-lost = true
 [editor.indent-guides]
 render = true
 
+[keys.insert] 
+"C-/" = ":sh zellij action new-pane --direction down"
+
 [keys.normal]
+"C-/" = ":sh zellij action new-pane --direction down"
 X = "extend_line_above"
 
 [keys.normal.space]
