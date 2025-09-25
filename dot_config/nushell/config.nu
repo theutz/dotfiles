@@ -1,4 +1,30 @@
-# Basic settings
+#                                /----------------\
+#                                | Basic settings |
+#                                \----------------/
+#                                      \
+#                                       \
+#                                        \
+#
+#   
+#                                            .--.
+#                                           {(~~)}
+#                          __..._         _.''''O`,._
+#                      _.-'      '~-._.-~~     (  .__}
+#                   _-~                       _.`--
+#                _-~     _         /~\    _.-~     
+#             _-~     ,-~ ~-.      \\ ) .~
+#           .'       {       )      \\|'
+#         .'         {       /  _.-' |:
+#       .'            \     /.-'     \\
+#     .'        __.-~.=\   /          `}
+#     ;      _.-~   / ./ |  }
+#     {    _.'     / /   | /
+#     {    =      {=+__  | :
+#     :   :_      `-- = \,_`-,.
+#      `.   '=,_
+#         '-.___'_::='
+#   
+
 $env.config.show_banner = false
 $env.config.edit_mode = "vi"
 $env.config.use_kitty_protocol = true
@@ -22,9 +48,16 @@ hide std/config
 source custom-bindings.nu
 
 # Initialize mise
+
 use ($nu.data-dir | path join mise.nu)
 
-# Setup zoxide
+#  ____       _                              _     _      
+# / ___|  ___| |_ _   _ _ __    _________  _(_) __| | ___ 
+# \___ \ / _ \ __| | | | '_ \  |_  / _ \ \/ / |/ _` |/ _ \
+#  ___) |  __/ |_| |_| | |_) |  / / (_) >  <| | (_| |  __/
+# |____/ \___|\__|\__,_| .__/  /___\___/_/\_\_|\__,_|\___|
+#                      |_|                                
+
 source ($nu.data-dir | path join zoxide.nu)
 
 # Setup yazi wrapper

@@ -67,6 +67,7 @@ node = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:gitignore" = "latest"
 "npm:opencommit" = "latest"
+"pipx:dinosay" = "latest"
 "pipx:harlequin" = "latest"
 "pipx:httpie" = "latest"
 "pipx:linode-cli" = { version = "latest", uvx_args = '--with boto3' }
