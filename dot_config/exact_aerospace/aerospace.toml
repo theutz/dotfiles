@@ -103,9 +103,9 @@ run = ["move-node-to-workspace 4"]
 # - Arrows.         left, down, up, right
 # All possible modifiers: cmd, alt, ctrl, shift
 
-cmd-ctrl-alt-space = 'mode aero'
-cmd-ctrl-alt-quote = 'mode join'
-cmd-ctrl-alt-semicolon = 'mode move'
+cmd-ctrl-alt-shift-space = 'mode aero'
+cmd-ctrl-alt-shift-quote = 'mode join'
+cmd-ctrl-alt-shift-semicolon = 'mode move'
 
 cmd-ctrl-alt-h = 'move left'
 cmd-ctrl-alt-j = 'move down'
@@ -152,7 +152,6 @@ cmd-ctrl-alt-shift-equal = 'resize smart +50'
 cmd-ctrl-alt-shift-leftSquareBracket = ['focus-monitor --wrap-around next']
 cmd-ctrl-alt-shift-minus = 'resize smart -50'
 cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
-cmd-ctrl-alt-shift-space = 'mode aero'
 
 f13 = 'mode aero'
 f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
