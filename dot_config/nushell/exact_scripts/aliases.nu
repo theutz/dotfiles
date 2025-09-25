@@ -269,6 +269,23 @@ def txa [
 # Zellij
 
 alias zj = zellij
+alias zjac = zellij action                 
+alias zja  = zellij attach                 
+alias zjda = zellij delete-all-sessions    
+alias zjd  = zellij delete-session         
+alias zje  = zellij edit                   
+alias zjka = zellij kill-all-sessions      
+alias zjk  = zellij kill-session           
+alias zjla = zellij list-aliases           
+alias zjls = zellij list-sessions          
+alias zjr  = zellij run                    
+alias zjn = zellij --session
+# New zellij session with same name and layout
+def zjnl [
+  name: string # the name of the layout/session
+] {
+  zellij --new-session-with-layout $name --session $name
+}
 
 # Miscellaneous
 alias sa = search-aliases
