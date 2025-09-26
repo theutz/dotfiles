@@ -34,20 +34,21 @@ $env.PROMPT_INDICATOR_VI_NORMAL = $"(ansi magenta)  (ansi reset)"
 $env.PROMPT_INDICATOR_VI_INSERT = $"(ansi blue)  (ansi reset)"
 
 # Load plugins
+
 plugin use gstat
 plugin use query
 plugin use formats
 
-# Setup appearance
-use with-appearance.nu
-use std/config [light-theme, dark-theme]
-$env.config.color_config = with-appearance { light-theme } { dark-theme }
-hide std/config
-
 # Setup keybindings
+
 source custom-bindings.nu
 
-# Initialize mise
+# 8888ba.88ba  oo                   
+# 88  `8b  `8b                      
+# 88   88   88 dP .d8888b. .d8888b. 
+# 88   88   88 88 Y8ooooo. 88ooood8 
+# 88   88   88 88       88 88.  ... 
+# dP   dP   dP dP `88888P' `88888P' 
 
 use ($nu.data-dir | path join mise.nu)
 
@@ -89,6 +90,21 @@ use sketchybar.nu *
 const NU_ALIASES_FILENAME = "aliases.nu"
 source $NU_ALIASES_FILENAME
 
+# Convert a record into .
+def "into env" []: record -> string {
+  items {|k,v| $"($k)=($v)" }
+  | str join "\n"
+}
+
+#  _____________________
+# < "Config" extensions >
+#  ---------------------
+#         \   ^__^
+#          \  (oo)\_______
+#             (__)\       )\/\
+#                 ||--WWW |
+#                 ||     ||
+
 # Edit general nu aliases.
 def "config aliases" [] {
   $NU_LIB_DIRS
@@ -97,8 +113,17 @@ def "config aliases" [] {
   | ^chezmoi edit --apply $in
 }
 
-# Convert a record into .
-def "into env" []: record -> string {
-  items {|k,v| $"($k)=($v)" }
-  | str join "\n"
+# Edit starship config
+def "config starship" [] {
+  $env.XDG_CONFIG_HOME | path join "starship.toml" | hx $in
+}
+
+# Edit helix config
+def "config helix" [] {
+  $env.XDG_CONFIG_HOME | path join helix config.toml | hx -w ($in | path dirname) $in
+}
+
+# Edit wezterm config
+def "config wezterm" [] {
+  $env.XDG_CONFIG_HOME | path join wezterm wezterm.lua | hx -w ($in | path dirname) $in
 }
