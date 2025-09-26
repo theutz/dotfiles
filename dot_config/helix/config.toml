@@ -1,4 +1,4 @@
-theme = "catppuccin_mocha"
+theme = "catppuccin_latte"
 
 [editor]
 line-number = "relative"
@@ -19,7 +19,7 @@ focus-lost = true
 [editor.indent-guides]
 render = true
 
-[keys.insert] 
+[keys.insert]
 "C-/" = ":sh zellij action new-pane --direction down"
 
 [keys.normal]
