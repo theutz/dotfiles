@@ -1,12 +1,5 @@
 theme = "custom"
 
-#  ___                        
-# / (_)   |  o                
-# \__   __|    _|_  __   ,_   
-# /    /  |  |  |  /  \_/  |  
-# \___/\_/|_/|_/|_/\__/    |_/
-                                                      
-
 [editor]
 line-number = "relative"
 mouse = true
@@ -43,5 +36,5 @@ l = [
     ":reload-all",
 ]
 q = ":write-quit-all"
-"lt" = ":config-open"
+lt = ":config-open"
 "," = ":config-reload"

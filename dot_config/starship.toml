@@ -40,10 +40,8 @@ bg_red = "#514045"
 bg_green = "#425047"
 bg_blue = "#3a515d"
 bg_yellow = "#4d4c43"
-
 fg = "#d3c6aa"
 red = "#e67e80"
-
 orange = "#e69875"
 yellow = "#dbbc7f"
 green = "#a7c080"
