@@ -1,15 +1,16 @@
 #!/usr/bin/env nu
-# vim: ft=nu.tmpl
-
-echo "boo"
 
 $env.PLUGIN_DIR = [$env.PWD plugins] | path join
 $env.FONT = "BlexMono Nerd Font Propo"
 use catppuccin.nu
 use with-appearance.nu
 
-def clr [name: string, alpha: string = "FF"]: nothing -> string {
-  catppuccin color $name --argb --alpha=$alpha
+let theme = open ($env.XDG_CONFIG_HOME | path join everforest themes.toml)
+| get dark.medium
+
+def "into argb" [--alpha (-a): string = "FF"]: string -> string {
+  $in | str replace "#" "" | ["0x" $alpha $in] | str join
+  | tee { print -e }
 }
 
 def "font size" [multiplier: float = 1.0]: nothing -> float {
@@ -19,23 +20,24 @@ def "font size" [multiplier: float = 1.0]: nothing -> float {
 def "icon color" [
   --highlight (-h)
 ]: nothing -> string {
-  if ($highlight) { clr yellow } else { clr sapphire }
+  if ($highlight) { $theme.yellow } else { $theme.aqua }
+  | into argb
 }
 
 def "icon alias color" [] {
-  with-appearance { "mauve" } { "lavender" }
-  | clr $in
+  $theme.purple
+  | into argb
 }
 
 def "label color" [
   --highlight (-h)
 ]: nothing -> string {
-  if ($highlight) { clr peach } else { clr text }
+  if ($highlight) { $theme.yellow } else { $theme.fg }
+  | into argb
 }
 
 def "background color" []: nothing -> string {
-  with-appearance  { [base AA] } { [surface0 88] }
-  | clr $in.0 ($in.1 | into string)
+  $theme.bg0 | into argb -a "88"
 }
 
 def "setup bar" [] {

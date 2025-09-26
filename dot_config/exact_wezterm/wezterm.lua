@@ -74,7 +74,7 @@ c.line_height = 1.0
 c.quit_when_all_windows_are_closed = false
 c.window_decorations = "RESIZE"
 c.adjust_window_size_when_changing_font_size = false
--- config.window_close_confirmation = "AlwaysPrompt"
+c.window_close_confirmation = "AlwaysPrompt"
 c.window_padding = {
 	top = "16px",
 	bottom = "4px",
@@ -182,25 +182,27 @@ c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
 c.enable_kitty_keyboard = true
 c.keys = {
+	{ key = "[", mods = "SUPER", action = a.ActivateCopyMode },
+	{ key = "]", mods = "SUPER", action = a.QuickSelect },
 	{ key = "d", mods = "SUPER", action = a.SplitPane({ direction = "Right" }) },
 	{ key = "D", mods = "SUPER|SHIFT", action = a.SplitPane({ direction = "Down" }) },
 	{ key = "h", mods = "SUPER", action = a.ActivatePaneDirection("Left") },
-	{ key = "j", mods = "SUPER", action = a.ActivatePaneDirection("Down") },
-	{ key = "k", mods = "SUPER", action = a.ActivatePaneDirection("Up") },
-	{ key = "l", mods = "SUPER", action = a.ActivatePaneDirection("Right") },
+	{ key = "H", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Left", 5 }) },
 	{ key = "i", mods = "SUPER", action = a.ScrollToPrompt(-1) },
 	{ key = "I", mods = "SUPER|SHIFT", action = a.ScrollToPrompt(1) },
+	{ key = "j", mods = "SUPER", action = a.ActivatePaneDirection("Down") },
+	{ key = "J", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Down", 5 }) },
+	{ key = "k", mods = "SUPER", action = a.ActivatePaneDirection("Up") },
+	{ key = "K", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Up", 5 }) },
+	{ key = "l", mods = "SUPER", action = a.ActivatePaneDirection("Right") },
+	{ key = "L", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Right", 5 }) },
 	{ key = "n", mods = "SUPER", action = a.SpawnTab("CurrentPaneDomain") },
 	{ key = "N", mods = "SUPER|SHIFT", action = a.SpawnWindow },
 	{ key = "o", mods = "SUPER", action = a.RotatePanes("Clockwise") },
 	{ key = "O", mods = "SUPER|SHIFT", action = a.RotatePanes("CounterClockwise") },
-	{ key = "[", mods = "SUPER", action = a.ActivateCopyMode },
-	{ key = "]", mods = "SUPER", action = a.QuickSelect },
+	{ key = "w", mods = "SUPER", action = a.CloseCurrentPane { confirm = true } },
+	{ key = "W", mods = "SUPER|SHIFT", action = a.CloseCurrentTab { confirm = true } },
 	{ key = "z", mods = "SUPER", action = a.TogglePaneZoomState },
-	{ key = "H", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Left", 5 }) },
-	{ key = "J", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Down", 5 }) },
-	{ key = "K", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Up", 5 }) },
-	{ key = "L", mods = "SUPER|SHIFT", action = a.AdjustPaneSize({ "Right", 5 }) },
 }
 
 --  _____________

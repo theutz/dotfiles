@@ -144,3 +144,21 @@ def "config env" [] {
 def "config nu" [] {
   hx -w $nu.default-config-dir $nu.config-path
 }
+
+# Edit borders configuration
+def "config borders" [] {
+  let dir = ($env.XDG_CONFIG_HOME | path join borders)
+  hx -w $dir ($dir | path join bordersrc)
+}
+
+# Edit sketchybar configuration
+def "config sketchybar" [] {
+  let $dir = ($env.XDG_CONFIG_HOME | path join sketchybar)
+  hx -w $dir ($dir | path join sketchybarrc)
+}
+
+# Edit aerospace config
+def "config aerospace" [] {
+  let $dir = ($env.XDG_CONFIG_HOME | path join aerospace) 
+  hx -w $dir ($dir | path join aerospace.toml)
+}
