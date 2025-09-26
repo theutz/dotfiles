@@ -1,14 +1,25 @@
-#!/usr/bin/env -S {{ .mise.exe }} exec aqua:nushell/nushell@0.106.1 -- nu
-# vim: ft=nu
+#!/usr/bin/env nu
 
-use {{ .nushell.libDir }}/catppuccin.nu
+use /Users/michael/.config/nushell/scripts/catppuccin.nu
+
+let theme = $env.XDG_CONFIG_HOME
+| path join everforest themes.toml
+| open $in
+| get dark.medium
+
+def "into argb" [--alpha (-a): string = "FF"]: string -> string {
+  $in | str replace "#" ""
+  | ["0x" $alpha $in]
+  | str join
+}
 
 {
   style: round
   width: 8.0
   hidpi: on
-  active_color: (catppuccin color --argb mauve)
-  inactive_color: (catppuccin color --argb base --alpha 88)
+  active_color: ($theme.green | into argb)
+  inactive_color: ($theme.grey0 | into argb -a "88")
 }
 | items {|k, v| [$k $v] | str join "="}
+| tee { print -e }
 | run-external borders ...$in
