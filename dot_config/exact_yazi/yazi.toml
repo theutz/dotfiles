@@ -2,8 +2,8 @@
 show_hidden = false
 
 [opener]
-visual = [{ run = '${VISUAL:-neovide} "$@"', orphan = true, for = "unix" }]
-editor = [{ run = '${EDITOR:-nvim} "$@"', orphan = true, for = "unix" }]
+visual = [{ run = '${VISUAL:-hx} "$@"', orphan = true, for = "unix" }]
+editor = [{ run = '${EDITOR:-hx} "$@"', orphan = true, for = "unix" }]
 
 [open]
 prepend_rules = [{ name = "*.html", use = ["edit"] }]
@@ -13,16 +13,6 @@ prepend_previewers = [
   # Markdown
   { name = "*.md", run = "glow" },
 
-  # Structured data
-  { name = "*.csv", run = "duckdb" },
-  { name = "*.tsv", run = "duckdb" },
-  { name = "*.json", run = "duckdb" },
-  { name = "*.parquet", run = "duckdb" },
-  { name = "*.txt", run = "duckdb" },
-  { name = "*.xlsx", run = "duckdb" },
-  { name = "*.db", run = "duckdb" },
-  { name = "*.duckdb", run = "duckdb" },
-
   # Archives
   { mime = "application/*zip", run = "ouch" },
   { mime = "application/x-tar", run = "ouch" },
@@ -31,13 +21,4 @@ prepend_previewers = [
   { mime = "application/x-rar", run = "ouch" },
   { mime = "application/x-xz", run = "ouch" },
   { mime = "application/xz", run = "ouch" },
-]
-
-prepend_preloaders = [
-  { name = "*.csv", run = "duckdb", multi = false },
-  { name = "*.tsv", run = "duckdb", multi = false },
-  { name = "*.json", run = "duckdb", multi = false },
-  { name = "*.parquet", run = "duckdb", multi = false },
-  { name = "*.txt", run = "duckdb", multi = false },
-  { name = "*.xlsx", run = "duckdb", multi = false },
 ]
