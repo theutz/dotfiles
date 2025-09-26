@@ -2,15 +2,12 @@
 
 $env.PLUGIN_DIR = [$env.PWD plugins] | path join
 $env.FONT = "BlexMono Nerd Font Propo"
-use catppuccin.nu
-use with-appearance.nu
 
 let theme = open ($env.XDG_CONFIG_HOME | path join everforest themes.toml)
 | get dark.medium
 
 def "into argb" [--alpha (-a): string = "FF"]: string -> string {
   $in | str replace "#" "" | ["0x" $alpha $in] | str join
-  | tee { print -e }
 }
 
 def "font size" [multiplier: float = 1.0]: nothing -> float {

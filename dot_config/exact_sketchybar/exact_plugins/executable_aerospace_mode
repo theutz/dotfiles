@@ -1,16 +1,16 @@
 #!/usr/bin/env nu
-# vim: ft=nu
 
-use catppuccin.nu color
+let theme = open ($env.XDG_CONFIG_HOME | path join everforest themes.toml)
+| get dark.medium
+
+def "into argb" [--alpha (-a): string = "FF"]: string -> string {
+  $in | str replace "#" "" | ["0x" $alpha $in] | str join
+}
 
 aerospace list-modes --current
 | [
   --animate quadratic 10
-  --bar color=(color --argb --alpha 88 (match ($in) {
-      main => "surface0"
-      _ => "sky"
-    }
-  ))
+  --bar color=(match ($in) { main => $theme.bg2, _ => $theme.red } | into argb -a "AA")
   --set aerospace_mode
   icon.highlight=(match ($in) { main => "off", _ => "on" })
   label.drawing=(match ($in) { main => "off", _ => "on" })

@@ -789,6 +789,7 @@ alias dkcsc = docker compose scale
 alias dkcS = docker compose restart
 alias dkcu = docker compose up
 alias dkcU = docker compose up -d
+alias dkcuw = docker compose up --watch
 alias dkcv = docker compose version
 alias dkcx = docker compose stop
 
