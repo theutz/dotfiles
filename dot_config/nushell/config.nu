@@ -162,3 +162,9 @@ def "config aerospace" [] {
   let $dir = ($env.XDG_CONFIG_HOME | path join aerospace) 
   hx -w $dir ($dir | path join aerospace.toml)
 }
+
+# Edit global mise config
+def "config mise" [] {
+  let $dir = ($env.XDG_CONFIG_HOME | path join mise)
+  hx -w $dir ($dir | path join config.toml)
+}
