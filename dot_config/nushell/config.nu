@@ -127,3 +127,20 @@ def "config helix" [] {
 def "config wezterm" [] {
   $env.XDG_CONFIG_HOME | path join wezterm wezterm.lua | hx -w ($in | path dirname) $in
 }
+
+# Edit yazi config
+def "config yazi" [] {
+  let dir = $env.XDG_CONFIG_HOME | path join yazi
+  let files = glob --exclude ["package.toml"] $"($dir)/*.{toml,lua}"
+  hx -w $dir ...$files
+}
+
+# Edit env.nu
+def "config env" [] {
+  hx -w $nu.default-config-dir $nu.env-path
+}
+
+# Edit config.nu
+def "config nu" [] {
+  hx -w $nu.default-config-dir $nu.config-path
+}

@@ -47,3 +47,8 @@ hash = "d4c41d713b325710a9dd5ae86c3f8a5f"
 use = "yazi-rs/flavors:catppuccin-latte"
 rev = "2d73b79"
 hash = "9e789c612c34f941a2afd42e7ded39f"
+
+[[flavor.deps]]
+use = "Chromium-3-Oxide/everforest-medium"
+rev = "0158f0f"
+hash = "dbbbfe681e156c28303efb1f44b6cbc4"
