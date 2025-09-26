@@ -145,6 +145,7 @@ def --env y [...args] {
 }
 
 # Setup chezmoi
+use chezmoi/aliases.nu *
 use chezmoi/externals.nu *
 
 # Setup homebrew

@@ -12,12 +12,9 @@ cursorcolumn = true
 rulers = [120]
 bufferline = "always"
 text-width = 120
-
-[editor.auto-save]
-focus-lost = true
-
-[editor.indent-guides]
-render = true
+whitespace.render = "all"
+auto-save.focus-lost = true
+indent-guides.render = true
 
 [keys.insert]
 "C-/" = ":sh zellij action new-pane --direction down"
@@ -25,6 +22,8 @@ render = true
 [keys.normal]
 "C-/" = ":sh zellij action new-pane --direction down"
 X = "extend_line_above"
+"C-j" = "save_selection"
+"C-s" = ":write"
 
 [keys.normal.space]
 l = [
