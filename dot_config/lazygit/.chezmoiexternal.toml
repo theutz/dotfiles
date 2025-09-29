@@ -1,5 +1,0 @@
-["catppuccin"]
-type = "git-repo"
-url = "https://github.com/catppuccin/lazygit"
-refreshPeriod = "24h"
-# exact = true
