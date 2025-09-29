@@ -4,7 +4,7 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
-		variant = "dawn",
+		variant = "auto",
 		dark_variant = "main",
 		styles = {
 			transparency = true,
