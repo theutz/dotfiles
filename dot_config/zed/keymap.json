@@ -29,5 +29,11 @@
     "bindings": {
       "cmd-k cmd-g": "git_panel::ToggleFocus"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-s": "workspace::Save"
+    }
   }
 ]
