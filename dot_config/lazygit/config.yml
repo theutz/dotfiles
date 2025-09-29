@@ -1,7 +1,7 @@
 customCommands:
   - key: b
     context: files
-    command: nu -c "git-commit-message-ai"
+    command: git diff --cached | mods -R commit | git commit --file -
     description: generate commit message with ai
     output: terminal
 disableStartupPopups: true
