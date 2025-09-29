@@ -4,16 +4,6 @@ import type {
   BrowserSpecification,
 } from "/Applications/Finicky.app/Contents/Resources/finicky.d.ts";
 
-const ff: BrowserSpecification = (url) => ({
-  name: "Firefox",
-  args: ["--new", "--args", "-P", "default", url.toString()],
-});
-
-const ffWork: BrowserSpecification = (url) => ({
-  name: "Firefox",
-  args: ["--new", "--args", "-P", "Delegator", url.toString()],
-});
-
 export default {
   defaultBrowser: "Firefox",
   options: {
@@ -36,7 +26,7 @@ export default {
             "theutz.com",
           ].includes(url.host),
       ],
-      browser: ff,
+      browser: "Firefox",
     },
     {
       match: [
@@ -58,7 +48,7 @@ export default {
             )
             .some((domain) => url.host.endsWith(domain)),
       ],
-      browser: ffWork,
+      browser: "Google Chrome",
     },
   ],
 } satisfies FinickyConfig;
