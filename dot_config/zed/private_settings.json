@@ -7,12 +7,16 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "play_sound_when_agent_done": true
+  },
   "icon_theme": "Catppuccin Latte",
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "ui_font_family": "Berkeley Mono",
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
   "buffer_font_family": "Berkeley Mono",
   "buffer_font_fallbacks": ["BlexMono Nerd Font Propo"],
+  "buffer_line_height": "comfortable",
+  "relative_line_numbers": true,
   "theme": {
     "mode": "system",
     "light": "Rosé Pine Dawn",
@@ -20,6 +24,8 @@
   },
   "vim_mode": true,
   "terminal": {
-    "shell": { "program": "/opt/homebrew/bin/nu" }
+    "default_height": 480,
+    "line_height": "standard",
+    "font_fallbacks": ["BlexMono Nerd Font Propo"]
   }
 }

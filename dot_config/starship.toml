@@ -5,27 +5,20 @@ palette = "everforest"
 style = "bold orange"
 
 [character]
-error_symbol = "[](bold red)"
-success_symbol = "[](bold green)"
+error_symbol = "[](bold red) "
+success_symbol = "[](bold green) "
 
 [username]
 format = "[$user]($style) on "
 style_user = "bold aqua"
 
 [shell]
-zsh_indicator = "󰰸"
-bash_indicator = ""
-fish_indicator = "󰈺"
-nu_indicator = "󰬕"
+zsh_indicator = "Z"
+bash_indicator = "B"
+fish_indicator = "F"
+nu_indicator = "N"
 disabled = false
 style = "purple"
-
-[mise]
-disabled = true
-format = "with [$symbol$health]($style)"
-healthy_symbol = ""
-unhealthy_symbol = ""
-style = "aqua"
 
 [palettes.everforest]
 bg_dim = "#232a2e"
