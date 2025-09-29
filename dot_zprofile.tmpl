@@ -17,11 +17,11 @@ fi
 
 # Editors
 if [[ -z "$EDITOR" ]]; then
-  export EDITOR='hx'
+  export EDITOR='nvim'
 fi
 if [[ -z "$VISUAL" ]]; then
   # export VISUAL='neovide --no-fork'
-  export VISUAL='hx'
+  export VISUAL='zed'
 fi
 # HOMEBREW_EDITOR=vim
 
@@ -29,10 +29,6 @@ fi
 if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
-export MANPAGER='nvim -c +Man!'
-export MANWIDTH='999'
-export BAT_PAGER='less'
-export DELTA_PAGER='less'
 
 # Language
 if [[ -z "$LANG" ]]; then
@@ -116,6 +112,3 @@ fi
 
 # Rust
 [[ -d "$HOME/.cargo" && -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
-
-# tmux
-TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux"
