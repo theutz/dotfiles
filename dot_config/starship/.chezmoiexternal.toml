@@ -1,0 +1,4 @@
+["rosepine"]
+type = "git-repo"
+url = "https://github.com/rose-pine/starship"
+refreshPeriod = "168h"
