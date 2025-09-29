@@ -7,7 +7,7 @@ fi
 setopt AUTO_CONTINUE
 
 # Enable starship prompt
-if command -v dark-mode 2>/dev/null; then
+if command -v dark-mode &>/dev/null; then
     if [[ "$(dark-mode status)" =~ "off" ]]; then
         export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/rose-pine/rose-pine-dawn.toml"
     else
