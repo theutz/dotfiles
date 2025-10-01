@@ -30,12 +30,17 @@ def --wrapped "chezmoi status" [...args] {
 def "chezmoi add-will-delete" [] {
   chezmoi status
   | where will == D
-  | get file
-  | each { [$env.HOME $in] | path join }
-  | chezmoi add ...$in
+  | chezmoi add ...$in.file
 }
 
-alias c = chezmoi
+# Forget files that were deleted
+def "chezmoi forget-deleted" [] {
+  chezmoi status
+  | where did == D and will == A
+  | chezmoi forget ...$in.file
+}
+
+alias cm = chezmoi
 alias cma = chezmoi add
 alias cmawd = chezmoi add-will-delete
 alias cmc = chemzoi chattr
@@ -45,9 +50,9 @@ alias cmm = chezmoi merge
 alias cmM = chezmoi merge-all
 alias cmp = chezmoi apply
 alias cmr = chezmoi re-add
-alias cms = chezmoi status
-alias cmsf = chezmoi status --exclude scripts
+alias cms = chezmoi status --exclude scripts
+alias cmS = chezmoi status
 alias cmX = chezmoi destroy
 alias cmx = chezmoi forget
+alias cmxd = chezmoi forget-deleted
 alias cmz = chezmoi cd
-
