@@ -31,8 +31,8 @@ end
 
 c.color_scheme = scheme_for_appearance(get_appearance())
 c.bold_brightens_ansi_colors = "BrightAndBold"
-c.window_background_opacity = 0.8
-c.macos_window_background_blur = 40
+c.window_background_opacity = 0.9
+c.macos_window_background_blur = 30
 c.inactive_pane_hsb = {
 	saturation = 1.3,
 	brightness = 0.8,
@@ -63,7 +63,7 @@ w.on("window-config-reloaded", write_appearance_to_disk)
 -- │ Fonts │
 -- ╰───────╯
 
-c.font = w.font("Maple Mono NF", { weight = 500 })
+c.font = w.font("Maple Mono NF", { weight = 600 })
 c.font_size = 16
 c.line_height = 1.6
 

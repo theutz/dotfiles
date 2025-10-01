@@ -38,6 +38,13 @@ LS_COLORS = { value = '''
 ''', tools = true }
 MANPAGER = { value = "nvim -c +Man!", tools = true }
 MANWIDTH = { value = "999", tools = true }
+_.source = ["""
+{%- set file = "rose-pine.sh" %}
+{%- if env.APPEARANCE == 'light' %}
+  {%- set file = 'rose-pine-dawn.sh' %}
+{%- endif %}
+{{- [xdg_config_home, "fzf", "rose-pine", "dist", file] | join_path -}}
+"""]
 
 [tools]
 aqua = "latest"
