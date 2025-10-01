@@ -51,8 +51,9 @@ fi
 
 # Aliases
 alias ls=eza
+alias ll="ls -l"
+alias la="ls -la"
 alias cat=bat
-alias cd=z
 alias lg=lazygit
 alias g=git
 alias cm=chezmoi

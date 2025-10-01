@@ -147,7 +147,7 @@ c.tab_bar_at_bottom = true
 --                 \XXXXXXXXXXXXXXXXXXXXXXXXXX/
 --                   ""VXXXXXXXXXXXXXXXXXXV""
 
--- c.default_prog = { "zsh", "-c", "nu" }
+c.default_prog = { "zsh", "-c", "nu --login" }
 
 --  ________________
 -- < Text rendering >

@@ -27,6 +27,7 @@ STARSHIP_CONFIG = '''
 {%- endif %}
 {{- base | concat(with=theme) | join_path -}}
 '''
+EZA_ICONS_AUTO = "1"
 
 [tools]
 aqua = "latest"
