@@ -7,6 +7,13 @@ utiluti = "spm:scriptingosx/utiluti"
 [env]
 _.path = ["/opt/homebrew/sbin", "/opt/homebrew/bin", ".local/bin", "bin"]
 _.file = "~/.config/mise/env.sops.yaml"
+_.source = [{ path = """
+{%- set file = "rose-pine.sh" %}
+{%- if env.APPEARANCE == 'light' %}
+  {%- set file = 'rose-pine-dawn.sh' %}
+{%- endif %}
+{{- [xdg_config_home, "fzf", "rose-pine", "dist", file] | join_path -}}
+""", tools = true }]
 EDITOR = "nvim"
 VISUAL = "neovide"
 LESS = "-g -i -M -R -S -w -X -z-4"
@@ -38,13 +45,6 @@ LS_COLORS = { value = '''
 ''', tools = true }
 MANPAGER = { value = "nvim -c +Man!", tools = true }
 MANWIDTH = { value = "999", tools = true }
-_.source = [{ path = """
-{%- set file = "rose-pine.sh" %}
-{%- if env.APPEARANCE == 'light' %}
-  {%- set file = 'rose-pine-dawn.sh' %}
-{%- endif %}
-{{- [xdg_config_home, "fzf", "rose-pine", "dist", file] | join_path -}}
-""", tools = true }]
 
 [tools]
 aqua = "latest"
@@ -74,6 +74,7 @@ fd = "latest"
 gh = "latest"
 utiluti = "latest"
 lazydocker = "latest"
+coreutils = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
