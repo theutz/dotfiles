@@ -14,17 +14,22 @@ end
 
 vim.o.exrc = true
 
--- Use fish
--- vim.o.shell = "/opt/homebrew/bin/fish"
+-- Set shell
+local shell = "nu"
+if shell == "nu" then
+	-- Use nushell
+	vim.o.shell = vim.fn.expand("$HOME/.local/share/mise/shims/nu")
+	vim.o.shellcmdflag = "--login --stdin --no-newline -c"
+	vim.o.shellredir = "out+err> %s"
+	vim.o.shellpipe =
+		"| complete | update stderr { ansi strip } | tee { get stderr | save --force --raw %s } | into record"
+	vim.o.shelltemp = false
+	vim.o.shellxescape = ""
+	vim.o.shellxquote = ""
+	vim.o.shellquote = ""
+elseif shell == "fish" then
+	vim.o.shell = "/opt/homebrew/bin/fish"
+end
 
--- Use nushell
--- vim.o.shell = "/Users/michael/.local/share/mise/shims/nu"
--- vim.o.shellcmdflag = "--login --stdin --no-newline -c"
--- vim.o.shellredir = "out+err> %s"
--- vim.o.shellpipe = "| complete | update stderr { ansi strip } | tee { get stderr | save --force --raw %s } | into record"
--- vim.o.shelltemp = false
--- vim.o.shellxescape = ""
--- vim.o.shellxquote = ""
--- vim.o.shellquote = ""
-
+-- Add mise shims to the path
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH

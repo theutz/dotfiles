@@ -15,4 +15,16 @@ def --wrapped "chezmoi status" [...args] {
   | select file status was will
 }
 
+alias c = chezmoi
+alias cma = chezmoi add
+alias cmc = chemzoi chattr
+alias cmd = chezmoi diff
+alias cml = chezmoi managed
+alias cmm = chezmoi merge
+alias cmM = chezmoi merge-all
+alias cmp = chezmoi apply
+alias cmr = chezmoi re-add
 alias cms = chezmoi status
+alias cmX = chezmoi destroy
+alias cmx = chezmoi forget
+alias cmz = chezmoi cd
