@@ -23,11 +23,19 @@ STARSHIP_CONFIG = '''
 {%- set base = [xdg_config_home, "starship", "rose-pine"] %}
 {%- set theme = "rose-pine.toml" %}
 {%- if env.APPEARANCE == "light" %}
-{%- set theme = "rose-pine-dawn.toml" %}
+  {%- set theme = "rose-pine-dawn.toml" %}
 {%- endif %}
 {{- base | concat(with=theme) | join_path -}}
 '''
 EZA_ICONS_AUTO = "1"
+LS_COLORS = { value = '''
+{%- set theme = "rose-pine" %}
+{%- if env.APPEARANCE == "light" %}
+  {%- set theme = "rose-pine-dawn" %}
+{%- endif %}
+{%- set cmd = "vivid generate " ~ theme %}
+{{- exec(command=cmd) -}}
+''', tools = true }
 
 [tools]
 aqua = "latest"
