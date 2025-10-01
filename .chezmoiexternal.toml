@@ -1,7 +1,0 @@
-[".zprezto"]
-type = "git-repo"
-url = "https://github.com/sorin-ionescu/prezto"
-refreshPeriod = "24h"
-exact = false
-clone.args = ['--recursive']
-pull.args = ['--recurse-submodules']
