@@ -1,0 +1,4 @@
+["rose-pine"]
+type = "git-repo"
+url = "https://github.com/rose-pine/fzf"
+refreshPeriod = "24h"
