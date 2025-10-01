@@ -1,5 +1,6 @@
 alias m = mise
-alias g = git
+alias mx = mise exec
+alias mr = mise run
 
 alias l = ls
 alias ll = ls -l
