@@ -7,7 +7,7 @@ alias m = mise
 alias mx = mise exec
 alias mr = mise run
 
-alias l = ls
+def l [] { ls --all | grid --icons --color}
 alias ll = ls -l
 alias la = ls -la
 

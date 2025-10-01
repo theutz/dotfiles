@@ -1,7 +1,5 @@
 #!/usr/bin/env nu
 
-use /Users/michael/.config/nushell/scripts/catppuccin.nu
-
 let theme = $env.XDG_CONFIG_HOME
 | path join everforest themes.toml
 | open $in
