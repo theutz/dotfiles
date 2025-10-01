@@ -1,0 +1,8 @@
+# Export Mise Environment Variables
+eval "$(~/.local/bin/mise env zsh)"
+
+fpath+=(
+  $ZDOTDIR/functions
+)
+
+# vim:ft=zsh
