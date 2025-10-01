@@ -8,6 +8,7 @@
 -}}
 encryption = "age"
 sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
+interactive = true
 
 [gpg]
 recipient = "FD235DFD"
@@ -54,10 +55,7 @@ args = [ "-c", "+':norm gg'", "-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{
 {{ end }}
 
 [edit]
-{{- if lookPath "hx" }}
-command = "hx"
-args = ["-w", "{{ .chezmoi.sourceDir }}"]
-{{- else if lookPath "nvim" }}
+{{- if lookPath "nvim" }}
 command = "nvim"
 args = ["-c", "cd {{ .chezmoi.sourceDir }}"]
 {{ end }}
