@@ -1,7 +1,7 @@
 vim.o.linespace = 16
-vim.o.guifont = "Berkeley Mono:h" .. vim.o.linespace
+vim.o.guifont = "Maple Mono NF:h" .. vim.o.linespace
 
-local padding = 8
+local padding = 4
 vim.g.neovide_padding_top = padding
 vim.g.neovide_padding_bottom = padding
 vim.g.neovide_padding_left = padding
@@ -9,8 +9,9 @@ vim.g.neovide_padding_right = padding
 
 vim.g.neovide_theme = "auto"
 
-vim.g.neovide_opacity = 0.85
-vim.g.neovide_normal_opacity = 0.5
+local opacity = 0.80
+vim.g.neovide_opacity = opacity
+vim.g.neovide_normal_opacity = opacity
 
 vim.g.neovide_window_blurred = true
 

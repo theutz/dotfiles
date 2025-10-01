@@ -153,6 +153,7 @@ cmd-ctrl-alt-shift-leftSquareBracket = ['focus-monitor --wrap-around next']
 cmd-ctrl-alt-shift-minus = 'resize smart -50'
 cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
 
+alt-semicolon = 'mode aero'
 f13 = 'mode aero'
 f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
 f20 = 'resize smart-opposite -50' # cmd-ctrl-alt-shift-comma remapped via karabiner
@@ -296,19 +297,19 @@ shift-9 = [
 ]
 
 shift-h = [
-  'move left',
+  'move left --boundaries all-monitors-outer-frame',
   'exec-and-forget sketchybar --trigger aerospace_workspace_change',
 ]
 shift-j = [
-  'move down',
+  'move down --boundaries all-monitors-outer-frame',
   'exec-and-forget sketchybar --trigger aerospace_workspace_change',
 ]
 shift-k = [
-  'move up',
+  'move up --boundaries all-monitors-outer-frame',
   'exec-and-forget sketchybar --trigger aerospace_workspace_change',
 ]
 shift-l = [
-  'move right',
+  'move right --boundaries all-monitors-outer-frame',
   'exec-and-forget sketchybar --trigger aerospace_workspace_change',
 ]
 shift-n = [

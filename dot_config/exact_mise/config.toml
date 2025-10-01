@@ -1,12 +1,39 @@
 [alias]
 nushell = "aqua:nushell/nushell"
+vincent = "ubi:rsteube/vincent"
+zsh-syntax-highlighting = "http:zsh-syntax-highlighting"
+utiluti = "spm:scriptingosx/utiluti"
 
 [env]
+_.path = [".local/bin", "bin"]
 _.file = "~/.config/mise/env.sops.yaml"
 EDITOR = "nvim"
 VISUAL = "neovide"
+LESS = "-g -i -M -R -S -w -X -z-4"
+LESSOPEN = "|/usr/bin/env lesspipe.sh %s 2>&-"
+PAGER = "less"
+BROWSER = "open"
+LANG = "en_US.UTF-8"
+APPEARANCE = '''
+{%- set default_file_path = [xdg_state_home, "appearance"] | join_path() %}
+{%- set file_path = env | get(key="APPEARANCE_FILE",default=default_file_path) %}
+{{- read_file(path=file_path) | trim -}}
+'''
+STARSHIP_CONFIG = '''
+{%- set base = [xdg_config_home, "starship", "rose-pine"] %}
+{%- set theme = "rose-pine.toml" %}
+{%- if env.APPEARANCE == "light" %}
+{%- set theme = "rose-pine-dawn.toml" %}
+{%- endif %}
+{{- base | concat(with=theme) | join_path -}}
+'''
 
 [tools]
+aqua = "latest"
+bat = "latest"
+bat-extras = "latest"
+carapace = "latest"
+eza = "latest"
 fzf = "latest"
 gum = "latest"
 mods = "latest"
@@ -14,8 +41,25 @@ neovim = "latest"
 nushell = "latest"
 ripgrep = "latest"
 starship = "latest"
+ubi = "latest"
+usage = "latest"
 zoxide = "latest"
+yazi = "latest"
+fastfetch = "latest"
+vivid = "latest"
+go = "latest"
+vincent = "latest"
+chezmoi = { version = "latest", postinstall = """
+chezmoi completion zsh > ~/.config/zsh/functions/_chezmoi
+""" }
+fd = "latest"
+gh = "latest"
+utiluti = "latest"
 
-[tasks.edit]
-description = "Edit global mise configuration"
-run = '{{env.EDITOR}} {{[xdg_config_home,"mise","config.toml"]|join_path}}'
+[tools."zsh-syntax-highlighting"]
+version = "latest"
+url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+strip_components = 1
+
+[settings]
+experimental = true

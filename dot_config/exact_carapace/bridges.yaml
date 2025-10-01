@@ -1,1 +1,2 @@
-chezmoi: fish
+chezmoi: zsh
+edit: zsh

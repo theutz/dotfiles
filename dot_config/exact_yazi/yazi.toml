@@ -1,9 +1,9 @@
 [mgr]
-show_hidden = false
+show_hidden = true
 
 [opener]
-visual = [{ run = '${VISUAL:-hx} "$@"', orphan = true, for = "unix" }]
-editor = [{ run = '${EDITOR:-hx} "$@"', orphan = true, for = "unix" }]
+visual = [{ run = '${VISUAL:-neovide} "$@"', orphan = true, for = "unix" }]
+editor = [{ run = '${EDITOR:-nvim} "$@"', orphan = true, for = "unix" }]
 
 [open]
 prepend_rules = [{ name = "*.html", use = ["edit"] }]

@@ -39,20 +39,21 @@ c:set_strict_mode(true)
 --      | O . O|
 --       \_____/
 
-function get_appearance()
+local function get_appearance()
 	if w.gui then
 		return w.gui.get_appearance()
 	end
 	return "Dark"
 end
 
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "rose-pine"
 	else
 		return "rose-pine-dawn"
 	end
 end
+
 c.color_scheme = scheme_for_appearance(get_appearance())
 c.bold_brightens_ansi_colors = "BrightAndBold"
 c.window_background_opacity = 1.0
@@ -64,6 +65,25 @@ c.inactive_pane_hsb = {
 c.text_background_opacity = 1.0
 c.text_min_contrast_ratio = 1.0
 
+-- Write system appearance to be consumed by other cli tools!
+local appearance_file_path = w.home_dir .. "/.local/state/appearance"
+c.set_environment_variables = {
+	APPEARANCE_FILE = appearance_file_path,
+}
+local function write_appearance_to_disk()
+	local appearance = "light"
+	if get_appearance():find("Dark") then
+		appearance = "dark"
+	end
+	local file = io.open(appearance_file_path, "w")
+	if file then
+		file:write(appearance)
+		file:close()
+	end
+end
+w.on("gui-startup", write_appearance_to_disk)
+w.on("window-config-reloaded", write_appearance_to_disk)
+
 --  _______
 -- < Fonts >
 --  -------
@@ -72,9 +92,9 @@ c.text_min_contrast_ratio = 1.0
 --  (oo)      ||----w |
 --  (__)      ||     ||  \/\
 
-c.font = w.font("Berkeley Mono", { weight = 500 })
-c.font_size = 14
-c.line_height = 1.0
+c.font = w.font("Maple Mono NF", { weight = 400 })
+c.font_size = 16
+c.line_height = 1.4
 
 --  ____
 -- < UI >
