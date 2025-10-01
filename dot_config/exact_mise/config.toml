@@ -36,6 +36,8 @@ LS_COLORS = { value = '''
 {%- set cmd = "vivid generate " ~ theme %}
 {{- exec(command=cmd) -}}
 ''', tools = true }
+MANPAGER = { value = "nvim -c +Man!", tools = true }
+MANWIDTH = { value = "999", tools = true }
 
 [tools]
 aqua = "latest"
@@ -64,6 +66,7 @@ chezmoi completion zsh > ~/.config/zsh/functions/_chezmoi
 fd = "latest"
 gh = "latest"
 utiluti = "latest"
+lazydocker = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
