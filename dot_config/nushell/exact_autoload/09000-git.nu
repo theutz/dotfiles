@@ -1,19 +1,21 @@
-# Git aliases adapted from sorin-ionescu's prezto for zsh
-# https://github.com/sorin-ionescu/prezto/blob/master/modules/git/alias.zsh
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Git aliases adapted from sorin-ionescu's prezto for zsh                   │
+# │ https://github.com/sorin-ionescu/prezto/blob/master/modules/git/alias.zsh │
+# ╰───────────────────────────────────────────────────────────────────────────╯
 
-export const _git_log_medium_format = "%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B"
-export const _git_log_oneline_format = "%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n";
-export const _git_log_brief_format = "%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n";
-export const _git_status_ignore_submodules = "none"
+const _git_log_medium_format = "%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B"
+const _git_log_oneline_format = "%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n";
+const _git_log_brief_format = "%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n";
+const _git_status_ignore_submodules = "none"
 
 # Print the name of the current branch
-export def git-branch-current [] {
+def git-branch-current [] {
   plugin use gstat
   gstat | get branch
 }
 
 # Print a list of lost commits
-export def git-commit-lost [] {
+def git-commit-lost [] {
   use std null-device
   plugin use gstat
   if (gstat | get repo_name) == "no_repository" {
@@ -30,13 +32,17 @@ export def git-commit-lost [] {
   }
 }
 
-# Git
+# ╭─────╮
+# │ Git │
+# ╰─────╯
 
-export alias g = git
+alias g = git
 
-# Branch (b)
+# ╭────────────╮
+# │ Branch (b) │
+# ╰────────────╯
 
-export def git-branch-create-ai [] {
+def git-branch-create-ai [] {
   use std null-device
   git diff origin/HEAD HEAD
   | mods -R branch --no-cache --quiet --raw err> (null-device)
@@ -44,28 +50,30 @@ export def git-branch-create-ai [] {
   | git checkout -b $in
 }
 
-export alias gb = git branch
-export alias gba = git branch --all --verbose
-export alias gbc = git checkout -b
-export alias gbcai = git-branch-create-ai
-export alias gbd = git branch --delete
-export alias gbD = git branch --delete --force
-export alias gbl = git branch --verbose
-export alias gbL = git branch --all --verbose
-export alias gbm = git branch --move
-export alias gbM = git branch --move --force
-export alias gbr = git branch --move
-export alias gbR = git branch --move --force
-export alias gbs = git show-branch
-export alias gbS = git show-branch --all
-export alias gbv = git branch --verbose
-export alias gbV = git branch --verbose --verbose
-export alias gbx = git branch --delete
-export alias gbX = git branch --delete --force
+alias gb = git branch
+alias gba = git branch --all --verbose
+alias gbc = git checkout -b
+alias gbcai = git-branch-create-ai
+alias gbd = git branch --delete
+alias gbD = git branch --delete --force
+alias gbl = git branch --verbose
+alias gbL = git branch --all --verbose
+alias gbm = git branch --move
+alias gbM = git branch --move --force
+alias gbr = git branch --move
+alias gbR = git branch --move --force
+alias gbs = git show-branch
+alias gbS = git show-branch --all
+alias gbv = git branch --verbose
+alias gbV = git branch --verbose --verbose
+alias gbx = git branch --delete
+alias gbX = git branch --delete --force
 
-# Commit (c)
+# ╭────────────╮
+# │ Commit (c) │
+# ╰────────────╯
 
-export def --wrapped git-commit-message-ai [
+def --wrapped git-commit-message-ai [
   ...args
 ] {
   use std null-device
@@ -75,250 +83,293 @@ export def --wrapped git-commit-message-ai [
   | git commit --message $in ...$args
 }
 
-export alias gc = git commit --verbose
-export alias gcS = git commit --verbose --gpg-sign
-export alias gca = git commit --verbose --all
-export alias gcai = git-commit-message-ai
-export alias gcaS = git commit --verbose --all --gpg-sign
-export alias gcm = git commit --message
-export alias gcmS = git commit --message --gpg-sign
-export alias gcam = git commit --all --message
-export alias gco = git checkout
-export alias gcO = git checkout --patch
-export alias gcf = git commit --amend --reuse-message HEAD
-export alias gcfS = git commit --amend --reuse-message HEAD --gpg-sign
-export alias gcF = git commit --verbose --amend
-export alias gcFS = git commit --verbose --amend --gpg-sign
-export alias gcp = git cherry-pick --ff
-export alias gcP = git cherry-pick --no-commit
-export alias gcr = git revert
-export alias gcR = git reset "HEAD^"
-export alias gcs = git show
-export alias gcsS = git show --pretty=short --show-signature
-export alias gcl = git-commit-lost
-export alias gcy = git cherry --verbose --abbrev
-export alias gcY = git cherry --verbose
+alias gc = git commit --verbose
+alias gcS = git commit --verbose --gpg-sign
+alias gca = git commit --verbose --all
+alias gcai = git-commit-message-ai
+alias gcaS = git commit --verbose --all --gpg-sign
+alias gcm = git commit --message
+alias gcmS = git commit --message --gpg-sign
+alias gcam = git commit --all --message
+alias gco = git checkout
+alias gcO = git checkout --patch
+alias gcf = git commit --amend --reuse-message HEAD
+alias gcfS = git commit --amend --reuse-message HEAD --gpg-sign
+alias gcF = git commit --verbose --amend
+alias gcFS = git commit --verbose --amend --gpg-sign
+alias gcp = git cherry-pick --ff
+alias gcP = git cherry-pick --no-commit
+alias gcr = git revert
+alias gcR = git reset "HEAD^"
+alias gcs = git show
+alias gcsS = git show --pretty=short --show-signature
+alias gcl = git-commit-lost
+alias gcy = git cherry --verbose --abbrev
+alias gcY = git cherry --verbose
 
-# Conflict (C)
+# ╭──────────────╮
+# │ Conflict (C) │
+# ╰──────────────╯
 
-export alias gCl = git --no-pager diff --name-only --diff-filter=U
-export alias gCa = git add (gCl)
-export alias gCe = git mergetool (gCl)
-export alias gCo = git checkout --ours --
-export alias gCO = gCo (gCl)
-export alias gCt = git checkout --theirs --
-export alias gCT = gCt (gCl)
+alias gCl = git --no-pager diff --name-only --diff-filter=U
+alias gCa = git add (gCl)
+alias gCe = git mergetool (gCl)
+alias gCo = git checkout --ours --
+alias gCO = gCo (gCl)
+alias gCt = git checkout --theirs --
+alias gCT = gCt (gCl)
 
-# Data (d)
+# ╭──────────╮
+# │ Data (d) │
+# ╰──────────╯
 
-export alias gd = git ls-files
-export alias gdc = git ls-files --cached
-export alias gdx = git ls-files --deleted
-export alias gdm = git ls-files --modified
-export alias gdu = git ls-files --other --exclude-standard
-export alias gdk = git ls-files --killed
-export alias gdi = git status --porcelain --short --ignored | sed -n "s/^!! //p"
+alias gd = git ls-files
+alias gdc = git ls-files --cached
+alias gdx = git ls-files --deleted
+alias gdm = git ls-files --modified
+alias gdu = git ls-files --other --exclude-standard
+alias gdk = git ls-files --killed
+alias gdi = git status --porcelain --short --ignored | sed -n "s/^!! //p"
 
-# Fetch (f)
+# ╭───────────╮
+# │ Fetch (f) │
+# ╰───────────╯
 
-export alias gf = git fetch
-export alias gfa = git fetch --all
-export alias gfc = git clone
-export alias gfcr = git clone --recurse-submodules
-export alias gfm = git pull
-export alias gfma = git pull --autostash
-export alias gfr = git pull --rebase
-export alias gfra = git pull --rebase --autostash
+alias gf = git fetch
+alias gfa = git fetch --all
+alias gfc = git clone
+alias gfcr = git clone --recurse-submodules
+alias gfm = git pull
+alias gfma = git pull --autostash
+alias gfr = git pull --rebase
+alias gfra = git pull --rebase --autostash
 
-# Flow (F)
+# ╭──────────╮
+# │ Flow (F) │
+# ╰──────────╯
 
-export alias gFi = git flow init
-export alias gFf = git flow feature
-export alias gFb = git flow bugfix
-export alias gFl = git flow release
-export alias gFh = git flow hotfix
-export alias gFs = git flow support
+alias gFi = git flow init
+alias gFf = git flow feature
+alias gFb = git flow bugfix
+alias gFl = git flow release
+alias gFh = git flow hotfix
+alias gFs = git flow support
 
-export alias gFfl = git flow feature list
-export alias gFfs = git flow feature start
-export alias gFff = git flow feature finish
-export alias gFfp = git flow feature publish
-export alias gFft = git flow feature track
-export alias gFfd = git flow feature diff
-export alias gFfr = git flow feature rebase
-export alias gFfc = git flow feature checkout
-export alias gFfm = git flow feature pull
-export alias gFfx = git flow feature delete
+alias gFfl = git flow feature list
+alias gFfs = git flow feature start
+alias gFff = git flow feature finish
+alias gFfp = git flow feature publish
+alias gFft = git flow feature track
+alias gFfd = git flow feature diff
+alias gFfr = git flow feature rebase
+alias gFfc = git flow feature checkout
+alias gFfm = git flow feature pull
+alias gFfx = git flow feature delete
 
-export alias gFbl = git flow bugfix list
-export alias gFbs = git flow bugfix start
-export alias gFbf = git flow bugfix finish
-export alias gFbp = git flow bugfix publish
-export alias gFbt = git flow bugfix track
-export alias gFbd = git flow bugfix diff
-export alias gFbr = git flow bugfix rebase
-export alias gFbc = git flow bugfix checkout
-export alias gFbm = git flow bugfix pull
-export alias gFbx = git flow bugfix delete
+alias gFbl = git flow bugfix list
+alias gFbs = git flow bugfix start
+alias gFbf = git flow bugfix finish
+alias gFbp = git flow bugfix publish
+alias gFbt = git flow bugfix track
+alias gFbd = git flow bugfix diff
+alias gFbr = git flow bugfix rebase
+alias gFbc = git flow bugfix checkout
+alias gFbm = git flow bugfix pull
+alias gFbx = git flow bugfix delete
 
-export alias gFll = git flow release list
-export alias gFls = git flow release start
-export alias gFlf = git flow release finish
-export alias gFlp = git flow release publish
-export alias gFlt = git flow release track
-export alias gFld = git flow release diff
-export alias gFlr = git flow release rebase
-export alias gFlc = git flow release checkout
-export alias gFlm = git flow release pull
-export alias gFlx = git flow release delete
+alias gFll = git flow release list
+alias gFls = git flow release start
+alias gFlf = git flow release finish
+alias gFlp = git flow release publish
+alias gFlt = git flow release track
+alias gFld = git flow release diff
+alias gFlr = git flow release rebase
+alias gFlc = git flow release checkout
+alias gFlm = git flow release pull
+alias gFlx = git flow release delete
 
-export alias gFhl = git flow hotfix list
-export alias gFhs = git flow hotfix start
-export alias gFhf = git flow hotfix finish
-export alias gFhp = git flow hotfix publish
-export alias gFht = git flow hotfix track
-export alias gFhd = git flow hotfix diff
-export alias gFhr = git flow hotfix rebase
-export alias gFhc = git flow hotfix checkout
-export alias gFhm = git flow hotfix pull
-export alias gFhx = git flow hotfix delete
+alias gFhl = git flow hotfix list
+alias gFhs = git flow hotfix start
+alias gFhf = git flow hotfix finish
+alias gFhp = git flow hotfix publish
+alias gFht = git flow hotfix track
+alias gFhd = git flow hotfix diff
+alias gFhr = git flow hotfix rebase
+alias gFhc = git flow hotfix checkout
+alias gFhm = git flow hotfix pull
+alias gFhx = git flow hotfix delete
 
-export alias gFsl = git flow support list
-export alias gFss = git flow support start
-export alias gFsf = git flow support finish
-export alias gFsp = git flow support publish
-export alias gFst = git flow support track
-export alias gFsd = git flow support diff
-export alias gFsr = git flow support rebase
-export alias gFsc = git flow support checkout
-export alias gFsm = git flow support pull
-export alias gFsx = git flow support delete
+alias gFsl = git flow support list
+alias gFss = git flow support start
+alias gFsf = git flow support finish
+alias gFsp = git flow support publish
+alias gFst = git flow support track
+alias gFsd = git flow support diff
+alias gFsr = git flow support rebase
+alias gFsc = git flow support checkout
+alias gFsm = git flow support pull
+alias gFsx = git flow support delete
 
-# Grep (g)
+# ╭──────────╮
+# │ Grep (g) │
+# ╰──────────╯
 
-export alias gg = git grep
-export alias ggi = git grep --ignore-case
-export alias ggl = git grep --files-with-matches
-export alias ggL = git grep --files-without-matches
-export alias ggv = git grep --invert-match
-export alias ggw = git grep --word-regexp
+alias gg = git grep
+alias ggi = git grep --ignore-case
+alias ggl = git grep --files-with-matches
+alias ggL = git grep --files-without-matches
+alias ggv = git grep --invert-match
+alias ggw = git grep --word-regexp
+# Git grep the entire repository history
+def gga [term: string, file?: path] {
+  [rev-list --all]
+  | if ($file != null) {
+    append [-- $file]
+  } else { $in }
+  | run-external git ...$in
+  | lines
+  | git grep $term ...$in
+  | lines
+  | split column : hash file text
+  | uniq-by text
+}
 
-# Index (i)
+# ╭───────────╮
+# │ Index (i) │
+# ╰───────────╯
 
-export alias gia = git add
-export alias giA = git add --patch
-export alias giu = git add --update
-export alias gid = git diff --no-ext-diff --cached
-export alias giD = git diff --no-ext-diff --cached --word-diff
-export alias gii = git update-index --assume-unchanged
-export alias giI = git update-index --no-assume-unchanged
-export alias gir = git reset
-export alias giR = git reset --patch
-export alias gix = git rm -r --cached
-export alias giX = git rm -r --force --cached
+alias gia = git add
+alias giA = git add --patch
+alias giu = git add --update
+alias gid = git diff --no-ext-diff --cached
+alias giD = git diff --no-ext-diff --cached --word-diff
+alias gii = git update-index --assume-unchanged
+alias giI = git update-index --no-assume-unchanged
+alias gir = git reset
+alias giR = git reset --patch
+alias gix = git rm -r --cached
+alias giX = git rm -r --force --cached
 
-# Log (l)
+# ╭─────────╮
+# │ Log (l) │
+# ╰─────────╯
 
-export alias gl = git log --topo-order $"--pretty=format:($_git_log_medium_format)"
-export alias gls = git log --topo-order --stat $"--pretty=format:($_git_log_medium_format)"
-export alias gld = git log --topo-order --stat --patch --full-diff $"--pretty=format:($_git_log_medium_format)"
-export alias glo = git log --topo-order $"--pretty=format:($_git_log_oneline_format)"
-export alias glg = git log --topo-order --graph $"--pretty=format:($_git_log_oneline_format)"
-export alias glb = git log --topo-order $"--pretty=format:($_git_log_brief_format)"
-export alias glc = git shortlog --summary --numbered
-export alias glS = git log --show-signature
+alias gl = git log --topo-order $"--pretty=format:($_git_log_medium_format)"
+alias gls = git log --topo-order --stat $"--pretty=format:($_git_log_medium_format)"
+alias gld = git log --topo-order --stat --patch --full-diff $"--pretty=format:($_git_log_medium_format)"
+alias glo = git log --topo-order $"--pretty=format:($_git_log_oneline_format)"
+alias glg = git log --topo-order --graph $"--pretty=format:($_git_log_oneline_format)"
+alias glb = git log --topo-order $"--pretty=format:($_git_log_brief_format)"
+alias glc = git shortlog --summary --numbered
+alias glS = git log --show-signature
 
-# Merge (m)
+# ╭───────────╮
+# │ Merge (m) │
+# ╰───────────╯
 
-export alias gm = git merge
-export alias gmC = git merge --no-commit
-export alias gmF = git merge --no-ff
-export alias gma = git merge --abort
-export alias gmt = git mergetool
+alias gm = git merge
+alias gmC = git merge --no-commit
+alias gmF = git merge --no-ff
+alias gma = git merge --abort
+alias gmt = git mergetool
 
-# Push (p)
+# ╭──────────╮
+# │ Push (p) │
+# ╰──────────╯
 
-export alias gp = git push
-export alias gpf = git push --force-with-lease
-export alias gpF = git push --force
-export alias gpa = git push --all
-export def gpA [] {
+alias gp = git push
+alias gpf = git push --force-with-lease
+alias gpF = git push --force
+alias gpa = git push --all
+def gpA [] {
   git push --all; git push --tags
 }
-export alias gpt = git push --tags
-export def gpc [] {
+alias gpt = git push --tags
+def gpc [] {
   git push --set-upstream origin (git-branch-current)
 }
-export def gpp [] {
+def gpp [] {
   let curr = git-branch-current
   git pull origin $curr
   git push origin $curr
 }
 
-# Rebase (r)
+# ╭────────────╮
+# │ Rebase (r) │
+# ╰────────────╯
 
-export alias gr = git rebase
-export alias gra = git rebase --abort
-export alias grc = git rebase --continue
-export alias gri = git rebase --interactive
-export alias grs = git rebase --skip
+alias gr = git rebase
+alias gra = git rebase --abort
+alias grc = git rebase --continue
+alias gri = git rebase --interactive
+alias grs = git rebase --skip
 
-# Remote (R)
+# ╭────────────╮
+# │ Remote (R) │
+# ╰────────────╯
 
-export alias gR = git remote
-export alias gRl = git remote --verbose
-export alias gRa = git remote add
-export alias gRx = git remote rm
-export alias gRm = git remote rename
-export alias gRu = git remote update
-export alias gRp = git remote prune
-export alias gRs = git remote show
-export alias gRb = gh repo view -w
+alias gR = git remote
+alias gRl = git remote --verbose
+alias gRa = git remote add
+alias gRx = git remote rm
+alias gRm = git remote rename
+alias gRu = git remote update
+alias gRp = git remote prune
+alias gRs = git remote show
+alias gRb = gh repo view -w
 
-# Stash (s)
+# ╭───────────╮
+# │ Stash (s) │
+# ╰───────────╯
 
-export alias gs = git stash
-export alias gsa = git stash apply
-export alias gsx = git stash drop
-export alias gsX = git-stash-clear-interactive
-export alias gsl = git stash list
-export alias gsL = git-stash-dropped
-export alias gsd = git stash show --patch --stat
-export alias gsp = git stash pop
-export alias gsr = git-stash-recover
-export alias gss = git stash save --include-untracked
-export alias gsS = git stash save --patch --no-keep-index
-export alias gsw = git stash save --include-untracked --keep-index
+alias gs = git stash
+alias gsa = git stash apply
+alias gsx = git stash drop
+alias gsX = git-stash-clear-interactive
+alias gsl = git stash list
+alias gsL = git-stash-dropped
+alias gsd = git stash show --patch --stat
+alias gsp = git stash pop
+alias gsr = git-stash-recover
+alias gss = git stash save --include-untracked
+alias gsS = git stash save --patch --no-keep-index
+alias gsw = git stash save --include-untracked --keep-index
 
-# Submodule (S)
+# ╭───────────────╮
+# │ Submodule (S) │
+# ╰───────────────╯
 
-export alias gS = git submodule
-export alias gSa = git submodule add
-export alias gSf = git submodule foreach
-export alias gSi = git submodule init
-export alias gSI = git submodule update --init --recursive
-export alias gSl = git submodule status
-export alias gSm = git-submodule-move
-export alias gSs = git submodule sync
-export alias gSu = git submodule update --remote --recursive
-export alias gSx = git-submodule-remove
+alias gS = git submodule
+alias gSa = git submodule add
+alias gSf = git submodule foreach
+alias gSi = git submodule init
+alias gSI = git submodule update --init --recursive
+alias gSl = git submodule status
+alias gSm = git-submodule-move
+alias gSs = git submodule sync
+alias gSu = git submodule update --remote --recursive
+alias gSx = git-submodule-remove
 
-# Tag (t)
+# ╭─────────╮
+# │ Tag (t) │
+# ╰─────────╯
 
-export alias gt = git tag
-export alias gtl = git tag --list
-export alias gts = git tag --sign
-export alias gtv = git verify-tag
+alias gt = git tag
+alias gtl = git tag --list
+alias gts = git tag --sign
+alias gtv = git verify-tag
 
-# Working Copy (w)
+# ╭──────────────────╮
+# │ Working Copy (w) │
+# ╰──────────────────╯
 
-export alias gws = git status $"--ignore-submodules=($_git_status_ignore_submodules)" --short
-export alias gwS = git status $"--ignore-submodules=($_git_status_ignore_submodules)"
-export alias gwd = git diff --no-ext-diff
-export alias gwD = git diff --no-ext-diff --word-diff
-export alias gwr = git reset --soft
-export alias gwR = git reset --hard
-export alias gwc = git clean --dry-run
-export alias gwC = git clean --force
-export alias gwx = git rm -r
-export alias gwX = git rm -r --force
+alias gws = git status $"--ignore-submodules=($_git_status_ignore_submodules)" --short
+alias gwS = git status $"--ignore-submodules=($_git_status_ignore_submodules)"
+alias gwd = git diff --no-ext-diff
+alias gwD = git diff --no-ext-diff --word-diff
+alias gwr = git reset --soft
+alias gwR = git reset --hard
+alias gwc = git clean --dry-run
+alias gwC = git clean --force
+alias gwx = git rm -r
+alias gwX = git rm -r --force
