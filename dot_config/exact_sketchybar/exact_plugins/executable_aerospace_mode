@@ -1,7 +1,6 @@
 #!/usr/bin/env nu
 
-let theme = open ($env.XDG_CONFIG_HOME | path join everforest themes.toml)
-| get dark.medium
+let theme = (nu -e 'rose-pine | to json' | complete | $in.stdout | from json)
 
 def "into argb" [--alpha (-a): string = "FF"]: string -> string {
   $in | str replace "#" "" | ["0x" $alpha $in] | str join
@@ -10,7 +9,7 @@ def "into argb" [--alpha (-a): string = "FF"]: string -> string {
 aerospace list-modes --current
 | [
   --animate quadratic 10
-  --bar color=(match ($in) { main => $theme.bg2, _ => $theme.red } | into argb -a "AA")
+  --bar color=(match ($in) { main => $theme.base, _ => $theme.love } | into argb -a "88")
   --set aerospace_mode
   icon.highlight=(match ($in) { main => "off", _ => "on" })
   label.drawing=(match ($in) { main => "off", _ => "on" })

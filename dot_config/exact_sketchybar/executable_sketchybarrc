@@ -3,8 +3,9 @@
 $env.PLUGIN_DIR = [$env.PWD plugins] | path join
 $env.FONT = "BlexMono Nerd Font Propo"
 
-let theme = open ($env.XDG_CONFIG_HOME | path join everforest themes.toml)
-| get dark.medium
+# let theme = open ($env.XDG_CONFIG_HOME | path join everforest themes.toml)
+# | get dark.medium
+let theme = (nu -e 'rose-pine | to json' | complete | $in.stdout | from json)
 
 def "into argb" [--alpha (-a): string = "FF"]: string -> string {
   $in | str replace "#" "" | ["0x" $alpha $in] | str join
@@ -14,34 +15,29 @@ def "font size" [multiplier: float = 1.0]: nothing -> float {
   12 * $multiplier | math round | into float
 }
 
-def "icon color" [
-  --highlight (-h)
-]: nothing -> string {
-  if ($highlight) { $theme.yellow } else { $theme.aqua }
-  | into argb
+def "icon color" [ --highlight (-h) ]: nothing -> string {
+  if ($highlight) { $theme.foam } else { $theme.pine } | into argb
 }
 
-def "icon alias color" [] {
-  $theme.purple
-  | into argb
-}
+def "icon alias color" [] { $theme.iris | into argb }
 
-def "label color" [
-  --highlight (-h)
-]: nothing -> string {
-  if ($highlight) { $theme.yellow } else { $theme.fg }
-  | into argb
+def "label color" [ --highlight (-h) ]: nothing -> string {
+  if ($highlight) { $theme.gold } else { $theme.text } | into argb
 }
 
 def "background color" []: nothing -> string {
-  $theme.bg0 | into argb -a "88"
+  $theme.overlay | into argb -a "ff"
+}
+
+def "bar color" []: nothing -> string {
+  $theme.foam
 }
 
 def "setup bar" [] {
   [
     --bar
     blur_radius=20
-    color=(background color)
+    color=(bar color)
     height=(height)
     notch_width=216
     position=top
@@ -49,7 +45,7 @@ def "setup bar" [] {
 }
 
 def height [multiplier: float = 1.0]: nothing -> int {
-  40 * $multiplier | math round
+  38 * $multiplier | math round
 }
 
 def padding [multiplier: float = 1.0]: nothing -> int {
