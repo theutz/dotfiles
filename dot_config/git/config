@@ -34,7 +34,6 @@
   features = decorations
 	navigate = true
   side-by-side = false
-  dark = true
   line-numbers = true
   hyperlinks = true
 [delta "interactive"]
