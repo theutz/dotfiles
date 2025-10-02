@@ -2,79 +2,105 @@
 	name = Michael Utz
 	email = michael@theutz.com
 	signingkey = F73C931E48B95546!
+
 [pull]
 	rebase = true
+
 [rerere]
 	enabled = true
   autoupdate = true
+
 [merge]
 	autoStash = true
 	conflictStyle = zdiff3
 	tool = vimdiff
+
 [rebase]
 	autoStash = true
   autoSquash = true
   updateRefs = true
+
 [commit]
 	gpgSign = true
   verbose = true
+
 [push]
 	gpgSign = false
   default = simple
   autoSetupRemote = true
   followTags = true
+
 [tag]
 	gpgSign = true
 	sort = version:refname
+
 [core]
 	pager = delta
+
 [interactive]
 	diffFilter = delta --color-only
+
 [delta]
   features = decorations
 	navigate = true
   side-by-side = false
   line-numbers = true
   hyperlinks = true
+
 [delta "interactive"]
   keep-plus-minus-markers = false
+
 [delta "decorations"]
   commit-decoration-style = blue ol
   commit-style = raw
   file-style = omit
   hunk-header-decoration-style = blue box
   hunk-header-style = file line-number syntax
+
 [diff]
 	colorMoved = plain
 	tool = delta
 	algorithm = histogram
 	mnemonicPrefix = true
 	renames = true
+
 [mergetool]
   keepBackup = false
 	prompt = false
+
 [mergetool "vimdiff"]
   cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c 'wincmd l' -c 'norm ]c'
+
 [init]
 	defaultBranch = main
+
 [difftool]
 	prompt = false
 	trustExitCode = true
 ; [url "ssh://git@github.com/"]
 ; 	insteadOf = https://github.com/
+
+[difftool "difftastic"]
+
 [submodule]
 	fetchJobs = 4
+
 [github]
 	user = theutz
+
 [alias]
 	recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG
+
 [column]
 	ui = auto
+
 [branch]
 	sort = -committerdate
+
 [fetch]
   prune = true
   pruneTags = true
   all = true
+
 [help]
   autocorrect = prompt
