@@ -40,6 +40,11 @@ def "chezmoi forget-deleted" [] {
   | chezmoi forget ...$in.file
 }
 
+def --wrapped "chezmoi apply" [...args] {
+  chezmoi status
+  ^chezmoi apply ...$args
+}
+
 alias cm = chezmoi
 alias cma = chezmoi add
 alias cmawd = chezmoi add-will-delete

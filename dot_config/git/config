@@ -34,14 +34,17 @@
   features = decorations
 	navigate = true
   side-by-side = false
+  dark = true
+  line-numbers = true
+  hyperlinks = true
 [delta "interactive"]
   keep-plus-minus-markers = false
 [delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-style = file line-number syntax
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-style = file line-number syntax
 [diff]
 	colorMoved = plain
 	tool = delta

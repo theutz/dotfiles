@@ -1,18 +1,19 @@
 #!/usr/bin/env nu
 
-let theme = (nu -e 'rose-pine | to json' | complete | $in.stdout | from json)
+const self = path self
+source ($self | path dirname | path join "../common.nu")
 
-def "into argb" [--alpha (-a): string = "FF"]: string -> string {
-  $in | str replace "#" "" | ["0x" $alpha $in] | str join
+def "highlighted" [mode]: nothing -> string {
+  match ($mode) { main => "off", _ => "on" }
 }
 
 aerospace list-modes --current
 | [
   --animate quadratic 10
-  --bar color=(match ($in) { main => $theme.base, _ => $theme.love } | into argb -a "88")
+  --bar color=(highlighted $in | bar color --highlight=($in == on))
   --set aerospace_mode
-  icon.highlight=(match ($in) { main => "off", _ => "on" })
-  label.drawing=(match ($in) { main => "off", _ => "on" })
+  icon.highlight=(highlighted $in)
+  label.drawing=(highlighted $in)
   label=($in)
 ]
 | each { into string }

@@ -45,6 +45,13 @@ LS_COLORS = { value = '''
 ''', tools = true }
 MANPAGER = { value = "nvim -c +Man!", tools = true }
 MANWIDTH = { value = "999", tools = true }
+DELTA_FEATURES = { value = """
+{%- if env.APPEARANCE == "light" -%}
+  +
+{%- else -%}
+  +dark
+{%- endif -%}
+""", tools = true }
 
 [tools]
 aqua = "latest"
