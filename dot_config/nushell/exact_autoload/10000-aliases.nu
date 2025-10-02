@@ -26,3 +26,20 @@ def --wrapped nw [...args] {
     }
   }
 }
+
+# Zoxide to a folder, open FZF, then open neovim
+def zf [
+  dir: string # The dir to jump to
+  file: string = "" # The first part of the query
+] {
+  z $dir
+
+  glob * | each { path relative-to $env.PWD } | to text
+  | fzf --multi --select-1
+  | complete
+  | tee { $in.stderr | print -e }
+  | if ($in.exit_code == 0) {
+    let files = $in.stdout | lines 
+    ^nvim ...$files
+  }
+}

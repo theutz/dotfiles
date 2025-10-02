@@ -164,6 +164,9 @@ cmd-ctrl-alt-shift-v = 'layout horizontal vertical'
 cmd-ctrl-alt-shift-o = 'focus-monitor --wrap-around next'
 cmd-ctrl-alt-shift-m = 'fullscreen'
 
+# Reload
+cmd-ctrl-alt-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload']
+
 [mode.move.binding]
 h = 'move left'
 j = 'move down'
@@ -211,11 +214,7 @@ l = 'focus --boundaries all-monitors-outer-frame --boundaries-action fail right'
 n = 'workspace --wrap-around next'
 o = 'focus-monitor --wrap-around next'
 p = 'workspace --wrap-around prev'
-r = [
-  'reload-config',
-  'exec-and-forget sketchybar --reload',
-  'exec-and-forget noti -t "aerospace" -m "config relaoded!"',
-]
+r = ['reload-config', 'exec-and-forget sketchybar --reload']
 s = 'join-with down'
 t = 'layout accordion tiles'
 v = 'layout vertical horizontal'
