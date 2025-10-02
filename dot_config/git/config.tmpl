@@ -58,12 +58,12 @@
   hunk-header-style = file line-number syntax
 
 [diff]
+	colorMoved = plain
   {{- if lookPath "difft" }}
   external = difft
   {{- else if lookPath "delta" }}
 	tool = delta
   {{- end }}
-	colorMoved = plain
 	algorithm = histogram
 	mnemonicPrefix = true
 	renames = true
