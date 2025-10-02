@@ -103,15 +103,33 @@ run = ["move-node-to-workspace 4"]
 # - Arrows.         left, down, up, right
 # All possible modifiers: cmd, alt, ctrl, shift
 
+# Change Mode
+alt-semicolon = 'mode aero'
 cmd-ctrl-alt-shift-space = 'mode aero'
 cmd-ctrl-alt-shift-quote = 'mode join'
 cmd-ctrl-alt-shift-semicolon = 'mode move'
 
+# Change Focus
+cmd-ctrl-alt-shift-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+cmd-ctrl-alt-shift-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+cmd-ctrl-alt-shift-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+cmd-ctrl-alt-shift-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
+cmd-ctrl-alt-shift-b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+cmd-ctrl-alt-shift-i = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+
+# Move Windows
 cmd-ctrl-alt-h = 'move left'
 cmd-ctrl-alt-j = 'move down'
 cmd-ctrl-alt-k = 'move up'
 cmd-ctrl-alt-l = 'move right'
-cmd-ctrl-alt-shift-0 = 'balance-sizes'
+
+# Join
+cmd-ctrl-alt-shift-a = 'exec-and-forget aerospace join-with left'
+cmd-ctrl-alt-shift-d = 'exec-and-forget aerospace join-with right'
+cmd-ctrl-alt-shift-s = 'exec-and-forget aerospace join-with down'
+cmd-ctrl-alt-shift-w = 'exec-and-forget aerospace join-with up'
+
+# Change Workspace
 cmd-ctrl-alt-shift-1 = 'workspace --auto-back-and-forth 1'
 cmd-ctrl-alt-shift-2 = 'workspace --auto-back-and-forth 2'
 cmd-ctrl-alt-shift-3 = 'workspace --auto-back-and-forth 3'
@@ -121,89 +139,53 @@ cmd-ctrl-alt-shift-6 = 'workspace --auto-back-and-forth 6'
 cmd-ctrl-alt-shift-7 = 'workspace --auto-back-and-forth 7'
 cmd-ctrl-alt-shift-8 = 'workspace --auto-back-and-forth 8'
 cmd-ctrl-alt-shift-9 = 'workspace --auto-back-and-forth 9'
-cmd-ctrl-alt-shift-a = ['exec-and-forget aerospace join-with left']
-cmd-ctrl-alt-shift-b = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
-cmd-ctrl-alt-shift-d = ['exec-and-forget aerospace join-with right']
-cmd-ctrl-alt-shift-h = [
-  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left',
-]
-cmd-ctrl-alt-shift-i = [
-  'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
-]
-cmd-ctrl-alt-shift-j = [
-  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down',
-]
-cmd-ctrl-alt-shift-k = [
-  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up',
-]
-cmd-ctrl-alt-shift-l = [
-  'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right',
-]
-cmd-ctrl-alt-shift-m = 'fullscreen'
-cmd-ctrl-alt-shift-n = ['workspace --wrap-around next']
-cmd-ctrl-alt-shift-o = ['focus-monitor --wrap-around next']
-cmd-ctrl-alt-shift-p = ['workspace --wrap-around prev']
-cmd-ctrl-alt-shift-s = ['exec-and-forget aerospace join-with down']
+cmd-ctrl-alt-shift-n = 'workspace --wrap-around next'
+cmd-ctrl-alt-shift-p = 'workspace --wrap-around prev'
+
+# Monitor Focus
+cmd-ctrl-alt-shift-leftSquareBracket = 'focus-monitor --wrap-around next'
+cmd-ctrl-alt-shift-rightSquareBracket = 'focus-monitor --wrap-around prev'
+
+# Resizing
+cmd-ctrl-alt-shift-0 = 'balance-sizes'
+cmd-ctrl-alt-equal = 'resize smart-opposite +50'
+cmd-ctrl-alt-minus = 'resize smart-opposite -50'
+cmd-ctrl-alt-shift-equal = ['resize smart +50', 'resize smart-opposite +50']
+cmd-ctrl-alt-shift-minus = ['resize smart -50', 'resize smart-opposite -50']
+
+cmd-ctrl-alt-shift-down = 'resize height -50'
+cmd-ctrl-alt-shift-up = 'resize height +50'
+cmd-ctrl-alt-shift-left = 'resize width -50'
+cmd-ctrl-alt-shift-right = 'resize width +50'
+
+# Layout
 cmd-ctrl-alt-shift-t = 'layout accordion tiles'
 cmd-ctrl-alt-shift-v = 'layout horizontal vertical'
-cmd-ctrl-alt-shift-w = ['exec-and-forget aerospace join-with up']
-
-cmd-ctrl-alt-shift-equal = 'resize smart +50'
-cmd-ctrl-alt-shift-leftSquareBracket = ['focus-monitor --wrap-around next']
-cmd-ctrl-alt-shift-minus = 'resize smart -50'
-cmd-ctrl-alt-shift-rightSquareBracket = ['focus-monitor --wrap-around prev']
-
-alt-semicolon = 'mode aero'
-f13 = 'mode aero'
-f19 = 'resize smart-opposite +50' # cmd-ctrl-alt-shift-period remapped via karabiner
-f20 = 'resize smart-opposite -50' # cmd-ctrl-alt-shift-comma remapped via karabiner
+cmd-ctrl-alt-shift-o = 'focus-monitor --wrap-around next'
+cmd-ctrl-alt-shift-m = 'fullscreen'
 
 [mode.move.binding]
-h = [
-  'move left',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-j = [
-  'move down',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-k = [
-  'move up',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-l = [
-  'move right',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-
+h = 'move left'
+j = 'move down'
+k = 'move up'
+l = 'move right'
+shift-h = 'focus left'
+shift-j = 'focus down'
+shift-k = 'focus up'
+shift-l = 'focus right'
 esc = 'mode main'
+quote = "mode join"
 
 [mode.join.binding]
-h = [
-  'exec-and-forget aerospace join-with left || aerospace move left',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-j = [
-  'exec-and-forget aerospace join-with down || aerospace move down',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-k = [
-  'exec-and-forget aerospace join-with up || aerospace move up',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-l = [
-  'exec-and-forget aerospace join-with right || aerospace move right',
-  'exec-and-forget sketchybar --trigger aerospace_workspace_change',
-  'mode aero',
-]
-
+h = 'exec-and-forget aerospace join-with left || aerospace move left'
+j = 'exec-and-forget aerospace join-with down || aerospace move down'
+k = 'exec-and-forget aerospace join-with up || aerospace move up'
+l = 'exec-and-forget aerospace join-with right || aerospace move right'
+shift-h = 'focus left'
+shift-j = 'focus down'
+shift-k = 'focus up'
+shift-l = 'focus right'
+semicolon = "mode move"
 esc = 'mode main'
 
 [mode.aero.binding]
@@ -247,6 +229,8 @@ tab = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-bac
 enter = "fullscreen"
 equal = 'resize smart +50'
 esc = 'mode main'
+shift-equal = 'resize smart-opposite +50'
+shift-minus = 'resize smart-opposite -50'
 
 f13 = 'mode main'
 
@@ -328,12 +312,11 @@ shift-p = [
 ]
 shift-v = 'layout horizontal vertical'
 
-shift-equal = 'resize smart-opposite +50'
+
 shift-leftSquareBracket = [
   'move-workspace-to-monitor --wrap-around next',
   'exec-and-forget sketchybar --trigger aerospace_workspace_change',
 ]
-shift-minus = 'resize smart-opposite -50'
 shift-rightSquareBracket = [
   'move-workspace-to-monitor --wrap-around prev',
   'exec-and-forget sketchybar --trigger aerospace_workspace_change',

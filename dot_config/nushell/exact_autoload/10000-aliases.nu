@@ -13,3 +13,16 @@ alias la = ls -la
 
 alias lg = lazygit
 alias ld = lazydocker
+
+# Open a file in a new window
+def --wrapped nw [...args] {
+  which neovide | is-not-empty | if ($in) {
+    neovide --fork ...$args
+  } else {
+    which wezterm | is-not-empty | if ($in) {
+      job spawn { wezterm -e ([nvim ...$args] | str join " ") }
+    } else {
+      error make { msg: "Not sure how to make a new window" }
+    }
+  }
+}
