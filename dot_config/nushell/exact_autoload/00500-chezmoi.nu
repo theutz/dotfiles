@@ -48,7 +48,7 @@ def --wrapped "chezmoi apply" [...args] {
 alias cm = chezmoi
 alias cma = chezmoi add
 alias cmawd = chezmoi add-will-delete
-alias cmc = chemzoi chattr
+alias cmc = chezmoi chattr
 alias cmd = chezmoi diff
 alias cml = chezmoi managed
 alias cmm = chezmoi merge
