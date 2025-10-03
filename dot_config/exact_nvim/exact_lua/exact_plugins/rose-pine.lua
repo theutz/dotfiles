@@ -7,7 +7,7 @@ return {
 		variant = "auto",
 		dark_variant = "main",
 		styles = {
-			transparency = true,
+			transparency = not vim.g.neovide,
 		},
 	},
 }
