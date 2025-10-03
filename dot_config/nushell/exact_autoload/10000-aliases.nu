@@ -14,6 +14,8 @@ alias la = ls -la
 alias lg = lazygit
 alias ld = lazydocker
 
+alias sp = spotify_player
+
 # Open a file in a new window
 def --wrapped nw [...args] {
   which neovide | is-not-empty | if ($in) {

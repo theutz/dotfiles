@@ -79,6 +79,7 @@ utiluti = "latest"
 lazydocker = "latest"
 coreutils = "latest"
 difftastic = "latest"
+node = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
