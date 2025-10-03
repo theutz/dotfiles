@@ -7,12 +7,19 @@ $env.APPEARANCE = [$env.HOME .local state appearance] | path join
 
 let theme = (nu -e 'rose-pine | to json' | complete | $in.stdout | from json)
 
-def "into argb" [--alpha (-a): string = "FF"]: string -> string {
-  $in | str replace "#" "" | ["0x" $alpha $in] | str join
+def "font" [
+  --bold (-b)
+  --size = 14
+  --scale = 1.0
+] {
+  let weight = if ($bold) { "Bold" } else { "Normal" }
+  let height = $size * $scale | math round | into float
+  ["Maple Mono NF" $weight $height]
+  | str join ":"
 }
 
-def "font size" [multiplier: float = 1.0]: nothing -> float {
-  12 * $multiplier | math round | into float
+def "into argb" [--alpha (-a): string = "FF"]: string -> string {
+  $in | str replace "#" "" | ["0x" $alpha $in] | str join
 }
 
 def "icon color" [ --highlight (-h) ]: nothing -> string {

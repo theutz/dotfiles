@@ -37,7 +37,7 @@ def zf [
   z $dir
 
   glob * | each { path relative-to $env.PWD } | to text
-  | fzf --multi --select-1
+  | fzf --query $file --multi --select-1
   | complete
   | tee { $in.stderr | print -e }
   | if ($in.exit_code == 0) {

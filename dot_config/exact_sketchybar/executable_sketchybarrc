@@ -28,13 +28,13 @@ def "setup defaults" [] {
     background.padding_right=(padding)
     background.shadow.drawing=off
     icon.color=(icon color)
-    icon.font=($env.FONT):Normal:(font size 1.4)
+    icon.font=(font --scale 1.4)
     icon.highlight_color=(icon color --highlight)
     icon.padding_left=(padding)
     icon.padding_right=(padding 0.5)
     icon.shadow.drawing=off
     label.color=(label color)
-    label.font=($env.FONT):Normal:(font size)
+    label.font=(font)
     label.highlight_color=(label color --highlight)
     label.max_chars=16
     label.padding_left=(padding 0.5)
@@ -186,6 +186,13 @@ def "setup ip" []: nothing -> list<string> {
   [
     --add item ipaddress e
     --add item iplocation e
+    --add item tailscale e
+
+    --set tailscale
+    display=1
+    drawing=on
+    icon=󰖟
+    label.drawing=off
 
     --set ipaddress
     $click
@@ -230,4 +237,5 @@ run stack [
 
 ###### Force all scripts to run the first time (never do this in a script) #####
 ^sketchybar --update
+^sketchybar --hotload true
 print -e "Sketchybar updated!"
