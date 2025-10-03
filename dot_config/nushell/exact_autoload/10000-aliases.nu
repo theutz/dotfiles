@@ -7,6 +7,8 @@ alias m = mise
 alias mx = mise exec
 alias mr = mise run
 
+alias cat = bat
+
 def l [] { ls --all | grid --icons --color}
 alias ll = ls -l
 alias la = ls -la
@@ -31,12 +33,15 @@ def --wrapped nw [...args] {
 
 # Zoxide to a folder, open FZF, then open neovim
 def zf [
+  --all-files (-a) # Glob all files, rather than first-level
+  --dir-query (-d) # Prompt for directory switch
   dir: string # The dir to jump to
   file: string = "" # The first part of the query
 ] {
-  z $dir
+  if ($dir_query) { __zoxide_zi $dir } else { __zoxide_z $dir }
 
-  glob * | each { path relative-to $env.PWD } | to text
+  glob (if ($all_files) { "**/*" } else { "*" })
+  | each { path relative-to $env.PWD } | to text
   | fzf --query $file --multi --select-1
   | complete
   | tee { $in.stderr | print -e }

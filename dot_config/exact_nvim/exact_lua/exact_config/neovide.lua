@@ -9,7 +9,7 @@ vim.g.neovide_padding_right = padding
 
 vim.g.neovide_theme = "auto"
 
-local opacity = 0.80
+local opacity = 0.85
 vim.g.neovide_opacity = opacity
 vim.g.neovide_normal_opacity = opacity
 
