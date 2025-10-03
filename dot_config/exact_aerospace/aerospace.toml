@@ -167,6 +167,17 @@ cmd-ctrl-alt-shift-m = 'fullscreen'
 # Reload
 cmd-ctrl-alt-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload']
 
+# Move to workspace
+cmd-ctrl-alt-1 = ['move-node-to-workspace 1', 'workspace 1']
+cmd-ctrl-alt-2 = ['move-node-to-workspace 2', 'workspace 2']
+cmd-ctrl-alt-3 = ['move-node-to-workspace 3', 'workspace 3']
+cmd-ctrl-alt-4 = ['move-node-to-workspace 4', 'workspace 4']
+cmd-ctrl-alt-5 = ['move-node-to-workspace 5', 'workspace 5']
+cmd-ctrl-alt-6 = ['move-node-to-workspace 6', 'workspace 6']
+cmd-ctrl-alt-7 = ['move-node-to-workspace 7', 'workspace 7']
+cmd-ctrl-alt-8 = ['move-node-to-workspace 8', 'workspace 8']
+cmd-ctrl-alt-9 = ['move-node-to-workspace 9', 'workspace 9']
+
 [mode.move.binding]
 h = 'move left'
 j = 'move down'
