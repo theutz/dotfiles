@@ -107,8 +107,8 @@ c.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 c.enable_kitty_keyboard = true
 c.keys = {
 	{ key = "C", mods = "SUPER|SHIFT", action = a.ActivateCopyMode },
-	{ key = "d", mods = "SUPER", action = a.SplitPane({ direction = "Right" }) },
-	{ key = "D", mods = "SUPER|SHIFT", action = a.SplitPane({ direction = "Down" }) },
+	{ key = "D", mods = "SUPER|SHIFT", action = a.SplitPane({ direction = "Right" }) },
+	{ key = "d", mods = "SUPER", action = a.SplitPane({ direction = "Down" }) },
 	{ key = "h", mods = "SUPER", action = a.ActivatePaneDirection("Left") },
 	{ key = "H", mods = "SUPER|ALT", action = a.AdjustPaneSize({ "Left", 5 }) },
 	{ key = "j", mods = "SUPER", action = a.ActivatePaneDirection("Down") },

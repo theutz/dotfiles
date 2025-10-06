@@ -9,7 +9,7 @@ git:
   commit:
     signOff: true
   paging:
-    useExternalDiffGitConfig: true
+    useExternalDiffGitConfig: false
   parseEmoji: true
   overrideGpg: true
 gui:

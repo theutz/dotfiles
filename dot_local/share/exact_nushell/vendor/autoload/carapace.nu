@@ -1,4 +1,4 @@
-$env.PATH = ($env.PATH | split row (char esep) | prepend "/Users/michael/.config/carapace/bin")
+$env.PATH = ($env.PATH | split row (char esep) | where { $in != "/Users/michael/.config/carapace/bin" } | prepend "/Users/michael/.config/carapace/bin")
 
 def --env get-env [name] { $env | get $name }
 def --env set-env [name, value] { load-env { $name: $value } }
