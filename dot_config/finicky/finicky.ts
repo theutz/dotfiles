@@ -37,6 +37,7 @@ export default {
             "hiwasseepackaging.com",
             "impactelectronics.com",
             "friendzy.co",
+            "figma.com",
           ]
             .reduce(
               (prev, curr) => [...prev, curr, curr.replace(/\..+$/, ".test")],
