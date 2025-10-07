@@ -118,16 +118,20 @@ cmd-ctrl-alt-shift-b = 'exec-and-forget aerospace focus-back-and-forth || aerosp
 cmd-ctrl-alt-shift-i = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
 
 # Move Windows
-cmd-ctrl-alt-h = 'move left'
-cmd-ctrl-alt-j = 'move down'
-cmd-ctrl-alt-k = 'move up'
-cmd-ctrl-alt-l = 'move right'
+cmd-ctrl-alt-h = 'move left --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-j = 'move down --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-k = 'move up --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-l = 'move right --boundaries all-monitors-outer-frame'
 
 # Join
-cmd-ctrl-alt-shift-a = 'exec-and-forget aerospace join-with left'
-cmd-ctrl-alt-shift-d = 'exec-and-forget aerospace join-with right'
-cmd-ctrl-alt-shift-s = 'exec-and-forget aerospace join-with down'
-cmd-ctrl-alt-shift-w = 'exec-and-forget aerospace join-with up'
+cmd-ctrl-alt-shift-a = 'join-with left'
+cmd-ctrl-alt-shift-d = 'join-with right'
+cmd-ctrl-alt-shift-s = 'join-with down'
+cmd-ctrl-alt-shift-w = 'join-with up'
+cmd-ctrl-alt-a = 'join-with left'
+cmd-ctrl-alt-d = 'join-with right'
+cmd-ctrl-alt-s = 'join-with down'
+cmd-ctrl-alt-w = 'join-with up'
 
 # Change Workspace
 cmd-ctrl-alt-shift-1 = 'workspace --auto-back-and-forth 1'
