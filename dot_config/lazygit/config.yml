@@ -1,7 +1,11 @@
 customCommands:
   - key: b
     context: files
-    command: git diff --cached | mods -R commit | git commit --file -
+    command: |-
+      git diff --cached |
+      mods -R commit |
+      sd '^```(.*?)```$' '$1' |
+      git commit --file -
     description: generate commit message with ai
     output: terminal
 disableStartupPopups: true

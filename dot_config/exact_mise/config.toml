@@ -80,6 +80,7 @@ lazydocker = "latest"
 coreutils = "latest"
 difftastic = "latest"
 node = "latest"
+sd = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"

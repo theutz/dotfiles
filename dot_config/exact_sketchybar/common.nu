@@ -9,7 +9,7 @@ let theme = (nu -e 'rose-pine | to json' | complete | $in.stdout | from json)
 
 def "font" [
   --bold (-b)
-  --size = 14
+  --size = 13
   --scale = 1.0
 ] {
   let weight = if ($bold) { "Bold" } else { "Normal" }
@@ -23,11 +23,11 @@ def "into argb" [--alpha (-a): string = "FF"]: string -> string {
 }
 
 def "icon color" [ --highlight (-h) ]: nothing -> string {
-  if ($highlight) { $theme.foam } else { $theme.pine } | into argb
+  if ($highlight) { $theme.rose } else { $theme.pine } | into argb
 }
 
 def "icon alias color" [--highlight (-h)]: nothing -> string {
-  if ($highlight) { $theme.iris } else { $theme.gold } | into argb
+  if ($highlight) { $theme.iris } else { $theme.foam } | into argb
 }
 
 def "label color" [--highlight (-h)]: nothing -> string {
