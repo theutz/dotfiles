@@ -33,32 +33,15 @@ match [(is-active) (is-playing)] {
     --set spotify
     drawing=on
     icon.highlight=off
-
-    --set artist
-    drawing=on
-    label=(artist)
-
-    --set track
-    drawing=on
-    label=(track)
+    $"label=(track) - (artist)"
   ]
   [true false] => [
     --set spotify
     drawing=on
     icon.highlight=on
-
-    --set artist
-    drawing=off
-
-    --set track
-    drawing=off
   ]
   _ => [
     --set spotify
-    drawing=off
-    --set artist
-    drawing=off
-    --set track
     drawing=off
   ]
 }

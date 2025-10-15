@@ -152,32 +152,17 @@ def "setup aliases" []: nothing -> list<string> {
 }
 
 def "setup spotify" []: nothing -> list<string> {
-  let click = "click_script=spotify_player playback play-pause"
   [
-    --add item track q
-    --add item artist q
     --add item spotify q
 
     --set spotify
-    $click
-    display=1
-    drawing=on
     icon=
+    display=1
+    drawing=off
+    label.max_chars=36
+    "click_script=spotify_player playback play-pause"
     script="($env.PLUGIN_DIR)/spotify"
-    update_freq=10
-    label.drawing=off
-
-    --set track
-    $click
-    display=1
-    drawing=off
-    icon=󰎄 
-
-    --set artist
-    $click
-    display=1
-    drawing=off
-    icon=󰠃
+    update_freq=3s
   ]
 }
 
