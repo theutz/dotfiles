@@ -52,7 +52,7 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
     --add event aerospace_workspace_change
     --add item aerospace_spaces left
     --set aerospace_spaces
-    script=($env.PLUGIN_DIR)/aerospace_spaces
+    script=($env.PLUGIN_DIR)/aerospace
     drawing=off
     --subscribe aerospace_spaces aerospace_workspace_change
   ]
@@ -64,23 +64,11 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
         --add item aerospace.($id) left
         --set aerospace.($id)
         label=($id)
-        $"click_script=aerospace workspace ($id)"
+        click_script=($env.PLUGIN_DIR)/aerospace_click
       ]
     }
   )
   | flatten
-}
-
-def "setup aerospace_modes" []: nothing -> list<string> {
-  [
-    --add event aerospace_mode_change
-    --add item aerospace_mode left
-    --subscribe aerospace_mode
-    --set aerospace_mode
-    icon=
-    update_freq=1
-    script=($env.PLUGIN_DIR)/aerospace_mode
-  ]
 }
 
 def "setup symbol" []: nothing -> list<string> {
@@ -208,7 +196,6 @@ run stack [
 ]
 
 run stack [
-  (setup aerospace_modes)
   (setup aerospace_spaces)
   (setup symbol)
   (setup front_app)
