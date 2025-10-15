@@ -39,6 +39,8 @@ export default {
             "friendzy.co",
             "figma.com",
             "aws.amazon.com",
+            "zoom.us",
+            "localhost:9323", // playwright
           ]
             .reduce(
               (prev, curr) => [...prev, curr, curr.replace(/\..+$/, ".test")],

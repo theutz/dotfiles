@@ -81,6 +81,9 @@ coreutils = "latest"
 difftastic = "latest"
 node = "latest"
 sd = "latest"
+doggo = "latest"
+"ubi:peak/s5cmd" = "latest"
+"go:github.com/elliot40404/volgo/cmd/volgo" = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
