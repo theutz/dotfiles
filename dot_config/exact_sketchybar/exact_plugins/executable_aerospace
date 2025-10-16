@@ -1,4 +1,4 @@
-#!/usr/bin/env nu
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
 # vim: ft=nu
 
 aerospace list-workspaces --monitor all --empty

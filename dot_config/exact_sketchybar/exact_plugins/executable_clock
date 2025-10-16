@@ -1,5 +1,5 @@
-#!/usr/bin/env nu
-# vim: ft=nu
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim:ft=nu
 
 # The $NAME variable is passed from sketchybar and holds the name of
 # the item invoking this script:

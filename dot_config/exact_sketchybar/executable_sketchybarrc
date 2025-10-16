@@ -1,4 +1,4 @@
-#!/usr/bin/env nu
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
 
 const self = path self
 source ($self | path dirname | path join "common.nu")

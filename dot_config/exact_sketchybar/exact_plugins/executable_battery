@@ -1,4 +1,5 @@
-#!/usr/bin/env nu
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim:ft=nu
 
 let data = pmset -g batt
 | parse --regex r#'(?m).+?(?<level>\d{1,3})%'#
