@@ -3,6 +3,7 @@ nushell = "aqua:nushell/nushell"
 vincent = "ubi:rsteube/vincent"
 zsh-syntax-highlighting = "http:zsh-syntax-highlighting"
 utiluti = "spm:scriptingosx/utiluti"
+volgo = "go:github.com/elliot40404/volgo/cmd/volgo"
 
 [env]
 _.path = ["/opt/homebrew/sbin", "/opt/homebrew/bin", ".local/bin", "bin"]
@@ -82,7 +83,7 @@ node = "latest"
 sd = "latest"
 doggo = "latest"
 "ubi:peak/s5cmd" = "latest"
-"go:github.com/elliot40404/volgo/cmd/volgo" = "latest"
+volgo = "latest"
 nushell = "latest"
 
 [tools."zsh-syntax-highlighting"]

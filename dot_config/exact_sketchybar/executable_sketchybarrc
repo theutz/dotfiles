@@ -1,4 +1,5 @@
 #!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim:ft=nu
 
 const self = path self
 source ($self | path dirname | path join "common.nu")
@@ -142,7 +143,6 @@ def "setup aliases" []: nothing -> list<string> {
 def "setup spotify" []: nothing -> list<string> {
   [
     --add item spotify q
-
     --set spotify
     icon=
     display=1
@@ -166,6 +166,7 @@ def "setup ip" []: nothing -> list<string> {
     drawing=on
     icon=󰖟
     label.drawing=off
+    icon.highlight=on
 
     --set ipaddress
     $click

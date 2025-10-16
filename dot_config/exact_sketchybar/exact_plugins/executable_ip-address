@@ -1,15 +1,22 @@
 #!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
 # vim: ft=nu
 
+plugin add nu_plugin_query
 plugin use query
 
-let data = http get https://am.i.mullvad.net
-| query web --query '.results p:nth-child(2)'
-| flatten
-| get 0
-| parse --regex r#'IP address: (?<ip>.*?), (?<location>.*)'#
-| update cells { str trim }
-| first
+let page = http get https://am.i.mullvad.net
+
+let data = $page
+  | query web --query '.results p:nth-child(2)'
+  | flatten
+  | get 0
+  | parse --regex r#'IP address: (?<ip>.*?), (?<location>.*)'#
+  | update cells { str trim }
+  | first
+
+let is_mullvad = $page | query web --query '.results.mullvad'
+  | get 0?
+  | is-not-empty
 
 [
   --animate sin 10
@@ -34,5 +41,9 @@ let data = http get https://am.i.mullvad.net
     drawing=off
   ]
 }
+| append [
+    --set tailscale
+    icon.highlight=(if $is_mullvad { 'off' } else { 'on' })
+]
 | sketchybar ...$in
 
