@@ -53,7 +53,7 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
     --add event aerospace_workspace_change
     --add item aerospace_spaces left
     --set aerospace_spaces
-    script=($env.PLUGIN_DIR)/aerospace
+    (script aerospace)
     drawing=off
     --subscribe aerospace_spaces aerospace_workspace_change
   ]
@@ -65,7 +65,7 @@ def "setup aerospace_spaces" []: nothing -> list<string> {
         --add item aerospace.($id) left
         --set aerospace.($id)
         label=($id)
-        click_script=($env.PLUGIN_DIR)/aerospace_click
+        (script aerospace_click --click)
       ]
     }
   )
@@ -87,7 +87,7 @@ def "setup front_app" []: nothing -> list<string> {
     --add item front_app left
     --set front_app
     icon.drawing=off
-    script=($env.PLUGIN_DIR)/front_app
+    (script front_app)
     --subscribe front_app front_app_switched
   ]
 }
@@ -98,14 +98,15 @@ def "setup clock" []: nothing -> list<string> {
     --set clock
     update_freq=1
     icon=󱑀
-    script=($env.PLUGIN_DIR)/clock
+    (script clock)
   ]
 }
 
 def "setup volume" []: nothing -> list<string> {
   [
     --add item volume right
-    --set volume script=($env.PLUGIN_DIR)/volume
+    --set volume
+    (script volume)
     display=active
     --subscribe volume volume_change
   ]
@@ -117,7 +118,7 @@ def "setup battery" []: nothing -> list<string> {
     --set battery
     display=active
     update_freq=120
-    script=($env.PLUGIN_DIR)/battery
+    (script battery)
     --subscribe battery system_woke power_source_change
   ]
 }
@@ -149,7 +150,7 @@ def "setup spotify" []: nothing -> list<string> {
     drawing=off
     label.max_chars=36
     "click_script=spotify_player playback play-pause"
-    script="($env.PLUGIN_DIR)/spotify"
+    (script spotify)
     update_freq=3s
   ]
 }
@@ -162,6 +163,7 @@ def "setup ip" []: nothing -> list<string> {
     --add item tailscale e
 
     --set tailscale
+    $click
     display=1
     drawing=on
     icon=󰖟
@@ -173,7 +175,7 @@ def "setup ip" []: nothing -> list<string> {
     display=1
     icon.highlight=on
     icon=󰩟 
-    script=($env.PLUGIN_DIR)/ip-address
+    (script ip-address)
     update_freq=3
     label.drawing=off
 

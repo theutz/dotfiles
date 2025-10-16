@@ -54,3 +54,19 @@ def padding [multiplier: float = 1.0]: nothing -> int {
   6 * $multiplier | math round
 }
 
+# Add script property
+def script [
+  name: string
+  --click (-c)
+]: nothing -> path {
+  [$env.PLUGIN_DIR $name]
+  | path join
+  | if ($in | path exists) { $in } else {
+    error make {
+      msg: $"($in) does not exist."
+      label: {span: (metadata $name).span text: "File name"}
+    }
+  }
+  | if ($click) { [click_script $in] } else { [script $in] }
+  | str join "="
+}
