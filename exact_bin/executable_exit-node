@@ -1,22 +1,42 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim:ft=nu
 
-set -euo pipefail
+def info [...$args: string]: nothing -> nothing {
+  [$"(ansi bg_b)(ansi bo) INFO (ansi rst)" ...$args]
+  | str join (char space)
+  | print -e $in
+}
 
-stat="$(tailscale status | sed -e '/^#/d' -e '/^$/d')"
-gum format -- "# Tailscale Status
+def err [...$args: string]: nothing -> nothing {
+  [$"(ansi bg_r)(ansi white_bold) ERROR (ansi rst)" ...$args]
+  | str join (char space)
+  | print -e $in
+}
 
-$stat"
+info Checking tailscale status...
+tailscale status --json | from json | if ($in.BackendState == Stopped) {
+  info Tailscale is stopped. Starting...
+  try { tailscale up } catch {|err|
+    err Could not start tailscale; $err.rendered; exit 1
+  }
+}
+info Tailscale started.
 
-location="$(gum spin --title "Finding current location..." -- dnsleaktest)"
-echo $location
-echo
+let nodes = tailscale exit-node list
+| find --no-highlight --invert --regex ^#
+| each { str trim }
+| compact --empty
+| skip 1
+| parse --regex r#'^(?<ip>[\d\.]+?)\s{2,}(?<hostname>[\w\.-]+?)\s{2,}(?<country>\w+?)\s{2,}(?<city>.+?)\s\s+(?<status>.*)$'#
 
-tailscale exit-node list |
-  sed -e '/^#/d' -e '/^$/d' |
-  fzf --header-lines=1 |
-  awk '{ print $2 }' |
-  xargs tailscale set --exit-node
+let country = $nodes | uniq-by country | input list --fuzzy --display country "Which country?" | get country
 
-location="$(gum spin --title "Testing new location..." --show-output -- zsh -c "sleep 1 && dnsleaktest")"
-tput cuu1
-echo $location
+$nodes
+| where country == $country
+| if ($in | length) == 1 { $in } else {
+  $country | input list --fuzzy --display city "Which city?"
+}
+| first
+| tee { info $"Switching to ($in.hostname) at ($in.ip) in ($in.city), ($in.country)" }
+| tailscale set --exit-node $in.hostname
+info "Switched!"
