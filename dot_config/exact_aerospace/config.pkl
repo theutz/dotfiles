@@ -69,6 +69,7 @@ on_window_detected {
     moveOnDetected("com.figma.Desktop", 5)
     moveOnDetected("us.zoom.xos", 4)
     moveOnDetected("com.fastmail.mac.Fastmail", 6)
+    moveOnDetected("com.google.Chrome.app.fmgjjmmmlfnkbppncabfkddbjimcfncm", 6) // gmail
   })
 }
 
