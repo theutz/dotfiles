@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec nushell@latest -- nu
 # vim: ft=nu
 
 plugin add nu_plugin_query
@@ -20,29 +20,18 @@ let is_mullvad = $page | query web --query '.results.mullvad'
 
 [
   --animate sin 10
+  --set ipaddress
 ] | if ($data | is-not-empty) {
   append [
-    --set ipaddress
-    icon.highlight=off
-    label=($data.ip)
+    $"label=($data.location) \(($data.ip)\)"
     label.drawing=on
-
-    --set iplocation
-    icon.highlight=off
-    drawing=on
-    label=($data.location)
   ]
 } else {
   [
-    --set ipaddress
-    icon.highlight=on
-    
-    --set iplocation
-    drawing=off
+    label.drawing=off
   ]
 }
 | append [
-    --set tailscale
     icon.highlight=(if $is_mullvad { 'off' } else { 'on' })
 ]
 | sketchybar ...$in

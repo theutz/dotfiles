@@ -37,7 +37,6 @@ def "setup defaults" [] {
     label.color=(label color)
     label.font=(font)
     label.highlight_color=(label color --highlight)
-    label.max_chars=16
     label.padding_left=(padding 0.5)
     label.padding_right=(padding)
     label.scroll_duration=100
@@ -151,7 +150,7 @@ def "setup spotify" []: nothing -> list<string> {
     label.max_chars=36
     "click_script=spotify_player playback play-pause"
     (script spotify)
-    update_freq=3s
+    update_freq=10s
   ]
 }
 
@@ -159,33 +158,14 @@ def "setup ip" []: nothing -> list<string> {
   let click = "click_script=open raycast://extensions/tailscale/tailscale/exit"
   [
     --add item ipaddress e
-    --add item iplocation e
-    --add item tailscale e
-
-    --set tailscale
-    $click
-    display=1
-    drawing=on
-    icon=󰖟
-    label.drawing=off
-    icon.highlight=on
-
     --set ipaddress
     $click
     display=1
     icon.highlight=on
-    icon=󰩟 
+    icon=
     (script ip-address)
-    update_freq=3
+    update_freq=10s
     label.drawing=off
-
-    --set iplocation
-    $click
-    display=1
-    drawing=off
-    icon.highlight=on
-    icon=
-    label.max_chars=16
   ]
 }
 

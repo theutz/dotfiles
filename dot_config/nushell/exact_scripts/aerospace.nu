@@ -8,7 +8,7 @@ export def list-workspaces [] {
   ^aerospace list-workspaces --all --json | from json | get workspace
 }
 
-const list_windows_filters = [focused monitor workspace all]
+export const list_windows_filters = [focused monitor workspace all]
 
 # List all windows
 export def list-windows [
