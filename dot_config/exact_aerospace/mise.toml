@@ -1,0 +1,22 @@
+[vars]
+out = "aerospace.toml"
+
+[tools]
+java = "latest"
+pkl = "latest"
+
+[tasks.reload]
+run = "aerospace reload-config"
+
+[tasks.render]
+description = "Render {{vars.out}}"
+run = ["pkl eval config.pkl"]
+
+[tasks.write]
+run = ["mise run render -- -o {{vars.out}}"]
+
+[tasks.show]
+wait_for = ["render"]
+tools = {bat = "latest"}
+description = "Show {{vars.out}}"
+run = "bat --no-pager {{vars.out}}"

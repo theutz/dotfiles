@@ -1,0 +1,166 @@
+amends "Aerospace.pkl"
+
+accordion_padding = 32
+after_startup_command {
+  "exec-and-forget sketchybar --reload"
+}
+automatically_unhide_macos_hidden_apps = true
+default_root_container_layout = "accordion"
+default_root_container_orientation = "auto"
+enable_normalization_flatten_containers = true
+enable_normalization_opposite_orientation_for_nested_containers = true
+exec_on_workspace_change {
+  "/bin/bash"
+  "-c"
+  List(
+    "sketchybar",
+    "--trigger",
+    "aerospace_workspace_change",
+    "FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+  ).join(" ")
+}
+on_focus_changed { /* "move-mouse window-lazy-center" */ }
+on_focused_monitor_changed {
+  // 'move-mouse monitor-lazy-center'
+  [0] = "exec-and-forget sketchybar --trigger aerospace_workspace_change"
+}
+start_at_login = true
+
+local function moveOnDetected(id: String, workspace: Int): OnWindowDetected = new OnWindowDetected {
+  `if` {
+    app_id = id
+  }
+  run { "move-node-to-workspace \(workspace)" }
+}
+
+gaps {
+  inner {
+    horizontal = 16
+    vertical = 16
+  }
+  `outer` {
+    bottom = 16
+    left = 16
+    right = 16
+    top = new Listing {
+      new GapsMonitor { monitor { ["SAMSUNG"] = 56 }}
+      16
+    }
+  }
+}
+
+on_window_detected {
+  new {
+    `if` {
+      app_id = "wezterm-gui"
+      window_title_regex_substring = "spotify_player"
+      during_aerospace_startup = true
+    }
+    run { "layout tiling" "move-node-to-workspace 9" }
+  }
+  ...(new Listing {
+    moveOnDetected("ru.keepcoder.Telegram", 8)
+    moveOnDetected("com.apple.MobileSMS", 8)
+    moveOnDetected("net.whatsapp.WhatsApp", 8)
+    moveOnDetected("org.whispersystems.signal-desktop", 8)
+    moveOnDetected("com.github.wez.wezterm", 1)
+    moveOnDetected("com.spotify.client", 9)
+    moveOnDetected("com.tinyspeck.slackmacgap", 7)
+    moveOnDetected("com.figma.Desktop", 5)
+    moveOnDetected("us.zoom.xos", 4)
+  })
+}
+
+exec {
+  env_vars {
+    ["PATH"] = "${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
+  }
+}
+
+workspace_to_monitor_force_assignment = new {
+  ["1"] = "main"
+  ["9"] = new Listing { "secondary" "main" }
+}
+
+mode = new Mapping {
+  ["main"] = new Mode {
+    binding = let (hypo = new Dynamic {
+        // Move Windows
+        h = "move left"
+        j = "move down"
+        k = "move up"
+        l = "move right"
+
+        // Join
+        quote = "swap dfs-next"
+        semicolon = "swap dfs-prev"
+        a = "join-with left"
+        d = "join-with right"
+        s = "join-with down"
+        w = "join-with up"
+
+        // Resizing
+        equal = "resize smart-opposite +50"
+        minus = "resize smart-opposite -50"
+
+        // Move to workspace
+        for (num in IntSeq(1, 9)) {
+          ["\(num)"] = new Listing { "move-node-to-workspace \(num)" "workspace \(1)" }
+          ["keypad\(num)"] = new Listing { "move-node-to-workspace \(num)" "workspace \(1)" }
+        }
+        n = new Listing { "move-node-to-workspace next" "workspace next" }
+        p = new Listing { "move-node-to-workspace prev" "workspace prev" }
+      })
+      let (hyper = new Dynamic {
+        // Change Focus
+        h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left"
+        j = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down"
+        k = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up"
+        l = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right"
+        b = "exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth"
+        i = "exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth"
+
+        // Join
+        a = "swap left"
+        d = "swap right"
+        s = "swap down"
+        w = "swap up"
+        quote = "focus dfs-next"
+        semicolon = "focus dfs-prev"
+
+        // Change Workspace
+        for (num in IntSeq(1, 9)) {
+          [num] = "workspace --auto-back-and-forth \(num)"
+          ["keypad\(num)"] = "workspace --auto-back-and-forth \(num)"
+        }
+        n = "workspace --wrap-around next"
+        p = "workspace --wrap-around prev"
+
+        // Monitor Focus
+        leftSquareBracket = "focus-monitor --wrap-around next"
+        rightSquareBracket = "focus-monitor --wrap-around prev"
+
+        // Resizing
+        `0` = "balance-sizes"
+        equal = new Listing { "resize smart +50" "resize smart-opposite +50" }
+        minus = new Listing { "resize smart -50" "resize smart-opposite -50" }
+        down = "resize height -50"
+        up = "resize height +50"
+        left = "resize width -50"
+        right = "resize width +50"
+
+        // Layout
+        t = "layout accordion tiles"
+        v = "layout horizontal vertical"
+        o = "focus-monitor --wrap-around next"
+        m = "fullscreen"
+
+        // Reload
+        r = new Listing { "reload-config" "exec-and-forget sketchybar --reload" }
+      })
+      new Binding {
+        for (key, value in hypo) { ["cmd-ctrl-alt-\(key)"] = value }
+        for (key, value in hyper) { ["cmd-ctrl-alt-shift-\(key)"] = value }
+      }
+  }
+}
