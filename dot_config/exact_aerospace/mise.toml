@@ -1,19 +1,22 @@
 [vars]
+in = "config.pkl"
 out = "aerospace.toml"
 
 [tools]
 java = "latest"
 pkl = "latest"
 
+[[watch_files]]
+patterns = ["*.pkl"]
+run = "mise run render"
+
 [tasks.reload]
 run = "aerospace reload-config"
 
 [tasks.render]
 description = "Render {{vars.out}}"
-run = ["pkl eval config.pkl"]
-
-[tasks.write]
-run = ["mise run render -- -o {{vars.out}}"]
+depends_post = ["reload"]
+run = ["pkl eval {{vars.in}} -o {{vars.out}}"]
 
 [tasks.show]
 wait_for = ["render"]

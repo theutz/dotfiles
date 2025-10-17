@@ -104,6 +104,14 @@ run = [ "move-node-to-workspace 4" ]
 app-id = "us.zoom.xos"
 during-aerospace-startup = false
 
+[[on-window-detected]]
+check-further-callbacks = false
+run = [ "move-node-to-workspace 6" ]
+
+[on-window-detected.if]
+app-id = "com.fastmail.mac.Fastmail"
+during-aerospace-startup = false
+
 [exec.env-vars]
 PATH = "${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
 
