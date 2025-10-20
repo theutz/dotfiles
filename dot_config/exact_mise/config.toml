@@ -15,8 +15,8 @@ _.source = [{ path = """
 {%- endif %}
 {{- [xdg_config_home, "fzf", "rose-pine", "dist", file] | join_path -}}
 """, tools = true }]
-EDITOR = "nvim"
-VISUAL = "neovide"
+EDITOR = "hx"
+VISUAL = "hx"
 LESS = "-g -i -M -R -S -w -X -z-4"
 LESSOPEN = "|/usr/bin/env lesspipe.sh %s 2>&-"
 PAGER = "less"
@@ -85,6 +85,8 @@ doggo = "latest"
 "ubi:peak/s5cmd" = "latest"
 volgo = "latest"
 nushell = "latest"
+jujutsu-ui = "latest"
+jujutsu = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
