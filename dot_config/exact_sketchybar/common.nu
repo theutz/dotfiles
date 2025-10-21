@@ -5,7 +5,12 @@ $env.FONT = "BlexMono Nerd Font Propo"
 $env.APPEARANCE = [$env.HOME .local state appearance] | path join
   | if ($in | path exists) { open $in } else { "dark" }
 
-let theme = (nu -e 'rose-pine | to json' | complete | $in.stdout | from json)
+use rose-pine.nu
+let theme = rose-pine
+
+if ($theme | is-empty) {
+  error make {msg: "Error loading theme" label: {text: "From here" span: (metadata $theme).span}}
+}
 
 def "font" [
   --bold (-b)
