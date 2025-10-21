@@ -1,0 +1,15 @@
+(defcfg
+	process-unmapped-keys yes
+	macos-dev-names-exclude (
+		"MX Master 3 Mac"
+	))
+
+(defsrc)
+
+(defalias
+    cap   (tap-hold-press 200 200 esc lctl)
+	hyper (tap-hold-press 200 200 tab (multi lsft lctl lalt lmet)))
+
+(deflayermap (base)
+    tab  @hyper
+    caps @cap)
