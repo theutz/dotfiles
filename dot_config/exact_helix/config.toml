@@ -16,28 +16,28 @@ whitespace.render = "all"
 auto-save.focus-lost = true
 indent-guides.render = true
 
-[keys.normal]
-X = "extend_line_above"
-"C-j" = "save_selection"
-"C-s" = ":write"
-"C-g" = [
-    ":write-all",
-    ":new",
-    ":insert-output lazygit",
-    ":buffer-close!",
-    ":redraw",
-    ":reload-all",
-]
-"C-f" = [
-    ":write-all",
-    ":new",
-    ":insert-output yazi",
-    ":buffer-close!",
-    ":redraw",
-    ":reload-all"
-]
+# [keys.normal]
+# X = "extend_line_above"
+# "C-j" = "save_selection"
+# "C-s" = ":write"
+# "C-g" = [
+#     ":write-all",
+#     ":new",
+#     ":insert-output lazygit",
+#     ":buffer-close!",
+#     ":redraw",
+#     ":reload-all",
+# ]
+# "C-f" = [
+#     ":write-all",
+#     ":new",
+#     ":insert-output yazi",
+#     ":buffer-close!",
+#     ":redraw",
+#     ":reload-all"
+# ]
 
-[keys.normal.space]
-q = ":write-quit-all"
-lt = ":config-open"
-"," = ":config-reload"
+# [keys.normal.space]
+# q = ":write-quit-all"
+# lt = ":config-open"
+# "," = ":config-reload"

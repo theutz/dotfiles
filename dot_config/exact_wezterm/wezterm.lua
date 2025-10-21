@@ -63,9 +63,9 @@ w.on("window-config-reloaded", write_appearance_to_disk)
 -- │ Fonts │
 -- ╰───────╯
 
-c.font = w.font("Maple Mono NF", { weight = 600 })
-c.font_size = 16
-c.line_height = 1.6
+c.font = w.font("RecMonoLinear Nerd Font Propo", { weight = 400 })
+c.font_size = 14
+c.line_height = 1.0
 
 -- ╭────╮
 -- │ UI │
