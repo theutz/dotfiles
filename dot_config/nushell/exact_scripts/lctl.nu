@@ -15,16 +15,14 @@ def "fetch domain" []: int -> string {
 # Get relevant info about a running service
 export def info [
   query?: string # Part or all of a service label to search for
-  --target (-t) # Output result as a service target
-  --sudo (-s) # Run as super-user
 ] {
   $query
   | if ($in | is-empty) {
-    list --sudo=$sudo | input list --display label --fuzzy "Which service?" | get label
+    list | input list --display label --fuzzy "Which service?" | get label
   } else {
     $in
   }
-  | do {|q| list --sudo=$sudo | where label =~ $q } $in
+  | do {|q| list | where label =~ $q } $in
   | match ($in | length) {
     0 => { error make { msg: $"No service matches ($in)" } }
     1 => { first }
@@ -38,21 +36,24 @@ export def info [
     }
   }
   | move domain --after label
-  | if ($target) { into target } else { $in }
+  | insert target {|it|
+    if ($it.domain | is-empty) { $it.domain } else {
+      $"($it.domain)/($it.label)"
+    }
+  }
+  | move target --after domain
 }
 
 export alias i = info
 
 # List all launchctl services
 export def list [
-  --sudo (-s) # run as super-user
   --domain (-d) # fetch domains for services (slow)
   --active (-a) # Only show active services
 ] {
-  [launchctl list]
-  | if ($sudo) { prepend [sudo] } else { $in }
-  | run-external ...$in
-  | detect columns
+  [(run-external launchctl list) (sudo launchctl list)]
+  | each { detect columns }
+  | flatten
   | rename --block { str downcase }
   | update pid { if $in == "-" { null } else { into int } }
   | update status { into int }
@@ -60,7 +61,7 @@ export def list [
   | insert last_signal {|row| if $row.status < 0 { $row.status | math abs } else { null } }
   | select label active pid status last_signal
   | rename --column { status: last_status }
-  | if ($active) { where active } else { $in }
+  | if ($active or $domain) { where active } else { $in }
   | if ($domain) {
     insert domain {
        get -o pid | match $in { null => $in, _ => { fetch domain } }
@@ -71,10 +72,6 @@ export def list [
 }
 
 export alias ls = list
-
-export def "into target" []: record<label: string, domain: string> -> string {
-  $"($in.domain)/($in.label)"
-}
 
 # Show module help
 export def main [] {
