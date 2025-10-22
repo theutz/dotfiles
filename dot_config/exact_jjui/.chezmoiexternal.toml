@@ -1,0 +1,6 @@
+["themes"]
+type = "archive"
+url = "https://github.com/vic/tinted-jjui/archive/refs/heads/main.zip"
+stripComponents = 2
+exact = true
+include = ["tinted-jjui-main/themes/*"]
