@@ -4,3 +4,8 @@ windows:
 - window_name: main
   panes:
   - blank
+  - jjui
+- window_name: dev
+  panes:
+    - mise dev
+    - lazydocker
