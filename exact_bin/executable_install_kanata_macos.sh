@@ -9,7 +9,7 @@ RESET='\033[0m'
 ARROW="${MAGENTA}==>${RESET}"
 
 #### CONFIGURATION ####
-KANATA_CONFIG="${HOME}/.config/kanata/config.kbd"
+KANATA_CONFIG="${HOME}/.config/kanata/kanata.kbd"
 KANATA_PORT=10000
 PLIST_DIR="/Library/LaunchDaemons"
 ###################################
@@ -32,32 +32,30 @@ brew list kanata >/dev/null 2>&1 || brew install kanata
 KANATA_BIN=$(command -v kanata)
 
 # 3. Write plist files
-sudo tee "${PLIST_DIR}/com.example.kanata.plist" >/dev/null <<EOF
+sudo tee "${PLIST_DIR}/com.theutz.kanata.plist" >/dev/null <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>Label</key><string>com.example.kanata</string>
+  <key>Label</key><string>com.theutz.kanata</string>
   <key>ProgramArguments</key><array>
     <string>${KANATA_BIN}</string>
     <string>-c</string><string>${KANATA_CONFIG}</string>
     <string>--port</string><string>${KANATA_PORT}</string>
   </array>
-  <key>StandardOutPath</key><string>/tmp/com.example.kanata/kanata.out.log</string>
-  <key>StandardErrorPath</key><string>/tmp/com.example.kanata/kanata.err.log</string>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
 </dict></plist>
 EOF
-sudo chown root:wheel "${PLIST_DIR}/com.example.kanata.plist"
-sudo chmod 644 "${PLIST_DIR}/com.example.kanata.plist"
+sudo chown root:wheel "${PLIST_DIR}/com.theutz.kanata.plist"
+sudo chmod 644 "${PLIST_DIR}/com.theutz.kanata.plist"
 
-sudo tee "${PLIST_DIR}/com.example.karabiner-vhiddaemon.plist" >/dev/null <<EOF
+sudo tee "${PLIST_DIR}/com.theutz.karabiner-vhiddaemon.plist" >/dev/null <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>Label</key><string>com.example.karabiner-vhiddaemon</string>
+  <key>Label</key><string>com.theutz.karabiner-vhiddaemon</string>
   <key>ProgramArguments</key><array>
     <string>/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon</string>
   </array>
@@ -65,15 +63,15 @@ sudo tee "${PLIST_DIR}/com.example.karabiner-vhiddaemon.plist" >/dev/null <<EOF
   <key>KeepAlive</key><true/>
 </dict></plist>
 EOF
-sudo chown root:wheel "${PLIST_DIR}/com.example.karabiner-vhiddaemon.plist"
-sudo chmod 644 "${PLIST_DIR}/com.example.karabiner-vhiddaemon.plist"
+sudo chown root:wheel "${PLIST_DIR}/com.theutz.karabiner-vhiddaemon.plist"
+sudo chmod 644 "${PLIST_DIR}/com.theutz.karabiner-vhiddaemon.plist"
 
-sudo tee "${PLIST_DIR}/com.example.karabiner-vhidmanager.plist" >/dev/null <<EOF
+sudo tee "${PLIST_DIR}/com.theutz.karabiner-vhidmanager.plist" >/dev/null <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>Label</key><string>com.example.karabiner-vhidmanager</string>
+  <key>Label</key><string>com.theutz.karabiner-vhidmanager</string>
   <key>ProgramArguments</key><array>
     <string>/Applications/.Karabiner-VirtualHIDDevice-Manager.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager</string>
     <string>activate</string>
@@ -81,24 +79,24 @@ sudo tee "${PLIST_DIR}/com.example.karabiner-vhidmanager.plist" >/dev/null <<EOF
   <key>RunAtLoad</key><true/>
 </dict></plist>
 EOF
-sudo chown root:wheel "${PLIST_DIR}/com.example.karabiner-vhidmanager.plist"
-sudo chmod 644 "${PLIST_DIR}/com.example.karabiner-vhidmanager.plist"
+sudo chown root:wheel "${PLIST_DIR}/com.theutz.karabiner-vhidmanager.plist"
+sudo chmod 644 "${PLIST_DIR}/com.theutz.karabiner-vhidmanager.plist"
 
 # 4. Bootstrap and enable services
 # Kanata
-sudo launchctl bootout system "${PLIST_DIR}/com.example.kanata.plist" 2>/dev/null || true
-sudo launchctl bootstrap system "${PLIST_DIR}/com.example.kanata.plist"
-sudo launchctl enable system/com.example.kanata
+sudo launchctl bootout system "${PLIST_DIR}/com.theutz.kanata.plist" 2>/dev/null || true
+sudo launchctl bootstrap system "${PLIST_DIR}/com.theutz.kanata.plist"
+sudo launchctl enable system/com.theutz.kanata
 
 # Karabiner-VHIDDaemon
-sudo launchctl bootout system "${PLIST_DIR}/com.example.karabiner-vhiddaemon.plist" 2>/dev/null || true
-sudo launchctl bootstrap system "${PLIST_DIR}/com.example.karabiner-vhiddaemon.plist"
-sudo launchctl enable system/com.example.karabiner-vhiddaemon
+sudo launchctl bootout system "${PLIST_DIR}/com.theutz.karabiner-vhiddaemon.plist" 2>/dev/null || true
+sudo launchctl bootstrap system "${PLIST_DIR}/com.theutz.karabiner-vhiddaemon.plist"
+sudo launchctl enable system/com.theutz.karabiner-vhiddaemon
 
 # Karabiner-VHIDManager
-sudo launchctl bootout system "${PLIST_DIR}/com.example.karabiner-vhidmanager.plist" 2>/dev/null || true
-sudo launchctl bootstrap system "${PLIST_DIR}/com.example.karabiner-vhidmanager.plist"
-sudo launchctl enable system/com.example.karabiner-vhidmanager
+sudo launchctl bootout system "${PLIST_DIR}/com.theutz.karabiner-vhidmanager.plist" 2>/dev/null || true
+sudo launchctl bootstrap system "${PLIST_DIR}/com.theutz.karabiner-vhidmanager.plist"
+sudo launchctl enable system/com.theutz.karabiner-vhidmanager
 
 # 5. Prompt for permissions
 echo -e "${ARROW} You'll now allow Karabiner to use a system extension."
