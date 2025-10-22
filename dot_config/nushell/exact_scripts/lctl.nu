@@ -48,13 +48,14 @@ export def list [
   | update pid { if $in == "-" { null } else { into int } }
   | update status { into int }
   | insert active {|in| $in.pid != null }
+  | insert last_signal {|row| if $row.status > 0 { $row.status | math abs } else { null } }
+  | select label active pid status last_signal
   | if ($domain) {
     insert domain {|in| 
        $in.pid | match $in { null => $in, _ => { fetch domain } }
     }
+    | move domain --after label
   } else { $in }
-  | insert last_signal {|row| if $row.status > 0 { $row.status | math abs } else { null } }
-  | select label domain active pid status last_signal
 }
 
 export alias ls = list

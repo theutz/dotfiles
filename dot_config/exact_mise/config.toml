@@ -95,6 +95,7 @@ uv = "latest"
 "pipx:tmuxp" = "latest"
 "ubi:Gaurav-Gosain/tuios" = "latest"
 fnox = "latest"
+crush = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"

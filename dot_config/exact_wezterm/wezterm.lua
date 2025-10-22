@@ -63,7 +63,7 @@ w.on("window-config-reloaded", write_appearance_to_disk)
 -- │ Fonts │
 -- ╰───────╯
 
-c.font = w.font("Recursive", { weight = 400 })
+c.font = w.font("RecMonoCasual Nerd Font Propo", { weight = 400 })
 c.font_size = 17
 c.line_height = c.font_size * 0.1
 
