@@ -4,5 +4,7 @@ windows:
   - window_name: spotify
     layout: main-horizontal
     panes:
-      - "spotify_player"
-      - "volgo"
+      - spotify_player
+      - volgo
+    options:
+      other-pane-height: 8

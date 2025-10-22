@@ -63,9 +63,9 @@ w.on("window-config-reloaded", write_appearance_to_disk)
 -- │ Fonts │
 -- ╰───────╯
 
-c.font = w.font("RecMonoLinear Nerd Font Propo", { weight = 400 })
-c.font_size = 14
-c.line_height = 1.0
+c.font = w.font("Recursive", { weight = 400 })
+c.font_size = 17
+c.line_height = c.font_size * 0.1
 
 -- ╭────╮
 -- │ UI │
@@ -129,6 +129,7 @@ c.keys = {
 	{ key = "W", mods = "SUPER|SHIFT", action = a.CloseCurrentTab({ confirm = true }) },
 	{ key = "y", mods = "SUPER", action = a.QuickSelect },
 	{ key = "z", mods = "SUPER", action = a.TogglePaneZoomState },
+	{ key = "Return", mods = "ALT", action = a.DisableDefaultAssignment }
 }
 
 -- ╭─────────────╮
