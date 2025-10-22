@@ -1,0 +1,6 @@
+session_name: impact-lps
+start_directory: $HOME/code/delegator/impact-lps
+windows:
+- window_name: main
+  panes:
+  - blank

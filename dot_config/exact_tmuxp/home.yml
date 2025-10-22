@@ -1,0 +1,7 @@
+session_name: home
+start_directory: $HOME
+windows:
+  - panes:
+      - blank
+    window_name: main
+    layout: main-vertical
