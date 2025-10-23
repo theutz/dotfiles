@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 # [MISE] tools={ nushell = "latest" }
-# [MISE] description = "Link launch daemons"
+# [MISE] description="Link launch daemons"
 
 def main [] {
 	glob LaunchDaemons/*

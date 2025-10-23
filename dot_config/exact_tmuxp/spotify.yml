@@ -1,10 +1,15 @@
 session_name: spotify
 start_directory: $HOME
 windows:
-  - window_name: spotify
+  - window_name: main
     layout: main-horizontal
     panes:
-      - spotify_player
-      - volgo
+      - shell: spotify_player
+        focus: true
+        shell_command:
+          - "g "
+        sleep_before: 3
+        sleep_after: 3
+      - shell: volgo
     options:
       other-pane-height: 8

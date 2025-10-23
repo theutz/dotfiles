@@ -15,6 +15,7 @@ text-width = 120
 whitespace.render = "all"
 auto-save.focus-lost = true
 indent-guides.render = true
+clipboard-provider = "pasteboard"
 
 [keys.normal]
 X = "extend_line_above"
