@@ -74,4 +74,61 @@ $env.config.keybindings ++= [
       "
     }
   }
+  {
+    name: complete_history
+    modifier: control
+    keycode: char_f
+    mode: [vi_insert]
+    event: {
+      until: [
+        { send: HistoryHintComplete }
+        { send: menuright }
+        { send: right }
+      ]
+    }
+  }
+  {
+    name: complete_history
+    modifier: shift
+    keycode: char_l
+    mode: [vi_normal]
+    event: {
+      until: [
+        { send: HistoryHintComplete }
+        { send: menuright }
+        { send: right }
+      ]
+    }
+  }
+  {
+    name: complete_history_word
+    modifier: alt
+    keycode: char_f
+    mode: [vi_insert]
+    event: {
+      until: [
+        { send: HistoryHintWordComplete }
+        { edit: movewordright, value: {select: false}}
+      ]
+    }
+  }
+  {
+    name: complete_history_word
+    modifier: shift
+    keycode: char_j
+    mode: [vi_normal]
+    event: {
+      until: [
+        { send: HistoryHintWordComplete }
+        { edit: movewordright, value: {select: false}}
+      ]
+    }
+  }
+  {
+    name: complete_history_word
+    modifier: shift
+    keycode: char_k
+    mode: [vi_normal]
+    event: { edit: cutwordleft  }
+  }
 ]
