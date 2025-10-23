@@ -1,5 +1,6 @@
 export-env {
-  
+  $env.PATH = ($env.PATH | prepend r#'/Users/michael/.local/bin'#)
+
   $env.MISE_SHELL = "nu"
   let mise_hook = {
     condition: { "MISE_SHELL" in $env }
