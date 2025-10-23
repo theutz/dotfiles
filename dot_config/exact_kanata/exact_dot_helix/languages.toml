@@ -1,0 +1,3 @@
+[[language]]
+name = "common-lisp"
+file-types = ["kbd"]
