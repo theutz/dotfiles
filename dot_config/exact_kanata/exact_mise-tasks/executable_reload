@@ -1,0 +1,62 @@
+#!/usr/bin/env nu
+# [MISE] tools={nushell = "latest"}
+# [MISE] description="Bootout & bootstrap services"
+
+def log [
+type: string = "log"
+...msg
+] {
+  match ($type) {
+		delete | bootout => "red"
+		copy | chown | chmod => "green"
+		bootstrap => "yellow"
+		enable => "green"
+		_ => "default"
+	}
+	| match ($type) {
+		bootstrap | bootout | enable => { $in + "_reverse" }
+		_ => { $in }
+	}
+  | $"(ansi $in) ($type | str upcase) (ansi rst) ($msg | str join (char space))"
+	| print -e
+}
+
+def main [] {
+	sudo -v
+	glob LaunchDaemons/*
+	| each --flatten {
+	  {
+			from: $in
+			to: ($in | path basename | [(char psep) Library LaunchDaemons $in] | path join)
+			domain: "system"
+		}
+		| {...$in, label: ($in.from | path parse | get stem) }
+		| {...$in, target: ([$in.domain $in.label] | str join /) }
+		| do {|from, to, domain, label, target|
+		  log delete $to 
+		  sudo rm -f $to
+
+      log copy $from to $to
+			sudo cp $from $to
+
+			let owner = "root:wheel"
+			log chown $to $owner
+			sudo chown $owner $to
+
+			let perm = "0644"
+			log chmod $to $perm
+			sudo chmod $perm $to
+
+			try {
+			 log bootout $domain $to
+			 sudo launchctl bootout $domain $to 
+			}
+
+      log bootstrap $domain $to
+			sudo launchctl bootstrap $domain $to
+
+      log enable $label
+			sudo launchctl enable $target
+		} ...($in | values)
+	} | ignore
+}
