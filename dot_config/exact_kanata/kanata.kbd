@@ -1,8 +1,5 @@
 (defcfg
-	process-unmapped-keys yes
-	macos-dev-names-exclude (
-		"MX Master 3 Mac"
-	))
+	process-unmapped-keys yes)
 
 (defsrc)
 
@@ -13,11 +10,11 @@
 (deflayermap (base)
     tab  @hyper
     caps @cap
-    nubs grv
+    nubs grv ;; Intl Backspace -> Grave
+	  esc lrld ;; live reload
     fn (layer-while-held func))
 
 (deflayermap (func)
-  esc lrld ;; live reload
   f1  brdn ;; brightness up
   f2  brup ;; brightness down
   f3  mctl ;; mission control
