@@ -1,0 +1,12 @@
+session_name: dashboard
+start_directory: $HOME/code/theutz/dashboard
+global_options:
+  other-pane-width: 80
+windows:
+- window_name: main
+  layout: main-vertical
+  panes:
+  - shell: "$EDITOR config/includes/bookmarks.yml config/pages/home.yml"
+    focus: true
+  - shell: jjui
+  - shell: lazydocker

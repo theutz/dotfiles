@@ -1,0 +1,12 @@
+session_name: cunningham-images
+start_directory: /Users/michael/code/delegator/cunningham-images
+global_options:
+  other-pane-width: 80
+windows:
+- window_name: main
+  layout: main-vertical
+  panes:
+  - shell: yazi
+    focus: true
+  -
+  - shell: jjui

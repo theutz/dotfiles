@@ -1,0 +1,10 @@
+#!/usr/bin/env nu
+# [MISE] tools={ nushell = "latest" }
+# [MISE] description="Print stdlog/stderr for process"
+
+def main [] {
+  let target = "system/com.theutz.kanata"
+  sudo -v
+  job spawn { sleep 2sec; sudo launchctl kickstart -k $target }
+  sudo launchctl debug $target --stdout --stderr
+}
