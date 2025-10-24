@@ -1,0 +1,70 @@
+#!/usr/bin/env nu
+#MISE description="Create a .sops.yaml file in the project root"
+#MISE tools={"aqua:nushell/nushell" = "0.108.0", age = "latest"}
+#USAGE flag "-l --log-level" default="2" help="Level 1-5"
+
+
+
+def main [
+  --log-level (-l): int = 2
+] {
+  $nu.vendor-autoload-dirs | last | path join log.nu
+  | if not ($in | path exists) {
+    http get
+  }
+
+  let key_file = [$env.MISE_PROJECT_ROOT keys.txt] | path join | log -t debug keyfile path
+
+  let project_key = $key_file
+    | if ($in | path exists) { open $in } else {
+      age-keygen | tee { save $key_file }
+    } | lines | get 1 | split row (char space) | get 3
+    | log -t trace project key
+
+  let keys = {
+    theutz: age1vlk29wfkfqff0c9yky2kwhp4c6zdwuzc7xd5xc8ydsldc9ulf99spwq9x2
+    kaulandb: age1pdxvvxukzryvkzy0nmh797l29fgw6n4pvqevtz7musshg0kvc9gqytsylv
+    project: $project_key
+  } | log -t trace keys
+
+  let sops_cfg = $env.MISE_PROJECT_ROOT | path join .sops.yaml
+  | log -t debug sops config file path
+
+  {
+    stores: { yaml: { indent: 2 } }
+
+    creation_rules: [
+      {
+        path_regex: r#'\.sops\.(ini|yml|yaml)$'#
+        key_groups: [ { age: ($keys | values) } ]
+      }
+    ]
+  }
+  | to yaml
+  | log -t trace sops file content
+  | save --force $sops_cfg
+
+  $keys | items {|key, value|
+    { find: $value replace: $"($value) # ($key)" }
+  } | reduce --fold (open --raw $sops_cfg) {|it, acc|
+    $acc | str replace $it.find $it.replace
+  }
+  | log -t trace sops file with comments
+  | save --force $sops_cfg
+
+  let gitignore = [$env.MISE_PROJECT_ROOT .gitignore] | path join | log -t debug gitignore path
+
+  try {
+    open $gitignore
+    | log -t trace gitignore content
+    | find --no-highlight ($key_file | path basename)
+    | match $in {
+      [] => (ignore | log -t debug key file not yet added to gitignore)
+      _ => (ignore | log -t info keyfile included in gitignore)
+    }
+  } | if ($in | is-empty) {
+    $key_file | path basename | log -t info appending to $gitignore | save --append $gitignore
+  } 
+
+  log -t success Setup complete!
+}
