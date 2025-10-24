@@ -1,77 +1,32 @@
 (defcfg
-	macos-dev-names-exclude ("Apple Internal Keyboard / Trackpad")
-	process-unmapped-keys no)
+	macos-dev-names-include ("Apple Internal Keyboard / Trackpad"
+													 "ERGO K860")
+	process-unmapped-keys yes)
 
-(defsrc
-esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-nubs 1    2    3    4    5    6    7    8    9    0    -    =    bspc
-tab  q    w    e    r    t    y    u    i    o    p    [    ]
-caps a    s    d    f    g    h    j    k    l    ;    '    \    ent
-lsft grv  z    x    c    v    b    n    m    ,    .    /    rsft
-fn   lctl lalt lmet           spc  rmet ralt left up   down rght
-)   
+(defsrc)
 
 (defalias
 	fn (layer-while-held func)
 	cap (tap-hold-press 200 200 esc lctl)
 	hyp (tap-hold-press 200 200 tab (multi lsft lctl lalt lmet)))
 
-(defvar
-	tap-time 200
-	hold-time 175
-	left-hand-keys (
-		q w e r t
-		a s d f g
-		` x c v b
-	)
-	right-hand-keys (
-		y u i o p [ ]
-		h j k l ; ' \
-		n m , . /
-	))
-
-(deffakekeys
-	to-base (layer-switch base))
-
-(defalias
-	tap (multi
-		(layer-switch nomods)
-		(on-idle-fakekey to-base tap 20))
-	a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lmet $left-hand-keys)
-	s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lalt $left-hand-keys)
-	d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lctl $left-hand-keys)
-	f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lsft $left-hand-keys)
-	j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rsft $right-hand-keys)
-	k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rctl $right-hand-keys)
-	l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) ralt $right-hand-keys)
-	; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rmet $right-hand-keys)
-)
-
-(deflayer base
-lrld f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-@hyp q    w    e    r    t    y    u    i    o    p    [    ]
-@cap @a   @s   @d   @f   g    h    @j   @k   @l   ;    '    \    ent
-lsft grv  z    x    c    v    b    n    m    ,    .    /    rsft
-@fn  lctl lalt lmet           spc       rmet ralt left up   down rght
-)
-
-(deflayermap nomods
-	a a s s d d f f j j k k l l ; ;
-)
+(deflayermap base
+	esc  lrld
+	nubs grv
+	tab  @hyp
+  caps @cap
+  fn   @fn)
 
 (deflayermap (func)
-  f1  brdn ;; brightness up
-  f2  brup ;; brightness down
-  f3  mctl ;; mission control
-  f4  sls  ;; spotlight search
-  f5  dtn  ;; dictation
-  f6  dnd  ;; do not disturb
-  f7  prev ;; previous track
-  f8  pp   ;; play pause
-  f9  next ;; next track
-  f10 mute ;; mute volume
-  f11 vold ;; volume down
-  f12 volu ;; volume up
-)
-
+  f1  brdn  ;; brightness up
+  f2  brup  ;; brightness down
+  f3  mctl  ;; mission control
+  f4  sls   ;; spotlight search
+  f5  dtn   ;; dictation
+  f6  dnd   ;; do not disturb
+  f7  prev  ;; previous track
+  f8  pp    ;; play pause
+  f9  next  ;; next track
+  f10 mute  ;; mute volume
+  f11 vold  ;; volume down
+  f12 volu) ;; volume up
