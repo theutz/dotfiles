@@ -1,12 +1,3 @@
-def f [] {
-  fzf --multi | complete | $in.stdout | lines
-  | run-external ($env.VISUAL? | default $env.EDITOR? | default vim) ...$in
-}
-
-alias m = mise
-alias mx = mise exec
-alias mr = mise run
-
 alias cat = bat
 
 def --wrapped l [name: path = ".", ...$args] { ls --all $name ...$args | grid --icons --color }
@@ -17,36 +8,3 @@ alias lg = lazygit
 alias ld = lazydocker
 
 alias sp = spotify_player
-
-# Open a file in a new window
-def --wrapped nw [...args] {
-  which neovide | is-not-empty | if ($in) {
-    neovide --fork ...$args
-  } else {
-    which wezterm | is-not-empty | if ($in) {
-      job spawn { wezterm -e ([nvim ...$args] | str join " ") }
-    } else {
-      error make { msg: "Not sure how to make a new window" }
-    }
-  }
-}
-
-# Zoxide to a folder, open FZF, then open neovim
-def zf [
-  --all-files (-a) # Glob all files, rather than first-level
-  --dir-query (-d) # Prompt for directory switch
-  dir: string # The dir to jump to
-  file: string = "" # The first part of the query
-] {
-  if ($dir_query) { __zoxide_zi $dir } else { __zoxide_z $dir }
-
-  glob (if ($all_files) { "**/*" } else { "*" })
-  | each { path relative-to $env.PWD } | to text
-  | fzf --query $file --multi --select-1
-  | complete
-  | tee { $in.stderr | print -e }
-  | if ($in.exit_code == 0) {
-    let files = $in.stdout | lines 
-    ^nvim ...$files
-  }
-}
