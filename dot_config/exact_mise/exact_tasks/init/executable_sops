@@ -3,15 +3,16 @@
 #MISE tools={"aqua:nushell/nushell" = "0.108.0", age = "latest"}
 #USAGE flag "-l --log-level" default="2" help="Level 1-5"
 
-
-
 def main [
   --log-level (-l): int = 2
 ] {
-  $nu.vendor-autoload-dirs | last | path join log.nu
+  $nu.default-config-dir | path join scripts log.nu
   | if not ($in | path exists) {
-    http get
+    let path = $in
+    http get https://raw.githubusercontent.com/theutz/dotfiles/refs/heads/main/dot_config/nushell/exact_scripts/log.nu
+    | save $in
   }
+  use log.nu
 
   let key_file = [$env.MISE_PROJECT_ROOT keys.txt] | path join | log -t debug keyfile path
 
@@ -58,10 +59,11 @@ def main [
     open $gitignore
     | log -t trace gitignore content
     | find --no-highlight ($key_file | path basename)
-    | match $in {
+    | log -t trace gitignore find results
+    | tee { match $in {
       [] => (ignore | log -t debug key file not yet added to gitignore)
       _ => (ignore | log -t info keyfile included in gitignore)
-    }
+    } }
   } | if ($in | is-empty) {
     $key_file | path basename | log -t info appending to $gitignore | save --append $gitignore
   } 
