@@ -12,3 +12,18 @@ use aerospace.nu
 use lctl.nu
 use rose-pine.nu
 use brewctl.nu
+
+[
+  # Core
+  inc
+  formats
+  query
+  gstat
+  # Third-party
+  dns
+]
+| each {|plugin|
+  which $"nu_plugin_($plugin)"
+  | get path.0
+  | plugin add $in
+} | ignore
