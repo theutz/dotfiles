@@ -8,6 +8,7 @@ windows:
     panes:
     - shell_command: yazi
       focus: true
+    - blank
     - shell: jjui
     window_name: main
   - panes:
