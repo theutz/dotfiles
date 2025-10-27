@@ -1,0 +1,21 @@
+#!/usr/bin/env -S mise exec aqua:nushell/nushell -- nu
+
+sudo -v
+uname
+| get operating-system
+| match ($in) {
+  Darwin => [
+    [sudo dscacheutil -flushcache]
+    [sudo killall -HUP mDNSResponder]
+  ]
+  _ => {
+    error make { msg: "Unknown operating system", label: {span: (metadata $in), text: $in } }
+  }
+}
+| par-each {|cmd|
+  tee { str join (char space) | $"Running `($in)`..." | print -e }
+  | run-external ...$in
+  | complete
+  | insert command ($cmd | str join (char space))
+  | move command --before stdout
+}
