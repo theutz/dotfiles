@@ -96,6 +96,7 @@ uv = "latest"
 "ubi:Gaurav-Gosain/tuios" = "latest"
 fnox = "latest"
 crush = "latest"
+"ubi:42futures/firm" = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"

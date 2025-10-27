@@ -73,6 +73,12 @@ export def list [
 
 export alias ls = list
 
+def active-labels []: nothing -> list<string> { list --active | get name }
+
+export def restart [service?: string@active-labels] {
+  info $service | get target | sudo launchctl kickstart -k $in
+}
+
 # Show module help
 export def main [] {
   help modules lctl

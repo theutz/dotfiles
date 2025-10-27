@@ -39,3 +39,6 @@ lt = ":config-open"
 
 [keys.insert]
 "C-s" = ":write"
+
+[keys.select]
+"C-s" = ":write"
