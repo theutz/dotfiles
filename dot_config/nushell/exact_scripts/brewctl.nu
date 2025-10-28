@@ -32,9 +32,9 @@ export def list [
       }
     } $in
   } else { $in }
-  | if ($status | is-not-empty) { where status == $status } else { $in }
-  | if ($not_status | is-not-empty) { where status != $user } else { $in }
-  | if ($user | is-not-empty) { where user == $user } else { $in }
+  | if ($status | is-not-empty) { where status =~ $status } else { $in }
+  | if ($not_status | is-not-empty) { where status !~ $status } else { $in }
+  | if ($user | is-not-empty) { where user =~ $user } else { $in }
 }
 
 # Show status of all services

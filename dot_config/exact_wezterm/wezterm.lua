@@ -63,9 +63,25 @@ w.on("window-config-reloaded", write_appearance_to_disk)
 -- │ Fonts │
 -- ╰───────╯
 
-c.font = w.font("RecMonoCasual Nerd Font Propo", { weight = 400 })
-c.font_size = 12
-c.line_height = c.font_size * 0.1
+local font_options = {
+	function ()
+		c.font = w.font("RecMonoCasual Nerd Font Propo", { weight = 400 })
+		c.font_size = 13
+		c.line_height = c.font_size * 0.11
+	end,
+	function ()
+		c.font = w.font("Maple Mono NF", { weight = 400 })
+		c.font_size = 13
+		c.line_height = c.font_size * 0.1
+	end,
+	function ()
+		c.font = w.font("Berkeley Mono", { weight = 500 })
+		c.font_size = 13
+		c.line_height = c.font_size * 0.11
+	end
+}
+local font_option = nil or math.random(#font_options)
+font_options[font_option]()
 
 -- ╭────╮
 -- │ UI │

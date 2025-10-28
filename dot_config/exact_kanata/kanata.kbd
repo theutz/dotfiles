@@ -7,7 +7,7 @@
 
 (defalias
 	fn (layer-while-held func)
-	cap (tap-hold-press 200 200 esc lctl)
+	cap (tap-hold-press 100 200 esc lctl)
 	hyp (tap-hold-press 200 200 tab (multi lsft lctl lalt lmet)))
 
 (deflayermap base

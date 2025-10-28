@@ -35,7 +35,7 @@ X = "extend_line_above"
 [keys.normal.space]
 q = ":write-quit-all"
 lt = ":config-open"
-"," = ":config-reload"
+"," = [":config-reload", ":reload-all"]
 
 [keys.insert]
 "C-s" = ":write"
