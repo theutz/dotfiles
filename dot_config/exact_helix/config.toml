@@ -42,3 +42,6 @@ lt = ":config-open"
 
 [keys.select]
 "C-s" = ":write"
+
+[keys.normal.z]
+"ret" = "align_view_top"
