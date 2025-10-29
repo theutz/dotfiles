@@ -27,15 +27,8 @@ render = true
 X = "extend_line_above"
 C-j = "save_selection"
 C-s = ":write"
-C-g = ":sh tmux split-window -h -l 80 jjui `;` set-option -p remain-on-exit off"
-C-y = [
-    ":write-all",
-    ":new",
-    ":insert-output yazi",
-    ":buffer-close!",
-    ":redraw",
-    ":reload-all",
-]
+C-g = ":sh tmux display-popup -h 95%% -w 50%% -EE jjui"
+C-y = ":sh tmux display-popup -h 80%% -w 80%% -EE yazi"
 C-t = ":sh tmux split-window -v -l 30%% `;` set-option -p remain-on-exit off"
 
 [keys.normal.space]
