@@ -1,0 +1,21 @@
+description: Update software programs
+
+schedule: "0 2 * * *"
+
+env:
+  - HOME: /Users/michael
+  - XDG_CONFIG_HOME: ${HOME}/.config
+  - XDG_STATE_HOME: ${HOME}/.local/state
+  - XDG_DATA_HOME: ${HOME}/.local/share
+  - XDG_CACHE_HOME: ${HOME}/.cache
+  - PATH: /opt/homebrew/bin:${HOME}/.local/bin:${XDG_DATA_HOME}/mise/shims
+
+steps:
+  -
+    - command: brew update
+      name: homebrew upgrades
+    - command: mise self-update -y
+      name: mise update
+    - command: mise up
+      name: mise tools upgrade
+      depends: mise update
