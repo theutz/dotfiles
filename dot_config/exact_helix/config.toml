@@ -1,4 +1,4 @@
-theme = "rose_pine_dawn"
+theme = "rose_pine"
 
 [editor]
 line-number = "relative"
@@ -12,36 +12,45 @@ cursorcolumn = true
 rulers = [120]
 bufferline = "always"
 text-width = 120
-whitespace.render = "all"
-auto-save.focus-lost = true
-indent-guides.render = true
 clipboard-provider = "pasteboard"
+
+[editor.whitespace]
+render = "all"
+
+[editor.auto-save]
+focus-lost = true
+
+[editor.indent-guides]
+render = true
 
 [keys.normal]
 X = "extend_line_above"
-"C-j" = "save_selection"
-"C-s" = ":write"
-"C-g" = ":sh tmux split-window -h -l 80 jjui `;` set-option -p remain-on-exit off"
-"C-y" = [
+C-j = "save_selection"
+C-s = ":write"
+C-g = ":sh tmux split-window -h -l 80 jjui `;` set-option -p remain-on-exit off"
+C-y = [
     ":write-all",
     ":new",
     ":insert-output yazi",
     ":buffer-close!",
     ":redraw",
-    ":reload-all"
+    ":reload-all",
 ]
-"C-t" = ":sh tmux split-window -v -l 30%% `;` set-option -p remain-on-exit off"
+C-t = ":sh tmux split-window -v -l 30%% `;` set-option -p remain-on-exit off"
 
 [keys.normal.space]
 q = ":write-quit-all"
 lt = ":config-open"
-"," = [":config-reload", ":reload-all"]
-
-[keys.insert]
-"C-s" = ":write"
-
-[keys.select]
-"C-s" = ":write"
+"," = [
+    ":config-reload",
+    ":reload-all",
+]
 
 [keys.normal.z]
-"ret" = "align_view_top"
+ret = "align_view_top"
+
+[keys.insert]
+C-s = ":write"
+
+[keys.select]
+C-s = ":write"

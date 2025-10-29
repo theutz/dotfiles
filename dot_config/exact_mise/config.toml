@@ -98,6 +98,7 @@ fnox = "latest"
 crush = "latest"
 "ubi:42futures/firm" = "latest"
 "cargo:nu_plugin_dns" = "latest"
+jjui = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"

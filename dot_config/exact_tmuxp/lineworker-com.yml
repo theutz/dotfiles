@@ -1,14 +1,23 @@
 session_name: lineworker-com
-start_directory: $HOME/code/delegator/lineworker
+start_directory: $HOME/code/delegator/lineworker.com
+
+global_options:
+  remain-on-exit: yes
+  other-pane-width: 80
+
 windows:
-  - focus: true
+
+  - window_name: main
+    focus: true
     layout: main-vertical
     panes:
-      - shell_command: nvim
+      - shell: yazi
         focus: true
-    window_name: main
-  - panes:
-      - shell_command: mise run dev
-        environment:
-          SHELL: /opt/homebrew/bin/zsh
-    window_name: servers
+      - blank
+      - shell: jjui
+
+  - window_name: servers
+    panes:
+      - shell: mise run dev
+        focus: true
+      - blank
