@@ -13,3 +13,4 @@ alias m = mise
 alias mx = mise exec
 alias mr = mise run
 alias mt = mise tasks
+alias mtx = mise tasks ls -x

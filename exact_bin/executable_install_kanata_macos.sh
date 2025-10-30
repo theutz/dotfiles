@@ -30,14 +30,15 @@ rm -f /tmp/karabiner-driverkit.pkg
 brew list kanata >/dev/null 2>&1 || brew install kanata
 
 KANATA_BIN=$(command -v kanata)
+KANATA_LABEL="com.theutz.kanata"
 
 # 3. Write plist files
-sudo tee "${PLIST_DIR}/com.theutz.kanata.plist" >/dev/null <<EOF
+sudo tee "${PLIST_DIR}/${KANATA_LABEL}.plist" >/dev/null <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>Label</key><string>com.theutz.kanata</string>
+  <key>Label</key><string>${KANATA_LABEL}</string>
   <key>ProgramArguments</key><array>
     <string>${KANATA_BIN}</string>
     <string>-c</string><string>${KANATA_CONFIG}</string>
@@ -45,6 +46,8 @@ sudo tee "${PLIST_DIR}/com.theutz.kanata.plist" >/dev/null <<EOF
   </array>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/tmp/${KANATA_LABEL}/err.log</string>
+  <key>StandardErrorPath</key><string>/tmp/${KANATA_LABEL}/out.log</string>
 </dict></plist>
 EOF
 sudo chown root:wheel "${PLIST_DIR}/com.theutz.kanata.plist"
