@@ -99,6 +99,7 @@ crush = "latest"
 "ubi:42futures/firm" = "latest"
 "cargo:nu_plugin_dns" = "latest"
 jjui = "latest"
+glow = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"

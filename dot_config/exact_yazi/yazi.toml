@@ -11,7 +11,7 @@ prepend_rules = [{ name = "*.html", use = ["edit"] }]
 [plugin]
 prepend_previewers = [
   # Markdown
-  { name = "*.md", run = "glow" },
+  { name = "*.md", run = 'piper -- CLICOLOR=force glow -w=$w -s=dark "$1"' },
 
   # Archives
   { mime = "application/*zip", run = "ouch" },

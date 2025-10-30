@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "d1c8baa"
+rev = "8f1d971"
 hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "d1c8baa"
+rev = "8f1d971"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
@@ -15,7 +15,7 @@ hash = "2bd799b42b8e42b8ef100310be71f8d1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "d1c8baa"
+rev = "8f1d971"
 hash = "8ad3e90b079190b4905f24a44f4ca06b"
 
 [[plugin.deps]]
@@ -30,18 +30,23 @@ hash = "5022fdb08fcb05c10eb59b63663edb10"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "d1c8baa"
+rev = "8f1d971"
 hash = "bcda8eeb3f4013bae156aecabfc745e8"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "8f1d971"
+hash = "64713dcd74daf9ec644883a5895e5d1"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "2d73b79"
-hash = "d4c41d713b325710a9dd5ae86c3f8a5f"
+rev = "f6b425a"
+hash = "14b111562c00eb1917fe3ca3ae9bb771"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-latte"
-rev = "2d73b79"
-hash = "9e789c612c34f941a2afd42e7ded39f"
+rev = "f6b425a"
+hash = "31f2ba594080bfc2a68d054101cdc5f1"
 
 [[flavor.deps]]
 use = "Chromium-3-Oxide/everforest-medium"
@@ -54,6 +59,6 @@ rev = "8343340"
 hash = "e2336631865c0f90276dcbc553d532fc"
 
 [[flavor.deps]]
-use = "Mintass/rose-pine-dawn"
-rev = "5c6d353"
-hash = "d9d9463d5d43ced18e18986d05439ace"
+use = "theutz/rose-pine-dawn"
+rev = "2d3d583"
+hash = "42052a1401445aebd966ea44a9752571"
