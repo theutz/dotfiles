@@ -41,6 +41,7 @@ export default {
             "aws.amazon.com",
             "zoom.us",
             "hubspot.com",
+            "hs-sites.com",
             "localhost:9323", // playwright
           ]
             .reduce(
