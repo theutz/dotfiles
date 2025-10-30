@@ -14,6 +14,11 @@ run = 'shell "{{ .mise.exe }} exec lazygit" --block --confirm'
 desc = "Open lazygit here"
 
 [[mgr.prepend_keymap]]
+on = ["g", "j"]
+run = 'shell "{{ .mise.exe }} exec jjui" --block --confirm'
+desc = "Open JJUI here"
+
+[[mgr.prepend_keymap]]
 on = ["g", "r"]
 run = '''
   shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
