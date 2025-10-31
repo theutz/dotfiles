@@ -1,0 +1,28 @@
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim:ft=nu
+
+def parse-space [name: string]: nothing -> int {
+  $name | parse "{item}.{space}" | get 0.space | into int
+}
+
+def move-current-to-workspace [space: int] {
+  ^aerospace move-node-to-workspace $space | complete
+  | if $in.exit_code != 0 {
+    noti -t Sketchybar -m $"Couldn't switch to workspace ($space)"
+  }
+}
+
+def switch-to-workspace [space: int]: nothing -> nothing {
+  try {
+    ^aerospace workspace $space --fail-if-noop
+  } catch { ^aerospace layout tiles accordion }
+}
+
+def main [] {
+  let space = parse-space $env.NAME
+
+  match ($env.MODIFIER) {
+    "shift,ctrl,alt,cmd" => (move-current-to-workspace $space)
+    _ => (switch-to-workspace $space)
+  }
+}

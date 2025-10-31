@@ -1,0 +1,19 @@
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim: ft=nu
+
+# The volume_change event supplies a $INFO variable in which the current volume
+# percentage is passed to the script.
+
+if $env.SENDER == "volume_change" {
+  $env.INFO
+  | do {|volume|
+    match ($volume | into int) {
+      60..100 => " "
+      30..59 => " "
+      1..29 => "󰕿 " 
+      _ => "󰖁 "
+    }
+    | [icon=($in) label=($volume)%]
+  } $in
+  | sketchybar --set $env.NAME ...$in
+}

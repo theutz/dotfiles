@@ -1,0 +1,47 @@
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim: ft=nu
+
+aerospace list-workspaces --monitor all --empty
+  | lines
+  | each {|id|
+    [
+      --set aerospace.($id)
+      icon=󰋙
+      icon.highlight=off
+    ]
+  }
+| append (
+  aerospace list-workspaces --monitor all --empty no
+  | lines
+  | each {|id|
+    [
+      --set aerospace.($id)
+      icon=󱗿
+      icon.highlight=off
+    ]
+  }
+)
+| append (
+  aerospace list-workspaces --focused
+  | lines
+  | each {|id|
+    [
+      --set aerospace.($id)
+      icon.highlight=on
+    ]
+  }
+)
+| append (
+  aerospace list-workspaces --monitor all --visible
+  | lines
+  | each {|id|
+    [
+      --set aerospace.($id)
+      icon.highlight=on
+      icon.drawing=on
+      icon=
+    ]
+  }
+)
+| flatten
+| run-external sketchybar ...$in

@@ -1,0 +1,42 @@
+#!/usr/bin/env -S ${HOME}/.local/bin/mise exec aqua:nushell/nushell -- nu
+# vim:ft=nu
+
+let data = pmset -g batt
+| parse --regex r#'(?m).+?(?<level>\d{1,3})%'#
+| update level { into int }
+| insert is-charging {
+  pmset -g batt
+  | find "AC Power"
+  | is-not-empty
+}
+| into record
+
+let icon = match $data {
+  {level: 0..9, is-charging: false} => "󰁺 "
+  {level: 10..19, is-charging: false} => "󰁻 "
+  {level: 20..29, is-charging: false} => "󰁼 "
+  {level: 30..39, is-charging: false} => "󰁽 "
+  {level: 40..49, is-charging: false} => "󰁾 "
+  {level: 50..59, is-charging: false} => "󰁿 "
+  {level: 60..69, is-charging: false} => "󰂀 "
+  {level: 70..79, is-charging: false} => "󰂁 "
+  {level: 80..89, is-charging: false} => "󰂂 "
+  {level: 90..100, is-charging: false} => "󰁹 "
+  {level: 0..9, is-charging: true} => "󰢜 "
+  {level: 10..19, is-charging: true} => "󰂆 "
+  {level: 20..29, is-charging: true} => "󰂇 "
+  {level: 30..39, is-charging: true} => "󰂈 "
+  {level: 40..49, is-charging: true} => "󰢝 "
+  {level: 50..59, is-charging: true} => "󰂉 "
+  {level: 60..69, is-charging: true} => "󰢞 "
+  {level: 70..79, is-charging: true} => "󰂊 "
+  {level: 80..89, is-charging: true} => "󰂋 "
+  {level: 90..100, is-charging: true} => "󰂅 "
+  _ => "󱉝 "
+}
+
+[
+  --set $env.NAME
+  icon=($icon)
+  label=($data.level)%
+] | sketchybar ...$in
