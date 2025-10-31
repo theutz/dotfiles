@@ -1,0 +1,3 @@
+[[language]]
+name = "nu"
+file-types = [{glob = "*.nu"}, { glob = "*sketchybarrc" }]
