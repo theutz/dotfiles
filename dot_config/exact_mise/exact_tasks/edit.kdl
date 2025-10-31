@@ -1,9 +1,0 @@
-name edit
-bin edit
-arg <program>
-complete program run="mise run edit list"
-cmd completions {
-    arg <shell> {
-        choices zsh
-    }
-}
