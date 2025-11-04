@@ -10,6 +10,3 @@ windows:
           - "g "
         sleep_before: 3
         sleep_after: 3
-      - shell: volgo
-    options:
-      other-pane-height: 8

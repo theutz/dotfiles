@@ -30,6 +30,7 @@ export default {
           ["google.com", "zoho.com"].some((domain) =>
             url.host.endsWith(domain),
           ),
+        (url) => url.host.startsWith('localhost'),
         (url) =>
           [
             "delegator.com",
@@ -42,7 +43,7 @@ export default {
             "zoom.us",
             "hubspot.com",
             "hs-sites.com",
-            "localhost:9323", // playwright
+            "slack.com"
           ]
             .reduce(
               (prev, curr) => [...prev, curr, curr.replace(/\..+$/, ".test")],

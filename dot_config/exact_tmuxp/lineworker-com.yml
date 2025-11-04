@@ -17,6 +17,7 @@ windows:
       - shell: jjui
 
   - window_name: servers
+    layout: main-vertical
     panes:
       - shell: mise run dev
         focus: true

@@ -4,6 +4,7 @@ vincent = "ubi:rsteube/vincent"
 zsh-syntax-highlighting = "http:zsh-syntax-highlighting"
 utiluti = "spm:scriptingosx/utiluti"
 volgo = "go:github.com/elliot40404/volgo/cmd/volgo"
+tuios = "ubi:Gaurav-Gosain/tuios"
 
 [env]
 XDG_CONFIG_HOME = '{{xdg_config_home}}'
@@ -12,13 +13,6 @@ XDG_STATE_HOME = '{{xdg_state_home}}'
 XDG_CACHE_HOME = '{{xdg_cache_home}}'
 _.path = ["/opt/homebrew/sbin", "/opt/homebrew/bin", ".local/bin", "bin", "/usr/local/bin"]
 _.file = "~/.config/mise/env.sops.yaml"
-_.source = [{ path = """
-{%- set file = "rose-pine.sh" %}
-{%- if env.APPEARANCE == 'light' %}
-  {%- set file = 'rose-pine-dawn.sh' %}
-{%- endif %}
-{{- [xdg_config_home, "fzf", "rose-pine", "dist", file] | join_path -}}
-""", tools = true }]
 EDITOR = "hx"
 VISUAL = "hx"
 LESS = "-g -i -M -R -S -w -X -z-4"
@@ -31,23 +25,7 @@ APPEARANCE = '''
 {%- set file_path = env | get(key="APPEARANCE_FILE",default=default_file_path) %}
 {{- read_file(path=file_path) | trim -}}
 '''
-STARSHIP_CONFIG = '''
-{%- set base = [xdg_config_home, "starship", "rose-pine"] %}
-{%- set theme = "rose-pine.toml" %}
-{%- if env.APPEARANCE == "light" %}
-  {%- set theme = "rose-pine-dawn.toml" %}
-{%- endif %}
-{{- base | concat(with=theme) | join_path -}}
-'''
 EZA_ICONS_AUTO = "1"
-LS_COLORS = { value = '''
-{%- set theme = "rose-pine" %}
-{%- if env.APPEARANCE == "light" %}
-  {%- set theme = "rose-pine-dawn" %}
-{%- endif %}
-{%- set cmd = "vivid generate " ~ theme %}
-{{- exec(command=cmd) -}}
-''', tools = true }
 MANPAGER = { value = "nvim -c +Man!", tools = true }
 MANWIDTH = { value = "999", tools = true }
 DELTA_FEATURES = { value = """{% if env.APPEARANCE == "light" %}+{% else %}+dark{% endif %}""", tools = true }
@@ -93,7 +71,7 @@ jujutsu-ui = "latest"
 jujutsu = "latest"
 uv = "latest"
 "pipx:tmuxp" = "latest"
-"ubi:Gaurav-Gosain/tuios" = "latest"
+tuios = "0.1.0"
 fnox = "latest"
 crush = "latest"
 "ubi:42futures/firm" = "latest"

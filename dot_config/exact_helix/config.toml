@@ -27,8 +27,9 @@ render = true
 X = "extend_line_above"
 C-j = "save_selection"
 C-s = ":write"
-C-g = ":sh tmux display-popup -h 95%% -w 50%% -EE jjui"
-C-y = ":sh tmux display-popup -h 80%% -w 80%% -EE yazi"
+C-q = ":quit-all"
+C-g = ":sh tmux split-window -v -b -f -l 40%% jjui `;` set -p remain-on-exit off"
+C-y = ":sh tmux split-window -v -b -f -l 40%% yazi `;` set -p remain-on-exit off"
 C-t = ":sh tmux split-window -v -l 30%% `;` set-option -p remain-on-exit off"
 
 [keys.normal.space]
@@ -43,7 +44,9 @@ lt = ":config-open"
 ret = "align_view_top"
 
 [keys.insert]
-C-s = ":write"
+C-j = "save_selection"
+C-s = ["normal_mode", ":write"]
 
 [keys.select]
-C-s = ":write"
+C-j = "save_selection"
+C-s = ["normal_mode", ":write"]

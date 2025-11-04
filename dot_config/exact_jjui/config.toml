@@ -1,3 +1,12 @@
 [ui.theme]
 light = "base16-rose-pine-dawn"
 dark = "base16-rose-pine"
+
+[preview]
+show_at_start = true
+show_at_bottom = false
+
+[leader.i]
+context = ["$file"]
+help = "Untrack file"
+run = "file untrack $file"

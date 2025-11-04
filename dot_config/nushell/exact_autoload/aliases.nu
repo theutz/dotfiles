@@ -6,5 +6,6 @@ alias la = ls -la
 
 alias lg = lazygit
 alias ld = lazydocker
+alias j = jjui
 
 alias sp = spotify_player
