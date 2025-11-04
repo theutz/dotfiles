@@ -1,4 +1,4 @@
-theme = "rose_pine_dawn"
+theme = "rose_pine"
 
 [editor]
 line-number = "relative"
@@ -45,8 +45,14 @@ ret = "align_view_top"
 
 [keys.insert]
 C-j = "save_selection"
-C-s = ["normal_mode", ":write"]
+C-s = [
+    "normal_mode",
+    ":write",
+]
 
 [keys.select]
 C-j = "save_selection"
-C-s = ["normal_mode", ":write"]
+C-s = [
+    "normal_mode",
+    ":write",
+]

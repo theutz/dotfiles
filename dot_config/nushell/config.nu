@@ -12,6 +12,7 @@ use aerospace.nu
 use lctl.nu
 use rose-pine.nu
 use brewctl.nu
+use twilight.nu
 
 [
   # Core

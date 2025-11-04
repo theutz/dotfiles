@@ -78,6 +78,7 @@ crush = "latest"
 "cargo:nu_plugin_dns" = "latest"
 jjui = "latest"
 glow = "latest"
+"go:github.com/superstarryeyes/bit/cmd/bit" = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
