@@ -24,7 +24,7 @@ def do-actions [theme: string]: nothing -> nothing {
     { aerospace reload-config }
     { sketchybar --reload }
   ]
-  | par-each {|action| $theme | do $action }
+  | par-each {|action| $theme | do --capture-errors $action }
 }
 
 # Ensure apps are up-to-date with appearance

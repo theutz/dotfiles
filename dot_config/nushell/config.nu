@@ -7,6 +7,7 @@ mkdir ($nu.default-config-dir | path join autoload)
 
 use std/dirs
 use std/dirs shells-aliases *
+use std-rfc/kv *
 use tm.nu
 use aerospace.nu
 use lctl.nu
