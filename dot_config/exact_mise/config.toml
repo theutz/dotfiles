@@ -81,6 +81,7 @@ glow = "latest"
 "go:github.com/superstarryeyes/bit/cmd/bit" = "latest"
 "ubi:Skardyy/mcat" = "latest"
 "ubi:unkn0wn-root/resterm" = "latest"
+zellij = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"

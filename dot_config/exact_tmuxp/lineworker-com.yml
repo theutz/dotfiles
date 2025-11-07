@@ -2,23 +2,48 @@ session_name: lineworker-com
 start_directory: $HOME/code/delegator/lineworker.com
 
 global_options:
-  remain-on-exit: yes
   other-pane-width: 80
+  other-pane-height: 33%
 
 windows:
 
   - window_name: main
     focus: true
     layout: main-vertical
+    options:
+      remain-on-exit: true
     panes:
       - shell: yazi
         focus: true
-      - blank
       - shell: jjui
 
-  - window_name: servers
-    layout: main-vertical
+  - window_name: dev
+    layout: even-vertical
+    options:
+      remain-on-exit: true
     panes:
       - shell: mise run dev
         focus: true
-      - blank
+
+  - window_name: lazydocker
+    layout: main-vertical
+    options:
+      remain-on-exit: true
+    panes:
+      - shell: lazydocker
+        focus: true
+
+  - window_name: tmuxp
+    panes:
+      - shell: tmuxp edit lineworker-com
+        focus: true
+
+  - window_name: remainers
+    panes:
+      - shell_command:
+        - |
+          $env.HOME | path join .config tmux tmuxp lineworker-com.yml 
+          | open $in | get windows | get window_name | drop
+          | each { ^tmux set -p -t $":($in).1" remain-on-exit on }
+        - tmux kill-window -t $env.TMUX_PANE
+        sleep_before: 1

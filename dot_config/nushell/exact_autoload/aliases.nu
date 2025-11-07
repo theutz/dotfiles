@@ -9,3 +9,8 @@ alias ld = lazydocker
 alias j = jjui
 
 alias sp = spotify_player
+
+use tm.nu
+alias tp = tm new-session-from-template
+alias tP = tm edit-template
+alias t = tmux

@@ -29,7 +29,7 @@ def do-actions [theme: string]: nothing -> nothing {
 
 # Ensure apps are up-to-date with appearance
 export def sync []: nothing -> nothing {
-  detect | do-actions $in
+  detect | do-actions $in | ignore
 }
 
 # Detect whether we're in light or dark mode
@@ -49,11 +49,11 @@ export def toggle []: nothing -> string {
     _ => (error make { msg: $"($in) not yet supported."})
   }
 
-  sync
-  detect
+  main
 }
 
 # Show help for twilight
 export def main []: nothing -> string {
-  toggle
+  sync
+  detect
 }

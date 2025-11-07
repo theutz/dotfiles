@@ -3,6 +3,8 @@ start_directory: $HOME
 windows:
   - window_name: main
     layout: main-horizontal
+    options:
+      remain-on-exit: true
     panes:
       - shell: spotify_player
         focus: true

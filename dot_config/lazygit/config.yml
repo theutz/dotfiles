@@ -12,8 +12,8 @@ disableStartupPopups: true
 git:
   commit:
     signOff: true
-  paging:
-    useExternalDiffGitConfig: false
+  pagers:
+    - useExternalDiffGitConfig: false
   parseEmoji: true
   overrideGpg: true
 gui:

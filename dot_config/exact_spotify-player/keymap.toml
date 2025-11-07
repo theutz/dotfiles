@@ -1,33 +1,33 @@
-[[keymaps]]
-command = "Queue"
-key_sequence = "q"
+# [[keymaps]]
+# command = "Queue"
+# key_sequence = "q"
 
-[[keymaps]]
-command = "None"
-key_sequence = "C-s"
+# [[keymaps]]
+# command = "None"
+# key_sequence = "C-s"
 
-[[keymaps]]
-command = "None"
-key_sequence = "C-r"
+# [[keymaps]]
+# command = "None"
+# key_sequence = "C-r"
 
-[[keymaps]]
-command = "FocusPreviousWindow"
-key_sequence = "h"
+# [[keymaps]]
+# command = "FocusPreviousWindow"
+# key_sequence = "h"
 
-[[keymaps]]
-command = "FocusNextWindow"
-key_sequence = "l"
+# [[keymaps]]
+# command = "FocusNextWindow"
+# key_sequence = "l"
 
-[[keymaps]]
-command = "PreviousPage"
-key_sequence = "H"
+# [[keymaps]]
+# command = "PreviousPage"
+# key_sequence = "H"
 
-[[actions]]
-action = "ToggleLiked"
-key_sequence = "C-s"
-target = "SelectedItem"
+# [[actions]]
+# action = "ToggleLiked"
+# key_sequence = "C-s"
+# target = "SelectedItem"
 
-[[actions]]
-action = "GoToRadio"
-key_sequence = "C-r"
-target = "SelectedItem"
+# [[actions]]
+# action = "GoToRadio"
+# key_sequence = "C-r"
+# target = "SelectedItem"
