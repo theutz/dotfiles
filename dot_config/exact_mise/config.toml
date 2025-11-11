@@ -11,7 +11,14 @@ XDG_CONFIG_HOME = '{{xdg_config_home}}'
 XDG_DATA_HOME = '{{xdg_data_home}}'
 XDG_STATE_HOME = '{{xdg_state_home}}'
 XDG_CACHE_HOME = '{{xdg_cache_home}}'
-_.path = ["/opt/homebrew/sbin", "/opt/homebrew/bin", ".local/bin", "bin", "/usr/local/bin"]
+_.path = [
+  "/opt/homebrew/sbin",
+  "/opt/homebrew/bin",
+  ".local/bin",
+  "bin",
+  "/usr/local/bin",
+  "{{xdg_config_home}}/composer/vendor/bin"
+]
 _.file = "~/.config/mise/env.sops.yaml"
 EDITOR = "hx"
 VISUAL = "hx"
@@ -82,6 +89,7 @@ glow = "latest"
 "ubi:Skardyy/mcat" = "latest"
 "ubi:unkn0wn-root/resterm" = "latest"
 zellij = "latest"
+"ubi:acheronfail/repgrep" = { version = "latest", exe = "rgr" }
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"

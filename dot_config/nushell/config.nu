@@ -14,6 +14,7 @@ use lctl.nu
 use rose-pine.nu
 use brewctl.nu
 use twilight.nu
+use vpn.nu
 
 [
   # Core

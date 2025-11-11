@@ -1,7 +1,7 @@
 # Fancy logs for fancy boys
 
 export-env {
-  $env.LOG_LEVEL = 2
+  $env.LOG_LEVEL = 3
 }
 
 # Log a message
@@ -15,14 +15,15 @@ export def main [
     nothing => ""
     _ => { into string }
   }
-  let text = [$out ...$msg] | compact | str join (char space)
-  let level = $env.LOG_LEVEL? | default 2 | into int
+  let text = [$out ...$msg] | compact | str join (char space) | str trim
+  let level = $env.LOG_LEVEL? | default 3 | into int
 
   match ($type) {
     error | err | failure | fail | fatal => {color: (ansi red), level: 1}
     warn | warning => {color: (ansi yellow), level: 2}
     info => {color: (ansi blue), level: 3}
-    debug | dump => {color: (ansi magenta), level: 4}
+    debug => {color: (ansi magenta), level: 4}
+    dump => {color: (ansi magenta), level: 1}
     trace | log => {color: (ansi dark_gray), level: 5}
     success | pass => {color: (ansi green), level: 1}
     _ => {color: (ansi default), level: 3}
@@ -36,32 +37,41 @@ export def main [
         $"(ansi reset)(char newline)"
       ]
   | str join (char space)
+  | str trim
   | print -e
 
   $input
 }
 
-# Log an error
-export def err [...msg: string]: any -> any {
-  main -t error ...$msg
-}
+# Log at error leve
+# Level 1
+export alias err = main -t error
 
 # Log a warning
-export def warn [...msg: string]: any -> any {
-  main -t warn ...$msg
-}
+# Level 2
+export alias warn = main -t warn
 
-# Log info
-export def info [...msg: string]: any -> any {
-  main -t info ...$msg
-}
+# Log at info level
+# Level 3
+export alias info = main -t info
 
-# Log a failuree
-export def fail [...msg: string]: any -> any {
-  main -t fail ...$msg
-}
+# Write a message at debug level
+# Level 4
+export alias debug = main -t debug
 
-# Dump a value at debug level
-export def dump [...msg: string]: any -> any {
-  main -t dump ...$msg
-}
+# Export a message at trace level
+# Level 5
+export alias trace = main -t trace
+
+# Log a failure at error level
+# Level 1
+export alias fail = main -t fail
+
+# Dump a value at highest level
+# Level 1
+export alias dump = main -t dump
+
+# Log a success message at highest level
+# Level 1
+export alias success = main -t success
+
