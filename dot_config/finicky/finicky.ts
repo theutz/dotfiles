@@ -33,6 +33,7 @@ export default {
         (url) => url.host.startsWith('localhost'),
         (url) =>
           [
+            "ohdear.app",
             "delegator.com",
             "lineworker.com",
             "hiwasseepackaging.com",

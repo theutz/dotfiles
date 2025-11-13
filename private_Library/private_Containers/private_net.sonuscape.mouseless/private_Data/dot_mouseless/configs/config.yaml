@@ -1,4 +1,4 @@
-app_version: 0.4.0-preview.2
+app_version: 0.4.3
 behavior_configs:
 - base_move_speed: 5.0
   base_wheel_speed: 16.0
@@ -22,6 +22,7 @@ behavior_configs:
   wheel_step_size_large: 500.0
 classname: AppConfig
 custom_monitor_assignments: []
+debug_options: {}
 display_input: none
 event_tap_location: hid_head
 grid_configs:
@@ -32,7 +33,7 @@ grid_configs:
     keys: QWERT ASDFG ZXCVB YUIOP HJKL; NM,./
     num_cells_x: 5
     num_cells_y: 6
-  - border_width: 1.0
+  - border_width: 2.0
     callback: build_cell_strings
     keys: QWERT ASDFG ZXCVB YUIOP HJKL; NM,./
     num_cells_x: 5
@@ -44,7 +45,7 @@ grid_configs:
     num_cells_y: 1
   hold_subgrid_key_for_nudge: true
   name: position_based
-  nudges_per_cell: 4
+  nudges_per_cell: 8
   strategy: subgrid
   subgrid_dims:
   - 8
@@ -267,6 +268,7 @@ keyboard_layout:
     126: "\x1E"
 keymaps:
 - entries:
+    back click: null
     back mouse button: o
     back mouse button (w/o overlay): null
     close UI element: Escape
@@ -282,6 +284,7 @@ keymaps:
     execute mouse action: Space
     execute mouse move: OptionLeft tap
     exit free mode: Escape
+    forward click: null
     forward mouse button: null
     forward mouse button (w/o overlay): null
     hide overlay: Escape
@@ -300,6 +303,7 @@ keymaps:
     jump to top: g
     left mouse button: space
     left mouse button (w/o overlay): null
+    middle click: null
     middle mouse button: null
     middle mouse button (w/o overlay): null
     move down:
@@ -316,6 +320,7 @@ keymaps:
     - d
     release hold/drag: Escape
     repeat last mouse action: '`'
+    right click: null
     right mouse button:
     - ;
     - a
@@ -335,6 +340,7 @@ keymaps:
     - d
     switch monitor left: ShiftLeft tap
     switch monitor right: null
+    toggle app enabled: null
     toggle continuous mode: null
     toggle continuous mode until closed: null
     toggle free mode: OptionLeft tap
@@ -375,21 +381,21 @@ name: ''
 style_configs:
 - always_on_subgrid_rgba:
   - 0.58
-  - 1.0
+  - 1
   - 0.42
   - 0.15
   background_rgba:
   - 0.05
   - 0.2
-  - 0.0
+  - 0
   - 0.35
   char_spacing_cell_width_ratio: 0.5
   char_spacing_font_size_ratio: 0.2
   char_spacing_strategy: font_size_relative
   cursor_drag_rgba:
-  - 0.0
+  - 0
   - 0.5
-  - 1.0
+  - 1
   - 0.7
   cursor_move_rgba:
   - 0.75
@@ -397,14 +403,14 @@ style_configs:
   - 0.92
   - 0.7
   cursor_other_rgba:
-  - 1.0
-  - 1.0
-  - 1.0
+  - 1
+  - 1
+  - 1
   - 0.7
   cursor_rgba:
   - 0.34
-  - 1.0
-  - 0.0
+  - 1
+  - 0
   - 0.8
   cursor_right_button_rgba:
   - 0.92
@@ -412,47 +418,47 @@ style_configs:
   - 0.32
   - 0.7
   cursor_size: 7
-  font_family: BerkeleyMono-Bold
+  font_family: RecMonoCasualNF-Bold
   font_size_multiplier: 0.55
-  font_weight: 500
+  font_weight: 400
   grid_line_style: lines
   grid_rgba:
   - 0.58
-  - 1.0
+  - 1
   - 0.42
   - 0.5
   highlight_animation_ms: 0
   highlight_rgba:
-  - 0.0
-  - 1.0
+  - 0
+  - 1
   - 0.05
   - 0.2
   name: default
   show_initial_highlight: false
-  subgrid_font_size_multiplier: 0.55
+  subgrid_font_size_multiplier: 0.75
   subgrid_rgba:
   - 0.58
-  - 1.0
+  - 1
   - 0.42
-  - 0.5
+  - 0.2
   subgrid_text_rgba:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 0.6
+  - 0.7333333333333333
+  - 0.984313725490196
+  - 0.6627450980392157
+  - 0.9
   text_rgba:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
+  - 0.6235294117647059
+  - 0.9725490196078431
+  - 0.49411764705882355
+  - 1
   text_shadow_blur_radius: 0.0
   text_shadow_offset:
-  - 1.0
+  - -1.0
   - 1.0
   text_shadow_rgba:
-  - 0.00392156862745098
-  - 0.00392156862745098
-  - 0.00392156862745098
-  - 1.0
+  - 0.09803921568627451
+  - 0.2196078431372549
+  - 0.06274509803921569
+  - 1
   text_y_offset: 0.0
   window_opacity: 0.7
