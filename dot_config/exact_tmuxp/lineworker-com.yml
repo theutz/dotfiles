@@ -15,15 +15,8 @@ windows:
     panes:
       - shell: yazi
         focus: true
-      - shell: jjui
-
-  - window_name: dev
-    layout: even-vertical
-    options:
-      remain-on-exit: true
-    panes:
-      - shell: mise run dev
-        focus: true
+      - shell_command: mise dev
+        sleep_before: 1
 
   - window_name: lazydocker
     layout: main-vertical
@@ -33,17 +26,16 @@ windows:
       - shell: lazydocker
         focus: true
 
+  - window_name: vcs
+    layout: even-vertical
+    options:
+      remain-on-exit: true
+    panes:
+      - shell: jjui
+        focus: true
+      - shell: gh dash
+
   - window_name: tmuxp
     panes:
       - shell: tmuxp edit lineworker-com
         focus: true
-
-  - window_name: remainers
-    panes:
-      - shell_command:
-        - |
-          $env.HOME | path join .config tmux tmuxp lineworker-com.yml 
-          | open $in | get windows | get window_name | drop
-          | each { ^tmux set -p -t $":($in).1" remain-on-exit on }
-        - tmux kill-window -t $env.TMUX_PANE
-        sleep_before: 1

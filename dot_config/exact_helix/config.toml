@@ -22,37 +22,3 @@ focus-lost = true
 
 [editor.indent-guides]
 render = true
-
-[keys.normal]
-X = "extend_line_above"
-C-j = "save_selection"
-C-s = ":write"
-C-q = ":quit-all"
-C-g = ":sh tmux split-window -v -b -f -l 40%% jjui `;` set -p remain-on-exit off"
-C-y = ":sh tmux split-window -v -b -f -l 40%% yazi `;` set -p remain-on-exit off"
-C-t = ":sh tmux split-window -v -l 30%% `;` set-option -p remain-on-exit off"
-
-[keys.normal.space]
-q = ":write-quit-all"
-lt = ":config-open"
-"," = [
-    ":config-reload",
-    ":reload-all",
-]
-
-[keys.normal.z]
-ret = "align_view_top"
-
-[keys.insert]
-C-j = "save_selection"
-C-s = [
-    "normal_mode",
-    ":write",
-]
-
-[keys.select]
-C-j = "save_selection"
-C-s = [
-    "normal_mode",
-    ":write",
-]

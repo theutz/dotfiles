@@ -43,6 +43,19 @@ alias dkv = docker version
 alias dkw = docker wait
 alias dkx = docker stop
 
+# ┌─────────────┐
+# │ Context (X) │
+# └─────────────┘
+alias dkX = docker context
+alias dkXc = docker context create
+alias dkXe = docker context export
+alias dkXI = docker context import
+alias dkXi = docker context inspect
+alias dkXls = docker context ls
+alias dkXU = docker context update
+alias dkXu = docker context use
+alias dkXx = docker context rm
+
 # ╭───────────────╮
 # │ Container (C) │
 # ╰───────────────╯
@@ -163,8 +176,10 @@ def dkrmV [] {
 alias dkc = docker compose
 alias dkcb = docker compose build
 alias dkcB = docker compose build --no-cache
+alias dkccp = docker compose cp
 alias dkcd = docker compose down
 alias dkce = docker compose exec
+alias dkcE = docker compose exec -it
 alias dkck = docker compose kill
 alias dkcl = docker compose logs
 alias dkcls = docker compose ps

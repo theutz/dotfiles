@@ -26,25 +26,29 @@ export default {
     },
     {
       match: [
-        (url) =>
-          ["google.com", "zoho.com"].some((domain) =>
-            url.host.endsWith(domain),
-          ),
-        (url) => url.host.startsWith('localhost'),
+        "github.com/delegator/*",
         (url) =>
           [
+            "google.com",
+            "zoho.com",
             "ohdear.app",
-            "delegator.com",
-            "lineworker.com",
-            "hiwasseepackaging.com",
-            "impactelectronics.com",
-            "friendzy.co",
             "figma.com",
             "aws.amazon.com",
             "zoom.us",
             "hubspot.com",
             "hs-sites.com",
-            "slack.com"
+            "slack.com",
+            "sentry.io",
+            "linode.com",
+          ].some((domain) => url.host.endsWith(domain)),
+        (url) => url.host.startsWith('localhost'),
+        (url) =>
+          [
+            "delegator.com",
+            "lineworker.com",
+            "hiwasseepackaging.com",
+            "impactelectronics.com",
+            "friendzy.co",
           ]
             .reduce(
               (prev, curr) => [...prev, curr, curr.replace(/\..+$/, ".test")],
