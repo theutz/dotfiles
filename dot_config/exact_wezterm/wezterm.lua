@@ -21,17 +21,17 @@ local function get_appearance()
 	return "Dark"
 end
 
-local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "rose-pine"
+local function light_dark(light, dark)
+	if get_appearance():find("Dark") then
+		return dark
 	else
-		return "rose-pine-dawn"
+		return light
 	end
 end
 
-c.color_scheme = scheme_for_appearance(get_appearance())
+c.color_scheme = light_dark("rose-pine-dawn", "rose-pine")
+c.window_background_opacity = light_dark(0.9, 0.98)
 c.bold_brightens_ansi_colors = "BrightAndBold"
-c.window_background_opacity = 0.9
 c.macos_window_background_blur = 30
 c.inactive_pane_hsb = {
 	saturation = 1.3,
@@ -46,13 +46,9 @@ c.set_environment_variables = {
 	APPEARANCE_FILE = appearance_file_path,
 }
 local function write_appearance_to_disk()
-	local appearance = "light"
-	if get_appearance():find("Dark") then
-		appearance = "dark"
-	end
 	local file = io.open(appearance_file_path, "w")
 	if file then
-		file:write(appearance)
+		file:write(light_dark("light", "dark"))
 		file:close()
 	end
 end

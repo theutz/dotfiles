@@ -1,9 +1,9 @@
-[[language-server.intelephense.config]]
+[language-server.intelephense.config]
 licenceKey = "/Users/michael/intelephense/licence.txt"
 
 [[language]]
 name = "toml"
-formatter = { command = "taplo", args = ["format", "-"]}
+formatter = { command = "taplo", args = ["format", "-"] }
 auto-format = true
 roots = ["."]
 language-servers = ["taplo"]
@@ -11,3 +11,18 @@ language-servers = ["taplo"]
 [[language]]
 name = "php"
 language-servers = ["intellephense"]
+
+[[language]]
+name = "hcl"
+language-servers = ["terraform-ls"]
+language-id = "terraform"
+
+[[language]]
+name = "tfvars"
+language-servers = ["terraform-ls"]
+language-id = "terraform-vars"
+
+[language-server.terraform-ls]
+command = "terraform-ls"
+args = ["serve"]
+# config.indexing.ignorePaths = ["ignore.hcl"]

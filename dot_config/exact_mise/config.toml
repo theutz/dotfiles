@@ -104,6 +104,7 @@ golangci-lint-langserver = "latest"
 "npm:gh-actions-language-server" = "latest"
 "npm:awk-language-server" = "latest"
 "npm:bash-language-server" = "latest"
+terraform-ls = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
