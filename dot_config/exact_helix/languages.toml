@@ -1,0 +1,13 @@
+[[language-server.intelephense.config]]
+licenceKey = "/Users/michael/intelephense/licence.txt"
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["format", "-"]}
+auto-format = true
+roots = ["."]
+language-servers = ["taplo"]
+
+[[language]]
+name = "php"
+language-servers = ["intellephense"]

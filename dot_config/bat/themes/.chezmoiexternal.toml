@@ -1,7 +1,7 @@
 ["rose-pine.tmTheme"]
 type = "archive-file"
 url = "https://github.com/rose-pine/tm-theme/archive/refs/heads/main.zip"
-path = "dist/themes/rose-pine.tmTheme"
+path = "dist/rose-pine.tmTheme"
 exact = false
 stripComponents = 1
 refreshPeriod = "168h"
@@ -9,7 +9,7 @@ refreshPeriod = "168h"
 ["rose-pine-moon.tmTheme"]
 type = "archive-file"
 url = "https://github.com/rose-pine/tm-theme/archive/refs/heads/main.zip"
-path = "dist/themes/rose-pine-moon.tmTheme"
+path = "dist/rose-pine-moon.tmTheme"
 exact = false
 stripComponents = 1
 refreshPeriod = "168h"
@@ -17,7 +17,7 @@ refreshPeriod = "168h"
 ["rose-pine-dawn.tmTheme"]
 type = "archive-file"
 url = "https://github.com/rose-pine/tm-theme/archive/refs/heads/main.zip"
-path = "dist/themes/rose-pine-dawn.tmTheme"
+path = "dist/rose-pine-dawn.tmTheme"
 exact = false
 stripComponents = 1
 refreshPeriod = "168h"
