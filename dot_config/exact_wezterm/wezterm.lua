@@ -74,7 +74,7 @@ local font_options = {
 		c.font = w.font("Berkeley Mono", { weight = 500 })
 		c.font_size = 13
 		c.line_height = c.font_size * 0.11
-	end
+	end,
 }
 local font_option = nil or math.random(#font_options)
 font_options[font_option]()
