@@ -8,7 +8,7 @@ bin/chezmoi
 .config/carapace/bridge
 **/*.log
 **/nohup.out
-*.sqlite3
+**/*.sqlite3
 
 {{ if ne .chezmoi.os "darwin" }}
 Library/

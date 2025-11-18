@@ -105,6 +105,7 @@ golangci-lint-langserver = "latest"
 "npm:awk-language-server" = "latest"
 "npm:bash-language-server" = "latest"
 terraform-ls = "latest"
+"ubi:sayanarijit/xplr" = "latest"
 
 [tools."zsh-syntax-highlighting"]
 version = "latest"
