@@ -3,7 +3,7 @@ light = "base16-rose-pine-dawn"
 dark = "base16-rose-pine"
 
 [preview]
-show_at_start = true
+show_at_start = false
 show_at_bottom = false
 
 [leader.i]

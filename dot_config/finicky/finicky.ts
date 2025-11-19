@@ -40,6 +40,7 @@ export default {
             "slack.com",
             "sentry.io",
             "linode.com",
+            "standupbot.com"
           ].some((domain) => url.host.endsWith(domain)),
         (url) => url.host.startsWith('localhost'),
         (url) =>
