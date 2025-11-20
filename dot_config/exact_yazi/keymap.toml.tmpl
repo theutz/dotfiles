@@ -4,6 +4,11 @@ run = "close"
 desc = "Close the current tab, or quit yazi"
 
 [[mgr.prepend_keymap]]
+on = "e"
+run = 'shell "hx" --block'
+desc = "Open helix with PWD set to current dir (not selection)"
+
+[[mgr.prepend_keymap]]
 on = "!"
 run = 'shell "{{ .nushell.exe }}" --block --confirm'
 desc = "Open shell here"
