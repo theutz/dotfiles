@@ -205,4 +205,4 @@ cmd-ctrl-alt-shift-t = "layout accordion tiles"
 cmd-ctrl-alt-shift-v = "layout horizontal vertical"
 cmd-ctrl-alt-shift-o = "focus-monitor --wrap-around next"
 cmd-ctrl-alt-shift-m = "fullscreen"
-cmd-ctrl-alt-shift-r = [ "reload-config", "exec-and-forget sketchybar --reload" ]
+cmd-ctrl-alt-shift-r = [ "reload-config", "exec-and-forget nu -c 'use twilight.nu; twilight sync'" ]

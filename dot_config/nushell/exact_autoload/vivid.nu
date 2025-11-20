@@ -3,4 +3,4 @@ $env.LS_COLORS = $env.APPEARANCE?
     light => "rose-pine-dawn"
     _ => "rose-pine"
   }
-  | vivid generate $in
+  | mise exec vivid -- vivid generate $in

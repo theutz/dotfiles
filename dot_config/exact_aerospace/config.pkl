@@ -158,7 +158,7 @@ mode = new Mapping {
         m = "fullscreen"
 
         // Reload
-        r = new Listing { "reload-config" "exec-and-forget sketchybar --reload" }
+        r = new Listing { "reload-config" "exec-and-forget nu -c 'use twilight.nu; twilight sync'" }
       })
       new Binding {
         for (key, value in hypo) { ["cmd-ctrl-alt-\(key)"] = value }

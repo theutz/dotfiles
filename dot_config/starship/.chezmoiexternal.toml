@@ -1,4 +1,0 @@
-["rose-pine"]
-type = "git-repo"
-url = "https://github.com/theutz/rose-pine-starship"
-refreshPeriod = "168h"

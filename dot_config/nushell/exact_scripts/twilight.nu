@@ -1,5 +1,9 @@
 # Tools for moving between dark and light mode
 
+export-env {
+  $env.APPEARANCE_FILE = ($env.XDG_STATE_HOME | path join appearance)
+}
+
 def xdg_config [...parts: string]: nothing -> path {
   $env.XDG_CONFIG_HOME? | default $"($env.HOME)(char psep).config"
   | path join ...$parts
@@ -18,7 +22,7 @@ def set-helix-theme []: string -> nothing {
 
 def do-actions [theme: string]: nothing -> nothing {
   [
-    { save --force ($env.XDG_STATE_HOME | path join appearance) }
+    { save --force $env.APPEARANCE_FILE }
     { set-helix-theme }
     { xdg_config tmux tmux.conf | tmux source-file $in }
     { aerospace reload-config }
