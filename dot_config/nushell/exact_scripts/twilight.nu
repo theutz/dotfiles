@@ -1,5 +1,7 @@
 # Tools for moving between dark and light mode
 
+use std-rfc/kv *
+
 export-env {
   $env.APPEARANCE_FILE = ($env.XDG_STATE_HOME | path join appearance)
 }
@@ -10,19 +12,31 @@ def xdg_config [...parts: string]: nothing -> path {
 }
 
 def set-helix-theme []: string -> nothing {
-  match $in { light => "rose_pine_dawn", dark => "rose_pine" }
-  | do {|theme|
-    xdg_config helix config.toml
-    | do {|file|
-      let content = open $file | update theme $theme
-      $content | save --force $file
-    } $in
-  } $in
+  match $in {
+    light => "rose_pine_dawn",
+    dark => "rose_pine"
+  }
+  | append (xdg_config helix config.toml)
+  | do {|theme, file|    
+    open $file | upsert theme $theme | save --force $file
+  } ...$in
+}
+
+def set-starship-palette [] {
+  match $in {
+    light => "rose_pine_dawn",
+    _ => "rose_pine"
+  } 
+  | append (xdg_config starship.toml)
+  | do {|theme, file|
+    open $file | update palette $theme | save --force $file
+  } ...$in
 }
 
 def do-actions [theme: string]: nothing -> nothing {
   [
     { save --force $env.APPEARANCE_FILE }
+    { set-starship-palette }
     { set-helix-theme }
     { xdg_config tmux tmux.conf | tmux source-file $in }
     { aerospace reload-config }
