@@ -10,7 +10,9 @@ desc = "Open helix with PWD set to current dir (not selection)"
 
 [[mgr.prepend_keymap]]
 on = "!"
-run = 'shell "{{ .nushell.exe }}" --block --confirm'
+run = '''
+shell 'YAZI_FILES="$@" {{ .nushell.exe }}' --block --confirm
+'''
 desc = "Open shell here"
 
 [[mgr.prepend_keymap]]
