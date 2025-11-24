@@ -1,11 +1,3 @@
-[alias]
-nushell = "aqua:nushell/nushell"
-vincent = "ubi:rsteube/vincent"
-zsh-syntax-highlighting = "http:zsh-syntax-highlighting"
-utiluti = "spm:scriptingosx/utiluti"
-volgo = "go:github.com/elliot40404/volgo/cmd/volgo"
-tuios = "ubi:Gaurav-Gosain/tuios"
-
 [env]
 XDG_CONFIG_HOME = '{{xdg_config_home}}'
 XDG_DATA_HOME = '{{xdg_data_home}}'
@@ -59,13 +51,11 @@ yazi = "latest"
 fastfetch = "latest"
 vivid = "latest"
 go = "latest"
-vincent = "latest"
 chezmoi = { version = "latest", postinstall = """
 chezmoi completion zsh > ~/.config/zsh/functions/_chezmoi
 """ }
 fd = "latest"
 gh = "latest"
-utiluti = "latest"
 lazydocker = "latest"
 coreutils = "latest"
 difftastic = "latest"
@@ -73,14 +63,10 @@ node = "latest"
 sd = "latest"
 doggo = "latest"
 "ubi:peak/s5cmd" = "latest"
-volgo = "latest"
-nushell = "latest"
 jujutsu-ui = "latest"
 jujutsu = "latest"
 uv = "latest"
 "pipx:tmuxp" = "latest"
-tuios = "latest"
-crush = "latest"
 "ubi:42futures/firm" = "latest"
 "cargo:nu_plugin_dns" = "latest"
 jjui = "latest"
@@ -107,11 +93,6 @@ golangci-lint-langserver = "latest"
 terraform-ls = "latest"
 "ubi:sayanarijit/xplr" = "latest"
 fnox = "latest"
-
-[tools."zsh-syntax-highlighting"]
-version = "latest"
-url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
-strip_components = 1
 
 [settings]
 experimental = true

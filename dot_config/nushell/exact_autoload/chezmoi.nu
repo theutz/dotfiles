@@ -17,10 +17,14 @@ def --wrapped "chezmoi status" [...args] {
     if ($row.will == R) { return $row.file }
     | [$env.HOME $row.file] | path join
     | try {
-      coreutils realpath --relative-to=. $in | complete
-      | match ($in.exit_code) {
-        0 => ($in.stdout | str trim)
-        _ => $row.file
+      if (which realpath | is-not-empty) {
+        realpath --relative-to=. $in | complete
+        | match ($in.exit_code) {
+          0 => ($in.stdout | str trim)
+          _ => $row.file
+        }
+      } else {
+        $in
       }
     }
   }
