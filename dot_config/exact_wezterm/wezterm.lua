@@ -30,15 +30,15 @@ local function light_dark(light, dark)
 end
 
 c.color_scheme = light_dark("rose-pine-dawn", "rose-pine")
-c.window_background_opacity = light_dark(0.9, 0.98)
+c.window_background_opacity = light_dark(0.98, 0.95)
 c.bold_brightens_ansi_colors = "BrightAndBold"
-c.macos_window_background_blur = 30
+c.macos_window_background_blur = light_dark(10, 10)
 c.inactive_pane_hsb = {
-	saturation = 1.3,
-	brightness = 0.8,
+	saturation = light_dark(0.6, 1.3),
+	brightness = light_dark(0.8, 0.8),
 }
-c.text_background_opacity = 1.0
-c.text_min_contrast_ratio = 1.0
+c.text_background_opacity = light_dark(2.0, 1.0)
+c.text_min_contrast_ratio = light_dark(1.0, 1.0)
 
 -- Write system appearance to be consumed by other cli tools!
 local appearance_file_path = w.home_dir .. "/.local/state/appearance"

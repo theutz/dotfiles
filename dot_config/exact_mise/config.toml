@@ -71,7 +71,6 @@ uv = "latest"
 "cargo:nu_plugin_dns" = "latest"
 jjui = "latest"
 glow = "latest"
-"go:github.com/superstarryeyes/bit/cmd/bit" = "latest"
 "ubi:Skardyy/mcat" = "latest"
 "ubi:unkn0wn-root/resterm" = "latest"
 zellij = "latest"
@@ -93,6 +92,9 @@ golangci-lint-langserver = "latest"
 terraform-ls = "latest"
 "ubi:sayanarijit/xplr" = "latest"
 fnox = "latest"
+"ubi:elliot40404/volgo" = "latest"
+"ubi:superstarryeyes/bit" = "latest"
+"npm:gitignore" = "latest"
 
 [settings]
 experimental = true
