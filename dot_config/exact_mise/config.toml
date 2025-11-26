@@ -95,6 +95,9 @@ fnox = "latest"
 "ubi:elliot40404/volgo" = "latest"
 "ubi:superstarryeyes/bit" = "latest"
 "npm:gitignore" = "latest"
+dive = "latest"
+claude = "latest"
+codex = "latest"
 
 [settings]
 experimental = true

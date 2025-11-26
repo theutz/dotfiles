@@ -15,7 +15,7 @@ behavior_configs:
   multi_action_timeout_ms: 400
   name: main_behavior
   send_escape_after_global_alt_tap__windows: true
-  tap_threshold_ms: 150
+  tap_threshold_ms: 100
   wheel_easing: 0.1
   wheel_speed_multiplier: 4.0
   wheel_step_size: 20.0
@@ -269,25 +269,25 @@ keyboard_layout:
 keymaps:
 - entries:
     back click: null
-    back mouse button: o
+    back mouse button: Backspace
     back mouse button (w/o overlay): null
     close UI element: Escape
-    cycle click count: OptionLeft tap
+    cycle click count: null
     cycle font: null
     cycle font reverse: null
     cycle grid action level: null
-    cycle mouse action type: ShiftLeft tap
-    cycle mouse button: ControlLeft tap
+    cycle mouse action type: null
+    cycle mouse button: null
     decrease overlay opacity: '-'
     edit config: Tab
-    enter free mode: null
+    enter free mode: OptionLeft tap
     execute mouse action: Space
     execute mouse move:
     - ShiftRight tap
     - Enter
     exit free mode: Escape
     forward click: null
-    forward mouse button: null
+    forward mouse button: Shift+Backspace
     forward mouse button (w/o overlay): null
     hide overlay: Escape
     hold for back button: null
@@ -303,29 +303,27 @@ keymaps:
     jump to left edge: null
     jump to right edge: null
     jump to top: g
-    left mouse button: space
+    left mouse button: Space
     left mouse button (w/o overlay): null
     middle click: null
     middle mouse button: null
     middle mouse button (w/o overlay): null
     move down:
     - j
-    - f
+    - s
     move left:
     - h
-    - s
+    - a
     move right:
     - l
-    - g
+    - d
     move up:
     - k
-    - d
+    - w
     release hold/drag: Escape
     repeat last mouse action: '`'
     right click: null
-    right mouse button:
-    - ;
-    - a
+    right mouse button: Control+Space
     right mouse button (w/o overlay): null
     show overlay: CommandLeft tap
     subgrid nudge down:
@@ -345,7 +343,7 @@ keymaps:
     toggle app enabled: null
     toggle continuous mode: CommandLeft tap
     toggle continuous mode until closed: null
-    toggle free mode: OptionLeft tap
+    toggle free mode: null
     toggle overlay: null
     toggle overlay lock: null
     undo last key: Backspace

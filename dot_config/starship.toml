@@ -1,5 +1,5 @@
 add_newline = true
-palette = "rose_pine_dawn"
+palette = "rose_pine"
 
 [aws]
 style = "bold orange"
@@ -9,8 +9,8 @@ style = "bold iris"
 
 [character]
 disabled = false
-error_symbol = "[](bold rose) "
-success_symbol = "[](bold foam) "
+error_symbol = "[](bold rose)"
+success_symbol = "[](bold foam)"
 
 [username]
 format = "[$user]($style) on "

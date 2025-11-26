@@ -26,13 +26,20 @@ windows:
       - shell: lazydocker
         focus: true
 
-  - window_name: vcs
+  - window_name: jjui
     layout: even-vertical
     options:
       remain-on-exit: true
     panes:
       - shell: jjui
         focus: true
+      - blank
+
+  - window_name:
+    layout: main-vertical
+    options:
+      remain-on-exit: true
+    panes:
       - shell: gh dash
 
   - window_name: tmuxp
