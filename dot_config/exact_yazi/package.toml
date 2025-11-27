@@ -57,8 +57,3 @@ hash = "dbbbfe681e156c28303efb1f44b6cbc4"
 use = "Mintass/rose-pine"
 rev = "8343340"
 hash = "e2336631865c0f90276dcbc553d532fc"
-
-[[flavor.deps]]
-use = "theutz/rose-pine-dawn"
-rev = "2d3d583"
-hash = "42052a1401445aebd966ea44a9752571"

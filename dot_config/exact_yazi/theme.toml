@@ -1,3 +1,7 @@
 [flavor]
 dark = "rose-pine"
-light = "rose-pine-dawn"
+light = "rose-pine"
+
+[mode]
+normal_main = { bg = "blue", fg = "black" }
+normal_alt = { bg = "green", fg = "black" }
