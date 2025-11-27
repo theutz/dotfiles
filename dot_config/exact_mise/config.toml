@@ -98,6 +98,7 @@ fnox = "latest"
 dive = "latest"
 claude = "latest"
 codex = "latest"
+scooter = "latest"
 
 [settings]
 experimental = true
