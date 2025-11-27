@@ -14,46 +14,25 @@ c:set_strict_mode(true)
 -- │ Color scheme & colors │
 -- ╰───────────────────────╯
 
-local function get_appearance()
-	if w.gui then
-		return w.gui.get_appearance()
-	end
-	return "Dark"
-end
-
-local function light_dark(light, dark)
-	if get_appearance():find("Dark") then
-		return dark
-	else
-		return light
-	end
-end
-
-c.color_scheme = light_dark("rose-pine-dawn", "rose-pine")
-c.window_background_opacity = light_dark(0.98, 0.95)
+local schemes = {
+	"rose-pine",
+	-- "nightfox",
+	-- "Hardcore",
+	-- "Unikitty Dark (base16)",
+	-- "Isotope (dark) (terminal.sexy)",
+	-- "Dark Violet (terminal.sexy)",
+	-- "DoomOne",
+}
+c.color_scheme = schemes[#schemes]
+c.window_background_opacity = 0.99
 c.bold_brightens_ansi_colors = "BrightAndBold"
-c.macos_window_background_blur = light_dark(10, 10)
+c.macos_window_background_blur = 20
 c.inactive_pane_hsb = {
-	saturation = light_dark(0.6, 1.3),
-	brightness = light_dark(0.8, 0.8),
+	saturation = 1.0,
+	brightness = 1.0,
 }
-c.text_background_opacity = light_dark(2.0, 1.0)
-c.text_min_contrast_ratio = light_dark(1.0, 1.0)
-
--- Write system appearance to be consumed by other cli tools!
-local appearance_file_path = w.home_dir .. "/.local/state/appearance"
-c.set_environment_variables = {
-	APPEARANCE_FILE = appearance_file_path,
-}
-local function write_appearance_to_disk()
-	local file = io.open(appearance_file_path, "w")
-	if file then
-		file:write(light_dark("light", "dark"))
-		file:close()
-	end
-end
-w.on("gui-startup", write_appearance_to_disk)
-w.on("window-config-reloaded", write_appearance_to_disk)
+c.text_background_opacity = 1.0
+c.text_min_contrast_ratio = 1.0
 
 -- ╭───────╮
 -- │ Fonts │
@@ -61,23 +40,76 @@ w.on("window-config-reloaded", write_appearance_to_disk)
 
 local font_options = {
 	function ()
-		c.font = w.font("RecMonoCasual Nerd Font Propo", { weight = 400 })
-		c.font_size = 13
-		c.line_height = c.font_size * 0.11
+		c.font = w.font("RecMonoLinear Nerd Font Propo", { weight = 400 })
+		c.font_size = 16
+		c.line_height = c.font_size * 0.09
 	end,
 	function ()
-		c.font = w.font("Maple Mono NF", { weight = 400 })
-		c.font_size = 13
+		c.font = w.font("GeistMono Nerd Font Propo", { weight = 400 })
+		c.font_size = 15
+		c.line_height = c.font_size * 0.08
+	end,
+	function ()
+		c.font = w.font("AtkynsonMono Nerd Font Propo", { weight = 400 })
+		c.font_size = 15
+		c.line_height = c.font_size * 0.10
+	end,
+	function ()
+		c.font = w.font("BlexMono Nerd Font Propo", { weight = 400 })
+		c.font_size = 15
+		c.line_height = c.font_size * 0.10
+	end,
+	function ()
+		c.font = w.font("FantasqueSansM Nerd Font Propo", { weight = 400 })
+		c.font_size = 17
+		c.line_height = c.font_size * 0.10
+	end,
+	function ()
+		c.font = w.font("Hasklug Nerd Font Propo", { weight = 500 })
+		c.font_size = 15
+		c.line_height = c.font_size * 0.09
+	end,
+	function ()
+		c.font = w.font("MartianMono Nerd Font Propo", { weight = 400 })
+		c.font_size = 14
 		c.line_height = c.font_size * 0.1
 	end,
 	function ()
-		c.font = w.font("Berkeley Mono", { weight = 500 })
-		c.font_size = 13
+		c.font = w.font("iMWritingMono Nerd Font Propo", { weight = 400 })
+		c.font_size = 14
 		c.line_height = c.font_size * 0.11
 	end,
+	function ()
+		c.font = w.font("JetBrainsMono Nerd Font Propo", { weight = 400 })
+		c.font_size = 16
+		c.line_height = c.font_size * 0.08
+	end,
+	function ()
+		c.font = w.font("Lilex Nerd Font Propo", { weight = 400 })
+		c.font_size = 16
+		c.line_height = c.font_size * 0.08
+	end,
+	function ()
+		c.font = w.font("MonaSpiceNe Nerd Font Propo", { weight = "Regular" })
+		c.font_rules = {
+			{
+				italic = true,
+				font = w.font("MonaSpiceRn Nerd Font Propo")
+			},
+			{
+				underline = "Single",
+				font = w.font("MonaSpiceXe Nerd Font Propo")
+			},
+			{
+				strikethrough = true,
+				font = w.font("MonaSpiceAr Nerd Font Propo")
+			}
+		}
+		c.font_size = 16
+		c.line_height = c.font_size * 0.08
+	end,
 }
-local font_option = nil or math.random(#font_options)
-font_options[font_option]()
+font_options[#font_options]()
 
 -- ╭────╮
 -- │ UI │

@@ -19,18 +19,9 @@ LESSOPEN = "|/usr/bin/env lesspipe.sh %s 2>&-"
 PAGER = "less"
 BROWSER = "open"
 LANG = "en_US.UTF-8"
-APPEARANCE_FILE = '''
-{{- [xdg_state_home, "appearance"] | join_path() -}}
-'''
-APPEARANCE = '''
-{{- read_file(path=env.APPEARANCE_FILE) | trim -}}
-'''
 EZA_ICONS_AUTO = "1"
 MANPAGER = { value = "nvim -c +Man!", tools = true }
 MANWIDTH = { value = "999", tools = true }
-DELTA_FEATURES = { value = """{% if env.APPEARANCE == "light" %}+{% else %}+dark{% endif %}""", tools = true }
-BAT_THEME = { value = """{% if env.APPEARANCE == "light" %}rose-pine-dawn{% else %}rose-pine{% endif %}""", tools = true }
-DFT_BACKGROUND = { value = """{% if env.APPEARANCE == "light" %}light{% else %}dark{% endif %}""", tools = true }
 
 [tools]
 aqua = "latest"
