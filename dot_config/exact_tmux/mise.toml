@@ -1,0 +1,6 @@
+[tasks.reload]
+run = ["tmux source-file tmux.conf"]
+
+[[watch_files]]
+patterns = ["*.conf"]
+run = "mise run reload"
