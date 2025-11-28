@@ -1,1 +1,1 @@
-$env.LS_COLORS = (mise exec vivid -- vivid generate tokyonight-night)
+$env.LS_COLORS = (mise exec vivid -- vivid generate rose-pine)

@@ -93,6 +93,16 @@ local font_options = {
 		c.font = w.font("MonaSpiceNe Nerd Font Propo", { weight = "Regular" })
 		c.font_rules = {
 			{
+				intensity = "Bold",
+				italic = true,
+				font = w.font("MonaSpiceRn Nerd Font Propo", { weight = "Bold" })
+			},
+			{
+				intensity = "Half",
+				italic = true,
+				font = w.font("MonaSpiceRn Nerd Font Propo", { weight = "Thin" })
+			},
+			{
 				italic = true,
 				font = w.font("MonaSpiceRn Nerd Font Propo")
 			},

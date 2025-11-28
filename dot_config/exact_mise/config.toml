@@ -20,8 +20,6 @@ PAGER = "less"
 BROWSER = "open"
 LANG = "en_US.UTF-8"
 EZA_ICONS_AUTO = "1"
-MANPAGER = { value = "nvim -c +Man!", tools = true }
-MANWIDTH = { value = "999", tools = true }
 
 [tools]
 aqua = "latest"

@@ -6,11 +6,7 @@ const common = path self
 
 $env.PLUGIN_DIR = ($common | path dirname) | path join plugins
 
-$env.FONT = "RecMonoDuotone Nerd Font Propo"
-
-$env.APPEARANCE = $env.HOME
-  | path join .local state appearance
-  | if ($in | path exists) { open $in } else { "dark" }
+$env.FONT = "MonaSpiceRn Nerd Font Propo"
 
 let theme = rose-pine
 assert ($theme | is-not-empty) "Error loading theme"
