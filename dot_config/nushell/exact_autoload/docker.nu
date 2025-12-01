@@ -46,15 +46,15 @@ alias dkx = docker stop
 # ┌─────────────┐
 # │ Context (X) │
 # └─────────────┘
-alias dkX = docker context
-alias dkXc = docker context create
-alias dkXe = docker context export
-alias dkXI = docker context import
-alias dkXi = docker context inspect
-alias dkXls = docker context ls
-alias dkXU = docker context update
-alias dkXu = docker context use
-alias dkXx = docker context rm
+alias dkK = docker context
+alias dkKc = docker context create
+alias dkKe = docker context export
+alias dkKI = docker context import
+alias dkKi = docker context inspect
+alias dkKls = docker context ls
+alias dkKU = docker context update
+alias dkKu = docker context use
+alias dkKx = docker context rm
 
 # ╭───────────────╮
 # │ Container (C) │

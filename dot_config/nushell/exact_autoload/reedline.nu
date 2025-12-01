@@ -4,7 +4,7 @@ $env.config.use_kitty_protocol = true
 $env.config.render_right_prompt_on_last_line = false
 
 use std/config [light-theme dark-theme]
-$env.config.color_config = match ($env.APPEARANCE) {
+$env.config.color_config = match ($env.APPEARANCE?) {
   light => (light-theme)
   _ => (dark-theme)
 }

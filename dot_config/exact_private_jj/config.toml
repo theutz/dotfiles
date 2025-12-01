@@ -7,6 +7,7 @@ email = "michael@theutz.com"
 [ui]
 default-command = "log"
 diff-editor = ":builtin"
+pager = ":builtin"
 
 [aliases]
 gp = ['git', 'push']
