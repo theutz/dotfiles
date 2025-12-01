@@ -29,7 +29,7 @@ use vpn.nu
   query
   gstat
   # Third-party
-  dns
+  # dns
 ]
 | each {|plugin|
   which $"nu_plugin_($plugin)"

@@ -57,7 +57,6 @@ jujutsu = "latest"
 uv = "latest"
 "pipx:tmuxp" = "latest"
 "ubi:42futures/firm" = "latest"
-"cargo:nu_plugin_dns" = "latest"
 jjui = "latest"
 glow = "latest"
 "ubi:Skardyy/mcat" = "latest"
@@ -88,6 +87,8 @@ dive = "latest"
 claude = "latest"
 codex = "latest"
 scooter = "latest"
+"ubi:achristmascarl/rainfrog" = "latest"
+"cargo:nu_plugin_dns" = { version = "latest", locked = "true" }
 
 [settings]
 experimental = true
