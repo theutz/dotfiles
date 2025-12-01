@@ -5,14 +5,9 @@ $env.FZF_DEFAULT_OPTS = [
     fzf
     rose-pine
     dist
-  ] | path join (
-    $env.APPEARANCE?
-    | match $in {
-      light => "rose-pine-dawn"
-      _ => "rose-pine"
-    }
-    | with-extension "sh"
-  )
+    rose-pine.sh
+  ]
+  | path join
   | open $in
   | lines
   | skip
