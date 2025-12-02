@@ -41,9 +41,9 @@ export default {
             "sentry.io",
             "linode.com",
             "standupbot.com",
-            "uptimerobot.com"
+            "uptimerobot.com",
           ].some((domain) => url.host.endsWith(domain)),
-        (url) => url.host.startsWith('localhost'),
+        (url) => url.host.startsWith("localhost"),
         (url) =>
           [
             "delegator.com",
@@ -51,6 +51,9 @@ export default {
             "hiwasseepackaging.com",
             "impactelectronics.com",
             "friendzy.co",
+            "flexground.com",
+            "poligon.com",
+            "ultra-site.com",
           ]
             .reduce(
               (prev, curr) => [...prev, curr, curr.replace(/\..+$/, ".test")],
