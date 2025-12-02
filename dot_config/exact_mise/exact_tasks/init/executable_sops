@@ -1,6 +1,7 @@
 #!/usr/bin/env nu
 #MISE description="Create a .sops.yaml file in the project root"
 #MISE tools={"aqua:nushell/nushell" = "0.108.0", age = "latest"}
+#MISE hide=true
 #USAGE flag "-l --log-level" default="2" help="Level 1-5"
 
 def main [
