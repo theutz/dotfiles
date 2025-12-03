@@ -341,8 +341,8 @@ keymaps:
     switch monitor left: ShiftRight tap
     switch monitor right: null
     toggle app enabled: null
-    toggle continuous mode: CommandLeft tap
-    toggle continuous mode until closed: null
+    toggle continuous mode: null
+    toggle continuous mode until closed: CommandLeft tap
     toggle free mode: null
     toggle overlay: null
     toggle overlay lock: null

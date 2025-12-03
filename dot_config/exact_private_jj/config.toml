@@ -5,16 +5,18 @@ name = "Michael Utz"
 email = "michael@theutz.com"
 
 [ui]
-default-command = "log"
+default-command = "status"
 diff-editor = ":builtin"
 pager = ":builtin"
 
 [aliases]
 gp = ['git', 'push']
-bm = ["bookmark", "move"]
-d = ["diff"]
 gf = ["git", "fetch"]
-cm = ["commit", "-m"]
+bc = ["bookmark", "create"]
+bm = ["bookmark", "move"]
+d = ["desc", "-m"]
+c = ["commit", "-m"]
+s = ["split"]
 
 [signing]
 behavior = "own"

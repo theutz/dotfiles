@@ -42,6 +42,7 @@ export default {
             "linode.com",
             "standupbot.com",
             "uptimerobot.com",
+            "hslocal.net:3000",
           ].some((domain) => url.host.endsWith(domain)),
         (url) => url.host.startsWith("localhost"),
         (url) =>
