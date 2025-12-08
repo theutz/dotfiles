@@ -92,6 +92,7 @@ scooter = "latest"
 "ubi:achristmascarl/rainfrog" = "latest"
 "cargo:nu_plugin_dns" = { version = "latest", locked = "true" }
 "aqua:nushell/nushell" = "latest"
+"ubi:owloops/updo" = "latest"
 
 [settings]
 experimental = true
