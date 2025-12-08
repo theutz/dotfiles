@@ -6,6 +6,15 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local expand = vim.fn.expand
 
+autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.njk",
+	desc = "Set nunjucks filetype",
+	group = augroup("nunjucks", { clear = true }),
+	callback = function()
+		vim.bo.filetype = "htmldjango"
+	end,
+})
+
 autocmd({ "BufWritePost" }, {
 	pattern = {
 		expand("~") .. "/.tmux.conf",
