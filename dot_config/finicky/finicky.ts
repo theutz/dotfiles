@@ -55,6 +55,7 @@ export default {
             "flexground.com",
             "poligon.com",
             "ultra-site.com",
+            "naltc.com",
           ]
             .reduce(
               (prev, curr) => [...prev, curr, curr.replace(/\..+$/, ".test")],

@@ -1,23 +1,23 @@
 # What protocol to use when performing git operations. Supported values: ssh, https
 git_protocol: ssh
 # What editor gh should run when creating issues, pull requests, etc. If blank, will refer to environment.
-editor: hx
+editor:
 prompt: enabled
 # A pager program to send command output to, e.g. "less". Set the value to "cat" to disable the pager.
 pager: less # Aliases allow you to create nicknames for gh commands
 aliases:
-    co: pr checkout
-    squash: pr merge --squash --delete-branch
-    cw: pr checks -i 3 --watch
-    rebase: pr merge --rebase --delete-branch
-    "pr @me": pr create --assignee @me
-    "pr stg@me": pr create --assignee @me --base staging
-    "run last-id": "run list --json databaseId -q '.[0].databaseId'"
-    "run see": "!gh run last-id | xargs gh run watch"
-    "run log": "!gh run last-id | xargs gh run view --log"
-    "run observe": "!gh run see && gh run log"
-    "run observe-rerun": "!gh run rerun && gh run observe"
-    "ro": "run observe"
+  co: pr checkout
+  squash: pr merge --squash --delete-branch
+  cw: pr checks -i 3 --watch
+  rebase: pr merge --rebase --delete-branch
+  "pr @me": pr create --assignee @me
+  "pr stg@me": pr create --assignee @me --base staging
+  "run last-id": "run list --json databaseId -q '.[0].databaseId'"
+  "run see": "!gh run last-id | xargs gh run watch"
+  "run log": "!gh run last-id | xargs gh run view --log"
+  "run observe": "!gh run see && gh run log"
+  "run observe-rerun": "!gh run rerun && gh run observe"
+  "ro": "run observe"
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket: # What web browser gh should use when opening URLs. If blank, will refer to environment.
 browser:

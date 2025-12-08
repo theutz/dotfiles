@@ -15,7 +15,7 @@ behavior_configs:
   multi_action_timeout_ms: 400
   name: main_behavior
   send_escape_after_global_alt_tap__windows: true
-  tap_threshold_ms: 150
+  tap_threshold_ms: 125
   wheel_easing: 0.1
   wheel_speed_multiplier: 4.0
   wheel_step_size: 20.0
