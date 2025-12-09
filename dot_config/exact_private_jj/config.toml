@@ -17,6 +17,13 @@ bm = ["bookmark", "move"]
 d = ["desc", "-m"]
 c = ["commit", "-m"]
 s = ["split"]
+gh = ["log", "-r", "git_head()", "-T", "local_bookmarks", "-G"]
+pr = ["util", "exec", "--", "nu", "-c", """
+  gh pr create -H (jj log -r 'git_head()' -T local_bookmarks -G)
+"""]
+pr-m = ["util", "exec", "--", "nu", "-c", """
+  gh pr merge (jj log -r 'git_head()' -T local_bookmarks -G)
+"""]
 
 [signing]
 behavior = "own"
