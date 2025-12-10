@@ -1,16 +1,1 @@
-path+=(
-  $HOME/bin
-  $HOME/.local/bin
-  /opt/homebrew/{,s}bin
-  /usr/local/bin
-)
-
-fpath+=(
-  $ZDOTDIR/functions
-  $HOME/.local/functions
-)
-
-# Export Mise Environment Variables
-eval "$(~/.local/bin/mise env zsh)"
-
-# vim:ft=zsh
+{{ joinPath .zdotdir.runcoms "zprofile" }}
