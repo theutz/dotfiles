@@ -91,4 +91,6 @@ exe = "{{ $nu.exe }}"
 shebang = "#!/usr/bin/env -S {{ $nu.exe }}"
 
 [data.zdotdir]
-path = """{{ $zdotdir := joinPath $xdg.configDir "zsh"; $zdotdir }}"""
+path = """{{- $zdotdir := joinPath $xdg.configDir "zsh" }}{{ $zdotdir -}}"""
+prezto = """{{- joinPath $zdotdir zprezto -}}"""
+runcoms = """{{- joinPath $zdotdir zprezto runcoms -}}"""
