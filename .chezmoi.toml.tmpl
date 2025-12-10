@@ -1,12 +1,4 @@
 # vim: ft=tmpl.toml
-{{ $xdg := (dict
-  "configDir" (joinPath .chezmoi.homeDir ".config")
-  "dataDir" (joinPath .chezmoi.homeDir ".local" "share")
-  "stateDir" (joinPath .chezmoi.homeDir ".local" "state")
-  "cacheDir" (joinPath .chezmoi.homeDir ".cache")
-  )
--}}
-
 encryption = "age"
 sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
 interactive = true
@@ -16,8 +8,8 @@ recipient = "FD235DFD"
 
 [age]
 identities = [
-  '{{ joinPath $xdg.configDir "chezmoi" "keys" "personal.txt" }}',
-  '{{ joinPath $xdg.configDir "chezmoi" "keys" "delegator.txt" }}'
+  '{{ joinPath (dir .chezmoi.configFile) "keys" "personal.txt" }}',
+  '{{ joinPath (dir .chezmoi.configFile) "keys" "delegator.txt" }}'
 ]
 recipients = [
   "age1y5xgp4msrrhylvla0hcm7srsfjeql56p4ugfwsl89wsjs92vkvts3u5xxa",
@@ -57,40 +49,31 @@ watch = false
 apply = true
 
 [data.xdg]
-configDir = "{{ $xdg.configDir }}"
-dataDir = "{{ $xdg.dataDir }}"
-stateDir = "{{ $xdg.stateDir }}"
-cacheDir = "{{ $xdg.cacheDir }}"
+{{ $xdg_config_dir := joinPath .chezmoi.homeDir ".config" -}}
+configDir = "{{ $xdg_config_dir }}"
+{{ $xdg_data_dir := joinPath .chezmoi.homeDir ".local" "share" -}}
+dataDir = """{{ $xdg_data_dir }}"""
+stateDir = """{{ joinPath .chezmoi.homeDir ".local" "state" }}"""
+cacheDir = """{{ joinPath .chezmoi.homeDir ".cache" }}"""
 
-{{
-  $mise := (dict
-    "exe" (joinPath .chezmoi.homeDir ".local" "bin" "mise")
-    "configDir" (joinPath $xdg.configDir "mise")
-    "shimsDir" (joinPath $xdg.dataDir "mise" "shims")
-  )
--}}
 [data.mise]
-exe = "{{ $mise.exe }}"
-configDir = "{{ $mise.configDir }}"
-shimsDir = "{{ $mise.shimsDir }}"
+{{ $mise_exe = joinPath .chezmoi.homeDir ".local" "bin" "mise" -}}
+exe = "{{ $mise_exe }}"
+configDir = """{{ joinPath $xdg_config_dir "mise" }}"""
+shimsDir = """{{ joinPath $xdg_config_dir "mise" "shims" }}"""
 
 [data.nushell]
-{{-
-  $nu := (dict
-    "dir" (joinPath $xdg.configDir "nushell")
-    "envFile" (joinPath $nu.dir "env.nu")
-    "configFile" (joinPath $nu.dir "config.nu")
-    "libDir" (joinPath $nu.dir "scripts")
-    "exe" (cat $mise.exe "exec" "nushell@0.109.1" "--" "nu"))
-}}
-configDir = "{{ $nu.dir }}"
-configFile = "{{ $nu.configFile }}"
-envFile = "{{ $nu.envFile }}"
-libDir = "{{ $nu.libDir }}"
-exe = "{{ $nu.exe }}"
-shebang = "#!/usr/bin/env -S {{ $nu.exe }}"
+{{ $nu_dir := joinPath $xdg_config_dir "nushell" -}}
+configDir = "{{ $nu_dir }}"
+configFile = """{{ joinPath $nu_dir "config.nu" }}"""
+envFile = """{{ joinPath $nu_dir "env.nu" }}"""
+libDir = """{{ joinPath $nu_dir scripts }}"""
+{{ $nu_exe := cat $mise_exe "exec" "nushell@0.109.1" "--" "nu" -}}
+exe = "{{ $nu_exe }}"
+shebang = "#!/usr/bin/env -S {{ $nu_exe }}"
 
 [data.zdotdir]
-path = """{{- $zdotdir := joinPath $xdg.configDir "zsh" }}{{ $zdotdir -}}"""
+{{ $zdotdir := joinPath $xdg_config_dir "zsh" -}}
+path = "{{ $zdotdir }}"
 prezto = """{{- joinPath $zdotdir "zprezto" -}}"""
 runcoms = """{{- joinPath $zdotdir "zprezto" "runcoms" -}}"""
