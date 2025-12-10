@@ -22,6 +22,8 @@ LANG = "en_US.UTF-8"
 EZA_ICONS_AUTO = "1"
 MANPAGER = "nvim -c +Man!"
 MANWIDTH = "999"
+TZ_LIST = "US/Pacific;US/Central;US/Eastern;UTC;Europe/Istanbul"
+PET_GITHUB_ACCESS_TOKEN = { age = "YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVdTcvSjdEN0xUUjErRmkrQVFaenFNZjFzVGZJemZSZFRQb0RjdEVOdUcwCmE4bklxYlo3WnNCSFRaZVEraWl5TEtpUm95N2x0OUdZbHc1RlFLUEdjb3cKLT4gc3NoLWVkMjU1MTkgUUt0Um5BIEVwa1V4ejIwa3BabDl3aERLcXNkYTBuVDhTaVZ4aDh6bCtoM21CdWJ3aG8KTVFYb0F5N3NaS0x4MnNNQUZTYTFCeUZFeksxWGt4VGh1bWkzZG1pMUxwdwotPiBNXidYLWdyZWFzZSBaWCpEST8gQGVHfiggYjxAfDdlTQpraDNFRER2NHo5b2RKMlkyUzMvYkc0NVg1RGFveEZCVlFpT1huLzhoYkFRZVAxbWV1R1puMEhkbFlGTUhRdGo2CjRnCi0tLSBpeVhKdm83UXRaWVRWNlgyb2hzSC9qL1dxOHVnQU9JakJTWCt5UG1XemFzCrBeJxUdru7hRFJ1wZcqVcYsSM1E4X5b1nACtragLcxMGvveWBZ8vJlo4UmGhM29l186/3SGNPJ/Xo7Du7sBhjmB1yyPPdzryw" }
 
 [tools]
 aqua = "latest"
@@ -100,6 +102,9 @@ dua = "latest"
 sops = "latest"
 gemini = "latest"
 "ubi:chaqchase/lla" = "latest"
+"ubi:oz/tz" = "latest"
+"ubi:knqyf263/pet" = "latest"
+"ubi:macchina-cli/macchina" = "latest"
 
 [settings]
 experimental = true

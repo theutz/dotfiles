@@ -1,9 +1,6 @@
-[[snippets]]
-  description = "Update global Brewfile"
-  command = "brew bundle --global dump --all --describe --force"
-  output = ""
 
-[[snippets]]
-  description = "Create a private git repo from the current directory"
-  command = "gh repo create -s . --private"
-  output = ""
+[[Snippets]]
+  Description = "Create an encrypted environment variable in mise"
+  Output = ""
+  Tag = ["mise", "age"]
+  command = "mise set --age-encrypt --prompt"

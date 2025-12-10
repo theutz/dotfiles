@@ -130,10 +130,10 @@ font_options[#font_options]()
 -- │ UI │
 -- ╰────╯
 
-c.quit_when_all_windows_are_closed = false
+c.quit_when_all_windows_are_closed = true
 c.window_decorations = "RESIZE"
 c.adjust_window_size_when_changing_font_size = false
-c.window_close_confirmation = "AlwaysPrompt"
+c.window_close_confirmation = "NeverPrompt"
 c.window_padding = {
 	top = "16px",
 	bottom = "4px",

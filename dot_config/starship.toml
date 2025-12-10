@@ -8,8 +8,8 @@ style = "bold magenta"
 
 [character]
 disabled = false
-error_symbol = "[](bold red)"
-success_symbol = "[](bold green)"
+error_symbol = "[ ](bold red)"
+success_symbol = "[ ](bold green)"
 
 [username]
 format = "[$user]($style) on "
