@@ -4,4 +4,4 @@ url = "https://github.com/theutz/prezto.git"
 refreshPeriod = "168h"
 
 [".zprezto".pull]
-args = ["--ff-only"]
+args = ["--ff-only --recurse-submodules"]
