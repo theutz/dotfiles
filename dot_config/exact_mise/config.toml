@@ -43,7 +43,7 @@ fastfetch = "latest"
 vivid = "latest"
 go = "latest"
 chezmoi = { version = "latest", postinstall = """
-chezmoi completion zsh > ~/.config/zsh/functions/_chezmoi
+chezmoi completion zsh > ~/.local/functions/_chezmoi
 """ }
 fd = "latest"
 gh = "latest"
@@ -65,7 +65,6 @@ glow = "latest"
 "ubi:unkn0wn-root/resterm" = "latest"
 zellij = "latest"
 "ubi:acheronfail/repgrep" = { version = "latest", exe = "rgr" }
-mc = "latest"
 "ubi:docker/docker-language-server" = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:@microsoft/compose-language-service" = "latest"
@@ -93,6 +92,14 @@ scooter = "latest"
 "cargo:nu_plugin_dns" = { version = "latest", locked = "true" }
 "aqua:nushell/nushell" = "latest"
 "ubi:owloops/updo" = "latest"
+"ubi:ouch-org/ouch" = "latest"
+ripgrep-all = "latest"
+dua = "latest"
+"ubi:sharkdp/pastel" = "latest"
+"ubi:dalance/procs" = "latest"
+sops = "latest"
+gemini = "latest"
+"ubi:chaqchase/lla" = "latest"
 
 [settings]
 experimental = true

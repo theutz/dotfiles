@@ -10,3 +10,4 @@ result
 mise.local.toml
 nohup.out
 *.log
+.elixir_ls

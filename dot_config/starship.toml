@@ -1,20 +1,18 @@
 add_newline = true
-palette = "rose_pine"
 
 [aws]
 style = "bold orange"
 
 [directory]
-style = "bold iris"
+style = "bold magenta"
 
 [character]
 disabled = false
-error_symbol = "[](bold rose)"
-success_symbol = "[](bold foam)"
+error_symbol = "[](bold red)"
+success_symbol = "[](bold green)"
 
 [username]
 format = "[$user]($style) on "
-style_user = "bold aqua"
 
 [shell]
 zsh_indicator = "󱆃 zsh"
@@ -22,7 +20,6 @@ bash_indicator = " bash"
 fish_indicator = " fish"
 nu_indicator = " nu"
 disabled = false
-style = "gold"
 
 [custom.jj]
 command = '''
@@ -45,17 +42,3 @@ when = "jj --ignore-working-copy root"
 command = '''
 jj log -r@ -n1 --ignore-working-copy --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
 '''
-
-[palettes.rose_pine]
-base = "#191724"
-surface = "#1f1d2e"
-overlay = "#26233a"
-muted = "#6e6a86"
-subtle = "#908caa"
-text = "#e0def4"
-love = "#eb6f92"
-gold = "#f6c177"
-rose = "#ebbcba"
-pine = "#31748f"
-foam = "#9ccfd8"
-iris = "#c4a7e7"

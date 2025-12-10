@@ -1,0 +1,7 @@
+["zprezto"]
+type = "git-repo"
+url = "https://github.com/theutz/prezto.git"
+refreshPeriod = "168h"
+
+["zprezto".pull]
+args = ["--ff-only"]

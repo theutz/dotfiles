@@ -14,14 +14,19 @@ c:set_strict_mode(true)
 -- │ Color scheme & colors │
 -- ╰───────────────────────╯
 
+c.color_scheme_dirs = { "/Users/michael/.config/decipher/wezterm" }
 local schemes = {
 	"rose-pine",
-	-- "nightfox",
-	-- "Hardcore",
-	-- "Unikitty Dark (base16)",
-	-- "Isotope (dark) (terminal.sexy)",
-	-- "Dark Violet (terminal.sexy)",
-	-- "DoomOne",
+	"nightfox",
+	"Hardcore",
+	"Unikitty Dark (base16)",
+	"Isotope (dark) (terminal.sexy)",
+	"Dark Violet (terminal.sexy)",
+	"DoomOne",
+	"Decipher Entombed",
+	"Decipher Camouflaged",
+	"Decipher Eclipsed",
+	"Decipher Submerged",
 }
 c.color_scheme = schemes[#schemes]
 c.window_background_opacity = 0.99
@@ -39,81 +44,81 @@ c.text_min_contrast_ratio = 1.0
 -- ╰───────╯
 
 local font_options = {
-	function ()
+	function()
 		c.font = w.font("RecMonoLinear Nerd Font Propo", { weight = 400 })
 		c.font_size = 16
 		c.line_height = c.font_size * 0.09
 	end,
-	function ()
+	function()
 		c.font = w.font("GeistMono Nerd Font Propo", { weight = 400 })
 		c.font_size = 15
 		c.line_height = c.font_size * 0.08
 	end,
-	function ()
+	function()
 		c.font = w.font("AtkynsonMono Nerd Font Propo", { weight = 400 })
 		c.font_size = 15
 		c.line_height = c.font_size * 0.10
 	end,
-	function ()
+	function()
 		c.font = w.font("BlexMono Nerd Font Propo", { weight = 400 })
 		c.font_size = 15
 		c.line_height = c.font_size * 0.10
 	end,
-	function ()
+	function()
 		c.font = w.font("FantasqueSansM Nerd Font Propo", { weight = 400 })
 		c.font_size = 17
 		c.line_height = c.font_size * 0.10
 	end,
-	function ()
+	function()
 		c.font = w.font("Hasklug Nerd Font Propo", { weight = 500 })
 		c.font_size = 15
 		c.line_height = c.font_size * 0.09
 	end,
-	function ()
+	function()
 		c.font = w.font("MartianMono Nerd Font Propo", { weight = 400 })
 		c.font_size = 14
 		c.line_height = c.font_size * 0.1
 	end,
-	function ()
+	function()
 		c.font = w.font("iMWritingMono Nerd Font Propo", { weight = 400 })
 		c.font_size = 14
 		c.line_height = c.font_size * 0.11
 	end,
-	function ()
+	function()
 		c.font = w.font("JetBrainsMono Nerd Font Propo", { weight = 400 })
 		c.font_size = 16
 		c.line_height = c.font_size * 0.08
 	end,
-	function ()
+	function()
 		c.font = w.font("Lilex Nerd Font Propo", { weight = 400 })
 		c.font_size = 16
 		c.line_height = c.font_size * 0.08
 	end,
-	function ()
+	function()
 		c.font = w.font("MonaSpiceNe Nerd Font Propo", { weight = "Regular" })
 		c.font_rules = {
 			{
 				intensity = "Bold",
 				italic = true,
-				font = w.font("MonaSpiceRn Nerd Font Propo", { weight = "Bold" })
+				font = w.font("MonaSpiceRn Nerd Font Propo", { weight = "Bold" }),
 			},
 			{
 				intensity = "Half",
 				italic = true,
-				font = w.font("MonaSpiceRn Nerd Font Propo", { weight = "Thin" })
+				font = w.font("MonaSpiceRn Nerd Font Propo", { weight = "Thin" }),
 			},
 			{
 				italic = true,
-				font = w.font("MonaSpiceRn Nerd Font Propo")
+				font = w.font("MonaSpiceRn Nerd Font Propo"),
 			},
 			{
 				underline = "Single",
-				font = w.font("MonaSpiceXe Nerd Font Propo")
+				font = w.font("MonaSpiceXe Nerd Font Propo"),
 			},
 			{
 				strikethrough = true,
-				font = w.font("MonaSpiceAr Nerd Font Propo")
-			}
+				font = w.font("MonaSpiceAr Nerd Font Propo"),
+			},
 		}
 		c.font_size = 16
 		c.line_height = c.font_size * 0.08
@@ -146,7 +151,7 @@ c.tab_bar_at_bottom = true
 -- │ Environment │
 -- ╰─────────────╯
 
-c.default_prog = { "zsh", "-c", "nu --login" }
+-- c.default_prog = { "zsh", "-c", "nu --login" }
 
 -- ╭────────────────╮
 -- │ Text rendering │
