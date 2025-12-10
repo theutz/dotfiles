@@ -6,6 +6,7 @@
   "cacheDir" (joinPath .chezmoi.homeDir ".cache")
   )
 -}}
+
 encryption = "age"
 sourceDir = "{{ .chezmoi.homeDir }}/dotfiles"
 interactive = true
@@ -74,14 +75,20 @@ configDir = "{{ $mise.configDir }}"
 shimsDir = "{{ $mise.shimsDir }}"
 
 [data.nushell]
-{{- $nu := (dict "dir" (joinPath $xdg.configDir "nushell")) }}
-{{- $_ := (set $nu "envFile" (joinPath $nu.dir "env.nu")) }}
-{{- $_ := (set $nu "configFile" (joinPath $nu.dir "config.nu")) }}
-{{- $_ := (set $nu "libDir" (joinPath $nu.dir "scripts")) }}
-{{- $_ := (set $nu "exe" (cat $mise.exe "exec" "nushell@0.109.1" "--" "nu")) }}
+{{-
+  $nu := (dict
+    "dir" (joinPath $xdg.configDir "nushell")
+    "envFile" (joinPath $nu.dir "env.nu")
+    "configFile" (joinPath $nu.dir "config.nu")
+    "libDir" (joinPath $nu.dir "scripts")
+    "exe" (cat $mise.exe "exec" "nushell@0.109.1" "--" "nu"))
+}}
 configDir = "{{ $nu.dir }}"
 configFile = "{{ $nu.configFile }}"
 envFile = "{{ $nu.envFile }}"
 libDir = "{{ $nu.libDir }}"
 exe = "{{ $nu.exe }}"
 shebang = "#!/usr/bin/env -S {{ $nu.exe }}"
+
+[data.zdotdir]
+path = "{{ $zdotdir := joinPath $xdg.configDir 'zsh'; $zdotdir }}"
