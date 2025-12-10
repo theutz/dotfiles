@@ -15,7 +15,7 @@ end
 vim.o.exrc = true
 
 -- Set shell
-local shell = "nu"
+local shell = "zsh"
 if shell == "nu" then
 	-- Use nushell
 	vim.o.shell = vim.fn.expand("$HOME/.local/share/mise/shims/nu")
@@ -29,6 +29,7 @@ if shell == "nu" then
 	vim.o.shellquote = ""
 elseif shell == "fish" then
 	vim.o.shell = "/opt/homebrew/bin/fish"
+else
 end
 
 -- Add mise shims to the path

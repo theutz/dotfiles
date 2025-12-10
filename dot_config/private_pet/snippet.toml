@@ -4,3 +4,9 @@
   Output = ""
   Tag = ["mise", "age"]
   command = "mise set --age-encrypt --prompt"
+
+[[Snippets]]
+  Description = "Create or attach to spotify session"
+  Output = ""
+  Tag = ["tmux"]
+  command = "tmux new -A -s spotify -n main -c $HOME -d spotify_player"
