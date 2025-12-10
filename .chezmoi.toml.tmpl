@@ -57,7 +57,7 @@ stateDir = """{{ joinPath .chezmoi.homeDir ".local" "state" }}"""
 cacheDir = """{{ joinPath .chezmoi.homeDir ".cache" }}"""
 
 [data.mise]
-{{ $mise_exe = joinPath .chezmoi.homeDir ".local" "bin" "mise" -}}
+{{ $mise_exe := joinPath .chezmoi.homeDir ".local" "bin" "mise" -}}
 exe = "{{ $mise_exe }}"
 configDir = """{{ joinPath $xdg_config_dir "mise" }}"""
 shimsDir = """{{ joinPath $xdg_config_dir "mise" "shims" }}"""
