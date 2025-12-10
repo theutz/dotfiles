@@ -28,13 +28,6 @@ autoAdd = true
 autoCommit = true
 autoPush = true
 
-[cd]
-{{ if lookPath "nu" -}}
-command = "nu"
-{{ else if lookPath "fish" -}}
-command = "fish"
-{{- end }}
-
 [diff]
 {{ if lookPath "difft" -}}
 command = "difft"
