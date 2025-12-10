@@ -75,5 +75,6 @@ shebang = "#!/usr/bin/env -S {{ $nu_exe }}"
 [data.zdotdir]
 {{ $zdotdir := joinPath $xdg_config_dir "zsh" -}}
 path = "{{ $zdotdir }}"
-prezto = """{{- joinPath $zdotdir "zprezto" -}}"""
-runcoms = """{{- joinPath $zdotdir "zprezto" "runcoms" -}}"""
+{{ $prezto_dir := joinPath $zdotdir ".zprezto" -}}
+prezto = """{{- joinPath $zdotdir ".zprezto" -}}"""
+runcoms = """{{- joinPath $zdotdir ".zprezto" "runcoms" -}}"""
