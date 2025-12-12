@@ -1,8 +1,8 @@
 #:schema https://jj-vcs.github.io/jj/latest/config-schema.json
 
 [user]
-name = "Michael Utz"
-email = "michael@theutz.com"
+name = "{{ .gpg.name }}"
+email = "{{ .gpg.email }}"
 
 [ui]
 default-command = "status"
@@ -27,5 +27,5 @@ pr-m = ["util", "exec", "--", "nu", "-c", """
 
 [signing]
 behavior = "own"
-backend = "ssh"
-key = "~/.ssh/id_ed25519"
+backend = "gpg"
+key = "{{ .gpg.signingKey }}"
