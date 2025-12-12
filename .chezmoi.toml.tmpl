@@ -78,3 +78,8 @@ path = "{{ $zdotdir }}"
 {{ $prezto_dir := joinPath $zdotdir ".zprezto" -}}
 prezto = """{{- joinPath $zdotdir ".zprezto" -}}"""
 runcoms = """{{- joinPath $zdotdir ".zprezto" "runcoms" -}}"""
+
+[data.gpg]
+name = "Michael Utz"
+email = "michael@theutz.com"
+signingKey = "F73C931E48B95546!"
