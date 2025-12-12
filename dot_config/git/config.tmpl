@@ -1,7 +1,7 @@
 [user]
-	name = Michael Utz
-	email = michael@theutz.com
-	signingkey = F73C931E48B95546!
+	name = {{ .gpg.name }}
+	email = {{ .gpg.email }}
+	signingkey = {{ .gpg.signingKey }}
 
 [pull]
 	rebase = true
