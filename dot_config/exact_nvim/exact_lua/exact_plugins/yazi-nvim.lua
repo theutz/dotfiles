@@ -11,6 +11,11 @@ return {
 	},
 	opts = {
 		open_for_directories = true,
+		open_multiple_tabs = true,
+		keymaps = {
+			open_file_in_horizontal_split = "<c-s>",
+			grep_in_directory = "<c-r>",
+		},
 	},
 	init = function()
 		vim.g.loaded_netrwPlugin = 1
