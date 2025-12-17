@@ -11,7 +11,7 @@ return {
 	},
 	opts = {
 		open_for_directories = true,
-		open_multiple_tabs = true,
+		open_multiple_tabs = false,
 		keymaps = {
 			open_file_in_horizontal_split = "<c-s>",
 			grep_in_directory = "<c-r>",
