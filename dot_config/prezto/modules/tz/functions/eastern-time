@@ -1,5 +1,0 @@
-# eastern-time() {
-export TZ_LIST="US/Eastern"
-tz -m "$@"
-# }
-# vim: ft=zsh

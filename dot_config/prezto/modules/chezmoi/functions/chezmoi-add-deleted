@@ -1,7 +1,0 @@
-# chezmoi-add-deleted() {
-chezmoi status |
-  awk -F' ' '/^ D/ { print "~/" $2 }' |
-  fzf -m |
-  xargs chezmoi add
-# }
-# vim: ft=zsh

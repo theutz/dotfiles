@@ -1,5 +1,0 @@
-# pacific-time() {
-export TZ_LIST="US/Pacific"
-tz -m "$@"
-# }
-# vim: ft=zsh

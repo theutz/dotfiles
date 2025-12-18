@@ -1,6 +1,0 @@
-alias brewn='brew info'
-alias brewr='brew-readme'
-alias caskn='brew --cask info'
-alias brewh='brew home'
-alias caskh='brew --cask home'
-alias service='brew services'
