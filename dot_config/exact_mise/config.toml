@@ -106,6 +106,7 @@ gemini = "latest"
 "ubi:knqyf263/pet" = "latest"
 "ubi:macchina-cli/macchina" = "latest"
 ruby = "latest"
+dust = "latest"
 
 [settings]
 experimental = true
