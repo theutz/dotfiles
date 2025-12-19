@@ -20,6 +20,7 @@ export default {
             "lemmy.world",
             "hachyderm.io",
             "theutz.com",
+            "duolingo.com",
           ].includes(url.host),
       ],
       browser: {

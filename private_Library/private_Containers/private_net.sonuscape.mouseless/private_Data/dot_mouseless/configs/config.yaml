@@ -6,7 +6,7 @@ behavior_configs:
   grid_action_level: subgrid
   hide_cursor_on_click: false
   hide_location: bottom_left
-  initial_action_location: system_cursor
+  initial_action_location: screen_center
   initial_overlay_monitor: with_mouse
   move_duration_ms: 100
   move_real_cursor_with_virtual: false
@@ -269,7 +269,7 @@ keyboard_layout:
 keymaps:
 - entries:
     back click: null
-    back mouse button: Backspace
+    back mouse button: '['
     back mouse button (w/o overlay): null
     close UI element: Escape
     cycle click count: null
@@ -285,7 +285,7 @@ keymaps:
     execute mouse move: Enter
     exit free mode: Escape
     forward click: null
-    forward mouse button: Shift+Backspace
+    forward mouse button: ']'
     forward mouse button (w/o overlay): null
     hide overlay: Escape
     hold for back button: null
@@ -295,7 +295,7 @@ keymaps:
     hold for move: OptionLeft
     hold for right button: ControlLeft
     hold for speed decrease: Command
-    hold for speed increase: Shift
+    hold for speed increase: Option
     increase overlay opacity: +
     jump to bottom: G
     jump to left edge: null
@@ -304,20 +304,20 @@ keymaps:
     left mouse button: Space
     left mouse button (w/o overlay): null
     middle click: null
-    middle mouse button: null
+    middle mouse button: Option+Space
     middle mouse button (w/o overlay): null
     move down:
     - j
-    - s
+    - f
     move left:
     - h
-    - a
+    - g
     move right:
     - l
-    - d
+    - s
     move up:
     - k
-    - w
+    - d
     release hold/drag: Escape
     repeat last mouse action: '`'
     right click: null
@@ -326,16 +326,16 @@ keymaps:
     show overlay: null
     subgrid nudge down:
     - j
-    - s
+    - f
     subgrid nudge left:
     - h
-    - a
+    - g
     subgrid nudge right:
     - l
-    - d
+    - s
     subgrid nudge up:
     - k
-    - w
+    - d
     switch monitor left: null
     switch monitor right: Tab
     toggle app enabled: null
@@ -345,34 +345,22 @@ keymaps:
     toggle overlay: CommandLeft tap
     toggle overlay lock: null
     undo last key: Backspace
-    wheel down:
-    - n
-    - v
-    wheel down fast:
-    - c
-    - m
-    wheel left:
-    - ','
-    - z
-    wheel left fast: null
-    wheel right:
-    - .
-    - x
-    wheel right fast: null
-    wheel step down: null
+    wheel down: i
+    wheel down fast: m
+    wheel left: u
+    wheel left fast: n
+    wheel right: p
+    wheel right fast: .
+    wheel step down: f
     wheel step down large: null
-    wheel step left: null
+    wheel step left: g
     wheel step left large: null
-    wheel step right: null
+    wheel step right: s
     wheel step right large: null
-    wheel step up: null
+    wheel step up: d
     wheel step up large: null
-    wheel up:
-    - p
-    - q
-    wheel up fast:
-    - e
-    - i
+    wheel up: o
+    wheel up fast: ','
   name: mac
 monitor_assignment_mode: auto
 name: ''
@@ -415,8 +403,8 @@ style_configs:
   - 0.32
   - 0.32
   - 0.7
-  cursor_size: 7
-  font_family: RecMonoCasualNF-Bold
+  cursor_size: 4
+  font_family: MonaspiceArNF-Regular
   font_size_multiplier: 0.55
   font_weight: 400
   grid_line_style: lines
@@ -433,7 +421,7 @@ style_configs:
   - 0.15
   name: default
   show_initial_highlight: true
-  subgrid_font_size_multiplier: 0.75
+  subgrid_font_size_multiplier: 0.65
   subgrid_rgba:
   - 0.58
   - 1
@@ -449,7 +437,7 @@ style_configs:
   - 0.996078431372549
   - 0.27450980392156865
   - 1
-  text_shadow_blur_radius: 1
+  text_shadow_blur_radius: 2
   text_shadow_offset:
   - -1.0
   - 1.0

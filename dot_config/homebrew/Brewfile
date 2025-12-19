@@ -246,6 +246,8 @@ cask "atuin-desktop"
 cask "balenaetcher"
 # Desktop client for brain.fm
 cask "brainfm"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
 # Create dynamic wallpapers
 cask "equinox"
 # Email client
