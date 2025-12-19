@@ -280,7 +280,7 @@ keymaps:
     cycle mouse button: null
     decrease overlay opacity: '-'
     edit config: Command+,
-    enter free mode: OptionLeft tap
+    enter free mode: null
     execute mouse action: Space
     execute mouse move: Enter
     exit free mode: Escape
@@ -323,7 +323,7 @@ keymaps:
     right click: null
     right mouse button: Control+Space
     right mouse button (w/o overlay): null
-    show overlay: CommandLeft tap
+    show overlay: null
     subgrid nudge down:
     - j
     - s
@@ -340,9 +340,9 @@ keymaps:
     switch monitor right: Tab
     toggle app enabled: null
     toggle continuous mode: null
-    toggle continuous mode until closed: CommandLeft tap
-    toggle free mode: null
-    toggle overlay: null
+    toggle continuous mode until closed: o
+    toggle free mode: OptionLeft tap
+    toggle overlay: CommandLeft tap
     toggle overlay lock: null
     undo last key: Backspace
     wheel down:
