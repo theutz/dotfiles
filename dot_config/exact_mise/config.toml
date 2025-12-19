@@ -107,6 +107,8 @@ gemini = "latest"
 "ubi:macchina-cli/macchina" = "latest"
 ruby = "latest"
 dust = "latest"
+python = "latest"
+"pipx:terminal-colors" = "latest"
 
 [settings]
 experimental = true

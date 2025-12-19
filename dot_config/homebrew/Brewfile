@@ -44,7 +44,7 @@ brew "tidy-html5"
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
-# GNU Pretty Good Privacy (PGP) package
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
@@ -78,8 +78,6 @@ brew "doggo"
 brew "duf"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
-# Modern, maintained replacement for ls
-brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -133,7 +131,7 @@ brew "lstr"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Drop-in replacement for MySQL
-brew "mariadb"
+brew "mariadb", link: false
 # Syntax-aware git merge driver
 brew "mergiraf"
 # Replacement for ls, cp and other commands for object storage
@@ -141,7 +139,7 @@ brew "minio-mc", link: false
 # AI on the command-line
 brew "mods"
 # Open source relational database management system
-brew "mysql", restart_service: :changed, link: false
+brew "mysql", restart_service: :changed
 # Network scanner with features like WiFi scanning, packetdump and more
 brew "netscanner"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
@@ -160,6 +158,8 @@ brew "php@8.3"
 brew "pinentry-mac"
 # Command-line tool for managing long-running shell commands
 brew "pueue", restart_service: :changed
+# Generic machine emulator and virtualizer
+brew "qemu"
 # Fast, stateless LLM for your shell: qq answers; qa runs commands
 brew "qqqa"
 # Rsync for cloud storage
@@ -371,3 +371,7 @@ cask "yaak"
 cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
+go "cmd/go"
+go "cmd/gofmt"
+go "mvdan.cc/gofumpt"
+go "golang.org/x/tools/cmd/goimports"

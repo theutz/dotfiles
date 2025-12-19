@@ -1,7 +1,7 @@
 import type { FinickyConfig } from "/Applications/Finicky.app/Contents/Resources/finicky.d.ts";
 
 export default {
-  defaultBrowser: "Firefox",
+  defaultBrowser: "Vivaldi",
   options: {
     checkForUpdates: true,
     keepRunning: true,
@@ -22,7 +22,10 @@ export default {
             "theutz.com",
           ].includes(url.host),
       ],
-      browser: "Firefox",
+      browser: {
+        name: "Vivaldi",
+        profile: "Personal",
+      },
     },
     {
       match: [
@@ -63,7 +66,10 @@ export default {
             )
             .some((domain) => url.host.endsWith(domain)),
       ],
-      browser: "Google Chrome",
+      browser: {
+        name: "Vivaldi",
+        profile: "Delegator",
+      },
     },
   ],
 } satisfies FinickyConfig;

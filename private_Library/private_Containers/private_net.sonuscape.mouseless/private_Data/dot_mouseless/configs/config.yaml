@@ -9,7 +9,7 @@ behavior_configs:
   initial_action_location: system_cursor
   initial_overlay_monitor: with_mouse
   move_duration_ms: 100
-  move_real_cursor_with_virtual: true
+  move_real_cursor_with_virtual: false
   move_speed_multiplier: 4.0
   movement_easing: 0.1
   multi_action_timeout_ms: 400
@@ -33,7 +33,7 @@ grid_configs:
     keys: QWERT ASDFG ZXCVB YUIOP HJKL; NM,./
     num_cells_x: 5
     num_cells_y: 6
-  - border_width: 2.0
+  - border_width: 1
     callback: build_cell_strings
     keys: QWERT ASDFG ZXCVB YUIOP HJKL; NM,./
     num_cells_x: 5
@@ -279,12 +279,10 @@ keymaps:
     cycle mouse action type: null
     cycle mouse button: null
     decrease overlay opacity: '-'
-    edit config: Tab
+    edit config: Command+,
     enter free mode: OptionLeft tap
     execute mouse action: Space
-    execute mouse move:
-    - ShiftRight tap
-    - Enter
+    execute mouse move: Enter
     exit free mode: Escape
     forward click: null
     forward mouse button: Shift+Backspace
@@ -338,8 +336,8 @@ keymaps:
     subgrid nudge up:
     - k
     - w
-    switch monitor left: ShiftRight tap
-    switch monitor right: null
+    switch monitor left: null
+    switch monitor right: Tab
     toggle app enabled: null
     toggle continuous mode: null
     toggle continuous mode until closed: CommandLeft tap
@@ -381,14 +379,14 @@ name: ''
 style_configs:
 - always_on_subgrid_rgba:
   - 0.58
-  - 1.0
+  - 1
   - 0.42
-  - 0.15
+  - 0.1
   background_rgba:
-  - 0.05
-  - 0.2
-  - 0.0
-  - 0.35
+  - 0.00392156862745098
+  - 0.00392156862745098
+  - 0.00392156862745098
+  - 0.6
   char_spacing_cell_width_ratio: 0.5
   char_spacing_font_size_ratio: 0.2
   char_spacing_strategy: font_size_relative
@@ -424,34 +422,34 @@ style_configs:
   grid_line_style: lines
   grid_rgba:
   - 0.58
-  - 1.0
+  - 1
   - 0.42
-  - 0.5
-  highlight_animation_ms: 0
+  - 0.45
+  highlight_animation_ms: 125
   highlight_rgba:
-  - 0.0
-  - 1.0
+  - 0
+  - 1
   - 0.05
-  - 0.2
+  - 0.15
   name: default
-  show_initial_highlight: false
+  show_initial_highlight: true
   subgrid_font_size_multiplier: 0.75
   subgrid_rgba:
   - 0.58
-  - 1.0
+  - 1
   - 0.42
-  - 0.2
+  - 0.15
   subgrid_text_rgba:
-  - 0.7333333333333333
-  - 0.984313725490196
-  - 0.6627450980392157
-  - 0.9
+  - 0.2196078431372549
+  - 1
+  - 0.00392156862745098
+  - 1
   text_rgba:
-  - 0.6235294117647059
-  - 0.9725490196078431
-  - 0.49411764705882355
-  - 1.0
-  text_shadow_blur_radius: 0.0
+  - 0.4666666666666667
+  - 0.996078431372549
+  - 0.27450980392156865
+  - 1
+  text_shadow_blur_radius: 1
   text_shadow_offset:
   - -1.0
   - 1.0
@@ -461,4 +459,4 @@ style_configs:
   - 0.06274509803921569
   - 1.0
   text_y_offset: 0.0
-  window_opacity: 0.7
+  window_opacity: 0.8
