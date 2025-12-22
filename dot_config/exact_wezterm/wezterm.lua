@@ -123,6 +123,11 @@ local font_options = {
 		c.font_size = 16
 		c.line_height = c.font_size * 0.08
 	end,
+	function()
+		c.font = w.font("IntoneMono Nerd Font Propo", { weight = 400 })
+		c.font_size = 16
+		c.line_height = c.font_size * 0.08
+	end,
 }
 font_options[#font_options]()
 

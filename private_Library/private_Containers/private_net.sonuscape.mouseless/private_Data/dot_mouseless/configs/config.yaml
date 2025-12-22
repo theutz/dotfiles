@@ -2,21 +2,21 @@ app_version: 0.4.3
 behavior_configs:
 - base_move_speed: 5.0
   base_wheel_speed: 16.0
-  free_mode_auto_off_s: 30
+  free_mode_auto_off_s: 60
   grid_action_level: subgrid
   hide_cursor_on_click: false
   hide_location: bottom_left
   initial_action_location: screen_center
   initial_overlay_monitor: with_mouse
-  move_duration_ms: 100
+  move_duration_ms: 150
   move_real_cursor_with_virtual: false
-  move_speed_multiplier: 4.0
-  movement_easing: 0.1
-  multi_action_timeout_ms: 400
+  move_speed_multiplier: 5.0
+  movement_easing: 0.2
+  multi_action_timeout_ms: 500
   name: main_behavior
   send_escape_after_global_alt_tap__windows: true
-  tap_threshold_ms: 125
-  wheel_easing: 0.1
+  tap_threshold_ms: 150
+  wheel_easing: 0.15
   wheel_speed_multiplier: 4.0
   wheel_step_size: 20.0
   wheel_step_size_large: 500.0
@@ -33,7 +33,7 @@ grid_configs:
     keys: QWERT ASDFG ZXCVB YUIOP HJKL; NM,./
     num_cells_x: 5
     num_cells_y: 6
-  - border_width: 1
+  - border_width: 1.0
     callback: build_cell_strings
     keys: QWERT ASDFG ZXCVB YUIOP HJKL; NM,./
     num_cells_x: 5
@@ -282,7 +282,7 @@ keymaps:
     edit config: Command+,
     enter free mode: null
     execute mouse action: Space
-    execute mouse move: Enter
+    execute mouse move: null
     exit free mode: Escape
     forward click: null
     forward mouse button: ']'
@@ -304,22 +304,14 @@ keymaps:
     left mouse button: Space
     left mouse button (w/o overlay): null
     middle click: null
-    middle mouse button: Option+Space
+    middle mouse button: null
     middle mouse button (w/o overlay): null
-    move down:
-    - j
-    - f
-    move left:
-    - h
-    - g
-    move right:
-    - l
-    - s
-    move up:
-    - k
-    - d
+    move down: j
+    move left: h
+    move right: l
+    move up: k
     release hold/drag: Escape
-    repeat last mouse action: '`'
+    repeat last mouse action: Enter
     right click: null
     right mouse button: Control+Space
     right mouse button (w/o overlay): null
@@ -351,13 +343,13 @@ keymaps:
     wheel left fast: n
     wheel right: p
     wheel right fast: .
-    wheel step down: f
+    wheel step down: ArrowDown
     wheel step down large: null
-    wheel step left: g
+    wheel step left: ArrowLeft
     wheel step left large: null
-    wheel step right: s
+    wheel step right: ArrowRight
     wheel step right large: null
-    wheel step up: d
+    wheel step up: ArrowUp
     wheel step up large: null
     wheel up: o
     wheel up fast: ','
@@ -367,7 +359,7 @@ name: ''
 style_configs:
 - always_on_subgrid_rgba:
   - 0.58
-  - 1
+  - 1.0
   - 0.42
   - 0.1
   background_rgba:
@@ -404,19 +396,19 @@ style_configs:
   - 0.32
   - 0.7
   cursor_size: 4
-  font_family: MonaspiceArNF-Regular
+  font_family: IntoneMonoNFP-Bold
   font_size_multiplier: 0.55
   font_weight: 400
   grid_line_style: lines
   grid_rgba:
   - 0.58
-  - 1
+  - 1.0
   - 0.42
   - 0.45
   highlight_animation_ms: 125
   highlight_rgba:
-  - 0
-  - 1
+  - 0.0
+  - 1.0
   - 0.05
   - 0.15
   name: default
@@ -424,20 +416,20 @@ style_configs:
   subgrid_font_size_multiplier: 0.65
   subgrid_rgba:
   - 0.58
-  - 1
+  - 1.0
   - 0.42
   - 0.15
   subgrid_text_rgba:
   - 0.2196078431372549
-  - 1
+  - 1.0
   - 0.00392156862745098
-  - 1
+  - 1.0
   text_rgba:
   - 0.4666666666666667
   - 0.996078431372549
   - 0.27450980392156865
-  - 1
-  text_shadow_blur_radius: 2
+  - 1.0
+  text_shadow_blur_radius: 2.0
   text_shadow_offset:
   - -1.0
   - 1.0
