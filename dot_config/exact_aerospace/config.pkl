@@ -39,12 +39,15 @@ gaps {
     vertical = 16
   }
   `outer` {
-    bottom = 16
-    left = 16
-    right = 16
+    local gap = 16
+    local statusbar = 40
+    bottom = gap
+    left = gap
+    right = gap
     top = new Listing {
-      new GapsMonitor { monitor { ["SAMSUNG"] = 56 }}
-      16
+      new GapsMonitor { monitor { ["SAMSUNG"] = gap + statusbar }}
+      new GapsMonitor { monitor { ["LG ULTRAGEAR"] = gap + statusbar }}
+      gap
     }
   }
 }

@@ -1,5 +1,5 @@
 vim.o.linespace = 16
-vim.o.guifont = "MonaspiceRn Nerd Font Propo:h" .. vim.o.linespace
+vim.o.guifont = "IntoneMono Nerd Font Propo:h" .. vim.o.linespace
 
 local padding = 4
 vim.g.neovide_padding_top = padding

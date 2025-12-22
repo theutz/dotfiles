@@ -20,7 +20,7 @@ vertical = 16
 [gaps.outer]
 left = 16
 right = 16
-top = [ { monitor = { SAMSUNG = 56 } }, 16 ]
+top = [ { monitor = { SAMSUNG = 56 } }, { monitor = { "LG ULTRAGEAR" = 56 } }, 16 ]
 bottom = 16
 
 [[on-window-detected]]
